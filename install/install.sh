@@ -34,26 +34,29 @@ echo -e "127.0.0.1 localhost $HOSTNAME nma\n\n$(cat /etc/hosts)" > /etc/hosts
 # APACHE SUITE
 #
 apt update
-apt upgrade
+apt upgrade -y -f
 # httpd
-apt install apache2
+apt install apache2 -y
 a2enmod proxy_http
+mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.original
 ln -s $CONFIG_DIR/config/apache/000-default.conf /etc/apache2/sites-available/
 # tomcat
-apt install tomcat8
+apt install tomcat8 -y
 # solr
 cd $INSTALL_DIR
 wget http://apache.mirror.digitalpacific.com.au/lucene/solr/7.2.1/solr-7.2.1.tgz -O solr-7.2.1.tgz
-tar xzf solr-7.2.0.tgz solr-7.2.0/bin/install_solr_service.sh --strip-components=2
+tar xzf solr-7.2.1.tgz solr-7.2.1/bin/install_solr_service.sh --strip-components=2
+./install_solr_service.sh $INSTALL_DIR/solr-7.2.1.tgz
 # TODO update schema for Solr 7
-ln -s $CONFIG_DIR/config/solr/schema.xml /opt/solr/conf/
+# ln -s $CONFIG_DIR/config/solr/schema.xml /opt/solr/conf/
 #
 # XML Calabash
 # - it may be better to just download the zip and unpack it in the appropriate place? (the installer uses /opt/xmlcalabash-blah-blah-version-number)
 #
 cd $INSTALL_DIR
 wget https://github.com/ndw/xmlcalabash1/releases/download/1.1.16-98/xmlcalabash-1.1.16-98.jar -O xmlcalabash-1.1.16-98.jar
-java -jar xmlcalabash-1.1.16-98.jar
+echo 1 | java -jar ./xmlcalabash-1.1.16-98.jar
+ln -s /usr/local/xmlcalabash-1.1.16-98 /usr/local/xmlcalabash
 #
 # XPROC-Z (ETL)
 #
