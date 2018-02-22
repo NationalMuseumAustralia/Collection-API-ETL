@@ -47,6 +47,13 @@ cd $INSTALL_DIR
 wget http://apache.mirror.digitalpacific.com.au/lucene/solr/7.2.1/solr-7.2.1.tgz -O solr-7.2.1.tgz
 tar xzf solr-7.2.1.tgz solr-7.2.1/bin/install_solr_service.sh --strip-components=2
 ./install_solr_service.sh $INSTALL_DIR/solr-7.2.1.tgz
+# fuseki
+mkdir -p /etc/fuseki/configuration
+ln -s $CONFIG_DIR/config/fuseki/public.ttl /etc/fuseki/configuration/
+chown -R tomcat8:tomcat8 /etc/fuseki/
+wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuseki-3.6.0.zip -O /tmp/fuseki.zip
+apt install unzip
+unzip -j fuseki.zip apache-jena-fuseki-3.6.0/fuseki.war -d /var/lib/tomcat7/webapps/
 # TODO update schema for Solr 7
 # ln -s $CONFIG_DIR/config/solr/schema.xml /opt/solr/conf/
 #
