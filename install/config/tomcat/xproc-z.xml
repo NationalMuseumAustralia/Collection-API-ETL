@@ -1,0 +1,7 @@
+<Context path="/xproc-z"
+    docBase="/etc/xproc-z/xproc-z.war"
+    preemptiveAuthentication="true"
+    antiResourceLocking="false">
+  <Valve className="org.apache.catalina.authenticator.BasicAuthenticator" />
+  <Parameter name="xproc-z.main" value="/etc/xproc-z/NMA-API/xproc/xproc-z.xpl" override="false"/>
+</Context>
