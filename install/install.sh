@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # NMA API server init script
-# 2018-02-21
+# 2018-02-23
 #
 # usage:
 #
@@ -15,11 +15,14 @@
 # > exit
 #
 HOSTNAME=nma.conaltuohy.com
-CONFIG_DIR=/usr/local/NMA-API-ETL/install
+CONFIG_DIR=/usr/local/NMA-API-ETL/install/config
 INSTALL_DIR=/tmp/nma-api-install
 #
 date
+apt update
+apt upgrade -y -f
 mkdir $INSTALL_DIR
+chown -R ubuntu:ubuntu /usr/local/NMA-API-ETL
 #
 # HOST
 #
@@ -31,31 +34,46 @@ fi
 hostname $HOSTNAME
 echo -e "127.0.0.1 localhost $HOSTNAME nma\n\n$(cat /etc/hosts)" > /etc/hosts
 #
-# APACHE SUITE
+# APACHE HTTP SERVER
 #
-apt update
-apt upgrade -y -f
-# httpd
 apt install apache2 -y
 a2enmod proxy_http
 mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.original
-ln -s $CONFIG_DIR/config/apache/000-default.conf /etc/apache2/sites-available/
-# tomcat
+ln -s $CONFIG_DIR/apache/000-default.conf /etc/apache2/sites-available/
+#
+# TOMCAT
+#
 apt install tomcat8 -y
-# solr
+#
+# SOLR
+#
 cd $INSTALL_DIR
 wget http://apache.mirror.digitalpacific.com.au/lucene/solr/7.2.1/solr-7.2.1.tgz -O solr-7.2.1.tgz
 tar xzf solr-7.2.1.tgz solr-7.2.1/bin/install_solr_service.sh --strip-components=2
 ./install_solr_service.sh $INSTALL_DIR/solr-7.2.1.tgz
-# fuseki
+# create cores, only link config parts (so data files aren't in git)
+SOLR_CORE_1_NAME=core_nma_public
+SOLR_CORE_2_NAME=core_nma_internal
+mkdir -p        /var/solr/data/$SOLR_CORE_1_NAME
+chown solr:solr /var/solr/data/$SOLR_CORE_1_NAME
+mkdir -p        /var/solr/data/$SOLR_CORE_2_NAME
+chown solr:solr /var/solr/data/$SOLR_CORE_2_NAME
+ln -s $CONFIG_DIR/solr/$SOLR_CORE_1_NAME/core.properties /var/solr/data/$SOLR_CORE_1_NAME/core.properties
+ln -s $CONFIG_DIR/solr/$SOLR_CORE_1_NAME/conf            /var/solr/data/$SOLR_CORE_1_NAME/conf
+ln -s $CONFIG_DIR/solr/$SOLR_CORE_2_NAME/core.properties /var/solr/data/$SOLR_CORE_2_NAME/core.properties
+ln -s $CONFIG_DIR/solr/$SOLR_CORE_2_NAME/conf            /var/solr/data/$SOLR_CORE_2_NAME/conf
+# solr dynamically updates schema files so needs write permission
+chown -R solr:solr $CONFIG_DIR/solr
+#
+# FUSEKI
+#
 mkdir -p /etc/fuseki/configuration
-ln -s $CONFIG_DIR/config/fuseki/public.ttl /etc/fuseki/configuration/
+ln -s $CONFIG_DIR/fuseki/public.ttl /etc/fuseki/configuration/
 chown -R tomcat8:tomcat8 /etc/fuseki/
-wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuseki-3.6.0.zip -O /tmp/fuseki.zip
+cd $INSTALL_DIR
+wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuseki-3.6.0.zip -O fuseki-3.6.0.zip
 apt install unzip
-unzip -j fuseki.zip apache-jena-fuseki-3.6.0/fuseki.war -d /var/lib/tomcat7/webapps/
-# TODO update schema for Solr 7
-# ln -s $CONFIG_DIR/config/solr/schema.xml /opt/solr/conf/
+unzip -j fuseki-3.6.0.zip apache-jena-fuseki-3.6.0/fuseki.war -d /var/lib/tomcat8/webapps/
 #
 # XML Calabash
 # - it may be better to just download the zip and unpack it in the appropriate place? (the installer uses /opt/xmlcalabash-blah-blah-version-number)
@@ -70,7 +88,7 @@ ln -s /usr/local/xmlcalabash-1.1.16-98 /usr/local/xmlcalabash
 cd $INSTALL_DIR
 wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/1.0c/xproc-z.war -O xproc-z.war
 mv xproc-z.war /var/lib/tomcat8/webapps/
-ln -s $CONFIG_DIR/config/tomcat/xproc-z.xml /var/lib/tomcat8/conf/Catalina/localhost/
+ln -s $CONFIG_DIR/tomcat/xproc-z.xml /var/lib/tomcat8/conf/Catalina/localhost/
 #
 # XPROC-Z (API SHIM)
 #
