@@ -24,9 +24,11 @@
 						<xsl:attribute name="rdf:resource" select="
 							concat(
 								'http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/',
-								translate(
-									substring-after(@baseUrl, '\Collectionsearch\'),
-									'\',
+								string-join(
+									for $component in tokenize(
+										substring-after(@baseUrl, '\Collectionsearch\'),
+										'\\'
+									) return encode-for-uri($component),
 									'/'
 								)
 							)
