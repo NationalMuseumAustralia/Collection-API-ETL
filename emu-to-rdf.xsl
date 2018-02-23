@@ -9,7 +9,7 @@
 	<xsl:template match="/*">
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri"/>
-			<rdf:Description rdf:about="object/{irn}#">
+			<rdf:Description rdf:about="{$record-type}/{irn}#">
 				<xsl:variable name="leaf-node-elements" select=".//*[not(*)][normalize-space()]"/>
 				<xsl:if test="$record-type='object'">
 					<dcterms:hasFormat rdf:resource="http://collectionsearch.nma.gov.au/object/{irn}"/>
@@ -35,6 +35,10 @@
 	</xsl:template>
 	
 	<!-- values of IRNs that refer to foreign records -->
+	<xsl:template mode="value" match="SubNarrative.irn">
+		<xsl:attribute name="rdf:resource" select="concat('narrative/', .)"/>
+	</xsl:template>
+	
 	<xsl:template mode="value" match="AssParentObjectRef | RelRelatedObjectsRef_tab.irn">
 		<xsl:attribute name="rdf:resource" select="concat('object/', .)"/>
 	</xsl:template>
