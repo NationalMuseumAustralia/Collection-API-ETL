@@ -69,11 +69,7 @@
 			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-emu-data>
-		<!--
-		-->
 		<!-- process Piction image metadata -->
-		<!--
-		-->
 		<p:load href="/data/solr_prod1.xml"/>
 		<nma:process-piction-data>
 			<p:with-option name="dataset" select="$dataset"/>
