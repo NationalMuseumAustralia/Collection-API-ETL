@@ -13,7 +13,7 @@
 			<xsl:if test="count(field[@name='EMu IRN for Related Objects']) &gt; 1">
 				<xsl:comment>Record should have exactly one IRN</xsl:comment>
 			</xsl:if>
-			<rdf:Description rdf:about="{concat('object/', normalize-space((field[@name='EMu IRN for Related Objects'])[1]), '#')}">
+			<rdf:Description rdf:about="{concat('image/', normalize-space((field[@name='Multimedia ID'])[1]), '#')}">
 				<xsl:for-each select="field">
 					<xsl:element name="{replace(@name, '\s', '-')}">
 						<xsl:value-of select="."/>

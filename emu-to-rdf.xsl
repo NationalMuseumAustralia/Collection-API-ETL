@@ -31,24 +31,27 @@
 	
 	<!-- value is a URI derived from the irn identifying the current record -->
 	<xsl:template mode="value" match="irn">
-		<xsl:attribute name="rdf:resource" select="concat($record-type, '/', .)"/>
+		<xsl:attribute name="rdf:resource" select="concat($record-type, '/', ., '#')"/>
 	</xsl:template>
+	<xsl:template mode="value" match="ObjObjectsRef/irn">
+		<xsl:attribute name="rdf:resource" select="concat('object/', ., '#')"/>
+	</xsl:template>	
 	
 	<!-- values of IRNs that refer to foreign records -->
 	<xsl:template mode="value" match="SubNarrative.irn">
-		<xsl:attribute name="rdf:resource" select="concat('narrative/', .)"/>
+		<xsl:attribute name="rdf:resource" select="concat('narrative/', ., '#')"/>
 	</xsl:template>
 	
 	<xsl:template mode="value" match="AssParentObjectRef | RelRelatedObjectsRef_tab.irn">
-		<xsl:attribute name="rdf:resource" select="concat('object/', .)"/>
+		<xsl:attribute name="rdf:resource" select="concat('object/', ., '#')"/>
 	</xsl:template>
 	
 	<xsl:template mode="value" match="ProPersonRef_tab.irn | AssPersonRef_tab.irn">
-		<xsl:attribute name="rdf:resource" select="concat('party/', .)"/>
+		<xsl:attribute name="rdf:resource" select="concat('party/', ., '#')"/>
 	</xsl:template>
 	
 	<xsl:template mode="value" match="ProPlaceRef_tab.irn | AssPlaceRef_tab.irn">
-		<xsl:attribute name="rdf:resource" select="concat('site/', .)"/>
+		<xsl:attribute name="rdf:resource" select="concat('site/', ., '#')"/>
 	</xsl:template>		
 	
 	<xsl:template mode="type" match="*[@type='integer']">

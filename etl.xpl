@@ -31,7 +31,7 @@
 	<pxf:mkdir href="/data/site"/>
 	<pxf:mkdir href="/data/party"/>
 	<pxf:mkdir href="/data/narrative"/>
-	<pxf:mkdir href="/data/media"/>
+	<pxf:mkdir href="/data/image"/>
 	
 	<p:exec name="read-hostname" command="hostname" result-is-xml="false">
 		<p:input port="source">
@@ -39,111 +39,78 @@
 			<p:empty/>
 		</p:input>
 	</p:exec>
-	
-	<nma:import-data dataset="public">
-		<p:with-option name="hostname" select="normalize-space(/)"/>
-	</nma:import-data>
-	
-	<p:declare-step name="import-data" type="nma:import-data">
-		<p:option name="hostname" required="true"/>
-		<p:option name="dataset" required="true"/>
+	<p:group>
+		<p:variable name="hostname" select="normalize-space(/)"/>
+		
+		<!-- process Piction image metadata -->
+		<p:load href="/data/solr_prod1.xml"/>
+		<nma:process-data record-type="image" dataset="public">
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
 	
 		<!-- process EMu objects, sites, parties, and narratives -->
 		<p:load href="/data/emu_objects_21-02-2018_80454.xml"/>
-		<nma:process-emu-data record-type="object">
-			<p:with-option name="dataset" select="$dataset"/>
+		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-emu-data>
+		</nma:process-data>
 		<p:load href="/data/emu_narratives_22-02-2018_1359.xml"/>
-		<nma:process-emu-data record-type="narrative">
-			<p:with-option name="dataset" select="$dataset"/>
+		<nma:process-data record-type="narrative" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-emu-data>
+		</nma:process-data>
 		<p:load href="/data/emu_sites19-02-2018_4200.xml"/>
-		<nma:process-emu-data record-type="site">
-			<p:with-option name="dataset" select="$dataset"/>
+		<nma:process-data record-type="site" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-emu-data>
+		</nma:process-data>
 		<p:load href="/data/emu_parties21-02-2018_25986.xml"/>	
-		<nma:process-emu-data record-type="party">
-			<p:with-option name="dataset" select="$dataset"/>
+		<nma:process-data record-type="party" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-emu-data>
-		<!-- process Piction image metadata -->
-		<p:load href="/data/solr_prod1.xml"/>
-		<nma:process-piction-data>
-			<p:with-option name="dataset" select="$dataset"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-piction-data>
-	</p:declare-step>
+		</nma:process-data>
+	</p:group>
 	
-	<p:declare-step name="process-piction-data" type="nma:process-piction-data">
-		<p:input port="source"/>
-		<p:option name="hostname" required="true"/>
-		<p:option name="dataset" required="true"/>
-		<p:for-each name="piction-record">
-			<p:iteration-source select="/add/doc"/>
-			<p:variable name="identifier" select="
-				encode-for-uri(
-					normalize-space(
-						/doc/field
-							[@name='EMu IRN for Related Objects']
-							[not(string(.)=preceding-sibling::field[@name='EMu IRN for Related Objects'])]
-					)
-				)
-			"/>
-			<cx:message>
-				<p:with-option name="message" select="concat('Ingesting media item ', $identifier, ' into ', $dataset, ' dataset...')"/>
-			</cx:message>
-			<p:store indent="true">
-				<p:with-option name="href" select="concat('/data/media/', $identifier, '.xml')"/>
-			</p:store>
-			<p:xslt name="piction-to-rdf">
-				<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
-				<p:input port="source">
-					<p:pipe step="piction-record" port="current"/>
-				</p:input>
-				<p:input port="stylesheet">
-					<p:document href="piction-to-rdf.xsl"/>
-				</p:input>
-			</p:xslt>
-			<p:store indent="true">
-				<p:with-option name="href" select="concat('/data/media/', $identifier, '.rdf')"/>
-			</p:store>
-			<nma:store-graph>
-				<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/media/', $identifier)"/>
-				<p:with-option name="dataset" select="$dataset"/>
-				<p:input port="source">
-					<p:pipe step="piction-to-rdf" port="result"/>
-				</p:input>
-			</nma:store-graph>
-		</p:for-each>
-	</p:declare-step>
-	
-	<p:declare-step name="process-emu-data" type="nma:process-emu-data">
+	<p:declare-step name="process-data" type="nma:process-data">
 		<p:input port="source"/>
 		<p:option name="record-type" required="true"/>
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
 		<p:for-each name="record">
-			<p:iteration-source select="/response/record"/>
-			<p:variable name="identifier" select="/record/irn"/>
+			<!-- EMu records are /response/record, Piction records are /add/doc -->
+			<!-- QAZ only first record being processed! -->
+			<p:iteration-source select="/response/record[1] | /add/doc[1]"/>
+			<!-- EMu records are uniquelly identified by /response/record/irn, Piction records by /doc/field[@name='Multimedia ID'] -->
+			<p:variable name="identifier" select="/record/irn | doc/field[@name='Multimedia ID']"/>
 			<cx:message>
 				<p:with-option name="message" select="concat('Ingesting ', $record-type, ' ', $identifier, ' into ', $dataset, ' dataset...')"/>
 			</cx:message>
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/', $record-type, '/', $identifier, '.xml')"/>
 			</p:store>
-			<p:xslt name="emu-objects-to-rdf">
-				<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
-				<p:with-param name="record-type" select="$record-type"/>
-				<p:input port="stylesheet">
-					<p:document href="emu-to-rdf.xsl"/>
-				</p:input>
-				<p:input port="source">
-					<p:pipe step="record" port="current"/>
-				</p:input>
-			</p:xslt>
+			<p:choose name="transformation-to-rdf">
+				<p:output port="result"/>
+				<p:when test="$record-type='image'">
+					<p:xslt name="piction-to-rdf">
+						<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
+						<p:with-param name="record-type" select="$record-type"/>
+						<p:input port="stylesheet">
+							<p:document href="piction-to-rdf.xsl"/>
+						</p:input>
+						<p:input port="source">
+							<p:pipe step="record" port="current"/>
+						</p:input>
+					</p:xslt>
+				</p:when>
+				<p:otherwise>
+					<p:xslt name="emu-objects-to-rdf">
+						<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
+						<p:with-param name="record-type" select="$record-type"/>
+						<p:input port="stylesheet">
+							<p:document href="emu-to-rdf.xsl"/>
+						</p:input>
+						<p:input port="source">
+							<p:pipe step="record" port="current"/>
+						</p:input>
+					</p:xslt>
+				</p:otherwise>
+			</p:choose>
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/', $record-type, '/', $identifier, '.rdf')"/>
 			</p:store>
@@ -151,7 +118,7 @@
 				<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/', $record-type, '/', $identifier)"/>
 				<p:with-option name="dataset" select="$dataset"/>
 				<p:input port="source">
-					<p:pipe step="emu-objects-to-rdf" port="result"/>
+					<p:pipe step="transformation-to-rdf" port="result"/>
 				</p:input>
 			</nma:store-graph>
 		</p:for-each>			
@@ -180,13 +147,15 @@
 			</p:input>
 		</p:template>
 		<p:http-request name="http-put"/>
-		<!--<p:sink/>-->
+		<p:sink/>
+		<!--
 		<p:store href="/tmp/last-sparql-store-response.xml" indent="true"/>
 		<p:store href="/tmp/last-sparql-store-request.xml" indent="true">
 			<p:input port="source">
 				<p:pipe step="generate-put-request" port="result"/>
 			</p:input>
 		</p:store>
+		-->
 	</p:declare-step>
 	
 </p:declare-step>
