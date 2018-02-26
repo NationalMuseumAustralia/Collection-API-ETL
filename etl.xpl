@@ -49,7 +49,6 @@
 		</nma:process-data>
 	
 		<!-- process EMu objects, sites, parties, and narratives -->
-		<!--
 		<p:load href="/data/emu_objects_21-02-2018_80454.xml"/>
 		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
@@ -66,7 +65,6 @@
 		<nma:process-data record-type="party" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		-->
 	</p:group>
 	
 	<p:declare-step name="process-data" type="nma:process-data">
@@ -77,8 +75,7 @@
 		<cx:message message="Converting XML data into RDF in SPARQL store..."/>
 		<p:for-each name="record">
 			<!-- EMu records are /response/record, Piction records are /add/doc -->
-			<!-- QAZ only first record being processed! -->
-			<p:iteration-source select="/response/record[1] | /add/doc"/>
+			<p:iteration-source select="/response/record | /add/doc"/>
 			<!-- EMu records are uniquely identified by /response/record/irn, Piction records by /doc/field[@name='Multimedia ID'] -->
 			<p:variable name="identifier" select="/record/irn | doc/field[@name='Multimedia ID']"/>
 			<cx:message>
