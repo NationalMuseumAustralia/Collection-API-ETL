@@ -49,6 +49,7 @@
 		</nma:process-data>
 	
 		<!-- process EMu objects, sites, parties, and narratives -->
+		<!--
 		<p:load href="/data/emu_objects_21-02-2018_80454.xml"/>
 		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
@@ -65,6 +66,7 @@
 		<nma:process-data record-type="party" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
+		-->
 	</p:group>
 	
 	<p:declare-step name="process-data" type="nma:process-data">
@@ -72,21 +74,24 @@
 		<p:option name="record-type" required="true"/>
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
+		<cx:message message="Converting XML data into RDF in SPARQL store..."/>
 		<p:for-each name="record">
 			<!-- EMu records are /response/record, Piction records are /add/doc -->
 			<!-- QAZ only first record being processed! -->
-			<p:iteration-source select="/response/record[1] | /add/doc[1]"/>
-			<!-- EMu records are uniquelly identified by /response/record/irn, Piction records by /doc/field[@name='Multimedia ID'] -->
+			<p:iteration-source select="/response/record[1] | /add/doc"/>
+			<!-- EMu records are uniquely identified by /response/record/irn, Piction records by /doc/field[@name='Multimedia ID'] -->
 			<p:variable name="identifier" select="/record/irn | doc/field[@name='Multimedia ID']"/>
 			<cx:message>
 				<p:with-option name="message" select="concat('Ingesting ', $record-type, ' ', $identifier, ' into ', $dataset, ' dataset...')"/>
 			</cx:message>
+			<!--
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/', $record-type, '/', $identifier, '.xml')"/>
 			</p:store>
+			-->
 			<p:choose name="transformation-to-rdf">
-				<p:output port="result"/>
 				<p:when test="$record-type='image'">
+					<p:output port="result"/>
 					<p:xslt name="piction-to-rdf">
 						<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
 						<p:with-param name="record-type" select="$record-type"/>
@@ -99,6 +104,7 @@
 					</p:xslt>
 				</p:when>
 				<p:otherwise>
+					<p:output port="result"/>
 					<p:xslt name="emu-objects-to-rdf">
 						<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
 						<p:with-param name="record-type" select="$record-type"/>
@@ -111,9 +117,11 @@
 					</p:xslt>
 				</p:otherwise>
 			</p:choose>
+			<!--
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/', $record-type, '/', $identifier, '.rdf')"/>
 			</p:store>
+			-->
 			<nma:store-graph>
 				<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/', $record-type, '/', $identifier)"/>
 				<p:with-option name="dataset" select="$dataset"/>

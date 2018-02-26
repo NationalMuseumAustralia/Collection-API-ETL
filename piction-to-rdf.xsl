@@ -10,13 +10,17 @@
 	<xsl:template match="/*">
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri"/>
-			<xsl:if test="count(field[@name='EMu IRN for Related Objects']) &gt; 1">
-				<xsl:comment>Record should have exactly one IRN</xsl:comment>
-			</xsl:if>
 			<rdf:Description rdf:about="{concat('image/', normalize-space((field[@name='Multimedia ID'])[1]), '#')}">
-				<xsl:for-each select="field">
+				<xsl:for-each select="field[normalize-space()]">
 					<xsl:element name="{replace(@name, '\s', '-')}">
-						<xsl:value-of select="."/>
+						<xsl:choose>
+							<xsl:when test=" @name='EMu IRN for Related Objects' ">
+								<xsl:attribute name="rdf:resource" select="concat('object/', ., '#')"/>
+							</xsl:when>
+							<xsl:otherwise><!-- a literal property -->
+								<xsl:value-of select="."/>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:element>
 				</xsl:for-each>
 				<xsl:for-each select="dataSource">
