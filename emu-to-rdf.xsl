@@ -10,6 +10,27 @@
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri"/>
 			<rdf:Description rdf:about="{$record-type}/{irn}#">
+				<xsl:choose>
+					<xsl:when test="$record-type='object'">
+						<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object"/>
+					</xsl:when>
+					<xsl:when test="$record-type='narrative'">
+						<rdf:type rdf:resource="http://www.openarchives.org/ore/terms/Aggregation"/>
+					</xsl:when>
+					<xsl:when test="$record-type='site'">
+						<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place"/>
+					</xsl:when>
+					<xsl:otherwise><!-- parties -->
+						<xsl:choose>
+							<xsl:when test="NamPartyType = 'Person'">
+								<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E21_Person"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E74_Group"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:otherwise>
+				</xsl:choose>
 				<xsl:variable name="leaf-node-elements" select=".//*[not(*)][normalize-space()]"/>
 				<xsl:if test="$record-type='object'">
 					<dcterms:hasFormat rdf:resource="http://collectionsearch.nma.gov.au/object/{irn}"/>
