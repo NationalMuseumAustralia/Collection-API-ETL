@@ -23,7 +23,6 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 select ?resource
 where {?resource a crm:E19_Physical_Object}	
-limit 100
 ]]>
 				</query>
 			</p:inline>
@@ -32,7 +31,7 @@ limit 100
 	<p:store href="/data/updated-resources.xml"/>
 
 	<p:for-each name="physical-object">
-		<p:iteration-source select="/results:sparql/results:results/results:result[position() &lt; 10]">
+		<p:iteration-source select="/results:sparql/results:results/results:result">
 			<p:pipe step="physical-objects-for-solr" port="result"/>
 		</p:iteration-source>
 		<!-- generate description for this physical object -->
@@ -83,13 +82,26 @@ WHERE {
 				<p:document href="trix-description-to-solr.xsl"/>
 			</p:input>
 			<p:with-param name="root-resource" select="$physical-object-uri"/>
+			<p:with-param name="dataset" select=" 'public' "/>
 		</p:xslt>
+		<!--
 		<p:store href="/tmp/solr.xml" indent="true"/>
+		-->
+		<p:sink/>
+		<p:http-request name="solr-deposit">
+			<p:input port="source">
+				<p:pipe step="trix-description-to-solr-doc" port="result"/>
+			</p:input>
+		</p:http-request>
+		<p:sink/>
+		<!--
+		<p:store href="/tmp/solr-response.xml" indent="true"/>
 		<p:store href="/tmp/description.xml" indent="true">
 			<p:input port="source">
 				<p:pipe step="resource-description" port="result"/>
 			</p:input>
 		</p:store>
+		-->
 	</p:for-each>
 	
 	<p:declare-step type="nma:sparql-query" name="sparql-query">
