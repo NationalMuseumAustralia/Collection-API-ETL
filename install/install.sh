@@ -59,6 +59,7 @@ ln -s $CONFIG_DIR/apache/000-default.conf /etc/apache2/sites-available/
 #
 echo =========== Installing tomcat
 apt install tomcat8 -y
+ln -s $CONFIG_DIR/tomcat/tomcat8 /etc/default/
 #
 # SOLR
 #
@@ -83,7 +84,7 @@ chown -R solr:solr $CONFIG_DIR/solr
 #
 # FUSEKI
 #
-echo =========== Installing Fuzeki
+echo =========== Installing Fuseki
 mkdir -p /etc/fuseki/configuration
 ln -s $CONFIG_DIR/fuseki/public.ttl /etc/fuseki/configuration/
 chown -R tomcat8:tomcat8 /etc/fuseki/
