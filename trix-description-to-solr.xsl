@@ -1,6 +1,7 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" 
 	xmlns:c="http://www.w3.org/ns/xproc-step" 
 	xmlns:path="tag:conaltuohy.com,2018:nma/trix-path-traversal"
+	xmlns:f="http://www.w3.org/2005/xpath-functions"
 	xpath-default-namespace="http://www.w3.org/2004/03/trix/trix-1/">
 	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
@@ -41,11 +42,23 @@
 						">
 							<field name="person"><xsl:value-of select="."/></field>
 						</xsl:for-each>
-						<!--<field name="json-ld"><xsl:apply-templates mode="json-ld"/></field>-->
+						<xsl:variable name="json-ld-in-xml">
+							<xsl:call-template name="json-ld-in-xml"/>
+						</xsl:variable>
+						<field name="json-ld"><xsl:value-of select="xml-to-json($json-ld-in-xml, map{'indent':true()})"/></field>
 					</doc>
 				</add>
 			</c:body>
 		</c:request>
+	</xsl:template>
+	
+	<xsl:template name="json-ld-in-xml">
+		<!-- see https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping for definition of the elements used here -->
+		<f:map>
+			<f:string key="@context">https://linked.art/ns/v1/linked-art.json</f:string>
+			<f:string key="id"><xsl:value-of select="$root-resource"/></f:string>
+			<!-- TODO apply templates to traverse the graph; templates would match triples by predicate, and represent them as JSON XML -->
+		</f:map>
 	</xsl:template>
 	
 	<xsl:function name="path:forward">
