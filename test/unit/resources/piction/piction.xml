@@ -1,0 +1,112 @@
+<add>
+<doc>
+ <field name="EMu IRN for Media Asset"></field>
+ <field name="EMu IRN for Related Objects">21338</field>
+ <field name="Multimedia ID">MA22841170</field>
+ <field name="Other Numbers Kind">Accession Number</field>
+ <field name="Other Numbers Value">1985.0275.0042</field>
+ <field name="Page Number">1</field>
+ <field name="Photographer"></field>
+ <field name="Title">Weapon - Spearthrower</field>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivT\PH2604\Collection\Working Masters\nma_22841170.jpg" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivW\PH2604\Collection\Working Masters\nma_22841170.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\Working Masters\nma.img-ci20102604-087-wm-vs1_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\Working Masters\nma.img-ci20102604-087-wm-vs1_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\Working Masters\nma.img-ci20102604-087-wm-vs1_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\Working Masters\nma.img-ci20102604-087-wm-vs1_o5.jpg" name="original_5"/>
+</doc>
+<doc>
+ <field name="EMu IRN for Media Asset"></field>
+ <field name="EMu IRN for Related Objects">21334</field>
+ <field name="Multimedia ID">MA22841180</field>
+ <field name="Other Numbers Kind">Accession Number</field>
+ <field name="Other Numbers Value">1985.0275.0038</field>
+ <field name="Page Number">1</field>
+ <field name="Photographer"></field>
+ <field name="Title">Weapon - Spearthrower</field>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivT\PH2604\Collection\Working Masters\nma_22841180.jpg" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivW\PH2604\Collection\Working Masters\nma_22841180.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\Working Masters\nma.img-ci20102604-078-wm-vs1_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\Working Masters\nma.img-ci20102604-078-wm-vs1_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\Working Masters\nma.img-ci20102604-078-wm-vs1_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\Working Masters\nma.img-ci20102604-078-wm-vs1_o5.jpg" name="original_5"/>
+</doc>
+<doc>
+ <field name="EMu IRN for Media Asset"></field>
+ <field name="EMu IRN for Related Objects">21329</field>
+ <field name="Multimedia ID">MA22841190</field>
+ <field name="Other Numbers Kind">Accession Number</field>
+ <field name="Other Numbers Value">1985.0275.0033</field>
+ <field name="Page Number">1</field>
+ <field name="Photographer"></field>
+ <field name="Title">Weapon - Club - wooden</field>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivT\PH2604\Collection\Working Masters\nma_22841190.jpg" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivW\PH2604\Collection\Working Masters\nma_22841190.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\Working Masters\nma.img-ci20102604-062-wm-vs1_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\Working Masters\nma.img-ci20102604-062-wm-vs1_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\Working Masters\nma.img-ci20102604-062-wm-vs1_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\Working Masters\nma.img-ci20102604-062-wm-vs1_o5.jpg" name="original_5"/>
+</doc>
+<doc>
+ <field name="EMu IRN for Related Objects">21326</field>
+ <field name="Multimedia ID">MA22841200</field>
+ <field name="Other Numbers Kind">Accession Number</field>
+ <field name="Other Numbers Value">1985.0275.0030</field>
+ <field name="Title">Weapon - Club - wooden</field>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivT\PH2604\Collection\Working Masters\nma_22841200.jpg" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivW\PH2604\Collection\Working Masters\nma_22841200.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\Working Masters\nma.img-ci20102604-057-wm-vs1_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\Working Masters\nma.img-ci20102604-057-wm-vs1_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\Working Masters\nma.img-ci20102604-057-wm-vs1_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\Working Masters\nma.img-ci20102604-057-wm-vs1_o5.jpg" name="original_5"/>
+</doc>
+
+<doc>
+ <field name="EMu IRN for Related Objects">30431</field>
+ <field name="Multimedia ID">MA67852975</field>
+ <field name="Photographer">Amanda Crnkovic</field>
+ <field name="Title">Mother&#039;s Choice flour packet</field>
+ <dataSource type="URLDataSource" baseUrl="\\NMA-ISILON1\DAMS_INGEST\JOBS\WM_67828117\nma-acc-20183042-144-wm.tif" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="E:\piction_clients\nma\temporary\d1540464\nma-acc-20183042-144-wm_w.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\WM_67828117\nma-acc-20183042-144-wm_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-144-wm_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-144-wm_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-144-wm_o5.jpg" name="original_5"/>
+</doc>
+<doc>
+ <field name="EMu IRN for Related Objects">124567</field>
+ <field name="Multimedia ID">MA67853082</field>
+ <field name="Photographer">Amanda Crnkovic</field>
+ <field name="Title">Bevel</field>
+ <dataSource type="URLDataSource" baseUrl="\\NMA-ISILON1\DAMS_INGEST\JOBS\WM_67828117\nma-acc-20183042-125-wm.tif" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="E:\piction_clients\nma\temporary\d1540467\nma-acc-20183042-125-wm_w.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\WM_67828117\nma-acc-20183042-125-wm_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-125-wm_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-125-wm_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-125-wm_o5.jpg" name="original_5"/>
+</doc>
+<doc>
+ <field name="EMu IRN for Related Objects">124648</field>
+ <field name="Multimedia ID">MA67853189</field>
+ <field name="Photographer">Amanda Crnkovic</field>
+ <field name="Title">Tool pad</field>
+ <dataSource type="URLDataSource" baseUrl="\\NMA-ISILON1\DAMS_INGEST\JOBS\WM_67828117\nma-acc-20183042-113-wm.tif" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="E:\piction_clients\nma\temporary\d1540470\nma-acc-20183042-113-wm_w.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\WM_67828117\nma-acc-20183042-113-wm_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-113-wm_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-113-wm_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-113-wm_o5.jpg" name="original_5"/>
+</doc>
+<doc>
+ <field name="EMu IRN for Related Objects">30433</field>
+ <field name="Multimedia ID">MA67853296</field>
+ <field name="Photographer">Amanda Crnkovic</field>
+ <field name="Title">Ink bottle</field>
+ <dataSource type="URLDataSource" baseUrl="\\NMA-ISILON1\DAMS_INGEST\JOBS\WM_67828117\nma-acc-20183042-141-wm.tif" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="E:\piction_clients\nma\temporary\d1540473\nma-acc-20183042-141-wm_w.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\WM_67828117\nma-acc-20183042-141-wm_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-141-wm_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-141-wm_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-141-wm_o5.jpg" name="original_5"/>
+</doc>
+</add>

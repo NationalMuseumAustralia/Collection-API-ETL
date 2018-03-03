@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+ <totalItems>80454</totalItems>
+<!-- Sub narratives -->
+<record>
+ <irn>1758</irn>
+ <NarTitle>Western Arnhem Land</NarTitle>
+ <AdmDateModified>08/07/2015</AdmDateModified>
+ <AssMasterNarrativeRef>1757</AssMasterNarrativeRef>
+ <NarNarrative>&lt;p&gt;This region is dominated by the Arnhem Escarpment, a vast range of rocky hills home to thousands of rock art galleries, some more than 30,000 years old. The majority of rock paintings here are figurative and these have influenced the style of bark painting in the region.&lt;/p&gt;</NarNarrative>
+ <SubNarratives>
+  <SubNarrative>
+   <SubNarrative.irn>1762</SubNarrative.irn>
+   <SubNarrative.title>Figures in the landscape</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1763</SubNarrative.irn>
+   <SubNarrative.title>Dynamic figures</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1765</SubNarrative.irn>
+   <SubNarrative.title>Murals</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1764</SubNarrative.irn>
+   <SubNarrative.title>The Nganjmirra Family</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1761</SubNarrative.irn>
+   <SubNarrative.title>The school of Yirawala</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1760</SubNarrative.irn>
+   <SubNarrative.title>Yirawala</SubNarrative.title>
+  </SubNarrative>
+ </SubNarratives>
+ <MulMultiMediaRef_tab/>
+</record>
+<!-- Multiple records -->
+<record>
+ <irn>2006</irn>
+ <NarTitle>Bancroft, Bronwyn</NarTitle>
+ <AdmDateModified>24/09/2015</AdmDateModified>
+ <AssMasterNarrativeRef>1957</AssMasterNarrativeRef>
+ <ObjObjectsRef_tab>
+  <ObjObjectsRef>
+   <irn>146271</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>146499</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>147450</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>145483</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+ </ObjObjectsRef_tab>
+</record>
+<!-- Single object -->
+<record>
+ <irn>1959</irn>
+ <NarTitle>Aboriginal and Torres Strait Islander Commission</NarTitle>
+ <AdmDateModified>24/09/2015</AdmDateModified>
+ <AssMasterNarrativeRef>1957</AssMasterNarrativeRef>
+ <ObjObjectsRef_tab>
+  <ObjObjectsRef>
+   <irn>147179</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+ </ObjObjectsRef_tab>
+</record>
+<!-- Description, text, author, banner image -->
+<record>
+ <irn>1757</irn>
+ <NarTitle>Old Masters barks</NarTitle>
+ <DesPurpose>Featured Online</DesPurpose>
+ <DetNarrativeIdentifier>Idenifier123</DetNarrativeIdentifier>
+ <DesVersionDate>15/01/2016</DesVersionDate>
+ <AdmDateModified>22/02/2018</AdmDateModified>
+ <DesType_tab>
+  <DesType>Web Highlight</DesType>
+  <DesType>Object Label</DesType>
+ </DesType_tab>
+ <DesIntendedAudience_tab>
+  <DesIntendedAudience>Collection Explorer Publish</DesIntendedAudience>
+ </DesIntendedAudience_tab>
+ <NarNarrative>&lt;p&gt;&lt;em&gt;Old Masters&lt;/em&gt; spans a critical period in the history of the art of Arnhem Land and its peoples, from 1948 to 1988.&lt;/p&gt;&#13;&lt;p&gt;The Second World War is a significant historical marker for the people of Arnhem Land, due to the bombing of Darwin and parts of the northern coast of the region.&lt;/p&gt;&#13;&lt;p&gt;Anthropologists arrived after the war, and were followed by the collectors, both private and public, to see at firsthand the art of Arnhem Land, and to meet its creators and collect their work. They took their art to new audiences, in Australia and abroad.&lt;/p&gt;&#13;&lt;p&gt;The National Museum of Australia opened to the public in 2001. By and large its collections have been confined to storage, and many of the artists have been little known outside their communities.&lt;/p&gt;&#13;&lt;p&gt;Nonetheless, over the past decades the old masters in this exhibition have attracted the attention of the art world and the public at large; and recent generations of Arnhem Land bark painters continue to build on their artistic heritage, taking their art in new directions while building on past achievements.&lt;/p&gt;&#13;
+&lt;div&gt;&#13;&lt;p&gt;&lt;em&gt;Old Masters&lt;/em&gt; is a small taste of the Museumâ��s collection of bark paintings; it is but a sample of the richness, diversity and complexity of Indigenous cultures across Australia. Through this exhibition, the Museum encourages all Australians to share in the history and culture of Indigenous Australians.&lt;/p&gt;&#13;&lt;p&gt;Arnhem Land&lt;/p&gt;&#13;&lt;p&gt;Arnhem Land lies in the subtropical north of the Australian continent. The physical environment varies from the rocky escarpment in the west, extending into Kakadu National Park. To the east lie the savannah forests and the Arafura Wetlands of central Arnhem Land. Chains of islands lead to the eastern coast of Arnhem Land and south to Blue Mud Bay.&lt;/p&gt;&#13;&lt;p&gt;From 1916 to the 1970s, missions and settlements were established throughout the region. In 1931 the Australian Government declared Arnhem Land an Aboriginal Reserve, and with the introduction of land rights in 1976 many Aboriginal people returned to live on outstations on their traditional lands. The settlements continue to provide resources, including art centres for the outstations.&lt;/p&gt;&lt;/div&gt;</NarNarrative>
+ <NarAuthorsRef_tab>
+  <NarAuthorsRef>11157</NarAuthorsRef>
+ </NarAuthorsRef_tab>
+ <SubNarratives>
+  <SubNarrative>
+   <SubNarrative.irn>1758</SubNarrative.irn>
+   <SubNarrative.title>Western Arnhem Land</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1783</SubNarrative.irn>
+   <SubNarrative.title>More Barks from our collection</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1776</SubNarrative.irn>
+   <SubNarrative.title>Central Arnhem Land</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1767</SubNarrative.irn>
+   <SubNarrative.title>Eastern Arnhem Land</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>2123</SubNarrative.irn>
+   <SubNarrative.title>The Artists</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>2719</SubNarrative.irn>
+   <SubNarrative.title>Browse by Artist</SubNarrative.title>
+  </SubNarrative>
+ </SubNarratives>
+ <MulMultiMediaRef_tab>
+  <image>
+   <banner_small>139/150/oldmasters700x300.jpg</banner_small>
+   <banner_large>139/151/oldmasters1600x200.jpg</banner_large>
+  </image>
+ </MulMultiMediaRef_tab>
+</record>
+<!-- Description, author, banner image -->
+<record>
+ <irn>3346</irn>
+ <NarTitle>Wanydjarrpu</NarTitle>
+ <DesPurpose>Featured Online</DesPurpose>
+ <DesVersionDate>22/02/2018</DesVersionDate>
+ <AdmDateModified>22/02/2018</AdmDateModified>
+ <AssMasterNarrativeRef>3314</AssMasterNarrativeRef>
+ <DesType_tab>
+  <DesType>Web Highlight</DesType>
+  <DesType>Home page</DesType>
+ </DesType_tab>
+ <DesIntendedAudience_tab>
+  <DesIntendedAudience>Collection Explorer Publish</DesIntendedAudience>
+ </DesIntendedAudience_tab>
+ <NarNarrative>&lt;p&gt;&lt;em&gt;Wanydjarrpu&lt;/em&gt; (Yolngu name)&lt;br /&gt;&lt;em&gt;Austrodolichos errabundus&lt;/em&gt; (Latin name)&lt;br /&gt;austrodolichos (common name)&lt;br /&gt;&lt;em&gt;Wanydjarrpu&lt;/em&gt; belongs to the Dhuwa moiety&lt;/p&gt;</NarNarrative>
+ <NarAuthorsRef_tab>
+  <NarAuthorsRef>23074</NarAuthorsRef>
+ </NarAuthorsRef_tab>
+ <ObjObjectsRef_tab>
+  <ObjObjectsRef>
+   <irn>241493</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+   <AcsAPI_tab>
+    <AcsAPI>Internal</AcsAPI>
+    <AcsAPI>Public</AcsAPI>
+   </AcsAPI_tab>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241494</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+   <AcsAPI_tab>
+    <AcsAPI>Public</AcsAPI>
+    <AcsAPI>Public Restricted</AcsAPI>
+   </AcsAPI_tab>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241466</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241464</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241451</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241465</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+ </ObjObjectsRef_tab>
+ <MulMultiMediaRef_tab>
+  <image>
+   <banner_small>139/150/oldmasters700x300.jpg</banner_small>
+   <banner_large>139/151/oldmasters1600x200.jpg</banner_large>
+  </image>
+ </MulMultiMediaRef_tab>
+</record>
+<!-- homepage -->
+<record>
+ <irn>1737</irn>
+ <NarTitle>Aboriginal and Torres Strait Islander Affairs Art collection</NarTitle>
+ <DesVersionDate>05/01/2016</DesVersionDate>
+ <AdmDateModified>07/08/2017</AdmDateModified>
+ <DesType_tab>
+  <DesType>Home page</DesType>
+ </DesType_tab>
+ <NarNarrative>The artworks and objects in this collection belong to a unique body of works that was started in 1967 by the Council for Aboriginal Affairs. For almost 40 years, the council, and the agencies that supported and replaced it, including the Department of Aboriginal Affairs (1973-89), the Aboriginal Development Commission (1980-89) and the Aboriginal and Torres Strait Islander Commission (ATSIC) (1989-2005), added to the collection. Regional offices developed significant collections of local artists, and the resulting diversity is one of the greatest strengths of the combined collection. &#13;&lt;p&gt;In April 2005 the Australian Government dissolved ATSIC. Soon afterwards, couriers collected all artworks and significant objects from the commission's offices across Australia. About 2000 pieces were brought into storage. In 2007 the government transferred this collection to the National Museum of Australia, naming it the 'Aboriginal and Torres Strait Islander Affairs Art collection'.&lt;/p&gt;&#13;
+&lt;h3&gt;Can you help?&lt;/h3&gt;&#13;&lt;p&gt;Many of these artworks and objects came to the Museum with very little information about them. If you know something about a work - the date it was made, the name of its maker, or a relevant story, &lt;a href=&quot;http://www.nma.gov.au/collections-search/atsiaa/feedback.php&quot;&gt;please tell us.&lt;/a&gt;&lt;/p&gt;</NarNarrative>
+ <SubNarratives>
+  <SubNarrative>
+   <SubNarrative.irn>1738</SubNarrative.irn>
+   <SubNarrative.title> Cultural Areas</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>2429</SubNarrative.irn>
+   <SubNarrative.title>Mediums</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>1957</SubNarrative.irn>
+   <SubNarrative.title>Artist</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>2640</SubNarrative.irn>
+   <SubNarrative.title>Browse collection by ATSIC office location</SubNarrative.title>
+  </SubNarrative>
+  <SubNarrative>
+   <SubNarrative.irn>2686</SubNarrative.irn>
+   <SubNarrative.title>Show all objects included in the ATSIAA  collection</SubNarrative.title>
+  </SubNarrative>
+ </SubNarratives>
+ <MulMultiMediaRef_tab>
+  <image>
+   <banner_small>142/770/ATSIAA700x300.jpg</banner_small>
+   <banner_large>142/771/ATSIAA1600x200.jpg</banner_large>
+  </image>
+ </MulMultiMediaRef_tab>
+</record>
+<!-- Lake Disappointment -->
+<record>
+ <irn>1761</irn>
+ <NarTitle>The school of Yirawala</NarTitle>
+ <AdmDateModified>18/01/2016</AdmDateModified>
+ <AssMasterNarrativeRef>1758</AssMasterNarrativeRef>
+ <DesType_tab>
+  <DesType>Lake Disappointment</DesType>
+ </DesType_tab>
+ <NarNarrative>&lt;p&gt;The school of Yirawala developed as a natural outcome of artists sharing camps and outstations with members of their extended families. Such places contain artistsâ�� studios that are out in the open and surrounded by the daily activities of the family - rather than being locked away in secrecy. The open-air studios provide opportunities for artists to work together and to influence each other. They are also where younger family members learn about art.&lt;/p&gt;&#13;&lt;p&gt;Marrkolidjban outstation, in the Liverpool River region, played an important role in the history of the development of the artists tutored by Yirawala. It was here that &lt;a href=&quot;http://www.nma.gov.au/exhibitions/old_masters/artists/yirawala&quot;&gt;Yirawala&lt;/a&gt; and &lt;a href=&quot;http://www.nma.gov.au/exhibitions/old_masters/artists/curly_bardkadubbu&quot;&gt;Curly Bardkadubbu&lt;/a&gt;, both members of the Born clan, lived and worked in the early 1970s. Bardkadubbu learnt from Yirawala to paint on bark and, around the same time, Yirawala taught his own sister's son, &lt;a href=&quot;http://www.nma.gov.au/exhibitions/old_masters/artists/peter_marralwanga&quot;&gt;Peter Marralwanga&lt;/a&gt;, the intricacies of painting patterns of &lt;em&gt;rarrk&lt;/em&gt;. Marralwanga in turn taught his nephew &lt;a href=&quot;http://www.nma.gov.au/exhibitions/old_masters/artists/john_mawurndjul&quot;&gt;John Mawurndjul&lt;/a&gt; who, as a teenager, had been inspired by Yirawala.&lt;/p&gt;&#13;&lt;p&gt;Note the similarities in these artists' renditions of Ngalyod the Rainbow Serpent and Namanjwarre the Estuarine Crocodile. In each case the sheer power of the creatures is expressed in the drawing of the figures as coiled springs, ready to snap and unleash their herculean powers.&lt;/p&gt;</NarNarrative>
+ <ObjObjectsRef_tab>
+  <ObjObjectsRef>
+   <irn>145425</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>155978</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>145423</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>146851</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+ </ObjObjectsRef_tab>
+</record>
+</response>
