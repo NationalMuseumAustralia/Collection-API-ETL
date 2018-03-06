@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+ <total_results>4200</total_results>
+ <!-- town Australia -->
+ <record>
+  <irn>1420</irn>
+  <SummaryData>, Nebo, , Queensland, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Queensland</LocProvinceStateTerritory_tab>
+  <LocTownship_tab>Nebo</LocTownship_tab>
+  <LatCentroidLatitude0>21 41 23 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>148 41 29 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-21.6897</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>148.691</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- town Australia with district -->
+ <record>
+  <irn>1489</irn>
+  <SummaryData>, Yirrkala, East Arnhem Land, Northern Territory, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Northern Territory</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>East Arnhem Land</LocDistrictCountyShire_tab>
+  <LocTownship_tab>Yirrkala</LocTownship_tab>
+  <LatCentroidLatitude0>12 15 10 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>136 53 30 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-12.2528</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>136.892</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- town Europe -->
+ <record>
+  <irn>3042</irn>
+  <SummaryData>, Rio Marina, Elba Island, Tuscany, Italy,</SummaryData>
+  <LocCountry_tab>Italy</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Tuscany</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>Elba Island</LocDistrictCountyShire_tab>
+  <LocTownship_tab>Rio Marina</LocTownship_tab>
+  <LatCentroidLatitude0>42 48 58 N</LatCentroidLatitude0>
+  <LatCentroidLongitude0>010 25 40 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>42.816</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>10.4278</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- island -->
+ <record>
+  <irn>498</irn>
+  <SummaryData>, , North Keeling Island, Cocos (Keeling) Islands, Australia,</SummaryData>
+  <LocOcean_tab>Indian Ocean</LocOcean_tab>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Cocos (Keeling) Islands</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>North Keeling Island</LocDistrictCountyShire_tab>
+  <LatCentroidLatitude0>12 10 14 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>096 50 30 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-12.1707</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>96.8417</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- continent -->
+ <record>
+  <irn>2309</irn>
+  <SummaryData>, , , , , North America</SummaryData>
+  <LocContinent_tab>North America</LocContinent_tab>
+ </record>
+ <!-- town with continent -->
+ <record>
+  <irn>4232</irn>
+  <SummaryData>, Oberkochen, Ostalbkreis, Baden-WÃ¼rttemberg, Germany, Europe</SummaryData>
+  <LocContinent_tab>Europe</LocContinent_tab>
+  <LocCountry_tab>Germany</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Baden-WÃ¼rttemberg</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>Ostalbkreis</LocDistrictCountyShire_tab>
+  <LocTownship_tab>Oberkochen</LocTownship_tab>
+  <LatCentroidLatitude0>48 47 07 N</LatCentroidLatitude0>
+  <LatCentroidLongitude0>010 06 17 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>48.7853</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>10.1047</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- district Australia -->
+ <record>
+  <irn>1180</irn>
+  <SummaryData>, , Malyananuk, Northern Territory, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Northern Territory</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>Malyananuk</LocDistrictCountyShire_tab>
+ </record>
+ <!-- district South Africa -->
+ <record>
+  <irn>2998</irn>
+  <SummaryData>, , Natal, , South Africa,</SummaryData>
+  <LocCountry_tab>South Africa</LocCountry_tab>
+  <LocDistrictCountyShire_tab>Natal</LocDistrictCountyShire_tab>
+  <LatCentroidLatitude0>28 31 50 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>030 53 45 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-28.5306</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>30.8958</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- state -->
+ <record>
+  <irn>1883</irn>
+  <SummaryData>, , , Tasmania, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Tasmania</LocProvinceStateTerritory_tab>
+  <LatCentroidLatitude0>41 55 31 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>146 29 50 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-41.9253</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>146.497</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- feature -->
+ <record>
+  <irn>4465</irn>
+  <SummaryData>Lindsay Creek, , , , Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocNearestNamedPlace_tab>Lindsay Creek</LocNearestNamedPlace_tab>
+ </record>
+ <record>
+  <irn>1649</irn>
+  <SummaryData>Mount Kikinguana, , Petermann Ranges, Northern Territory, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Northern Territory</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>Petermann Ranges</LocDistrictCountyShire_tab>
+  <LocNearestNamedPlace_tab>Mount Kikinguana</LocNearestNamedPlace_tab>
+ </record>
+ <!-- locality -->
+ <record>
+  <irn>1390</irn>
+  <SummaryData>Islington Railway Workshops, Kilburn, Adelaide, South Australia, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>South Australia</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>Adelaide</LocDistrictCountyShire_tab>
+  <LocTownship_tab>Kilburn</LocTownship_tab>
+  <LocNearestNamedPlace_tab>Islington Railway Workshops</LocNearestNamedPlace_tab>
+  <LatCentroidLatitude0>34 52 06 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>138 34 53 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-34.8683</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>138.581</LatCentroidLongitudeDec_tab>
+ </record>
+ <!-- natural feature -->
+ <record>
+  <irn>4143</irn>
+  <SummaryData>Ikymbon River, , , Northern Territory, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Northern Territory</LocProvinceStateTerritory_tab>
+  <LocNearestNamedPlace_tab>Ikymbon River</LocNearestNamedPlace_tab>
+  <LocSpecialGeographicUnit_tab>Ikymbon River</LocSpecialGeographicUnit_tab>
+  <LatCentroidLatitude0>15 17  S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>130 34  E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-15.28</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>130.57</LatCentroidLongitudeDec_tab>
+ </record>
+ <record>
+  <irn>4161</irn>
+  <SummaryData>, , , Queensland, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Queensland</LocProvinceStateTerritory_tab>
+  <LocSpecialGeographicUnit_tab>Lawn Hill</LocSpecialGeographicUnit_tab>
+  <LatCentroidLatitude0>28 17  S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>152 57  E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-28.28</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>152.95</LatCentroidLongitudeDec_tab>
+ </record>
+</response>

@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+ <totalItems>80454</totalItems>
+<!-- man made object, production, no image -->
+<record>
+ <irn>45929</irn>
+ <TitObjectTitle>Ernabella woollen rug with Walka design</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1991.0024.3872</TitObjectNumber>
+ <TitObjectName>Rugs</TitObjectName>
+ <PhyDescription>Very large rectangular handmade knotted rug, woven wool. Deep pile. Background of natural white, with an abstract linear design in dark brown, burnt orange, yellow &amp; mottled greys.</PhyDescription>
+ <TitCollectionTitle>Aboriginal Arts Board collection no. 2</TitCollectionTitle>
+ <WebReleaseDate>20/09/2016</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>3550</PhyRegistrationLength>
+ <PhyRegistrationWidth>2420</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Textile - non specific</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>20/09/2016</AdmDateModified>
+ <ProductionParties>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>8860</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Designer</ProPersonType_tab>
+   <ProPersonNotes_tab>and maker</ProPersonNotes_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>2674</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>3194</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>4646</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>3860</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>3867</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>4023</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+ </ProductionParties>
+ <ProductionPlaces>
+  <ProductionPlace>
+   <ProPlaceRef_tab.irn>693</ProPlaceRef_tab.irn>
+   <ProPlaceType_tab>Place made</ProPlaceType_tab>
+  </ProductionPlace>
+ </ProductionPlaces>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>693</AssPlaceRef_tab.irn>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- zoological specimen, events, image, on display -->
+<record>
+ <irn>64620</irn>
+ <TitObjectTitle>Phar Lap's Heart</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1984.0010.0721</TitObjectNumber>
+ <TitObjectName>Zoological specimens</TitObjectName>
+ <PhyDescription>Heart of the race horse Phar Lap. Phar Lap's heart weighs 6.35kg, which is significantly larger than an average horse heart of three to four kilograms. 
+ A triangular section has been removed. The heart is preserved as a 'wet specimen' submersed in a formalin solution, sealed inside a rectangular clear perspex container.</PhyDescription>
+ <TitCollectionTitle>MacKenzie collection</TitCollectionTitle>
+ <PhyContentDescription>Phar Lap was a late foal, born on 4 October 1926. He had been bred in New Zealand and sold for 160 pounds as Lot 41 at the annual Trentham Yearling Sales in 1927. Harry Telford, a down-on-his-luck Sydney trainer, had spotted the chestnut colt in the sale catalogue and thought that, with the horse's pedigree, it had the potential to become a success. He persuaded American businessman David J Davis to purchase the colt sight unseen. Upon first seeing his new horse, Davis is reported to have said simply, &quot;Harry, I don't like the horse.&quot;  Davis wanted nothing more to do with the ugly colt, who was gangly and had a face covered in warts. Davis and Telford came to an agreement, whereby Telford would cover the costs associated with the horse as part of a 3-year lease.
+</PhyContentDescription>
+ <CreProvenance>This is the preserved heart of the race horse Phar Lap, a champion racehorse in the late 1920s and early 1930s. It is unusually large - 6.2 kg against the average 4 kg size of a horse's heart. A triangular section has been removed, which it is believed was taken for a biopsy. The heart is preserved as a 'wet specimen' submersed in a formalin solution, sealed inside a rectangular clear perspex container. Other parts of Phar Lap are held by other museums - his skeleton is at the Museum  of New Zealand Te Papa Tongarewa, and his hide is at Museum Victoria.
+</CreProvenance>
+ <WebReleaseDate>02/03/2011</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <WebProject_tab>
+  <WebProject>Linked to ESA</WebProject>
+ </WebProject_tab>
+ <PhyRegistrationHeight>378</PhyRegistrationHeight>
+ <PhyRegistrationWidth>300</PhyRegistrationWidth>
+ <PhyRegistrationDepth>215</PhyRegistrationDepth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyRegistrationWeight>6.35</PhyRegistrationWeight>
+ <PhyRegistrationUnitWeight>kg</PhyRegistrationUnitWeight>
+ <PhyMaterials_tab>
+  <PhyMaterial>Animal material - non specific</PhyMaterial>
+  <PhyMaterial>Perspex</PhyMaterial>
+  <PhyMaterial>Liquid - non specific</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>18/01/2017</AdmDateModified>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>17012</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated person</AssPersonType_tab>
+   <AssPersonNotes_tab>Roberts was Phar Lap's breeder.</AssPersonNotes_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>2894</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated person</AssPersonType_tab>
+   <AssPersonNotes_tab>Davis was Phar Lap's owner.</AssPersonNotes_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>3161</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated person</AssPersonType_tab>
+   <AssPersonNotes_tab>Telford was Phar Lap's trainer, and presented the heart to the Australian Institute of Anatomy.</AssPersonNotes_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>3883</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated person</AssPersonType_tab>
+   <AssPersonNotes_tab>Woodcock was Phar Lap's strapper in Australia, and travelled with him to America in the role of trainer. Woodcock was with Phar Lap when he died.</AssPersonNotes_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>80047</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated organisation</AssPersonType_tab>
+   <AssPersonNotes_tab>The heart was displayed at the Institute before it was transferred to the National Museum of Australia.</AssPersonNotes_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>2317</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place of event</AssPlaceType_tab>
+   <AssPlaceNotes_tab>Place where Phar Lap was foaled.</AssPlaceNotes_tab>
+  </AssociatedPlace>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>718</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place of event</AssPlaceType_tab>
+   <AssPlaceNotes_tab>Phar Lap won the Melbourne Cup in 1930.</AssPlaceNotes_tab>
+  </AssociatedPlace>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>1248</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place of event</AssPlaceType_tab>
+   <AssPlaceNotes_tab>Phar Lap won the Agua Caliente Handicap in 1932.</AssPlaceNotes_tab>
+  </AssociatedPlace>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>2319</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place of event</AssPlaceType_tab>
+   <AssPlaceNotes_tab>Phar Lap died at Menlo Park in suspicious circumstances.</AssPlaceNotes_tab>
+  </AssociatedPlace>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>80015</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Associated place</AssPlaceType_tab>
+   <AssPlaceNotes_tab>The heart was displayed for many years at the Australian Institute of Anatomy in Canberra, and is now in the care of the National Museum of Australia.</AssPlaceNotes_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>04/10/1926</AssDate0>
+   <AssEarliestDate0>04/10/1926</AssEarliestDate0>
+   <AssLatestDate0>04/10/1926</AssLatestDate0>
+   <AssDateType_tab>Date of event</AssDateType_tab>
+   <AssDateNotes_tab>Date that Phar Lap was foaled.</AssDateNotes_tab>
+  </AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>1930</AssDate0>
+   <AssEarliestDate0>1930</AssEarliestDate0>
+   <AssLatestDate0>1930</AssLatestDate0>
+   <AssDateType_tab>Date of event</AssDateType_tab>
+   <AssDateNotes_tab>Phar Lap won the Melbourne Cup in 1930 carrying a 62.6 kilogram handicap.</AssDateNotes_tab>
+  </AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>1932</AssDate0>
+   <AssEarliestDate0>1932</AssEarliestDate0>
+   <AssLatestDate0>1932</AssLatestDate0>
+   <AssDateType_tab>Date of event</AssDateType_tab>
+   <AssDateNotes_tab>Phar Lap won the Agua Caliente Handicap in 1932.</AssDateNotes_tab>
+  </AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>05/04/1932</AssDate0>
+   <AssEarliestDate0>05/04/1932</AssEarliestDate0>
+   <AssLatestDate0>05/04/1932</AssLatestDate0>
+   <AssDateType_tab>Date of event</AssDateType_tab>
+   <AssDateNotes_tab>Date that Phar Lap died.</AssDateNotes_tab>
+  </AssociatedDates>
+ </AssociatedDates>
+ <NotText0>
+  <note_type>Web Link</note_type>
+  <note_text>&lt;a href=&quot;http://www.nma.gov.au/collections/pharlaps_heart/&quot;&gt;View Collection highlight&lt;/a&gt;</note_text>
+ </NotText0>
+ <OnDisplay>yes</OnDisplay>
+ <DisplayGallery>Landmarks</DisplayGallery>
+ <LocCurrentLocationRef>
+  <LocLevel1>Acton</LocLevel1>
+  <LocLevel2>Landmarks</LocLevel2>
+  <LocLevel3>Flemington Racecourse</LocLevel3>
+  <LocLevel4>Case 01</LocLevel4>
+ </LocCurrentLocationRef>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>16195</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg</image_path>
+    <image_width>534</image_width>
+    <image_height>640</image_height>
+   </res640px>
+   <res200px>
+    <image_path>16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg</image_path>
+    <image_width>167</image_width>
+    <image_height>200</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
+<!-- mineral specimen, collection event -->
+<record>
+ <irn>187557</irn>
+ <TitObjectTitle>Acanthite from Broken Hill</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1982.0102.0005</TitObjectNumber>
+ <TitObjectName>Mineral samples</TitObjectName>
+ <PhyDescription>An acanthite specimen.</PhyDescription>
+ <TitCollectionTitle>AG Smith collection</TitCollectionTitle>
+ <WebReleaseDate>01/03/2010</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyMaterials_tab>
+  <PhyMaterial>Mineral - non specific</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>29/04/2016</AdmDateModified>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>19428</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Collector</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>333</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place collected</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- photograph, production, image -->
+<record>
+ <irn>122751</irn>
+ <TitObjectTitle>Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1985.0033.0002</TitObjectNumber>
+ <TitObjectName>Photographs</TitObjectName>
+ <PhyDescription>A black and white photographic enlargement of a cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield.</PhyDescription>
+ <TitCollectionTitle>Ruth Oldfield collection</TitCollectionTitle>
+ <WebReleaseDate>07/06/2007</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>1020</PhyRegistrationLength>
+ <PhyRegistrationWidth>820</PhyRegistrationWidth>
+ <PhyRegistrationDepth>20</PhyRegistrationDepth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Photographic emulsion</PhyMaterial>
+  <PhyMaterial>Wood</PhyMaterial>
+  <PhyMaterial>Paper</PhyMaterial>
+ </PhyMaterials_tab>
+ <WebLargeImageReleased>640 only</WebLargeImageReleased>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>05/11/2015</AdmDateModified>
+ <ProductionParties>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>6514</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Photographer</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>80363</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Publisher</ProPersonType_tab>
+  </ProductionParty>
+ </ProductionParties>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>10292</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Cricketer</AssPersonType_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>10310</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Cricketer</AssPersonType_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>12924</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated organisation</AssPersonType_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>12925</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated organisation</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <ProductionPlaces>
+  <ProductionPlace>
+   <ProPlaceRef_tab.irn>47</ProPlaceRef_tab.irn>
+   <ProPlaceType_tab>Place made</ProPlaceType_tab>
+  </ProductionPlace>
+ </ProductionPlaces>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>1869</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place of event</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <ProductionDates>
+  <ProductionDate>
+   <ProDate0>14/12/1928</ProDate0>
+   <ProEarliestDate0>14/12/1928</ProEarliestDate0>
+   <ProLatestDate0>20/12/1928</ProLatestDate0>
+   <ProDateType_tab>Date of production</ProDateType_tab>
+  </ProductionDate>
+ </ProductionDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>54112</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>54/112/cd_54112.640x640.jpg</image_path>
+    <image_width>640</image_width>
+    <image_height>425</image_height>
+   </res640px>
+   <res200px>
+    <image_path>54/112/cd_54112.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>133</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
+<!-- statement of significance, 2 images -->
+<record>
+ <irn>230321</irn>
+ <TitObjectTitle>Earthenware character jug depicting Prime Minister Joseph Lyons</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>2014.0005.0002</TitObjectNumber>
+ <TitObjectName>Character jugs</TitObjectName>
+ <PhyDescription>An earthenware character jug depicting Prime Minister Joseph Lyons. The name 'JOE' is deeply inscribed into the base. There are two other inscriptions, 'John Campbell' and 'G. CUMMING', with another word below the latter which is indecipherable.</PhyDescription>
+ <TitCollectionTitle>Brendan and Janet Lyons collection</TitCollectionTitle>
+ <PhyContentDescription>Designed by Gordon Cummings, made by Campbell's Pottery Works, Tasmania.</PhyContentDescription>
+ <StaNmaSOSPublic>This collection consists of a character jug, with associated mould, featuring a portrait of Australian Prime Minister Joseph Lyons and three personal objects - a brooch, a powder compact and a coin purse - associated with his politician wife, Dame Enid Lyons. The silver glomesh coin purse (1940s) and oval-shaped Opal  and silver brooch were part of Dame Enid's personal collection, while the engraved sterling silver compact was presented during her visit by the City of Edinburgh on 9  August 1935. The gold-coloured earthenware jug was designed by Gordon Cummings and made by Campbell's Pottery Works, however it is unclear whether it is part of the original 1931 or the re-issued 1950s edition.
+
+Joseph Aloysius Lyons (1879-1939) became premier of Tasmania in 1923 and served several portfolios in Federal Government before becoming Prime Minister from 1932 until his death in 1939. He was the first Prime Minister to win three successive elections, the only Tasmanian to have become Prime Minister and only one of two Prime Ministers to have been premiers. Lyons formed the United Australia Party, the precursor of today's Liberal Party, and is regarded as a key political figure of twentieth century Australia. Dame Enid Lyons (1897-1981), wife of Joseph Lyons, was involved in politics throughout her life and made history when she became the first woman elected to the Australian House of Representatives and to the federal Cabinet.</StaNmaSOSPublic>
+ <WebReleaseDate>22/12/2014</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <WebProject_tab>
+  <WebProject>emuinc</WebProject>
+ </WebProject_tab>
+ <PhyRegistrationHeight>200</PhyRegistrationHeight>
+ <PhyRegistrationWidth>185</PhyRegistrationWidth>
+ <PhyRegistrationDepth>185</PhyRegistrationDepth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Ceramic</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>27/01/2017</AdmDateModified>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>3328</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Subject</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <ProductionDates>
+  <ProductionDate>
+   <ProEarliestDate0>1931</ProEarliestDate0>
+  </ProductionDate>
+ </ProductionDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>133472</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>133/472/IMG_3424.640x640.jpg</image_path>
+    <image_width>640</image_width>
+    <image_height>426</image_height>
+   </res640px>
+   <res200px>
+    <image_path>133/472/IMG_3424.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>133</image_height>
+   </res200px>
+  </image>
+  <image>
+   <media_irn>133481</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>133/481/IMG_3431.640x640.jpg</image_path>
+    <image_width>640</image_width>
+    <image_height>426</image_height>
+   </res640px>
+   <res200px>
+    <image_path>133/481/IMG_3431.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>133</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
+<!-- has related objects -->
+<record>
+ <irn>40972</irn>
+ <TitObjectTitle>Shovel</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1990.0076.0011</TitObjectNumber>
+ <TitObjectName>Shovels</TitObjectName>
+ <PhyDescription>Steel shovel with short wooden handle.  Remnants of clay are found on the scoop of the shovel.</PhyDescription>
+ <TitCollectionTitle>Claude Dunshea collection no. 1</TitCollectionTitle>
+ <WebReleaseDate>09/12/2005</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>680</PhyRegistrationLength>
+ <PhyRegistrationHeight>90</PhyRegistrationHeight>
+ <PhyRegistrationWidth>275</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Wood</PhyMaterial>
+  <PhyMaterial>Metal - non specific</PhyMaterial>
+  <PhyMaterial>Clay</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>10/01/2018</AdmDateModified>
+ <RelRelatedObjects_tab>
+  <RelatedObject>
+   <relirn>356</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>316</relirn>
+   <RelPublishedonCE>No</RelPublishedonCE>
+  </RelatedObject>
+ </RelRelatedObjects_tab>
+ <ProductionParties>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>2065</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Manufacturer</ProPersonType_tab>
+  </ProductionParty>
+ </ProductionParties>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>5167</AssPersonRef_tab.irn>
+   <AssPersonType_tab>User</AssPersonType_tab>
+   <AssPersonNotes_tab>Prospector of the Shoalhaven Valley, New South Wales</AssPersonNotes_tab>
+   <AssPersonKey_tab>1</AssPersonKey_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <ProductionPlaces>
+  <ProductionPlace>
+   <ProPlaceRef_tab.irn>47</ProPlaceRef_tab.irn>
+  </ProductionPlace>
+ </ProductionPlaces>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>1777</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place used</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>1930</AssDate0>
+   <AssEarliestDate0>1930</AssEarliestDate0>
+   <AssLatestDate0>1979</AssLatestDate0>
+   <AssDateType_tab>Period of use</AssDateType_tab>
+   <AssDateKey_tab>1</AssDateKey_tab>
+  </AssociatedDates>
+ </AssociatedDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>16687</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>16/687/nma.img-ci20051516-003-vi-vs1.640x640.jpg</image_path>
+    <image_width>405</image_width>
+    <image_height>640</image_height>
+   </res640px>
+   <res200px>
+    <image_path>16/687/nma.img-ci20051516-003-vi-vs1.200x200.jpg</image_path>
+    <image_width>127</image_width>
+    <image_height>200</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
+<!-- related object target -->
+
+<record>
+ <irn>70033</irn>
+ <TitObjectTitle>Scout hat</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>2004.0052.0001</TitObjectNumber>
+ <TitObjectName>Uniform hats</TitObjectName>
+ <PhyDescription>Australian Scouts khaki fur felt wide-brimmed hat. It has a brown leather hatband that has a nickel buckle on the left side. The crown is pressed into a four-sided point. A Scouting Association circular chrome-plated badge is pinned to the left side above the buckle, and it is backed with a plume of red nylon bristles, indicating the rank of the wearer is Assistant Scout Master[?]. There are two small vent holes in both sides. A plaited brown leather thong chinstrap is threaded through a hole on opposite sides of the brim, and it also runs across the front of the hat where the two ends are knotted together. &quot;The Scouter / Deluxe&quot; is printed on the brown vinyl headband inside the hat.</PhyDescription>
+ <TitCollectionTitle>Robin Maloney collection</TitCollectionTitle>
+ <StaNmaSOSPublic>The Robin Maloney Collection consists of 102 items of 1950 -1960s scouting memorabilia from the Swan Hill and Strathmore districts, Victoria.  It includes badges, lanyards, scarves, hats, invitations for the Queen's Scout Badge presentation as well as a newspaper and vest representing  the 7th Australian Jamboree, 1964-65.  This collection is a complete material record of the donor's progression from Cub Scout to Senior Scout Leader.  The collection contains the full range of awards available to scouts during this period.
+
+The Scouting Movement in Australia began in 1908 and was founded by Lord Baden-Powell in England in 1907.  The movement had strong military overtones and focussed on the development and education of boys with an emphasis on religion, country, resourcefulness, health and fitness, community and manliness.  Scouting was very popular throughout much of the twentieth century and was a significant part of many Australian boys' childhoods.</StaNmaSOSPublic>
+ <WebReleaseDate>09/02/2009</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationHeight>120</PhyRegistrationHeight>
+ <PhyRegistrationWidth>335</PhyRegistrationWidth>
+ <PhyRegistrationDepth>370</PhyRegistrationDepth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Fur felt</PhyMaterial>
+  <PhyMaterial>Plastic - non specific</PhyMaterial>
+  <PhyMaterial>Leather</PhyMaterial>
+  <PhyMaterial>Metal - non specific</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>05/11/2015</AdmDateModified>
+ <RelRelatedObjects_tab>
+  <RelatedObject>
+   <relirn>205936</relirn>
+   <RelPublishedonCE>No</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>205964</relirn>
+   <RelPublishedonCE>No</RelPublishedonCE>
+  </RelatedObject>
+ </RelRelatedObjects_tab>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>40920</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>40/920/rg_40920.640x640.jpg</image_path>
+    <image_width>640</image_width>
+    <image_height>480</image_height>
+   </res640px>
+   <res200px>
+    <image_path>40/920/rg_40920.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>150</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
+<!-- public domain, no image, internal API -->
+<record>
+ <irn>143777</irn>
+ <TitObjectTitle>Visitors book from August 1986 to September 1986</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1988.0083.0088</TitObjectNumber>
+ <TitObjectName>Visitors books</TitObjectName>
+ <PhyDescription>A visitors book from August 1986 to September 1986.</PhyDescription>
+ <TitCollectionTitle>People for Nuclear Disarmament collection no. 1</TitCollectionTitle>
+ <StaNmaSOSPublic>The People for Nuclear Disarmament collection no. 1 consists of the Peace Bus, which was driven around the east of Australia to promote the cause of world peace and nuclear disarmament. The collection also contains objects that travelled on the bus, including promotional and educational material, office equipment and documents, and manuals and tools for maintaining the bus.
+
+The bus was purchased in 1982 by the People for Nuclear Disarmament from the NSW Urban Transport Authority. It operated as a mobile PND education centre, promoting thecause of nuclear disarmament and world peace. The bus travelled over 24 000 km and was visited by more than 40 000 people between 1984 and 1987. The mural, designed byartist Jenny Short and painted by a team of 90 volunteers, features images of the Australian and Pacific environment. This reflects the concern of the PND for the environmental and social implications of nuclear weapons testing and warfare. The bus travelled extensively throughout NSW and into Victoria, South Australia, Queensland and the ACT.</StaNmaSOSPublic>
+ <WebReleaseDate>27/06/2008</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyMaterials_tab>
+  <PhyMaterial>Paper</PhyMaterial>
+  <PhyMaterial>Ink</PhyMaterial>
+ </PhyMaterials_tab>
+ <AcsCCStatus>Public Domain</AcsCCStatus>
+ <AcsAPI_tab>
+  <AcsAPI>Public</AcsAPI>
+  <AcsAPI>Internal</AcsAPI>
+ </AcsAPI_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>20/02/2018</AdmDateModified>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>1852</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated organisation</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>1986</AssDate0>
+   <AssEarliestDate0>1986</AssEarliestDate0>
+   <AssLatestDate0>1986</AssLatestDate0>
+   <AssDateType_tab>Period of use</AssDateType_tab>
+  </AssociatedDates>
+ </AssociatedDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- public domain, image -->
+<record>
+ <irn>123124</irn>
+ <TitObjectTitle>Australian Scout camp shirt</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>2004.0052.0066.002</TitObjectNumber>
+ <TitObjectName>Shirts</TitObjectName>
+ <PhyDescription>Back panel from an Australian Scout's grey and blue cotton camp shirt (Part 2 of 2). Forty-three district cloth badges and 11 tape badges, including two long souvenir tapes from Jamborees, are sewn randomly across the panel. The badges are predominantly from districts in Victoria and New South Wales, but there is one that is a souvenir of the South Moorabin District Corroboree in 1964.</PhyDescription>
+ <TitCollectionTitle>Robin Maloney collection</TitCollectionTitle>
+ <StaNmaSOSPublic>The Robin Maloney Collection consists of 102 items of 1950 -1960s scouting memorabilia from the Swan Hill and Strathmore districts, Victoria.  It includes badges, lanyards, scarves, hats, invitations for the Queen's Scout Badge presentation as well as a newspaper and vest representing  the 7th Australian Jamboree, 1964-65.  This collection is a complete material record of the donor's progression from Cub Scout to Senior Scout Leader.  The collection contains the full range of awards available to scouts during this period.
+
+The Scouting Movement in Australia began in 1908 and was founded by Lord Baden-Powell in England in 1907.  The movement had strong military overtones and focussed on the development and education of boys with an emphasis on religion, country, resourcefulness, health and fitness, community and manliness.  Scouting was very popular throughout much of the twentieth century and was a significant part of many Australian boys' childhoods.</StaNmaSOSPublic>
+ <WebReleaseDate>31/03/2008</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationHeight>660</PhyRegistrationHeight>
+ <PhyRegistrationWidth>475</PhyRegistrationWidth>
+ <PhyRegistrationDepth>10</PhyRegistrationDepth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Textile - non specific</PhyMaterial>
+ </PhyMaterials_tab>
+ <AcsCCStatus>Public Domain</AcsCCStatus>
+ <AcsAPI_tab>
+  <AcsAPI>Public</AcsAPI>
+  <AcsAPI>Internal</AcsAPI>
+ </AcsAPI_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>20/02/2018</AdmDateModified>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>40937</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res200px>
+    <image_path>40/937/rg_40937.200x200.jpg</image_path>
+    <image_width>151</image_width>
+    <image_height>200</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
+<!-- CC-NC image -->
+<record>
+ <irn>159142</irn>
+ <TitObjectTitle>Installation tool for boot lid hold-open tension spring</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>2009.0005.0001</TitObjectNumber>
+ <TitObjectName>Engineering tools</TitObjectName>
+ <PhyDescription>A metal tool in the shape of a cross with side arms at 45 degree angles to the main section. The tool features a wooden handle held in place by metal rivets. Each of the three prongs of the cross has a piece of metal which sits at a 90 degree angle to the main section which is slightly bent in the middle.</PhyDescription>
+ <TitCollectionTitle>Hugh Videion collection</TitCollectionTitle>
+ <PhyContentDescription>Tool used to install the boot springs on prototype car bodies at the Experimental Engineering workshop at GMH, Fishermens Bend.</PhyContentDescription>
+ <StaNmaSOSPublic>The Hugh Videion collection comprises a small steel tool with a wooden handle used to assemble prototype car bodies. The tool was handmade in the mid1940s by engineers working in the Experimental Design Workshop at General Motors Holden, Fishermens Bend.
+
+General Motors Holden has played an important role in the history of Australian motor transport. Prototype No.1 is the only survivor of three test Holden sedans hand-built in 1946 by American and Australian engineers at General Motors' workshop in Detroit. Known as the 'Australian Car', Prototype No. 1 became the definitive model forthousands of Holden vehicles. This collection speaks to the ingenuity of the Australian staff who refined and adapted the American-made prototypes for mass production.</StaNmaSOSPublic>
+ <WebReleaseDate>26/03/2014</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>200</PhyRegistrationLength>
+ <PhyRegistrationHeight>24</PhyRegistrationHeight>
+ <PhyRegistrationWidth>83</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Metal - non specific</PhyMaterial>
+  <PhyMaterial>Wood</PhyMaterial>
+ </PhyMaterials_tab>
+ <AcsCCStatus>Creative Commons Non-Commercial Use</AcsCCStatus>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>29/01/2018</AdmDateModified>
+ <ProductionPlaces>
+  <ProductionPlace>
+   <ProPlaceRef_tab.irn>2278</ProPlaceRef_tab.irn>
+   <ProPlaceType_tab>Place made</ProPlaceType_tab>
+  </ProductionPlace>
+ </ProductionPlaces>
+ <ProductionDates>
+  <ProductionDate>
+   <ProDate0>1946</ProDate0>
+   <ProEarliestDate0>1946</ProEarliestDate0>
+   <ProLatestDate0>1946</ProLatestDate0>
+   <ProDateType_tab>Date made</ProDateType_tab>
+  </ProductionDate>
+ </ProductionDates>
+ <OnDisplay>yes</OnDisplay>
+ <DisplayGallery>Landmarks</DisplayGallery>
+ <LocCurrentLocationRef>
+  <LocLevel1>Acton</LocLevel1>
+  <LocLevel2>Landmarks</LocLevel2>
+  <LocLevel3>Fishermens Bend</LocLevel3>
+  <LocLevel4>Case 01</LocLevel4>
+ </LocCurrentLocationRef>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>93589</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res200px>
+    <image_path>93/589/nma.img-ci20092429-824-vi-vs1.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>137</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
+<!-- parent -->
+<record>
+ <irn>114348</irn>
+ <TitObjectTitle>Desk calendar</TitObjectTitle>
+ <TitObjectType>Parent</TitObjectType>
+ <TitObjectNumber>1998.0009.0014</TitObjectNumber>
+ <TitObjectName>Desk calendars</TitObjectName>
+ <PhyDescription>Desk calander comprising of a metal base with two uprights holding cards of ivory like material with the months and dates. Felt has been applied to the base.</PhyDescription>
+ <TitCollectionTitle>Anne Stockton collection no. 1</TitCollectionTitle>
+ <WebReleaseDate>27/08/2012</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>45</PhyRegistrationLength>
+ <PhyRegistrationHeight>95</PhyRegistrationHeight>
+ <PhyRegistrationWidth>85</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Metal - non specific</PhyMaterial>
+  <PhyMaterial>Felted cloth - non specific</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>04/11/2015</AdmDateModified>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- child 1 -->
+<record>
+ <irn>114355</irn>
+ <TitObjectTitle>Calendar</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1998.0009.0014.003</TitObjectNumber>
+ <TitObjectName>Calendars</TitObjectName>
+ <PhyDescription>Ivory-like rectangular card with the days of the month on both sides, from a desk calendar.</PhyDescription>
+ <TitCollectionTitle>Anne Stockton collection no. 1</TitCollectionTitle>
+ <AssParentObjectRef>114348</AssParentObjectRef>
+ <WebReleaseDate>27/08/2012</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>55</PhyRegistrationLength>
+ <PhyRegistrationWidth>50</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>12/01/2015</AdmDateModified>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- child 2 -->
+<record>
+ <irn>114362</irn>
+ <TitObjectTitle>Calendar</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1998.0009.0014.008</TitObjectNumber>
+ <TitObjectName>Calendars</TitObjectName>
+ <PhyDescription>Ivory-like rectangular card with the names of four months, from a desk calendar.</PhyDescription>
+ <TitCollectionTitle>Anne Stockton collection no. 1</TitCollectionTitle>
+ <AssParentObjectRef>114348</AssParentObjectRef>
+ <WebReleaseDate>27/08/2012</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>74</PhyRegistrationLength>
+ <PhyRegistrationWidth>50</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>12/01/2015</AdmDateModified>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- has related record -->
+<record>
+ <irn>186071</irn>
+ <TitObjectTitle>Part of model dancing platform</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1985.0339.1291</TitObjectNumber>
+ <TitObjectName>Models</TitObjectName>
+ <PhyDescription>A carved wooden pole with a circular hole halfway along its length, decorated with incised designs painted red, white, and black.</PhyDescription>
+ <TitCollectionTitle>Papuan Official collection</TitCollectionTitle>
+ <WebReleaseDate>27/09/2017</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>640</PhyRegistrationLength>
+ <PhyRegistrationHeight>65</PhyRegistrationHeight>
+ <PhyRegistrationWidth>68</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Wood</PhyMaterial>
+  <PhyMaterial>Pigment</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>27/09/2017</AdmDateModified>
+ <RelRelatedObjects_tab>
+  <RelatedObject>
+   <relirn>186069</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186070</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186072</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+ </RelRelatedObjects_tab>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>19955</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Collector</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>3958</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Associated place</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>/09/1927</AssDate0>
+   <AssLatestDate0>16/09/1927</AssLatestDate0>
+   <AssDateType_tab>Date collected</AssDateType_tab>
+   <AssDateNotes_tab>Collected before September 1927</AssDateNotes_tab>
+  </AssociatedDates>
+ </AssociatedDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- related record 1 -->
+<record>
+ <irn>186069</irn>
+ <TitObjectTitle>Part of model dancing platform</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1985.0339.1289</TitObjectNumber>
+ <TitObjectName>Models</TitObjectName>
+ <PhyDescription>A carved wooden pole with a square mortice halfway along its length, decorated with incised designs painted red, white, and black.</PhyDescription>
+ <TitCollectionTitle>Papuan Official collection</TitCollectionTitle>
+ <WebReleaseDate>27/09/2017</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>630</PhyRegistrationLength>
+ <PhyRegistrationHeight>60</PhyRegistrationHeight>
+ <PhyRegistrationWidth>60</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Wood</PhyMaterial>
+  <PhyMaterial>Pigment</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>27/09/2017</AdmDateModified>
+ <RelRelatedObjects_tab>
+  <RelatedObject>
+   <relirn>186070</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186071</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186072</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+ </RelRelatedObjects_tab>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>19955</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Collector</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>3958</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Associated place</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>/09/1927</AssDate0>
+   <AssLatestDate0>16/09/1927</AssLatestDate0>
+   <AssDateType_tab>Date collected</AssDateType_tab>
+   <AssDateNotes_tab>Collected before September 1927</AssDateNotes_tab>
+  </AssociatedDates>
+ </AssociatedDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- related record 2 -->
+<record>
+ <irn>186070</irn>
+ <TitObjectTitle>Part of model dancing platform</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1985.0339.1290</TitObjectNumber>
+ <TitObjectName>Models</TitObjectName>
+ <PhyDescription>A carved wooden pole with an arch-shaped mortice halfway along its length, decorated with incised designs painted red, white, and black.</PhyDescription>
+ <TitCollectionTitle>Papuan Official collection</TitCollectionTitle>
+ <WebReleaseDate>27/09/2017</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>630</PhyRegistrationLength>
+ <PhyRegistrationHeight>67</PhyRegistrationHeight>
+ <PhyRegistrationWidth>70</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Wood</PhyMaterial>
+  <PhyMaterial>Pigment</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>27/09/2017</AdmDateModified>
+ <RelRelatedObjects_tab>
+  <RelatedObject>
+   <relirn>186069</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186071</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186072</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+ </RelRelatedObjects_tab>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>19955</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Collector</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>3958</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Associated place</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>/09/1927</AssDate0>
+   <AssLatestDate0>16/09/1927</AssLatestDate0>
+   <AssDateType_tab>Date collected</AssDateType_tab>
+   <AssDateNotes_tab>Collected before September 1927</AssDateNotes_tab>
+  </AssociatedDates>
+ </AssociatedDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- related record 3 -->
+<record>
+ <irn>186072</irn>
+ <TitObjectTitle>Part of model dancing platform</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1985.0339.1292</TitObjectNumber>
+ <TitObjectName>Models</TitObjectName>
+ <PhyDescription>A carved wooden pole with a circular hole halfway along its length, decorated with incised designs painted red, white, and black.</PhyDescription>
+ <TitCollectionTitle>Papuan Official collection</TitCollectionTitle>
+ <WebReleaseDate>27/09/2017</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>650</PhyRegistrationLength>
+ <PhyRegistrationHeight>60</PhyRegistrationHeight>
+ <PhyRegistrationWidth>65</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Wood</PhyMaterial>
+  <PhyMaterial>Pigment</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>27/09/2017</AdmDateModified>
+ <RelRelatedObjects_tab>
+  <RelatedObject>
+   <relirn>186069</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186070</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+  <RelatedObject>
+   <relirn>186071</relirn>
+   <RelPublishedonCE>Yes</RelPublishedonCE>
+  </RelatedObject>
+ </RelRelatedObjects_tab>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>19955</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Collector</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>3958</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Associated place</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <AssociatedDates>
+  <AssociatedDates>
+   <AssDate0>/09/1927</AssDate0>
+   <AssLatestDate0>16/09/1927</AssLatestDate0>
+   <AssDateType_tab>Date collected</AssDateType_tab>
+   <AssDateNotes_tab>Collected before September 1927</AssDateNotes_tab>
+  </AssociatedDates>
+ </AssociatedDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>
+<!-- partial update-->
+<record>
+ <partial_update>yes</partial_update>
+ <irn>69261</irn>
+ <OnDisplay>no</OnDisplay>
+</record>
+<record>
+ <partial_update>yes</partial_update>
+ <irn>45929</irn>
+ <OnDisplay>no</OnDisplay>
+</record>
+</response>

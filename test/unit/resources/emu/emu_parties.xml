@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+ <totalItems>80454</totalItems>
+ <!-- person -->
+ <record>
+  <irn>8343</irn>
+  <SummaryData>Cochrane, Mrs Mary Jane</SummaryData>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Mary</NamFirst>
+  <NamMiddle>Jane</NamMiddle>
+  <NamLast>Cochrane</NamLast>
+  <NamFullName>Mrs Mary J. Cochrane</NamFullName>
+  <NamOtherNames_tab>
+   <NamOtherName>Miss Mary Jane Coughran</NamOtherName>
+  </NamOtherNames_tab>
+  <NamSex>Female</NamSex>
+ </record>
+ <!-- organisation -->
+ <record>
+  <irn>24664</irn>
+  <SummaryData>South Coast Land Council</SummaryData>
+  <NamPartyType>Organisation</NamPartyType>
+  <NamOrganisation>South Coast Land Council</NamOrganisation>
+ </record>
+ <record>
+  <irn>80278</irn>
+  <SummaryData>Ngarrindjeri Heritage Association</SummaryData>
+  <NamPartyType>Organisation</NamPartyType>
+  <NamOrganisation>Ngarrindjeri Heritage Association</NamOrganisation>
+ </record>
+ <!-- male & female -->
+ <record>
+  <irn>3956</irn>
+  <SummaryData>Wilkinson</SummaryData>
+  <NamPartyType>Person</NamPartyType>
+  <NamLast>Wilkinson</NamLast>
+  <NamFullName>Wilkinson</NamFullName>
+  <NamSex>Male &amp; Female</NamSex>
+ </record>
+ <!-- sex unknown -->
+ <record>
+  <irn>16656</irn>
+  <SummaryData>Williamson, Pat</SummaryData>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Pat</NamFirst>
+  <NamLast>Williamson</NamLast>
+  <NamFullName>Pat Williamson</NamFullName>
+  <NamSex>Unknown</NamSex>
+ </record>
+ <!-- other name -->
+ <record>
+  <irn>12473</irn>
+  <SummaryData>Turner, Mildred Mary</SummaryData>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Mildred</NamFirst>
+  <NamMiddle>Mary</NamMiddle>
+  <NamLast>Turner</NamLast>
+  <NamFullName>Mildred M. Turner</NamFullName>
+  <NamOtherNames_tab>
+   <NamOtherName>Mildred Mary Raymond</NamOtherName>
+  </NamOtherNames_tab>
+  <NamSex>Female</NamSex>
+ </record>
+ <!-- retired -->
+ <record>
+  <irn>10163</irn>
+  <SummaryData>Retired - Hamm, Treahna</SummaryData>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Treahna</NamFirst>
+  <NamLast>Hamm</NamLast>
+  <NamFullName>Treahna Hamm</NamFullName>
+  <NamSex>Unknown</NamSex>
+ </record>
+ <!-- traditional owner -->
+ <record>
+  <irn>24665</irn>
+  <SummaryData>Grist, Mr Mark - North-west Victoria Traditional Owners</SummaryData>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Mark</NamFirst>
+  <NamLast>Grist</NamLast>
+  <NamFullName>Mr Mark Grist</NamFullName>
+  <NamSex>Male</NamSex>
+ </record>
+</response>
