@@ -9,9 +9,15 @@
 	<!-- root element is <doc> containing only <field> and <dataSource> children -->
 	
 	<xsl:template match="/*">
+		<xsl:variable name="visual-item" select="concat('image/', normalize-space((field[@name='Multimedia ID'])[1]), '#')"/>
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri"/>
-			<crm:E36_Visual_Item rdf:about="{concat('image/', normalize-space((field[@name='Multimedia ID'])[1]), '#')}">
+			<xsl:for-each select="field[@name='EMu IRN for Related Objects']">
+				<crm:E19_Physical_Object rdf:about="object/{.}#">
+					<crm:P138i_has_representation rdf:resource="{$visual-item}"/>
+				</crm:E19_Physical_Object>
+			</xsl:for-each>
+			<crm:E36_Visual_Item rdf:about="{$visual-item}">
 				<xsl:for-each select="field[normalize-space()]">
 					<xsl:element name="{replace(@name, '\s', '-')}">
 						<xsl:choose>
