@@ -76,6 +76,14 @@
 						"classified_as": [{"id":"aat:300404621", "label":"repository numbers"}]
 					  }
 					],
+					"crm:P168_place_is_defined_by": [
+					  {
+						"id": "https://data.nma.gov.au/place/693#location",
+						"type": "crm:E94_Space_Primitive",
+						"value": "-12.2528,136.892",
+						"classified_as": [{"id":"aat:300380194", "label":"geospatial data"}]
+					  }
+					],
 					"spatially_within": [
 					  {
 						"id": "tgn:7001831", 
@@ -224,21 +232,29 @@
   ],
   "representation": [
     {
-      "id": "https://data.nma.gov.au/object/45929/thumb",
+      "id": "https://data.nma.gov.au/media/16195/thumb",
       "type": "VisualItem",
       "label": "Thumbnail",
       "classified_as": ["schema:thumbnail"],
+	  "identified_by": [
+		{
+		  "id": "https://data.nma.gov.au/media/16195/identifier#repositorynumber",
+		  "type": "Identifier",
+		  "value": 16195,
+		  "classified_as": [{"id":"aat:300404621", "label":"repository numbers"}]
+		}
+	  ],
       "format": "image/jpeg",
       "dimension": [
         {
-          "id": "https://data.nma.gov.au/object/45929/thumb#width",
+          "id": "https://data.nma.gov.au/media/16195/thumb#width",
           "type": "Dimension",
           "value": 200,
           "classified_as": ["aat:300055647"],
           "unit": {"id": "aat:300266190","type": "MeasurementUnit", "label": "pixels"}
         },
         {
-          "id": "https://data.nma.gov.au/object/45929/thumb#height",
+          "id": "https://data.nma.gov.au/media/16195/thumb#height",
           "type": "Dimension",
           "value": 158,
           "classified_as": ["aat:300055644"],
