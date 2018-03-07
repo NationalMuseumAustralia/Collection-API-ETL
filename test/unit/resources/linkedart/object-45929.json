@@ -1,0 +1,136 @@
+{
+  "@context": "https://linked.art/ns/v1/linked-art.json",
+  "id": "https://data.nma.gov.au/object/45929",
+  "type": "PhysicalObject",
+  "label": "Ernabella woollen rug with Walka design",
+  "classified_as": [
+      {"id": "aat:300185749", "type": "ManMadeObject", "label": "Rugs"}
+  ],
+  "identified_by": [
+    {
+      "id": "https://data.nma.gov.au/object/45929/identifier/referencenumber",
+      "type": "Identifier",
+      "value": "1991.0024.3872",
+      "classified_as": ["aat:300312355"]
+    },
+    {
+      "id": "https://data.nma.gov.au/object/45929/identifier/repositorynumber",
+      "type": "Identifier",
+      "value": 45929,
+      "classified_as": ["aat:300404621"]
+    }
+  ],
+  "dc:description OR crm:P3_has_note": [
+    {
+      "type": "LinguisticObject",
+      "value": "Very large rectangular handmade knotted rug, woven wool. Deep pile. Background of natural white, with an abstract linear design in dark brown, burnt orange, yellow & mottled greys.",
+      "classified_as": [
+		"aat:300411780", 
+		"nma:physicalDescription"
+	  ]
+    },
+    {
+      "type": "LinguisticObject",
+      "value": "This rug was owned by ...",
+      "classified_as": [
+		"aat:300411780", 
+		"nma:contentDescription"
+	  ]
+    }
+  ],
+  "produced_by": [
+    {
+      "id": "https://data.nma.gov.au/collection/12345/production",
+      "type": "Production",
+	  "consists_of": [
+		{
+			"type": "Activity", 
+			"label": "Place made",
+			"took_place_at": [
+				{
+					"id": "https://data.nma.gov.au/place/693", 
+					"type": "Place", 
+					"label": "Ernabella, South Australia, Australia"
+				}
+			], 
+		},
+		{
+			"type": "Activity", 
+			"classified_as": ["aat:300025190"],  # designers
+			"label": "Designer",
+			"carried_out_by": [
+				{
+					"id": "https://data.nma.gov.au/party/8860", 
+					"type": "Actor", 
+					"label": "Nyukana (Daisy) Baker"
+				}
+			],
+			"crm:P3_has_note": [
+				{
+					"type": "LinguisticObject",
+					"value": "and maker"
+				}
+			]
+		}
+	  ],
+	  "timespan": {
+		"id": "https://data.nma.gov.au/collection/12345/production#timespan",
+		"type": "TimeSpan", 
+		"label": "14 December 1928",
+		"begin_of_the_begin": "1928-12-14", 
+		"end_of_the_end": "1928-12-20"
+	  }
+    }
+  ],
+  "made_of": [
+      {"id": "aat:300231565", "type": "Material", "label": "textile materials"}
+  ],
+  "dimension": [
+    {
+      "id": "https://data.nma.gov.au/object/45929/dimension#length",
+      "type": "Dimension",
+      "value": 3550,
+      "classified_as": ["aat:300055645"],
+      "unit": {"id": "aat:300379097","type": "MeasurementUnit", "label": "mm"}
+    },
+    {
+      "id": "https://data.nma.gov.au/object/45929/dimension#width",
+      "type": "Dimension",
+      "value": 2420,
+      "classified_as": ["aat:300055647"],
+      "unit": {"id": "aat:300379097","type": "MeasurementUnit", "label": "mm"}
+    }
+  ],
+  "representation": [
+    {
+      "id": "https://data.nma.gov.au/object/45929/thumb",
+      "type": "VisualItem",
+      "label": "Thumbnail",
+      "classified_as": ["schema:thumbnail"],
+      "format": "image/jpeg",
+      "dimension": [
+        {
+          "id": "https://data.nma.gov.au/object/45929/thumb#width",
+          "type": "Dimension",
+          "value": 200,
+          "classified_as": ["aat:300055647"],
+          "unit": {"id": "aat:300266190","type": "MeasurementUnit", "label": "pixels"}
+        },
+        {
+          "id": "https://data.nma.gov.au/object/45929/thumb#height",
+          "type": "Dimension",
+          "value": 158,
+          "classified_as": ["aat:300055644"],
+          "unit": {"id": "aat:300266190","type": "MeasurementUnit", "label": "pixels"}
+        }
+      ]
+    },
+    {
+      "id": "https://data.nma.gov.au/object/45929/preview",
+      "type": "VisualItem",
+      "label": "Preview",
+      "classified_as": ["schema:preview"],
+      "format": "image/jpeg"
+    }
+  ],
+}
