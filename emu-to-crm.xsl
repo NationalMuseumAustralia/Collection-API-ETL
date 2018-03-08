@@ -2,6 +2,8 @@
 	version="3.0" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
+	<!-- record type of the input file, e.g. "object", "site", "party", or "narrative" -->
+	<xsl:param name="record-type" select="'object'" />
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au'" />
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
 	<xsl:variable name="aat-ns" select="'http://vocab.getty.edu/aat/'" />
@@ -13,10 +15,17 @@
 		</rdf:RDF>
 	</xsl:template>
 
+	<!-- Partial update records -->
+	<xsl:template match="record[./partial_update]">
+		<update rdf:about="{$base-uri}/{$record-type}/{irn}" />
+	</xsl:template>
+	
+	<!-- Default records -->
 	<xsl:template match="record">
-		<xsl:param name="record-type" select="lower-case(TitObjectType//text())" />
+		<xsl:param name="object-record-type" select="lower-case(TitObjectType//text())" />
+		<xsl:variable name="object-iri" select="{$base-uri}/{$record-type}/{irn}" />
 
-		<rdf:Description rdf:about="{$base-uri}/{$record-type}/{irn}#">
+		<rdf:Description rdf:about="{$object-iri}#">
 
 			<!-- type -->
 			<xsl:choose>
@@ -27,15 +36,16 @@
 					<rdf:type rdf:resource="http://www.openarchives.org/ore/terms/Aggregation" />
 				</xsl:when>
 				<xsl:when test="$record-type='Site'">
-					<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E53_Place" />
+					<rdf:type rdf:resource="{$crm-ns}E53_Place" />
 				</xsl:when>
-				<xsl:otherwise><!-- parties -->
+				<!-- parties -->
+				<xsl:otherwise>
 					<xsl:choose>
 						<xsl:when test="NamPartyType = 'Person'">
-							<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E21_Person" />
+							<rdf:type rdf:resource="{$crm-ns}E21_Person" />
 						</xsl:when>
 						<xsl:otherwise>
-							<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E74_Group" />
+							<rdf:type rdf:resource="{$crm-ns}E74_Group" />
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:otherwise>
@@ -46,9 +56,17 @@
 				<xsl:value-of select="TitObjectTitle" />
 			</rdfs:label>
 
-			<!-- registration number -->
+			<!-- IDs -->
 			<crm:P1_is_identified_by>
-				<crm:E42_Identifier rdf:about="{$base-uri}/{$record-type}/{irn}/identifier#referencenumber">
+				<!-- irn -->
+				<crm:E42_Identifier rdf:about="{$object-iri}/identifier#repositorynumber">
+					<rdf:value>
+						<xsl:value-of select="TitObjectNumber" />
+					</rdf:value>
+					<crm:P2_has_type rdf:resource="{$aat-ns}300404621" />
+				</crm:E42_Identifier>
+				<!-- registration number -->
+				<crm:E42_Identifier rdf:about="{$object-iri}/identifier#referencenumber">
 					<rdf:value>
 						<xsl:value-of select="TitObjectNumber" />
 					</rdf:value>
