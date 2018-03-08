@@ -4,7 +4,7 @@
 
 	<!-- record type of the input file, e.g. "object", "site", "party", or "narrative" -->
 	<xsl:param name="record-type" select="'object'" />
-	<xsl:param name="base-uri" select="'https://api.nma.gov.au'" />
+	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
 	<xsl:variable name="aat-ns" select="'http://vocab.getty.edu/aat/'" />
 
@@ -18,7 +18,7 @@
 	<!-- Default records -->
 	<xsl:template match="record">
 		<xsl:param name="object-record-type" select="lower-case(TitObjectType//text())" />
-		<xsl:variable name="object-iri" select="{$base-uri}/{$record-type}/{irn}" />
+		<xsl:variable name="object-iri" select="concat($record-type, '/', irn)" />
 
 		<rdf:Description rdf:about="{$object-iri}#">
 
@@ -52,15 +52,19 @@
 			</rdfs:label>
 
 			<!-- IDs -->
+			
+			<!-- irn -->
 			<crm:P1_is_identified_by>
-				<!-- irn -->
 				<crm:E42_Identifier rdf:about="{$object-iri}/identifier#repositorynumber">
 					<rdf:value>
 						<xsl:value-of select="TitObjectNumber" />
 					</rdf:value>
 					<crm:P2_has_type rdf:resource="{$aat-ns}300404621" />
 				</crm:E42_Identifier>
-				<!-- registration number -->
+			</crm:P1_is_identified_by>
+			
+			<!-- registration number -->
+			<crm:P1_is_identified_by>
 				<crm:E42_Identifier rdf:about="{$object-iri}/identifier#referencenumber">
 					<rdf:value>
 						<xsl:value-of select="TitObjectNumber" />
