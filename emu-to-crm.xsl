@@ -8,7 +8,7 @@
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
 	<xsl:variable name="aat-ns" select="'http://vocab.getty.edu/aat/'" />
 
-	<xsl:template match="/response">
+	<xsl:template match="/">
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri" />
 			<xsl:apply-templates select="record" />
