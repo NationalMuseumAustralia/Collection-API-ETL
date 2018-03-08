@@ -55,7 +55,7 @@
 			
 			<!-- irn -->
 			<crm:P1_is_identified_by>
-				<crm:E42_Identifier rdf:about="{$object-iri}/identifier#repositorynumber">
+				<crm:E42_Identifier rdf:about="{$object-iri}#repositorynumber">
 					<rdf:value>
 						<xsl:value-of select="TitObjectNumber" />
 					</rdf:value>
@@ -65,7 +65,7 @@
 			
 			<!-- registration number -->
 			<crm:P1_is_identified_by>
-				<crm:E42_Identifier rdf:about="{$object-iri}/identifier#referencenumber">
+				<crm:E42_Identifier rdf:about="{$object-iri}#referencenumber">
 					<rdf:value>
 						<xsl:value-of select="TitObjectNumber" />
 					</rdf:value>
