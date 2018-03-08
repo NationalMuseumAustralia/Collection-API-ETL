@@ -14,11 +14,6 @@
 			<xsl:apply-templates select="record" />
 		</rdf:RDF>
 	</xsl:template>
-
-	<!-- Partial update records -->
-	<xsl:template match="record[./partial_update]">
-		<update rdf:about="{$base-uri}/{$record-type}/{irn}" />
-	</xsl:template>
 	
 	<!-- Default records -->
 	<xsl:template match="record">
