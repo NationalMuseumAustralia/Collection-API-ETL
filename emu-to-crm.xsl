@@ -1,7 +1,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	version="3.0" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/"
-	xmlns:aat="http://vocab.getty.edu/aat/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+	version="3.0" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
 	<!-- record type of the input file, e.g. "Object", "Site", "Party", or "Narrative" -->
 	<xsl:param name="record-type" select="'Object'" />
@@ -9,8 +8,7 @@
 
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
 	<xsl:variable name="aat-ns" select="'http://vocab.getty.edu/aat/'" />
-	<xsl:variable name="ore-ns"
-		select="'http://www.openarchives.org/ore/terms/'" />
+	<xsl:variable name="ore-ns" select="'http://www.openarchives.org/ore/terms/'" />
 
 	<xsl:template match="/">
 		<rdf:RDF>
@@ -24,8 +22,7 @@
 	<xsl:template match="record">
 		<xsl:param name="object-record-type" select="lower-case(TitObjectType//text())" />
 
-		<xsl:variable name="object-iri"
-			select="concat(lower-case($record-type), '/', irn)" />
+		<xsl:variable name="object-iri" select="concat(lower-case($record-type), '/', irn)" />
 
 		<rdf:Description rdf:about="{$object-iri}#">
 
