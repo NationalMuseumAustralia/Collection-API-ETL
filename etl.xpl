@@ -75,7 +75,10 @@
 		<cx:message message="Converting XML data into RDF in SPARQL store..."/>
 		<p:for-each name="record">
 			<!-- EMu records are /response/record, Piction records are /add/doc -->
-			<p:iteration-source select="/response/record | /add/doc"/>
+			<!-- EMu "partial-update" records are excluded from this processing, and handled separately below -->
+			<!-- because a partial-update can't be handled by transforming the record to an RDF graph and storing it using the SPARQL Graph Store protocol; -->
+			<!-- instead it has to delete a triple from a graph and insert a new one, using the SPARQL Update protocol -->
+			<p:iteration-source select="/response/record[not(partial-update)] | /add/doc"/>
 			<!-- EMu records are uniquely identified by /response/record/irn, Piction records by /doc/field[@name='Multimedia ID'] -->
 			<p:variable name="identifier" select="/record/irn | doc/field[@name='Multimedia ID']"/>
 			<cx:message>
@@ -106,7 +109,7 @@
 						<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
 						<p:with-param name="record-type" select="$record-type"/>
 						<p:input port="stylesheet">
-							<p:document href="emu-to-rdf.xsl"/>
+							<p:document href="emu-to-crm.xsl"/>
 						</p:input>
 						<p:input port="source">
 							<p:pipe step="record" port="current"/>
@@ -126,7 +129,22 @@
 					<p:pipe step="transformation-to-rdf" port="result"/>
 				</p:input>
 			</nma:store-graph>
-		</p:for-each>			
+		</p:for-each>
+		<!-- Finally, process "partial-update" records -->
+		<!-- EMu "partial-update" records can't be handled by transforming the record to an RDF graph and storing it using the SPARQL Graph Store protocol; -->
+		<!-- instead, each partial update must delete a triple from an existing graph and insert a new triple in its place, using the SPARQL Update protocol -->
+		<p:for-each name="partial-update">
+			<p:iteration-source select="/response/record[partial-update]">
+				<p:pipe step="process-data" port="source"/>
+			</p:iteration-source>
+			<!-- EMu records are uniquely identified by /response/record/irn -->
+			<p:variable name="identifier" select="/record/irn"/>
+			<cx:message>
+				<p:with-option name="message" select="concat('Partially updating object', $identifier, ' in ', $dataset, ' dataset...')"/>
+			</cx:message>
+			<!-- TODO generate and execute the appropriate SPARQL update -->
+			<p:sink name="simpy-ignore-the-partial-update-record-for-now"/>
+		</p:for-each>
 	</p:declare-step>
 	
 	<!-- store graph in SPARQL store-->
