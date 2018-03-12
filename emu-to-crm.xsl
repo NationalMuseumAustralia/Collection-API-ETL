@@ -84,25 +84,9 @@
 			<xsl:apply-templates select="TitCollectionTitle" />
 
 			<!-- descriptions -->
-			<xsl:apply-templates select="PhyDescription">
-				<xsl:with-param name="object-iri">
-					<xsl:value-of select="$object-iri" />
-				</xsl:with-param>
-			</xsl:apply-templates>
-			<xsl:apply-templates select="PhyContentDescription">
-				<xsl:with-param name="object-iri">
-					<xsl:value-of select="$object-iri" />
-				</xsl:with-param>
-			</xsl:apply-templates>
-			<xsl:apply-templates select="StaNmaSOSPublic">
-				<xsl:with-param name="object-iri">
-					<xsl:value-of select="$object-iri" />
-				</xsl:with-param>
-			</xsl:apply-templates>
-			<xsl:apply-templates select="CreProvenance">
-				<xsl:with-param name="object-iri">
-					<xsl:value-of select="$object-iri" />
-				</xsl:with-param>
+			<xsl:apply-templates
+				select="PhyDescription | PhyContentDescription | StaNmaSOSPublic | CreProvenance">
+				<xsl:with-param name="object-iri" select="$object-iri" />
 			</xsl:apply-templates>
 
 			<!-- production -->
@@ -112,14 +96,31 @@
 						<crm:P9_consists_of>
 							<xsl:apply-templates
 								select="ProductionParties | ProductionPlaces | ProductionDates">
-								<xsl:with-param name="object-iri">
-									<xsl:value-of select="$object-iri" />
-								</xsl:with-param>
+								<xsl:with-param name="object-iri" select="$object-iri" />
 							</xsl:apply-templates>
 						</crm:P9_consists_of>
 					</crm:E12_Production>
 				</crm:P108i_was_produced_by>
 			</xsl:if>
+
+			<!-- materials -->
+			<xsl:apply-templates select="PhyMaterials_tab" />
+
+			<!-- dimensions: linear -->
+			<xsl:apply-templates
+				select="PhyRegistrationLength | PhyRegistrationWidth | PhyRegistrationWidth | PhyRegistrationDepth | PhyRegistrationDiameter">
+				<xsl:with-param name="object-iri" select="$object-iri" />
+				<xsl:with-param name="unit" select="PhyRegistrationUnitLength" />
+			</xsl:apply-templates>
+
+			<!-- dimensions: weight -->
+			<xsl:apply-templates select="PhyRegistrationWeight">
+				<xsl:with-param name="object-iri" select="$object-iri" />
+				<xsl:with-param name="unit" select="PhyRegistrationUnitWeight" />
+			</xsl:apply-templates>
+
+			<!-- media -->
+			<xsl:apply-templates select="WebMultiMediaRef_tab/image" />
 
 		</rdf:Description>
 	</xsl:template>
@@ -127,6 +128,8 @@
 	<!-- sink to ignore stray partial update records -->
 	<xsl:template match="record[./partial_update]">
 	</xsl:template>
+
+	<!-- ############### FIELD PROCESSING TEMPLATES ############ -->
 
 	<!-- collection -->
 	<xsl:template match="TitCollectionTitle">
@@ -215,10 +218,10 @@
 				</crm:P7_took_place_at>
 			</crm:E7_Activity>
 		</xsl:for-each>
-
 	</xsl:template>
 
 	<!-- TODO: are there organisation producers? -->
+	<!-- TODO: add support for notes -->
 
 	<!-- production: parties -->
 	<xsl:template match="ProductionParties">
@@ -259,6 +262,224 @@
 				</crm:P4_has_time-span>
 			</crm:E7_Activity>
 		</xsl:for-each>
+	</xsl:template>
+
+	<!-- materials -->
+	<xsl:template match="PhyMaterials_tab">
+		<xsl:for-each select="PhyMaterial">
+			<crm:P45_consists_of>
+				<crm:E57_Material>
+					<rdfs:label>
+						<xsl:value-of select="." />
+					</rdfs:label>
+				</crm:E57_Material>
+			</crm:P45_consists_of>
+		</xsl:for-each>
+	</xsl:template>
+
+	<!-- dimensions: length -->
+	<xsl:template match="PhyRegistrationLength">
+		<xsl:param name="object-iri" />
+		<xsl:param name="unit" />
+		<xsl:call-template name="output-dimension">
+			<xsl:with-param name="object-iri" select="$object-iri" />
+			<xsl:with-param name="type" select="'length'" />
+			<!-- AAT: length -->
+			<xsl:with-param name="aat-type" select="'300055645'" />
+			<xsl:with-param name="value" select="." />
+			<xsl:with-param name="unit-value" select="$unit" />
+		</xsl:call-template>
+	</xsl:template>
+
+	<!-- dimensions: height -->
+	<xsl:template match="PhyRegistrationHeight">
+		<xsl:param name="object-iri" />
+		<xsl:param name="unit" />
+		<xsl:call-template name="output-dimension">
+			<xsl:with-param name="object-iri" select="$object-iri" />
+			<xsl:with-param name="type" select="'height'" />
+			<!-- AAT: height -->
+			<xsl:with-param name="aat-type" select="'300055644'" />
+			<xsl:with-param name="value" select="." />
+			<xsl:with-param name="unit-value" select="$unit" />
+		</xsl:call-template>
+	</xsl:template>
+
+	<!-- dimensions: width -->
+	<xsl:template match="PhyRegistrationWidth">
+		<xsl:param name="object-iri" />
+		<xsl:param name="unit" />
+		<xsl:call-template name="output-dimension">
+			<xsl:with-param name="object-iri" select="$object-iri" />
+			<xsl:with-param name="type" select="'width'" />
+			<!-- AAT: width -->
+			<xsl:with-param name="aat-type" select="'300055647'" />
+			<xsl:with-param name="value" select="." />
+			<xsl:with-param name="unit-value" select="$unit" />
+		</xsl:call-template>
+	</xsl:template>
+
+	<!-- dimensions: depth -->
+	<xsl:template match="PhyRegistrationDepth">
+		<xsl:param name="object-iri" />
+		<xsl:param name="unit" />
+		<xsl:call-template name="output-dimension">
+			<xsl:with-param name="object-iri" select="$object-iri" />
+			<xsl:with-param name="type" select="'depth'" />
+			<!-- AAT: depth (size/dimension) -->
+			<xsl:with-param name="aat-type" select="'300072633'" />
+			<xsl:with-param name="value" select="." />
+			<xsl:with-param name="unit-value" select="$unit" />
+		</xsl:call-template>
+	</xsl:template>
+
+	<!-- dimensions: diameter -->
+	<xsl:template match="PhyRegistrationDiameter">
+		<xsl:param name="object-iri" />
+		<xsl:param name="unit" />
+		<xsl:call-template name="output-dimension">
+			<xsl:with-param name="object-iri" select="$object-iri" />
+			<xsl:with-param name="type" select="'diameter'" />
+			<!-- AAT: diameter -->
+			<xsl:with-param name="aat-type" select="'300055624'" />
+			<xsl:with-param name="value" select="." />
+			<xsl:with-param name="unit-value" select="$unit" />
+		</xsl:call-template>
+	</xsl:template>
+
+	<!-- dimensions: weight -->
+	<xsl:template match="PhyRegistrationWeight">
+		<xsl:param name="object-iri" />
+		<xsl:param name="unit" />
+		<xsl:call-template name="output-dimension">
+			<xsl:with-param name="object-iri" select="$object-iri" />
+			<xsl:with-param name="type" select="'weight'" />
+			<!-- AAT: weight (heaviness attribute) -->
+			<xsl:with-param name="aat-type" select="'300056240'" />
+			<xsl:with-param name="value" select="." />
+			<xsl:with-param name="unit-value" select="$unit" />
+		</xsl:call-template>
+	</xsl:template>
+
+	<!-- media -->
+	<xsl:template match="image">
+		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
+		<crm:P138i_has_representation>
+			<crm:E36_Visual_Item rdf:about="{$media-iri}">
+
+				<!-- preview -->
+				<xsl:for-each select="res640px">
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item rdf:about="{$media-iri}#preview">
+							<rdf:value>
+								<xsl:value-of select="image_path" />
+							</rdf:value>
+							<xsl:if test="image_width != ''">
+								<crm:P43_has_dimension>
+									<crm:E54_Dimension rdf:about="{$media-iri}#previewWidth">
+										<rdf:value>
+											<xsl:value-of select="image_width" />
+										</rdf:value>
+										<!-- AAT: width -->
+										<crm:P2_has_type rdf:resource="{$aat-ns}300055647" />
+										<crm:P91_has_unit>
+											<!-- AAT: pixels -->
+											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
+										</crm:P91_has_unit>
+									</crm:E54_Dimension>
+								</crm:P43_has_dimension>
+							</xsl:if>
+							<xsl:if test="image_height != ''">
+								<crm:P43_has_dimension>
+									<crm:E54_Dimension rdf:about="{$media-iri}#previewHeight">
+										<rdf:value>
+											<xsl:value-of select="image_height" />
+										</rdf:value>
+										<!-- AAT: height -->
+										<crm:P2_has_type rdf:resource="{$aat-ns}300055644" />
+										<crm:P91_has_unit>
+											<!-- AAT: pixels -->
+											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
+										</crm:P91_has_unit>
+									</crm:E54_Dimension>
+								</crm:P43_has_dimension>
+							</xsl:if>
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+				</xsl:for-each>
+
+				<!-- thumbnail -->
+				<xsl:for-each select="res200px">
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item rdf:about="{$media-iri}#thumb">
+							<rdf:value>
+								<xsl:value-of select="image_path" />
+							</rdf:value>
+							<xsl:if test="image_width != ''">
+								<crm:P43_has_dimension>
+									<crm:E54_Dimension rdf:about="{$media-iri}#thumbWidth">
+										<rdf:value>
+											<xsl:value-of select="image_width" />
+										</rdf:value>
+										<!-- AAT: width -->
+										<crm:P2_has_type rdf:resource="{$aat-ns}300055647" />
+										<crm:P91_has_unit>
+											<!-- AAT: pixels -->
+											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
+										</crm:P91_has_unit>
+									</crm:E54_Dimension>
+								</crm:P43_has_dimension>
+							</xsl:if>
+							<xsl:if test="image_height != ''">
+								<crm:P43_has_dimension>
+									<crm:E54_Dimension rdf:about="{$media-iri}#thumbHeight">
+										<rdf:value>
+											<xsl:value-of select="image_height" />
+										</rdf:value>
+										<!-- AAT: height -->
+										<crm:P2_has_type rdf:resource="{$aat-ns}300055644" />
+										<crm:P91_has_unit>
+											<!-- AAT: pixels -->
+											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
+										</crm:P91_has_unit>
+									</crm:E54_Dimension>
+								</crm:P43_has_dimension>
+							</xsl:if>
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+				</xsl:for-each>
+
+			</crm:E36_Visual_Item>
+		</crm:P138i_has_representation>
+	</xsl:template>
+
+	<!-- ############### NAMED TEMPLATES ############ -->
+
+	<!-- output a dimension -->
+	<xsl:template name="output-dimension">
+		<xsl:param name="object-iri" />
+		<xsl:param name="type" />
+		<xsl:param name="aat-type" />
+		<xsl:param name="value" />
+		<xsl:param name="unit-value" />
+		<crm:P43_has_dimension>
+			<crm:E54_Dimension rdf:about="{$object-iri}#{$type}">
+				<rdf:value>
+					<xsl:value-of select="$value" />
+				</rdf:value>
+				<crm:P2_has_type rdf:resource="{$aat-ns}{$aat-type}" />
+				<!-- TODO: add AAT for relevant unit type -->
+				<xsl:if test="$unit-value != ''">
+					<crm:P91_has_unit>
+						<crm:E58_Measurement_Unit>
+							<rdfs:label>
+								<xsl:value-of select="$unit-value" />
+							</rdfs:label>
+						</crm:E58_Measurement_Unit>
+					</crm:P91_has_unit>
+				</xsl:if>
+			</crm:E54_Dimension>
+		</crm:P43_has_dimension>
 	</xsl:template>
 
 </xsl:stylesheet>
