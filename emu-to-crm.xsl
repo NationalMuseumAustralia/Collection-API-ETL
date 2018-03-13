@@ -301,8 +301,7 @@
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
 		<xsl:call-template name="output-dimension">
-			<xsl:with-param name="object-iri" select="$object-iri" />
-			<xsl:with-param name="type" select="'length'" />
+			<xsl:with-param name="dimension-iri" select="concat($object-iri,'#length')" />
 			<!-- AAT 300055645: length -->
 			<xsl:with-param name="aat-type" select="'300055645'" />
 			<xsl:with-param name="value" select="." />
@@ -315,8 +314,7 @@
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
 		<xsl:call-template name="output-dimension">
-			<xsl:with-param name="object-iri" select="$object-iri" />
-			<xsl:with-param name="type" select="'height'" />
+			<xsl:with-param name="dimension-iri" select="concat($object-iri,'#height')" />
 			<!-- AAT 300055644: height -->
 			<xsl:with-param name="aat-type" select="'300055644'" />
 			<xsl:with-param name="value" select="." />
@@ -329,8 +327,7 @@
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
 		<xsl:call-template name="output-dimension">
-			<xsl:with-param name="object-iri" select="$object-iri" />
-			<xsl:with-param name="type" select="'width'" />
+			<xsl:with-param name="dimension-iri" select="concat($object-iri,'#width')" />
 			<!-- AAT 300055647: width -->
 			<xsl:with-param name="aat-type" select="'300055647'" />
 			<xsl:with-param name="value" select="." />
@@ -343,8 +340,7 @@
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
 		<xsl:call-template name="output-dimension">
-			<xsl:with-param name="object-iri" select="$object-iri" />
-			<xsl:with-param name="type" select="'depth'" />
+			<xsl:with-param name="dimension-iri" select="concat($object-iri,'#depth')" />
 			<!-- AAT 300072633: depth (size/dimension) -->
 			<xsl:with-param name="aat-type" select="'300072633'" />
 			<xsl:with-param name="value" select="." />
@@ -357,8 +353,7 @@
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
 		<xsl:call-template name="output-dimension">
-			<xsl:with-param name="object-iri" select="$object-iri" />
-			<xsl:with-param name="type" select="'diameter'" />
+			<xsl:with-param name="dimension-iri" select="concat($object-iri,'#diameter')" />
 			<!-- AAT 300055624: diameter -->
 			<xsl:with-param name="aat-type" select="'300055624'" />
 			<xsl:with-param name="value" select="." />
@@ -371,8 +366,7 @@
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
 		<xsl:call-template name="output-dimension">
-			<xsl:with-param name="object-iri" select="$object-iri" />
-			<xsl:with-param name="type" select="'weight'" />
+			<xsl:with-param name="dimension-iri" select="concat($object-iri,'#weight')" />
 			<!-- AAT 300056240: weight (heaviness attribute) -->
 			<xsl:with-param name="aat-type" select="'300056240'" />
 			<xsl:with-param name="value" select="." />
@@ -396,34 +390,26 @@
 								<xsl:value-of select="image_path" />
 							</rdf:value>
 							<xsl:if test="image_width != ''">
-								<crm:P43_has_dimension>
-									<crm:E54_Dimension rdf:about="{$media-iri}#previewWidth">
-										<rdf:value>
-											<xsl:value-of select="image_width" />
-										</rdf:value>
-										<!-- AAT 300055647: width -->
-										<crm:P2_has_type rdf:resource="{$aat-ns}300055647" />
-										<crm:P91_has_unit>
-											<!-- AAT 300379612: pixels -->
-											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
-										</crm:P91_has_unit>
-									</crm:E54_Dimension>
-								</crm:P43_has_dimension>
+								<xsl:call-template name="output-dimension">
+									<xsl:with-param name="dimension-iri"
+										select="concat($media-iri,'#previewWidth')" />
+									<!-- AAT 300055647: width -->
+									<xsl:with-param name="aat-type" select="'300055647'" />
+									<xsl:with-param name="value" select="image_width" />
+									<!-- TODO: add AAT 300379612: pixels -->
+									<xsl:with-param name="unit-value" select="'pixels'" />
+								</xsl:call-template>
 							</xsl:if>
 							<xsl:if test="image_height != ''">
-								<crm:P43_has_dimension>
-									<crm:E54_Dimension rdf:about="{$media-iri}#previewHeight">
-										<rdf:value>
-											<xsl:value-of select="image_height" />
-										</rdf:value>
-										<!-- AAT 300055644: height -->
-										<crm:P2_has_type rdf:resource="{$aat-ns}300055644" />
-										<crm:P91_has_unit>
-											<!-- AAT 300379612: pixels -->
-											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
-										</crm:P91_has_unit>
-									</crm:E54_Dimension>
-								</crm:P43_has_dimension>
+								<xsl:call-template name="output-dimension">
+									<xsl:with-param name="dimension-iri"
+										select="concat($media-iri,'#previewHeight')" />
+									<!-- AAT 300055644: height -->
+									<xsl:with-param name="aat-type" select="'300055644'" />
+									<xsl:with-param name="value" select="image_height" />
+									<!-- TODO: add AAT 300379612: pixels -->
+									<xsl:with-param name="unit-value" select="'pixels'" />
+								</xsl:call-template>
 							</xsl:if>
 						</crm:E36_Visual_Item>
 					</crm:P138i_has_representation>
@@ -437,34 +423,24 @@
 								<xsl:value-of select="image_path" />
 							</rdf:value>
 							<xsl:if test="image_width != ''">
-								<crm:P43_has_dimension>
-									<crm:E54_Dimension rdf:about="{$media-iri}#thumbWidth">
-										<rdf:value>
-											<xsl:value-of select="image_width" />
-										</rdf:value>
-										<!-- AAT 300055647: width -->
-										<crm:P2_has_type rdf:resource="{$aat-ns}300055647" />
-										<crm:P91_has_unit>
-											<!-- AAT 300379612: pixels -->
-											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
-										</crm:P91_has_unit>
-									</crm:E54_Dimension>
-								</crm:P43_has_dimension>
+								<xsl:call-template name="output-dimension">
+									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#thumbWidth')" />
+									<!-- AAT 300055647: width -->
+									<xsl:with-param name="aat-type" select="'300055647'" />
+									<xsl:with-param name="value" select="image_width" />
+									<!-- TODO: add AAT 300379612: pixels -->
+									<xsl:with-param name="unit-value" select="'pixels'" />
+								</xsl:call-template>
 							</xsl:if>
 							<xsl:if test="image_height != ''">
-								<crm:P43_has_dimension>
-									<crm:E54_Dimension rdf:about="{$media-iri}#thumbHeight">
-										<rdf:value>
-											<xsl:value-of select="image_height" />
-										</rdf:value>
-										<!-- AAT 300055644: height -->
-										<crm:P2_has_type rdf:resource="{$aat-ns}300055644" />
-										<crm:P91_has_unit>
-											<!-- AAT 300379612: pixels -->
-											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
-										</crm:P91_has_unit>
-									</crm:E54_Dimension>
-								</crm:P43_has_dimension>
+								<xsl:call-template name="output-dimension">
+									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#thumbHeight')" />
+									<!-- AAT 300055644: height -->
+									<xsl:with-param name="aat-type" select="'300055644'" />
+									<xsl:with-param name="value" select="image_height" />
+									<!-- TODO: add AAT 300379612: pixels -->
+									<xsl:with-param name="unit-value" select="'pixels'" />
+								</xsl:call-template>
 							</xsl:if>
 						</crm:E36_Visual_Item>
 					</crm:P138i_has_representation>
@@ -478,13 +454,12 @@
 
 	<!-- output a dimension -->
 	<xsl:template name="output-dimension">
-		<xsl:param name="object-iri" />
-		<xsl:param name="type" />
+		<xsl:param name="dimension-iri" />
 		<xsl:param name="aat-type" />
 		<xsl:param name="value" />
 		<xsl:param name="unit-value" />
 		<crm:P43_has_dimension>
-			<crm:E54_Dimension rdf:about="{$object-iri}#{$type}">
+			<crm:E54_Dimension rdf:about="{$dimension-iri}">
 				<rdf:value>
 					<xsl:value-of select="$value" />
 				</rdf:value>
