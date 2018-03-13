@@ -2,8 +2,8 @@
 	version="3.0" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-	<!-- record type of the input file, e.g. "Object", "Site", "Party", or "Narrative" -->
-	<xsl:param name="record-type" select="'Object'" />
+	<!-- record type of the input file, e.g. "object", "site", "party", or "narrative" -->
+	<xsl:param name="record-type" select="'object'" />
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
 
 	<xsl:variable name="nma-term-ns" select="'http://nma.tepapa.gov.au/term/'" />
@@ -27,21 +27,21 @@
 
 		<rdf:Description rdf:about="{$object-iri}#">
 
-			<!-- type -->
+			<!-- entity type -->
 			<xsl:choose>
-				<xsl:when test="$record-type='Object'">
+				<xsl:when test="$record-type='object'">
 					<rdf:type rdf:resource="{$crm-ns}E19_Physical_Object" />
 				</xsl:when>
-				<xsl:when test="$record-type='Narrative'">
+				<xsl:when test="$record-type='narrative'">
 					<rdf:type rdf:resource="{$ore-ns}Aggregation" />
 				</xsl:when>
-				<xsl:when test="$record-type='Site'">
+				<xsl:when test="$record-type='site'">
 					<rdf:type rdf:resource="{$crm-ns}E53_Place" />
 				</xsl:when>
 				<!-- parties -->
 				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when test="NamPartyType = 'Person'">
+						<xsl:when test="NamPartyType = 'person'">
 							<rdf:type rdf:resource="{$crm-ns}E21_Person" />
 						</xsl:when>
 						<xsl:otherwise>
@@ -64,7 +64,7 @@
 					<rdf:value>
 						<xsl:value-of select="irn" />
 					</rdf:value>
-					<!-- AAT: repository numbers -->
+					<!-- AAT 300404621: repository numbers -->
 					<crm:P2_has_type rdf:resource="{$aat-ns}300404621" />
 				</crm:E42_Identifier>
 			</crm:P1_is_identified_by>
@@ -75,13 +75,16 @@
 					<rdf:value>
 						<xsl:value-of select="TitObjectNumber" />
 					</rdf:value>
-					<!-- AAT: accession numbers -->
+					<!-- AAT 300312355: accession numbers -->
 					<crm:P2_has_type rdf:resource="{$aat-ns}300312355" />
 				</crm:E42_Identifier>
 			</crm:P1_is_identified_by>
 
 			<!-- collection -->
 			<xsl:apply-templates select="TitCollectionTitle" />
+
+			<!-- object type -->
+			<xsl:apply-templates select="TitObjectName" />
 
 			<!-- descriptions -->
 			<xsl:apply-templates
@@ -93,12 +96,10 @@
 			<xsl:if test="ProductionParties | ProductionPlaces | ProductionDates">
 				<crm:P108i_was_produced_by>
 					<crm:E12_Production>
-						<crm:P9_consists_of>
-							<xsl:apply-templates
-								select="ProductionParties | ProductionPlaces | ProductionDates">
-								<xsl:with-param name="object-iri" select="$object-iri" />
-							</xsl:apply-templates>
-						</crm:P9_consists_of>
+						<xsl:apply-templates
+							select="ProductionParties | ProductionPlaces | ProductionDates">
+							<xsl:with-param name="object-iri" select="$object-iri" />
+						</xsl:apply-templates>
 					</crm:E12_Production>
 				</crm:P108i_was_produced_by>
 			</xsl:if>
@@ -138,11 +139,23 @@
 				<rdf:value>
 					<xsl:value-of select="." />
 				</rdf:value>
-				<!-- AAT: collections (object groupings) -->
+				<!-- AAT 300025976: collections (object groupings) -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300025976" />
 			</crm:E19_Physical_Object>
 		</crm:P106i_forms_part_of>
 	</xsl:template>
+
+	<!-- object type -->
+	<xsl:template match="TitObjectName">
+		<crm:P2_has_type>
+			<rdf:Description>
+				<rdfs:label>
+					<xsl:value-of select="." />
+				</rdfs:label>
+			</rdf:Description>
+		</crm:P2_has_type>
+	</xsl:template>
+
 
 	<!-- physical description -->
 	<xsl:template match="PhyDescription">
@@ -152,7 +165,7 @@
 				<rdf:value>
 					<xsl:value-of select="." />
 				</rdf:value>
-				<!-- AAT: descriptions (documents) -->
+				<!-- AAT 300411780: descriptions (documents) -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
 				<crm:P2_has_type rdf:resource="{$nma-term-ns}physicalDescription" />
 			</crm:E33_Linguistic_Object>
@@ -167,14 +180,14 @@
 				<rdf:value>
 					<xsl:value-of select="." />
 				</rdf:value>
-				<!-- AAT: descriptions (documents) -->
+				<!-- AAT 300411780: descriptions (documents) -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
 				<crm:P2_has_type rdf:resource="{$nma-term-ns}contentDescription" />
 			</crm:E33_Linguistic_Object>
 		</crm:P129i_is_subject_of>
 	</xsl:template>
 
-	<!-- statement of signficance -->
+	<!-- statement of significance -->
 	<xsl:template match="StaNmaSOSPublic">
 		<xsl:param name="object-iri" />
 		<crm:P129i_is_subject_of>
@@ -182,7 +195,7 @@
 				<rdf:value>
 					<xsl:value-of select="." />
 				</rdf:value>
-				<!-- AAT: significance assessments (surveys) -->
+				<!-- AAT 300379612: significance assessments (surveys) -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300379612" />
 				<crm:P2_has_type rdf:resource="{$nma-term-ns}significanceStatement" />
 			</crm:E33_Linguistic_Object>
@@ -197,7 +210,7 @@
 				<rdf:value>
 					<xsl:value-of select="." />
 				</rdf:value>
-				<!-- AAT: significance assessments (surveys) -->
+				<!-- AAT 300379612: significance assessments (surveys) -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300379612" />
 				<crm:P2_has_type rdf:resource="{$nma-term-ns}educationalSignificance" />
 			</crm:E33_Linguistic_Object>
@@ -209,14 +222,16 @@
 		<xsl:param name="object-iri" />
 		<xsl:for-each select="ProductionPlace">
 			<xsl:variable name="place-iri" select="concat('place/', ProPlaceRef_tab.irn)" />
-			<crm:E7_Activity>
-				<rdfs:label>
-					<xsl:value-of select="ProPlaceType_tab" />
-				</rdfs:label>
-				<crm:P7_took_place_at>
-					<rdf:Description rdf:about="{$place-iri}" />
-				</crm:P7_took_place_at>
-			</crm:E7_Activity>
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>
+						<xsl:value-of select="ProPlaceType_tab" />
+					</rdfs:label>
+					<crm:P7_took_place_at>
+						<rdf:Description rdf:about="{$place-iri}" />
+					</crm:P7_took_place_at>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -228,14 +243,16 @@
 		<xsl:param name="object-iri" />
 		<xsl:for-each select="ProductionParty">
 			<xsl:variable name="party-iri" select="concat('party/', ProPersonRef_tab.irn)" />
-			<crm:E7_Activity>
-				<rdfs:label>
-					<xsl:value-of select="ProPersonType_tab" />
-				</rdfs:label>
-				<crm:P14_carried_out_by>
-					<rdf:Description rdf:about="{$party-iri}" />
-				</crm:P14_carried_out_by>
-			</crm:E7_Activity>
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>
+						<xsl:value-of select="ProPersonType_tab" />
+					</rdfs:label>
+					<crm:P14_carried_out_by>
+						<rdf:Description rdf:about="{$party-iri}" />
+					</crm:P14_carried_out_by>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -243,24 +260,26 @@
 	<xsl:template match="ProductionDates">
 		<xsl:param name="object-iri" />
 		<xsl:for-each select="ProductionDate">
-			<crm:E7_Activity>
-				<rdfs:label>
-					<xsl:value-of select="ProDateType_tab" />
-				</rdfs:label>
-				<crm:P4_has_time-span>
-					<crm:E52_Time-Span>
-						<rdfs:label>
-							<xsl:value-of select="ProDate0" />
-						</rdfs:label>
-						<crm:P82a_begin_of_the_begin>
-							<xsl:value-of select="ProEarliestDate0" />
-						</crm:P82a_begin_of_the_begin>
-						<crm:P82b_end_of_the_end>
-							<xsl:value-of select="ProLatestDate0" />
-						</crm:P82b_end_of_the_end>
-					</crm:E52_Time-Span>
-				</crm:P4_has_time-span>
-			</crm:E7_Activity>
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>
+						<xsl:value-of select="ProDateType_tab" />
+					</rdfs:label>
+					<crm:P4_has_time-span>
+						<crm:E52_Time-Span>
+							<rdfs:label>
+								<xsl:value-of select="ProDate0" />
+							</rdfs:label>
+							<crm:P82a_begin_of_the_begin>
+								<xsl:value-of select="ProEarliestDate0" />
+							</crm:P82a_begin_of_the_begin>
+							<crm:P82b_end_of_the_end>
+								<xsl:value-of select="ProLatestDate0" />
+							</crm:P82b_end_of_the_end>
+						</crm:E52_Time-Span>
+					</crm:P4_has_time-span>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -284,7 +303,7 @@
 		<xsl:call-template name="output-dimension">
 			<xsl:with-param name="object-iri" select="$object-iri" />
 			<xsl:with-param name="type" select="'length'" />
-			<!-- AAT: length -->
+			<!-- AAT 300055645: length -->
 			<xsl:with-param name="aat-type" select="'300055645'" />
 			<xsl:with-param name="value" select="." />
 			<xsl:with-param name="unit-value" select="$unit" />
@@ -298,7 +317,7 @@
 		<xsl:call-template name="output-dimension">
 			<xsl:with-param name="object-iri" select="$object-iri" />
 			<xsl:with-param name="type" select="'height'" />
-			<!-- AAT: height -->
+			<!-- AAT 300055644: height -->
 			<xsl:with-param name="aat-type" select="'300055644'" />
 			<xsl:with-param name="value" select="." />
 			<xsl:with-param name="unit-value" select="$unit" />
@@ -312,7 +331,7 @@
 		<xsl:call-template name="output-dimension">
 			<xsl:with-param name="object-iri" select="$object-iri" />
 			<xsl:with-param name="type" select="'width'" />
-			<!-- AAT: width -->
+			<!-- AAT 300055647: width -->
 			<xsl:with-param name="aat-type" select="'300055647'" />
 			<xsl:with-param name="value" select="." />
 			<xsl:with-param name="unit-value" select="$unit" />
@@ -326,7 +345,7 @@
 		<xsl:call-template name="output-dimension">
 			<xsl:with-param name="object-iri" select="$object-iri" />
 			<xsl:with-param name="type" select="'depth'" />
-			<!-- AAT: depth (size/dimension) -->
+			<!-- AAT 300072633: depth (size/dimension) -->
 			<xsl:with-param name="aat-type" select="'300072633'" />
 			<xsl:with-param name="value" select="." />
 			<xsl:with-param name="unit-value" select="$unit" />
@@ -340,7 +359,7 @@
 		<xsl:call-template name="output-dimension">
 			<xsl:with-param name="object-iri" select="$object-iri" />
 			<xsl:with-param name="type" select="'diameter'" />
-			<!-- AAT: diameter -->
+			<!-- AAT 300055624: diameter -->
 			<xsl:with-param name="aat-type" select="'300055624'" />
 			<xsl:with-param name="value" select="." />
 			<xsl:with-param name="unit-value" select="$unit" />
@@ -354,7 +373,7 @@
 		<xsl:call-template name="output-dimension">
 			<xsl:with-param name="object-iri" select="$object-iri" />
 			<xsl:with-param name="type" select="'weight'" />
-			<!-- AAT: weight (heaviness attribute) -->
+			<!-- AAT 300056240: weight (heaviness attribute) -->
 			<xsl:with-param name="aat-type" select="'300056240'" />
 			<xsl:with-param name="value" select="." />
 			<xsl:with-param name="unit-value" select="$unit" />
@@ -366,6 +385,8 @@
 		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
 		<crm:P138i_has_representation>
 			<crm:E36_Visual_Item rdf:about="{$media-iri}">
+				<!-- TODO: add identified_by for media IRN -->
+				<!-- TODO: add mime type/format -->
 
 				<!-- preview -->
 				<xsl:for-each select="res640px">
@@ -380,10 +401,10 @@
 										<rdf:value>
 											<xsl:value-of select="image_width" />
 										</rdf:value>
-										<!-- AAT: width -->
+										<!-- AAT 300055647: width -->
 										<crm:P2_has_type rdf:resource="{$aat-ns}300055647" />
 										<crm:P91_has_unit>
-											<!-- AAT: pixels -->
+											<!-- AAT 300379612: pixels -->
 											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
 										</crm:P91_has_unit>
 									</crm:E54_Dimension>
@@ -395,10 +416,10 @@
 										<rdf:value>
 											<xsl:value-of select="image_height" />
 										</rdf:value>
-										<!-- AAT: height -->
+										<!-- AAT 300055644: height -->
 										<crm:P2_has_type rdf:resource="{$aat-ns}300055644" />
 										<crm:P91_has_unit>
-											<!-- AAT: pixels -->
+											<!-- AAT 300379612: pixels -->
 											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
 										</crm:P91_has_unit>
 									</crm:E54_Dimension>
@@ -421,10 +442,10 @@
 										<rdf:value>
 											<xsl:value-of select="image_width" />
 										</rdf:value>
-										<!-- AAT: width -->
+										<!-- AAT 300055647: width -->
 										<crm:P2_has_type rdf:resource="{$aat-ns}300055647" />
 										<crm:P91_has_unit>
-											<!-- AAT: pixels -->
+											<!-- AAT 300379612: pixels -->
 											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
 										</crm:P91_has_unit>
 									</crm:E54_Dimension>
@@ -436,10 +457,10 @@
 										<rdf:value>
 											<xsl:value-of select="image_height" />
 										</rdf:value>
-										<!-- AAT: height -->
+										<!-- AAT 300055644: height -->
 										<crm:P2_has_type rdf:resource="{$aat-ns}300055644" />
 										<crm:P91_has_unit>
-											<!-- AAT: pixels -->
+											<!-- AAT 300379612: pixels -->
 											<crm:E58_Measurement_Unit rdf:resource="{$aat-ns}300379612" />
 										</crm:P91_has_unit>
 									</crm:E54_Dimension>
