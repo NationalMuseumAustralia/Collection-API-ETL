@@ -245,12 +245,18 @@
 			<xsl:variable name="party-iri" select="concat('party/', ProPersonRef_tab.irn)" />
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
-					<rdfs:label>
-						<xsl:value-of select="ProPersonType_tab" />
-					</rdfs:label>
-					<crm:P14_carried_out_by>
-						<rdf:Description rdf:about="{$party-iri}" />
-					</crm:P14_carried_out_by>
+					<crm:PC14_carried_out_by>
+						<rdf:Description>
+							<crm:P02_has_range rdf:resource="{$party-iri}" />
+							<crm:P14.1_in_the_role_of>
+								<crm:E5_Type>
+									<rdfs:label>
+										<xsl:value-of select="ProPersonType_tab" />
+									</rdfs:label>
+								</crm:E5_Type>
+							</crm:P14.1_in_the_role_of>
+						</rdf:Description>
+					</crm:PC14_carried_out_by>
 				</crm:E7_Activity>
 			</crm:P9_consists_of>
 		</xsl:for-each>
