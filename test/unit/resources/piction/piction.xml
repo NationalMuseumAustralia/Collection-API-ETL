@@ -1,4 +1,5 @@
 <add>
+<!-- page -->
 <doc>
  <field name="EMu IRN for Media Asset"></field>
  <field name="EMu IRN for Related Objects">21338</field>
@@ -60,19 +61,7 @@
  <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\Working Masters\nma.img-ci20102604-057-wm-vs1_o4.jpg" name="original_4"/>
  <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\Working Masters\nma.img-ci20102604-057-wm-vs1_o5.jpg" name="original_5"/>
 </doc>
-
-<doc>
- <field name="EMu IRN for Related Objects">30431</field>
- <field name="Multimedia ID">MA67852975</field>
- <field name="Photographer">Amanda Crnkovic</field>
- <field name="Title">Mother&#039;s Choice flour packet</field>
- <dataSource type="URLDataSource" baseUrl="\\NMA-ISILON1\DAMS_INGEST\JOBS\WM_67828117\nma-acc-20183042-144-wm.tif" name="thumbnail"/>
- <dataSource type="URLDataSource" baseUrl="E:\piction_clients\nma\temporary\d1540464\nma-acc-20183042-144-wm_w.jpg" name="web"/>
- <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\WM_67828117\nma-acc-20183042-144-wm_o2.jpg" name="original_2"/>
- <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-144-wm_o3.jpg" name="original_3"/>
- <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-144-wm_o4.jpg" name="original_4"/>
- <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-144-wm_o5.jpg" name="original_5"/>
-</doc>
+<!-- photographer, tempdir -->
 <doc>
  <field name="EMu IRN for Related Objects">124567</field>
  <field name="Multimedia ID">MA67853082</field>
@@ -84,6 +73,18 @@
  <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-125-wm_o3.jpg" name="original_3"/>
  <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-125-wm_o4.jpg" name="original_4"/>
  <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-125-wm_o5.jpg" name="original_5"/>
+</doc>
+<doc>
+ <field name="EMu IRN for Related Objects">30431</field>
+ <field name="Multimedia ID">MA67852975</field>
+ <field name="Photographer">Amanda Crnkovic</field>
+ <field name="Title">Mother&#039;s Choice flour packet</field>
+ <dataSource type="URLDataSource" baseUrl="\\NMA-ISILON1\DAMS_INGEST\JOBS\WM_67828117\nma-acc-20183042-144-wm.tif" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="E:\piction_clients\nma\temporary\d1540464\nma-acc-20183042-144-wm_w.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\WM_67828117\nma-acc-20183042-144-wm_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-144-wm_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-144-wm_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-144-wm_o5.jpg" name="original_5"/>
 </doc>
 <doc>
  <field name="EMu IRN for Related Objects">124648</field>

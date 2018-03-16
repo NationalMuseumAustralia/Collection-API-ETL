@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!-- natural feature -->
+ <record>
+  <irn>4143</irn>
+  <SummaryData>Ikymbon River, , , Northern Territory, Australia,</SummaryData>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Northern Territory</LocProvinceStateTerritory_tab>
+  <LocNearestNamedPlace_tab>Ikymbon River</LocNearestNamedPlace_tab>
+  <LocSpecialGeographicUnit_tab>Ikymbon River</LocSpecialGeographicUnit_tab>
+  <LatCentroidLatitude0>15 17  S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>130 34  E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-15.28</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>130.57</LatCentroidLongitudeDec_tab>
+ </record>
+ 

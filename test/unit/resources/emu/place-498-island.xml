@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!-- island -->
+ <record>
+  <irn>498</irn>
+  <SummaryData>, , North Keeling Island, Cocos (Keeling) Islands, Australia,</SummaryData>
+  <LocOcean_tab>Indian Ocean</LocOcean_tab>
+  <LocCountry_tab>Australia</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Cocos (Keeling) Islands</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>North Keeling Island</LocDistrictCountyShire_tab>
+  <LatCentroidLatitude0>12 10 14 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>096 50 30 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-12.1707</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>96.8417</LatCentroidLongitudeDec_tab>
+ </record>
+ 

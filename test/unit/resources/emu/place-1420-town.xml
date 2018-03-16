@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- town Australia with district -->
+<record>
+	<irn>1489</irn>
+	<SummaryData>, Yirrkala, East Arnhem Land, Northern Territory, Australia,
+	</SummaryData>
+	<LocCountry_tab>Australia</LocCountry_tab>
+	<LocProvinceStateTerritory_tab>Northern Territory
+	</LocProvinceStateTerritory_tab>
+	<LocDistrictCountyShire_tab>East Arnhem Land</LocDistrictCountyShire_tab>
+	<LocTownship_tab>Yirrkala</LocTownship_tab>
+	<LatCentroidLatitude0>12 15 10 S</LatCentroidLatitude0>
+	<LatCentroidLongitude0>136 53 30 E</LatCentroidLongitude0>
+	<LatCentroidLatitudeDec_tab>-12.2528</LatCentroidLatitudeDec_tab>
+	<LatCentroidLongitudeDec_tab>136.892</LatCentroidLongitudeDec_tab>
+</record>

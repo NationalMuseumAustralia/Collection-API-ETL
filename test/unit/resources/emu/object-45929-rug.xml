@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- man made object, production, no image -->
+<record>
+ <irn>45929</irn>
+ <TitObjectTitle>Ernabella woollen rug with Walka design</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1991.0024.3872</TitObjectNumber>
+ <TitObjectName>Rugs</TitObjectName>
+ <PhyDescription>Very large rectangular handmade knotted rug, woven wool. Deep pile. Background of natural white, with an abstract linear design in dark brown, burnt orange, yellow &amp; mottled greys.</PhyDescription>
+ <TitCollectionTitle>Aboriginal Arts Board collection no. 2</TitCollectionTitle>
+ <WebReleaseDate>20/09/2016</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>3550</PhyRegistrationLength>
+ <PhyRegistrationWidth>2420</PhyRegistrationWidth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Textile - non specific</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>20/09/2016</AdmDateModified>
+ <ProductionParties>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>8860</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Designer</ProPersonType_tab>
+   <ProPersonNotes_tab>and maker</ProPersonNotes_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>2674</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>3194</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>4646</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>3860</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>3867</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>4023</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Maker</ProPersonType_tab>
+  </ProductionParty>
+ </ProductionParties>
+ <ProductionPlaces>
+  <ProductionPlace>
+   <ProPlaceRef_tab.irn>693</ProPlaceRef_tab.irn>
+   <ProPlaceType_tab>Place made</ProPlaceType_tab>
+  </ProductionPlace>
+ </ProductionPlaces>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>693</AssPlaceRef_tab.irn>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>no</HasEmuImage>
+</record>

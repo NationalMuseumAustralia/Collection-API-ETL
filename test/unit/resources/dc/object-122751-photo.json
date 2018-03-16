@@ -1,0 +1,70 @@
+{
+	"id": 122751,
+	"type": "PhysicalObject",
+	"title": "Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield",
+	"identifier": "1985.0033.0002",
+	"isAggregatedBy": "Ruth Oldfield collection",
+	"extent": {
+		"length": 1020,
+		"width": 820,
+		"depth": 20,
+		"linearUnit": "mm"
+	},
+	"medium": [
+		"Photographic emulsion",
+		"Wood",
+		"Paper"
+	],
+	"production": [
+		{
+			"contributor": [
+				{
+					"id": 6514,
+					"type": "Person",
+					"role": "Photographer"
+				}
+			],
+			"spatial": [
+				{
+					"id": 47,
+					"type": "Place",
+					"role": "Place made"
+				}
+			],
+			"date": [
+				{
+					"type": "Date",
+					"label": "1928-12-14",
+					"role": "Date of production"
+				}
+			]
+		}
+	],
+	"hasVersion": [
+		{
+			"id": 54112,
+			"type": "Media",
+			"format": "image/jpeg",
+			"media": [
+				{
+					"type": "Thumbnail",
+					"extent": {
+						"height": 133,
+						"width": 200,
+						"linearUnit": "pixels"
+					},
+					"location": "54/112/cd_54112.200x200.jpg"
+				},
+				{
+					"type": "Preview",
+					"extent": {
+						"height": 425,
+						"width": 640,
+						"linearUnit": "pixels"
+					},
+					"location": "54/112/cd_54112.640x640.jpg"
+				}
+			]
+		}
+	]
+}

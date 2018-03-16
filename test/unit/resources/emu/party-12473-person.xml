@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!-- person, other name -->
+ <record>
+  <irn>12473</irn>
+  <SummaryData>Turner, Mildred Mary</SummaryData>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Mildred</NamFirst>
+  <NamMiddle>Mary</NamMiddle>
+  <NamLast>Turner</NamLast>
+  <NamFullName>Mildred M. Turner</NamFullName>
+  <NamOtherNames_tab>
+   <NamOtherName>Mildred Mary Raymond</NamOtherName>
+  </NamOtherNames_tab>
+  <NamSex>Female</NamSex>
+ </record>

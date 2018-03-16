@@ -1,0 +1,13 @@
+<!-- photographer, tempdir -->
+<doc>
+ <field name="EMu IRN for Related Objects">124567</field>
+ <field name="Multimedia ID">MA67853082</field>
+ <field name="Photographer">Amanda Crnkovic</field>
+ <field name="Title">Bevel</field>
+ <dataSource type="URLDataSource" baseUrl="\\NMA-ISILON1\DAMS_INGEST\JOBS\WM_67828117\nma-acc-20183042-125-wm.tif" name="thumbnail"/>
+ <dataSource type="URLDataSource" baseUrl="E:\piction_clients\nma\temporary\d1540467\nma-acc-20183042-125-wm_w.jpg" name="web"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\WM_67828117\nma-acc-20183042-125-wm_o2.jpg" name="original_2"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\WM_67828117\nma-acc-20183042-125-wm_o3.jpg" name="original_3"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\WM_67828117\nma-acc-20183042-125-wm_o4.jpg" name="original_4"/>
+ <dataSource type="URLDataSource" baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\WM_67828117\nma-acc-20183042-125-wm_o5.jpg" name="original_5"/>
+</doc>

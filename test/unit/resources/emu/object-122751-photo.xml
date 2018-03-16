@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- photograph, production, image -->
+<record>
+ <irn>122751</irn>
+ <TitObjectTitle>Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>1985.0033.0002</TitObjectNumber>
+ <TitObjectName>Photographs</TitObjectName>
+ <PhyDescription>A black and white photographic enlargement of a cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield.</PhyDescription>
+ <TitCollectionTitle>Ruth Oldfield collection</TitCollectionTitle>
+ <WebReleaseDate>07/06/2007</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <PhyRegistrationLength>1020</PhyRegistrationLength>
+ <PhyRegistrationWidth>820</PhyRegistrationWidth>
+ <PhyRegistrationDepth>20</PhyRegistrationDepth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Photographic emulsion</PhyMaterial>
+  <PhyMaterial>Wood</PhyMaterial>
+  <PhyMaterial>Paper</PhyMaterial>
+ </PhyMaterials_tab>
+ <WebLargeImageReleased>640 only</WebLargeImageReleased>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>05/11/2015</AdmDateModified>
+ <ProductionParties>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>6514</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Photographer</ProPersonType_tab>
+  </ProductionParty>
+  <ProductionParty>
+   <ProPersonRef_tab.irn>80363</ProPersonRef_tab.irn>
+   <ProPersonType_tab>Publisher</ProPersonType_tab>
+  </ProductionParty>
+ </ProductionParties>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>10292</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Cricketer</AssPersonType_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>10310</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Cricketer</AssPersonType_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>12924</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated organisation</AssPersonType_tab>
+  </AssociatedParty>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>12925</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Associated organisation</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <ProductionPlaces>
+  <ProductionPlace>
+   <ProPlaceRef_tab.irn>47</ProPlaceRef_tab.irn>
+   <ProPlaceType_tab>Place made</ProPlaceType_tab>
+  </ProductionPlace>
+ </ProductionPlaces>
+ <AssociatedPlaces>
+  <AssociatedPlace>
+   <AssPlaceRef_tab.irn>1869</AssPlaceRef_tab.irn>
+   <AssPlaceType_tab>Place of event</AssPlaceType_tab>
+  </AssociatedPlace>
+ </AssociatedPlaces>
+ <ProductionDates>
+  <ProductionDate>
+   <ProDate0>14/12/1928</ProDate0>
+   <ProEarliestDate0>14/12/1928</ProEarliestDate0>
+   <ProLatestDate0>20/12/1928</ProLatestDate0>
+   <ProDateType_tab>Date of production</ProDateType_tab>
+  </ProductionDate>
+ </ProductionDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>54112</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>54/112/cd_54112.640x640.jpg</image_path>
+    <image_width>640</image_width>
+    <image_height>425</image_height>
+   </res640px>
+   <res200px>
+    <image_path>54/112/cd_54112.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>133</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>

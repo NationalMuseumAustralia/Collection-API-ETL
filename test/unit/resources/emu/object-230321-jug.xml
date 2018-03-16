@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 2 images, statement of significance -->
+<record>
+ <irn>230321</irn>
+ <TitObjectTitle>Earthenware character jug depicting Prime Minister Joseph Lyons</TitObjectTitle>
+ <TitObjectType>Object</TitObjectType>
+ <TitObjectNumber>2014.0005.0002</TitObjectNumber>
+ <TitObjectName>Character jugs</TitObjectName>
+ <PhyDescription>An earthenware character jug depicting Prime Minister Joseph Lyons. The name 'JOE' is deeply inscribed into the base. There are two other inscriptions, 'John Campbell' and 'G. CUMMING', with another word below the latter which is indecipherable.</PhyDescription>
+ <TitCollectionTitle>Brendan and Janet Lyons collection</TitCollectionTitle>
+ <PhyContentDescription>Designed by Gordon Cummings, made by Campbell's Pottery Works, Tasmania.</PhyContentDescription>
+ <StaNmaSOSPublic>This collection consists of a character jug, with associated mould, featuring a portrait of Australian Prime Minister Joseph Lyons and three personal objects - a brooch, a powder compact and a coin purse - associated with his politician wife, Dame Enid Lyons. The silver glomesh coin purse (1940s) and oval-shaped Opal  and silver brooch were part of Dame Enid's personal collection, while the engraved sterling silver compact was presented during her visit by the City of Edinburgh on 9  August 1935. The gold-coloured earthenware jug was designed by Gordon Cummings and made by Campbell's Pottery Works, however it is unclear whether it is part of the original 1931 or the re-issued 1950s edition.
+
+Joseph Aloysius Lyons (1879-1939) became premier of Tasmania in 1923 and served several portfolios in Federal Government before becoming Prime Minister from 1932 until his death in 1939. He was the first Prime Minister to win three successive elections, the only Tasmanian to have become Prime Minister and only one of two Prime Ministers to have been premiers. Lyons formed the United Australia Party, the precursor of today's Liberal Party, and is regarded as a key political figure of twentieth century Australia. Dame Enid Lyons (1897-1981), wife of Joseph Lyons, was involved in politics throughout her life and made history when she became the first woman elected to the Australian House of Representatives and to the federal Cabinet.</StaNmaSOSPublic>
+ <WebReleaseDate>22/12/2014</WebReleaseDate>
+ <InwardLoan>no</InwardLoan>
+ <WebProject_tab>
+  <WebProject>emuinc</WebProject>
+ </WebProject_tab>
+ <PhyRegistrationHeight>200</PhyRegistrationHeight>
+ <PhyRegistrationWidth>185</PhyRegistrationWidth>
+ <PhyRegistrationDepth>185</PhyRegistrationDepth>
+ <PhyRegistrationUnitLength>mm</PhyRegistrationUnitLength>
+ <PhyMaterials_tab>
+  <PhyMaterial>Ceramic</PhyMaterial>
+ </PhyMaterials_tab>
+ <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
+ <AdmDateModified>27/01/2017</AdmDateModified>
+ <AssociatedParties>
+  <AssociatedParty>
+   <AssPersonRef_tab.irn>3328</AssPersonRef_tab.irn>
+   <AssPersonType_tab>Subject</AssPersonType_tab>
+  </AssociatedParty>
+ </AssociatedParties>
+ <ProductionDates>
+  <ProductionDate>
+   <ProEarliestDate0>1931</ProEarliestDate0>
+  </ProductionDate>
+ </ProductionDates>
+ <OnDisplay>no</OnDisplay>
+ <HasEmuImage>yes</HasEmuImage>
+ <WebMultiMediaRef_tab>
+  <image>
+   <media_irn>133472</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>133/472/IMG_3424.640x640.jpg</image_path>
+    <image_width>640</image_width>
+    <image_height>426</image_height>
+   </res640px>
+   <res200px>
+    <image_path>133/472/IMG_3424.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>133</image_height>
+   </res200px>
+  </image>
+  <image>
+   <media_irn>133481</media_irn>
+   <media_mimeformat>jpeg</media_mimeformat>
+   <media_mimetype>image</media_mimetype>
+   <res640px>
+    <image_path>133/481/IMG_3431.640x640.jpg</image_path>
+    <image_width>640</image_width>
+    <image_height>426</image_height>
+   </res640px>
+   <res200px>
+    <image_path>133/481/IMG_3431.200x200.jpg</image_path>
+    <image_width>200</image_width>
+    <image_height>133</image_height>
+   </res200px>
+  </image>
+ </WebMultiMediaRef_tab>
+</record>
