@@ -55,33 +55,19 @@
 			<!-- COMMON FIELDS -->
 
 			<!-- irn -->
-			<crm:P1_is_identified_by>
-				<crm:E42_Identifier rdf:about="{$object-iri}#repositorynumber">
-					<rdf:value>
-						<xsl:value-of select="irn" />
-					</rdf:value>
-					<!-- AAT 300404621: repository numbers -->
-					<crm:P2_has_type rdf:resource="{$aat-ns}300404621" />
-				</crm:E42_Identifier>
-			</crm:P1_is_identified_by>
+			<xsl:apply-templates select="irn">
+				<xsl:with-param name="object-iri" select="$object-iri" />
+			</xsl:apply-templates>
 
 			<!-- OBJECT FIELDS -->
 
-			<!-- title -->
-			<rdfs:label>
-				<xsl:value-of select="TitObjectTitle" />
-			</rdfs:label>
-
 			<!-- registration number -->
-			<crm:P1_is_identified_by>
-				<crm:E42_Identifier rdf:about="{$object-iri}#referencenumber">
-					<rdf:value>
-						<xsl:value-of select="TitObjectNumber" />
-					</rdf:value>
-					<!-- AAT 300312355: accession numbers -->
-					<crm:P2_has_type rdf:resource="{$aat-ns}300312355" />
-				</crm:E42_Identifier>
-			</crm:P1_is_identified_by>
+			<xsl:apply-templates select="TitObjectNumber">
+				<xsl:with-param name="object-iri" select="$object-iri" />
+			</xsl:apply-templates>
+
+			<!-- title -->
+			<xsl:apply-templates select="TitObjectTitle" />
 
 			<!-- collection -->
 			<xsl:apply-templates select="TitCollectionTitle" />
@@ -138,7 +124,9 @@
 						</rdf:value>
 						<!-- AAT 300404670: preferred terms -->
 						<crm:P2_has_type rdf:resource="{$aat-ns}300404670" />
-						<xsl:apply-templates select="NamFirst | NamMiddle | NamLast" />
+						<!-- AAT 300404688: full names (personal names) -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300404688" />
+						<xsl:apply-templates select="NamFirst | NamMiddle | NamLast | NamOtherNames_tab" />
 					</la:Name>
 				</crm:P1_is_identified_by>
 			</xsl:if>
@@ -151,6 +139,49 @@
 				</rdfs:label>
 			</xsl:if>
 
+			<!-- gender -->
+			<xsl:apply-templates select="NamSex" />
+
+			<!-- PLACE -->
+
+			<!-- formatted label -->
+			<xsl:if test="$record-type='site'">
+				<xsl:variable name="concatenatedLabel">
+					<xsl:apply-templates select="LocSpecialGeographicUnit_tab"
+						mode="label" />
+					<xsl:apply-templates select="LocNearestNamedPlace_tab"
+						mode="label" />
+					<xsl:apply-templates select="LocTownship_tab" mode="label" />
+					<xsl:apply-templates select="LocDistrictCountyShire_tab"
+						mode="label" />
+					<xsl:apply-templates select="LocProvinceStateTerritory_tab"
+						mode="label" />
+					<xsl:apply-templates select="LocCountry_tab" mode="label" />
+					<xsl:apply-templates select="LocContinent_tab" mode="label" />
+					<xsl:apply-templates select="LocOcean_tab" mode="label" />
+				</xsl:variable>
+				<rdfs:label>
+					<!-- remove trailing ', ' -->
+					<xsl:value-of
+						select="substring($concatenatedLabel, 1, string-length($concatenatedLabel)-2)" />
+				</rdfs:label>
+			</xsl:if>
+
+			<!-- geo coordinates -->
+			<xsl:if test="LatCentroidLatitudeDec_tab | LatCentroidLongitudeDec_tab">
+				<crm:P168_place_is_defined_by rdf:resource="{$object-iri}#location">
+					<crm:E94_Space_Primitive>
+						<rdf:value>
+							<xsl:value-of select="LatCentroidLatitudeDec_tab" />
+							<xsl:text>,</xsl:text>
+							<xsl:value-of select="LatCentroidLongitudeDec_tab" />
+						</rdf:value>
+						<!-- AAT 300380194: geospatial data -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300380194" />
+					</crm:E94_Space_Primitive>
+				</crm:P168_place_is_defined_by>
+			</xsl:if>
+
 		</rdf:Description>
 	</xsl:template>
 
@@ -159,6 +190,44 @@
 	</xsl:template>
 
 	<!-- ############### FIELD PROCESSING TEMPLATES ############ -->
+
+	<!-- COMMON -->
+
+	<!-- irn -->
+	<xsl:template match="irn">
+		<xsl:param name="object-iri" />
+		<crm:P1_is_identified_by>
+			<crm:E42_Identifier rdf:about="{$object-iri}#repositorynumber">
+				<rdf:value>
+					<xsl:value-of select="." />
+				</rdf:value>
+				<!-- AAT 300404621: repository numbers -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300404621" />
+			</crm:E42_Identifier>
+		</crm:P1_is_identified_by>
+	</xsl:template>
+
+	<!-- OBJECT -->
+
+	<!-- registration number -->
+	<xsl:template match="TitObjectNumber">
+		<xsl:param name="object-iri" />
+		<crm:P1_is_identified_by>
+			<crm:E42_Identifier rdf:about="{$object-iri}#referencenumber">
+				<rdf:value>
+					<xsl:value-of select="." />
+				</rdf:value>
+				<!-- AAT 300312355: accession numbers -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300312355" />
+			</crm:E42_Identifier>
+		</crm:P1_is_identified_by>
+	</xsl:template>
+
+	<xsl:template match="TitObjectTitle">
+		<rdf:value>
+			<xsl:value-of select="." />
+		</rdf:value>
+	</xsl:template>
 
 	<!-- collection -->
 	<xsl:template match="TitCollectionTitle">
@@ -483,6 +552,8 @@
 		</crm:P138i_has_representation>
 	</xsl:template>
 
+	<!-- PARTY -->
+
 	<!-- first names -->
 	<xsl:template match="NamFirst">
 		<crm:P106_is_composed_of>
@@ -522,6 +593,73 @@
 		</crm:P106_is_composed_of>
 	</xsl:template>
 
+	<!-- other names -->
+	<!-- TODO: are other names part of full name or a separate entity? -->
+	<xsl:template match="NamOtherNames_tab">
+		<xsl:for-each select="NamOtherName">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>
+						<xsl:value-of select="." />
+					</rdf:value>
+					<!-- AAT 300264273: nonpreferred terms -->
+					<crm:P2_has_type rdf:resource="{$aat-ns}300264273" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</xsl:for-each>
+	</xsl:template>
+
+	<!-- gender -->
+	<xsl:template match="NamSex">
+		<xsl:choose>
+			<xsl:when test=".='Female'">
+				<crm:P107i_is_current_or_former_member_of>
+					<crm:E74_Group>
+						<rdfs:label>
+							<xsl:text>female</xsl:text>
+						</rdfs:label>
+						<!-- AAT 300055147: sex role -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300055147" />
+						<!-- AAT 300189557"]: female -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300189557" />
+					</crm:E74_Group>
+				</crm:P107i_is_current_or_former_member_of>
+			</xsl:when>
+			<xsl:when test=".='Male'">
+				<crm:P107i_is_current_or_former_member_of>
+					<crm:E74_Group>
+						<rdfs:label>
+							<xsl:text>male</xsl:text>
+						</rdfs:label>
+						<!-- AAT 300055147: sex role -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300055147" />
+						<!-- AAT 300189559"]: male -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300189559" />
+					</crm:E74_Group>
+				</crm:P107i_is_current_or_former_member_of>
+			</xsl:when>
+			<xsl:otherwise>
+				<crm:P107i_is_current_or_former_member_of>
+					<crm:E74_Group>
+						<rdfs:label>
+							<xsl:value-of select="." />
+						</rdfs:label>
+						<!-- AAT 300055147: sex role -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300055147" />
+					</crm:E74_Group>
+				</crm:P107i_is_current_or_former_member_of>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<!-- PLACE LABELS -->
+
+	<xsl:template
+		match="LocSpecialGeographicUnit_tab | LocNearestNamedPlace_tab | LocTownship_tab | LocDistrictCountyShire_tab | LocProvinceStateTerritory_tab | LocCountry_tab | LocContinent_tab | LocOcean_tab"
+		mode="label">
+		<xsl:value-of select="." />
+		<xsl:text>, </xsl:text>
+	</xsl:template>
 
 	<!-- ############### NAMED TEMPLATES ############ -->
 
