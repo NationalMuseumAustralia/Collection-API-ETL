@@ -31,7 +31,7 @@
 					"role": "Place made"
 				}
 			],
-			"date": [
+			"temporal": [
 				{
 					"type": "Date",
 					"label": "1928-12-14",

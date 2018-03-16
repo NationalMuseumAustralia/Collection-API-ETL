@@ -1,6 +1,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	version="3.0" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+	version="3.0" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:la="https://linked.art/ns/terms/"
+	xmlns:aat="http://vocab.getty.edu/aat/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
 	<!-- record type of the input file, e.g. "object", "site", "party", or "narrative" -->
 	<xsl:param name="record-type" select="'object'" />
@@ -41,7 +42,7 @@
 				<!-- parties -->
 				<xsl:otherwise>
 					<xsl:choose>
-						<xsl:when test="NamPartyType = 'person'">
+						<xsl:when test="NamPartyType = 'Person'">
 							<rdf:type rdf:resource="{$crm-ns}E21_Person" />
 						</xsl:when>
 						<xsl:otherwise>
@@ -51,12 +52,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 
-			<!-- title -->
-			<rdfs:label>
-				<xsl:value-of select="TitObjectTitle" />
-			</rdfs:label>
-
-			<!-- IDs -->
+			<!-- COMMON FIELDS -->
 
 			<!-- irn -->
 			<crm:P1_is_identified_by>
@@ -68,6 +64,13 @@
 					<crm:P2_has_type rdf:resource="{$aat-ns}300404621" />
 				</crm:E42_Identifier>
 			</crm:P1_is_identified_by>
+
+			<!-- OBJECT FIELDS -->
+
+			<!-- title -->
+			<rdfs:label>
+				<xsl:value-of select="TitObjectTitle" />
+			</rdfs:label>
 
 			<!-- registration number -->
 			<crm:P1_is_identified_by>
@@ -123,6 +126,31 @@
 			<!-- media -->
 			<xsl:apply-templates select="WebMultiMediaRef_tab/image" />
 
+			<!-- PARTY -->
+
+			<!-- person names -->
+			<xsl:if test="NamFullName">
+				<xsl:variable name="party-iri" select="concat('party/', irn)" />
+				<crm:P1_is_identified_by>
+					<la:Name rdf:about="{$party-iri}#">
+						<rdf:value>
+							<xsl:value-of select="NamFullName" />
+						</rdf:value>
+						<!-- AAT 300404670: preferred terms -->
+						<crm:P2_has_type rdf:resource="{$aat-ns}300404670" />
+						<xsl:apply-templates select="NamFirst | NamMiddle | NamLast" />
+					</la:Name>
+				</crm:P1_is_identified_by>
+			</xsl:if>
+
+			<!-- organisation names -->
+			<xsl:if test="NamOrganisation">
+				<xsl:variable name="party-iri" select="concat('party/', irn)" />
+				<rdfs:label>
+					<xsl:value-of select="NamOrganisation" />
+				</rdfs:label>
+			</xsl:if>
+
 		</rdf:Description>
 	</xsl:template>
 
@@ -155,7 +183,6 @@
 			</rdf:Description>
 		</crm:P2_has_type>
 	</xsl:template>
-
 
 	<!-- physical description -->
 	<xsl:template match="PhyDescription">
@@ -455,6 +482,46 @@
 			</crm:E36_Visual_Item>
 		</crm:P138i_has_representation>
 	</xsl:template>
+
+	<!-- first names -->
+	<xsl:template match="NamFirst">
+		<crm:P106_is_composed_of>
+			<la:Name>
+				<rdf:value>
+					<xsl:value-of select="." />
+				</rdf:value>
+				<!-- AAT 300404651: first names -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300404651" />
+			</la:Name>
+		</crm:P106_is_composed_of>
+	</xsl:template>
+
+	<!-- middle names -->
+	<xsl:template match="NamMiddle">
+		<crm:P106_is_composed_of>
+			<la:Name>
+				<rdf:value>
+					<xsl:value-of select="." />
+				</rdf:value>
+				<!-- AAT 300404654: middle names -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300404654" />
+			</la:Name>
+		</crm:P106_is_composed_of>
+	</xsl:template>
+
+	<!-- last names -->
+	<xsl:template match="NamLast">
+		<crm:P106_is_composed_of>
+			<la:Name>
+				<rdf:value>
+					<xsl:value-of select="." />
+				</rdf:value>
+				<!-- AAT 300404652: last names -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300404652" />
+			</la:Name>
+		</crm:P106_is_composed_of>
+	</xsl:template>
+
 
 	<!-- ############### NAMED TEMPLATES ############ -->
 
