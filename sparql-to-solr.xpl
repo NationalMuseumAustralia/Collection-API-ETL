@@ -22,7 +22,10 @@
 <![CDATA[
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 select ?resource
-where {?resource a crm:E19_Physical_Object}	
+where {
+	?resource a crm:E19_Physical_Object
+# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
+}	
 ]]>
 				</query>
 			</p:inline>
@@ -46,26 +49,46 @@ where {?resource a crm:E19_Physical_Object}
 				<p:inline>
 					<query>
 <![CDATA[
-CONSTRUCT {
-	«resource-uri» ?resourceProperty ?resourcePropertyValue.
-	?image ?imageProperty ?imagePropertyValue.
-	?person ?personProperty ?personPropertyValue.
-	?place ?placeProperty ?placePropertyValue.
-}
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+DESCRIBE «resource-uri» ?resource
 WHERE {
-	«resource-uri» ?resourceProperty ?resourcePropertyValue.
-	OPTIONAL {
-		?image <tag:conaltuohy.com,2018:nma/piction/EMu-IRN-for-Related-Objects> «resource-uri».
-		?image ?imageProperty ?imagePropertyValue.	
-	}
-	OPTIONAL {
-		«resource-uri» <tag:conaltuohy.com,2018:nma/emu/ProPersonRef_tab.irn> ?person.
-		?person ?personProperty ?personPropertyValue
-	}
-	OPTIONAL {
-		«resource-uri» <tag:conaltuohy.com,2018:nma/emu/AssPlaceRef_tab.irn> ?place.
-		?place ?placeProperty ?placePropertyValue
-	}
+	«resource-uri»
+	# the object's type
+	crm:P2_has_type | 
+	# the object's identifiers, and their types
+	crm:P1_is_identified_by | 
+	crm:P1_is_identified_by/crm:P2_has_type | 
+	# the object's materials, and their types
+	crm:P45_consists_of | 
+	crm:P45_consists_of/crm:P2_has_type |
+	# the object's container, and its type
+	crm:P106i_forms_part_of | 
+	crm:P106i_forms_part_of/crm:P2_has_type | 
+	# textual descriptions of the object, and their types
+	crm:P129i_is_subject_of |
+	crm:P129i_is_subject_of/crm:P2_has_type |
+	# the production of the object, the sub-activities that made up that production, 
+	# the parties carrying out those activities, and the role they played,
+	# and the locations and dates of those activities
+	crm:P108i_was_produced_by |
+	crm:P108i_was_produced_by/crm:P9_consists_of |
+	crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by |
+	crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by/crm:P14.1_in_the_role_of |
+	crm:P108i_was_produced_by/crm:P9_consists_of/crm:P7_took_place_at |
+	crm:P108i_was_produced_by/crm:P9_consists_of/crm:P4_has_time-span | 
+	# the dimensions of the object, the type of the dimensions, and their measurement unit
+	crm:P43_has_dimension |
+	crm:P43_has_dimension/crm:P2_has_type |
+	crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
+	# the visual items that depict the object, 
+	# and the various derivative representations of that item, 
+	# along with their dimensions, and the types and measurement units of the dimensions
+	crm:P138i_has_representation |
+	crm:P138i_has_representation/crm:P138i_has_representation |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit
+	?resource
 }
 ]]>
 					</query>
@@ -96,12 +119,12 @@ WHERE {
 		<p:sink/>
 		<!--
 		<p:store href="/tmp/solr-response.xml" indent="true"/>
+		-->
 		<p:store href="/tmp/description.xml" indent="true">
 			<p:input port="source">
 				<p:pipe step="resource-description" port="result"/>
 			</p:input>
 		</p:store>
-		-->
 	</p:for-each>
 	
 	<p:declare-step type="nma:sparql-query" name="sparql-query">
