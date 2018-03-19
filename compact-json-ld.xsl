@@ -100,7 +100,7 @@ compact a JSON-LD document according to a context
 	<xsl:template match="/">
 		<!-- https://json-ld.org/spec/latest/json-ld-api/#overview-4 -->
 		<xsl:variable name="compact-json-ld-in-xml">
-			<xsl:apply-templates/>
+			<xsl:apply-templates mode="compact"/>
 		</xsl:variable>
 		<xsl:comment>compact json-ld as xml</xsl:comment>
 		<xsl:copy-of select="$compact-json-ld-in-xml"/>
@@ -119,7 +119,7 @@ compact a JSON-LD document according to a context
 		-->
 	</xsl:template>
 	
-	<xsl:template match="f:map">
+	<xsl:template match="f:map" mode="compact">
 		<!-- compact a map ("dictionary") -->
 		<!-- 
 		Otherwise element is a dictionary. The value of each key in element is compacted recursively. Some of the keys will be compacted, using the IRI Compaction algorithm, to terms or compact IRIs and others will be compacted from keywords to keyword aliases or simply left unchanged because they do not have definitions in the context. Values will be converted to compacted form via the Value Compaction algorithm. Some data will be reshaped based on container mapping specified in the context such as @index or @language maps.
@@ -132,12 +132,24 @@ compact a JSON-LD document according to a context
 			<xsl:if test="$compact-key">
 				<xsl:attribute name="key" select="$compact-key"/>
 			</xsl:if>
-			<xsl:apply-templates/>
+			<xsl:apply-templates mode="compact"/>
+		</xsl:copy>
+	</xsl:template>
+	
+	<xsl:template match="f:array" mode="compact">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<xsl:variable name="key" select="@key"/>
+			<xsl:variable name="compact-key" select="$inverse-context/f:map/f:map[@key=$key]/f:map/f:map[@key='@any']/f:string[@key='@none']"/>
+			<xsl:if test="$compact-key">
+				<xsl:attribute name="key" select="$compact-key"/>
+			</xsl:if>
+			<xsl:apply-templates mode="compact"/>
 		</xsl:copy>
 	</xsl:template>
 	
 	<!-- hack job on f:string - TODO follow compaction rules properly -->
-	<xsl:template match="f:string">
+	<xsl:template match="f:string" mode="compact">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
 			<xsl:variable name="key" select="@key"/>
@@ -151,10 +163,10 @@ compact a JSON-LD document according to a context
 		</xsl:copy>
 	</xsl:template>
 	
-	<xsl:template match="*">
+	<xsl:template match="*" mode="compact">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
-			<xsl:apply-templates/>
+			<xsl:apply-templates mode="compact"/>
 		</xsl:copy>
 	</xsl:template>
 	
