@@ -7,7 +7,7 @@
 	<xsl:param name="record-type" select="'object'" />
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
 
-	<xsl:variable name="nma-term-ns" select="'http://nma.tepapa.gov.au/term/'" />
+	<xsl:variable name="nma-term-ns" select="concat($base-uri, 'term/')" />
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
 	<xsl:variable name="aat-ns" select="'http://vocab.getty.edu/aat/'" />
 	<xsl:variable name="ore-ns" select="'http://www.openarchives.org/ore/terms/'" />
@@ -317,7 +317,7 @@
 	<xsl:template match="ProductionPlaces">
 		<xsl:param name="object-iri" />
 		<xsl:for-each select="ProductionPlace">
-			<xsl:variable name="place-iri" select="concat('place/', ProPlaceRef_tab.irn)" />
+			<xsl:variable name="place-iri" select="concat('place/', ProPlaceRef_tab.irn, '#')" />
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
 					<rdfs:label>
@@ -338,7 +338,7 @@
 	<xsl:template match="ProductionParties">
 		<xsl:param name="object-iri" />
 		<xsl:for-each select="ProductionParty">
-			<xsl:variable name="party-iri" select="concat('party/', ProPersonRef_tab.irn)" />
+			<xsl:variable name="party-iri" select="concat('party/', ProPersonRef_tab.irn, '#')" />
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
 					<crm:PC14_carried_out_by>
