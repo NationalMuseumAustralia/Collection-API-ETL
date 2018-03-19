@@ -13,12 +13,19 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
 		<xsl:copy-of select="path:forward($root-resource, $path)"/>
 	</xsl:function>
-	
+
+	<!-- Traverses trix triples, starting from the specified 'from' IRI, and following 
+		the specified 'path' sequence of IRI predicates forwards. Returns the value at the 
+		end of traversing the specified path. -->
+	<!-- Single layer blank nodes and wildcard nodes are automatically traversed over 
+		so do not include them in the path, e.g. path 'A,Z' will traverse over both A--B--Z 
+		and A--C--Z, but not A--M--N--Z. -->
 	<xsl:function name="path:forward">
 		<xsl:param name="from"/><!-- a URI identifying the start of the path to traverse -->
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
-		<xsl:variable name="step" select="$path[1]"/><!-- the next predicate to follow -->
-		<xsl:variable name="step-result" select="$graph/trix:triple[trix:uri[1]/text()=$from and trix:uri[2]/text()=$path]/*[3]/text()"/><!-- result of following that predicate -->
+		<xsl:variable name="step" select="path:expandNamespace($path[1])"/><!-- the next predicate to follow -->
+		<xsl:variable name="step-result" select="$graph/trix:triple[trix:*[1]/text()=$from and trix:*[2]/text()=$step]/*[3]/text()"/><!-- result of following that predicate -->
+
 		<xsl:choose>
 			<xsl:when test="count($path) = 1">
 				<xsl:copy-of select="$step-result"/>
@@ -38,8 +45,8 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 	<xsl:function name="path:backward">
 		<xsl:param name="from"/><!-- a URI identifying the start of the path to traverse -->
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
-		<xsl:variable name="step" select="$path[1]"/><!-- the next predicate to follow -->
-		<xsl:variable name="step-result" select="$graph/trix:triple[uri[3]/text()=$from and trix:uri[2]/text()=$path]/trix:uri[1]/text()"/><!-- result of following that predicate -->
+		<xsl:variable name="step" select="path:expandNamespace($path[1])"/><!-- the next predicate to follow -->
+		<xsl:variable name="step-result" select="$graph/trix:triple[*[3]/text()=$from and trix:*[2]/text()=$step]/trix:*[1]/text()"/><!-- result of following that predicate -->
 		<xsl:choose>
 			<xsl:when test="count($path) = 1">
 				<xsl:copy-of select="$step-result"/>
@@ -50,5 +57,13 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:function>	
+
+	<xsl:function name="path:expandNamespace">
+		<xsl:param name="iri"/>
+		<xsl:variable name="iri-1" select="replace($iri, 'rdf:', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')" />
+		<xsl:variable name="iri-2" select="replace($iri-1, 'rdfs:', 'http://www.w3.org/2000/01/rdf-schema#')" />
+		<xsl:variable name="iri-3" select="replace($iri-2, 'crm:', 'http://www.cidoc-crm.org/cidoc-crm/')" />
+		<xsl:value-of select="$iri-3" />
+	</xsl:function>
 
 </xsl:stylesheet>
