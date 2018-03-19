@@ -80,11 +80,14 @@ WHERE {
 	crm:P43_has_dimension |
 	crm:P43_has_dimension/crm:P2_has_type |
 	crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
-	# the visual items that depict the object, 
-	# and the various derivative representations of that item, 
+	# the visual items that depict the object, and the creation of those images, and the photographers
+	# and the various derivative representations of that item, and their types (Piction images are typed)
 	# along with their dimensions, and the types and measurement units of the dimensions
 	crm:P138i_has_representation |
+	crm:P138i_has_representation/crm:P94i_was_created_by |
+	crm:P138i_has_representation/crm:P94i_was_created_by/crm:P14_carried_out_by |
 	crm:P138i_has_representation/crm:P138i_has_representation |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P2_has_type |
 	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension |
 	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type |
 	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit
