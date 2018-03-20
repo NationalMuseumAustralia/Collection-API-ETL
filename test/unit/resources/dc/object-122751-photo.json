@@ -3,39 +3,81 @@
 	"type": "PhysicalObject",
 	"title": "Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield",
 	"identifier": "1985.0033.0002",
-	"isAggregatedBy": "Ruth Oldfield collection",
-	"extent": {
-		"length": 1020,
-		"width": 820,
-		"depth": 20,
-		"linearUnit": "mm"
-	},
+	"contributor": [
+		{
+			"id": 6514,
+			"type": "Person",
+			"title": "Mr Herbert Fishwick",
+			"role": "Photographer"
+		},
+		{
+			"id": 80363,
+			"type": "Organization",
+			"title": "Sydney Mail",
+			"role": "Publisher"
+		}
+	],
+	"subject": [
+		"Photographs"
+	],	
+	"spatial": [
+		{
+			"id": 47,
+			"type": "Place",
+			"title": "Sydney, New South Wales, Australia",
+			"role": "Place made"
+		}
+	],
+	"temporal": [
+		{
+			"type": "Date",
+			"title": "1928-12-14",
+			"dateEarliest": "1928-12-14",
+			"dateLatest": "1928-12-20",
+			"role": "Date of production"
+		}
+	],
+	"description": "A black and white photographic enlargement of a cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield.",
 	"medium": [
 		"Photographic emulsion",
 		"Wood",
 		"Paper"
 	],
-	"production": [
+	"extent": {
+		"length": 1020,
+		"width": 820,
+		"depth": 20,
+		"unitText": "mm"
+	},
+	"isAggregatedBy": "Ruth Oldfield collection",
+	"related": [
 		{
 			"contributor": [
 				{
-					"id": 6514,
+					"id": 10292,
 					"type": "Person",
-					"role": "Photographer"
+					"title": "Mr William 'Bert' A. Oldfield",
+					"role": "Cricketer"
+				},
+				{
+					"id": 12924,
+					"type": "Organization",
+					"title": "Australian Cricket Team",
+					"role": "Associated organisation"
+				},
+				{
+					"id": 12925,
+					"type": "Organization",
+					"title": "English Cricket Team",
+					"role": "Associated organisation"
 				}
 			],
 			"spatial": [
 				{
-					"id": 47,
+					"id": 1869,
 					"type": "Place",
-					"role": "Place made"
-				}
-			],
-			"temporal": [
-				{
-					"type": "Date",
-					"label": "1928-12-14",
-					"role": "Date of production"
+					"title": "Sydney Cricket Ground, Moore Park, Sydney, New South Wales, Australia",
+					"role": "Place of event"
 				}
 			]
 		}
@@ -43,28 +85,35 @@
 	"hasVersion": [
 		{
 			"id": 54112,
-			"type": "Media",
+			"type": "StillImage",
 			"format": "image/jpeg",
-			"media": [
+			"hasVersion": [
 				{
-					"type": "Thumbnail",
+					"type": "StillImage",
+					"role": "Thumbnail",
 					"extent": {
 						"height": 133,
 						"width": 200,
-						"linearUnit": "pixels"
+						"unitText": "pixels"
 					},
-					"location": "54/112/cd_54112.200x200.jpg"
+					"identifier": "54/112/cd_54112.200x200.jpg"
 				},
 				{
-					"type": "Preview",
+					"type": "StillImage",
+					"role": "Preview",
 					"extent": {
 						"height": 425,
 						"width": 640,
-						"linearUnit": "pixels"
+						"unitText": "pixels"
 					},
-					"location": "54/112/cd_54112.640x640.jpg"
+					"identifier": "54/112/cd_54112.640x640.jpg"
 				}
 			]
 		}
-	]
+	],
+	"_meta": {
+		"modified": "2015-11-05",
+		"available": "2007-06-07",
+		"source": "http://collectionsearch.nma.gov.au/object/122751"
+	}
 }
