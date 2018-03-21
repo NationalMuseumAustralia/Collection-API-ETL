@@ -1,22 +1,22 @@
 <!-- local vocabularies; especially labels for locally-defined types and a cache of certain locally-used AAT types -->
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <!-- local types -->
-	<crm:E55_Type rdf:about="#thumbnail">
+	<crm:E55_Type rdf:about="thumbnail">
 		<rdfs:label>thumbnail image</rdfs:label>
 	</crm:E55_Type>
-	<crm:E55_Type rdf:about="#web">
+	<crm:E55_Type rdf:about="web">
 		<rdfs:label>web image</rdfs:label>
 	</crm:E55_Type>
-	<crm:E55_Type rdf:about="#physicalDescription">
+	<crm:E55_Type rdf:about="physicalDescription">
 		<rdfs:label>physical description</rdfs:label>
 	</crm:E55_Type>
-	<crm:E55_Type rdf:about="#contentDescription">
+	<crm:E55_Type rdf:about="contentDescription">
 		<rdfs:label>description</rdfs:label>
 	</crm:E55_Type>
-	<crm:E55_Type rdf:about="#significanceStatement">
+	<crm:E55_Type rdf:about="significanceStatement">
 		<rdfs:label>significance</rdfs:label>
 	</crm:E55_Type>
-	<crm:E55_Type rdf:about="#educationalSignificance">
+	<crm:E55_Type rdf:about="educationalSignificance">
 		<rdfs:label>educational significance</rdfs:label>
 	</crm:E55_Type>	
 	<!-- TODO what are the other image types? -->

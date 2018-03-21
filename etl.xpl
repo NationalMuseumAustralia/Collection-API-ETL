@@ -78,7 +78,7 @@
 		<p:load href="vocabulary.rdf" name="raw-vocabulary"/>
 		<cx:message message="Loading local RDF vocabularies into SPARQL store..."/>
 		<p:add-attribute attribute-name="xml:base" match="/*" name="localised-vocabulary">
-			<p:with-option name="attribute-value" select="concat('http://', $hostname, '/xproc-z/term')"/>
+			<p:with-option name="attribute-value" select="concat('http://', $hostname, '/xproc-z/term/')"/>
 		</p:add-attribute>
 
 		<nma:store-graph dataset="public">
