@@ -1,63 +1,84 @@
 <!-- local vocabularies; especially labels for locally-defined types and a cache of certain locally-used AAT types -->
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <!-- local types -->
-	<crm:E55_Type rdf:about="#thumbnail">
-		<rdf:label>Thumbnail image</rdf:label>
+	<crm:E55_Type rdf:about="thumbnail">
+		<rdfs:label>thumbnail image</rdfs:label>
 	</crm:E55_Type>
-	<crm:E55_Type rdf:about="#web">
-		<rdf:label>Web image</rdf:label>
+	<crm:E55_Type rdf:about="web">
+		<rdfs:label>web image</rdfs:label>
 	</crm:E55_Type>
+	<crm:E55_Type rdf:about="physicalDescription">
+		<rdfs:label>physical description</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="contentDescription">
+		<rdfs:label>description</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="significanceStatement">
+		<rdfs:label>significance</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="educationalSignificance">
+		<rdfs:label>educational significance</rdfs:label>
+	</crm:E55_Type>	
 	<!-- TODO what are the other image types? -->
 	<!-- AAT defined types -->
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404670">
-		<rdf:label>preferred term</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404688">
-		<rdf:label>full name (personal name)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300380194">
-		<rdf:label>geospatial data</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404621">
-		<rdf:label>repository number</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300312355">
-		<rdf:label>accession number</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300025976">
-		<rdf:label>collection (object grouping)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780">
-		<rdf:label>description (document) </rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300379612">
-		<rdf:label>significance assessment (survey)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300054766">
-		<rdf:label>exhibition (event)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300075467">
-		<rdf:label>thumbnail</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404651">
-		<rdf:label>first name</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404654">
-		<rdf:label>middle name</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404652">
-		<rdf:label>last name</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264273">
-		<rdf:label>nonpreferred term</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147">
-		<rdf:label>sex role</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189557">
-		<rdf:label>female</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189559">
-		<rdf:label>male</rdf:label>
-	</crm:P2_has_type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404670">
+		<rdfs:label>preferred term</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404688">
+		<rdfs:label>full name (personal name)</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300380194">
+		<rdfs:label>geospatial data</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404621">
+		<rdfs:label>repository number</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300312355">
+		<rdfs:label>accession number</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300025976">
+		<rdfs:label>collection (object grouping)</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300411780">
+		<rdfs:label>description (document) </rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300379612">
+		<rdfs:label>significance assessment (survey)</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300054766">
+		<rdfs:label>exhibition (event)</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300075467">
+		<rdfs:label>thumbnail</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404651">
+		<rdfs:label>first name</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404654">
+		<rdfs:label>middle name</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404652">
+		<rdfs:label>last name</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300264273">
+		<rdfs:label>nonpreferred term</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300055147">
+		<rdfs:label>sex role</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300189557">
+		<rdfs:label>female</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300189559">
+		<rdfs:label>male</rdfs:label>
+	</crm:E55_Type>	
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300379612">
+		<rdfs:label>pixels</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300055647">
+		<rdfs:label>width</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300055644">
+		<rdfs:label>height</rdfs:label>
+	</crm:E55_Type>	
 </rdf:RDF>

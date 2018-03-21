@@ -19,6 +19,8 @@ if [[ -z "$1" ]]; then
 else
     HOSTNAME="$1"
 fi
+mv /etc/hostname /etc/hostname.original
+echo "$HOSTNAME" > /etc/hostname
 hostname $HOSTNAME
 echo -e "127.0.0.1 localhost $HOSTNAME nma\n\n$(cat /etc/hosts)" > /etc/hosts
 #
@@ -40,6 +42,7 @@ ln -s $CONFIG_DIR/apache/000-default.conf /etc/apache2/sites-available/
 #
 echo =========== Installing tomcat
 apt install tomcat8 -y
+mv /etc/default/tomcat8 /etc/default/tomcat8.original 
 ln -s $CONFIG_DIR/tomcat/tomcat8 /etc/default/
 #
 # SOLR
@@ -90,6 +93,9 @@ cd $INSTALL_DIR
 wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/1.0c/xproc-z.war -O xproc-z.war
 mv xproc-z.war /var/lib/tomcat8/webapps/
 ln -s $CONFIG_DIR/tomcat/xproc-z.xml /var/lib/tomcat8/conf/Catalina/localhost/
+mkdir /var/log/NMA-API-ETL
+mkdir /data
+chown ubuntu:ubuntu /data
 #
 # XPROC-Z (API SHIM)
 #

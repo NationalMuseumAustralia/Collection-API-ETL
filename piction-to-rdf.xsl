@@ -5,7 +5,7 @@
 	xmlns:dcterms="http://purl.org/dc/terms/">
 	
 	<xsl:param name="base-uri"/><!-- e.g. "http://api.nma.gov.au/" -->
-	<xsl:variable name="nma-term-ns" select="concat($base-uri, 'term#')" />
+	<xsl:variable name="nma-term-ns" select="concat($base-uri, 'term/')" />
 	
 	<!-- root element is <doc> containing only <field> and <dataSource> children -->
 	<!-- field elements have @name attributes:

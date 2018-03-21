@@ -355,11 +355,11 @@
 						<rdf:Description>
 							<crm:P02_has_range rdf:resource="{$party-iri}" />
 							<crm:P14.1_in_the_role_of>
-								<crm:E5_Type>
+								<crm:E55_Type>
 									<rdfs:label>
 										<xsl:value-of select="ProPersonType_tab" />
 									</rdfs:label>
-								</crm:E5_Type>
+								</crm:E55_Type>
 							</crm:P14.1_in_the_role_of>
 						</rdf:Description>
 					</crm:PC14_carried_out_by>
