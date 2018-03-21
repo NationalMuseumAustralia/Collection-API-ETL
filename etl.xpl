@@ -49,12 +49,15 @@
 		</nma:load-vocabulary>
 		
 		<!-- process Piction image metadata -->
+		<!--
 		<p:load href="/data/solr_prod1.xml"/>
 		<nma:process-data record-type="image" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
+		-->
 	
 		<!-- process EMu objects, sites, parties, and narratives -->
+		<!--
 		<p:load href="/data/emu_objects_21-02-2018_80454.xml"/>
 		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
@@ -71,6 +74,7 @@
 		<nma:process-data record-type="party" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
+		-->
 	</p:group>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
