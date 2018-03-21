@@ -2,11 +2,23 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <!-- local types -->
 	<crm:E55_Type rdf:about="#thumbnail">
-		<rdfs:label>Thumbnail image</rdfs:label>
+		<rdfs:label>thumbnail image</rdfs:label>
 	</crm:E55_Type>
 	<crm:E55_Type rdf:about="#web">
-		<rdfs:label>Web image</rdfs:label>
+		<rdfs:label>web image</rdfs:label>
 	</crm:E55_Type>
+	<crm:E55_Type rdf:about="#physicalDescription">
+		<rdfs:label>physical description</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="#contentDescription">
+		<rdfs:label>description</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="#significanceStatement">
+		<rdfs:label>significance</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="#educationalSignificance">
+		<rdfs:label>educational significance</rdfs:label>
+	</crm:E55_Type>	
 	<!-- TODO what are the other image types? -->
 	<!-- AAT defined types -->
 	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404670">
@@ -59,5 +71,14 @@
 	</crm:E55_Type>
 	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300189559">
 		<rdfs:label>male</rdfs:label>
+	</crm:E55_Type>	
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300379612">
+		<rdfs:label>pixels</rdfs:label>
 	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300055647">
+		<rdfs:label>width</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300055644">
+		<rdfs:label>height</rdfs:label>
+	</crm:E55_Type>	
 </rdf:RDF>
