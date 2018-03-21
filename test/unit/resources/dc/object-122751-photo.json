@@ -8,33 +8,33 @@
 			"id": 6514,
 			"type": "Person",
 			"title": "Mr Herbert Fishwick",
-			"role": "Photographer"
+			"interactionType": "Photographer"
 		},
 		{
 			"id": 80363,
 			"type": "Organization",
 			"title": "Sydney Mail",
-			"role": "Publisher"
+			"interactionType": "Publisher"
 		}
 	],
 	"subject": [
 		"Photographs"
-	],	
+	],
 	"spatial": [
 		{
 			"id": 47,
 			"type": "Place",
 			"title": "Sydney, New South Wales, Australia",
-			"role": "Place made"
+			"interactionType": "Place made"
 		}
 	],
 	"temporal": [
 		{
-			"type": "Date",
+			"type": "Event",
 			"title": "1928-12-14",
 			"dateEarliest": "1928-12-14",
 			"dateLatest": "1928-12-20",
-			"role": "Date of production"
+			"interactionType": "Date of production"
 		}
 	],
 	"description": "A black and white photographic enlargement of a cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield.",
@@ -44,42 +44,37 @@
 		"Paper"
 	],
 	"extent": {
+		"type": "Measurement",
 		"length": 1020,
 		"width": 820,
 		"depth": 20,
 		"unitText": "mm"
 	},
 	"isAggregatedBy": "Ruth Oldfield collection",
-	"related": [
+	"relation": [
 		{
-			"contributor": [
-				{
-					"id": 10292,
-					"type": "Person",
-					"title": "Mr William 'Bert' A. Oldfield",
-					"role": "Cricketer"
-				},
-				{
-					"id": 12924,
-					"type": "Organization",
-					"title": "Australian Cricket Team",
-					"role": "Associated organisation"
-				},
-				{
-					"id": 12925,
-					"type": "Organization",
-					"title": "English Cricket Team",
-					"role": "Associated organisation"
-				}
-			],
-			"spatial": [
-				{
-					"id": 1869,
-					"type": "Place",
-					"title": "Sydney Cricket Ground, Moore Park, Sydney, New South Wales, Australia",
-					"role": "Place of event"
-				}
-			]
+			"id": 10292,
+			"type": "Person",
+			"title": "Mr William 'Bert' A. Oldfield",
+			"interactionType": "Cricketer"
+		},
+		{
+			"id": 12924,
+			"type": "Organization",
+			"title": "Australian Cricket Team",
+			"interactionType": "Associated organisation"
+		},
+		{
+			"id": 12925,
+			"type": "Organization",
+			"title": "English Cricket Team",
+			"interactionType": "Associated organisation"
+		},
+		{
+			"id": 1869,
+			"type": "Place",
+			"title": "Sydney Cricket Ground, Moore Park, Sydney, New South Wales, Australia",
+			"interactionType": "Place of event"
 		}
 	],
 	"hasVersion": [
@@ -90,8 +85,9 @@
 			"hasVersion": [
 				{
 					"type": "StillImage",
-					"role": "Thumbnail",
+					"version": "Thumbnail",
 					"extent": {
+						"type": "Measurement",
 						"height": 133,
 						"width": 200,
 						"unitText": "pixels"
@@ -100,8 +96,9 @@
 				},
 				{
 					"type": "StillImage",
-					"role": "Preview",
+					"version": "Preview",
 					"extent": {
+						"type": "Measurement",
 						"height": 425,
 						"width": 640,
 						"unitText": "pixels"

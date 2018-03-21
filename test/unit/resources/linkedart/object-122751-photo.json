@@ -1,0 +1,271 @@
+{
+	"@context": "https://linked.art/ns/v1/linked-art.json",
+	"id": "https://data.nma.gov.au/object/122751#",
+	"type": "PhysicalObject",
+	"label": "Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield",
+	"identified_by": [
+		{
+			"id": "https://data.nma.gov.au/object/122751#referencenumber",
+			"type": "Identifier",
+			"label": "Accession number",
+			"value": "1985.0033.0002",
+			"classified_as": [
+				"aat:300312355"
+			]
+		},
+		{
+			"id": "https://data.nma.gov.au/object/122751#repositorynumber",
+			"type": "Identifier",
+			"label": "Local Repository Number",
+			"value": 122751,
+			"classified_as": [
+				"aat:300404621"
+			]
+		}
+	],
+	"included_in": [
+		{
+			"type": "PhysicalObject",
+			"label": "Ruth Oldfield collection",
+			"classified_as": [
+				"aat:300025976"
+			]
+		}
+	],
+	"classified_as": [
+		{
+			"label": "Photographs"
+		}
+	],
+	"subject_of": [
+		{
+			"id": "https://data.nma.gov.au/object/122751#physicalDescription",
+			"type": "LinguisticObject",
+			"label": "A black and white photographic enlargement of a cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield.",
+			"classified_as": [
+				"aat:300411780"
+			]
+		}
+	],
+	"produced_by": [
+		{
+			"type": "Production",
+			"label": "Associated person",
+			"consists_of": [
+				{
+					"type": "Activity",
+					"carried_out_by": [
+						{
+							"range": "https://data.nma.gov.au/party/6514#",
+							"role": {
+								"type": "Type",
+								"label": "Photographer"
+							}
+						}
+					]
+				},
+				{
+					"type": "Activity",
+					"carried_out_by": [
+						{
+							"range": "https://data.nma.gov.au/party/80363#",
+							"role": {
+								"type": "Type",
+								"label": "Publisher"
+							}
+						}
+					]
+				},
+				{
+					"type": "Activity",
+					"label": "Place made",
+					"took_place_at": [
+						{
+							"id": "https://data.nma.gov.au/place/47#",
+							"type": "Place",
+							"title": "Sydney, New South Wales, Australia"
+						}
+					]
+				},
+				{
+					"type": "Activity",
+					"label": "Date of production",
+					"timespan": [
+						{
+							"type": "TimeSpan",
+							"label": "1928-12-14",
+							"begin_of_the_begin": "1928-12-14",
+							"end_of_the_end": "1928-12-20"
+						}
+					]
+				}
+			]
+		}
+	],
+	"made_of": [
+		{
+			"type": "Material",
+			"label": "Photographic emulsion"
+		},
+		{
+			"type": "Material",
+			"label": "Wood"
+		},
+		{
+			"type": "Material",
+			"label": "Paper"
+		}
+	],
+	"dimension": [
+		{
+			"id": "https://data.nma.gov.au/object/122751#width",
+			"type": "Dimension",
+			"value": 820,
+			"classified_as": [
+				"aat:300055647"
+			],
+			"unit": {
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		},
+		{
+			"id": "https://data.nma.gov.au/object/122751#length",
+			"type": "Dimension",
+			"value": 1020,
+			"classified_as": [
+				"aat:300055645"
+			],
+			"unit": {
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		},
+		{
+			"id": "https://data.nma.gov.au/object/122751#depth",
+			"type": "Dimension",
+			"value": 20,
+			"classified_as": [
+				"aat:300072633"
+			],
+			"unit": {
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		}
+	],
+	"present_at": [
+		{
+			"type": "Event",
+			"label": "Cricketer",
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/party/10292#",
+					"type": "Person",
+					"label": "Mr William 'Bert' A. Oldfield"
+				}
+			]
+		},
+		{
+			"type": "Event",
+			"label": "Associated organisation",
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/party/12924#",
+					"type": "Group",
+					"label": "Australian Cricket Team"
+				}
+			]
+		},
+		{
+			"type": "Event",
+			"label": "Associated organisation",
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/party/12925#",
+					"type": "Group",
+					"label": "English Cricket Team"
+				}
+			]
+		},
+		{
+			"type": "Event",
+			"label": "Place of event",
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/place/1869#",
+					"type": "Place",
+					"label": "Sydney Cricket Ground, Moore Park, Sydney, New South Wales, Australia"
+				}
+			]
+		}
+	],
+	"representation": [
+		{
+			"id": "https://data.nma.gov.au/media/54112",
+			"type": "VisualItem",
+			"representation": [
+				{
+					"id": "http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.640x640.jpg",
+					"type": "VisualItem",
+					"dimension": [
+						{
+							"id": "https://data.nma.gov.au/media/54112#previewWidth",
+							"type": "Dimension",
+							"value": 640,
+							"classified_as": [
+								"aat:300055647"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						},
+						{
+							"id": "https://data.nma.gov.au/media/54112#previewHeight",
+							"type": "Dimension",
+							"value": 425,
+							"classified_as": [
+								"aat:300055644"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						}
+					]
+				},
+				{
+					"id": "http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.200x200.jpg",
+					"type": "VisualItem",
+					"dimension": [
+						{
+							"id": "https://data.nma.gov.au/media/54112#thumbWidth",
+							"type": "Dimension",
+							"value": 200,
+							"classified_as": [
+								"aat:300055647"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						},
+						{
+							"id": "https://data.nma.gov.au/media/54112#thumbHeight",
+							"type": "Dimension",
+							"value": 133,
+							"classified_as": [
+								"aat:300055644"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

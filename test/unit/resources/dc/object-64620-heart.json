@@ -1,0 +1,167 @@
+{
+	"id": 64620,
+	"type": "PhysicalObject",
+	"title": "Phar Lap's Heart",
+	"identifier": "1984.0010.0721",
+	"subject": [
+		"Zoological specimens"
+	],
+	"description": "HeartoftheracehorsePharLap.PharLap'sheartweighs6.35kg,whichissignificantlylargerthananaveragehorseheartofthreetofourkilograms.Atriangularsectionhasbeenremoved.Theheartispreservedasa'wetspecimen'submersedinaformalinsolution,sealedinsidearectangularclearperspexcontainer.",
+	"contentDescription": "Phar Lap was a late foal, born on 4 October 1926. He had been bred in New Zealand and sold for 160 pounds as Lot 41 at the annual Trentham Yearling Sales in 1927. Harry Telford, a down-on-his-luck Sydney trainer, had spotted the chestnut colt in the sale catalogue and thought that, with the horse's pedigree, it had the potential to become a success. He persuaded American businessman David J Davis to purchase the colt sight unseen. Upon first seeing his new horse, Davis is reported to have said simply, &quot;Harry, I don't like the horse.&quot;  Davis wanted nothing more to do with the ugly colt, who was gangly and had a face covered in warts. Davis and Telford came to an agreement, whereby Telford would cover the costs associated with the horse as part of a 3-year lease.",
+	"provenance": "This is the preserved heart of the race horse Phar Lap, a champion racehorse in the late 1920s and early 1930s. It is unusually large - 6.2 kg against the average 4 kg size of a horse's heart. A triangular section has been removed, which it is believed was taken for a biopsy. The heart is preserved as a 'wet specimen' submersed in a formalin solution, sealed inside a rectangular clear perspex container. Other parts of Phar Lap are held by other museums - his skeleton is at the Museum  of New Zealand Te Papa Tongarewa, and his hide is at Museum Victoria.",
+	"medium": [
+		"Animal material - non specific",
+		"Perspex",
+		"Liquid - non specific"
+	],
+	"extent": {
+		"type": "Measurement",
+		"height": 378,
+		"width": 300,
+		"depth": 215,
+		"unitText": "mm",
+		"weight": 6.35,
+		"unitTextWeight": "kg"		
+	},
+	"isAggregatedBy": "MacKenzie collection",
+	"relation": [
+		{
+			"id": 17012,
+			"type": "Person",
+			"title": "Alick Roberts",
+			"interactionType": "Associated person",
+			"description": "Roberts was Phar Lap's breeder."
+		},
+		{
+			"id": 2894,
+			"type": "Person",
+			"title": "David J. Davis",
+			"interactionType": "Associated person",
+			"description": "Davis was Phar Lap's owner."
+		},
+		{
+			"id": 3161,
+			"type": "Person",
+			"title": "Harry R. Telford",
+			"interactionType": "Associated person",
+			"description": "Telford was Phar Lap's trainer, and presented the heart to the Australian Institute of Anatomy."
+		},
+		{
+			"id": 3883,
+			"type": "Person",
+			"title": "Tommy Woodcock",
+			"interactionType": "Associated person",
+			"description": "Woodcock was Phar Lap's strapper in Australia, and travelled with him to America in the role of trainer. Woodcock was with Phar Lap when he died."
+		},
+		{
+			"id": 80047,
+			"type": "Organization",
+			"title": "Australian Institute of Anatomy",
+			"interactionType": "Associated organisation",
+			"description": "The heart was displayed at the Institute before it was transferred to the National Museum of Australia."
+		},
+		{
+			"id": 2317,
+			"type": "Place",
+			"title": "Timaru, South Island, New Zealand",
+			"interactionType": "Place of event",
+			"description": "Place where Phar Lap was foaled."
+		},
+		{
+			"id": 718,
+			"type": "Place",
+			"title": "Flemington, Melbourne, Victoria, Australia",
+			"interactionType": "Place of event",
+			"description": "Phar Lap won the Melbourne Cup in 1930."
+		},
+		{
+			"id": 1248,
+			"type": "Place",
+			"title": "Mexico",
+			"interactionType": "Place of event",
+			"description": "Phar Lap won the Agua Caliente Handicap in 1932."
+		},
+		{
+			"id": 2319,
+			"type": "Place",
+			"title": "Menlo Park, San Mateo, California, United States of America",
+			"interactionType": "Place of event",
+			"description": "Phar Lap died at Menlo Park in suspicious circumstances."
+		},
+		{
+			"id": 80015,
+			"type": "Place",
+			"title": "Canberra, Australian Capital Territory, Australia",
+			"interactionType": "Place of event",
+			"description": "The heart was displayed for many years at the Australian Institute of Anatomy in Canberra, and is now in the care of the National Museum of Australia."
+		},
+		{
+			"type": "Event",
+			"title": "1926-10-04",
+			"dateEarliest": "1926-10-04",
+			"dateLatest": "1926-10-04",
+			"interactionType": "Date of event",
+			"description": "Date that Phar Lap was foaled."
+		},
+		{
+			"type": "Event",
+			"title": "1930",
+			"dateEarliest": "1930",
+			"dateLatest": "1930",
+			"interactionType": "Date of event",
+			"description": "Phar Lap won the Melbourne Cup in 1930 carrying a 62.6 kilogram handicap."
+		},
+		{
+			"type": "Event",
+			"title": "1932",
+			"dateEarliest": "1932",
+			"dateLatest": "1932",
+			"interactionType": "Date of event",
+			"description": "Phar Lap won the Agua Caliente Handicap in 1932."
+		},
+		{
+			"type": "Event",
+			"title": "1932-04-05",
+			"dateEarliest": "1932-04-05",
+			"dateLatest": "1932-04-05",
+			"interactionType": "Date of event",
+			"description": "Date that Phar Lap died."
+		}
+	],
+	"hasVersion": [
+		{
+			"id": 16195,
+			"type": "StillImage",
+			"format": "image/jpeg",
+			"hasVersion": [
+				{
+					"type": "StillImage",
+					"version": "Thumbnail",
+					"extent": {
+						"type": "Measurement",
+						"height": 200,
+						"width": 167,
+						"unitText": "pixels"
+					},
+					"identifier": "16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg"
+				},
+				{
+					"type": "StillImage",
+					"version": "Preview",
+					"extent": {
+						"type": "Measurement",
+						"height": 640,
+						"width": 534,
+						"unitText": "pixels"
+					},
+					"identifier": "16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg"
+				}
+			]
+		}
+	],
+	"_meta": {
+		"modified": "2017-01-18",
+		"available": "2011-03-02",
+		"source": "http://collectionsearch.nma.gov.au/object/122751"
+	}
+}

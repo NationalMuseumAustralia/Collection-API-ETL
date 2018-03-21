@@ -1,59 +1,429 @@
 {
-  "@context": "https://linked.art/ns/v1/linked-art.json",
-  "id": "https://data.nma.gov.au/object/45929",
-  "type": "PhysicalObject",
-  "label": "Ernabella woollen rug with Walka design",
-  "classified_as": [
-      {"id": "aat:300185749", "type": "ManMadeObject", "label": "Rugs"}
+	"@context": "https://linked.art/ns/v1/linked-art.json",
+	"id": "https://data.nma.gov.au/object/45929#",
+	"type": "PhysicalObject",
+	"label": "Ernabella woollen rug with Walka design",
+	"classified_as": [
+		{
+			"id": "aat:300185749",
+			"type": "ManMadeObject",
+			"label": "Rugs"
+		}
+	],
+	"identified_by": [
+		{
+			"id": "https://data.nma.gov.au/object/45929/identifier#referencenumber",
+			"type": "Identifier",
+			"value": "1991.0024.3872",
+			"classified_as": [
+				{
+					"id": "aat:300312355",
+					"label": "accession numbers"
+				}
+			]
+		},
+		{
+			"id": "https://data.nma.gov.au/object/45929/identifier#repositorynumber",
+			"type": "Identifier",
+			"value": 45929,
+			"classified_as": [
+				{
+					"id": "aat:300404621",
+					"label": "repository numbers"
+				}
+			]
+		}
+	],
+	"referred_to_by": [
+		{
+			"type": "LinguisticObject",
+			"value": "Very large rectangular handmade knotted rug, woven wool. Deep pile. Background of natural white, with an abstract linear design in dark brown, burnt orange, yellow & mottled greys.",
+			"classified_as": [
+				{
+					"id": "aat:300411780",
+					"label": "descriptions (documents)"
+				},
+				"nma:physicalDescription"
+			]
+		},
+		{
+			"type": "LinguisticObject",
+			"value": "This rug was owned by ...",
+			"classified_as": [
+				"aat:300411780",
+				"nma:contentDescription"
+			]
+		},
+		{
+			"type": "LinguisticObject",
+			"value": "This rug represents a large group of men gathered for...",
+			"classified_as": [
+				"aat:300411780",
+				"nma:educationalSignificance"
+			]
+		},
+		{
+			"type": "LinguisticObject",
+			"value": "This collection consists of hand-woven rugs featuring...",
+			"classified_as": [
+				"aat:300411780",
+				"nma:significanceStatement"
+			]
+		}
+	],
+	"present_at": [
+		{
+			"type": "Event",
+			"title": "Associated person",
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/party/8860#name",
+					"type": "Name",
+					"value": "Nyukana (Daisy) Baker"
+				}
+			]
+		}
+	],
+	"produced_by": [
+		{
+			"id": "https://data.nma.gov.au/collection/12345/production",
+			"type": "Production",
+			"consists_of": [
+				{
+					"type": "Activity",
+					"label": "Place made",
+					"took_place_at": [
+						{
+							"id": "https://data.nma.gov.au/place/693",
+							"type": "Place",
+							"label": "Ernabella",
+							"classified_as": [
+								{
+									"id": "aat:300008375",
+									"label": "towns"
+								}
+							],
+							"identified_by": [
+								{
+									"id": "https://data.nma.gov.au/place/693/identifier#repositorynumber",
+									"type": "Identifier",
+									"value": 693,
+									"classified_as": [
+										{
+											"id": "aat:300404621",
+											"label": "repository numbers"
+										}
+									]
+								}
+							],
+							"crm:P168_place_is_defined_by": [
+								{
+									"id": "https://data.nma.gov.au/place/693#location",
+									"type": "crm:E94_Space_Primitive",
+									"value": "-12.2528,136.892",
+									"classified_as": [
+										{
+											"id": "aat:300380194",
+											"label": "geospatial data"
+										}
+									]
+								}
+							],
+							"spatially_within": [
+								{
+									"id": "tgn:7001831",
+									"type": "Place",
+									"label": "South Australia",
+									"classified_as": [
+										{
+											"id": "aat:300000776",
+											"label": "states (political divisions)"
+										}
+									],
+									"spatially_within": [
+										{
+											"id": "tgn:7000490",
+											"type": "Place",
+											"label": "Australia",
+											"classified_as": [
+												{
+													"id": "aat:300387506",
+													"label": "countries (sovereign states)"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "Activity",
+					"label": "Producer",
+					"carried_out_by": [
+						{
+							"id": "https://data.nma.gov.au/party/80278#",
+							"type": "Organisation",
+							"label": "Ngarrindjeri Heritage Association",
+							"identified_by": [
+								{
+									"id": "https://data.nma.gov.au/party/80278/identifier#repositorynumber",
+									"type": "Identifier",
+									"value": 8860,
+									"classified_as": [
+										{
+											"id": "aat:300404621",
+											"label": "repository numbers"
+										}
+									]
+								},
+								{
+									"id": "https://data.nma.gov.au/party/80278#name",
+									"type": "Name",
+									"value": "Ngarrindjeri Heritage Association"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "Activity",
+					"classified_as": [
+						{
+							"id": "aat:300025190",
+							"label": "designers"
+						}
+					],
+					"label": "Designer",
+					"carried_out_by": [
+						{
+							"id": "https://data.nma.gov.au/party/8860#",
+							"type": "Person",
+							"label": "Nyukana (Daisy) Baker",
+							"identified_by": [
+								{
+									"id": "https://data.nma.gov.au/party/8860/identifier#repositorynumber",
+									"type": "Identifier",
+									"value": 8860,
+									"classified_as": [
+										{
+											"id": "aat:300404621",
+											"label": "repository numbers"
+										}
+									]
+								},
+								{
+									"id": "https://data.nma.gov.au/party/8860#name",
+									"type": "Name",
+									"value": "Nyukana (Daisy) Baker",
+									"classified_as": [
+										{
+											"id": "aat:300404670",
+											"label": "preferred terms"
+										}
+									],
+									"includes": [
+										{
+											"id": "https://data.nma.gov.au/party/8860#firstname",
+											"type": "Name",
+											"value": "Nyukana (Daisy)",
+											"classified_as": [
+												{
+													"id": "aat:300404651",
+													"label": "first names"
+												}
+											]
+										},
+										{
+											"id": "https://data.nma.gov.au/party/8860#lastname",
+											"type": "Name",
+											"value": "Baker",
+											"classified_as": [
+												{
+													"id": "aat:300404652",
+													"label": "last names"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "Name",
+									"value": "Daisy Baker",
+									"classified_as": [
+										{
+											"id": "aat:300264273",
+											"label": "nonpreferred terms"
+										}
+									]
+								},
+								{
+									"type": "Name",
+									"value": "Nyukana Baker",
+									"classified_as": [
+										{
+											"id": "aat:300264273",
+											"label": "nonpreferred terms"
+										}
+									]
+								}
+							],
+							"member_of": [
+								{
+									"id": "https://data.nma.gov.au/term/female",
+									"type": "Group",
+									"label": "female",
+									"classified_as": [
+										{
+											"id": "aat:300055147",
+											"label": "sex role"
+										},
+										{
+											"id": "aat:300189557",
+											"label": "female"
+										}
+									]
+								}
+							]
+						}
+					],
+					"crm:P3_has_note": [
+						{
+							"type": "LinguisticObject",
+							"value": "and maker"
+						}
+					]
+				}
+			],
+			"timespan": {
+				"id": "https://data.nma.gov.au/collection/12345/production#timespan",
+				"type": "TimeSpan",
+				"label": "14 December 1928",
+				"begin_of_the_begin": "1928-12-14",
+				"end_of_the_end": "1928-12-20"
+			}
+		}
+	],
+	"made_of": [
+		{
+			"id": "aat:300231565",
+			"type": "Material",
+			"label": "textile materials"
+		}
+	],
+	"dimension": [
+		{
+			"id": "https://data.nma.gov.au/object/45929/dimension#length",
+			"type": "Dimension",
+			"value": 3550,
+			"classified_as": [
+				"aat:300055645"
+			],
+			"unit": {
+				"id": "aat:300379097",
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		},
+		{
+			"id": "https://data.nma.gov.au/object/45929/dimension#width",
+			"type": "Dimension",
+			"value": 2420,
+			"classified_as": [
+				"aat:300055647"
+			],
+			"unit": {
+				"id": "aat:300379097",
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		}
+	],
+	"related": [
+		{
+			"id": "https://data.nma.gov.au/object/356",
+			"type": "PhysicalObject",
+			"label": "Rug 2"
+		}
+	],
+	"representation": [
+		{
+			"id": "https://data.nma.gov.au/media/16195/thumb",
+			"type": "VisualItem",
+			"label": "Thumbnail",
+			"classified_as": [
+				"schema:thumbnail"
+			],
+			"identified_by": [
+				{
+					"id": "https://data.nma.gov.au/media/16195/identifier#repositorynumber",
+					"type": "Identifier",
+					"value": 16195,
+					"classified_as": [
+						{
+							"id": "aat:300404621",
+							"label": "repository numbers"
+						}
+					]
+				}
+			],
+			"format": "image/jpeg",
+			"dimension": [
+				{
+					"id": "https://data.nma.gov.au/media/16195/thumb#width",
+					"type": "Dimension",
+					"value": 200,
+					"classified_as": [
+						"aat:300055647"
+					],
+					"unit": {
+						"id": "aat:300266190",
+						"type": "MeasurementUnit",
+						"label": "pixels"
+					}
+				},
+				{
+					"id": "https://data.nma.gov.au/media/16195/thumb#height",
+					"type": "Dimension",
+					"value": 158,
+					"classified_as": [
+						"aat:300055644"
+					],
+					"unit": {
+						"id": "aat:300266190",
+						"type": "MeasurementUnit",
+						"label": "pixels"
+					}
+				}
+			]
+		},
+		{
+			"id": "https://data.nma.gov.au/object/45929/preview",
+			"type": "VisualItem",
+			"label": "Preview",
+			"classified_as": [
+				"schema:preview"
+			],
+			"format": "image/jpeg"
+		}
+	]
+}
+	[
+  	{
+		"type": "Event",
+		"involved": [
+					  {
+						"id": "https://data.nma.gov.au/party/8860#name", 
+						"type": "Name", 
+						"value": "Nyukana (Daisy) Baker", 
+						"classified_as": [{"id":"aat:300404670", "label":"preferred terms"}]
+					}
+		
+		]
+  	}
   ],
-  "identified_by": [
-    {
-      "id": "https://data.nma.gov.au/object/45929/identifier#referencenumber",
-      "type": "Identifier",
-      "value": "1991.0024.3872",
-      "classified_as": [{"id":"aat:300312355", "label":"accession numbers"}]
-    },
-    {
-      "id": "https://data.nma.gov.au/object/45929/identifier#repositorynumber",
-      "type": "Identifier",
-      "value": 45929,
-      "classified_as": [{"id":"aat:300404621", "label":"repository numbers"}]
-    }
-  ],
-  "referred_to_by": [
-    {
-      "type": "LinguisticObject",
-      "value": "Very large rectangular handmade knotted rug, woven wool. Deep pile. Background of natural white, with an abstract linear design in dark brown, burnt orange, yellow & mottled greys.",
-      "classified_as": [
-		{"id":"aat:300411780", "label":"descriptions (documents)"},
-		"nma:physicalDescription"
-	  ]
-    },
-    {
-      "type": "LinguisticObject",
-      "value": "This rug was owned by ...",
-      "classified_as": [
-		"aat:300411780", 
-		"nma:contentDescription"
-	  ]
-    },
-    {
-      "type": "LinguisticObject",
-      "value": "This rug represents a large group of men gathered for...",
-      "classified_as": [
-		"aat:300411780", 
-		"nma:educationalSignificance"
-	  ]
-    },
-    {
-      "type": "LinguisticObject",
-      "value": "This collection consists of hand-woven rugs featuring...",
-      "classified_as": [
-		"aat:300411780", 
-		"nma:significanceStatement"
-	  ]
-    }
-  ],
+  
   "produced_by": [
     {
       "id": "https://data.nma.gov.au/collection/12345/production",

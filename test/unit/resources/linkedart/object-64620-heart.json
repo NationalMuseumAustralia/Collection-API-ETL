@@ -1,179 +1,290 @@
 {
-  "@context": "https://linked.art/ns/v1/linked-art.json",
-  "id": "https://data.nma.gov.au/object/64620",
-  "type": "PhysicalObject",
-  "label": "Phar Lap's Heart",
-  "identified_by": [
-    {
-      "id": "https://data.nma.gov.au/object/64620/identifier/referencenumber",
-      "type": "Identifier",
-      "label": "Reference number",
-      "value": "1984.0010.0721",
-      "classified_as": ["aat:300312355"]
-    },
-    {
-      "id": "https://data.nma.gov.au/object/64620/identifier/repositorynumber",
-      "type": "Identifier",
-      "label": "Local Repository Number",
-      "value": 64620,
-      "classified_as": ["aat:300404621"]
-    }
-  ],
-  "included_in": [
-    {
-      "id": "https://data.nma.gov.au/collection/12345",
-      "type": "PhysicalObject",
-      "label": "MacKenzie collection",
-      "classified_as": ["aat:300025976"],
-      "part": ["https://data.nma.gov.au/object/64620"]
-    }
-  ],
-  "brought_into_existence": {
-    "id": "https://data.nma.gov.au/object/64620/event/birth",
-    "type": "BeginningOfExistence",
-    "label": "Place where Phar Lap was foaled",
-    "took_place_at": [
-      {
-        "id": "https://data.nma.gov.au/place/12345",
-        "type": "Place",
-        "label": "Timaru, South Island, New Zealand"
-      }
-    ],
-    "timespan": {
-      "id": "https://data.nma.gov.au/object/64620/event/birth#timespan",
-      "type": "TimeSpan",
-      "begin_of_the_begin": "1926-10-04",
-      "end_of_the_end": "1926-10-04"
-    }
-  },
-  "took_out_of_existence": {
-    "id": "https://data.nma.gov.au/object/64620/event/death",
-    "type": "EndOfExistence",
-    "label": "Phar Lap died at Menlo Park in suspicious circumstances.",
-    "took_place_at": [
-      {
-        "id": "https://data.nma.gov.au/place/67890",
-        "type": "Place",
-        "label": "Menlo Park, San Mateo, California, United States of America"
-      }
-    ],
-    "timespan": {
-      "id": "https://data.nma.gov.au/object/64620/event/death#timespan",
-      "type": "TimeSpan",
-      "begin_of_the_begin": "1932-04-05",
-      "end_of_the_end": "1932-04-05"
-    }
-  },
-  "present_at": {
-    "id": "https://data.nma.gov.au/object/64620/event/1",
-    "type": "Event",
-    "label": "Phar Lap won the Melbourne Cup in 1930",
-    "took_place_at": [
-      {
-        "id": "https://data.nma.gov.au/place/12345",
-        "type": "Place",
-        "label": "Flemington, Melbourne, Victoria, Australia"
-      }
-    ],
-    "timespan": {
-      "id": "https://data.nma.gov.au/object/64620/event/1#timespan",
-      "type": "TimeSpan",
-      "begin_of_the_begin": "1930",
-      "end_of_the_end": "1930"
-    }
-  },
-  "made_of": [
-    {
-      "id": "https://data.nma.gov.au/object/64620/event/material/1",
-      "type": "ManMadeObject",
-      "label": "Animal material - non specific",
-      "classified_as": ["aat:300011793"],
-      "made_of": [{"id": "aat:300011793","type": "Material","label": "animal material"}]
-    },
-    {
-      "id": "https://data.nma.gov.au/object/64620/event/material/2",
-      "type": "PhysicalObject",
-      "label": "Perspex",
-      "classified_as": ["aat:300014435"],
-      "made_of": [{"id": "aat:300014435","type": "Material","label": "Perspex (TM)"}]
-    }
-  ],
-  "dimension": [
-    {
-      "id": "https://data.nma.gov.au/object/64620/dimension#width",
-      "type": "Dimension",
-      "label": "300 mm wide",
-      "value": 300,
-      "classified_as": ["aat:300055647"],
-      "unit": {"id": "aat:300379097","type": "MeasurementUnit","label": "mm"}
-    },
-    {
-      "id": "https://data.nma.gov.au/object/64620/dimension#height",
-      "type": "Dimension",
-      "label": "378 mm high",
-      "value": 378,
-      "classified_as": ["aat:300055644"],
-      "unit": {"id": "aat:300379097","type": "MeasurementUnit","label": "mm"}
-    },
-    {
-      "id": "https://data.nma.gov.au/object/64620/dimension#depth",
-      "type": "Dimension",
-      "label": "215 mm deep",
-      "value": 215,
-      "classified_as": ["aat:300072633"],
-      "unit": {"id": "aat:300379097","type": "MeasurementUnit","label": "mm"}
-    },
-    {
-      "id": "https://data.nma.gov.au/object/64620/dimension#weight",
-      "type": "Dimension",
-      "label": "6.35 kg",
-      "value": 6.35,
-      "classified_as": ["aat:300056240"],
-      "unit": {"id": "aat:300379226","type": "MeasurementUnit","label": "kg"}
-    }
-  ],
-  "representation": [
-    {
-      "id": "https://data.nma.gov.au/object/64620/thumb",
-      "type": "VisualItem",
-      "label": "Thumbnail",
-      "classified_as": ["ex:thumbnail"],
-      "format": "image/jpeg",
-      "dimension": [
-        {
-          "id": "https://data.nma.gov.au/object/64620/thumb#width",
-          "type": "Dimension",
-          "label": "200 pixels wide",
-          "value": 200,
-          "classified_as": ["aat:300055647"],
-          "unit": {"id": "aat:300266190","type": "MeasurementUnit","label": "pixels"}
-        },
-        {
-          "id": "https://data.nma.gov.au/object/64620/thumb#height",
-          "type": "Dimension",
-          "label": "158 pixels high",
-          "value": 158,
-          "classified_as": ["aat:300055644"],
-          "unit": {"id": "aat:300266190","type": "MeasurementUnit","label": "pixels"}
-        }
-      ]
-    },
-    {
-      "id": "https://data.nma.gov.au/object/64620/preview",
-      "type": "VisualItem",
-      "label": "Preview",
-      "classified_as": ["ex:preview"],
-      "format": "image/jpeg"
-    }
-  ],
-  "subject_of": [
-    {
-      "id": "http://www.nma.gov.au/collections/pharlaps_heart/4",
-      "type": "LinguisticObject",
-      "label": "View Collection highlight",
-      "classified_as": ["aat:300264578"],
-      "format": "text/html"
-    }
-  ],
-  "classified_as": ["aat:300379591"]
+	"@context": "https://linked.art/ns/v1/linked-art.json",
+	"id": "https://data.nma.gov.au/object/64620#",
+	"type": "PhysicalObject",
+	"label": "Phar Lap's Heart",
+	"identified_by": [
+		{
+			"id": "https://data.nma.gov.au/object/64620#referencenumber",
+			"type": "Identifier",
+			"label": "Accession number",
+			"value": "1984.0010.0721",
+			"classified_as": [
+				"aat:300312355"
+			]
+		},
+		{
+			"id": "https://data.nma.gov.au/object/64620#repositorynumber",
+			"type": "Identifier",
+			"label": "Local Repository Number",
+			"value": 64620,
+			"classified_as": [
+				"aat:300404621"
+			]
+		}
+	],
+	"included_in": [
+		{
+			"type": "PhysicalObject",
+			"label": "MacKenzie collection",
+			"classified_as": [
+				"aat:300025976"
+			]
+		}
+	],
+	"classified_as": [
+		{
+			"label": "Zoological specimens"
+		}
+	],
+	"subject_of": [
+		{
+			"id": "https://data.nma.gov.au/object/64620#physicalDescription",
+			"type": "LinguisticObject",
+			"label": "Heart of the race horse Phar Lap. Phar Lap's heart weighs 6.35kg which is significantly larger than an average horse heart of three to four kilograms. A triangular section has been removed. The heart is preserved as a 'wet specimen' submersed in a formalin solution, sealed inside a rectangular clear perspex container.",
+			"classified_as": [
+				"aat:300411780"
+			]
+		},
+		{
+			"id": "https://data.nma.gov.au/object/64620#contentDescription",
+			"type": "LinguisticObject",
+			"value": "Phar Lap was a late foal, born on 4 October 1926. He had been bred in New Zealand and sold for 160 pounds as Lot 41 at the annual Trentham Yearling Sales in 1927. Harry Telford, a down-on-his-luck Sydney trainer, had spotted the chestnut colt in the sale catalogue and thought that, with the horse's pedigree, it had the potential to become a success. He persuaded American businessman David J Davis to purchase the colt sight unseen. Upon first seeing his new horse, Davis is reported to have said simply, \"Harry, I don't like the horse.\" Davis wanted nothing more to do with the ugly colt, who was gangly and had a face covered in warts. Davis and Telford came to an agreement, whereby Telford would cover the costs associated with the horse as part of a 3-year lease.",
+			"classified_as": [
+				"aat:300411780"
+			]
+		},
+		{
+			"id": "https://data.nma.gov.au/object/64620#educationalSignificance",
+			"type": "LinguisticObject",
+			"value": "This is the preserved heart of the race horse Phar Lap, a champion racehorse in the late 1920s and early 1930s. It is unusually large - 6.2 kg against the average 4 kg size of a horse's heart. A triangular section has been removed, which it is believed was taken for a biopsy. The heart is preserved as a 'wet specimen' submersed in a formalin solution, sealed inside a rectangular clear perspex container. Other parts of Phar Lap are held by other museums - his skeleton is at the Museum of New Zealand Te Papa Tongarewa, and his hide is at Museum Victoria.",
+			"classified_as": [
+				"aat:300379612"
+			]
+		}
+	],
+	"present_at": [
+		{
+			"type": "Event",
+			"label": "Associated person",
+			"subject_of": [
+				{
+					"type": "LinguisticObject",
+					"label": "Roberts was Phar Lap's breeder.",
+					"classified_as": [
+						"aat:300411780"
+					]
+				}
+			],
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/party/17012#",
+					"type": "Person",
+					"label": "Alick Roberts"
+				}
+			]
+		},
+		{
+			"type": "Event",
+			"label": "Place where Phar Lap was foaled",
+			"subject_of": [
+				{
+					"type": "LinguisticObject",
+					"label": "Place where Phar Lap was foaled.",
+					"classified_as": [
+						"aat:300411780"
+					]
+				}
+			],
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/place/2317#",
+					"type": "Place",
+					"label": "Timaru, South Island, New Zealand"
+				}
+			]
+		},
+		{
+			"type": "Event",
+			"label": "Date of event",
+			"subject_of": [
+				{
+					"type": "LinguisticObject",
+					"label": "Date that Phar Lap was foaled.",
+					"classified_as": [
+						"aat:300411780"
+					]
+				}
+			],
+			"involved": [
+				{
+					"type": "TimeSpan",
+					"label": "1926-10-04",
+					"begin_of_the_begin": "1926-10-04",
+					"end_of_the_end": "1926-10-04"
+				}
+			]
+		},
+		{
+			"type": "Event",
+			"label": "Phar Lap won the Melbourne Cup in 1930.",
+			"subject_of": [
+				{
+					"type": "LinguisticObject",
+					"label": "Place where Phar Lap was foaled.",
+					"classified_as": [
+						"aat:300411780"
+					]
+				}
+			],
+			"involved": [
+				{
+					"id": "https://data.nma.gov.au/place/718#",
+					"type": "Place",
+					"label": "Flemington, Melbourne, Victoria, Australia"
+				}
+			]
+		}
+	],
+	"made_of": [
+		{
+			"type": "Material",
+			"label": "Animal material - non specific"
+		},
+		{
+			"type": "Material",
+			"label": "Perspex"
+		},
+		{
+			"type": "Material",
+			"label": "Liquid - non specific"
+		}
+	],
+	"dimension": [
+		{
+			"id": "https://data.nma.gov.au/object/64620#width",
+			"type": "Dimension",
+			"value": 300,
+			"classified_as": [
+				"aat:300055647"
+			],
+			"unit": {
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		},
+		{
+			"id": "https://data.nma.gov.au/object/64620#height",
+			"type": "Dimension",
+			"value": 378,
+			"classified_as": [
+				"aat:300055644"
+			],
+			"unit": {
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		},
+		{
+			"id": "https://data.nma.gov.au/object/64620#depth",
+			"type": "Dimension",
+			"value": 215,
+			"classified_as": [
+				"aat:300072633"
+			],
+			"unit": {
+				"type": "MeasurementUnit",
+				"label": "mm"
+			}
+		},
+		{
+			"id": "https://data.nma.gov.au/object/64620#weight",
+			"type": "Dimension",
+			"value": 6.35,
+			"classified_as": [
+				"aat:300056240"
+			],
+			"unit": {
+				"type": "MeasurementUnit",
+				"label": "kg"
+			}
+		}
+	],
+	"used_for": [
+		{
+			"type": "Activity",
+			"label": "Case 01, Flemington Racecourse, Landmarks, Acton",
+			"classified_as": [
+				"aat:300054766"
+			]
+		}
+	],
+	"representation": [
+		{
+			"id": "https://data.nma.gov.au/media/16195",
+			"type": "VisualItem",
+			"representation": [
+				{
+					"id": "http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg",
+					"type": "VisualItem",
+					"dimension": [
+						{
+							"id": "https://data.nma.gov.au/media/16195#previewWidth",
+							"type": "Dimension",
+							"value": 534,
+							"classified_as": [
+								"aat:300055647"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						},
+						{
+							"id": "https://data.nma.gov.au/media/16195#previewHeight",
+							"type": "Dimension",
+							"value": 640,
+							"classified_as": [
+								"aat:300055644"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						}
+					]
+				},
+				{
+					"id": "http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg",
+					"type": "VisualItem",
+					"dimension": [
+						{
+							"id": "https://data.nma.gov.au/media/16195#thumbWidth",
+							"type": "Dimension",
+							"value": 167,
+							"classified_as": [
+								"aat:300055647"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						},
+						{
+							"id": "https://data.nma.gov.au/media/16195#thumbHeight",
+							"type": "Dimension",
+							"value": 200,
+							"classified_as": [
+								"aat:300055644"
+							],
+							"unit": {
+								"type": "MeasurementUnit",
+								"label": "pixels"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
 }
