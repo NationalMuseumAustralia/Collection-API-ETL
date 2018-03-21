@@ -9,55 +9,55 @@
 	</crm:E55_Type>
 	<!-- TODO what are the other image types? -->
 	<!-- AAT defined types -->
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404670">
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404670">
 		<rdf:label>preferred term</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404688">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404688">
 		<rdf:label>full name (personal name)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300380194">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300380194">
 		<rdf:label>geospatial data</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404621">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404621">
 		<rdf:label>repository number</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300312355">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300312355">
 		<rdf:label>accession number</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300025976">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300025976">
 		<rdf:label>collection (object grouping)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300411780">
 		<rdf:label>description (document) </rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300379612">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300379612">
 		<rdf:label>significance assessment (survey)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300054766">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300054766">
 		<rdf:label>exhibition (event)</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300075467">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300075467">
 		<rdf:label>thumbnail</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404651">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404651">
 		<rdf:label>first name</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404654">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404654">
 		<rdf:label>middle name</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404652">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300404652">
 		<rdf:label>last name</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264273">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300264273">
 		<rdf:label>nonpreferred term</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300055147">
 		<rdf:label>sex role</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189557">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300189557">
 		<rdf:label>female</rdf:label>
-	</crm:P2_has_type>
-	<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189559">
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300189559">
 		<rdf:label>male</rdf:label>
-	</crm:P2_has_type>
+	</crm:E55_Type>
 </rdf:RDF>
