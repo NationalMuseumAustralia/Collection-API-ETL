@@ -6,6 +6,8 @@
 	<!-- record type of the input file, e.g. "object", "site", "party", or "narrative" -->
 	<xsl:param name="record-type" select="'object'" />
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
+	<xsl:param name="media-uri-base"
+		select="'http://collectionsearch.nma.gov.au/nmacs-image-download/emu/'" />
 
 	<xsl:variable name="nma-term-ns" select="concat($base-uri, 'term/')" />
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
@@ -107,6 +109,14 @@
 			<xsl:apply-templates select="PhyRegistrationWeight">
 				<xsl:with-param name="object-iri" select="$object-iri" />
 				<xsl:with-param name="unit" select="PhyRegistrationUnitWeight" />
+			</xsl:apply-templates>
+
+			<!-- associations -->
+			<xsl:apply-templates select="AssociatedParties | AssociatedPlaces | AssociatedDates" />
+
+			<!-- exhibition location -->
+			<xsl:apply-templates select="LocCurrentLocationRef">
+				<xsl:with-param name="object-iri" select="$object-iri" />
 			</xsl:apply-templates>
 
 			<!-- media -->
@@ -385,6 +395,97 @@
 		</xsl:for-each>
 	</xsl:template>
 
+	<!-- association: parties -->
+	<xsl:template match="AssociatedParties">
+		<xsl:for-each select="AssociatedParty">
+			<xsl:variable name="party-iri" select="concat('party/', AssPersonRef_tab.irn, '#')" />
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>
+						<xsl:value-of select="AssPersonType_tab" />
+					</rdfs:label>
+					<xsl:if test="AssPersonNotes_tab">
+						<crm:P129i_is_subject_of>
+							<crm:E33_Linguistic_Object>
+								<rdf:value>
+									<xsl:value-of select="AssPersonNotes_tab" />
+								</rdf:value>
+								<!-- AAT 300411780: descriptions (documents) -->
+								<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
+							</crm:E33_Linguistic_Object>
+						</crm:P129i_is_subject_of>
+					</xsl:if>
+					<crm:P12_occurred_in_the_presence_of
+						rdf:resource="{$party-iri}" />
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+		</xsl:for-each>
+	</xsl:template>
+
+	<!-- association: places -->
+	<xsl:template match="AssociatedPlaces">
+		<xsl:for-each select="AssociatedPlace">
+			<xsl:variable name="place-iri" select="concat('place/', AssPlaceRef_tab.irn, '#')" />
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>
+						<xsl:value-of select="AssPlaceType_tab" />
+					</rdfs:label>
+					<xsl:if test="AssPlaceNotes_tab">
+						<crm:P129i_is_subject_of>
+							<crm:E33_Linguistic_Object>
+								<rdf:value>
+									<xsl:value-of select="AssPlaceNotes_tab" />
+								</rdf:value>
+								<!-- AAT 300411780: descriptions (documents) -->
+								<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
+							</crm:E33_Linguistic_Object>
+						</crm:P129i_is_subject_of>
+					</xsl:if>
+					<crm:P12_occurred_in_the_presence_of
+						rdf:resource="{$place-iri}" />
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+		</xsl:for-each>
+	</xsl:template>
+
+	<!-- association: dates -->
+	<xsl:template match="AssociatedDates">
+		<xsl:for-each select="AssociatedDates">
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>
+						<xsl:value-of select="AssDateType_tab" />
+					</rdfs:label>
+					<xsl:if test="AssDateNotes_tab">
+						<crm:P129i_is_subject_of>
+							<crm:E33_Linguistic_Object>
+								<rdf:value>
+									<xsl:value-of select="AssDateNotes_tab" />
+								</rdf:value>
+								<!-- AAT 300411780: descriptions (documents) -->
+								<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
+							</crm:E33_Linguistic_Object>
+						</crm:P129i_is_subject_of>
+					</xsl:if>
+					<crm:P4_has_time-span>
+						<crm:E52_Time-Span>
+							<rdfs:label>
+								<xsl:value-of select="AssDate0" />
+							</rdfs:label>
+							<crm:P82a_begin_of_the_begin>
+								<xsl:value-of select="AssEarliestDate0" />
+							</crm:P82a_begin_of_the_begin>
+							<crm:P82b_end_of_the_end>
+								<xsl:value-of select="AssLatestDate0" />
+							</crm:P82b_end_of_the_end>
+						</crm:E52_Time-Span>
+					</crm:P4_has_time-span>
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+		</xsl:for-each>
+	</xsl:template>
+
 	<!-- materials -->
 	<xsl:template match="PhyMaterials_tab">
 		<xsl:for-each select="PhyMaterial">
@@ -476,6 +577,33 @@
 		</xsl:call-template>
 	</xsl:template>
 
+	<!-- exhibition location -->
+	<xsl:template match="LocCurrentLocationRef">
+		<crm:P16i_was_used_for>
+			<crm:E7_Activity>
+				<rdfs:label>
+					<xsl:if test="LocLevel4">
+						<xsl:value-of select="LocLevel4" />
+					</xsl:if>
+					<xsl:if test="LocLevel3">
+						<xsl:text>, </xsl:text>
+						<xsl:value-of select="LocLevel3" />
+					</xsl:if>
+					<xsl:if test="LocLevel2">
+						<xsl:text>, </xsl:text>
+						<xsl:value-of select="LocLevel2" />
+					</xsl:if>
+					<xsl:if test="LocLevel1">
+						<xsl:text>, </xsl:text>
+						<xsl:value-of select="LocLevel1" />
+					</xsl:if>
+				</rdfs:label>
+				<!-- AAT 300054766: exhibitions (events) -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300054766" />
+			</crm:E7_Activity>
+		</crm:P16i_was_used_for>
+	</xsl:template>
+
 	<!-- media -->
 	<xsl:template match="image">
 		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
@@ -487,10 +615,7 @@
 				<!-- preview -->
 				<xsl:for-each select="res640px">
 					<crm:P138i_has_representation>
-						<crm:E36_Visual_Item rdf:about="{$media-iri}#preview">
-							<rdf:value>
-								<xsl:value-of select="image_path" />
-							</rdf:value>
+						<crm:E36_Visual_Item rdf:about="{concat($media-uri-base, image_path)}">
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
 									<xsl:with-param name="dimension-iri"
@@ -520,10 +645,9 @@
 				<!-- thumbnail -->
 				<xsl:for-each select="res200px">
 					<crm:P138i_has_representation>
-						<crm:E36_Visual_Item rdf:about="{$media-iri}#thumb">
-							<rdf:value>
-								<xsl:value-of select="image_path" />
-							</rdf:value>
+						<crm:E36_Visual_Item rdf:about="{concat($media-uri-base, image_path)}">
+							<!-- AAT 300075467: thumbnail sketches -->
+							<crm:P2_has_type rdf:resource="{$aat-ns}300075467" />
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
 									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#thumbWidth')" />
