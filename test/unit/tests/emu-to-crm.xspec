@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
+	stylesheet="../../../emu-to-crm.xsl">
+
+	<x:scenario label="Convert irn element">
+		<x:context>
+			<irn>12345</irn>
+		</x:context>
+
+		<x:expect label="should return crm:P1_is_identified_by">
+			<crm:P1_is_identified_by>
+				<crm:E42_Identifier rdf:about="#repositorynumber">
+					<rdf:value>12345</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404621" />
+				</crm:E42_Identifier>
+			</crm:P1_is_identified_by>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert 2x image elements">
+		<x:context>
+			<image>
+				<media_irn>01</media_irn>
+				<media_mimeformat>jpeg</media_mimeformat>
+				<media_mimetype>image</media_mimetype>
+				<res640px>
+					<image_path>01-640.jpg</image_path>
+					<image_width>640</image_width>
+					<image_height>100</image_height>
+				</res640px>
+				<res200px>
+					<image_path>200.jpg</image_path>
+					<image_width>200</image_width>
+					<image_height>10</image_height>
+				</res200px>
+			</image>
+			<image>
+				<media_irn>02</media_irn>
+				<media_mimeformat>jpeg</media_mimeformat>
+				<media_mimetype>image</media_mimetype>
+				<res640px>
+					<image_path>02-640.jpg</image_path>
+					<image_width>640</image_width>
+					<image_height>200</image_height>
+				</res640px>
+				<res200px>
+					<image_path>02-200.jpg</image_path>
+					<image_width>200</image_width>
+					<image_height>20</image_height>
+				</res200px>
+			</image>
+		</x:context>
+
+		<x:expect label="should return 2x crm:P138i_has_representation">
+			<crm:P138i_has_representation>
+				<crm:E36_Visual_Item rdf:about="media/01">
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item
+							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/01-640.jpg">
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/01#previewWidth">
+									<rdf:value>640</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055647" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/01#previewHeight">
+									<rdf:value>100</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055644" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item
+							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/200.jpg">
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300075467" />
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/01#thumbWidth">
+									<rdf:value>200</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055647" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/01#thumbHeight">
+									<rdf:value>10</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055644" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+				</crm:E36_Visual_Item>
+			</crm:P138i_has_representation>
+			<crm:P138i_has_representation xmlns:la="https://linked.art/ns/terms/"
+				xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+				xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/">
+				<crm:E36_Visual_Item rdf:about="media/02">
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item
+							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/02-640.jpg">
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/02#previewWidth">
+									<rdf:value>640</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055647" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/02#previewHeight">
+									<rdf:value>200</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055644" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item
+							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/02-200.jpg">
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300075467" />
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/02#thumbWidth">
+									<rdf:value>200</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055647" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+							<crm:P43_has_dimension>
+								<crm:E54_Dimension rdf:about="media/02#thumbHeight">
+									<rdf:value>20</rdf:value>
+									<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055644" />
+									<crm:P91_has_unit>
+										<crm:E58_Measurement_Unit>
+											<rdfs:label>pixels</rdfs:label>
+										</crm:E58_Measurement_Unit>
+									</crm:P91_has_unit>
+								</crm:E54_Dimension>
+							</crm:P43_has_dimension>
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+				</crm:E36_Visual_Item>
+			</crm:P138i_has_representation>
+		</x:expect>
+	</x:scenario>
+
+</x:description>
