@@ -1,0 +1,12 @@
+<!-- local vocabularies; especially labels for locally-defined types and a cache of certain locally-used AAT types -->
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/">
+    <crm:E55_Type rdf:about="#thumbnail">
+    	<rdf:label>Thumbnail image</rdf:label>
+    </crm:E55_Type>
+    <crm:E55_Type rdf:about="#web">
+    	<rdf:label>Web image</rdf:label>
+    </crm:E55_Type>
+    <!-- TODO what are the other image types? -->
+</rdf:RDF>

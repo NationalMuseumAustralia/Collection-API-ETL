@@ -40,7 +40,13 @@
 		</p:input>
 	</p:exec>
 	<p:group>
+		<!-- capture the hostname so we can make URIs relative to this host -->
 		<p:variable name="hostname" select="normalize-space(/)"/>
+		
+		<!-- load our local vocabulary data -->
+		<nma:load-vocabulary>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:load-vocabulary>
 		
 		<!-- process Piction image metadata -->
 		<p:load href="/data/solr_prod1.xml"/>
@@ -66,6 +72,19 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 	</p:group>
+	
+	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
+		<p:option name="hostname" required="true"/>
+		<p:load href="vocabulary.rdf" name="raw-vocabulary"/>
+		<cx:message message="Loading local RDF vocabularies into SPARQL store..."/>
+		<p:add-attribute attribute-name="xml:base" match="/*" name="localised-vocabulary">
+			<p:with-option name="attribute-value" select="concat('http://', $hostname, '/xproc-z/term')"/>
+		</p:add-attribute>
+
+		<nma:store-graph dataset="public">
+			<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/vocabulary')"/>
+		</nma:store-graph>
+	</p:declare-step>
 	
 	<p:declare-step name="process-data" type="nma:process-data">
 		<p:input port="source"/>
@@ -117,10 +136,10 @@
 					</p:xslt>
 				</p:otherwise>
 			</p:choose>
-			<!--
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/', $record-type, '/', $identifier, '.rdf')"/>
 			</p:store>
+			<!--
 			-->
 			<nma:store-graph>
 				<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/', $record-type, '/', $identifier)"/>
@@ -170,15 +189,15 @@
 			</p:input>
 		</p:template>
 		<p:http-request name="http-put"/>
-		<p:sink/>
 		<!--
+		<p:sink/>
+		-->
 		<p:store href="/tmp/last-sparql-store-response.xml" indent="true"/>
 		<p:store href="/tmp/last-sparql-store-request.xml" indent="true">
 			<p:input port="source">
 				<p:pipe step="generate-put-request" port="result"/>
 			</p:input>
 		</p:store>
-		-->
 	</p:declare-step>
 	
 </p:declare-step>
