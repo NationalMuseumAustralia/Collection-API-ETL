@@ -18,8 +18,8 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 		the specified 'path' sequence of IRI predicates forwards. Returns the value at the 
 		end of traversing the specified path. -->
 	<!-- Single layer blank nodes and wildcard nodes are automatically traversed over 
-		so do not include them in the path, e.g. path 'A,Z' will traverse over both A--B--Z 
-		and A--C--Z, but not A--M--N--Z. -->
+		so do not include them in the path, e.g. path 'A,Z' will traverse over both A-B-Z 
+		and A-C-Z, but not A-M-N-Z. -->
 	<xsl:function name="path:forward">
 		<xsl:param name="from"/><!-- a URI identifying the start of the path to traverse -->
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
