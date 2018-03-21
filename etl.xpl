@@ -49,32 +49,28 @@
 		</nma:load-vocabulary>
 		
 		<!-- process Piction image metadata -->
-		<!--
-		<p:load href="/data/solr_prod1.xml"/>
+		<p:load href="/data/piction_solr_prod1.xml"/>
 		<nma:process-data record-type="image" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		-->
 	
 		<!-- process EMu objects, sites, parties, and narratives -->
-		<!--
-		<p:load href="/data/emu_objects_21-02-2018_80454.xml"/>
+		<p:load href="/data/emu_objects_21-03-2018_81609.xml"/>
 		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		<p:load href="/data/emu_narratives_22-02-2018_1359.xml"/>
+		<p:load href="/data/emu_narratives_21-03-2018_1364.xml"/>
 		<nma:process-data record-type="narrative" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		<p:load href="/data/emu_sites19-02-2018_4200.xml"/>
+		<p:load href="/data/emu_sites21-03-2018_4208.xml"/>
 		<nma:process-data record-type="site" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		<p:load href="/data/emu_parties21-02-2018_25986.xml"/>	
+		<p:load href="/data/emu_parties21-03-2018_26161.xml"/>	
 		<nma:process-data record-type="party" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		-->
 	</p:group>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">

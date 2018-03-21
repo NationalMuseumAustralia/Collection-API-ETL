@@ -1,27 +1,8 @@
 #!/bin/bash
 #
 # NMA API server init script
-# 2018-02-26
 #
-# usage:
-#
-# > sudo su -
-# > apt update
-# NB: "apt upgrade" may require manual input
-# > apt upgrade -y -f
-# > apt install git -y
-# > cd /usr/local
-# > git clone https://github.com/Conal-Tuohy/NMA-API-ETL.git
-# > cd /usr/local/NMA-API-ETL/install
-# > chmod a+x install.sh
-# NB: insert appropriate server name
-# > ./install.sh "<hostname>"
-# > exit
-#
-# NB: If the script stalls, may need to kill any 'apt' processes before re-running
-# > ps -aux | grep 'apt'
-# > sudo kill -9 <process-id>
-# > sudo rm /var/cache/apt/archives/lock
+# See README for usage instructions.
 #
 HOSTNAME=nma.conaltuohy.com
 CONFIG_DIR=/usr/local/NMA-API-ETL/install/config
