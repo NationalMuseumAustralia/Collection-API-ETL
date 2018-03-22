@@ -31,10 +31,12 @@
 	<xsl:template match="/*">
 		<xsl:variable name="media-id" select="normalize-space((field[@name='Multimedia ID'])[1])"/>
 		<xsl:variable name="visual-item-graph" select="concat('image/', $media-id)"/>
+		<xsl:variable name="related-objects" select="field[@name='EMu IRN for Related Objects'][normalize-space()]"/>
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri"/>
+			<xsl:if test="$related-objects">
 			<!-- we have both P138_represents and P138i_has_representation, for bidirectional traversal between objects and images -->
-			<xsl:for-each select="field[@name='EMu IRN for Related Objects']">
+			<xsl:for-each select="$related-objects">
 				<crm:E19_Physical_Object rdf:about="object/{.}#">
 					<crm:P138i_has_representation rdf:resource="{$visual-item-graph}#"/>
 				</crm:E19_Physical_Object>
@@ -42,7 +44,7 @@
 			<!-- See http://linked.art/model/object/digital/#image -->
 			<crm:E36_Visual_Item rdf:about="{$visual-item-graph}#">
 				<xsl:for-each select="field[@name='title']"><rdf:label><xsl:value-of select="."/></rdf:label></xsl:for-each>
-				<xsl:for-each select="field[@name='EMu IRN for Related Objects']">
+				<xsl:for-each select="$related-objects">
 					<crm:P138_represents rdf:resource="object/{.}#"/>
 				</xsl:for-each>
 				<xsl:for-each select="dataSource">
@@ -84,6 +86,7 @@
 				"Page Number" 
 				-->
 			</crm:E36_Visual_Item>
+			</xsl:if>
 		</rdf:RDF>
 	</xsl:template>
 	
