@@ -91,12 +91,12 @@ ln -s /usr/local/xmlcalabash-1.1.16-98 /usr/local/xmlcalabash
 echo =========== Installing XSpec
 cd /usr/local
 git clone https://github.com/xspec/xspec.git
-mkdir -p /usr/local/NMA/tests
+mkdir -p /usr/local/NMA/test-results
 chown -R ubuntu:ubuntu /usr/local/NMA
 #
 # XPROC-Z (ETL)
 #
-echo =========== Installing Xproc-Z ETL
+echo =========== Installing XProc-Z ETL
 cd $INSTALL_DIR
 wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/1.0c/xproc-z.war -O xproc-z.war
 mv xproc-z.war /var/lib/tomcat8/webapps/
@@ -107,7 +107,7 @@ chown ubuntu:ubuntu /data
 #
 # XPROC-Z (API SHIM)
 #
-echo =========== Installing Xproc-Z API shim
+echo =========== Installing XProc-Z API shim
 mkdir /etc/xproc-z/
 chmod a+w /etc/xproc-z/
 cp /var/lib/tomcat8/webapps/xproc-z.war /etc/xproc-z/

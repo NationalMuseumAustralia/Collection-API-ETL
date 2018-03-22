@@ -6,6 +6,9 @@ set XSPEC_HOME=file:///C:/project/lib/xspec/
 set XSPEC_DATA_DIR_IN=file:///C:/Project/Git/NMA/NMA-API-ETL/test
 set XSPEC_DATA_DIR_OUT=file:///C:/Project/Stage/NMA-unit-test-output
 
+REM Create unit test output directory
+mkdir "%XSPEC_DATA_DIR_OUT%"/unit/tests
+
 REM EMu to CRM conversion unit tests
 set XSPEC_IN="%XSPEC_DATA_DIR_IN%"/unit/tests/emu-to-crm.xspec
 set XSPEC_OUT="%XSPEC_DATA_DIR_OUT%"/unit/tests/emu-to-crm-test-result.html
