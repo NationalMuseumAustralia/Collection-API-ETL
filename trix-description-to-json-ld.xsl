@@ -77,7 +77,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 						<xsl:for-each-group select="$graph/trix:triple[*[1]=$resource][not(*[2]='http://www.w3.org/1999/02/22-rdf-syntax-ns#type')]" group-by="string(*[2])">
 							<xsl:choose>
 								<xsl:when test="count(current-group()) = 1">
-									<xsl:message><xsl:value-of select="concat('property ', *[2], ' has a single value: ', *[3])"/></xsl:message>
+									<!--<xsl:message><xsl:value-of select="concat('property ', *[2], ' has a single value: ', *[3])"/></xsl:message>-->
 									<!--
 									<xsl:comment>only one property with predicate <xsl:value-of select="*[2]"/></xsl:comment>
 									<xsl:comment>property value is <xsl:value-of select="*[3]"/></xsl:comment>
@@ -87,7 +87,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 									<xsl:choose>
 										<!-- property value is a resource -->
 										<xsl:when test="*[3]/self::trix:uri | *[3]/self::trix:id"><!-- object identifier is URI or blank node -->
-											<xsl:message><xsl:value-of select="concat('from ', $resource, ' to ', *[3])"/></xsl:message>
+											<!--<xsl:message><xsl:value-of select="concat('from ', $resource, ' to ', *[3])"/></xsl:message>-->
 											<xsl:call-template name="resource-as-json-ld-xml">
 												<xsl:with-param name="resource" select="*[3]"/>
 												<xsl:with-param name="already-rendered-resources" select="$already-rendered-resources, $resource"/>
@@ -101,7 +101,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 									</xsl:choose>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:message><xsl:value-of select="concat('property ', *[2], ' has ', count(current-group()), ' values')"/></xsl:message>
+									<!--<xsl:message><xsl:value-of select="concat('property ', *[2], ' has ', count(current-group()), ' values')"/></xsl:message>-->
 									<f:array key="{*[2]}">
 										<xsl:for-each select="current-group()">
 											<!-- property is either a resource or a literal -->
