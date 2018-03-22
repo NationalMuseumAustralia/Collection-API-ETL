@@ -77,7 +77,7 @@ wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuse
 apt install unzip
 unzip -j fuseki-3.6.0.zip apache-jena-fuseki-3.6.0/fuseki.war -d /var/lib/tomcat8/webapps/
 #
-# XML Calabash
+# XML Calabash (XProc processor)
 # - it may be better to just download the zip and unpack it in the appropriate place? (the installer uses /opt/xmlcalabash-blah-blah-version-number)
 #
 echo =========== Installing XML Calabash
@@ -85,6 +85,14 @@ cd $INSTALL_DIR
 wget https://github.com/ndw/xmlcalabash1/releases/download/1.1.16-98/xmlcalabash-1.1.16-98.jar -O xmlcalabash-1.1.16-98.jar
 echo 1 | java -jar ./xmlcalabash-1.1.16-98.jar
 ln -s /usr/local/xmlcalabash-1.1.16-98 /usr/local/xmlcalabash
+#
+# XSpec (XSLT unit tests)
+#
+echo =========== Installing XSpec
+cd /usr/local
+git clone https://github.com/xspec/xspec.git
+mkdir -p /usr/local/NMA/tests
+chown -R ubuntu:ubuntu /usr/local/NMA
 #
 # XPROC-Z (ETL)
 #
