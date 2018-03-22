@@ -6,6 +6,7 @@
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/">
 	
 	<xsl:import href="trix-description-to-json-ld.xsl"/>
+	<xsl:import href="trix-description-to-dc.xsl"/>
 	<xsl:import href="compact-json-ld.xsl"/>
 	<xsl:import href="trix-traversal-functions.xsl"/>
 	
@@ -56,6 +57,7 @@
 						
 						<field name="dimension"><xsl:value-of select="path:forward(('crm:P43_has_dimension', 'rdf:value'))"/></field>
 
+						<!-- Linked Art JSON-LD blob -->
 						<xsl:variable name="json-ld-in-xml">
 							<xsl:call-template name="resource-as-json-ld-xml">
 								<xsl:with-param name="resource" select="$root-resource"/>
@@ -66,6 +68,15 @@
 							<xsl:apply-templates select="$json-ld-in-xml" mode="compact"/>
 						</xsl:variable>
 						<field name="json-ld"><xsl:value-of select="xml-to-json($compact-json-ld-in-xml, map{'indent':true()})"/></field>
+
+						<!-- Simplified DC blob -->
+						<xsl:variable name="dc-in-xml">
+							<xsl:call-template name="dc-xml">
+								<xsl:with-param name="resource" select="$root-resource"/>
+							</xsl:call-template>
+						</xsl:variable>
+						<field name="simple-dc"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
+
 					</doc>
 				</add>
 			</c:body>
