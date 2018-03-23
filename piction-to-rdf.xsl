@@ -77,9 +77,12 @@
 									<xsl:when test="@name = 'original_3'">
 										<crm:P2_has_type rdf:resource="{concat($nma-term-ns, 'large')}" />
 									</xsl:when>
+									<!-- TODO: include other resolutions in internal API -->
+									<!-- 
 									<xsl:otherwise>
 										<crm:P2_has_type rdf:resource="{concat($nma-term-ns, @name)}" />
 									</xsl:otherwise>
+									 -->
 								</xsl:choose>
 							</crm:E36_Visual_Item>
 						</crm:P138i_has_representation>
