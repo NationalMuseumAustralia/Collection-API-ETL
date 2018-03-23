@@ -7,6 +7,12 @@
 	<crm:E55_Type rdf:about="web">
 		<rdfs:label>web image</rdfs:label>
 	</crm:E55_Type>
+	<crm:E55_Type rdf:about="preview">
+		<rdfs:label>preview image</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="large">
+		<rdfs:label>large image</rdfs:label>
+	</crm:E55_Type>
 	<crm:E55_Type rdf:about="physicalDescription">
 		<rdfs:label>physical description</rdfs:label>
 	</crm:E55_Type>
