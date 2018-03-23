@@ -23,8 +23,7 @@
 						<field name="type2"><xsl:value-of select="path:forward('rdf:type')"/></field>
 						<field name="collection"><xsl:value-of select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )"/></field>
 						
-						<!-- TODO: fix CRM mapping - should have title in rdfs:label -->
-						<field name="title"><xsl:value-of select="path:forward('rdf:value')"/></field>
+						<field name="title"><xsl:value-of select="path:forward('rdfs:label')"/></field>
 
 						<!-- representations and their digital media files -->
 						<xsl:variable name="representations" select="path:forward('crm:P138i_has_representation')"/>
@@ -75,7 +74,7 @@
 								<xsl:with-param name="resource" select="$root-resource"/>
 							</xsl:call-template>
 						</xsl:variable>
-						<field name="simple-dc"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
+						<field name="simple"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
 
 					</doc>
 				</add>

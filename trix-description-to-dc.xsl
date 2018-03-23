@@ -30,7 +30,7 @@
 				<xsl:value-of select="path:forward( ('crm:P2_has_type','rdfs:label') )" />
 			</string>
 			<string key='title'>
-				<xsl:value-of select="path:forward('rdf:value')" />
+				<xsl:value-of select="path:forward('rdfs:label')" />
 			</string>
 			<string key='isAggregatedBy'>
 				<xsl:value-of select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )" />

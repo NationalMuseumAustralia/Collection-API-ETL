@@ -30,7 +30,11 @@
 
 		<rdf:Description rdf:about="{$object-iri}#">
 
+			<!-- TODO: could PhysicalObject be split into ManMadeObject and BiologicalObject -->
+
 			<!-- entity type -->
+			<!-- http://linked.art/model/object/identity/#types -->
+			<!-- http://linked.art/model/actor/#types -->
 			<xsl:choose>
 				<xsl:when test="$record-type='object'">
 					<rdf:type rdf:resource="{$crm-ns}E19_Physical_Object" />
@@ -84,6 +88,8 @@
 			</xsl:apply-templates>
 
 			<!-- production -->
+			<!-- http://linked.art/model/provenance/production.html -->
+			<!-- NB: modeled as a single production event consisting of multiple activities -->
 			<xsl:if test="ProductionParties | ProductionPlaces | ProductionDates">
 				<crm:P108i_was_produced_by>
 					<crm:E12_Production>
@@ -114,6 +120,18 @@
 			<!-- associations -->
 			<xsl:apply-templates select="AssociatedParties | AssociatedPlaces | AssociatedDates" />
 
+			<!-- TODO: exclude credit line if RigAcknowledgement=false -->
+
+			<!-- acknowledgement -->
+			<xsl:apply-templates select="RigCreditLine2">
+				<xsl:with-param name="object-iri" select="$object-iri" />
+			</xsl:apply-templates>
+			
+			<!-- rights -->
+			<xsl:apply-templates select="AcsCCStatus">
+				<xsl:with-param name="object-iri" select="$object-iri" />
+			</xsl:apply-templates>
+
 			<!-- exhibition location -->
 			<xsl:apply-templates select="LocCurrentLocationRef">
 				<xsl:with-param name="object-iri" select="$object-iri" />
@@ -122,9 +140,17 @@
 			<!-- media -->
 			<xsl:apply-templates select="WebMultiMediaRef_tab/image" />
 
-			<!-- PARTY -->
+			<!-- PARTY FIELDS -->
+
+			<!-- organisation name -->
+			<!-- http://linked.art/model/actor/#names -->
+			<xsl:apply-templates select="NamOrganisation">
+				<xsl:with-param name="party-iri" select="concat('party/', irn)" />
+			</xsl:apply-templates>
 
 			<!-- person names -->
+			<!-- http://linked.art/model/actor/#names -->
+			<!-- NB: modeled as full name composed of multiple parts -->
 			<xsl:if test="NamFullName">
 				<xsl:variable name="party-iri" select="concat('party/', irn)" />
 				<crm:P1_is_identified_by>
@@ -141,18 +167,10 @@
 				</crm:P1_is_identified_by>
 			</xsl:if>
 
-			<!-- organisation names -->
-			<xsl:if test="NamOrganisation">
-				<xsl:variable name="party-iri" select="concat('party/', irn)" />
-				<rdfs:label>
-					<xsl:value-of select="NamOrganisation" />
-				</rdfs:label>
-			</xsl:if>
-
 			<!-- gender -->
 			<xsl:apply-templates select="NamSex" />
 
-			<!-- PLACE -->
+			<!-- PLACE FIELDS -->
 
 			<!-- formatted label -->
 			<xsl:if test="$record-type='site'">
@@ -204,6 +222,7 @@
 	<!-- COMMON -->
 
 	<!-- irn -->
+	<!-- http://linked.art/model/object/identity/#identifier -->
 	<xsl:template match="irn">
 		<xsl:param name="object-iri" />
 		<crm:P1_is_identified_by>
@@ -220,6 +239,7 @@
 	<!-- OBJECT -->
 
 	<!-- registration number -->
+	<!-- http://linked.art/model/object/identity/#identifier -->
 	<xsl:template match="TitObjectNumber">
 		<xsl:param name="object-iri" />
 		<crm:P1_is_identified_by>
@@ -233,13 +253,16 @@
 		</crm:P1_is_identified_by>
 	</xsl:template>
 
+	<!-- title -->
+	<!-- http://linked.art/model/object/identity/#titles -->
 	<xsl:template match="TitObjectTitle">
-		<rdf:value>
+		<rdfs:label>
 			<xsl:value-of select="." />
-		</rdf:value>
+		</rdfs:label>
 	</xsl:template>
 
 	<!-- collection -->
+	<!-- https://linked.art/cookbook/getty/photoarchive/ -->
 	<xsl:template match="TitCollectionTitle">
 		<crm:P106i_forms_part_of>
 			<crm:E19_Physical_Object>
@@ -264,6 +287,7 @@
 	</xsl:template>
 
 	<!-- physical description -->
+	<!-- http://linked.art/model/object/aboutness/#description -->
 	<xsl:template match="PhyDescription">
 		<xsl:param name="object-iri" />
 		<crm:P129i_is_subject_of>
@@ -279,6 +303,7 @@
 	</xsl:template>
 
 	<!-- content description -->
+	<!-- http://linked.art/model/object/aboutness/#description -->
 	<xsl:template match="PhyContentDescription">
 		<xsl:param name="object-iri" />
 		<crm:P129i_is_subject_of>
@@ -293,7 +318,8 @@
 		</crm:P129i_is_subject_of>
 	</xsl:template>
 
-	<!-- statement of significance -->
+	<!-- statement of significance (usually stated at collection level) -->
+	<!-- http://linked.art/model/object/aboutness/#description -->
 	<xsl:template match="StaNmaSOSPublic">
 		<xsl:param name="object-iri" />
 		<crm:P129i_is_subject_of>
@@ -308,7 +334,8 @@
 		</crm:P129i_is_subject_of>
 	</xsl:template>
 
-	<!-- educational signficance -->
+	<!-- educational significance (usually stated at collection level) -->
+	<!-- http://linked.art/model/object/aboutness/#description -->
 	<xsl:template match="CreProvenance">
 		<xsl:param name="object-iri" />
 		<crm:P129i_is_subject_of>
@@ -323,28 +350,31 @@
 		</crm:P129i_is_subject_of>
 	</xsl:template>
 
-	<!-- production: places -->
-	<xsl:template match="ProductionPlaces">
+	<!-- TODO: add support for notes -->
+
+	<!-- production: parties -->
+	<!-- http://linked.art/model/provenance/production.html -->
+	<!-- TODO: change to CRM's proposed party in-the-role-of version once Linked Art ratify -->
+	<!-- SEE: http://lists.ics.forth.gr/pipermail/crm-sig/2018-March/003300.html -->
+	<xsl:template match="ProductionParties">
 		<xsl:param name="object-iri" />
-		<xsl:for-each select="ProductionPlace">
-			<xsl:variable name="place-iri" select="concat('place/', ProPlaceRef_tab.irn, '#')" />
+		<xsl:for-each select="ProductionParty">
+			<xsl:variable name="party-iri" select="concat('party/', ProPersonRef_tab.irn, '#')" />
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
 					<rdfs:label>
-						<xsl:value-of select="ProPlaceType_tab" />
+						<xsl:value-of select="ProPersonType_tab" />
 					</rdfs:label>
-					<crm:P7_took_place_at>
-						<rdf:Description rdf:about="{$place-iri}" />
-					</crm:P7_took_place_at>
+					<crm:P14_carried_out_by>
+						<rdf:Description rdf:about="{$party-iri}" />
+					</crm:P14_carried_out_by>
 				</crm:E7_Activity>
 			</crm:P9_consists_of>
 		</xsl:for-each>
 	</xsl:template>
-
-	<!-- TODO: are there organisation producers? -->
-	<!-- TODO: add support for notes -->
-
-	<!-- production: parties -->
+	
+	<!-- TODO: CRM's proposed party in-the-role-of version - to use once Linked Art ratify -->
+	<!-- 
 	<xsl:template match="ProductionParties">
 		<xsl:param name="object-iri" />
 		<xsl:for-each select="ProductionParty">
@@ -367,8 +397,31 @@
 			</crm:P9_consists_of>
 		</xsl:for-each>
 	</xsl:template>
+	 -->	
+
+	<!-- production: places -->
+	<!-- http://linked.art/model/provenance/production.html -->
+	<!-- TODO: remove role label once joined with main event using EMu keys -->
+	<xsl:template match="ProductionPlaces">
+		<xsl:param name="object-iri" />
+		<xsl:for-each select="ProductionPlace">
+			<xsl:variable name="place-iri" select="concat('place/', ProPlaceRef_tab.irn, '#')" />
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>
+						<xsl:value-of select="ProPlaceType_tab" />
+					</rdfs:label>
+					<crm:P7_took_place_at>
+						<rdf:Description rdf:about="{$place-iri}" />
+					</crm:P7_took_place_at>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
+		</xsl:for-each>
+	</xsl:template>
 
 	<!-- production: dates -->
+	<!-- http://linked.art/model/provenance/production.html -->
+	<!-- TODO: remove role label once joined with main event using EMu keys -->
 	<xsl:template match="ProductionDates">
 		<xsl:param name="object-iri" />
 		<xsl:for-each select="ProductionDate">
@@ -396,6 +449,7 @@
 	</xsl:template>
 
 	<!-- association: parties -->
+	<!-- NB: modeled as an 'association event' that the party was present at -->
 	<xsl:template match="AssociatedParties">
 		<xsl:for-each select="AssociatedParty">
 			<xsl:variable name="party-iri" select="concat('party/', AssPersonRef_tab.irn, '#')" />
@@ -423,6 +477,7 @@
 	</xsl:template>
 
 	<!-- association: places -->
+	<!-- NB: modeled as an 'association event' that the place was present at -->
 	<xsl:template match="AssociatedPlaces">
 		<xsl:for-each select="AssociatedPlace">
 			<xsl:variable name="place-iri" select="concat('place/', AssPlaceRef_tab.irn, '#')" />
@@ -450,6 +505,7 @@
 	</xsl:template>
 
 	<!-- association: dates -->
+	<!-- NB: modeled as an 'association event' that the date was present at -->
 	<xsl:template match="AssociatedDates">
 		<xsl:for-each select="AssociatedDates">
 			<crm:P12i_was_present_at>
@@ -487,6 +543,7 @@
 	</xsl:template>
 
 	<!-- materials -->
+	<!-- http://linked.art/model/object/physical/#materials -->
 	<xsl:template match="PhyMaterials_tab">
 		<xsl:for-each select="PhyMaterial">
 			<crm:P45_consists_of>
@@ -500,6 +557,7 @@
 	</xsl:template>
 
 	<!-- dimensions: length -->
+	<!-- http://linked.art/model/object/physical/#dimensions -->
 	<xsl:template match="PhyRegistrationLength">
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
@@ -513,6 +571,7 @@
 	</xsl:template>
 
 	<!-- dimensions: height -->
+	<!-- http://linked.art/model/object/physical/#dimensions -->
 	<xsl:template match="PhyRegistrationHeight">
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
@@ -526,6 +585,7 @@
 	</xsl:template>
 
 	<!-- dimensions: width -->
+	<!-- http://linked.art/model/object/physical/#dimensions -->
 	<xsl:template match="PhyRegistrationWidth">
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
@@ -539,6 +599,7 @@
 	</xsl:template>
 
 	<!-- dimensions: depth -->
+	<!-- http://linked.art/model/object/physical/#dimensions -->
 	<xsl:template match="PhyRegistrationDepth">
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
@@ -552,6 +613,7 @@
 	</xsl:template>
 
 	<!-- dimensions: diameter -->
+	<!-- http://linked.art/model/object/physical/#dimensions -->
 	<xsl:template match="PhyRegistrationDiameter">
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
@@ -565,6 +627,7 @@
 	</xsl:template>
 
 	<!-- dimensions: weight -->
+	<!-- http://linked.art/model/object/physical/#dimensions -->
 	<xsl:template match="PhyRegistrationWeight">
 		<xsl:param name="object-iri" />
 		<xsl:param name="unit" />
@@ -577,7 +640,67 @@
 		</xsl:call-template>
 	</xsl:template>
 
+	<!-- acknowledgement -->
+	<!-- https://linked.art/model/object/rights/#credit-attribution-statement -->
+	<xsl:template match="RigCreditLine2">
+		<xsl:param name="object-iri" />
+		<crm:P67i_is_referred_to_by>
+			<crm:E33_Linguistic_Object rdf:about="{$object-iri}#acknowledgement">
+				<rdf:value>
+					<xsl:value-of select="." />
+				</rdf:value>
+				<!-- AAT 300026687: acknowledgements -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300026687" />
+			</crm:E33_Linguistic_Object>
+		</crm:P67i_is_referred_to_by>
+	</xsl:template>
+
+	<!-- TODO: should CC licences be no-derivatives? -->
+	<!-- TODO: look at rightsstatements.org as suggested by Linked Art -->
+	
+	<!-- rights -->
+	<!-- https://linked.art/model/object/rights/#rights-assertions -->
+	<xsl:template match="AcsCCStatus">
+		<xsl:param name="object-iri" />
+		<crm:P104_is_subject_to>
+			<xsl:choose>
+				<xsl:when test=". = 'Public Domain'">
+					<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/zero/1.0/">
+						<rdf:value>
+							<xsl:text>CC BY 4.0</xsl:text>
+						</rdf:value>
+					</crm:E30_Right>
+				</xsl:when>
+				<xsl:when test=". = 'Creative Commons Commercial Use'">
+					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by/4.0/">
+						<rdf:value>
+							<xsl:text>CC BY 4.0</xsl:text>
+						</rdf:value>
+					</crm:E30_Right>
+				</xsl:when>
+				<xsl:when test=". = 'Creative Commons Non-commercial Use'">
+					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc/4.0/">
+						<rdf:value>
+							<xsl:text>CC BY-NC 4.0</xsl:text>
+						</rdf:value>
+					</crm:E30_Right>
+				</xsl:when>
+				<!-- fall back to most conservative -->
+				<xsl:otherwise>
+					<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
+						<rdf:value>
+							<xsl:text>All Rights Reserved</xsl:text>
+						</rdf:value>
+					</crm:E30_Right>
+				</xsl:otherwise>
+			</xsl:choose>
+		</crm:P104_is_subject_to>
+	</xsl:template>
+
+	<!-- TODO: add additional location levels and ancestor structure -->
+
 	<!-- exhibition location -->
+	<!-- https://linked.art/model/exhibition/ -->
 	<xsl:template match="LocCurrentLocationRef">
 		<crm:P16i_was_used_for>
 			<crm:E7_Activity>
@@ -605,10 +728,12 @@
 	</xsl:template>
 
 	<!-- media -->
+	<!-- https://linked.art/model/object/digital/ -->
 	<xsl:template match="image">
 		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
 		<crm:P138i_has_representation>
 			<crm:E36_Visual_Item rdf:about="{$media-iri}">
+
 				<!-- TODO: add identified_by for media IRN -->
 				<!-- TODO: add mime type/format -->
 
@@ -616,6 +741,7 @@
 				<xsl:for-each select="res640px">
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item rdf:about="{concat($media-uri-base, image_path)}">
+							<crm:P2_has_type rdf:resource="{$nma-term-ns}preview" />
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
 									<xsl:with-param name="dimension-iri"
@@ -646,8 +772,7 @@
 				<xsl:for-each select="res200px">
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item rdf:about="{concat($media-uri-base, image_path)}">
-							<!-- AAT 300075467: thumbnail sketches -->
-							<crm:P2_has_type rdf:resource="{$aat-ns}300075467" />
+							<crm:P2_has_type rdf:resource="{$nma-term-ns}thumbnail" />
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
 									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#thumbWidth')" />
@@ -678,7 +803,16 @@
 
 	<!-- PARTY -->
 
-	<!-- first names -->
+	<!-- organisation name -->
+	<xsl:template match="NamOrganisation">
+		<xsl:param name="party-iri" />
+		<rdfs:label>
+			<xsl:value-of select="NamOrganisation" />
+		</rdfs:label>
+	</xsl:template>
+
+	<!-- first names (component of full name) -->
+	<!-- http://linked.art/model/actor/#names -->
 	<xsl:template match="NamFirst">
 		<crm:P106_is_composed_of>
 			<la:Name>
@@ -691,7 +825,8 @@
 		</crm:P106_is_composed_of>
 	</xsl:template>
 
-	<!-- middle names -->
+	<!-- middle names (component of full name) -->
+	<!-- http://linked.art/model/actor/#names -->
 	<xsl:template match="NamMiddle">
 		<crm:P106_is_composed_of>
 			<la:Name>
@@ -704,7 +839,8 @@
 		</crm:P106_is_composed_of>
 	</xsl:template>
 
-	<!-- last names -->
+	<!-- last names (component of full name) -->
+	<!-- http://linked.art/model/actor/#names -->
 	<xsl:template match="NamLast">
 		<crm:P106_is_composed_of>
 			<la:Name>
@@ -717,8 +853,10 @@
 		</crm:P106_is_composed_of>
 	</xsl:template>
 
-	<!-- other names -->
 	<!-- TODO: are other names part of full name or a separate entity? -->
+
+	<!-- other names (component of full name) -->
+	<!-- http://linked.art/model/actor/#names -->
 	<xsl:template match="NamOtherNames_tab">
 		<xsl:for-each select="NamOtherName">
 			<crm:P106_is_composed_of>
@@ -734,6 +872,7 @@
 	</xsl:template>
 
 	<!-- gender -->
+	<!-- http://linked.art/model/actor/#gender -->
 	<xsl:template match="NamSex">
 		<xsl:choose>
 			<xsl:when test=".='Female'">
@@ -776,8 +915,12 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<!-- PLACE LABELS -->
+	<!-- PLACE -->
 
+	<!-- TODO: add ancestor locations -->
+
+	<!-- place label -->
+	<!-- http://linked.art/model/base/#locations -->
 	<xsl:template
 		match="LocSpecialGeographicUnit_tab | LocNearestNamedPlace_tab | LocTownship_tab | LocDistrictCountyShire_tab | LocProvinceStateTerritory_tab | LocCountry_tab | LocContinent_tab | LocOcean_tab"
 		mode="label">

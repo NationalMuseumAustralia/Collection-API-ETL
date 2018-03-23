@@ -48,6 +48,9 @@
 	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300054766">
 		<rdfs:label>exhibition (event)</rdfs:label>
 	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300026687">
+		<rdfs:label>acknowledgement</rdfs:label>
+	</crm:E55_Type>
 	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300075467">
 		<rdfs:label>thumbnail</rdfs:label>
 	</crm:E55_Type>
