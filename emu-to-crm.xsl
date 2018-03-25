@@ -732,7 +732,7 @@
 	<xsl:template match="image">
 		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
 		<crm:P138i_has_representation>
-			<crm:E36_Visual_Item rdf:about="{$media-iri}">
+			<crm:E36_Visual_Item rdf:about="{$media-iri}#">
 
 				<!-- TODO: add identified_by for media IRN -->
 				<!-- TODO: add mime type/format -->
