@@ -18,7 +18,9 @@
 			<c:body content-type="application/xml">
 				<add commitWithin="10000">
 					<doc>
-						<field name="id"><xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(#)$', '$2')"/></field>
+						<!-- id = the last two components of the URI's path, e.g. "object/1234" or "party/5678" -->
+						<field name="id"><xsl:value-of select="replace($root-resource, '(.*/)([^/]*/[^/]*)(#)$', '$2')"/></field>
+						<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
 						<field name="type"><xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/></field>
 						<field name="type2"><xsl:value-of select="path:forward('rdf:type')"/></field>
 						<field name="collection"><xsl:value-of select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )"/></field>
