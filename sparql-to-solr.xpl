@@ -264,8 +264,8 @@
 	
 	<!-- generates a Solr index for resources which match a particular SPARQL query, from a resource description given by another SPARQL query template -->
 	<p:declare-step type="nma:index-resources" name="index-resources">
-		<p:input port="resource-list-sparql-query" required="true"/>
-		<p:input port="resource-description-sparql-query" required="true"/>
+		<p:input port="resource-list-sparql-query"/>
+		<p:input port="resource-description-sparql-query"/>
 		<nma:sparql-query name="resources-to-index" accept="application/sparql-results+xml" dataset="public">
 			<p:input port="source">
 				<p:pipe step="index-resources" port="resource-list-sparql-query"/>
@@ -273,7 +273,7 @@
 		</nma:sparql-query>
 		<p:for-each name="resource">
 			<p:iteration-source select="/results:sparql/results:results/results:result[position() &lt; 11]"><!-- Test with first 10 records -->
-				<p:pipe step="resource-for-solr" port="result"/>
+				<p:pipe step="resources-to-index" port="result"/>
 			</p:iteration-source>
 			<!-- generate description for this resource -->
 			<p:variable name="resource-uri" select="/results:result/results:binding/results:uri"/>
@@ -281,7 +281,7 @@
 				<p:with-option name="message" select="concat('Querying SPARQL store for ', $resource-uri, ' ...')"/>
 			</cx:message>
 			<p:xslt name="generate-sparql-query">
-				<p:with-param name="resource-uri" select="$physical-object-uri"/>
+				<p:with-param name="resource-uri" select="$resource-uri"/>
 				<p:input port="source">
 					<p:pipe step="index-resources" port="resource-description-sparql-query"/>
 				</p:input>
@@ -291,14 +291,16 @@
 			</p:xslt>
 			<!-- execute the query to generate a resource description -->
 			<nma:sparql-query name="resource-description" dataset="public" accept="application/trix+xml"/>
+			<!-- transform the RDF graph into a Solr index update -->
 			<p:xslt name="trix-description-to-solr-doc">
 				<p:input port="stylesheet">
 					<p:document href="trix-description-to-solr.xsl"/>
 				</p:input>
-				<p:with-param name="root-resource" select="$physical-object-uri"/>
+				<p:with-param name="root-resource" select="$resource-uri"/>
 				<p:with-param name="dataset" select=" 'public' "/>
 			</p:xslt>
 			<p:store href="/tmp/solr.xml" indent="true"/>
+			<!-- execute the Solr index update -->
 			<p:http-request name="solr-deposit">
 				<p:input port="source">
 					<p:pipe step="trix-description-to-solr-doc" port="result"/>
