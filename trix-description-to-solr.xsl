@@ -21,7 +21,8 @@
 						<!-- id = the last two components of the URI's path, e.g. "object/1234" or "party/5678" -->
 						<field name="id"><xsl:value-of select="replace($root-resource, '(.*/)([^/]*/[^/]*)(#)$', '$2')"/></field>
 						<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
-						<field name="type"><xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/></field>
+						<xsl:variable name="type " select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/>
+						<field name="type"><xsl:value-of select="$type"/></field>
 						<field name="type2"><xsl:value-of select="path:forward('rdf:type')"/></field>
 						<field name="collection"><xsl:value-of select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )"/></field>
 						
@@ -71,13 +72,19 @@
 						<field name="json-ld"><xsl:value-of select="xml-to-json($compact-json-ld-in-xml, map{'indent':true()})"/></field>
 
 						<!-- Simplified DC blob -->
-						<xsl:variable name="dc-in-xml">
-							<xsl:call-template name="dc-xml">
-								<xsl:with-param name="resource" select="$root-resource"/>
-							</xsl:call-template>
-						</xsl:variable>
-						<field name="simple"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
-
+						<!--
+						temporarily disabling "simple" serialization for any but "object" records:
+						ERROR: xml-to-json: Invalid number: 
+						ERROR:     cause: file:/usr/local/NMA-API-ETL/trix-description-to-solr.xsl:79:12:err:FOJS0006:xml-to-json: Invalid number: 
+						-->
+						<xsl:if test="$type = 'object'">
+							<xsl:variable name="dc-in-xml">
+								<xsl:call-template name="dc-xml">
+									<xsl:with-param name="resource" select="$root-resource"/>
+								</xsl:call-template>
+							</xsl:variable>
+							<field name="simple"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
+						</xsl:if>
 					</doc>
 				</add>
 			</c:body>
