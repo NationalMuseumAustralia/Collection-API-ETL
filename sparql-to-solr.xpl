@@ -272,7 +272,7 @@
 			</p:input>
 		</nma:sparql-query>
 		<p:for-each name="resource">
-			<p:iteration-source select="/results:sparql/results:results/results:result[position() &lt; 11]"><!-- Test with first 10 records -->
+			<p:iteration-source select="/results:sparql/results:results/results:result">
 				<p:pipe step="resources-to-index" port="result"/>
 			</p:iteration-source>
 			<!-- generate description for this resource -->
