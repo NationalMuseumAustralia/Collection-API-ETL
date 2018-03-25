@@ -37,13 +37,14 @@
 			</string>
 
 			<!-- accession number -->
-			<xsl:for-each select="path:forward('crm:P1_is_identified_by')">
-				<xsl:variable name="aat-type" select="path:forward(., 'crm:P2_has_type')" />
-				<xsl:if test="contains($aat-type, '300312355')">
-					<string key='identifier'>
-						<xsl:value-of select="path:forward(., 'rdf:value')" />
-					</string>
-				</xsl:if>
+			<xsl:for-each select="
+				path:forward('crm:P1_is_identified_by')[
+					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300312355'
+				]
+			">
+				<string key='identifier'>
+					<xsl:value-of select="path:forward(., 'rdf:value')" />
+				</string>
 			</xsl:for-each>
 
 			<!-- materials -->
