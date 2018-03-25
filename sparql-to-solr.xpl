@@ -27,7 +27,10 @@
 					where {
 						?resource a crm:E36_Visual_Item.
 						# only top level visual items (i.e. those which are not sub-formats of another visual item)
-						not exists (?topLevelVisualItem crm:P138i_has_representation ?resource)
+						not exists {
+							?topLevelVisualItem crm:P138i_has_representation ?resource.
+							?topLevelVisualItem a crm:E36_Visual_Item
+						}
 						filter(isuri(?resource)) # ignoring any visual items which have no URI
 						# for debugging, filter here:
 						# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
