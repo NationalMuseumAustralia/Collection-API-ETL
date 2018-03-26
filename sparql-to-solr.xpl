@@ -238,14 +238,19 @@
 						# and the locations and dates of those activities
 						crm:P108i_was_produced_by |
 						crm:P108i_was_produced_by/crm:P9_consists_of |
-						crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by |
-						crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by/crm:P14.1_in_the_role_of |
+						crm:P108i_was_produced_by/crm:P9_consists_of/crm:P14_carried_out_by |
 						crm:P108i_was_produced_by/crm:P9_consists_of/crm:P7_took_place_at |
 						crm:P108i_was_produced_by/crm:P9_consists_of/crm:P4_has_time-span | 
+						# associated parties/places/dates
+						crm:P12i_was_present_at |
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of |
 						# the dimensions of the object, the type of the dimensions, and their measurement unit
 						crm:P43_has_dimension |
 						crm:P43_has_dimension/crm:P2_has_type |
 						crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
+						# rights and acknowledgements
+						crm:P104_is_subject_to |
+						crm:P67i_is_referred_to_by |
 						# the visual items that depict the object, and the creation of those images, and the photographers
 						# and the various derivative representations of that item, and their types (Piction images are typed)
 						# along with their dimensions, and the types and measurement units of the dimensions
