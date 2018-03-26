@@ -7,6 +7,7 @@
 
 	<xsl:param name="root-resource" /><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:variable name="graph" select="/trix:trix/trix:graph" />
+	<xsl:variable name="api-base-uri" select="replace($root-resource, '(.*)/.*/[^#]*#.*', '$1')"/>
 
 	<xsl:template match="/">
 		<xsl:variable name="dc-json-in-xml">
@@ -26,15 +27,15 @@
 			<string key='type'>
 				<xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')" />
 			</string>
-			<string key='additionalType'>
-				<xsl:value-of select="path:forward( ('crm:P2_has_type','rdfs:label') )" />
-			</string>
-			<string key='title'>
-				<xsl:value-of select="path:forward('rdfs:label')" />
-			</string>
-			<string key='isAggregatedBy'>
-				<xsl:value-of select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )" />
-			</string>
+			<xsl:for-each select="path:forward( ('crm:P2_has_type','rdfs:label') )">
+				<string key="additionalType"><xsl:value-of select="."/></string>
+			</xsl:for-each>
+			<xsl:for-each select="path:forward('rdfs:label')">
+				<string key="title"><xsl:value-of select="."/></string>
+			</xsl:for-each>
+			<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )">
+				<string key="collection"><xsl:value-of select="."/></string>
+			</xsl:for-each>
 
 			<!-- accession number -->
 			<xsl:for-each select="
@@ -60,30 +61,308 @@
 				</array>
 			</xsl:if>
 
+			<!-- dimensions -->
+			<xsl:if test="path:forward('crm:P43_has_dimension')">
+				<map key="extent">
+						<string key='type'><xsl:text>Measurement</xsl:text></string>
+				
+						<!-- length -->
+						<xsl:for-each select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055645'
+							]
+						">
+							<string key='length'>
+								<xsl:value-of select="path:forward(., 'rdf:value')" />
+							</string>
+						</xsl:for-each>
+
+						<!-- height -->
+						<xsl:for-each select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055644'
+							]
+						">
+							<string key='height'>
+								<xsl:value-of select="path:forward(., 'rdf:value')" />
+							</string>
+						</xsl:for-each>
+
+						<!-- width -->
+						<xsl:for-each select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055647'
+							]
+						">
+							<string key='width'>
+								<xsl:value-of select="path:forward(., 'rdf:value')" />
+							</string>
+						</xsl:for-each>
+
+						<!-- depth -->
+						<xsl:for-each select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300072633'
+							]
+						">
+							<string key='depth'>
+								<xsl:value-of select="path:forward(., 'rdf:value')" />
+							</string>
+						</xsl:for-each>
+
+						<!-- diameter -->
+						<xsl:for-each select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055624'
+							]
+						">
+							<string key='diameter'>
+								<xsl:value-of select="path:forward(., 'rdf:value')" />
+							</string>
+						</xsl:for-each>
+
+						<!-- weight -->
+						<xsl:for-each select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300056240'
+							]
+						">
+							<string key='weight'>
+								<xsl:value-of select="path:forward(., 'rdf:value')" />
+							</string>
+						</xsl:for-each>
+
+						<!-- linear units -->
+						<xsl:variable name="linearDimensions" select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') != 'http://vocab.getty.edu/aat/300056240'
+							]
+						" />
+						<xsl:if test="$linearDimensions">
+							<string key='unitText'>
+								<xsl:value-of select="path:forward($linearDimensions[1], ('crm:P91_has_unit', 'rdfs:label'))" />
+							</string>
+						</xsl:if>
+						
+
+						<!-- weight units -->
+						<xsl:for-each select="
+							path:forward('crm:P43_has_dimension')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300056240'
+							]
+						">
+							<string key='unitTextWeight'>
+								<xsl:value-of select="path:forward(., ('crm:P91_has_unit', 'rdfs:label'))" />
+							</string>
+						</xsl:for-each>
+					</map>
+			</xsl:if>
+			
 			<!-- descriptions -->
-			<xsl:for-each select="path:forward('crm:P129i_is_subject_of')">
-				<xsl:variable name="subject-iri" select="." />
-				<xsl:if test="contains($subject-iri, 'contentDescription')">
-					<string key='description'>
-						<xsl:value-of select="path:forward($subject-iri, 'rdf:value')" />
-					</string>
-				</xsl:if>
-				<xsl:if test="contains($subject-iri, 'physicalDescription')">
-					<string key='physicalDescription'>
-						<xsl:value-of select="path:forward($subject-iri, 'rdf:value')" />
-					</string>
-				</xsl:if>
-				<xsl:if test="contains($subject-iri, 'significanceStatement')">
-					<string key='significanceStatement'>
-						<xsl:value-of select="path:forward($subject-iri, 'rdf:value')" />
-					</string>
-				</xsl:if>
-				<xsl:if test="contains($subject-iri, 'educationalSignificance')">
-					<string key='educationalSignificance'>
-						<xsl:value-of select="path:forward($subject-iri, 'rdf:value')" />
-					</string>
-				</xsl:if>
+			<!-- NB: using contains - there may be multiple crm:P2_has_type, and the term namespace varies depending on the server -->
+			<xsl:for-each select="
+				path:forward('crm:P129i_is_subject_of')[
+					path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/contentDescription')
+				]
+			">
+				<string key='description'>
+					<xsl:value-of select="path:forward(., 'rdf:value')" />
+				</string>
 			</xsl:for-each>
+			<xsl:for-each select="
+				path:forward('crm:P129i_is_subject_of')[
+					path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/physicalDescription')
+				]
+			">
+				<string key='physicalDescription'>
+					<xsl:value-of select="path:forward(., 'rdf:value')" />
+				</string>
+			</xsl:for-each>
+			<xsl:for-each select="
+				path:forward('crm:P129i_is_subject_of')[
+					path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/significanceStatement')
+				]
+			">
+				<string key='significanceStatement'>
+					<xsl:value-of select="path:forward(., 'rdf:value')" />
+				</string>
+			</xsl:for-each>
+			<xsl:for-each select="
+				path:forward('crm:P129i_is_subject_of')[
+					path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/educationalSignificance')
+				]
+			">
+				<string key='educationalSignificance'>
+					<xsl:value-of select="path:forward(., 'rdf:value')" />
+				</string>
+			</xsl:for-each>
+
+			<!-- production: party -->
+			<xsl:variable name="production-parties" select="
+				path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
+					path:forward(., 'crm:P14_carried_out_by')
+				]
+			" />
+			<xsl:if test="$production-parties">
+				<array key="creator">
+					<xsl:for-each select="$production-parties">
+						<xsl:variable name="party-iri" select="path:forward(., 'crm:P14_carried_out_by')" />
+						<map>
+							<number key='id'>
+								<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
+							</number>
+							<!-- person value -->
+							<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdf:value') )">
+								<string key='title'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+							<!-- organisation label -->
+							<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdfs:label') )">
+								<string key='title'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+							<string key='interactionType'>
+								<xsl:value-of select="path:forward(., 'rdfs:label')" />
+							</string>
+							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
+								<string key='description'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+						</map>
+				</xsl:for-each>
+				</array>
+			</xsl:if>
+
+			<!-- production: place -->
+			<xsl:variable name="production-places" select="
+				path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
+					path:forward(., 'crm:P7_took_place_at')
+				]
+			" />
+			<xsl:if test="$production-places">
+				<array key="spatial">
+					<xsl:for-each select="$production-places">
+						<xsl:variable name="place-iri" select="path:forward(., 'crm:P7_took_place_at')" />
+						<map>
+							<number key='id'>
+								<xsl:value-of select="replace($place-iri, '(.*/)([^/]*)(#)$', '$2')" />
+							</number>
+							<xsl:for-each select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label') )">
+								<string key='title'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+							<string key='interactionType'>
+								<xsl:value-of select="path:forward(., 'rdfs:label')" />
+							</string>
+							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
+								<string key='description'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+						</map>
+				</xsl:for-each>
+				</array>
+			</xsl:if>
+
+			<!-- production: date -->
+			<xsl:variable name="production-dates" select="
+				path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
+					path:forward(., 'crm:P4_has_time-span')
+				]
+			" />
+			<xsl:if test="$production-dates">
+				<array key="temporal">
+					<xsl:for-each select="$production-dates">
+						<map>
+							<xsl:for-each select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )">
+								<string key='title'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+							<string key='interactionType'>
+								<xsl:value-of select="path:forward(., 'rdfs:label')" />
+							</string>
+							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
+								<string key='description'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+						</map>
+				</xsl:for-each>
+				</array>
+			</xsl:if>
+
+			<!-- TODO: all assoc are 'in presence' so dates and places are coming thru, need to add AAT or something into CRM -->
+
+			<!-- associated: party -->
+			<xsl:variable name="associated-parties" select="
+				path:forward( ('crm:P12i_was_present_at') )[
+					path:forward(., 'crm:P12_occurred_in_the_presence_of')
+				]
+			" />
+			<xsl:if test="$associated-parties">
+				<array key="contributor">
+					<xsl:for-each select="$associated-parties">
+						<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
+						<map>
+							<number key='id'>
+								<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
+							</number>
+							<!-- person value -->
+							<xsl:for-each select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:value') )">
+								<string key='title'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+							<!-- organisation label -->
+							<xsl:for-each select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') )">
+								<string key='title'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+							<string key='interactionType'>
+								<xsl:value-of select="path:forward(., 'rdfs:label')" />
+							</string>
+							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
+								<string key='description'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
+						</map>
+				</xsl:for-each>
+				</array>
+			</xsl:if>
+
+			<!-- acknowledgement -->
+			<xsl:for-each select="
+				path:forward('crm:P67i_is_referred_to_by')[
+					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300026687'
+				]
+			">
+				<string key='acknowledgement'>
+					<xsl:value-of select="path:forward(., 'rdf:value')" />
+				</string>
+			</xsl:for-each>
+
+			<!-- rights -->
+			<xsl:for-each select="
+				path:forward('crm:P67i_is_referred_to_by')[
+					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300026687'
+				]
+			">
+				<string key="rights"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
+			</xsl:for-each>
+			<xsl:for-each select="
+				path:forward('crm:P67i_is_referred_to_by')
+			">
+				<string key="rightsRaw"><xsl:value-of select="."/></string>
+			</xsl:for-each>
+
+			<!-- TODO: add representation mimetype format, once added to CRM -->
 
 			<!-- representations and their digital media files -->
 			<xsl:variable name="representations"
@@ -92,13 +371,35 @@
 				<array key="hasVersion">
 					<xsl:for-each select="$representations">
 						<map>
+							<string key='id'>
+								<xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')" />
+							</string>
+							<string key='type'>
+								<xsl:text>StillImage</xsl:text>
+							</string>
 							<string key='identifier'>
 								<xsl:value-of select="." />
 							</string>
 							<array key="hasVersion">
 								<xsl:for-each select="path:forward(., 'crm:P138i_has_representation')">
+								<xsl:variable name="version-iri" select="path:forward(., 'crm:P2_has_type')" />
 								<map>
+									<string key='type'>
+										<xsl:text>StillImage</xsl:text>
+									</string>
+									<xsl:choose>
+										<xsl:when test="contains($version-iri, 'thumbnail')">
+											<string key='version'><xsl:text>Thumbnail</xsl:text></string>
+										</xsl:when>
+										<xsl:when test="contains($version-iri, 'preview')">
+											<string key='version'><xsl:text>Preview</xsl:text></string>
+										</xsl:when>
+										<xsl:when test="contains($version-iri, 'large')">
+											<string key='version'><xsl:text>Large</xsl:text></string>
+										</xsl:when>
+									</xsl:choose>
 									<string key='identifier'>
+										<xsl:value-of select="." />
 										<xsl:value-of select="path:forward(., 'rdf:value')" />
 									</string>
 									<!-- 
