@@ -80,6 +80,8 @@
 
 			<!-- object type -->
 			<xsl:apply-templates select="TitObjectName" />
+			
+			<!-- TODO: add secondary object type -->
 
 			<!-- descriptions -->
 			<xsl:apply-templates
@@ -476,6 +478,8 @@
 		</xsl:for-each>
 	</xsl:template>
 
+	<!-- TODO: probably change from crm:P12i_was_present_at to crm:P4_has_time-span and crm:P7_took_place_at-->
+
 	<!-- association: places -->
 	<!-- NB: modeled as an 'association event' that the place was present at -->
 	<xsl:template match="AssociatedPlaces">
@@ -667,7 +671,7 @@
 				<xsl:when test=". = 'Public Domain'">
 					<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/zero/1.0/">
 						<rdf:value>
-							<xsl:text>CC BY 4.0</xsl:text>
+							<xsl:text>CC PD 1.0</xsl:text>
 						</rdf:value>
 					</crm:E30_Right>
 				</xsl:when>

@@ -20,8 +20,14 @@
 					<doc>
 						<!-- id = the last two components of the URI's path, e.g. "object/1234" or "party/5678" -->
 						<field name="id"><xsl:value-of select="replace($root-resource, '(.*/)([^/]*/[^/]*)(#)$', '$2')"/></field>
-						<xsl:for-each select="path:forward( ('crm:P1_is_identified_by', 'rdf:value') )">
-							<field name="identifier"><xsl:value-of select="."/></field>
+						
+						<!-- identifier -->
+						<xsl:for-each select="
+							path:forward('crm:P1_is_identified_by')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300312355'
+							]
+						">
+							<field name="identifier"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
 						</xsl:for-each>
 
 						<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
@@ -52,21 +58,39 @@
 						<!-- production events and activities -->						
 						<xsl:variable name="production-events" select="path:forward('crm:P108i_was_produced_by')"/>
 						<xsl:for-each select="path:forward($production-events, 'crm:P9_consists_of')">
-							<!-- role -->
-							<xsl:for-each select="path:forward(., 'rdfs:label')">
-								<field name="activity">
+							<!-- role: party -->
+							<xsl:for-each select="path:forward(.[path:forward(., 'crm:P14_carried_out_by')], 'rdfs:label')">
+								<field name="creator">
+									<xsl:value-of select="."/>
+								</field>
+							</xsl:for-each>
+							<!-- role: date -->
+							<xsl:for-each select="path:forward(.[path:forward(., 'crm:P4_has_time-span')], 'rdfs:label')">
+								<field name="temporal">
+									<xsl:value-of select="."/>
+								</field>
+							</xsl:for-each>
+							<!-- role: place -->
+							<xsl:for-each select="path:forward(.[path:forward(., 'crm:P7_took_place_at')], 'rdfs:label')">
+								<field name="spatial">
 									<xsl:value-of select="."/>
 								</field>
 							</xsl:for-each>
 							<!-- party -->
 							<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdf:value'))">
-								<field name="activity">
+								<field name="creator">
 									<xsl:value-of select="."/>
 								</field>
 							</xsl:for-each>
 							<!-- date -->
 							<xsl:for-each select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label'))">
-								<field name="activity">
+								<field name="temporal">
+									<xsl:value-of select="."/>
+								</field>
+							</xsl:for-each>
+							<!-- place -->
+							<xsl:for-each select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label'))">
+								<field name="spatial">
 									<xsl:value-of select="."/>
 								</field>
 							</xsl:for-each>
@@ -94,23 +118,34 @@
 						</xsl:for-each>
 
 						<!-- TODO: some associations/labels are missing, might be SPARQL query -->
+						<!-- TODO: date/place should go to spatial/temporal, not contributor -->
 						
 						<!-- associations -->						
 						<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'rdfs:label') )">
-							<field name="relation"><xsl:value-of select="."/></field>
+							<field name="contributor"><xsl:value-of select="."/></field>
 						</xsl:for-each>
 						<!-- party - person -->
 						<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P12_occurred_in_the_presence_of', 'rdf:value') )">
-							<field name="relation"><xsl:value-of select="."/></field>
+							<field name="contributor"><xsl:value-of select="."/></field>
 						</xsl:for-each>
 						<!-- party - organisation -->
 						<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P12_occurred_in_the_presence_of', 'rdfs:label') )">
-							<field name="relation"><xsl:value-of select="."/></field>
+							<field name="contributor"><xsl:value-of select="."/></field>
 						</xsl:for-each>
 
 						<!-- representations identifiers only -->
 						<xsl:for-each select="path:forward('crm:P138i_has_representation')">
 							<field name="media"><xsl:value-of select="."/></field>
+						</xsl:for-each>
+						
+						<!-- party records: gender -->
+						<xsl:for-each select="path:forward( ('crm:P107i_is_current_or_former_member_of', 'rdfs:label') )">
+							<field name="gender"><xsl:value-of select="."/></field>
+						</xsl:for-each>
+
+						<!-- place records: location -->
+						<xsl:for-each select="path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') )">
+							<field name="location" type="solr.LatLonPointSpatialField" docValues="true"><xsl:value-of select="."/></field>
 						</xsl:for-each>
 
 						<!-- Linked Art JSON-LD blob -->
