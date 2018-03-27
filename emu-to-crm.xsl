@@ -811,7 +811,7 @@
 	<xsl:template match="NamOrganisation">
 		<xsl:param name="party-iri" />
 		<rdfs:label>
-			<xsl:value-of select="NamOrganisation" />
+			<xsl:value-of select="." />
 		</rdfs:label>
 	</xsl:template>
 
