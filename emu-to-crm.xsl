@@ -156,7 +156,7 @@
 			<xsl:if test="NamFullName">
 				<xsl:variable name="party-iri" select="concat('party/', irn)" />
 				<crm:P1_is_identified_by>
-					<la:Name rdf:about="{$party-iri}#">
+					<la:Name rdf:about="{$party-iri}#name">
 						<rdf:value>
 							<xsl:value-of select="NamFullName" />
 						</rdf:value>
