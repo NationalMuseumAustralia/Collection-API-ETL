@@ -203,9 +203,10 @@
 					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 					select ?resource
 					where {
-						?resource a crm:E19_Physical_Object
+						?resource a crm:E19_Physical_Object.
+						# only include objects which have an identifier (sourced from EMu), since Piction records may have bogus IRNs that instantiate bogus Physical Objects
+						?resource crm:P1_is_identified_by ?identifier
 						filter(isuri(?resource)) # ignoring objects which have no URI (at present these are actually collections, but represented as physical objects
-						# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
 					}	
 					]]>
 				</query>
