@@ -24,9 +24,9 @@
 			<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
 			<xsl:variable name="type" select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/>
 
-			<number key='id'>
+			<string key='id'>
 				<xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(#)$', '$2')" />
-			</number>
+			</string>
 			<string key='type'>
 				<xsl:value-of select="$type" />
 			</string>
@@ -217,9 +217,9 @@
 						<xsl:variable name="party-iri" select="$party-id/self::trix:uri"/>
 						<map>
 							<xsl:if test="$party-iri">
-								<number key='id'>
+								<string key='id'>
 									<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
-								</number>
+								</string>
 							</xsl:if>
 							<!-- person value -->
 							<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdf:value') )">
@@ -257,9 +257,9 @@
 					<xsl:for-each select="$production-places">
 						<xsl:variable name="place-iri" select="path:forward(., 'crm:P7_took_place_at')" />
 						<map>
-							<number key='id'>
+							<string key='id'>
 								<xsl:value-of select="replace($place-iri, '(.*/)([^/]*)(#)$', '$2')" />
-							</number>
+							</string>
 							<xsl:for-each select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label') )">
 								<string key='title'>
 									<xsl:value-of select="." />
@@ -319,9 +319,9 @@
 					<xsl:for-each select="$associated-parties">
 						<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
 						<map>
-							<number key='id'>
+							<string key='id'>
 								<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
-							</number>
+							</string>
 							<!-- person value -->
 							<xsl:for-each select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:value') )">
 								<string key='title'>
