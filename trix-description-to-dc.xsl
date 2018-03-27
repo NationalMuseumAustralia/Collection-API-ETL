@@ -21,17 +21,24 @@
 	<xsl:template name="dc-xml">
 		<xsl:param name="resource" required="true" />
 		<map xmlns="http://www.w3.org/2005/xpath-functions">
+			<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
+			<xsl:variable name="type" select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/>
+
 			<number key='id'>
 				<xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(#)$', '$2')" />
 			</number>
 			<string key='type'>
-				<xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')" />
+				<xsl:value-of select="$type" />
 			</string>
 			<xsl:for-each select="path:forward( ('crm:P2_has_type','rdfs:label') )">
 				<string key="additionalType"><xsl:value-of select="."/></string>
 			</xsl:for-each>
 			<xsl:for-each select="path:forward('rdfs:label')">
 				<string key="title"><xsl:value-of select="."/></string>
+				<!-- duplicate organisation name into name field -->
+				<xsl:if test="$type='party'">
+					<string key="name"><xsl:value-of select="."/></string>
+				</xsl:if>
 			</xsl:for-each>
 			<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )">
 				<string key="collection"><xsl:value-of select="."/></string>
@@ -419,6 +426,53 @@
 					</xsl:for-each>
 				</array>
 			</xsl:if>
+			
+			<!-- PARTY FIELDS -->
+
+			<!-- full name -->
+			<xsl:for-each select="
+				path:forward('crm:P1_is_identified_by')[
+					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404688'
+				]
+			">
+				<string key="name"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
+			</xsl:for-each>
+
+			<!-- first name -->
+			<xsl:for-each select="
+				path:forward( ('crm:P1_is_identified_by', 'crm:P106_is_composed_of') )[
+					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404651'
+				]
+			">
+				<string key="givenName"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
+			</xsl:for-each>
+
+			<!-- TODO: add middle name -->
+
+			<!-- last name -->
+			<xsl:for-each select="
+				path:forward( ('crm:P1_is_identified_by', 'crm:P106_is_composed_of') )[
+					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404652'
+				]
+			">
+				<string key="familyName"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
+			</xsl:for-each>
+
+			<!-- gender -->
+			<xsl:for-each select="
+				path:forward('crm:P107i_is_current_or_former_member_of')[
+					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055147'
+				]
+			">
+				<string key="gender"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
+			</xsl:for-each>
+			
+			<!-- PLACE FIELDS -->
+
+			<!-- location -->
+			<xsl:for-each select="path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') )">
+				<string name="location"><xsl:value-of select="."/></string>
+			</xsl:for-each>
 
 		</map>
 	</xsl:template>
