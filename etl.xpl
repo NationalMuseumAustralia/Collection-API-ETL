@@ -103,11 +103,9 @@
 			<cx:message>
 				<p:with-option name="message" select="concat('Ingesting ', $record-type, ' ', $identifier, ' into ', $dataset, ' dataset...')"/>
 			</cx:message>
-			<!--
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/', $record-type, '/', $identifier, '.xml')"/>
 			</p:store>
-			-->
 			<p:choose name="transformation-to-rdf">
 				<p:when test="$record-type='image'">
 					<p:output port="result"/>
@@ -139,8 +137,6 @@
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/', $record-type, '/', $identifier, '.rdf')"/>
 			</p:store>
-			<!--
-			-->
 			<nma:store-graph>
 				<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/', $record-type, '/', $identifier)"/>
 				<p:with-option name="dataset" select="$dataset"/>
@@ -149,6 +145,7 @@
 				</p:input>
 			</nma:store-graph>
 		</p:for-each>
+		<p:sink/>
 		<!-- Finally, process "partial-update" records -->
 		<!-- EMu "partial-update" records can't be handled by transforming the record to an RDF graph and storing it using the SPARQL Graph Store protocol; -->
 		<!-- instead, each partial update must delete a triple from an existing graph and insert a new triple in its place, using the SPARQL Update protocol -->
