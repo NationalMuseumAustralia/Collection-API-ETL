@@ -206,11 +206,14 @@
 			<xsl:if test="$production-parties">
 				<array key="creator">
 					<xsl:for-each select="$production-parties">
-						<xsl:variable name="party-iri" select="path:forward(., 'crm:P14_carried_out_by')" />
+						<xsl:variable name="party-id" select="path:forward(., 'crm:P14_carried_out_by')" />
+						<xsl:variable name="party-iri" select="$party-id/self::trix:uri"/>
 						<map>
-							<number key='id'>
-								<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
-							</number>
+							<xsl:if test="$party-iri">
+								<number key='id'>
+									<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
+								</number>
+							</xsl:if>
 							<!-- person value -->
 							<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdf:value') )">
 								<string key='title'>
