@@ -419,22 +419,13 @@
 							</string>
 							<array key="hasVersion">
 								<xsl:for-each select="path:forward(., 'crm:P138i_has_representation')">
-								<xsl:variable name="version-iri" select="path:forward(., 'crm:P2_has_type')" />
 								<map>
 									<string key='type'>
 										<xsl:text>StillImage</xsl:text>
 									</string>
-									<xsl:choose>
-										<xsl:when test="contains($version-iri, 'thumbnail')">
-											<string key='version'><xsl:text>Thumbnail</xsl:text></string>
-										</xsl:when>
-										<xsl:when test="contains($version-iri, 'preview')">
-											<string key='version'><xsl:text>Preview</xsl:text></string>
-										</xsl:when>
-										<xsl:when test="contains($version-iri, 'large')">
-											<string key='version'><xsl:text>Large</xsl:text></string>
-										</xsl:when>
-									</xsl:choose>
+									<xsl:for-each select="path:forward(., ('crm:P2_has_type', 'rdfs:label'))">
+										<string key='version'><xsl:value-of select="."/></string>
+									</xsl:for-each>
 									<string key='identifier'>
 										<xsl:value-of select="." />
 										<xsl:value-of select="path:forward(., 'rdf:value')" />
