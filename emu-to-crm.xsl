@@ -669,7 +669,7 @@
 		<crm:P104_is_subject_to>
 			<xsl:choose>
 				<xsl:when test=". = 'Public Domain'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/zero/1.0/">
+					<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
 						<rdf:value>
 							<xsl:text>CC PD 1.0</xsl:text>
 						</rdf:value>
