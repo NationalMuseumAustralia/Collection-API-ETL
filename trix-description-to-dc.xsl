@@ -391,17 +391,8 @@
 			</xsl:for-each>
 
 			<!-- rights -->
-			<xsl:for-each select="
-				path:forward('crm:P67i_is_referred_to_by')[
-					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300026687'
-				]
-			">
-				<string key="rights"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
-			</xsl:for-each>
-			<xsl:for-each select="
-				path:forward('crm:P67i_is_referred_to_by')
-			">
-				<string key="rightsRaw"><xsl:value-of select="."/></string>
+			<xsl:for-each select="path:forward( ('crm:P104_is_subject_to', 'rdf:value') )">
+				<string key="rights"><xsl:value-of select="."/></string>
 			</xsl:for-each>
 
 			<!-- TODO: add representation mimetype format, once added to CRM -->
@@ -489,6 +480,8 @@
 			">
 				<string key="familyName"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
 			</xsl:for-each>
+
+			<!-- TODO: add other names -->
 
 			<!-- gender -->
 			<xsl:for-each select="
