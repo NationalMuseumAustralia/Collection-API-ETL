@@ -33,9 +33,10 @@
 		<xsl:variable name="visual-item-graph" select="concat('media/', $media-id)" />
 		<xsl:variable name="related-objects"
 			select="field[@name='EMu IRN for Related Objects'][normalize-space()]" />
+		<xsl:variable name="image-data-sources" select="dataSource[contains(@baseUrl, '\Collectionsearch\')]"/>
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri" />
-			<xsl:if test="$related-objects">
+			<xsl:if test="$related-objects and $image-data-sources">
 				<!-- we have both P138_represents and P138i_has_representation, for bidirectional 
 					traversal between objects and images -->
 				<xsl:for-each select="$related-objects">
@@ -53,7 +54,7 @@
 					<xsl:for-each select="$related-objects">
 						<crm:P138_represents rdf:resource="object/{.}#" />
 					</xsl:for-each>
-					<xsl:for-each select="dataSource">
+					<xsl:for-each select="$image-data-sources">
 						<crm:P138i_has_representation>
 							<crm:E36_Visual_Item rdf:about="{concat
 							(
