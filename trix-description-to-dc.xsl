@@ -216,9 +216,9 @@
 						<xsl:variable name="party-id" select="path:forward(., 'crm:P14_carried_out_by')" />
 						<xsl:variable name="party-iri" select="$party-id/self::trix:uri"/>
 						<map>
-							<xsl:if test="$party-iri">
+							<xsl:if test="$party-id">
 								<string key='id'>
-									<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
+									<xsl:value-of select="replace($party-id, '(.*/)([^/]*)(#)$', '$2')" />
 								</string>
 							</xsl:if>
 							<!-- type -->
@@ -244,9 +244,11 @@
 							<!-- production flag -->
 							<string key='interactionType'><xsl:text>Production</xsl:text></string>
 							<!-- role -->
-							<string key='roleName'>
-								<xsl:value-of select="path:forward(., 'rdfs:label')" />
-							</string>
+							<xsl:for-each select="path:forward(., 'rdfs:label')">
+								<string key='roleName'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
 							<!-- description/notes -->
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
@@ -279,9 +281,11 @@
 								</string>
 							</xsl:for-each>
 							<string key='interactionType'><xsl:text>Production</xsl:text></string>
-							<string key='roleName'>
-								<xsl:value-of select="path:forward(., 'rdfs:label')" />
-							</string>
+							<xsl:for-each select="path:forward(., 'rdfs:label')">
+								<string key='roleName'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
 									<xsl:value-of select="." />
