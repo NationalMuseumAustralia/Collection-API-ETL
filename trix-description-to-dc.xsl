@@ -489,7 +489,7 @@
 					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055147'
 				]
 			">
-				<string key="gender"><xsl:value-of select="path:forward(., 'rdf:value')"/></string>
+				<string key="gender"><xsl:value-of select="path:forward(., 'rdfs:label')"/></string>
 			</xsl:for-each>
 			
 			<!-- PLACE FIELDS -->
