@@ -87,7 +87,7 @@
 						crm:P138i_has_representation/crm:P2_has_type |
 						crm:P138i_has_representation/crm:P43_has_dimension |
 						crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type |
-						crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit						
+						crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |					
 	
 						# the visual item's identifiers/names and their types
 						crm:P1_is_identified_by | 
