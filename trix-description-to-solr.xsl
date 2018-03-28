@@ -200,19 +200,12 @@
 						<field name="json-ld"><xsl:value-of select="xml-to-json($compact-json-ld-in-xml, map{'indent':true()})"/></field>
 
 						<!-- Simplified DC blob -->
-						<!--
-						temporarily disabling "simple" serialization for any but "object" records:
-						ERROR: xml-to-json: Invalid number: 
-						ERROR:     cause: file:/usr/local/NMA-API-ETL/trix-description-to-solr.xsl:79:12:err:FOJS0006:xml-to-json: Invalid number: 
-						-->
-						<xsl:if test="$type = 'object'">
-							<xsl:variable name="dc-in-xml">
-								<xsl:call-template name="dc-xml">
-									<xsl:with-param name="resource" select="$root-resource"/>
-								</xsl:call-template>
-							</xsl:variable>
-							<field name="simple"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
-						</xsl:if>
+						<xsl:variable name="dc-in-xml">
+							<xsl:call-template name="dc-xml">
+								<xsl:with-param name="resource" select="$root-resource"/>
+							</xsl:call-template>
+						</xsl:variable>
+						<field name="simple"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
 					</doc>
 				</add>
 			</c:body>
