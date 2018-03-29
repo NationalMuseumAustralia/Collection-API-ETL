@@ -113,6 +113,7 @@ chmod a+w /etc/xproc-z/
 cp /var/lib/tomcat8/webapps/xproc-z.war /etc/xproc-z/
 cd /etc/xproc-z/
 git clone https://github.com/Conal-Tuohy/NMA-API.git
+ln -s /etc/xproc-z/NMA-API/apiexplorer.html /var/lib/tomcat8/webapps/ROOT/
 #
 # REFRESH
 #
