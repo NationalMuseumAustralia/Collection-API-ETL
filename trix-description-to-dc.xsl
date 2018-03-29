@@ -313,9 +313,11 @@
 								</string>
 							</xsl:for-each>
 							<string key='interactionType'><xsl:text>Production</xsl:text></string>
-							<string key='roleName'>
-								<xsl:value-of select="path:forward(., 'rdfs:label')" />
-							</string>
+							<xsl:for-each select="path:forward(., 'rdfs:label')">
+								<string key='roleName'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
 									<xsl:value-of select="." />
@@ -369,9 +371,11 @@
 								</string>
 							</xsl:for-each>
 							<!-- role -->
-							<string key='roleName'>
-								<xsl:value-of select="path:forward(., 'rdfs:label')" />
-							</string>
+							<xsl:for-each select="path:forward(., 'rdfs:label')">
+								<string key='roleName'>
+									<xsl:value-of select="." />
+								</string>
+							</xsl:for-each>
 							<!-- description/notes -->
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
