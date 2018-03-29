@@ -23,7 +23,7 @@
 				<query>
 					<![CDATA[
 					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select ?resource
+					select distinct ?resource
 					where {
 						?resource a crm:E36_Visual_Item.
 						# only top level visual items (i.e. those which are not sub-formats of another visual item)
@@ -108,7 +108,7 @@
 				<query>
 					<![CDATA[
 					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select ?resource
+					select distinct ?resource
 					where {
 						?resource a crm:E53_Place 
 						filter(isuri(?resource)) # ignoring places which have no URI
@@ -129,7 +129,7 @@
 						«resource-uri»
 						# the object's type
 						crm:P2_has_type | 
-						# the object's identifiers/names and their types
+						# the place's identifiers/names and their types
 						crm:P1_is_identified_by | 
 						crm:P1_is_identified_by/crm:P2_has_type | 
 						# the geospatial location of the place
@@ -151,14 +151,14 @@
 				<query>
 					<![CDATA[
 					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select ?resource
+					select distinct ?resource
 					where {
 						{
 							?resource a crm:E21_Person 
 						} union {
 							?resource a crm:E74_Group
 						}
-						filter(isuri(?resource)) # ignoring partiees which have no URI
+						filter(isuri(?resource)) # ignoring parties which have no URI
 					# for debugging, filter here:
 					# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
 					}	
@@ -174,9 +174,9 @@
 					DESCRIBE «resource-uri» ?resource
 					WHERE {
 						«resource-uri»
-						# the object's type
+						# the party's type
 						crm:P2_has_type | 
-						# the object's identifiers/names and their types, and subcomponents (name parts) and their types
+						# the party's identifiers/names and their types, and subcomponents (name parts) and their types
 						crm:P1_is_identified_by | 
 						crm:P1_is_identified_by/crm:P2_has_type | 
 						crm:P1_is_identified_by/crm:P106_is_composed_of | 
@@ -201,7 +201,7 @@
 				<query>
 					<![CDATA[
 					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select ?resource
+					select distinct ?resource
 					where {
 						?resource a crm:E19_Physical_Object.
 						# only include objects which have an identifier (sourced from EMu), since Piction records may have bogus IRNs that instantiate bogus Physical Objects
@@ -234,17 +234,45 @@
 						# textual descriptions of the object, and their types
 						crm:P129i_is_subject_of |
 						crm:P129i_is_subject_of/crm:P2_has_type |
-						# the production of the object, the sub-activities that made up that production, 
-						# the parties carrying out those activities, and the role they played,
+						
+						# the production of, or other event involving the object, and sub-activities that made up that event, 
+						# parties present at those events or carrying out those activities
 						# and the locations and dates of those activities
-						crm:P108i_was_produced_by |
-						crm:P108i_was_produced_by/crm:P9_consists_of |
-						crm:P108i_was_produced_by/crm:P9_consists_of/crm:P14_carried_out_by |
-						crm:P108i_was_produced_by/crm:P9_consists_of/crm:P7_took_place_at |
-						crm:P108i_was_produced_by/crm:P9_consists_of/crm:P4_has_time-span | 
-						# associated parties/places/dates
-						crm:P12i_was_present_at |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by/crm:P2_has_type |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P7_took_place_at |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by | 
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by/crm:P2_has_type | 
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P168_place_is_defined_by |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P168_place_is_defined_by/crm:P2_has_type |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P4_has_time-span | 
+						
+						# the related parties' identifiers/names and their types, and subcomponents (name parts) and their types
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by | 
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P2_has_type | 
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P106_is_composed_of | 
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
+						# the groups which the party belongs to, and their types
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of |
+						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of/crm:P2_has_type |
+						
+						
+						# parties associated with those events, and their names, groups, identifiers
 						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of |
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P2_has_type | 
+						# the party's identifiers/names and their types, and subcomponents (name parts) and their types
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by | 
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P2_has_type | 
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P106_is_composed_of | 
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
+						# the groups which the party belongs to, and their types
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of |
+						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of/crm:P2_has_type |					
+
+
+						
 						# the dimensions of the object, the type of the dimensions, and their measurement unit
 						crm:P43_has_dimension |
 						crm:P43_has_dimension/crm:P2_has_type |
