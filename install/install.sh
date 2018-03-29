@@ -66,6 +66,15 @@ ln -s $CONFIG_DIR/solr/$SOLR_CORE_2_NAME/conf            /var/solr/data/$SOLR_CO
 # solr dynamically updates schema files so needs write permission
 chown -R solr:solr $CONFIG_DIR/solr
 #
+# JENA
+#
+echo =========== Installing Jena
+apt install unzip
+cd $INSTALL_DIR
+wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-3.6.0.zip -O jena-3.6.0.zip
+unzip jena-3.6.0.zip -d /usr/local
+ln -s /usr/local/apache-jena-3.6.0 /usr/local/jena
+#
 # FUSEKI
 #
 echo =========== Installing Fuseki
@@ -74,7 +83,6 @@ ln -s $CONFIG_DIR/fuseki/public.ttl /etc/fuseki/configuration/
 chown -R tomcat8:tomcat8 /etc/fuseki/
 cd $INSTALL_DIR
 wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuseki-3.6.0.zip -O fuseki-3.6.0.zip
-apt install unzip
 unzip -j fuseki-3.6.0.zip apache-jena-fuseki-3.6.0/fuseki.war -d /var/lib/tomcat8/webapps/
 #
 # XML Calabash (XProc processor)
@@ -121,12 +129,6 @@ echo =========== Restarting services
 service apache2 restart
 service tomcat8 restart
 service solr restart
-#
-# DATA
-#
-#mkdir /data
-#chmod a+w /data
-#ln -s $CONFIG_DIR/data/Emu_* /data/
 #
 echo =========== API server install complete
 date
