@@ -1104,6 +1104,10 @@
     </highlighting>
   </searchComponent>
 
+  <!--Using classic schema.xml instead of managed-schema -->
+  <!--SeeL https://lucene.apache.org/solr/guide/7_2/schema-factory-definition-in-solrconfig.html -->
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
+
   <!-- Update Processors
 
        Chains of Update Processor Factories for dealing with Update
@@ -1188,8 +1192,11 @@
     </lst>
   </updateProcessor>
 
+  <!--Disable auto creation of unknown fields as using classic schema.xml instead of managed-schema -->
+  <!--SeeL https://lucene.apache.org/solr/guide/7_2/schema-factory-definition-in-solrconfig.html -->
+
   <!-- The update.autoCreateFields property can be turned to false to disable schemaless mode -->
-  <updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:true}"
+  <updateRequestProcessorChain name="add-unknown-fields-to-the-schema" default="${update.autoCreateFields:false}"
            processor="uuid,remove-blank,field-name-mutating,parse-boolean,parse-long,parse-double,parse-date,add-schema-fields">
     <processor class="solr.LogUpdateProcessorFactory"/>
     <processor class="solr.DistributedUpdateProcessorFactory"/>
