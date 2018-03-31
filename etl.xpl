@@ -28,7 +28,7 @@
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 	<!-- create folders for temporary storage of individual records -->
 	<pxf:mkdir href="/data/object"/>
-	<pxf:mkdir href="/data/site"/>
+	<pxf:mkdir href="/data/place"/>
 	<pxf:mkdir href="/data/party"/>
 	<pxf:mkdir href="/data/narrative"/>
 	<pxf:mkdir href="/data/image"/>
@@ -54,7 +54,7 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 	
-		<!-- process EMu objects, sites, parties, and narratives -->
+		<!-- process EMu objects, places, parties, and narratives -->
 		<p:load href="/data/emu_objects_21-03-2018_81609.xml"/>
 		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
@@ -64,7 +64,7 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 		<p:load href="/data/emu_sites21-03-2018_4208.xml"/>
-		<nma:process-data record-type="site" dataset="public">
+		<nma:process-data record-type="place" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 		<p:load href="/data/emu_parties21-03-2018_26161.xml"/>	

@@ -3,7 +3,7 @@
 	xmlns:aat="http://vocab.getty.edu/aat/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
-	<!-- record type of the input file, e.g. "object", "site", "party", or "narrative" -->
+	<!-- record type of the input file, e.g. "object", "place", "party", or "narrative" -->
 	<xsl:param name="record-type" select="'object'" />
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
 	<xsl:param name="media-uri-base"
@@ -42,7 +42,7 @@
 				<xsl:when test="$record-type='narrative'">
 					<rdf:type rdf:resource="{$ore-ns}Aggregation" />
 				</xsl:when>
-				<xsl:when test="$record-type='site'">
+				<xsl:when test="$record-type='place'">
 					<rdf:type rdf:resource="{$crm-ns}E53_Place" />
 				</xsl:when>
 				<!-- parties -->
@@ -175,7 +175,7 @@
 			<!-- PLACE FIELDS -->
 
 			<!-- formatted label -->
-			<xsl:if test="$record-type='site'">
+			<xsl:if test="$record-type='place'">
 				<xsl:variable name="concatenatedLabel">
 					<xsl:apply-templates select="LocSpecialGeographicUnit_tab"
 						mode="label" />
