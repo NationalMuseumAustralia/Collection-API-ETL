@@ -199,7 +199,7 @@
 
 			<!-- geo coordinates -->
 			<xsl:if test="LatCentroidLatitudeDec_tab | LatCentroidLongitudeDec_tab">
-				<crm:P168_place_is_defined_by rdf:resource="{$object-iri}#location">
+				<crm:P168_place_is_defined_by rdf:about="{$object-iri}#location">
 					<crm:E94_Space_Primitive>
 						<rdf:value>
 							<xsl:value-of select="LatCentroidLatitudeDec_tab" />
