@@ -229,10 +229,14 @@
 							<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E74_Group'">
 								<string key='type'><xsl:text>Organisation</xsl:text></string>
 							</xsl:if>
-							<!-- person value -->
-							<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdf:value') )">
+							<!-- person name -->
+							<xsl:for-each select="
+								path:forward(., ('crm:P14_carried_out_by', 'crm:P1_is_identified_by'))[
+									path:forward(., 'rdf:type') = 'https://linked.art/ns/terms/Name'
+								]
+							">
 								<string key='title'>
-									<xsl:value-of select="." />
+									<xsl:value-of select="path:forward(., 'rdf:value')" />
 								</string>
 							</xsl:for-each>
 							<!-- organisation label -->
@@ -241,14 +245,14 @@
 									<xsl:value-of select="." />
 								</string>
 							</xsl:for-each>
-							<!-- production flag -->
-							<string key='interactionType'><xsl:text>Production</xsl:text></string>
 							<!-- role -->
 							<xsl:for-each select="path:forward(., 'rdfs:label')">
 								<string key='roleName'>
 									<xsl:value-of select="." />
 								</string>
 							</xsl:for-each>
+							<!-- production flag -->
+							<string key='interactionType'><xsl:text>Production</xsl:text></string>
 							<!-- description/notes -->
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
@@ -274,18 +278,23 @@
 							<string key='id'>
 								<xsl:value-of select="replace($place-iri, '(.*/)([^/]*)(#)$', '$2')" />
 							</string>
+							<!-- type -->
 							<string key='type'><xsl:text>Place</xsl:text></string>
+							<!-- place name -->
 							<xsl:for-each select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label') )">
 								<string key='title'>
 									<xsl:value-of select="." />
 								</string>
 							</xsl:for-each>
-							<string key='interactionType'><xsl:text>Production</xsl:text></string>
+							<!-- role -->
 							<xsl:for-each select="path:forward(., 'rdfs:label')">
 								<string key='roleName'>
 									<xsl:value-of select="." />
 								</string>
 							</xsl:for-each>
+							<!-- production flag -->
+							<string key='interactionType'><xsl:text>Production</xsl:text></string>
+							<!-- description/notes -->
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
 									<xsl:value-of select="." />
@@ -306,18 +315,23 @@
 				<array key="temporal">
 					<xsl:for-each select="$production-dates">
 						<map>
+							<!-- type -->
 							<string key='type'><xsl:text>Event</xsl:text></string>
+							<!-- date value -->
 							<xsl:for-each select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )">
 								<string key='title'>
 									<xsl:value-of select="." />
 								</string>
 							</xsl:for-each>
-							<string key='interactionType'><xsl:text>Production</xsl:text></string>
+							<!-- role -->
 							<xsl:for-each select="path:forward(., 'rdfs:label')">
 								<string key='roleName'>
 									<xsl:value-of select="." />
 								</string>
 							</xsl:for-each>
+							<!-- production flag -->
+							<string key='interactionType'><xsl:text>Production</xsl:text></string>
+							<!-- description/notes -->
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
 									<xsl:value-of select="." />
@@ -358,10 +372,14 @@
 							<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E5_Event'">
 								<string key='type'><xsl:text>Event</xsl:text></string>
 							</xsl:if>
-							<!-- person value -->
-							<xsl:for-each select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:value') )">
+							<!-- person name -->
+							<xsl:for-each select="
+								path:forward(., ('crm:P12_occurred_in_the_presence_of', 'crm:P1_is_identified_by'))[
+									path:forward(., 'rdf:type') = 'https://linked.art/ns/terms/Name'
+								]
+							">
 								<string key='title'>
-									<xsl:value-of select="." />
+									<xsl:value-of select="path:forward(., 'rdf:value')" />
 								</string>
 							</xsl:for-each>
 							<!-- organisation label -->
@@ -376,6 +394,7 @@
 									<xsl:value-of select="." />
 								</string>
 							</xsl:for-each>
+							<!-- NB: no interactionType as not production -->
 							<!-- description/notes -->
 							<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 								<string key='description'>
@@ -421,6 +440,7 @@
 							<string key='identifier'>
 								<xsl:value-of select="." />
 							</string>
+							<!-- digital media files for this representation -->
 							<array key="hasVersion">
 								<xsl:for-each select="path:forward(., 'crm:P138i_has_representation')">
 								<map>
