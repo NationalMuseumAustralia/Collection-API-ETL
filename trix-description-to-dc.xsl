@@ -515,7 +515,7 @@
 
 			<!-- location -->
 			<xsl:for-each select="path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') )">
-				<string name="location"><xsl:value-of select="."/></string>
+				<string key="location"><xsl:value-of select="."/></string>
 			</xsl:for-each>
 
 		</map>
