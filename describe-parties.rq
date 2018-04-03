@@ -14,4 +14,3 @@ WHERE {
 	crm:P107i_is_current_or_former_member_of/crm:P2_has_type
 	?resource
 }
-]]>
