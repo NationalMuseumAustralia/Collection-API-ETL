@@ -16,10 +16,10 @@
 	<!-- update Solr store by querying the SPARQL store -->
 
 	<!-- generate a Solr index of media, places, parties, and physical objects -->
-	<nma:index-resources name="index-parties" list-query="list-parties.rq" describe-query="describe-parties.rq"/>
-	<nma:index-resources name="index-media" list-query="list-media.rq" describe-query="describe-media.rq"/>
-	<nma:index-resources name="index-places" list-query="list-places.rq" describe-query="describe-places.rq"/>
-	<nma:index-resources name="index-physical-objects" list-query="list-objects.rq" describe-query="describe-objects.rq"/>
+	<nma:index-resources name="index-parties" list-query="sparql-queries/list-parties.rq" describe-query="sparql-queries/describe-parties.rq"/>
+	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq"/>
+	<nma:index-resources name="index-places" list-query="sparql-queries/list-places.rq" describe-query="sparql-queries/describe-places.rq"/>
+	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq"/>
 	
 	<!-- load a (non-XML) sparql query from disk -->
 	<p:declare-step type="nma:load-sparql-query" name="load-sparql-query">
@@ -72,7 +72,7 @@
 					<p:pipe step="resource-description-sparql-query" port="result"/>
 				</p:input>
 				<p:input port="stylesheet">
-					<p:document href="substitute-resource-uri-into-query.xsl"/>
+					<p:document href="util/substitute-resource-uri-into-query.xsl"/>
 				</p:input>
 			</p:xslt>
 			<!-- execute the query to generate a resource description -->

@@ -46,7 +46,7 @@ WHERE {
 			</p:inline>			
 		</p:input>
 		<p:input port="stylesheet">
-			<p:document href="substitute-resource-uri-into-query.xsl"/>
+			<p:document href="util/substitute-resource-uri-into-query.xsl"/>
 		</p:input>
 	</p:xslt>
 	<!-- execute the query to generate a resource description -->
@@ -69,7 +69,7 @@ WHERE {
 			<p:pipe step="trix-description-to-json-ld" port="result"/>
 		</p:input>
 		<p:input port="stylesheet">
-			<p:document href="compact-json-ld.xsl"/>
+			<p:document href="util/compact-json-ld.xsl"/>
 		</p:input>
 	</p:xslt>
 	<p:store method="xml" indent="true">

@@ -10,7 +10,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	xmlns:map="http://www.w3.org/2005/xpath-functions/map"
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/">
 
-	<xsl:import href="trix-traversal-functions.xsl" />
+	<xsl:import href="util/trix-traversal-functions.xsl" />
 
 	<xsl:param name="root-resource" /><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:variable name="graph" select="/trix:trix/trix:graph" />

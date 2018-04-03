@@ -7,8 +7,8 @@
 	
 	<xsl:import href="trix-description-to-json-ld.xsl"/>
 	<xsl:import href="trix-description-to-dc.xsl"/>
-	<xsl:import href="compact-json-ld.xsl"/>
-	<xsl:import href="trix-traversal-functions.xsl"/>
+	<xsl:import href="util/compact-json-ld.xsl"/>
+	<xsl:import href="util/trix-traversal-functions.xsl"/>
 	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:param name="dataset"/>
