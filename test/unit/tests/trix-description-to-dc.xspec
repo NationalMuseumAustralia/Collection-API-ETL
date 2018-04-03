@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
-	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns="http://www.w3.org/2005/xpath-functions"
-	stylesheet="../../../trix-description-to-dc.xsl">
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns="http://www.w3.org/2005/xpath-functions" stylesheet="../../../trix-description-to-dc.xsl">
 
 	<!-- Test xmljson render functions -->
 
@@ -76,6 +76,36 @@
 		<x:expect label="Should return single number element with single number">
 			<number key="label">1</number>
 		</x:expect>
+	</x:scenario>
+
+	<!-- Test xmljson date functions -->
+
+	<x:scenario label="Parse date - empty">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" />
+		</x:call>
+		<x:expect label="Should return empty"></x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date - dd/mm/yyyy">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" select="'02/02/2002'" />
+		</x:call>
+		<x:expect label="Should return ISO8601 date">2002-02-02</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date - /mm/yyyy">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" select="'/02/2002'" />
+		</x:call>
+		<x:expect label="Should return ISO8601 date">2002-02</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date - yyyy">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" select="'2002'" />
+		</x:call>
+		<x:expect label="Should return ISO8601 date">2002</x:expect>
 	</x:scenario>
 
 </x:description>
