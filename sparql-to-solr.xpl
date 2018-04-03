@@ -336,14 +336,57 @@
 				<p:with-param name="root-resource" select="$resource-uri"/>
 				<p:with-param name="dataset" select=" 'public' "/>
 			</p:xslt>
+			<!-- convert the JSON-XML blobs into JSON before deposit in Solr -->
+			<p:try name="json-xml-to-json">
+				<p:group>
+					<p:output port="result"/>
+					<p:xslt>
+						<p:input port="parameters"><p:empty/></p:input>
+						<p:input port="stylesheet">
+							<p:document href="json-xml-to-json.xsl"/>
+						</p:input>
+					</p:xslt>
+				</p:group>
+				<p:catch name="json-xml-could-not-be-serialized-as-json-string">
+					<p:output port="result"/>
+					<cx:message message="json xml could not be serialized as a json string"/>
+					<p:xslt name="serialize-json-xml-as-xml-string">
+						<p:input port="parameters"><p:empty/></p:input>
+						<p:input port="source">
+							<p:pipe step="trix-description-to-solr-doc" port="result"/>
+						</p:input>
+						<p:input port="stylesheet">
+							<p:inline>
+								<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" >
+									<xsl:template match="*">
+										<xsl:copy>
+											<xsl:copy-of select="@*"/>
+											<xsl:apply-templates/>
+										</xsl:copy>
+									</xsl:template>
+									<xsl:template match="field[@name='simple']/*">
+										<xsl:value-of select="serialize(., map{'indent':true()})"/>
+									</xsl:template>
+									<xsl:template match="field[@name='type']/text()">
+										<xsl:text>json-error</xsl:text>
+									</xsl:template>
+								</xsl:stylesheet>
+							</p:inline>
+						</p:input>
+					</p:xslt>
+				</p:catch>
+			</p:try>
 			<p:store href="/tmp/solr.xml" indent="true"/>
 			<!-- execute the Solr index update -->
 			<p:http-request name="solr-deposit">
 				<p:input port="source">
-					<p:pipe step="trix-description-to-solr-doc" port="result"/>
+					<p:pipe step="json-xml-to-json" port="result"/>
 				</p:input>
 			</p:http-request>
-			<p:store href="/tmp/solr-response.xml" indent="true"/>
+			<p:for-each name="error-response">
+				<p:iteration-source select="/c:response[number(@status) &gt;= 400]"/>
+				<p:store href="/tmp/last-solr-error.xml" indent="true"/>
+			</p:for-each>
 			<p:store href="/tmp/description.xml" indent="true">
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>

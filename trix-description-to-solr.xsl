@@ -14,7 +14,7 @@
 	<xsl:param name="dataset"/>
 	
 	<xsl:template match="/">
-		<c:request method="post" href="http://localhost:8983/solr/core_nma_{$dataset}/update">
+		<c:request method="post" href="http://localhost:8983/solr/core_nma_{$dataset}/update" detailed="true">
 			<c:body content-type="application/xml">
 				<add commitWithin="10000">
 					<doc>
@@ -205,7 +205,9 @@
 								<xsl:with-param name="resource" select="$root-resource"/>
 							</xsl:call-template>
 						</xsl:variable>
-						<field name="simple"><xsl:value-of select="xml-to-json($dc-in-xml, map{'indent':true()})"/></field>
+						<field name="simple">
+							<xsl:copy-of select="$dc-in-xml"/>
+						</field>
 					</doc>
 				</add>
 			</c:body>
