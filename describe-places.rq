@@ -1,0 +1,14 @@
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+DESCRIBE «resource-uri» ?resource
+WHERE {
+	«resource-uri»
+	# the object's type
+	crm:P2_has_type | 
+	# the place's identifiers/names and their types
+	crm:P1_is_identified_by | 
+	crm:P1_is_identified_by/crm:P2_has_type | 
+	# the geospatial location of the place
+	crm:P168_place_is_defined_by |
+	crm:P168_place_is_defined_by/crm:P2_has_type
+	?resource
+}

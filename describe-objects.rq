@@ -1,0 +1,78 @@
+
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+DESCRIBE «resource-uri» ?resource
+WHERE {
+	«resource-uri»
+	# the object's type
+	crm:P2_has_type | 
+	# the object's identifiers, and their types
+	crm:P1_is_identified_by | 
+	crm:P1_is_identified_by/crm:P2_has_type | 
+	# the object's materials, and their types
+	crm:P45_consists_of | 
+	crm:P45_consists_of/crm:P2_has_type |
+	# the object's container, and its type
+	crm:P106i_forms_part_of | 
+	crm:P106i_forms_part_of/crm:P2_has_type | 
+	# textual descriptions of the object, and their types
+	crm:P129i_is_subject_of |
+	crm:P129i_is_subject_of/crm:P2_has_type |
+	
+	# the production of, or other event involving the object, and sub-activities that made up that event, 
+	# parties present at those events or carrying out those activities
+	# and the locations and dates of those activities
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by/crm:P2_has_type |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P7_took_place_at |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by | 
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by/crm:P2_has_type | 
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P168_place_is_defined_by |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P168_place_is_defined_by/crm:P2_has_type |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P4_has_time-span | 
+	
+	# the related parties' identifiers/names and their types, and subcomponents (name parts) and their types
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by | 
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P2_has_type | 
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P106_is_composed_of | 
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
+	# the groups which the party belongs to, and their types
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of/crm:P2_has_type |
+	
+	
+	# parties associated with those events, and their names, groups, identifiers
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of |
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P2_has_type | 
+	# the party's identifiers/names and their types, and subcomponents (name parts) and their types
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by | 
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P2_has_type | 
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P106_is_composed_of | 
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
+	# the groups which the party belongs to, and their types
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of |
+	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of/crm:P2_has_type |					
+
+
+	
+	# the dimensions of the object, the type of the dimensions, and their measurement unit
+	crm:P43_has_dimension |
+	crm:P43_has_dimension/crm:P2_has_type |
+	crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
+	# rights and acknowledgements
+	crm:P104_is_subject_to |
+	crm:P67i_is_referred_to_by |
+	# the visual items that depict the object, and the creation of those images, and the photographers
+	# and the various derivative representations of that item, and their types (Piction images are typed)
+	# along with their dimensions, and the types and measurement units of the dimensions
+	crm:P138i_has_representation |
+	crm:P138i_has_representation/crm:P94i_was_created_by |
+	crm:P138i_has_representation/crm:P94i_was_created_by/crm:P14_carried_out_by |
+	crm:P138i_has_representation/crm:P138i_has_representation |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P2_has_type |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type |
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit
+	?resource
+}

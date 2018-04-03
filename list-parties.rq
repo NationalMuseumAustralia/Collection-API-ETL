@@ -1,0 +1,12 @@
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+select distinct ?resource
+where {
+	{
+		?resource a crm:E21_Person 
+	} union {
+		?resource a crm:E74_Group
+	}
+	filter(isuri(?resource)) # ignoring parties which have no URI
+# for debugging, filter here:
+# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
+}	

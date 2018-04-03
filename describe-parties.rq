@@ -1,0 +1,17 @@
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+DESCRIBE «resource-uri» ?resource
+WHERE {
+	«resource-uri»
+	# the party's type
+	crm:P2_has_type | 
+	# the party's identifiers/names and their types, and subcomponents (name parts) and their types
+	crm:P1_is_identified_by | 
+	crm:P1_is_identified_by/crm:P2_has_type | 
+	crm:P1_is_identified_by/crm:P106_is_composed_of | 
+	crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
+	# the groups which the party belongs to, and their types
+	crm:P107i_is_current_or_former_member_of |
+	crm:P107i_is_current_or_former_member_of/crm:P2_has_type
+	?resource
+}
+]]>

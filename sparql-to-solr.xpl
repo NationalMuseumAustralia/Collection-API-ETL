@@ -16,300 +16,55 @@
 	<!-- update Solr store by querying the SPARQL store -->
 
 	<!-- generate a Solr index of media -->
-	<nma:index-resources name="index-media">
-		<p:input port="resource-list-sparql-query">
-			<p:inline>
-				<!-- TODO replace this query with one which returns only resources which have been updated since a particular time -->
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select distinct ?resource
-					where {
-						?resource a crm:E36_Visual_Item.
-						# only top level visual items (i.e. those which are not sub-formats of another visual item)
-						not exists {
-							?topLevelVisualItem crm:P138i_has_representation ?resource.
-							?topLevelVisualItem a crm:E36_Visual_Item
-						}
-						filter(isuri(?resource)) # ignoring any visual items which have no URI
-						# for debugging, filter here:
-						# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
-					}	
-					]]>
-				</query>
-			</p:inline>
-		</p:input>
-		<p:input port="resource-description-sparql-query">
-			<p:inline>	
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					DESCRIBE «resource-uri» ?resource
-					WHERE {
-						«resource-uri»
-						# the visual item's type
-						crm:P2_has_type | 
-						# the object(s) which the visual item depicts, and its type, descriptions, etc (but excluding visual items which depict it
-						# the object's type
-						crm:P138_represents/crm:P2_has_type | 
-						# the object's identifiers, and their types
-						crm:P138_represents/crm:P1_is_identified_by | 
-						crm:P138_represents/crm:P1_is_identified_by/crm:P2_has_type | 
-						# the object's materials, and their types
-						crm:P138_represents/crm:P45_consists_of | 
-						crm:P138_represents/crm:P45_consists_of/crm:P2_has_type |
-						# the object's container, and its type
-						crm:P138_represents/crm:P106i_forms_part_of | 
-						crm:P138_represents/crm:P106i_forms_part_of/crm:P2_has_type | 
-						# textual descriptions of the object, and their types
-						crm:P138_represents/crm:P129i_is_subject_of |
-						crm:P138_represents/crm:P129i_is_subject_of/crm:P2_has_type |
-						# the production of the object, the sub-activities that made up that production, 
-						# the parties carrying out those activities, and the role they played,
-						# and the locations and dates of those activities
-						crm:P138_represents/crm:P108i_was_produced_by |
-						crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of |
-						crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by |
-						crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by/crm:P14.1_in_the_role_of |
-						crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:P7_took_place_at |
-						crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:P4_has_time-span | 
-						# the dimensions of the object, the type of the dimensions, and their measurement unit
-						crm:P138_represents/crm:P43_has_dimension |
-						crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type |
-						crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
-
-						# the creation of the images, and the photographers
-						# and the various derivative representations of that item, and their types (Piction images are typed)
-						# along with their dimensions, and the types and measurement units of the dimensions
-						crm:P94i_was_created_by |
-						crm:P94i_was_created_by/crm:P14_carried_out_by |
-						crm:P138i_has_representation |
-						crm:P138i_has_representation/crm:P2_has_type |
-						crm:P138i_has_representation/crm:P43_has_dimension |
-						crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type |
-						crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |					
-	
-						# the visual item's identifiers/names and their types
-						crm:P1_is_identified_by | 
-						crm:P1_is_identified_by/crm:P2_has_type
-						?resource
-					}
-					]]>
-				</query>
-			</p:inline>
-		</p:input>
-	</nma:index-resources>
+	<nma:index-resources name="index-media" list-query="list-media.rq" describe-query="describe-media.rq"/>
 
 	<!-- generate a Solr index of places -->
-	<nma:index-resources name="index-places">
-		<p:input port="resource-list-sparql-query">
-			<p:inline>
-				<!-- TODO replace this query with one which returns only resources which have been updated since a particular time -->
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select distinct ?resource
-					where {
-						?resource a crm:E53_Place 
-						filter(isuri(?resource)) # ignoring places which have no URI
-						# for debugging, filter here:
-						# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
-					}	
-					]]>
-				</query>
-			</p:inline>
-		</p:input>
-		<p:input port="resource-description-sparql-query">
-			<p:inline>	
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					DESCRIBE «resource-uri» ?resource
-					WHERE {
-						«resource-uri»
-						# the object's type
-						crm:P2_has_type | 
-						# the place's identifiers/names and their types
-						crm:P1_is_identified_by | 
-						crm:P1_is_identified_by/crm:P2_has_type | 
-						# the geospatial location of the place
-						crm:P168_place_is_defined_by |
-						crm:P168_place_is_defined_by/crm:P2_has_type
-						?resource
-					}
-					]]>
-				</query>
-			</p:inline>
-		</p:input>
-	</nma:index-resources>
+	<nma:index-resources name="index-places" list-query="list-places.rq" describe-query="describe-places.rq"/>
 
 	<!-- generate a Solr index of parties -->
-	<nma:index-resources name="index-parties">
-		<p:input port="resource-list-sparql-query">
-			<p:inline>
-				<!-- TODO replace this query with one which returns only resources which have been updated since a particular time -->
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select distinct ?resource
-					where {
-						{
-							?resource a crm:E21_Person 
-						} union {
-							?resource a crm:E74_Group
-						}
-						filter(isuri(?resource)) # ignoring parties which have no URI
-					# for debugging, filter here:
-					# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
-					}	
-					]]>
-				</query>
-			</p:inline>
-		</p:input>
-		<p:input port="resource-description-sparql-query">
-			<p:inline>	
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					DESCRIBE «resource-uri» ?resource
-					WHERE {
-						«resource-uri»
-						# the party's type
-						crm:P2_has_type | 
-						# the party's identifiers/names and their types, and subcomponents (name parts) and their types
-						crm:P1_is_identified_by | 
-						crm:P1_is_identified_by/crm:P2_has_type | 
-						crm:P1_is_identified_by/crm:P106_is_composed_of | 
-						crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
-						# the groups which the party belongs to, and their types
-						crm:P107i_is_current_or_former_member_of |
-						crm:P107i_is_current_or_former_member_of/crm:P2_has_type
-						?resource
-					}
-					]]>
-				</query>
-			</p:inline>
-		</p:input>
-	</nma:index-resources>
-	
+	<nma:index-resources name="index-parties" list-query="list-parties.rq" describe-query="describe-parties.rq"/>
 	
 	<!-- generate a Solr index for physical objects -->
-	<nma:index-resources name="index-physical-objects">
-		<p:input port="resource-list-sparql-query">
-			<p:inline>
-				<!-- TODO replace this query with one which returns only resources which have been updated since a particular time -->
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					select distinct ?resource
-					where {
-						?resource a crm:E19_Physical_Object.
-						# only include objects which have an identifier (sourced from EMu), since Piction records may have bogus IRNs that instantiate bogus Physical Objects
-						?resource crm:P1_is_identified_by ?identifier
-						filter(isuri(?resource)) # ignoring objects which have no URI (at present these are actually collections, but represented as physical objects
-					}	
-					]]>
-				</query>
-			</p:inline>
-		</p:input>
-		<p:input port="resource-description-sparql-query">
-			<p:inline>
-				<query>
-					<![CDATA[
-					PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-					DESCRIBE «resource-uri» ?resource
-					WHERE {
-						«resource-uri»
-						# the object's type
-						crm:P2_has_type | 
-						# the object's identifiers, and their types
-						crm:P1_is_identified_by | 
-						crm:P1_is_identified_by/crm:P2_has_type | 
-						# the object's materials, and their types
-						crm:P45_consists_of | 
-						crm:P45_consists_of/crm:P2_has_type |
-						# the object's container, and its type
-						crm:P106i_forms_part_of | 
-						crm:P106i_forms_part_of/crm:P2_has_type | 
-						# textual descriptions of the object, and their types
-						crm:P129i_is_subject_of |
-						crm:P129i_is_subject_of/crm:P2_has_type |
-						
-						# the production of, or other event involving the object, and sub-activities that made up that event, 
-						# parties present at those events or carrying out those activities
-						# and the locations and dates of those activities
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by/crm:P2_has_type |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P7_took_place_at |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by | 
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by/crm:P2_has_type | 
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P168_place_is_defined_by |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P168_place_is_defined_by/crm:P2_has_type |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P4_has_time-span | 
-						
-						# the related parties' identifiers/names and their types, and subcomponents (name parts) and their types
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by | 
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P2_has_type | 
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P106_is_composed_of | 
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
-						# the groups which the party belongs to, and their types
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of |
-						(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of/crm:P2_has_type |
-						
-						
-						# parties associated with those events, and their names, groups, identifiers
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of |
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P2_has_type | 
-						# the party's identifiers/names and their types, and subcomponents (name parts) and their types
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by | 
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P2_has_type | 
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P106_is_composed_of | 
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P1_is_identified_by/crm:P106_is_composed_of/crm:P2_has_type | 
-						# the groups which the party belongs to, and their types
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of |
-						crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of/crm:P2_has_type |					
-
-
-						
-						# the dimensions of the object, the type of the dimensions, and their measurement unit
-						crm:P43_has_dimension |
-						crm:P43_has_dimension/crm:P2_has_type |
-						crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
-						# rights and acknowledgements
-						crm:P104_is_subject_to |
-						crm:P67i_is_referred_to_by |
-						# the visual items that depict the object, and the creation of those images, and the photographers
-						# and the various derivative representations of that item, and their types (Piction images are typed)
-						# along with their dimensions, and the types and measurement units of the dimensions
-						crm:P138i_has_representation |
-						crm:P138i_has_representation/crm:P94i_was_created_by |
-						crm:P138i_has_representation/crm:P94i_was_created_by/crm:P14_carried_out_by |
-						crm:P138i_has_representation/crm:P138i_has_representation |
-						crm:P138i_has_representation/crm:P138i_has_representation/crm:P2_has_type |
-						crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension |
-						crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type |
-						crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit
-						?resource
-					}
-					]]>
-				</query>
-			</p:inline>				
-		</p:input>
-	</nma:index-resources>
+	<nma:index-resources name="index-physical-objects" list-query="list-objects.rq" describe-query="describe-objects.rq"/>
+	
+	
+	<!-- load a (non-XML) sparql query from disk -->
+	<p:declare-step type="nma:load-sparql-query" name="load-sparql-query">
+		<p:option name="query-file" required="true"/>
+		<p:output port="result"/>
+		<p:template name="sparql-list-query-load-request"><!-- a request to load the file from disk -->
+			<p:with-param name="query-file" select="$query-file"/>
+			<p:input port="source"><p:empty/></p:input>
+			<p:input port="template">
+				<p:inline>
+					<c:request href="{encode-for-uri($query-file)}" method="get" override-content-type="text/plain"/>
+				</p:inline>
+			</p:input>
+		</p:template>
+		<p:http-request/>
+	</p:declare-step>
 	
 	<!-- generates a Solr index for resources which match a particular SPARQL query, from a resource description given by another SPARQL query template -->
 	<p:declare-step type="nma:index-resources" name="index-resources">
-		<p:input port="resource-list-sparql-query"/>
-		<p:input port="resource-description-sparql-query"/>
+		<!-- names of files containing the sparql queries to list, and to describe, entities of a particular type -->
+		<p:option name="list-query" required="true"/>
+		<p:option name="describe-query" required="true"/>
+		<!-- load the non-XML sparql queries from file system -->
+		<nma:load-sparql-query name="resource-list-sparql-query">
+			<p:with-option name="query-file" select="$list-query"/>
+		</nma:load-sparql-query>
+		<nma:load-sparql-query name="resource-description-sparql-query">
+			<p:with-option name="query-file" select="$describe-query"/>
+		</nma:load-sparql-query>
+		<!-- execute the query to list all the resources to be indexed -->
 		<nma:sparql-query name="resources-to-index" accept="application/sparql-results+xml" dataset="public">
 			<p:input port="source">
-				<p:pipe step="index-resources" port="resource-list-sparql-query"/>
+				<p:pipe step="resource-list-sparql-query" port="result"/>
 			</p:input>
 		</nma:sparql-query>
+		<!-- iterate through the resources, indexing each one individually -->
 		<p:for-each name="resource">
-			<p:iteration-source select="/results:sparql/results:results/results:result">
+			<p:iteration-source select="/results:sparql/results:results/results:result[1]">
 				<p:pipe step="resources-to-index" port="result"/>
 			</p:iteration-source>
 			<!-- generate description for this resource -->
@@ -317,10 +72,11 @@
 			<cx:message>
 				<p:with-option name="message" select="concat('Querying SPARQL store for ', $resource-uri, ' ...')"/>
 			</cx:message>
+			<!-- substitute the URI of the resource to be indexed into the query template -->
 			<p:xslt name="generate-sparql-query">
 				<p:with-param name="resource-uri" select="$resource-uri"/>
 				<p:input port="source">
-					<p:pipe step="index-resources" port="resource-description-sparql-query"/>
+					<p:pipe step="resource-description-sparql-query" port="result"/>
 				</p:input>
 				<p:input port="stylesheet">
 					<p:document href="substitute-resource-uri-into-query.xsl"/>
