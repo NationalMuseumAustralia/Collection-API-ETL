@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns="http://www.w3.org/2005/xpath-functions"
+	stylesheet="../../../trix-description-to-dc.xsl">
+
+	<!-- Test xmljson render functions -->
+
+	<x:scenario label="Render JSON string function - no label">
+		<x:call function="xmljson:render-as-string">
+			<x:param name="label" select="''" />
+			<x:param name="values" select="'data1'" />
+		</x:call>
+		<x:expect label="Should return single un-keyed string element">
+			<string>data1</string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Render JSON string function - no data">
+		<x:call function="xmljson:render-as-string">
+			<x:param name="label" select="'label'" />
+			<!-- pass in empty data -->
+			<x:param name="values" />
+		</x:call>
+		<x:expect label="Should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Render JSON string function - one string">
+		<x:call function="xmljson:render-as-string">
+			<x:param name="label" select="'label'" />
+			<x:param name="values" select="'data1'" />
+		</x:call>
+		<x:expect label="Should return single string element">
+			<string key="label">data1</string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Render JSON string function - multiple strings">
+		<x:call function="xmljson:render-as-string">
+			<x:param name="label" select="'label'" />
+			<x:param name="values" select="('data1', 'data2')" />
+		</x:call>
+		<x:expect label="Should return single concatenated string element">
+			<string key="label">data1; data2</string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario
+		label="Render JSON literal function - multiple strings, special separator">
+		<x:call function="xmljson:render-as-literal">
+			<x:param name="label" select="'label'" />
+			<x:param name="values" select="('data1', 'data2')" />
+			<x:param name="datatype" select="'string'" />
+			<x:param name="separator" select="'==='" />
+		</x:call>
+		<x:expect
+			label="Should return single concatenated string element with special separator">
+			<string key="label">data1===data2</string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Render JSON number function - single number">
+		<x:call function="xmljson:render-as-number">
+			<x:param name="label" select="'label'" />
+			<x:param name="values" select="1" />
+		</x:call>
+		<x:expect label="Should return single number element with single number">
+			<number key="label">1</number>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Render JSON number function - multiple numbers">
+		<x:call function="xmljson:render-as-number">
+			<x:param name="label" select="'label'" />
+			<x:param name="values" select="(1, 2, 3)" />
+		</x:call>
+		<x:expect label="Should return single number element with single number">
+			<number key="label">1</number>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

@@ -1,0 +1,74 @@
+<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
+  <graph>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#repositorynumber</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">4143</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#repositorynumber</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300404621</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#repositorynumber</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#location</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">-15.28,130.57</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#location</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300380194</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#location</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E94_Space_Primitive</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P168_place_is_defined_by</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#location</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#repositorynumber</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#</uri>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ikymbon River, Ikymbon River, Northern Territory, Australia</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/4143#</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E53_Place</uri>
+      </triple>
+      <triple>
+         <uri>http://vocab.getty.edu/aat/300404621</uri>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">repository number</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://vocab.getty.edu/aat/300404621</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+      </triple>
+      <triple>
+         <uri>http://vocab.getty.edu/aat/300380194</uri>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">geospatial data</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://vocab.getty.edu/aat/300380194</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+      </triple>
+  </graph>
+</trix>

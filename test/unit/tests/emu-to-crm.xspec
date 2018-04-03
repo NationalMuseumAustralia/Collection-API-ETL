@@ -56,10 +56,11 @@
 
 		<x:expect label="should return 2x crm:P138i_has_representation">
 			<crm:P138i_has_representation>
-				<crm:E36_Visual_Item rdf:about="media/01">
+				<crm:E36_Visual_Item rdf:about="media/01#">
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/01-640.jpg">
+							<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preview" />
 							<crm:P43_has_dimension>
 								<crm:E54_Dimension rdf:about="media/01#previewWidth">
 									<rdf:value>640</rdf:value>
@@ -87,7 +88,7 @@
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/200.jpg">
-							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300075467" />
+							<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/thumbnail" />
 							<crm:P43_has_dimension>
 								<crm:E54_Dimension rdf:about="media/01#thumbWidth">
 									<rdf:value>200</rdf:value>
@@ -117,10 +118,11 @@
 			<crm:P138i_has_representation xmlns:la="https://linked.art/ns/terms/"
 				xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 				xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/">
-				<crm:E36_Visual_Item rdf:about="media/02">
+				<crm:E36_Visual_Item rdf:about="media/02#">
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/02-640.jpg">
+							<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preview" />
 							<crm:P43_has_dimension>
 								<crm:E54_Dimension rdf:about="media/02#previewWidth">
 									<rdf:value>640</rdf:value>
@@ -148,7 +150,7 @@
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/02-200.jpg">
-							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300075467" />
+							<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/thumbnail" />
 							<crm:P43_has_dimension>
 								<crm:E54_Dimension rdf:about="media/02#thumbWidth">
 									<rdf:value>200</rdf:value>
