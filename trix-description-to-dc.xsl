@@ -304,8 +304,6 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 							<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P4_has_time-span', 'rdfs:label') ) )" />
 							<!-- role -->
 							<xsl:copy-of select="xmljson:render-as-string('roleName', path:forward(., 'rdfs:label') )" />
-							<!-- production flag -->
-							<string key='interactionType'><xsl:text>Production</xsl:text></string>
 							<!-- NB: no interactionType as not production -->
 							<!-- description/notes -->
 							<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
