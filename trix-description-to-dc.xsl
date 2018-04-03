@@ -261,18 +261,18 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 			<!-- associated: party -->
 			<xsl:variable name="associated-parties" select="
-				path:forward( ('crm:P12i_was_present_at') )[
-					path:forward(., 'crm:P12_occurred_in_the_presence_of')
-				]
+				path:forward( ('crm:P12i_was_present_at') )
 			" />
 			<xsl:if test="$associated-parties">
 				<array key="contributor">
 					<xsl:for-each select="$associated-parties">
 						<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
 						<map>
-							<string key='id'>
-								<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
-							</string>
+							<xsl:if test="$party-iri">
+								<string key='id'>
+									<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
+								</string>
+							</xsl:if>
 							<!-- type -->
 							<xsl:variable name="party-type" select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type') )" />
 							<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E21_Person'">
@@ -287,6 +287,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 							<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E5_Event'">
 								<string key='type'><xsl:text>Event</xsl:text></string>
 							</xsl:if>
+							<xsl:variable name="date-type" select="path:forward(., ('crm:P4_has_time-span', 'rdf:type') )" />
+							<xsl:if test="$date-type='http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span'">
+								<string key='type'><xsl:text>Event</xsl:text></string>
+							</xsl:if>
 							<!-- person name -->
 							<xsl:copy-of select="xmljson:render-as-string('title', 
 								path:forward(., ('crm:P12_occurred_in_the_presence_of', 'crm:P1_is_identified_by'))[
@@ -296,6 +300,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 							)" />
 							<!-- organisation label -->
 							<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') ) )" />
+							<!-- date -->
+							<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P4_has_time-span', 'rdfs:label') ) )" />
 							<!-- role -->
 							<xsl:copy-of select="xmljson:render-as-string('roleName', path:forward(., 'rdfs:label') )" />
 							<!-- production flag -->

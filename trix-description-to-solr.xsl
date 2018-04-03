@@ -167,8 +167,13 @@
 							<field name="contributor"><xsl:value-of select="."/></field>
 							<field name="text"><xsl:value-of select="."/></field>
 						</xsl:for-each>
-						<!-- associated party - organisation -->
+						<!-- associated party - organisation (also place) -->
 						<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P12_occurred_in_the_presence_of', 'rdfs:label') )">
+							<field name="contributor"><xsl:value-of select="."/></field>
+							<field name="text"><xsl:value-of select="."/></field>
+						</xsl:for-each>
+						<!-- associated date -->
+						<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P4_has_time-span', 'rdfs:label') )">
 							<field name="contributor"><xsl:value-of select="."/></field>
 							<field name="text"><xsl:value-of select="."/></field>
 						</xsl:for-each>
