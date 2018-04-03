@@ -15,18 +15,11 @@
 	
 	<!-- update Solr store by querying the SPARQL store -->
 
-	<!-- generate a Solr index of media -->
-	<nma:index-resources name="index-media" list-query="list-media.rq" describe-query="describe-media.rq"/>
-
-	<!-- generate a Solr index of places -->
-	<nma:index-resources name="index-places" list-query="list-places.rq" describe-query="describe-places.rq"/>
-
-	<!-- generate a Solr index of parties -->
+	<!-- generate a Solr index of media, places, parties, and physical objects -->
 	<nma:index-resources name="index-parties" list-query="list-parties.rq" describe-query="describe-parties.rq"/>
-	
-	<!-- generate a Solr index for physical objects -->
+	<nma:index-resources name="index-media" list-query="list-media.rq" describe-query="describe-media.rq"/>
+	<nma:index-resources name="index-places" list-query="list-places.rq" describe-query="describe-places.rq"/>
 	<nma:index-resources name="index-physical-objects" list-query="list-objects.rq" describe-query="describe-objects.rq"/>
-	
 	
 	<!-- load a (non-XML) sparql query from disk -->
 	<p:declare-step type="nma:load-sparql-query" name="load-sparql-query">
