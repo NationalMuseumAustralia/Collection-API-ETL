@@ -39,7 +39,10 @@
       <tokenizer class="solr.KeywordTokenizerFactory"/>
     </analyzer>
   </fieldType>
+<!--
   <fieldType name="location" class="solr.LatLonPointSpatialField" docValues="true"/>
+-->
+  <fieldType name="location" class="solr.TextField" indexed="true" stored="false"/>
   <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
   <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
     <analyzer>
@@ -428,6 +431,7 @@
   <field name="json-ld" type="text_general"/>
   <field name="media" type="text_general"/>
   <field name="medium" type="text_general"/>
+  <field name="location" type="text_general"/>
   <field name="name" type="text_general"/>
   <field name="rights" type="text_general"/>
   <field name="simple" type="text_general"/>
