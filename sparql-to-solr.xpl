@@ -64,7 +64,7 @@
 		</nma:sparql-query>
 		<!-- iterate through the resources, indexing each one individually -->
 		<p:for-each name="resource">
-			<p:iteration-source select="/results:sparql/results:results/results:result[1]">
+			<p:iteration-source select="/results:sparql/results:results/results:result">
 				<p:pipe step="resources-to-index" port="result"/>
 			</p:iteration-source>
 			<!-- generate description for this resource -->
