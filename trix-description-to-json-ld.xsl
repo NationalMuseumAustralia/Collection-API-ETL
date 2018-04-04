@@ -75,6 +75,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 						</xsl:choose>
 						<!--represent the resource's other properties (apart from rdf:type) as JSON-LD XML -->
 						<xsl:for-each-group select="$graph/trix:triple[*[1]=$resource][not(*[2]='http://www.w3.org/1999/02/22-rdf-syntax-ns#type')]" group-by="string(*[2])">
+							<xsl:sort select="*[2]"/>
 							<xsl:choose>
 								<xsl:when test="count(current-group()) = 1">
 									<!--<xsl:message><xsl:value-of select="concat('property ', *[2], ' has a single value: ', *[3])"/></xsl:message>-->
@@ -104,6 +105,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 									<!--<xsl:message><xsl:value-of select="concat('property ', *[2], ' has ', count(current-group()), ' values')"/></xsl:message>-->
 									<f:array key="{*[2]}">
 										<xsl:for-each select="current-group()">
+											<xsl:sort select="*[3]"/>
 											<!-- property is either a resource or a literal -->
 											<xsl:choose>
 												<!-- property value is a resource -->
