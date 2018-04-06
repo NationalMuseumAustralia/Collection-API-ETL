@@ -4,7 +4,7 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/" xmlns:xpath="http://www.w3.org/2005/xpath-functions"
-	stylesheet="../../../trix-description-to-dc.xsl">
+	stylesheet="../../../trix-description-to-solr.xsl">
 
 	<x:import href="trix-record-122751-cricket.xspec" />
 
@@ -14,16 +14,9 @@
 	<x:scenario label="Convert title element">
 		<x:call template="title" />
 
-		<x:expect label="should return string title">
-			<xpath:string key="title">Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</xpath:string>
-		</x:expect>
-	</x:scenario>
-
-	<x:scenario label="Convert accesion number element">
-		<x:call template="accession-number" />
-
-		<x:expect label="should return string identifier">
-			<xpath:string key="identifier">1985.0033.0002</xpath:string>
+		<x:expect label="should return field title and text">
+			<field name="title">Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</field>
+			<field name="text">Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</field>
 		</x:expect>
 	</x:scenario>
 
