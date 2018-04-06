@@ -49,9 +49,9 @@
 			</xsl:analyze-string>
 			<xsl:text>"</xsl:text>
 			<xsl:choose>
-				<xsl:when test="$lang">@<xsl:value-of select="$lang"/></xsl:when>
+				<xsl:when test="$datatype">^^<xsl:value-of select="$datatype"/></xsl:when>
 				<xsl:otherwise>
-					<xsl:if test="$datatype">^^<xsl:value-of select="$datatype"/></xsl:if>
+					<xsl:if test="$lang">@<xsl:value-of select="$lang"/></xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -60,12 +60,12 @@
 	
 	<!-- match a node element -->
 	<xsl:template match="*">
-		<xsl:variable name="subject" select="concat('&lt;', rdf:node-identifier(.), '&gt;')"/>
+		<xsl:variable name="subject" select="rdf:node-identifier(.)"/>
 		
 		<!-- rdf:type property value specified by node element QName -->
 		<xsl:if test="not(self::rdf:Description)">
 			<!-- element name specifies a class -->
-			<xsl:variable name="class" select="concat('&lt;', namespace-uri(.), local-name(.), '&gt;')"/>
+			<xsl:variable name="class" select="concat('&lt;', namespace-uri(.), local-name(.), '-XXX&gt;')"/>
 			<xsl:call-template name="triple">
 				<xsl:with-param name="subject" select="$subject"/>
 				<xsl:with-param name="predicate" select="'&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt;'"/>
@@ -89,7 +89,7 @@
 					<xsl:call-template name="triple">
 						<xsl:with-param name="subject" select="$subject"/>
 						<xsl:with-param name="predicate" select="$predicate"/>
-						<xsl:with-param name="object" select="@rdf:resource"/>
+						<xsl:with-param name="object" select="concat('&lt;', @rdf:resource, '&gt;')"/>
 					</xsl:call-template>
 				</xsl:when>
 				<xsl:otherwise>
