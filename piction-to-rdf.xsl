@@ -40,7 +40,7 @@
 				<!-- we have both P138_represents and P138i_has_representation, for bidirectional 
 					traversal between objects and images -->
 				<xsl:for-each select="$related-objects">
-					<crm:E19_Physical_Object rdf:about="object/{.}#">
+					<crm:E19_Physical_Object rdf:about="object/{translate(., ' ', '')}#">
 						<crm:P138i_has_representation rdf:resource="{$visual-item-graph}#" />
 					</crm:E19_Physical_Object>
 				</xsl:for-each>
@@ -52,7 +52,7 @@
 						</rdf:label>
 					</xsl:for-each>
 					<xsl:for-each select="$related-objects">
-						<crm:P138_represents rdf:resource="object/{.}#" />
+						<crm:P138_represents rdf:resource="object/{translate(., ' ', '')}#" />
 					</xsl:for-each>
 					<xsl:for-each select="$image-data-sources">
 						<crm:P138i_has_representation>
