@@ -5,9 +5,9 @@
 	<xsl:param name="graph"/>
 	
 	<xsl:template match="/">
-		<nquads-graph>
+		<c:body content-type="application/n-quads" xmlns:c="http://www.w3.org/ns/xproc-step" >
 			<xsl:apply-templates/>
-		</nquads-graph>
+		</c:body>
 	</xsl:template>
 	
 	<xsl:template match="rdf:RDF">
@@ -34,7 +34,7 @@
 		<xsl:param name="datatype"/>
 		<xsl:variable name="result">
 			<xsl:text>"</xsl:text>
-			<xsl:analyze-string select="$text" regex="(#x22)|(#x5C)|(#xA)|(#xD)">
+			<xsl:analyze-string select="$text" regex="(&quot;)|(\\)|(\n)|(\r)">
 				<xsl:matching-substring>
 					<xsl:choose>
 						<xsl:when test="regex-group(1)">\"</xsl:when>
@@ -65,7 +65,7 @@
 		<!-- rdf:type property value specified by node element QName -->
 		<xsl:if test="not(self::rdf:Description)">
 			<!-- element name specifies a class -->
-			<xsl:variable name="class" select="concat('&lt;', namespace-uri(.), local-name(.), '-XXX&gt;')"/>
+			<xsl:variable name="class" select="concat('&lt;', namespace-uri(.), local-name(.), '&gt;')"/>
 			<xsl:call-template name="triple">
 				<xsl:with-param name="subject" select="$subject"/>
 				<xsl:with-param name="predicate" select="'&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt;'"/>
