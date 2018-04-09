@@ -19,8 +19,8 @@ TOMCAT8_GROUP=tomcat8
 # exactly one CPU chip that contains one or two cores, you should also add
 # the "-XX:+CMSIncrementalMode" option.
 
-# Modified to increase heap allocation from 128M to 6G, for Fuseki performance
-JAVA_OPTS="-Djava.awt.headless=true -Xmx6144m -XX:+UseConcMarkSweepGC"
+# Modified to increase heap allocation from 128M to 2G, for Fuseki performance
+JAVA_OPTS="-Djava.awt.headless=true -Xmx2G -XX:+UseConcMarkSweepGC"
 
 # To enable remote debugging uncomment the following line.
 # You will then be able to use a java debugger on port 8000.
