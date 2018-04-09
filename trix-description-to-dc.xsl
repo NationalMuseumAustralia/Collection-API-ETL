@@ -15,7 +15,6 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:import href="util/date-util-functions.xsl" />
 
 	<xsl:param name="root-resource" /><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
-	<xsl:variable name="graph" select="/trix:trix/trix:graph" />
 	<xsl:variable name="api-base-uri" select="replace($root-resource, '(.*)/.*/[^#]*#.*', '$1')"/>
 
 	<xsl:template match="/">
@@ -36,19 +35,14 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:copy-of select="xmljson:render-as-string('id', replace($root-resource, '(.*/)([^/]*)(#)$', '$2'))" />
 			<xsl:copy-of select="xmljson:render-as-string('type', $type)" />
 			<xsl:copy-of select="xmljson:render-as-string('additionalType', path:forward( ('crm:P2_has_type','rdfs:label') ))" />
-			<xsl:copy-of select="xmljson:render-as-string('title', path:forward('rdfs:label'))" />
+			<xsl:call-template name="title" />
 			<!-- duplicate organisation name into name field -->
 			<xsl:if test="$type='party'">
 				<xsl:copy-of select="xmljson:render-as-string('name', path:forward('rdfs:label'))" />
 			</xsl:if>
 			<xsl:copy-of select="xmljson:render-as-string('collection', path:forward( ('crm:P106i_forms_part_of', 'rdf:value') ))" />
 
-			<!-- accession number -->
-			<xsl:copy-of select="xmljson:render-as-string('identifier', 
-				path:forward('crm:P1_is_identified_by')[
-					path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300312355'
-				]
-				/path:forward(., 'rdf:value'))" />
+			<xsl:call-template name="accession-number" />
 
 			<!-- materials (array of strings) -->
 			<xsl:variable name="materials"
@@ -411,5 +405,26 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 		</map>
 	</xsl:template>
+	
+	<!-- ############### FIELD PROCESSING TEMPLATES ############ -->
+
+	<!-- COMMON -->
+
+	<!-- OBJECT -->
+
+	<!-- title -->
+	<xsl:template name="title">
+		<xsl:copy-of select="xmljson:render-as-string('title', path:forward('rdfs:label'))" />
+	</xsl:template>
+	
+	<!-- accession number -->
+	<xsl:template name="accession-number">
+		<!-- accession number -->
+		<xsl:copy-of select="xmljson:render-as-string('identifier', 
+			path:forward('crm:P1_is_identified_by')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300312355'
+			]
+			/path:forward(., 'rdf:value'))" />
+	</xsl:template>	
 
 </xsl:stylesheet>

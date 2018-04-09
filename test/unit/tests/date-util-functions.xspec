@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
+	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/" xmlns="http://www.w3.org/2005/xpath-functions"
+	stylesheet="../../../util/date-util-functions.xsl">
+
+	<x:scenario label="Parse date - empty">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" />
+		</x:call>
+		<x:expect label="Should return empty"></x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date - dd/mm/yyyy">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" select="'02/02/2002'" />
+		</x:call>
+		<x:expect label="Should return ISO8601 date">2002-02-02</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date - /mm/yyyy">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" select="'/02/2002'" />
+		</x:call>
+		<x:expect label="Should return ISO8601 date">2002-02</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date - //yyyy">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" select="'//2002'" />
+		</x:call>
+		<x:expect label="Should return ISO8601 date">2002</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date - yyyy">
+		<x:call function="dateutil:to-iso-date">
+			<x:param name="input" select="'2002'" />
+		</x:call>
+		<x:expect label="Should return ISO8601 date">2002</x:expect>
+	</x:scenario>
+
+</x:description>

@@ -50,14 +50,9 @@
 						</xsl:for-each>
 
 						<!-- title -->						
-						<xsl:for-each select="path:forward('rdfs:label')">
-							<field name="title"><xsl:value-of select="."/></field>
-							<field name="text"><xsl:value-of select="."/></field>
-							<!-- duplicate organisation name into name field -->
-							<xsl:if test="$type='party'">
-								<field name="name"><xsl:value-of select="."/></field>
-							</xsl:if>
-						</xsl:for-each>
+						<xsl:call-template name="title">
+							<xsl:with-param name="type" select="$type" />
+						</xsl:call-template>
 
 						<!-- description -->						
 						<xsl:for-each select="path:forward( ('crm:P129i_is_subject_of', 'rdf:value') )">
@@ -233,6 +228,25 @@
 				</add>
 			</c:body>
 		</c:request>
+	</xsl:template>
+
+	<!-- title -->
+	<xsl:template name="title">
+		<xsl:param name="type" />
+		<xsl:for-each select="path:forward('rdfs:label')">
+			<field name="title">
+				<xsl:value-of select="." />
+			</field>
+			<field name="text">
+				<xsl:value-of select="." />
+			</field>
+			<!-- duplicate organisation name into name field -->
+			<xsl:if test="$type='party'">
+				<field name="name">
+					<xsl:value-of select="." />
+				</field>
+			</xsl:if>
+		</xsl:for-each>
 	</xsl:template>
 	
 </xsl:stylesheet>

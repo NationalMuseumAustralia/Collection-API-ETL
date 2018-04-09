@@ -8,6 +8,8 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 	xmlns:f="http://www.w3.org/2005/xpath-functions"
 	xmlns:map="http://www.w3.org/2005/xpath-functions/map"
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/">
+
+	<xsl:variable name="graph" select="/trix:trix/trix:graph" />
 	
 	<xsl:function name="path:forward">
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
