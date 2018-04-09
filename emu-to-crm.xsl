@@ -743,8 +743,19 @@
 
 				<!-- preview -->
 				<xsl:for-each select="res640px">
-					<crm:P138i_has_representation>
-						<crm:E36_Visual_Item rdf:about="{concat($media-uri-base, image_path)}">
+					<crm:P138i_has_representation>		
+						<crm:E36_Visual_Item rdf:about="{
+							concat(
+								$media-uri-base, 
+								string-join(
+									for $component in tokenize(
+										image_path,
+										'/'
+									) return encode-for-uri($component),
+									'/'
+								)
+							)
+						}">
 							<crm:P2_has_type rdf:resource="{$nma-term-ns}preview" />
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
@@ -775,7 +786,18 @@
 				<!-- thumbnail -->
 				<xsl:for-each select="res200px">
 					<crm:P138i_has_representation>
-						<crm:E36_Visual_Item rdf:about="{concat($media-uri-base, image_path)}">
+						<crm:E36_Visual_Item rdf:about="{
+							concat(
+								$media-uri-base, 
+								string-join(
+									for $component in tokenize(
+										image_path,
+										'/'
+									) return encode-for-uri($component),
+									'/'
+								)
+							)
+						}">
 							<crm:P2_has_type rdf:resource="{$nma-term-ns}thumbnail" />
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
