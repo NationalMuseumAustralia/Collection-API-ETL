@@ -89,7 +89,7 @@
 					<xsl:call-template name="triple">
 						<xsl:with-param name="subject" select="$subject"/>
 						<xsl:with-param name="predicate" select="$predicate"/>
-						<xsl:with-param name="object" select="concat('&lt;', @rdf:resource, '&gt;')"/>
+						<xsl:with-param name="object" select="concat('&lt;', resolve-uri(@rdf:resource, (ancestor-or-self::*/@xml:base)[1]), '&gt;')"/>
 					</xsl:call-template>
 				</xsl:when>
 				<xsl:otherwise>
