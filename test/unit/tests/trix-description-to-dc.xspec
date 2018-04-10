@@ -2,29 +2,286 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
 	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
-	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/" xmlns:xpath="http://www.w3.org/2005/xpath-functions"
-	stylesheet="../../../trix-description-to-dc.xsl">
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../trix-description-to-dc.xsl">
 
+	<!-- loads source trix record being tested into global $graph variable -->
 	<x:import href="trix-record-122751-cricket.xspec" />
 
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
 
-	<x:scenario label="Convert title element">
-		<x:call template="title" />
-
-		<x:expect label="should return string title">
-			<xpath:string key="title">Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</xpath:string>
+	<x:scenario label="Convert id">
+		<x:call template="id-dc" />
+		<x:expect label="should return xpath:string id">
+			<xpath:string key="id">122751</xpath:string>
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert accesion number element">
-		<x:call template="accession-number" />
+	<x:scenario label="Convert type">
+		<x:call template="type-dc" />
+		<x:expect label="should return xpath:string type">
+			<xpath:string key="type">object</xpath:string>
+		</x:expect>
+	</x:scenario>
 
-		<x:expect label="should return string identifier">
+	<x:scenario label="Convert additional type">
+		<x:call template="additional-type-dc" />
+		<x:expect label="should return xpath:string additional type">
+			<xpath:string key="additionalType">Photographs</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert title">
+		<x:call template="title-dc" />
+		<x:expect label="should return xpath:string title starting with specified text"
+			test="starts-with(xpath:string[@key='title']/text(), 'Cricket scene showing')" />
+	</x:scenario>
+
+	<x:scenario label="Convert collection">
+		<x:call template="collection-dc" />
+		<x:expect label="should return xpath:string collection">
+			<xpath:string key="collection">Ruth Oldfield collection</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert accession number">
+		<x:call template="accession-number-dc" />
+		<x:expect label="should return xpath:string identifier">
 			<xpath:string key="identifier">1985.0033.0002</xpath:string>
 		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert materials">
+		<x:call template="materials-dc" />
+		<x:expect label="should return xpath:string materials">
+			<array key="medium" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string>Wood</string>
+				<string>Photographic emulsion</string>
+				<string>Paper</string>
+			</array>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions">
+		<x:call template="dimensions-dc" />
+		<x:expect label="should return xpath:map of string dimensions">
+			<map key="extent" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string key="type">Measurement</string>
+				<string key="length">1020</string>
+				<string key="width">820</string>
+				<string key="depth">20</string>
+				<string key="unitText">mm</string>
+			</map>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert content description">
+		<x:call template="content-description-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert physical description">
+		<x:call template="physical-description-dc" />
+		<x:expect label="should return xpath:string physicalDescription starting with specified text"
+			test="starts-with(xpath:string[@key='physicalDescription']/text(), 'A black and white')" />
+	</x:scenario>
+
+	<x:scenario label="Convert significance statement">
+		<x:call template="significance-statement-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert educational significance">
+		<x:call template="educational-significance-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert production parties">
+		<x:call template="production-parties-dc" />
+		<x:expect label="should return xpath:array of creator maps">
+			<array key="creator" xmlns="http://www.w3.org/2005/xpath-functions">
+				<map>
+					<string key="id">80363</string>
+					<string key="type">Organisation</string>
+					<string key="title">Sydney Mail</string>
+					<string key="roleName">Publisher</string>
+					<string key="interactionType">Production</string>
+				</map>
+				<map>
+					<string key="id">6514</string>
+					<string key="type">Person</string>
+					<string key="title">Mr Herbert Fishwick</string>
+					<string key="roleName">Photographer</string>
+					<string key="interactionType">Production</string>
+				</map>
+			</array>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production places">
+		<x:call template="production-places-dc" />
+		<x:expect label="should return xpath:array of spatial map">
+			<array key="spatial" xmlns="http://www.w3.org/2005/xpath-functions">
+				<map>
+					<string key="id">47</string>
+					<string key="type">Place</string>
+					<string key="title">...</string>
+					<string key="roleName">Place made</string>
+					<string key="interactionType">Production</string>
+				</map>
+			</array>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production dates">
+		<x:call template="production-dates-dc" />
+		<x:expect label="should return xpath:array of temporal map">
+			<array key="temporal" xmlns="http://www.w3.org/2005/xpath-functions">
+				<map>
+					<string key="type">Event</string>
+					<string key="title">14/12/1928</string>
+					<string key="roleName">Date of production</string>
+					<string key="interactionType">Production</string>
+				</map>
+			</array>
+		</x:expect>
+	</x:scenario>
+
+	<!-- TODO: 'associated-parties-dc' template works in ETL but only outputs 'roleName' 
+		during XSpec tests -->
+	<x:pending label="Problem in test output, needs investigation">
+		<x:scenario label="Convert associated parties">
+			<x:call template="associated-parties-dc" />
+			<x:expect label="should return xpath:array of contributor maps">
+				<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
+						<string key="id">10310</string>
+						<string key="type">Person</string>
+						<string key="title">...</string>
+						<string key="roleName">Cricketer</string>
+					</map>
+					<map>
+						<string key="id">10292</string>
+						<string key="type">Person</string>
+						<string key="title">...</string>
+						<string key="roleName">Cricketer</string>
+					</map>
+					<map>
+						<string key="id">1869</string>
+						<string key="type">Place</string>
+						<string key="title">...</string>
+						<string key="roleName">Place of event</string>
+					</map>
+					<map>
+						<string key="id">12925</string>
+						<string key="type">Organisation</string>
+						<string key="title">English Cricket Team</string>
+						<string key="roleName">Associated organisation</string>
+					</map>
+					<map>
+						<string key="id">12924</string>
+						<string key="type">Organisation</string>
+						<string key="title">Australian Cricket Team</string>
+						<string key="roleName">Associated organisation</string>
+					</map>
+				</array>
+			</x:expect>
+		</x:scenario>
+	</x:pending>
+
+	<x:scenario label="Convert acknowledgement">
+		<x:call template="acknowledgement-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert rights">
+		<x:call template="rights-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert representations">
+		<x:call template="representations-dc" />
+		<x:expect label="should return xpath:array of hasVersion maps">
+			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+				<map>
+					<string key="id">MA22991348</string>
+					<string key="type">StillImage</string>
+					<string key="identifier">...</string>
+					<array key="hasVersion">
+						<map>
+							<string key="type">StillImage</string>
+							<string key="identifier">...</string>
+						</map>
+						<map>
+							<string key="type">StillImage</string>
+							<string key="identifier">...</string>
+						</map>
+						<map>
+							<string key="type">StillImage</string>
+							<string key="version">large image</string>
+							<string key="identifier">...</string>
+						</map>
+						<map>
+							<string key="type">StillImage</string>
+							<string key="identifier">...</string>
+						</map>
+						<map>
+							<string key="type">StillImage</string>
+							<string key="version">preview image</string>
+							<string key="identifier">...</string>
+						</map>
+						<map>
+							<string key="type">StillImage</string>
+							<string key="version">thumbnail image</string>
+							<string key="identifier">...</string>
+						</map>
+					</array>
+				</map>
+				<map>
+					<string key="id">54112</string>
+					<string key="type">StillImage</string>
+					<string key="identifier">...</string>
+					<array key="hasVersion">
+						<map>
+							<string key="type">StillImage</string>
+							<string key="version">thumbnail image</string>
+							<string key="identifier">...</string>
+						</map>
+						<map>
+							<string key="type">StillImage</string>
+							<string key="version">preview image</string>
+							<string key="identifier">...</string>
+						</map>
+					</array>
+				</map>
+			</array>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert full name">
+		<x:call template="full-name-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert first name">
+		<x:call template="first-name-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert last name">
+		<x:call template="last-name-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert gender">
+		<x:call template="gender-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert location">
+		<x:call template="location-dc" />
+		<x:expect label="should return empty" />
 	</x:scenario>
 
 </x:description>

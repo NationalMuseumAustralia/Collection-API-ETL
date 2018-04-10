@@ -5,11 +5,10 @@
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
 	stylesheet="../../../emu-to-crm.xsl">
 
-	<x:scenario label="Convert irn element">
+	<x:scenario label="Convert irn">
 		<x:context>
 			<irn>12345</irn>
 		</x:context>
-
 		<x:expect label="should return crm:P1_is_identified_by">
 			<crm:P1_is_identified_by>
 				<crm:E42_Identifier rdf:about="#repositorynumber">
@@ -20,7 +19,42 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert 2x image elements">
+	<x:scenario label="Convert type: object">
+		<x:context>
+			<record />
+		</x:context>
+		<x:call template="entity-type">
+			<x:param name="record-type" select=" 'object' " />
+		</x:call>
+		<x:expect label="should return rdf:type crm:E19_Physical_Object">
+			<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object" />
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type: person">
+		<x:context>
+			<record>
+				<NamPartyType>Person</NamPartyType>
+			</record>
+		</x:context>
+		<x:call template="entity-type">
+			<x:param name="record-type" select=" 'party' " />
+		</x:call>
+		<x:expect label="should return rdf:type crm:E21_Person">
+			<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E21_Person" />
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert title">
+		<x:context>
+			<TitObjectTitle>Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</TitObjectTitle>
+		</x:context>
+		<x:expect label="should return rdfs:label">
+			<rdfs:label>Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</rdfs:label>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert 2x images">
 		<x:context>
 			<image>
 				<media_irn>01</media_irn>
@@ -53,7 +87,6 @@
 				</res200px>
 			</image>
 		</x:context>
-
 		<x:expect label="should return 2x crm:P138i_has_representation">
 			<crm:P138i_has_representation>
 				<crm:E36_Visual_Item rdf:about="media/01#">

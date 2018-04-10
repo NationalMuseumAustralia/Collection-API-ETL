@@ -6,17 +6,19 @@
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/" xmlns:xpath="http://www.w3.org/2005/xpath-functions"
 	stylesheet="../../../trix-description-to-solr.xsl">
 
+	<!-- loads source trix record being tested into global $graph variable -->
 	<x:import href="trix-record-122751-cricket.xspec" />
 
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
 
-	<x:scenario label="Convert title element">
-		<x:call template="title" />
-
-		<x:expect label="should return field title and text">
-			<field name="title">Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</field>
-			<field name="text">Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</field>
+	<x:scenario label="Convert title">
+		<x:call template="title-solr" />
+		<x:expect label="should return field title starting with specified text"
+			test="starts-with(field[@name='title']/text(), 'Cricket scene showing')" />
+		<x:expect label="should return fields title and text">
+			<field name="title">...</field>
+			<field name="text">...</field>
 		</x:expect>
 	</x:scenario>
 
