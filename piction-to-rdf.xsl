@@ -51,6 +51,7 @@
 				</xsl:for-each>
 				<!-- See http://linked.art/model/object/digital/#image -->
 				<crm:E36_Visual_Item rdf:about="{$visual-item-graph}#">
+					<crm:P2_has_type rdf:resource="{$nma-term-ns}piction-image" />				
 					<xsl:for-each select="field[@name='title']">
 						<rdf:label>
 							<xsl:value-of select="." />
