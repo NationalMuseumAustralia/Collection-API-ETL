@@ -153,7 +153,7 @@
 
 	<!-- OBJECT FIELDS -->
 
-	<!-- registration number -->
+	<!-- accession number -->
 	<!-- http://linked.art/model/object/identity/#identifier -->
 	<xsl:template match="TitObjectNumber">
 		<xsl:param name="entity-iri" />
@@ -571,7 +571,7 @@
 						<rdf:value><xsl:text>CC BY 4.0</xsl:text></rdf:value>
 					</crm:E30_Right>
 				</xsl:when>
-				<xsl:when test=". = 'Creative Commons Non-commercial Use'">
+				<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
 					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc/4.0/">
 						<rdf:value><xsl:text>CC BY-NC 4.0</xsl:text></rdf:value>
 					</crm:E30_Right>
