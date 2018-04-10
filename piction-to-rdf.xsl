@@ -18,14 +18,7 @@
 		"Photographer" - done
 		"Title" - done
 	-->
-	<!-- dataSource elements have attributes @type (="URLDataSource"), @baseUrl (= a UNC path to the image file), and @name:
-		"original_2" - 2000px, internal API only
-		"original_3" - 1600px, public
-		"original_4" - 640px, ignore
-		"original_5" - 200px, ignore
-		"thumbnail" - 200px, public
-		"web" - 800px, public
-	-->
+
 
 	<xsl:template match="/*">
 		<xsl:variable name="media-id"
@@ -33,7 +26,19 @@
 		<xsl:variable name="visual-item-graph" select="concat('media/', $media-id)" />
 		<xsl:variable name="related-objects"
 			select="field[@name='EMu IRN for Related Objects'][normalize-space()]" />
-		<xsl:variable name="image-data-sources" select="dataSource[contains(@baseUrl, '\Collectionsearch\')]"/>
+		<!-- dataSource elements have attributes @type (="URLDataSource"), @baseUrl (= a UNC path to the image file), and @name:
+			"original_2" - 2000px, internal API only
+			"original_3" - 1600px, public
+			"original_4" - 640px, ignore
+			"original_5" - 200px, ignore
+			"thumbnail" - 200px, public
+			"web" - 800px, public
+		-->
+		<xsl:variable name="image-data-sources" select="
+			dataSource
+				[contains(@baseUrl, '\Collectionsearch\')]
+				[@name=('original_2', 'original_3', 'thumbnail', 'web')]
+		"/>
 		<rdf:RDF>
 			<xsl:attribute name="xml:base" select="$base-uri" />
 			<xsl:if test="$related-objects and $image-data-sources">
