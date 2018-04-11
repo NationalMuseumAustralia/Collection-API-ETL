@@ -5,6 +5,19 @@
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
 	xmlns:la="https://linked.art/ns/terms/" stylesheet="../../../emu-to-crm.xsl">
 
+	<x:scenario label="Ignore partial update records">
+		<x:context>
+			<record>
+				<partial_update>yes</partial_update>
+				<irn>45929</irn>
+				<OnDisplay>no</OnDisplay>
+			</record>
+		</x:context>
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<!-- COMMON FIELDS -->
+
 	<x:scenario label="Convert irn">
 		<x:context>
 			<irn>12345</irn>
@@ -44,6 +57,8 @@
 			<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E21_Person" />
 		</x:expect>
 	</x:scenario>
+
+	<!-- OBJECT FIELDS -->
 
 	<x:scenario label="Convert accession number">
 		<x:context>
@@ -152,6 +167,21 @@
 					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/educationalSignificance" />
 				</crm:E33_Linguistic_Object>
 			</crm:P129i_is_subject_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production">
+		<x:context>
+			<record>
+				<ProductionParties />
+			</record>
+		</x:context>
+		<!-- named template that collects all the parts together -->
+		<x:call template="production" />
+		<x:expect label="should return crm:P108i_was_produced_by">
+			<crm:P108i_was_produced_by>
+				<crm:E12_Production />
+			</crm:P108i_was_produced_by>
 		</x:expect>
 	</x:scenario>
 
@@ -560,10 +590,22 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert ">
+	<x:scenario label="Convert gallery location">
 		<x:context>
+			<LocCurrentLocationRef>
+				<LocLevel1>Acton</LocLevel1>
+				<LocLevel2>Landmarks</LocLevel2>
+				<LocLevel3>Flemington Racecourse</LocLevel3>
+				<LocLevel4>Case 01</LocLevel4>
+			</LocCurrentLocationRef>
 		</x:context>
-		<x:expect label="should return ">
+		<x:expect label="should return crm:P16i_was_used_for">
+			<crm:P16i_was_used_for>
+				<crm:E7_Activity>
+					<rdfs:label>Case 01, Flemington Racecourse, Landmarks, Acton</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300054766" />
+				</crm:E7_Activity>
+			</crm:P16i_was_used_for>
 		</x:expect>
 	</x:scenario>
 
@@ -725,6 +767,197 @@
 					</crm:P138i_has_representation>
 				</crm:E36_Visual_Item>
 			</crm:P138i_has_representation>
+		</x:expect>
+	</x:scenario>
+
+	<!-- PARTY FIELDS -->
+
+	<x:scenario label="Convert full name">
+		<x:context>
+			<record>
+				<NamFullName>Mrs Mary J. Cochrane</NamFullName>
+			</record>
+		</x:context>
+		<!-- named template that collects all the parts together -->
+		<x:call template="person-names" />
+		<x:expect label="should return crm:P1_is_identified_by">
+			<crm:P1_is_identified_by>
+				<la:Name rdf:about="party/#name">
+					<rdf:value>Mrs Mary J. Cochrane</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404670" />
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404688" />
+				</la:Name>
+			</crm:P1_is_identified_by>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert organisation name">
+		<x:context>
+			<NamOrganisation>South Coast Land Council</NamOrganisation>
+		</x:context>
+		<x:expect label="should return rdfs:label">
+			<rdfs:label>South Coast Land Council</rdfs:label>
+		</x:expect>
+	</x:scenario>
+
+
+	<x:scenario label="Convert first names">
+		<x:context>
+			<NamFirst>Mary</NamFirst>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Mary</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404651" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert middle names">
+		<x:context>
+			<NamMiddle>Jane</NamMiddle>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Jane</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404654" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert last names">
+		<x:context>
+			<NamLast>Cochrane</NamLast>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Cochrane</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404652" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert other names">
+		<x:context>
+			<NamOtherNames_tab>
+				<NamOtherName>Miss Mary Jane Coughran</NamOtherName>
+			</NamOtherNames_tab>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Miss Mary Jane Coughran</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264273" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert gender: Female">
+		<x:context>
+			<NamSex>Female</NamSex>
+		</x:context>
+		<x:expect label="should return crm:P107i_is_current_or_former_member_of">
+			<crm:P107i_is_current_or_former_member_of>
+				<crm:E74_Group>
+					<rdfs:label>female</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147" />
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189557" />
+				</crm:E74_Group>
+			</crm:P107i_is_current_or_former_member_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert gender: Male">
+		<x:context>
+			<NamSex>Male</NamSex>
+		</x:context>
+		<x:expect label="should return crm:P107i_is_current_or_former_member_of">
+			<crm:P107i_is_current_or_former_member_of>
+				<crm:E74_Group>
+					<rdfs:label>male</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147" />
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189559" />
+				</crm:E74_Group>
+			</crm:P107i_is_current_or_former_member_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert gender: default">
+		<x:context>
+			<NamSex>any other text</NamSex>
+		</x:context>
+		<x:expect label="should return crm:P107i_is_current_or_former_member_of">
+			<crm:P107i_is_current_or_former_member_of>
+				<crm:E74_Group>
+					<rdfs:label>any other text</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147" />
+				</crm:E74_Group>
+			</crm:P107i_is_current_or_former_member_of>
+		</x:expect>
+	</x:scenario>
+
+	<!-- PLACE FIELDS -->
+
+	<x:scenario label="Build place label: multiple">
+		<x:context>
+			<record>
+				<LocCountry_tab>Country</LocCountry_tab>
+				<LocProvinceStateTerritory_tab>State</LocProvinceStateTerritory_tab>
+				<LocNearestNamedPlace_tab>Place</LocNearestNamedPlace_tab>
+				<LocSpecialGeographicUnit_tab>Feature</LocSpecialGeographicUnit_tab>
+			</record>
+		</x:context>
+		<!-- named template that collects all the parts together -->
+		<x:call template="place-label">
+			<x:param name="record-type" select=" 'place' " />
+		</x:call>
+		<x:expect label="should return rdfs:label">
+			<rdfs:label>Feature, Place, State, Country</rdfs:label>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Build place label: single">
+		<x:context>
+			<record>
+				<LocProvinceStateTerritory_tab>State</LocProvinceStateTerritory_tab>
+			</record>
+		</x:context>
+		<!-- named template that collects all the parts together -->
+		<x:call template="place-label">
+			<x:param name="record-type" select=" 'place' " />
+		</x:call>
+		<x:expect label="should return rdfs:label">
+			<rdfs:label>State</rdfs:label>
+		</x:expect>
+	</x:scenario>
+
+	<!-- TODO: what should we do if one coordinate is missing? -->
+
+	<x:scenario label="Convert geo coordinates">
+		<x:context>
+			<record>
+				<LatCentroidLatitude0>15 17 S</LatCentroidLatitude0>
+				<LatCentroidLongitude0>130 34 E</LatCentroidLongitude0>
+				<LatCentroidLatitudeDec_tab>-15.28</LatCentroidLatitudeDec_tab>
+				<LatCentroidLongitudeDec_tab>130.57</LatCentroidLongitudeDec_tab>
+			</record>
+		</x:context>
+		<!-- named template that collects all the parts together -->
+		<x:call template="geo-coordinates" />
+		<x:expect label="should return crm:P168_place_is_defined_by">
+			<crm:P168_place_is_defined_by>
+				<crm:E94_Space_Primitive rdf:about="#location">
+					<rdf:value>-15.28,130.57</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300380194" />
+				</crm:E94_Space_Primitive>
+			</crm:P168_place_is_defined_by>
 		</x:expect>
 	</x:scenario>
 
