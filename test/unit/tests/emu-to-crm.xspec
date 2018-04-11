@@ -3,7 +3,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
-	stylesheet="../../../emu-to-crm.xsl">
+	xmlns:la="https://linked.art/ns/terms/" stylesheet="../../../emu-to-crm.xsl">
 
 	<x:scenario label="Convert irn">
 		<x:context>
@@ -45,12 +45,525 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Convert accession number">
+		<x:context>
+			<TitObjectNumber>1234.5678.0001</TitObjectNumber>
+		</x:context>
+		<x:expect label="should return P1_is_identified_by">
+			<crm:P1_is_identified_by>
+				<crm:E42_Identifier rdf:about="#referencenumber">
+					<rdf:value>1234.5678.0001</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300312355" />
+				</crm:E42_Identifier>
+			</crm:P1_is_identified_by>
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert title">
 		<x:context>
-			<TitObjectTitle>Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</TitObjectTitle>
+			<TitObjectTitle>Cricket scene</TitObjectTitle>
 		</x:context>
 		<x:expect label="should return rdfs:label">
-			<rdfs:label>Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</rdfs:label>
+			<rdfs:label>Cricket scene</rdfs:label>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert collection">
+		<x:context>
+			<TitCollectionTitle>Ruth Oldfield collection</TitCollectionTitle>
+		</x:context>
+		<x:expect label="should return crm:P106i_forms_part_of">
+			<crm:P106i_forms_part_of>
+				<crm:E19_Physical_Object>
+					<rdf:value>Ruth Oldfield collection</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300025976" />
+				</crm:E19_Physical_Object>
+			</crm:P106i_forms_part_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert object type">
+		<x:context>
+			<TitObjectName>Photographs</TitObjectName>
+		</x:context>
+		<x:expect label="should return crm:P2_has_type">
+			<crm:P2_has_type>
+				<rdf:Description>
+					<rdfs:label>Photographs</rdfs:label>
+				</rdf:Description>
+			</crm:P2_has_type>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert physical description">
+		<x:context>
+			<PhyDescription>A black and white photographic enlargement.</PhyDescription>
+		</x:context>
+		<x:expect label="should return P129i_is_subject_of">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object rdf:about="#physicalDescription">
+					<rdf:value>A black and white photographic enlargement.</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780" />
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/physicalDescription" />
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert content description">
+		<x:context>
+			<PhyContentDescription>Phar Lap was a late foal.</PhyContentDescription>
+		</x:context>
+		<x:expect label="should return P129i_is_subject_of">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object rdf:about="#contentDescription">
+					<rdf:value>Phar Lap was a late foal.</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780" />
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/contentDescription" />
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert statement of significance">
+		<x:context>
+			<StaNmaSOSPublic>Text</StaNmaSOSPublic>
+		</x:context>
+		<x:expect label="should return P129i_is_subject_of">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object rdf:about="#significanceStatement">
+					<rdf:value>Text</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300379612" />
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/significanceStatement" />
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert educational significance">
+		<x:context>
+			<CreProvenance>This is a preserved heart.</CreProvenance>
+		</x:context>
+		<x:expect label="should return P129i_is_subject_of">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object rdf:about="#educationalSignificance">
+					<rdf:value>This is a preserved heart.</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300379612" />
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/educationalSignificance" />
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production: parties">
+		<x:context>
+			<ProductionParties>
+				<ProductionParty>
+					<ProPersonRef_tab.irn>6514</ProPersonRef_tab.irn>
+					<ProPersonType_tab>Photographer</ProPersonType_tab>
+				</ProductionParty>
+				<ProductionParty>
+					<ProPersonRef_tab.irn>80363</ProPersonRef_tab.irn>
+					<ProPersonType_tab>Publisher</ProPersonType_tab>
+				</ProductionParty>
+			</ProductionParties>
+		</x:context>
+		<x:expect label="should return crm:P9_consists_of">
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>Photographer</rdfs:label>
+					<crm:P14_carried_out_by>
+						<rdf:Description rdf:about="party/6514#" />
+					</crm:P14_carried_out_by>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>Publisher</rdfs:label>
+					<crm:P14_carried_out_by>
+						<rdf:Description rdf:about="party/80363#" />
+					</crm:P14_carried_out_by>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production: places">
+		<x:context>
+			<ProductionPlaces>
+				<ProductionPlace>
+					<ProPlaceRef_tab.irn>47</ProPlaceRef_tab.irn>
+					<ProPlaceType_tab>Place made</ProPlaceType_tab>
+				</ProductionPlace>
+			</ProductionPlaces>
+		</x:context>
+		<x:expect label="should return crm:P9_consists_of">
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>Place made</rdfs:label>
+					<crm:P7_took_place_at>
+						<rdf:Description rdf:about="place/47#" />
+					</crm:P7_took_place_at>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production: dates">
+		<x:context>
+			<ProductionDates>
+				<ProductionDate>
+					<ProDate0>14/12/1928</ProDate0>
+					<ProEarliestDate0>14/12/1928</ProEarliestDate0>
+					<ProLatestDate0>20/12/1928</ProLatestDate0>
+					<ProDateType_tab>Date of production</ProDateType_tab>
+				</ProductionDate>
+			</ProductionDates>
+		</x:context>
+		<x:expect label="should return crm:P9_consists_of">
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<rdfs:label>Date of production</rdfs:label>
+					<crm:P4_has_time-span>
+						<crm:E52_Time-Span>
+							<rdfs:label>14/12/1928</rdfs:label>
+							<crm:P82a_begin_of_the_begin>14/12/1928</crm:P82a_begin_of_the_begin>
+							<crm:P82b_end_of_the_end>20/12/1928</crm:P82b_end_of_the_end>
+						</crm:E52_Time-Span>
+					</crm:P4_has_time-span>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert association: parties">
+		<x:context>
+			<AssociatedParties>
+				<AssociatedParty>
+					<AssPersonRef_tab.irn>10292</AssPersonRef_tab.irn>
+					<AssPersonType_tab>Cricketer</AssPersonType_tab>
+				</AssociatedParty>
+				<AssociatedParty>
+					<AssPersonRef_tab.irn>10310</AssPersonRef_tab.irn>
+					<AssPersonType_tab>Cricketer</AssPersonType_tab>
+				</AssociatedParty>
+			</AssociatedParties>
+		</x:context>
+		<x:expect label="should return crm:P12i_was_present_at">
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>Cricketer</rdfs:label>
+					<crm:P12_occurred_in_the_presence_of
+						rdf:resource="party/10292#" />
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>Cricketer</rdfs:label>
+					<crm:P12_occurred_in_the_presence_of
+						rdf:resource="party/10310#" />
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert association: places">
+		<x:context>
+			<AssociatedPlaces>
+				<AssociatedPlace>
+					<AssPlaceRef_tab.irn>1869</AssPlaceRef_tab.irn>
+					<AssPlaceType_tab>Place of event</AssPlaceType_tab>
+				</AssociatedPlace>
+			</AssociatedPlaces>
+		</x:context>
+		<x:expect label="should return crm:P12i_was_present_at">
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>Place of event</rdfs:label>
+					<crm:P12_occurred_in_the_presence_of
+						rdf:resource="place/1869#" />
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert association: dates">
+		<x:context>
+			<AssociatedDates>
+				<AssociatedDates>
+					<AssDate0>04/10/1926</AssDate0>
+					<AssEarliestDate0>04/10/1926</AssEarliestDate0>
+					<AssLatestDate0>04/10/1926</AssLatestDate0>
+					<AssDateType_tab>Date of event</AssDateType_tab>
+					<AssDateNotes_tab>Date that Phar Lap was foaled.</AssDateNotes_tab>
+				</AssociatedDates>
+				<AssociatedDates>
+					<AssDate0>1930</AssDate0>
+					<AssEarliestDate0>1930</AssEarliestDate0>
+					<AssLatestDate0>1930</AssLatestDate0>
+					<AssDateType_tab>Date of event</AssDateType_tab>
+					<AssDateNotes_tab>Phar Lap won the Melbourne Cup.</AssDateNotes_tab>
+				</AssociatedDates>
+			</AssociatedDates>
+		</x:context>
+		<x:expect label="should return crm:P12i_was_present_at">
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>Date of event</rdfs:label>
+					<crm:P129i_is_subject_of>
+						<crm:E33_Linguistic_Object>
+							<rdf:value>Date that Phar Lap was foaled.</rdf:value>
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780" />
+						</crm:E33_Linguistic_Object>
+					</crm:P129i_is_subject_of>
+					<crm:P4_has_time-span>
+						<crm:E52_Time-Span>
+							<rdfs:label>04/10/1926</rdfs:label>
+							<crm:P82a_begin_of_the_begin>04/10/1926</crm:P82a_begin_of_the_begin>
+							<crm:P82b_end_of_the_end>04/10/1926</crm:P82b_end_of_the_end>
+						</crm:E52_Time-Span>
+					</crm:P4_has_time-span>
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+			<crm:P12i_was_present_at>
+				<crm:E5_Event>
+					<rdfs:label>Date of event</rdfs:label>
+					<crm:P129i_is_subject_of>
+						<crm:E33_Linguistic_Object>
+							<rdf:value>Phar Lap won the Melbourne Cup.</rdf:value>
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780" />
+						</crm:E33_Linguistic_Object>
+					</crm:P129i_is_subject_of>
+					<crm:P4_has_time-span>
+						<crm:E52_Time-Span>
+							<rdfs:label>1930</rdfs:label>
+							<crm:P82a_begin_of_the_begin>1930</crm:P82a_begin_of_the_begin>
+							<crm:P82b_end_of_the_end>1930</crm:P82b_end_of_the_end>
+						</crm:E52_Time-Span>
+					</crm:P4_has_time-span>
+				</crm:E5_Event>
+			</crm:P12i_was_present_at>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert materials">
+		<x:context>
+			<PhyMaterials_tab>
+				<PhyMaterial>Photographic emulsion</PhyMaterial>
+				<PhyMaterial>Wood</PhyMaterial>
+				<PhyMaterial>Paper</PhyMaterial>
+			</PhyMaterials_tab>
+		</x:context>
+		<x:expect label="should return crm:P45_consists_of">
+			<crm:P45_consists_of>
+				<crm:E57_Material>
+					<rdfs:label>Photographic emulsion</rdfs:label>
+				</crm:E57_Material>
+			</crm:P45_consists_of>
+			<crm:P45_consists_of>
+				<crm:E57_Material>
+					<rdfs:label>Wood</rdfs:label>
+				</crm:E57_Material>
+			</crm:P45_consists_of>
+			<crm:P45_consists_of>
+				<crm:E57_Material>
+					<rdfs:label>Paper</rdfs:label>
+				</crm:E57_Material>
+			</crm:P45_consists_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions: length">
+		<x:context>
+			<x:param name="unit" select="'mm'" />
+			<PhyRegistrationLength>1020</PhyRegistrationLength>
+		</x:context>
+		<x:expect label="should return crm:P43_has_dimension">
+			<crm:P43_has_dimension>
+				<crm:E54_Dimension rdf:about="#length">
+					<rdf:value>1020</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055645" />
+					<crm:P91_has_unit>
+						<crm:E58_Measurement_Unit>
+							<rdfs:label>mm</rdfs:label>
+						</crm:E58_Measurement_Unit>
+					</crm:P91_has_unit>
+				</crm:E54_Dimension>
+			</crm:P43_has_dimension>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions: height">
+		<x:context>
+			<x:param name="unit" select="'mm'" />
+			<PhyRegistrationHeight>378</PhyRegistrationHeight>
+		</x:context>
+		<x:expect label="should return crm:P43_has_dimension">
+			<crm:P43_has_dimension>
+				<crm:E54_Dimension rdf:about="#height">
+					<rdf:value>378</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055644" />
+					<crm:P91_has_unit>
+						<crm:E58_Measurement_Unit>
+							<rdfs:label>mm</rdfs:label>
+						</crm:E58_Measurement_Unit>
+					</crm:P91_has_unit>
+				</crm:E54_Dimension>
+			</crm:P43_has_dimension>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions: width">
+		<x:context>
+			<x:param name="unit" select="'mm'" />
+			<PhyRegistrationWidth>820</PhyRegistrationWidth>
+		</x:context>
+		<x:expect label="should return crm:P43_has_dimension">
+			<crm:P43_has_dimension>
+				<crm:E54_Dimension rdf:about="#width">
+					<rdf:value>820</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055647" />
+					<crm:P91_has_unit>
+						<crm:E58_Measurement_Unit>
+							<rdfs:label>mm</rdfs:label>
+						</crm:E58_Measurement_Unit>
+					</crm:P91_has_unit>
+				</crm:E54_Dimension>
+			</crm:P43_has_dimension>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions: depth">
+		<x:context>
+			<x:param name="unit" select="'mm'" />
+			<PhyRegistrationDepth>20</PhyRegistrationDepth>
+		</x:context>
+		<x:expect label="should return crm:P43_has_dimension">
+			<crm:P43_has_dimension>
+				<crm:E54_Dimension rdf:about="#depth">
+					<rdf:value>20</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300072633" />
+					<crm:P91_has_unit>
+						<crm:E58_Measurement_Unit>
+							<rdfs:label>mm</rdfs:label>
+						</crm:E58_Measurement_Unit>
+					</crm:P91_has_unit>
+				</crm:E54_Dimension>
+			</crm:P43_has_dimension>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions: diameter">
+		<x:context>
+			<x:param name="unit" select="'mm'" />
+			<PhyRegistrationDiameter>9</PhyRegistrationDiameter>
+		</x:context>
+		<x:expect label="should return crm:P43_has_dimension">
+			<crm:P43_has_dimension>
+				<crm:E54_Dimension rdf:about="#diameter">
+					<rdf:value>9</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055624" />
+					<crm:P91_has_unit>
+						<crm:E58_Measurement_Unit>
+							<rdfs:label>mm</rdfs:label>
+						</crm:E58_Measurement_Unit>
+					</crm:P91_has_unit>
+				</crm:E54_Dimension>
+			</crm:P43_has_dimension>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions: weight">
+		<x:context>
+			<x:param name="unit" select="'kg'" />
+			<PhyRegistrationWeight>6.35</PhyRegistrationWeight>
+		</x:context>
+		<x:expect label="should return crm:P43_has_dimension">
+			<crm:P43_has_dimension>
+				<crm:E54_Dimension rdf:about="#weight">
+					<rdf:value>6.35</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300056240" />
+					<crm:P91_has_unit>
+						<crm:E58_Measurement_Unit>
+							<rdfs:label>kg</rdfs:label>
+						</crm:E58_Measurement_Unit>
+					</crm:P91_has_unit>
+				</crm:E54_Dimension>
+			</crm:P43_has_dimension>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert acknowledgement">
+		<x:context>
+			<RigCreditLine2>Donated through the Australian Government.</RigCreditLine2>
+		</x:context>
+		<x:expect label="should return crm:P67i_is_referred_to_by">
+			<crm:P67i_is_referred_to_by>
+				<crm:E33_Linguistic_Object rdf:about="#acknowledgement">
+					<rdf:value>Donated through the Australian Government.</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300026687" />
+				</crm:E33_Linguistic_Object>
+			</crm:P67i_is_referred_to_by>
+		</x:expect>
+	</x:scenario>
+
+
+	<x:scenario label="Convert rights: PD">
+		<x:context>
+			<AcsCCStatus>Public Domain</AcsCCStatus>
+		</x:context>
+		<x:expect label="should return crm:P104_is_subject_to">
+			<crm:P104_is_subject_to>
+				<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
+					<rdf:value>CC PD 1.0</rdf:value>
+				</crm:E30_Right>
+			</crm:P104_is_subject_to>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert rights: CC-BY">
+		<x:context>
+			<AcsCCStatus>Creative Commons Commercial Use</AcsCCStatus>
+		</x:context>
+		<x:expect label="should return crm:P104_is_subject_to">
+			<crm:P104_is_subject_to>
+				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by/4.0/">
+					<rdf:value>CC BY 4.0</rdf:value>
+				</crm:E30_Right>
+			</crm:P104_is_subject_to>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert rights: CC-BY-NC">
+		<x:context>
+			<AcsCCStatus>Creative Commons Non-Commercial Use</AcsCCStatus>
+		</x:context>
+		<x:expect label="should return crm:P104_is_subject_to">
+			<crm:P104_is_subject_to>
+				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc/4.0/">
+					<rdf:value>CC BY-NC 4.0</rdf:value>
+				</crm:E30_Right>
+			</crm:P104_is_subject_to>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert rights: default to ARR">
+		<x:context>
+			<AcsCCStatus>any other text</AcsCCStatus>
+		</x:context>
+		<x:expect label="should return crm:P104_is_subject_to">
+			<crm:P104_is_subject_to>
+				<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
+					<rdf:value>All Rights Reserved</rdf:value>
+				</crm:E30_Right>
+			</crm:P104_is_subject_to>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert ">
+		<x:context>
+		</x:context>
+		<x:expect label="should return ">
 		</x:expect>
 	</x:scenario>
 
@@ -90,6 +603,7 @@
 		<x:expect label="should return 2x crm:P138i_has_representation">
 			<crm:P138i_has_representation>
 				<crm:E36_Visual_Item rdf:about="media/01#">
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/01-640.jpg">
@@ -152,6 +666,7 @@
 				xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 				xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/">
 				<crm:E36_Visual_Item rdf:about="media/02#">
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/02-640.jpg">
