@@ -35,7 +35,7 @@
 				AcsStatus = (
 					'Public Domain', 
 					'Creative Commons Commercial Use', 
-					'Creative Commons Non-commercial Use'
+					'Creative Commons Non-Commercial Use'
 				)
 			)
 		]/WebMultiMediaRef_tab
