@@ -25,8 +25,7 @@
 	<!-- remove all non-Acton locations from Public API -->
 	<xsl:template match="LocCurrentLocationRef[not(LocLevel1='Acton')]"/>
 	
-	<!-- remove level 3 and 4 locations where level 1 is "Acton" -->
-	<xsl:template match="LocCurrentLocationRef[LocLevel1='Acton']/LocLevel3"/>
-	<xsl:template match="LocCurrentLocationRef[LocLevel1='Acton']/LocLevel4"/>
+	<!-- remove all locations other than levels 1 and 2, where level 1 is "Acton" -->
+	<xsl:template match="LocCurrentLocationRef[LocLevel1='Acton']/*[not(self::LocLevel1 | self:LocLevel2)]"/>
 
 </xsl:stylesheet>
