@@ -16,10 +16,10 @@
 	<!-- update Solr store by querying the SPARQL store -->
 
 	<!-- generate a Solr index of media, places, parties, and physical objects -->
-	<nma:index-resources name="index-parties" list-query="sparql-queries/list-parties.rq" describe-query="sparql-queries/describe-parties.rq"/>
-	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq"/>
-	<nma:index-resources name="index-places" list-query="sparql-queries/list-places.rq" describe-query="sparql-queries/describe-places.rq"/>
 	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq"/>
+	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq"/>
+	<nma:index-resources name="index-parties" list-query="sparql-queries/list-parties.rq" describe-query="sparql-queries/describe-parties.rq"/>
+	<nma:index-resources name="index-places" list-query="sparql-queries/list-places.rq" describe-query="sparql-queries/describe-places.rq"/>
 	
 	<!-- load a (non-XML) sparql query from disk -->
 	<p:declare-step type="nma:load-sparql-query" name="load-sparql-query">
@@ -77,6 +77,13 @@
 			</p:xslt>
 			<!-- execute the query to generate a resource description -->
 			<nma:sparql-query name="resource-description" dataset="public" accept="application/trix+xml"/>
+			<!-- make any necessary redactions to the RDF graph -->
+			<p:xslt name="redacted-description">
+				<p:input port="stylesheet">
+					<p:document href="redact-trix-description.xsl"/>
+				</p:input>
+				<p:with-param name="root-resource" select="$resource-uri"/>
+			</p:xslt>			
 			<!-- transform the RDF graph into a Solr index update -->
 			<p:xslt name="trix-description-to-solr-doc">
 				<p:input port="stylesheet">
@@ -139,6 +146,11 @@
 			<p:store href="/tmp/description.xml" indent="true">
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
+				</p:input>
+			</p:store>
+			<p:store href="/tmp/redacted-description.xml" indent="true">
+				<p:input port="source">
+					<p:pipe step="redacted-description" port="result"/>
 				</p:input>
 			</p:store>
 		</p:for-each>	
