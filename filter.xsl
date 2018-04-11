@@ -27,5 +27,18 @@
 	
 	<!-- remove all locations other than levels 1 and 2, where level 1 is "Acton" -->
 	<xsl:template match="LocCurrentLocationRef[LocLevel1='Acton']/*[not(self::LocLevel1 | self:LocLevel2)]"/>
+	
+	<!-- remove all images if licence is not open -->
+	<xsl:template match="
+		record[
+			not(
+				AcsStatus = (
+					'Public Domain', 
+					'Creative Commons Commercial Use', 
+					'Creative Commons Non-commercial Use'
+				)
+			)
+		]/WebMultiMediaRef_tab
+	"/>
 
 </xsl:stylesheet>
