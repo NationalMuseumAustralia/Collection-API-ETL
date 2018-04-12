@@ -6,6 +6,8 @@
  <TitObjectType>Object</TitObjectType>
  <TitObjectNumber>1984.0010.0721</TitObjectNumber>
  <TitObjectName>Zoological specimens</TitObjectName>
+ <PhyDescription>Heart of the race horse Phar Lap. Phar Lap's heart weighs 6.35kg, which is significantly larger than an average horse heart of three to four kilograms. A triangular section has been removed. The heart is preserved as a 'wet specimen' submersed in a formalin solution, sealed inside a rectangular clear perspex container.</PhyDescription>
+ <AccAccessionLotRef>2060</AccAccessionLotRef>
  <PhyDescription>Heart of the race horse Phar Lap. Phar Lap's heart weighs 6.35kg, which is significantly larger than an average horse heart of three to four kilograms. 
  A triangular section has been removed. The heart is preserved as a 'wet specimen' submersed in a formalin solution, sealed inside a rectangular clear perspex container.</PhyDescription>
  <TitCollectionTitle>MacKenzie collection</TitCollectionTitle>
@@ -29,8 +31,12 @@
   <PhyMaterial>Perspex</PhyMaterial>
   <PhyMaterial>Liquid - non specific</PhyMaterial>
  </PhyMaterials_tab>
+ <AcsCCStatus>Creative Commons Non-Commercial Use</AcsCCStatus>
+ <AcsAPI_tab>
+  <AcsAPI>Public</AcsAPI>
+ </AcsAPI_tab>
  <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
- <AdmDateModified>18/01/2017</AdmDateModified>
+ <AdmDateModified>18/03/2018</AdmDateModified>
  <AssociatedParties>
   <AssociatedParty>
    <AssPersonRef_tab.irn>17012</AssPersonRef_tab.irn>
@@ -146,4 +152,3 @@
   </image>
  </WebMultiMediaRef_tab>
 </record>
-

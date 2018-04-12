@@ -7,7 +7,7 @@
  <TitObjectNumber>1985.0033.0002</TitObjectNumber>
  <TitObjectName>Photographs</TitObjectName>
  <PhyDescription>A black and white photographic enlargement of a cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield.</PhyDescription>
- <TitCollectionTitle>Ruth Oldfield collection</TitCollectionTitle>
+ <AccAccessionLotRef>3952</AccAccessionLotRef>
  <WebReleaseDate>07/06/2007</WebReleaseDate>
  <InwardLoan>no</InwardLoan>
  <PhyRegistrationLength>1020</PhyRegistrationLength>
@@ -19,9 +19,12 @@
   <PhyMaterial>Wood</PhyMaterial>
   <PhyMaterial>Paper</PhyMaterial>
  </PhyMaterials_tab>
- <WebLargeImageReleased>640 only</WebLargeImageReleased>
+ <AcsCCStatus>Public Domain</AcsCCStatus>
+ <AcsAPI_tab>
+  <AcsAPI>Public</AcsAPI>
+ </AcsAPI_tab>
  <AdmPubishWebNoPassword>Yes</AdmPubishWebNoPassword>
- <AdmDateModified>05/11/2015</AdmDateModified>
+ <AdmDateModified>05/04/2018</AdmDateModified>
  <ProductionParties>
   <ProductionParty>
    <ProPersonRef_tab.irn>6514</ProPersonRef_tab.irn>

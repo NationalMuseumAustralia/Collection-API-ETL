@@ -49,7 +49,7 @@
 			<xsl:apply-templates select="TitObjectTitle" />
 
 			<!-- collection -->
-			<xsl:apply-templates select="TitCollectionTitle" />
+			<xsl:apply-templates select="AccAccessionLotRef" />
 
 			<!-- object type -->
 			<xsl:apply-templates select="TitObjectName" />
@@ -126,6 +126,13 @@
 			<xsl:call-template name="geo-coordinates">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:call-template>
+
+			<!-- COLLECTION FIELDS -->
+
+			<!-- collection name -->
+			<xsl:apply-templates select="AcqNmaCollectionTitle">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
 			
 		</rdf:Description>
 	</xsl:template>
@@ -174,14 +181,9 @@
 
 	<!-- collection -->
 	<!-- https://linked.art/cookbook/getty/photoarchive/ -->
-	<xsl:template match="TitCollectionTitle">
-		<crm:P106i_forms_part_of>
-			<crm:E19_Physical_Object>
-				<rdf:value><xsl:value-of select="." /></rdf:value>
-				<!-- AAT 300025976: collections (object groupings) -->
-				<crm:P2_has_type rdf:resource="{$aat-ns}300025976" />
-			</crm:E19_Physical_Object>
-		</crm:P106i_forms_part_of>
+	<xsl:template match="AccAccessionLotRef">
+		<xsl:variable name="collection-iri" select="concat('collection/', ., '#')" />
+		<crm:P106i_forms_part_of rdf:resource="{$collection-iri}" />
 	</xsl:template>
 
 	<!-- object type -->
@@ -820,6 +822,17 @@
 		<xsl:text>, </xsl:text>
 	</xsl:template>
 
+	<!-- COLLECTION FIELDS -->
+
+	<!-- collection name -->
+	<!-- https://linked.art/cookbook/getty/photoarchive/ -->
+	<xsl:template match="AcqNmaCollectionTitle">
+		<xsl:param name="entity-iri" />
+		<rdfs:label>
+			<xsl:value-of select="." />
+		</rdfs:label>
+	</xsl:template>
+
 	<!-- ############### NAMED TEMPLATES ############ -->
 
 	<!-- TODO: could PhysicalObject be split into ManMadeObject and BiologicalObject -->
@@ -827,6 +840,7 @@
 	<!-- entity type -->
 	<!-- http://linked.art/model/object/identity/#types -->
 	<!-- http://linked.art/model/actor/#types -->
+	<!-- NMA decision: E78 Collection better for physical collections, ore:Aggregation for narratives/sets -->
 	<xsl:template name="entity-type">
 		<xsl:param name="record-type" />
 			<xsl:choose>
@@ -835,6 +849,13 @@
 				</xsl:when>
 				<xsl:when test="$record-type='narrative'">
 					<rdf:type rdf:resource="{$ore-ns}Aggregation" />
+					<!-- AAT 300025976: collections (object groupings) -->
+					<crm:P2_has_type rdf:resource="{$aat-ns}300025976" />
+				</xsl:when>
+				<xsl:when test="$record-type='collection'">
+					<rdf:type rdf:resource="{$crm-ns}E78_Collection" />
+					<!-- AAT 300025976: collections (object groupings) -->
+					<crm:P2_has_type rdf:resource="{$aat-ns}300025976" />
 				</xsl:when>
 				<xsl:when test="$record-type='place'">
 					<rdf:type rdf:resource="{$crm-ns}E53_Place" />

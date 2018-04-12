@@ -31,6 +31,7 @@
 	<pxf:mkdir href="/data/place"/>
 	<pxf:mkdir href="/data/party"/>
 	<pxf:mkdir href="/data/narrative"/>
+	<pxf:mkdir href="/data/collection"/>
 	<pxf:mkdir href="/data/image"/>
 	
 	<p:exec name="read-hostname" command="hostname" result-is-xml="false">
@@ -54,21 +55,25 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 	
-		<!-- process EMu objects, places, parties, and narratives -->
-		<p:load href="/data/emu_objects_21-03-2018_81609.xml"/>
+		<!-- process EMu objects, places, parties, collections, and narratives -->
+		<p:load href="/data/emu_objects_09-04-2018_81985.xml"/>
 		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		<p:load href="/data/emu_narratives_21-03-2018_1364.xml"/>
+		<p:load href="/data/emu_narratives_09-04-2018_1364.xml"/>
 		<nma:process-data record-type="narrative" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		<p:load href="/data/emu_sites21-03-2018_4208.xml"/>
+		<p:load href="/data/emu_sites09-04-2018_4216.xml"/>
 		<nma:process-data record-type="place" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		<p:load href="/data/emu_parties21-03-2018_26161.xml"/>	
+		<p:load href="/data/emu_parties09-04-2018_26223.xml"/>	
 		<nma:process-data record-type="party" dataset="public">
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
+		<p:load href="/data/emu_acclots_09-04-2018_3960.xml"/>	
+		<nma:process-data record-type="collection" dataset="public">
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 	</p:group>

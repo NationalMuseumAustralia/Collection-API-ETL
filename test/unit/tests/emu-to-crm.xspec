@@ -44,6 +44,32 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Convert type: narrative">
+		<x:context>
+			<record />
+		</x:context>
+		<x:call template="entity-type">
+			<x:param name="record-type" select=" 'narrative' " />
+		</x:call>
+		<x:expect label="should return rdf:type ore:Aggregation">
+			<rdf:type rdf:resource="http://www.openarchives.org/ore/terms/Aggregation" />
+			<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300025976" />
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type: collection">
+		<x:context>
+			<record />
+		</x:context>
+		<x:call template="entity-type">
+			<x:param name="record-type" select=" 'collection' " />
+		</x:call>
+		<x:expect label="should return rdf:type crm:E78_Collection">
+			<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E78_Collection" />
+			<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300025976" />
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert type: person">
 		<x:context>
 			<record>
@@ -55,6 +81,34 @@
 		</x:call>
 		<x:expect label="should return rdf:type crm:E21_Person">
 			<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E21_Person" />
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type: organisation">
+		<x:context>
+			<record>
+				<NamPartyType>Organisaton</NamPartyType>
+			</record>
+		</x:context>
+		<x:call template="entity-type">
+			<x:param name="record-type" select=" 'organisation' " />
+		</x:call>
+		<x:expect label="should return rdf:type crm:E74_Group">
+			<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E74_Group" />
+		</x:expect>
+	</x:scenario>
+
+	<!-- TODO: is group the best choice for default type? -->
+
+	<x:scenario label="Convert type: default">
+		<x:context>
+			<record />
+		</x:context>
+		<x:call template="entity-type">
+			<x:param name="record-type" select=" 'anything' " />
+		</x:call>
+		<x:expect label="should return rdf:type crm:E74_Group">
+			<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E74_Group" />
 		</x:expect>
 	</x:scenario>
 
@@ -83,17 +137,12 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert collection">
+	<x:scenario label="Convert object collection">
 		<x:context>
-			<TitCollectionTitle>Ruth Oldfield collection</TitCollectionTitle>
+			<AccAccessionLotRef>3952</AccAccessionLotRef>
 		</x:context>
 		<x:expect label="should return crm:P106i_forms_part_of">
-			<crm:P106i_forms_part_of>
-				<crm:E19_Physical_Object>
-					<rdf:value>Ruth Oldfield collection</rdf:value>
-					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300025976" />
-				</crm:E19_Physical_Object>
-			</crm:P106i_forms_part_of>
+			<crm:P106i_forms_part_of rdf:resource="collection/3952#" />
 		</x:expect>
 	</x:scenario>
 
@@ -958,6 +1007,17 @@
 					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300380194" />
 				</crm:E94_Space_Primitive>
 			</crm:P168_place_is_defined_by>
+		</x:expect>
+	</x:scenario>
+
+	<!-- COLLECTION FIELDS -->
+
+	<x:scenario label="Convert collection name">
+		<x:context>
+			<AcqNmaCollectionTitle>Ruth Oldfield collection</AcqNmaCollectionTitle>
+		</x:context>
+		<x:expect label="should return rdfs:label">
+			<rdfs:label>Ruth Oldfield collection</rdfs:label>
 		</x:expect>
 	</x:scenario>
 
