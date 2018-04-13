@@ -140,15 +140,19 @@
 					<p:pipe step="json-xml-to-json" port="result"/>
 				</p:input>
 			</p:http-request>
+			<!-- store latest error -->
 			<p:for-each name="error-response">
 				<p:iteration-source select="/c:response[number(@status) &gt;= 400]"/>
 				<p:store href="/tmp/last-solr-error.xml" indent="true"/>
 			</p:for-each>
-			<p:store href="/tmp/description.xml" indent="true">
+			<!-- store raw trix -->
+			<p:store indent="true">
+				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($graph-uri)), '.rdf')"/>
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
 				</p:input>
 			</p:store>
+			<!-- store latest redacted output -->
 			<p:store href="/tmp/redacted-description.xml" indent="true">
 				<p:input port="source">
 					<p:pipe step="redacted-description" port="result"/>
