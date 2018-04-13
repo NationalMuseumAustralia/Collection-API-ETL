@@ -831,6 +831,8 @@
 		<rdfs:label>
 			<xsl:value-of select="." />
 		</rdfs:label>
+		<!-- see also the objects which make up this collection -->
+		<rdfs:seeAlso rdf:resource="object?collection=%22{encode-for-uri(.)}%22"/>
 	</xsl:template>
 
 	<!-- ############### NAMED TEMPLATES ############ -->
