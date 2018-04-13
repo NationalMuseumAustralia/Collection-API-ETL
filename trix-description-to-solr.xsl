@@ -135,9 +135,9 @@
 
 	<!-- collection -->
 	<xsl:template name="collection-solr">
-		<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdf:value') )">
+		<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdf:label') )">
 			<field name="collection"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
+			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
