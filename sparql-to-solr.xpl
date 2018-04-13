@@ -16,8 +16,8 @@
 	<!-- update Solr store by querying the SPARQL store -->
 
 	<!-- generate a Solr index of media, places, parties, collections, and physical objects -->
-	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq"/>
 	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq"/>
+	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq"/>
 	<nma:index-resources name="index-parties" list-query="sparql-queries/list-parties.rq" describe-query="sparql-queries/describe-parties.rq"/>
 	<nma:index-resources name="index-places" list-query="sparql-queries/list-places.rq" describe-query="sparql-queries/describe-places.rq"/>
 	<nma:index-resources name="index-collections" list-query="sparql-queries/list-collections.rq" describe-query="sparql-queries/describe-collections.rq"/>
@@ -147,7 +147,7 @@
 			</p:for-each>
 			<!-- store raw trix -->
 			<p:store indent="true">
-				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($graph-uri)), '.rdf')"/>
+				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
 				</p:input>
