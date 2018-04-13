@@ -123,6 +123,19 @@ cd /etc/xproc-z/
 git clone https://github.com/Conal-Tuohy/NMA-API.git
 cp /etc/xproc-z/NMA-API/apiexplorer.html /var/lib/tomcat8/webapps/ROOT/
 #
+# Kong (API gateway)
+#
+echo =========== Installing XProc-Z API shim
+cd $INSTALL_DIR
+wget https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-0.13.0.xenial.all.deb -O kong.deb
+apt install ./kong.deb -y
+apt-get install postgresql postgresql-client
+sudo -u postgres psql --command="CREATE USER kong;"
+sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
+sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
+ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
+kong migrations up
+#
 # REFRESH
 #
 echo =========== Restarting services
