@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../trix-description-to-dc.xsl">
+
+	<!-- load a media trix record into the global $graph variable -->
+	<x:import href="trix-record-media-MA22991348.xspec" />
+
+	<x:param name="root-resource"
+		select=" 'http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#' " />
+
+	<x:scenario label="Convert id">
+		<x:call template="id-dc" />
+		<x:expect label="should return xpath:string id">
+			<xpath:string key="id">MA22991348</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type">
+		<x:call template="type-dc" />
+		<x:expect label="should return xpath:string type">
+			<xpath:string key="type">media</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert title">
+		<x:call template="title-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert representations">
+		<x:call template="representations-dc" />
+		<x:expect label="should return xpath:array of hasVersion maps">
+			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+				<map>
+					<string key="type">StillImage</string>
+					<string key="identifier">...</string>
+					<string key="version">large image</string>
+				</map>
+				<map>
+					<string key="type">StillImage</string>
+					<string key="identifier">...</string>
+				</map>
+				<map>
+					<string key="type">StillImage</string>
+					<string key="identifier">...</string>
+					<string key="version">preview image</string>
+				</map>
+				<map>
+					<string key="type">StillImage</string>
+					<string key="identifier">...</string>
+					<string key="version">thumbnail image</string>
+				</map>
+			</array>
+		</x:expect>
+	</x:scenario>
+
+</x:description>
