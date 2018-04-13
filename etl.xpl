@@ -213,7 +213,7 @@
 			<p:with-option name="message" select="concat('Transforming ', $record-type, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
 		</cx:message>
 		<p:choose name="transformation-to-rdf">
-			<p:when test="$record-type='image'">
+			<p:when test="$record-type='piction'">
 				<p:output port="result"/>
 				<p:xslt name="piction-to-rdf">
 					<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
