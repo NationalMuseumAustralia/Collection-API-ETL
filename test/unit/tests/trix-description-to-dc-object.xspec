@@ -5,8 +5,8 @@
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
 	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../trix-description-to-dc.xsl">
 
-	<!-- loads source trix record being tested into global $graph variable -->
-	<x:import href="trix-record-122751-cricket.xspec" />
+	<!-- load an object trix record into the global $graph variable -->
+	<x:import href="trix-record-object-122751-cricket.xspec" />
 
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />

@@ -420,6 +420,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="rights-dc">
 		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward( ('crm:P104_is_subject_to', 'rdf:value') ))" />
 	</xsl:template>
+
+	<!-- TODO: separate into named templates the rendering of representation-level and digital-file-level, 
+	     then call appropriately if root-resource is an 'object' entity (repn) or 'media' entity (files) -->
 	
 	<!-- representations and their digital media files -->
 	<xsl:template name="representations-dc">
@@ -429,33 +432,41 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="$value">
 					<map>
-						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+						<!-- if media entity, a representation is a digital file, which doesn't have an id -->
+						<xsl:if test="not($type='media')">
+							<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+						</xsl:if>
 						<string key='type'>
 							<xsl:text>StillImage</xsl:text>
 						</string>
 						<xsl:copy-of select="xmljson:render-as-string('identifier', .)" />
+						<xsl:copy-of select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
 						<!-- digital media files for this representation -->
-						<array key="hasVersion">
-							<xsl:for-each select="path:forward(., 'crm:P138i_has_representation')">
-							<map>
-								<string key='type'>
-									<xsl:text>StillImage</xsl:text>
-								</string>
-								<xsl:copy-of select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
-								<string key='identifier'>
-									<xsl:value-of select="." />
-									<xsl:value-of select="path:forward(., 'rdf:value')" />
-								</string>
-								<!-- 
-								<xsl:for-each select="path:forward(., 'crm:P43_has_dimension')">
-									<string key='dimension'>
+						<xsl:variable name="value2"
+							select="path:forward(., 'crm:P138i_has_representation')" />
+						<xsl:if test="$value2">
+							<array key="hasVersion">
+								<xsl:for-each select="$value2">
+								<map>
+									<string key='type'>
+										<xsl:text>StillImage</xsl:text>
+									</string>
+									<xsl:copy-of select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
+									<string key='identifier'>
+										<xsl:value-of select="." />
 										<xsl:value-of select="path:forward(., 'rdf:value')" />
 									</string>
+									<!-- 
+									<xsl:for-each select="path:forward(., 'crm:P43_has_dimension')">
+										<string key='dimension'>
+											<xsl:value-of select="path:forward(., 'rdf:value')" />
+										</string>
+									</xsl:for-each>
+								 	-->
+								</map>
 								</xsl:for-each>
-								 -->
-							</map>
-							</xsl:for-each>
-						</array>
+							</array>
+						</xsl:if>
 					</map>
 				</xsl:for-each>
 			</array>
