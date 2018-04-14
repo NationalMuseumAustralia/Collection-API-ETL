@@ -6,6 +6,6 @@ WHERE {
 	crm:P2_has_type | 
 	# the collection's identifiers/names and their types
 	crm:P1_is_identified_by | 
-	crm:P1_is_identified_by/crm:P2_has_type | 
+	crm:P1_is_identified_by/crm:P2_has_type 
 	?resource
 }
