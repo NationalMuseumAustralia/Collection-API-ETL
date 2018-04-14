@@ -452,6 +452,7 @@
 			<crm:P45_consists_of>
 				<crm:E57_Material>
 					<rdfs:label><xsl:value-of select="." /></rdfs:label>
+					<rdfs:seeAlso rdf:resource="object?medium=%22{encode-for-uri(.)}%22"/>
 				</crm:E57_Material>
 			</crm:P45_consists_of>
 		</xsl:for-each>
@@ -856,8 +857,6 @@
 				</xsl:when>
 				<xsl:when test="$record-type='collection'">
 					<rdf:type rdf:resource="{$crm-ns}E78_Collection" />
-					<!-- AAT 300025976: collections (object groupings) -->
-					<crm:P2_has_type rdf:resource="{$aat-ns}300025976" />
 				</xsl:when>
 				<xsl:when test="$record-type='place'">
 					<rdf:type rdf:resource="{$crm-ns}E53_Place" />
