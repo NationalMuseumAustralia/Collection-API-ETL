@@ -125,7 +125,7 @@ cp /etc/xproc-z/NMA-API/apiexplorer.html /var/lib/tomcat8/webapps/ROOT/
 #
 # Kong (API gateway)
 #
-echo =========== Installing XProc-Z API shim
+echo =========== Installing Kong
 cd $INSTALL_DIR
 wget https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-0.13.0.xenial.all.deb -O kong.deb
 apt install ./kong.deb -y
@@ -135,6 +135,32 @@ sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
 sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations up
+#
+# Konga (Kong admin UI)
+#
+echo =========== Installing Konga UI
+cd $INSTALL_DIR
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install 8 --lts --latest-npm
+nvm use 8
+apt install nodejs-legacy
+npm install -g bower
+npm install -g gulp
+npm install -g sails
+npm install -g sails-postgresql --save
+cd /etc
+git clone https://github.com/pantsel/konga.git
+cd /etc/konga
+npm run bower-deps
+npm install
+sudo -u postgres psql --command="CREATE USER konga;"
+sudo -u postgres psql --command="ALTER USER konga WITH PASSWORD 'konga';"
+sudo -u postgres psql --command="CREATE DATABASE konga_database OWNER konga;"
+ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
+npm start &
 #
 # REFRESH
 #
