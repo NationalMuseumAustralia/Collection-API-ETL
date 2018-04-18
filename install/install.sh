@@ -169,6 +169,14 @@ sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" >
 wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
 apt install webmin
 #
+# GOACCESS
+#
+echo =========== Installing GoAccess
+echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/goaccess.list
+wget -O - https://deb.goaccess.io/gnugpg.key | apt-key add -
+apt install goaccess
+goaccess /var/log/apache2/access.log -o /var/lib/tomcat8/webapps/ROOT/usage.html --log-format=COMBINED --real-time-html &
+#
 # REFRESH
 #
 echo =========== Restarting services
