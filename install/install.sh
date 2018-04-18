@@ -162,6 +162,38 @@ sudo -u postgres psql --command="CREATE DATABASE konga_database OWNER konga;"
 ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
 npm start &
 #
+# NAGIOS
+#
+echo =========== Installing Nagios
+apt install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.0 libgd2-xpm-dev
+cd $INSTALL_DIR
+wget -O nagioscore-4.3.4.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.3.4.tar.gz
+tar xzf nagioscore-4.3.4.tar.gz
+cd $INSTALL_DIR/nagioscore-nagios-4.3.4/
+./configure --with-httpd-conf=/etc/apache2/sites-enabled
+make all
+useradd nagios
+usermod -a -G nagios www-data
+make install
+make install-init
+update-rc.d nagios defaults
+make install-commandmode
+make install-config
+make install-webconf
+a2enmod rewrite
+a2enmod cgi
+ufw allow Apache
+ufw reload
+apt install -y autoconf gcc libc6 libmcrypt-dev make libssl-dev wget bc gawk dc build-essential snmp libnet-snmp-perl gettext
+cd $INSTALL_DIR
+wget --no-check-certificate -O nagios-plugins-2.2.1.tar.gz https://github.com/nagios-plugins/nagios-plugins/archive/release-2.2.1.tar.gz
+tar zxf nagios-plugins-2.2.1.tar.gz
+cd $INSTALL_DIR/nagios-plugins-release-2.2.1/
+./tools/setup
+./configure
+make
+make install
+#
 # WEBMIN
 #
 echo =========== Installing Webmin
@@ -183,6 +215,7 @@ echo =========== Restarting services
 service apache2 restart
 service tomcat8 restart
 service solr restart
+service nagios restart
 #
 echo =========== API server install complete
 date

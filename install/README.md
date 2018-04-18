@@ -33,5 +33,6 @@ Setting passwords
 ```sh
 sudo su -
 /usr/share/webmin/changepass.pl /etc/webmin root ####
+htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin ####
 exit
 ```
