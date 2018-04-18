@@ -27,3 +27,11 @@ ps -aux | grep 'apt'
 sudo kill -9 <process-id>
 sudo rm /var/cache/apt/archives/lock
 ```
+
+Setting passwords
+
+```sh
+sudo su -
+/usr/share/webmin/changepass.pl /etc/webmin root ####
+exit
+```

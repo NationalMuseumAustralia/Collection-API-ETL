@@ -123,7 +123,7 @@ cd /etc/xproc-z/
 git clone https://github.com/Conal-Tuohy/NMA-API.git
 cp /etc/xproc-z/NMA-API/apiexplorer.html /var/lib/tomcat8/webapps/ROOT/
 #
-# Kong (API gateway)
+# KONG API GATEWAY
 #
 echo =========== Installing Kong
 cd $INSTALL_DIR
@@ -136,7 +136,7 @@ sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations up
 #
-# Konga (Kong admin UI)
+# KONGA UI
 #
 echo =========== Installing Konga UI
 cd $INSTALL_DIR
@@ -161,6 +161,13 @@ sudo -u postgres psql --command="ALTER USER konga WITH PASSWORD 'konga';"
 sudo -u postgres psql --command="CREATE DATABASE konga_database OWNER konga;"
 ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
 npm start &
+#
+# WEBMIN
+#
+echo =========== Installing Webmin
+sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
+wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
+apt install webmin
 #
 # REFRESH
 #
