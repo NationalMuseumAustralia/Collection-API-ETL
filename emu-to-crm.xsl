@@ -5,7 +5,8 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
 	xmlns:ore="http://www.openarchives.org/ore/terms/"
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:uri="tag:conaltuohy.com,2018:nma/uri-utility">
 
 	<!-- record type of the input file, e.g. "object", "place", "party", or "narrative" -->
 	<xsl:param name="record-type" select="'object'" />
@@ -16,6 +17,26 @@
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
 	<xsl:variable name="aat-ns" select="'http://vocab.getty.edu/aat/'" />
 	<xsl:variable name="ore-ns" select="'http://www.openarchives.org/ore/terms/'" />
+	
+	<xsl:function name="uri:uri-from-filename">
+		<!-- convert a filename to a URI, with a base URI -->
+		<xsl:param name="base-uri"/>
+		<xsl:param name="filename"/>
+		<xsl:value-of select="concat($base-uri, uri:uri-from-filename($filename))"/>
+	</xsl:function>
+	<xsl:function name="uri:uri-from-filename">
+		<!-- convert a filename to a relative URI -->
+		<xsl:param name="filename"/>
+		<xsl:value-of select="
+			string-join(
+				for $component in tokenize(
+					$filename,
+					'/'
+				) return encode-for-uri($component),
+				'/'
+			)
+		"/>
+	</xsl:function>
 	
 	<!-- TODO add metadata for the RDF graph using PROV-O ontology -->
 	<!-- the graph http://www.w3.org/ns/prov#wasGeneratedBy a http://www.w3.org/ns/prov#Generation
@@ -50,7 +71,7 @@
 			<xsl:for-each select="NarTitle">
 				<rdfs:label><xsl:value-of select="."/></rdfs:label>
 			</xsl:for-each>
-			<!-- DesVersionDate (optional) TODO ??? -->
+			<!-- DesVersionDate (optional) TODO ??? barely used -->
 			<!-- AdmDateModified TODO use prov:atTime-->
 			<!-- AssMasterNarrativeRef (optional) = IGNORE as inverse of SubNarrative.irn -->
 			<!-- DesType_tab (optional), containing sequence of DesType (string) ??? Barely used; get clarity on meaning -->
@@ -84,34 +105,12 @@
 						<crm:P2_has_type rdf:resource="{$nma-term-ns}emu-image" />
 						<crm:P2_has_type rdf:resource="{$nma-term-ns}banner-image" />
 						<crm:P138i_has_representation>		
-							<crm:E36_Visual_Item rdf:about="{
-								concat(
-									$media-uri-base, 
-									string-join(
-										for $component in tokenize(
-											banner_small,
-											'/'
-										) return encode-for-uri($component),
-										'/'
-									)
-								)
-							}">
+							<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, banner_small)}">
 								<crm:P2_has_type rdf:resource="{$nma-term-ns}small-banner-image" />
 							</crm:E36_Visual_Item>
 						</crm:P138i_has_representation>
 						<crm:P138i_has_representation>		
-							<crm:E36_Visual_Item rdf:about="{
-								concat(
-									$media-uri-base, 
-									string-join(
-										for $component in tokenize(
-											banner_large,
-											'/'
-										) return encode-for-uri($component),
-										'/'
-									)
-								)
-							}">
+							<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, banner_large)}">
 								<crm:P2_has_type rdf:resource="{$nma-term-ns}large-banner-image" />
 							</crm:E36_Visual_Item>
 						</crm:P138i_has_representation>
@@ -128,7 +127,11 @@
 						sequence of AcsAPI (string)
 			-->
 			<xsl:for-each select="ObjObjectsRef_tab/ObjObjectsRef">
-				<ore:aggregates rdf:resource="{concat('object/', irn, '#')}"/>
+				<ore:aggregates>
+					<rdf:Description rdf:about="{concat('object/', irn, '#')}">
+						<ore:isAggregatedBy rdf:resource="{$entity-iri}#"/>
+					</rdf:Description>
+				</ore:aggregates>
 			</xsl:for-each>
 			<!-- 
 			SubNarratives 
@@ -136,7 +139,11 @@
 					SubNarrative.irn
 			-->
 			<xsl:for-each select="SubNarratives/SubNarrative">
-				<ore:aggregates rdf:resource="{concat('narrative/', SubNarrative.irn, '#')}"/>
+				<ore:aggregates>
+					<rdf:Description rdf:about="{concat('narrative/', SubNarrative.irn, '#')}">
+						<ore:isAggregatedBy rdf:resource="{$entity-iri}#"/>
+					</rdf:Description>
+				</ore:aggregates>
 			</xsl:for-each>			
 
 			<!-- OBJECT FIELDS -->
@@ -734,18 +741,7 @@
 				<!-- preview -->
 				<xsl:for-each select="res640px">
 					<crm:P138i_has_representation>		
-						<crm:E36_Visual_Item rdf:about="{
-							concat(
-								$media-uri-base, 
-								string-join(
-									for $component in tokenize(
-										image_path,
-										'/'
-									) return encode-for-uri($component),
-									'/'
-								)
-							)
-						}">
+						<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, image_path)}">
 							<crm:P2_has_type rdf:resource="{$nma-term-ns}preview" />
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
@@ -774,18 +770,7 @@
 				<!-- thumbnail -->
 				<xsl:for-each select="res200px">
 					<crm:P138i_has_representation>
-						<crm:E36_Visual_Item rdf:about="{
-							concat(
-								$media-uri-base, 
-								string-join(
-									for $component in tokenize(
-										image_path,
-										'/'
-									) return encode-for-uri($component),
-									'/'
-								)
-							)
-						}">
+						<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, image_path)}">
 							<crm:P2_has_type rdf:resource="{$nma-term-ns}thumbnail" />
 							<xsl:if test="image_width != ''">
 								<xsl:call-template name="output-dimension">
