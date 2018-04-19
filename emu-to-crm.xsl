@@ -1,6 +1,10 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	version="3.0" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:la="https://linked.art/ns/terms/"
-	xmlns:aat="http://vocab.getty.edu/aat/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" 
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" 
+	xmlns:la="https://linked.art/ns/terms/"
+	xmlns:aat="http://vocab.getty.edu/aat/" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:ore="http://www.openarchives.org/ore/terms/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
 	<!-- record type of the input file, e.g. "object", "place", "party", or "narrative" -->
@@ -12,6 +16,10 @@
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
 	<xsl:variable name="aat-ns" select="'http://vocab.getty.edu/aat/'" />
 	<xsl:variable name="ore-ns" select="'http://www.openarchives.org/ore/terms/'" />
+	
+	<!-- TODO add metadata for the RDF graph using PROV-O ontology -->
+	<!-- the graph http://www.w3.org/ns/prov#wasGeneratedBy a http://www.w3.org/ns/prov#Generation
+	which http://www.w3.org/ns/prov#atTime the value of <AdmDateModified> -->
 
 	<xsl:template match="/">
 		<rdf:RDF>
@@ -37,6 +45,99 @@
 			<xsl:apply-templates select="irn">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
+			
+			<!-- NARRATIVE FIELDS -->
+			<xsl:for-each select="NarTitle">
+				<rdfs:label><xsl:value-of select="."/></rdfs:label>
+			</xsl:for-each>
+			<!-- DesVersionDate (optional) TODO ??? -->
+			<!-- AdmDateModified TODO use prov:atTime-->
+			<!-- AssMasterNarrativeRef (optional) = IGNORE as inverse of SubNarrative.irn -->
+			<!-- DesType_tab (optional), containing sequence of DesType (string) ??? Barely used; get clarity on meaning -->
+			<xsl:for-each select="DesType_tab/DesType">
+				<crm:P2_has_type>
+					<crm:E55_Type>
+						<rdfs:label><xsl:value-of select="."/></rdfs:label>
+					</crm:E55_Type>
+				</crm:P2_has_type>
+			</xsl:for-each>
+			<!-- DesIntendedAudience_tab, containing sequence of DesIntendedAudience (string) -->
+			<!-- NarNarrative (optional) (string) -->
+			<xsl:if test="NarNarrative">
+				<ore:aggregates>
+					<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#text">
+						<crm:P2_has_type rdf:resource="{$aat-ns}300263751"/><!-- "texts (documents)" -->
+						<rdf:value><xsl:value-of select="NarNarrative" /></rdf:value>
+						<dc:format>text/html</dc:format>
+					</crm:E33_Linguistic_Object>
+				</ore:aggregates>
+			</xsl:if>
+			<!-- MulMultiMediaRef_tab (optional)
+				sequence of image
+					banner_small
+					banner_large
+			-->
+			<!-- TODO refactor EMu image URI generation into a function -->
+			<xsl:for-each select="MulMultiMediaRef_tab/image">
+				<ore:aggregates>
+					<crm:E36_Visual_Item>
+						<crm:P2_has_type rdf:resource="{$nma-term-ns}emu-image" />
+						<crm:P2_has_type rdf:resource="{$nma-term-ns}banner-image" />
+						<crm:P138i_has_representation>		
+							<crm:E36_Visual_Item rdf:about="{
+								concat(
+									$media-uri-base, 
+									string-join(
+										for $component in tokenize(
+											banner_small,
+											'/'
+										) return encode-for-uri($component),
+										'/'
+									)
+								)
+							}">
+								<crm:P2_has_type rdf:resource="{$nma-term-ns}small-banner-image" />
+							</crm:E36_Visual_Item>
+						</crm:P138i_has_representation>
+						<crm:P138i_has_representation>		
+							<crm:E36_Visual_Item rdf:about="{
+								concat(
+									$media-uri-base, 
+									string-join(
+										for $component in tokenize(
+											banner_large,
+											'/'
+										) return encode-for-uri($component),
+										'/'
+									)
+								)
+							}">
+								<crm:P2_has_type rdf:resource="{$nma-term-ns}large-banner-image" />
+							</crm:E36_Visual_Item>
+						</crm:P138i_has_representation>
+					</crm:E36_Visual_Item>
+				</ore:aggregates>
+			</xsl:for-each>
+			<!-- optionally, either of ObjObjectsRef_tab or SubNarratives -->
+			<!-- 
+			ObjObjectsRef_tab (optional)
+				sequence of ObjObjectsRef,
+					irn (string), 
+					AdmPublishWebNoPassword, 
+					AcsAPI_tab 
+						sequence of AcsAPI (string)
+			-->
+			<xsl:for-each select="ObjObjectsRef_tab/ObjObjectsRef">
+				<ore:aggregates rdf:resource="{concat('object/', irn, '#')}"/>
+			</xsl:for-each>
+			<!-- 
+			SubNarratives 
+				sequence of SubNarrative
+					SubNarrative.irn
+			-->
+			<xsl:for-each select="SubNarratives/SubNarrative">
+				<ore:aggregates rdf:resource="{concat('narrative/', SubNarrative.irn, '#')}"/>
+			</xsl:for-each>			
 
 			<!-- OBJECT FIELDS -->
 
@@ -833,6 +934,9 @@
 			<xsl:value-of select="." />
 		</rdfs:label>
 		<!-- see also the objects which make up this collection -->
+		<!--
+		need to search objects by collection's IRN
+		-->
 		<rdfs:seeAlso rdf:resource="object?collection=%22{encode-for-uri(.)}%22"/>
 	</xsl:template>
 
