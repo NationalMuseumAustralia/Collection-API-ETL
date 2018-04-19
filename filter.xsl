@@ -40,5 +40,16 @@
 			)
 		]/WebMultiMediaRef_tab
 	"/>
-
+	
+	<!-- TODO Exclude narratives if their narrative purpose is not "Collection Explorer publish" -->
+	
+	<!-- TODO exclude references to objects from narratives if those objects are not public -->
+	<!--
+			ObjObjectsRef_tab (optional)
+				sequence of ObjObjectsRef,
+					irn (string), 
+					AdmPublishWebNoPassword, 
+					AcsAPI_tab 
+						sequence of AcsAPI (string)
+	-->
 </xsl:stylesheet>
