@@ -123,9 +123,9 @@ cd /etc/xproc-z/
 git clone https://github.com/Conal-Tuohy/NMA-API.git
 cp /etc/xproc-z/NMA-API/apiexplorer.html /var/lib/tomcat8/webapps/ROOT/
 #
-# Kong (API gateway)
+# KONG API GATEWAY
 #
-echo =========== Installing XProc-Z API shim
+echo =========== Installing Kong
 cd $INSTALL_DIR
 wget https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-0.13.0.xenial.all.deb -O kong.deb
 apt install ./kong.deb -y
@@ -136,12 +136,86 @@ sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations up
 #
+# KONGA UI
+#
+echo =========== Installing Konga UI
+cd $INSTALL_DIR
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install 8 --lts --latest-npm
+nvm use 8
+apt install nodejs-legacy
+npm install -g bower
+npm install -g gulp
+npm install -g sails
+npm install -g sails-postgresql --save
+cd /etc
+git clone https://github.com/pantsel/konga.git
+cd /etc/konga
+npm run bower-deps
+npm install
+sudo -u postgres psql --command="CREATE USER konga;"
+sudo -u postgres psql --command="ALTER USER konga WITH PASSWORD 'konga';"
+sudo -u postgres psql --command="CREATE DATABASE konga_database OWNER konga;"
+ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
+npm start &
+#
+# NAGIOS
+#
+echo =========== Installing Nagios
+apt install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.0 libgd2-xpm-dev
+cd $INSTALL_DIR
+wget -O nagioscore-4.3.4.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.3.4.tar.gz
+tar xzf nagioscore-4.3.4.tar.gz
+cd $INSTALL_DIR/nagioscore-nagios-4.3.4/
+./configure --with-httpd-conf=/etc/apache2/sites-enabled
+make all
+useradd nagios
+usermod -a -G nagios www-data
+make install
+make install-init
+update-rc.d nagios defaults
+make install-commandmode
+make install-config
+make install-webconf
+a2enmod rewrite
+a2enmod cgi
+ufw allow Apache
+ufw reload
+apt install -y autoconf gcc libc6 libmcrypt-dev make libssl-dev wget bc gawk dc build-essential snmp libnet-snmp-perl gettext
+cd $INSTALL_DIR
+wget --no-check-certificate -O nagios-plugins-2.2.1.tar.gz https://github.com/nagios-plugins/nagios-plugins/archive/release-2.2.1.tar.gz
+tar zxf nagios-plugins-2.2.1.tar.gz
+cd $INSTALL_DIR/nagios-plugins-release-2.2.1/
+./tools/setup
+./configure
+make
+make install
+#
+# WEBMIN
+#
+echo =========== Installing Webmin
+sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
+wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
+apt install webmin
+#
+# GOACCESS
+#
+echo =========== Installing GoAccess
+echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/goaccess.list
+wget -O - https://deb.goaccess.io/gnugpg.key | apt-key add -
+apt install goaccess
+goaccess /var/log/apache2/access.log -o /var/lib/tomcat8/webapps/ROOT/usage.html --log-format=COMBINED --real-time-html &
+#
 # REFRESH
 #
 echo =========== Restarting services
 service apache2 restart
 service tomcat8 restart
 service solr restart
+service nagios restart
 #
 echo =========== API server install complete
 date
