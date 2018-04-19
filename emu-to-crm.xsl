@@ -6,7 +6,10 @@
 	xmlns:ore="http://www.openarchives.org/ore/terms/"
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
 	xmlns:uri="tag:conaltuohy.com,2018:nma/uri-utility">
+	
+	<xsl:import href="util/date-util-functions.xsl"/>
 
 	<!-- record type of the input file, e.g. "object", "place", "party", or "narrative" -->
 	<xsl:param name="record-type" select="'object'" />
@@ -64,8 +67,10 @@
 			
 			<!-- metadata -->
 			<crm:P70i_is_documented_in>
-				<crm:E31_Document rdf:about="{$entity-iri}">
-					<dc:modified><xsl:value-of select="dateutil:to-iso-date(AdmDateModified)}"/></dc:modified>
+				<crm:E31_Document rdf:about="{$entity-iri}"><!-- identifies the RDF graph itself -->
+					<xsl:if test="AdmDateModified">
+						<dc:modified><xsl:value-of select="dateutil:to-iso-date(AdmDateModified)"/></dc:modified>
+					</xsl:if>
 				</crm:E31_Document>
 			</crm:P70i_is_documented_in>
 
