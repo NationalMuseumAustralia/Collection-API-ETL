@@ -61,6 +61,13 @@
 			<xsl:call-template name="entity-type">
 				<xsl:with-param name="record-type" select="$record-type" />
 			</xsl:call-template>
+			
+			<!-- metadata -->
+			<crm:P70i_is_documented_in>
+				<crm:E31_Document rdf:about="{$entity-iri}">
+					<dc:modified><xsl:value-of select="dateutil:to-iso-date(AdmDateModified)}"/></dc:modified>
+				</crm:E31_Document>
+			</crm:P70i_is_documented_in>
 
 			<!-- irn -->
 			<xsl:apply-templates select="irn">
