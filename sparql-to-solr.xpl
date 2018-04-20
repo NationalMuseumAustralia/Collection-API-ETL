@@ -15,7 +15,8 @@
 	
 	<!-- update Solr store by querying the SPARQL store -->
 
-	<!-- generate a Solr index of media, places, parties, collections, and physical objects -->
+	<!-- generate a Solr index of narratives, media, places, parties, collections, and physical objects -->
+	<nma:index-resources name="index-narratives" list-query="sparql-queries/list-narratives.rq" describe-query="sparql-queries/describe-narratives.rq"/>
 	<nma:index-resources name="index-collections" list-query="sparql-queries/list-collections.rq" describe-query="sparql-queries/describe-collections.rq"/>
 	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq"/>
 	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq"/>

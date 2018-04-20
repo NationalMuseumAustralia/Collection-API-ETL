@@ -1,0 +1,20 @@
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ore: <http://www.openarchives.org/ore/terms/>
+DESCRIBE «resource-uri» ?resource
+WHERE {
+	«resource-uri»
+	# the narrative's types, and their types
+	crm:P2_has_type | 
+	crm:P2_has_type/crm:P2_has_type | 
+	# the narrative's identifiers/names and their types
+	crm:P1_is_identified_by | 
+	crm:P1_is_identified_by/crm:P2_has_type |
+	# super-narratives (i.e. narratives that include this one)
+	ore:isAggregatedBy |
+	# sub-narratives (i.e. narratives included in this one)
+	ore:aggregates |
+	# metadata about the source record
+	crm:P70i_is_documented_in
+	?resource
+}
