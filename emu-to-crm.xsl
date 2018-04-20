@@ -94,7 +94,15 @@
 					</crm:E55_Type>
 				</crm:P2_has_type>
 			</xsl:for-each>
-			<!-- DesIntendedAudience_tab, containing sequence of DesIntendedAudience (string) -->
+			<!-- TODO DesIntendedAudience_tab, containing sequence of DesIntendedAudience (string) -->
+			<xsl:for-each select="DesIntendedAudience_tab/DesIntendedAudience">
+				<crm:P2_has_type>
+					<crm:E55_Type>
+						<rdfs:label><xsl:value-of select="."/></rdfs:label>
+						<crm:P2_has_type rdf:resource="{$aat-ns}300192793"/><!-- audiences -->
+					</crm:E55_Type>
+				</crm:P2_has_type>
+			</xsl:for-each>
 			<!-- NarNarrative (optional) (string) -->
 			<xsl:if test="NarNarrative">
 				<ore:aggregates>
@@ -110,7 +118,6 @@
 					banner_small
 					banner_large
 			-->
-			<!-- TODO refactor EMu image URI generation into a function -->
 			<xsl:for-each select="MulMultiMediaRef_tab/image">
 				<ore:aggregates>
 					<crm:E36_Visual_Item>
