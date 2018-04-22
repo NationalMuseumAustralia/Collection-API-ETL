@@ -13,14 +13,10 @@ WHERE {
 	crm:P1_is_identified_by/crm:P2_has_type |
 	# super-narratives (i.e. narratives that include this one)
 	ore:isAggregatedBy |
-	ore:isAggregatedBy/rdf:type |
-	ore:isAggregatedBy/rdfs:label |
 	# sub-narratives (i.e. narratives included in this one), aggregated images, and texts
 	ore:aggregates |
 	ore:aggregates/crm:P138i_has_representation |
 	ore:aggregates/crm:P138i_has_representation/crm:P2_has_type |
-	ore:aggregates/rdf:type |
-	ore:aggregates/rdfs:label |
 	# metadata about the source record
 	crm:P70i_is_documented_in
 	?resource
