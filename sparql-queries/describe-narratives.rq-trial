@@ -15,10 +15,8 @@ WHERE {
 	ore:isAggregatedBy |
 	ore:isAggregatedBy/rdf:type |
 	ore:isAggregatedBy/rdfs:label |
-	# sub-narratives (i.e. narratives included in this one), aggregated images, and texts
+	# sub-narratives (i.e. narratives included in this one)
 	ore:aggregates |
-	ore:aggregates/crm:P138i_has_representation |
-	ore:aggregates/crm:P138i_has_representation/crm:P2_has_type |
 	ore:aggregates/rdf:type |
 	ore:aggregates/rdfs:label |
 	# metadata about the source record
