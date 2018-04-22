@@ -45,19 +45,13 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:load-vocabulary>
 		
-		<!-- process Piction image metadata -->
-		<nma:process-data record-type="piction" dataset="public">
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-data>
-		
 		<!-- process EMu objects, places, parties, collections, and narratives -->
-		<nma:process-data record-type="object" dataset="public">
+		<nma:process-data record-type="narrative" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data record-type="narrative" dataset="public">
+		<nma:process-data record-type="object" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
@@ -76,6 +70,13 @@
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
+		
+		<!-- process Piction image metadata -->
+		<nma:process-data record-type="piction" dataset="public">
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
+		
 	</p:group>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
@@ -158,6 +159,14 @@
 			<p:load>
 				<p:with-option name="href" select="/c:file/@name"/>
 			</p:load>
+			<!-- make any necessary redactions before publishing to the specified dataset  -->
+			<!-- NB 'public' dataset omits certains data, which are present only in the 'internal' dataset -->
+			<p:xslt name="redact">
+				<p:with-param name="dataset" select="$dataset"/>
+				<p:input port="stylesheet">
+					<p:document href="filter.xsl"/>
+				</p:input>
+			</p:xslt>
 			<p:for-each name="record">
 				<p:iteration-source select="/response/record | /add/doc"/>
 				<!-- EMu records are /response/record, Piction records are /add/doc -->
