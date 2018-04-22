@@ -71,6 +71,13 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<!-- PLACE FIELDS -->
 			<xsl:call-template name="location-dc" />
 
+			<!-- NARRATIVE FIELDS -->
+			<!-- TODO: narrative author, audience, media, des-type -->
+			<xsl:call-template name="narrative-text-dc" />
+			<xsl:call-template name="narrative-parent-dc" />
+			<xsl:call-template name="narrative-children-dc" />
+			<xsl:call-template name="narrative-objects-dc" />
+
 		</map>
 	</xsl:template>
 	
@@ -520,6 +527,91 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<!-- location -->
 	<xsl:template name="location-dc">
 		<xsl:copy-of select="xmljson:render-as-string('location', path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') ))" />
+	</xsl:template>
+	
+	<!-- NARRATIVE FIELDS -->
+	
+	<!-- TODO: can a narrative have multiple parent narratives? -->
+	
+	<!-- narrative text -->
+	<xsl:template name="narrative-text-dc">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300263751'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<xsl:copy-of select="xmljson:render-as-string('description', path:forward($value, 'rdf:value') )" />
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- parent narrative -->
+	<xsl:template name="narrative-parent-dc">
+		<xsl:variable name="value" select="
+			path:forward('ore:isAggregatedBy')[
+				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<array key="isPartOf" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<!-- id -->
+						<xsl:copy-of select="xmljson:render-as-string('id', .)" />
+						<!-- type -->
+						<string key='type'><xsl:text>narrative</xsl:text></string>
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+			</xsl:for-each>
+			</array>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- children narratives -->
+	<xsl:template name="narrative-children-dc">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<array key="hasPart" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<!-- id -->
+						<xsl:copy-of select="xmljson:render-as-string('id', .)" />
+						<!-- type -->
+						<string key='type'><xsl:text>narrative</xsl:text></string>
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+			</xsl:for-each>
+			</array>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- related objects -->
+	<xsl:template name="narrative-objects-dc">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<array key="aggregates" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<!-- id -->
+						<xsl:copy-of select="xmljson:render-as-string('id', .)" />
+						<!-- type -->
+						<string key='type'><xsl:text>object</xsl:text></string>
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+			</xsl:for-each>
+			</array>
+		</xsl:if>
 	</xsl:template>
 	
 </xsl:stylesheet>

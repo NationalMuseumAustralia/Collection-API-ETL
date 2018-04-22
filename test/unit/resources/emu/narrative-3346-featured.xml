@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Description, author, banner image -->
+<record>
+ <irn>3346</irn>
+ <NarTitle>Wanydjarrpu</NarTitle>
+ <DesPurpose>Featured Online</DesPurpose>
+ <DesVersionDate>22/02/2018</DesVersionDate>
+ <AdmDateModified>22/02/2018</AdmDateModified>
+ <AssMasterNarrativeRef>3314</AssMasterNarrativeRef>
+ <DesType_tab>
+  <DesType>Web Highlight</DesType>
+  <DesType>Home page</DesType>
+ </DesType_tab>
+ <DesIntendedAudience_tab>
+  <DesIntendedAudience>Collection Explorer Publish</DesIntendedAudience>
+ </DesIntendedAudience_tab>
+ <NarNarrative>&lt;p&gt;&lt;em&gt;Wanydjarrpu&lt;/em&gt; (Yolngu name)&lt;br /&gt;&lt;em&gt;Austrodolichos errabundus&lt;/em&gt; (Latin name)&lt;br /&gt;austrodolichos (common name)&lt;br /&gt;&lt;em&gt;Wanydjarrpu&lt;/em&gt; belongs to the Dhuwa moiety&lt;/p&gt;</NarNarrative>
+ <NarAuthorsRef_tab>
+  <NarAuthorsRef>23074</NarAuthorsRef>
+ </NarAuthorsRef_tab>
+ <ObjObjectsRef_tab>
+  <ObjObjectsRef>
+   <irn>241493</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+   <AcsAPI_tab>
+    <AcsAPI>Internal</AcsAPI>
+    <AcsAPI>Public</AcsAPI>
+   </AcsAPI_tab>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241494</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+   <AcsAPI_tab>
+    <AcsAPI>Public</AcsAPI>
+    <AcsAPI>Public Restricted</AcsAPI>
+   </AcsAPI_tab>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241466</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241464</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241451</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+  <ObjObjectsRef>
+   <irn>241465</irn>
+   <AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+  </ObjObjectsRef>
+ </ObjObjectsRef_tab>
+ <MulMultiMediaRef_tab>
+  <image>
+   <banner_small>139/150/oldmasters700x300.jpg</banner_small>
+   <banner_large>139/151/oldmasters1600x200.jpg</banner_large>
+  </image>
+ </MulMultiMediaRef_tab>
+</record>
