@@ -13,6 +13,7 @@
 		</x:context>
 		<x:expect label="should return rdfs:label">
 			<rdfs:label>Ruth Oldfield collection</rdfs:label>
+			<rdfs:seeAlso rdf:resource="object?collection=%22Ruth%20Oldfield%20collection%22" />
 		</x:expect>
 	</x:scenario>
 

@@ -330,16 +330,19 @@
 			<crm:P45_consists_of>
 				<crm:E57_Material>
 					<rdfs:label>Photographic emulsion</rdfs:label>
+					<rdfs:seeAlso rdf:resource="object?medium=%22Photographic%20emulsion%22" />
 				</crm:E57_Material>
 			</crm:P45_consists_of>
 			<crm:P45_consists_of>
 				<crm:E57_Material>
 					<rdfs:label>Wood</rdfs:label>
+					<rdfs:seeAlso rdf:resource="object?medium=%22Wood%22" />
 				</crm:E57_Material>
 			</crm:P45_consists_of>
 			<crm:P45_consists_of>
 				<crm:E57_Material>
 					<rdfs:label>Paper</rdfs:label>
+					<rdfs:seeAlso rdf:resource="object?medium=%22Paper%22" />
 				</crm:E57_Material>
 			</crm:P45_consists_of>
 		</x:expect>
