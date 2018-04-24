@@ -9,7 +9,7 @@ XSPEC_DATA_DIR_OUT=/usr/local/NMA/test-results
 # Create unit test output director
 mkdir -p "$XSPEC_DATA_DIR_OUT"/unit/tests
 
-# function to run the specified unit test
+# Function to run the specified unit test
 run_test() {
   echo ================= TEST $1 =================
   XSPEC_IN="$XSPEC_DATA_DIR_IN"/unit/tests/$1.xspec
@@ -17,14 +17,20 @@ run_test() {
   java -cp "$CALABASH_HOME"/xmlcalabash-1.1.16-98.jar com.xmlcalabash.drivers.Main -i source="$XSPEC_IN" -p xspec-home="$XSPEC_HOME" -o result="$XSPEC_OUT" "$XSPEC_HOME"/src/harnesses/saxon/saxon-xslt-harness.xproc 
 }
 
-run_test date-util-functions
-run_test xmljson-functions
-run_test emu-to-crm-common
-run_test emu-to-crm-object
-run_test emu-to-crm-narrative
-run_test emu-to-crm-party
-run_test emu-to-crm-place
-run_test emu-to-crm-collection
-run_test trix-description-to-dc-object
-run_test trix-description-to-dc-media
-run_test trix-description-to-solr-object
+# Optional command-line arg for a single test to run
+if (( $# > 1 ))
+then
+  run_test "$1"
+else
+  run_test date-util-functions
+  run_test xmljson-functions
+  run_test emu-to-crm-common
+  run_test emu-to-crm-object
+  run_test emu-to-crm-narrative
+  run_test emu-to-crm-party
+  run_test emu-to-crm-place
+  run_test emu-to-crm-collection
+  run_test trix-description-to-dc-object
+  run_test trix-description-to-dc-media
+  run_test trix-description-to-solr-object
+fi

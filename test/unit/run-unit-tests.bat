@@ -9,20 +9,26 @@ set XSPEC_DATA_DIR_OUT=file:///C:/Project/Stage/NMA-unit-test-output
 :: Create unit test output directory
 mkdir "%XSPEC_DATA_DIR_OUT%"/unit/tests
 
-REM XXX CALL :runtest date-util-functions
-REM XXX CALL :runtest xmljson-functions
-REM XXX CALL :runtest emu-to-crm-common
-REM XXX CALL :runtest emu-to-crm-object
-REM XXX CALL :runtest emu-to-crm-narrative
-REM XXX CALL :runtest emu-to-crm-party
-REM XXX CALL :runtest emu-to-crm-place
-REM XXX CALL :runtest emu-to-crm-collection
-REM XXX CALL :runtest trix-description-to-dc-object
-CALL :runtest trix-description-to-dc-narrative
-REM XXX CALL :runtest trix-description-to-dc-media
-REM XXX CALL :runtest trix-description-to-solr-object
+:: Optional command-line arg for a single test to run
+IF NOT %1.==. (
+  CALL :runtest "%1"
+  GOTO :end
+)
 
-:: end of main logic
+CALL :runtest date-util-functions
+CALL :runtest xmljson-functions
+CALL :runtest emu-to-crm-common
+CALL :runtest emu-to-crm-object
+CALL :runtest emu-to-crm-narrative
+CALL :runtest emu-to-crm-party
+CALL :runtest emu-to-crm-place
+CALL :runtest emu-to-crm-collection
+CALL :runtest trix-description-to-dc-object
+CALL :runtest trix-description-to-dc-narrative
+CALL :runtest trix-description-to-dc-media
+CALL :runtest trix-description-to-solr-object
+
+:end
 EXIT /B %ERRORLEVEL%
 
 :: function to run the specified unit test
