@@ -219,9 +219,9 @@
 					</crm:P129i_is_subject_of>
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
-							<rdfs:label>14/12/1928</rdfs:label>
-							<crm:P82a_begin_of_the_begin>14/12/1928</crm:P82a_begin_of_the_begin>
-							<crm:P82b_end_of_the_end>20/12/1928</crm:P82b_end_of_the_end>
+							<rdfs:label>1928-12-14</rdfs:label>
+							<crm:P82a_begin_of_the_begin>1928-12-14</crm:P82a_begin_of_the_begin>
+							<crm:P82b_end_of_the_end>1928-12-20</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
 					</crm:P4_has_time-span>
 				</crm:E7_Activity>
@@ -311,9 +311,9 @@
 					</crm:P129i_is_subject_of>
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
-							<rdfs:label>04/10/1926</rdfs:label>
-							<crm:P82a_begin_of_the_begin>04/10/1926</crm:P82a_begin_of_the_begin>
-							<crm:P82b_end_of_the_end>04/10/1926</crm:P82b_end_of_the_end>
+							<rdfs:label>1926-10-04</rdfs:label>
+							<crm:P82a_begin_of_the_begin>1926-10-04</crm:P82a_begin_of_the_begin>
+							<crm:P82b_end_of_the_end>1926-10-04</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
 					</crm:P4_has_time-span>
 				</crm:E5_Event>

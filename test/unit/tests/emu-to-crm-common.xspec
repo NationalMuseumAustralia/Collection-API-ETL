@@ -121,15 +121,34 @@
 				<AdmDateModified>12/03/2018</AdmDateModified>
 			</record>
 		</x:context>
-		<x:expect label="should return crm:P1_is_identified_by">
-			<rdf:Description rdf:about="object/#">
-				<rdf:type rdf:resource="http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object" />
-				<crm:P70i_is_documented_in>
-					<crm:E31_Document rdf:about="object/">
-						<dc:modified>2018-03-12</dc:modified>
-					</crm:E31_Document>
-				</crm:P70i_is_documented_in>
-			</rdf:Description>
+		<x:call template="date-modified">
+			<x:param name="entity-iri" select=" 'narrative/3346' " />
+		</x:call>
+		<x:expect label="should return crm:P70i_is_documented_in">
+			<crm:P70i_is_documented_in>
+				<crm:E31_Document rdf:about="narrative/3346">
+					<dc:modified>2018-03-12</dc:modified>
+				</crm:E31_Document>
+			</crm:P70i_is_documented_in>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert link to Collection Explorer">
+		<x:context>
+			<record />
+		</x:context>
+		<x:call template="web-link">
+			<x:param name="record-type" select=" 'narrative' " />
+			<x:param name="entity-iri" select=" 'narrative/3346' " />
+		</x:call>
+		<x:expect label="should return crm:P129i_is_subject_of">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object
+					rdf:about="http://collectionsearch.nma.gov.au/narrative/3346">
+					<rdfs:label>View on Collection Explorer</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264578" />
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
 		</x:expect>
 	</x:scenario>
 

@@ -14,6 +14,7 @@
 	<!-- record type of the input file, e.g. "object", "place", "party", or "narrative" -->
 	<xsl:param name="record-type" select="'object'" />
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
+	<xsl:param name="ce-uri-base" select="'http://collectionsearch.nma.gov.au/'" />
 	<xsl:param name="media-uri-base" select="'http://collectionsearch.nma.gov.au/nmacs-image-download/emu/'" />
 
 	<xsl:variable name="nma-term-ns" select="concat($base-uri, 'term/')" />
@@ -65,19 +66,21 @@
 				<xsl:with-param name="record-type" select="$record-type" />
 			</xsl:call-template>
 			
-			<!-- metadata -->
-			<crm:P70i_is_documented_in>
-				<crm:E31_Document rdf:about="{$entity-iri}"><!-- identifies the RDF graph itself -->
-					<xsl:if test="AdmDateModified">
-						<dc:modified><xsl:value-of select="dateutil:to-iso-date(AdmDateModified)"/></dc:modified>
-					</xsl:if>
-				</crm:E31_Document>
-			</crm:P70i_is_documented_in>
+			<!-- date modified -->
+			<xsl:call-template name="date-modified">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:call-template>
 
 			<!-- irn -->
 			<xsl:apply-templates select="irn">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
+
+			<!-- Collection Explorer link -->			
+			<xsl:call-template name="web-link">
+				<xsl:with-param name="record-type" select="$record-type" />
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:call-template>
 			
 			<!-- OBJECT FIELDS -->
 
@@ -441,13 +444,13 @@
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
 							<rdfs:label>
-								<xsl:value-of select="ProDate0" />
+								<xsl:value-of select="dateutil:to-iso-date(ProDate0)" />
 							</rdfs:label>
 							<crm:P82a_begin_of_the_begin>
-								<xsl:value-of select="ProEarliestDate0" />
+								<xsl:value-of select="dateutil:to-iso-date(ProEarliestDate0)" />
 							</crm:P82a_begin_of_the_begin>
 							<crm:P82b_end_of_the_end>
-								<xsl:value-of select="ProLatestDate0" />
+								<xsl:value-of select="dateutil:to-iso-date(ProLatestDate0)" />
 							</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
 					</crm:P4_has_time-span>
@@ -537,13 +540,13 @@
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
 							<rdfs:label>
-								<xsl:value-of select="AssDate0" />
+								<xsl:value-of select="dateutil:to-iso-date(AssDate0)" />
 							</rdfs:label>
 							<crm:P82a_begin_of_the_begin>
-								<xsl:value-of select="AssEarliestDate0" />
+								<xsl:value-of select="dateutil:to-iso-date(AssEarliestDate0)" />
 							</crm:P82a_begin_of_the_begin>
 							<crm:P82b_end_of_the_end>
-								<xsl:value-of select="AssLatestDate0" />
+								<xsl:value-of select="dateutil:to-iso-date(AssLatestDate0)" />
 							</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
 					</crm:P4_has_time-span>
@@ -1044,6 +1047,37 @@
 					</xsl:choose>
 				</xsl:otherwise>
 			</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="date-modified">
+		<xsl:param name="entity-iri" />
+		<crm:P70i_is_documented_in>
+			<crm:E31_Document rdf:about="{$entity-iri}"><!-- identifies the RDF graph itself -->
+				<xsl:if test="AdmDateModified">
+					<dc:modified>
+						<xsl:value-of select="dateutil:to-iso-date(AdmDateModified)" />
+					</dc:modified>
+				</xsl:if>
+			</crm:E31_Document>
+		</crm:P70i_is_documented_in>
+	</xsl:template>
+
+	<!-- Collection Explorer web link -->
+	<!-- https://linked.art/model/object/digital/#other-pages -->
+	<xsl:template name="web-link">
+		<xsl:param name="record-type" />
+		<xsl:param name="entity-iri" />
+		<xsl:variable name="id" select="replace($entity-iri, '(.*/)([^/]*)$', '$2')" />
+		<xsl:variable name="href" select="concat($ce-uri-base, $record-type, '/', $id)" />
+		<xsl:if test="$record-type='object' or $record-type='narrative'">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object rdf:about="{$href}">
+					<rdfs:label><xsl:text>View on Collection Explorer</xsl:text></rdfs:label>
+					<!-- AAT 300264578: web pages (documents) -->
+					<crm:P2_has_type rdf:resource="{$aat-ns}300264578" />
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- production -->
