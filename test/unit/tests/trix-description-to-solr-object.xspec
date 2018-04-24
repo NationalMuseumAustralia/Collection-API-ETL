@@ -7,7 +7,7 @@
 	stylesheet="../../../trix-description-to-solr.xsl">
 
 	<!-- loads source trix record being tested into global $graph variable -->
-	<x:import href="trix-record-object-122751-cricket.xspec" />
+	<x:import href="resources/trix-record-object-122751-cricket.xspec" />
 
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />

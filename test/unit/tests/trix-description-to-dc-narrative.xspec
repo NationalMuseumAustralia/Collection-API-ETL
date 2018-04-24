@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../trix-description-to-dc.xsl">
+
+	<!-- load a narrative trix record into the global $graph variable -->
+	<x:import href="resources/trix-record-narrative-3346-featured.xspec" />
+
+	<x:param name="root-resource"
+		select=" 'http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#' " />
+
+	<x:scenario label="Convert id">
+		<x:call template="id-dc" />
+		<x:expect label="should return xpath:string id">
+			<xpath:string key="id">3346</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type">
+		<x:call template="type-dc" />
+		<x:expect label="should return xpath:string type">
+			<xpath:string key="type">narrative</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert title">
+		<x:call template="title-dc" />
+		<x:expect label="should return xpath:string title">
+			<xpath:string key="title">Wanydjarrpu</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert text">
+		<x:call template="narrative-text-dc" />
+		<x:expect label="should return xpath:string description containing specified text"
+			test="contains(xpath:string[@key='description']/text(), 'Wanydjarrpu')" />
+	</x:scenario>
+
+</x:description>

@@ -79,92 +79,6 @@
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
 			
-			<!-- NARRATIVE FIELDS -->
-			<xsl:for-each select="NarTitle">
-				<rdfs:label><xsl:value-of select="."/></rdfs:label>
-			</xsl:for-each>
-			<!-- DesVersionDate (optional) TODO ??? barely used -->
-			<!-- AdmDateModified TODO use prov:atTime-->
-			<!-- AssMasterNarrativeRef (optional) = IGNORE as inverse of SubNarrative.irn -->
-			<!-- DesType_tab (optional), containing sequence of DesType (string) ??? Barely used; get clarity on meaning -->
-			<xsl:for-each select="DesType_tab/DesType">
-				<crm:P2_has_type>
-					<crm:E55_Type>
-						<rdfs:label><xsl:value-of select="."/></rdfs:label>
-					</crm:E55_Type>
-				</crm:P2_has_type>
-			</xsl:for-each>
-			<!-- TODO DesIntendedAudience_tab, containing sequence of DesIntendedAudience (string) -->
-			<xsl:for-each select="DesIntendedAudience_tab/DesIntendedAudience">
-				<crm:P2_has_type>
-					<crm:E55_Type>
-						<rdfs:label><xsl:value-of select="."/></rdfs:label>
-						<crm:P2_has_type rdf:resource="{$aat-ns}300192793"/><!-- audiences -->
-					</crm:E55_Type>
-				</crm:P2_has_type>
-			</xsl:for-each>
-			<!-- NarNarrative (optional) (string) -->
-			<xsl:if test="NarNarrative">
-				<ore:aggregates>
-					<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#text">
-						<crm:P2_has_type rdf:resource="{$aat-ns}300263751"/><!-- "texts (documents)" -->
-						<rdf:value><xsl:value-of select="NarNarrative" /></rdf:value>
-						<dc:format>text/html</dc:format>
-					</crm:E33_Linguistic_Object>
-				</ore:aggregates>
-			</xsl:if>
-			<!-- MulMultiMediaRef_tab (optional)
-				sequence of image
-					banner_small
-					banner_large
-			-->
-			<xsl:for-each select="MulMultiMediaRef_tab/image">
-				<ore:aggregates>
-					<crm:E36_Visual_Item>
-						<crm:P2_has_type rdf:resource="{$nma-term-ns}emu-image" />
-						<crm:P2_has_type rdf:resource="{$nma-term-ns}banner-image" />
-						<crm:P138i_has_representation>		
-							<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, banner_small)}">
-								<crm:P2_has_type rdf:resource="{$nma-term-ns}small-banner-image" />
-							</crm:E36_Visual_Item>
-						</crm:P138i_has_representation>
-						<crm:P138i_has_representation>		
-							<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, banner_large)}">
-								<crm:P2_has_type rdf:resource="{$nma-term-ns}large-banner-image" />
-							</crm:E36_Visual_Item>
-						</crm:P138i_has_representation>
-					</crm:E36_Visual_Item>
-				</ore:aggregates>
-			</xsl:for-each>
-			<!-- optionally, either of ObjObjectsRef_tab or SubNarratives -->
-			<!-- 
-			ObjObjectsRef_tab (optional)
-				sequence of ObjObjectsRef,
-					irn (string), 
-					AdmPublishWebNoPassword, 
-					AcsAPI_tab 
-						sequence of AcsAPI (string)
-			-->
-			<xsl:for-each select="ObjObjectsRef_tab/ObjObjectsRef">
-				<ore:aggregates>
-					<rdf:Description rdf:about="{concat('object/', irn, '#')}">
-						<ore:isAggregatedBy rdf:resource="{$entity-iri}#"/>
-					</rdf:Description>
-				</ore:aggregates>
-			</xsl:for-each>
-			<!-- 
-			SubNarratives 
-				sequence of SubNarrative
-					SubNarrative.irn
-			-->
-			<xsl:for-each select="SubNarratives/SubNarrative">
-				<ore:aggregates>
-					<rdf:Description rdf:about="{concat('narrative/', SubNarrative.irn, '#')}">
-						<ore:isAggregatedBy rdf:resource="{$entity-iri}#"/>
-					</rdf:Description>
-				</ore:aggregates>
-			</xsl:for-each>			
-
 			<!-- OBJECT FIELDS -->
 
 			<!-- accession number -->
@@ -230,6 +144,39 @@
 
 			<!-- media -->
 			<xsl:apply-templates select="WebMultiMediaRef_tab/image" />
+
+			<!-- NARRATIVE FIELDS -->
+
+			<!-- DesVersionDate (optional) TODO ??? barely used -->
+			<!-- AdmDateModified TODO use prov:atTime -->
+			<!-- AssMasterNarrativeRef (optional) = IGNORE as inverse of SubNarrative.irn -->
+
+			<!-- Narrative title -->
+			<xsl:apply-templates select="NarTitle" />
+
+			<!-- Narrative type -->
+			<xsl:apply-templates select="DesType_tab/DesType" />
+
+			<!-- Narrative audience -->
+			<xsl:apply-templates select="DesIntendedAudience_tab/DesIntendedAudience" />
+
+			<!-- Narrative text -->
+			<xsl:apply-templates select="NarNarrative">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
+
+			<!-- Narrative image -->
+			<xsl:apply-templates select="MulMultiMediaRef_tab/image" />
+
+			<!-- Narrative related objects -->
+			<xsl:apply-templates select="ObjObjectsRef_tab/ObjObjectsRef">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
+
+			<!-- Sub-narrative -->
+			<xsl:apply-templates select="SubNarratives/SubNarrative">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
 
 			<!-- PARTY FIELDS -->
 
@@ -817,6 +764,89 @@
 
 			</crm:E36_Visual_Item>
 		</crm:P138i_has_representation>
+	</xsl:template>
+
+	<!-- NARRATIVE FIELDS -->
+
+	<xsl:template match="NarTitle">
+		<rdfs:label><xsl:value-of select="." /></rdfs:label>
+	</xsl:template>
+
+	<!-- DesType_tab (optional), containing sequence of DesType (string) ??? Barely 
+		used; get clarity on meaning -->
+	<xsl:template match="DesType">
+		<crm:P2_has_type>
+			<crm:E55_Type>
+				<rdfs:label><xsl:value-of select="." />	</rdfs:label>
+			</crm:E55_Type>
+		</crm:P2_has_type>
+	</xsl:template>
+
+	<!-- TODO DesIntendedAudience_tab, containing sequence of DesIntendedAudience (string) -->
+
+	<xsl:template match="DesIntendedAudience">
+		<crm:P2_has_type>
+			<crm:E55_Type>
+				<rdfs:label><xsl:value-of select="." /></rdfs:label>
+				<crm:P2_has_type rdf:resource="{$aat-ns}300192793" /><!-- audiences -->
+			</crm:E55_Type>
+		</crm:P2_has_type>
+	</xsl:template>
+
+	<!-- NarNarrative (optional) (string) -->
+	<xsl:template match="NarNarrative">
+		<xsl:param name="entity-iri" />
+		<ore:aggregates>
+			<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#text">
+				<crm:P2_has_type rdf:resource="{$aat-ns}300263751" /><!-- "texts (documents)" -->
+				<rdf:value><xsl:value-of select="." /></rdf:value>
+				<dc:format>text/html</dc:format>
+			</crm:E33_Linguistic_Object>
+		</ore:aggregates>
+	</xsl:template>
+
+	<!-- MulMultiMediaRef_tab (optional) sequence of image banner_small banner_large -->
+	<xsl:template match="MulMultiMediaRef_tab/image">
+		<ore:aggregates>
+			<crm:E36_Visual_Item>
+				<crm:P2_has_type rdf:resource="{$nma-term-ns}emu-image" />
+				<crm:P2_has_type rdf:resource="{$nma-term-ns}banner-image" />
+				<crm:P138i_has_representation>
+					<crm:E36_Visual_Item
+						rdf:about="{uri:uri-from-filename($media-uri-base, banner_small)}">
+						<crm:P2_has_type rdf:resource="{$nma-term-ns}small-banner-image" />
+					</crm:E36_Visual_Item>
+				</crm:P138i_has_representation>
+				<crm:P138i_has_representation>
+					<crm:E36_Visual_Item
+						rdf:about="{uri:uri-from-filename($media-uri-base, banner_large)}">
+						<crm:P2_has_type rdf:resource="{$nma-term-ns}large-banner-image" />
+					</crm:E36_Visual_Item>
+				</crm:P138i_has_representation>
+			</crm:E36_Visual_Item>
+		</ore:aggregates>
+	</xsl:template>
+
+	<!-- optionally, either of ObjObjectsRef_tab or SubNarratives -->
+	<!-- ObjObjectsRef_tab (optional) sequence of ObjObjectsRef, irn (string), AdmPublishWebNoPassword, 
+		AcsAPI_tab sequence of AcsAPI (string) -->
+	<xsl:template match="ObjObjectsRef">
+		<xsl:param name="entity-iri" />
+		<ore:aggregates>
+			<rdf:Description rdf:about="{concat('object/', irn, '#')}">
+				<ore:isAggregatedBy rdf:resource="{$entity-iri}#" />
+			</rdf:Description>
+		</ore:aggregates>
+	</xsl:template>
+
+	<!-- SubNarratives sequence of SubNarrative SubNarrative.irn -->
+	<xsl:template match="SubNarrative">
+		<xsl:param name="entity-iri" />
+		<ore:aggregates>
+			<rdf:Description rdf:about="{concat('narrative/', SubNarrative.irn, '#')}">
+				<ore:isAggregatedBy rdf:resource="{$entity-iri}#" />
+			</rdf:Description>
+		</ore:aggregates>
 	</xsl:template>
 
 	<!-- PARTY FIELDS -->

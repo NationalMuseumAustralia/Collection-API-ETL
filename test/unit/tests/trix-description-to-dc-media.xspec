@@ -6,7 +6,7 @@
 	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../trix-description-to-dc.xsl">
 
 	<!-- load a media trix record into the global $graph variable -->
-	<x:import href="trix-record-media-MA22991348.xspec" />
+	<x:import href="resources/trix-record-media-MA22991348.xspec" />
 
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#' " />

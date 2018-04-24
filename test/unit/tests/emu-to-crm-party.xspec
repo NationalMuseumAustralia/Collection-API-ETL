@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
+	xmlns:la="https://linked.art/ns/terms/" stylesheet="../../../emu-to-crm.xsl">
+
+	<!-- PARTY FIELDS -->
+
+	<x:scenario label="Convert full name">
+		<x:context>
+			<record>
+				<NamFullName>Mrs Mary J. Cochrane</NamFullName>
+			</record>
+		</x:context>
+		<!-- named template that collects all the parts together -->
+		<x:call template="person-names" />
+		<x:expect label="should return crm:P1_is_identified_by">
+			<crm:P1_is_identified_by>
+				<la:Name rdf:about="party/#name">
+					<rdf:value>Mrs Mary J. Cochrane</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404670" />
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404688" />
+				</la:Name>
+			</crm:P1_is_identified_by>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert organisation name">
+		<x:context>
+			<NamOrganisation>South Coast Land Council</NamOrganisation>
+		</x:context>
+		<x:expect label="should return rdfs:label">
+			<rdfs:label>South Coast Land Council</rdfs:label>
+		</x:expect>
+	</x:scenario>
+
+
+	<x:scenario label="Convert first names">
+		<x:context>
+			<NamFirst>Mary</NamFirst>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Mary</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404651" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert middle names">
+		<x:context>
+			<NamMiddle>Jane</NamMiddle>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Jane</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404654" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert last names">
+		<x:context>
+			<NamLast>Cochrane</NamLast>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Cochrane</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404652" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert other names">
+		<x:context>
+			<NamOtherNames_tab>
+				<NamOtherName>Miss Mary Jane Coughran</NamOtherName>
+			</NamOtherNames_tab>
+		</x:context>
+		<x:expect label="should return crm:P106_is_composed_of">
+			<crm:P106_is_composed_of>
+				<la:Name>
+					<rdf:value>Miss Mary Jane Coughran</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264273" />
+				</la:Name>
+			</crm:P106_is_composed_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert gender: Female">
+		<x:context>
+			<NamSex>Female</NamSex>
+		</x:context>
+		<x:expect label="should return crm:P107i_is_current_or_former_member_of">
+			<crm:P107i_is_current_or_former_member_of>
+				<crm:E74_Group>
+					<rdfs:label>female</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147" />
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189557" />
+				</crm:E74_Group>
+			</crm:P107i_is_current_or_former_member_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert gender: Male">
+		<x:context>
+			<NamSex>Male</NamSex>
+		</x:context>
+		<x:expect label="should return crm:P107i_is_current_or_former_member_of">
+			<crm:P107i_is_current_or_former_member_of>
+				<crm:E74_Group>
+					<rdfs:label>male</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147" />
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300189559" />
+				</crm:E74_Group>
+			</crm:P107i_is_current_or_former_member_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert gender: default">
+		<x:context>
+			<NamSex>any other text</NamSex>
+		</x:context>
+		<x:expect label="should return crm:P107i_is_current_or_former_member_of">
+			<crm:P107i_is_current_or_former_member_of>
+				<crm:E74_Group>
+					<rdfs:label>any other text</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300055147" />
+				</crm:E74_Group>
+			</crm:P107i_is_current_or_former_member_of>
+		</x:expect>
+	</x:scenario>
+
+</x:description>
