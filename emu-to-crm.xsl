@@ -340,6 +340,17 @@
 					<rdfs:label>
 						<xsl:value-of select="ProPersonType_tab" />
 					</rdfs:label>
+					<xsl:if test="ProPersonNotes_tab">
+						<crm:P129i_is_subject_of>
+							<crm:E33_Linguistic_Object>
+								<rdf:value>
+									<xsl:value-of select="ProPersonNotes_tab" />
+								</rdf:value>
+								<!-- AAT 300411780: descriptions (documents) -->
+								<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
+							</crm:E33_Linguistic_Object>
+						</crm:P129i_is_subject_of>
+					</xsl:if>
 					<crm:P14_carried_out_by>
 						<rdf:Description rdf:about="{$party-iri}" />
 					</crm:P14_carried_out_by>
@@ -386,6 +397,17 @@
 					<rdfs:label>
 						<xsl:value-of select="ProPlaceType_tab" />
 					</rdfs:label>
+					<xsl:if test="ProPlaceNotes_tab">
+						<crm:P129i_is_subject_of>
+							<crm:E33_Linguistic_Object>
+								<rdf:value>
+									<xsl:value-of select="ProPlaceNotes_tab" />
+								</rdf:value>
+								<!-- AAT 300411780: descriptions (documents) -->
+								<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
+							</crm:E33_Linguistic_Object>
+						</crm:P129i_is_subject_of>
+					</xsl:if>
 					<crm:P7_took_place_at>
 						<rdf:Description rdf:about="{$place-iri}" />
 					</crm:P7_took_place_at>
@@ -405,6 +427,17 @@
 					<rdfs:label>
 						<xsl:value-of select="ProDateType_tab" />
 					</rdfs:label>
+					<xsl:if test="ProDateNotes_tab">
+						<crm:P129i_is_subject_of>
+							<crm:E33_Linguistic_Object>
+								<rdf:value>
+									<xsl:value-of select="ProDateNotes_tab" />
+								</rdf:value>
+								<!-- AAT 300411780: descriptions (documents) -->
+								<crm:P2_has_type rdf:resource="{$aat-ns}300411780" />
+							</crm:E33_Linguistic_Object>
+						</crm:P129i_is_subject_of>
+					</xsl:if>
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
 							<rdfs:label>

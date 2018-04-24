@@ -133,6 +133,7 @@
 				<ProductionParty>
 					<ProPersonRef_tab.irn>6514</ProPersonRef_tab.irn>
 					<ProPersonType_tab>Photographer</ProPersonType_tab>
+					<ProPersonNotes_tab>and maker</ProPersonNotes_tab>
 				</ProductionParty>
 				<ProductionParty>
 					<ProPersonRef_tab.irn>80363</ProPersonRef_tab.irn>
@@ -144,6 +145,12 @@
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
 					<rdfs:label>Photographer</rdfs:label>
+					<crm:P129i_is_subject_of>
+						<crm:E33_Linguistic_Object>
+							<rdf:value>and maker</rdf:value>
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780" />
+						</crm:E33_Linguistic_Object>
+					</crm:P129i_is_subject_of>
 					<crm:P14_carried_out_by>
 						<rdf:Description rdf:about="party/6514#" />
 					</crm:P14_carried_out_by>
@@ -166,6 +173,7 @@
 				<ProductionPlace>
 					<ProPlaceRef_tab.irn>47</ProPlaceRef_tab.irn>
 					<ProPlaceType_tab>Place made</ProPlaceType_tab>
+					<ProPlaceNotes_tab>Place of printing</ProPlaceNotes_tab>
 				</ProductionPlace>
 			</ProductionPlaces>
 		</x:context>
@@ -173,6 +181,12 @@
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
 					<rdfs:label>Place made</rdfs:label>
+					<crm:P129i_is_subject_of>
+						<crm:E33_Linguistic_Object>
+							<rdf:value>Place of printing</rdf:value>
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780" />
+						</crm:E33_Linguistic_Object>
+					</crm:P129i_is_subject_of>
 					<crm:P7_took_place_at>
 						<rdf:Description rdf:about="place/47#" />
 					</crm:P7_took_place_at>
@@ -189,6 +203,7 @@
 					<ProEarliestDate0>14/12/1928</ProEarliestDate0>
 					<ProLatestDate0>20/12/1928</ProLatestDate0>
 					<ProDateType_tab>Date of production</ProDateType_tab>
+					<ProDateNotes_tab>Before January 1929</ProDateNotes_tab>
 				</ProductionDate>
 			</ProductionDates>
 		</x:context>
@@ -196,6 +211,12 @@
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
 					<rdfs:label>Date of production</rdfs:label>
+					<crm:P129i_is_subject_of>
+						<crm:E33_Linguistic_Object>
+							<rdf:value>Before January 1929</rdf:value>
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300411780" />
+						</crm:E33_Linguistic_Object>
+					</crm:P129i_is_subject_of>
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
 							<rdfs:label>14/12/1928</rdfs:label>
