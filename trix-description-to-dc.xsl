@@ -50,11 +50,11 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="physical-description-dc" />
 			<xsl:call-template name="significance-statement-dc" />
 			<xsl:call-template name="educational-significance-dc" />
-			<xsl:call-template name="production-parties-dc" />
-			<xsl:call-template name="production-places-dc" />
-			<xsl:call-template name="production-dates-dc" />
+			<xsl:call-template name="creator-dc" />
+			<xsl:call-template name="contributor-dc" />
+			<xsl:call-template name="spatial-dc" />
+			<xsl:call-template name="temporal-dc" />
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
-			<xsl:call-template name="associated-parties-dc" />
 			<xsl:call-template name="acknowledgement-dc" />
 			<!-- NB: rights are placed alongside each media rather than at the record level -->
 			<!-- TODO: add representation mimetype format, once added to CRM -->
@@ -256,7 +256,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	</xsl:template>
 
 	<!-- production parties -->
-	<xsl:template name="production-parties-dc">
+	<xsl:template name="creator-dc">
 		<xsl:variable name="value" select="
 			path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
 				path:forward(., 'crm:P14_carried_out_by')
@@ -269,9 +269,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					<xsl:variable name="party-iri" select="$party-id/self::trix:uri"/>
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
 						<xsl:if test="$party-id">
-							<string key='id'>
-								<xsl:value-of select="replace($party-id, '(.*/)([^/]*)(#)$', '$2')" />
-							</string>
+							<string key='id'><xsl:value-of select="replace($party-id, '(.*/)([^/]*)(#)$', '$2')" /></string>
 						</xsl:if>
 						<!-- type -->
 						<xsl:variable name="party-type" select="path:forward(., ('crm:P14_carried_out_by', 'rdf:type') )" />
@@ -302,21 +300,87 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 	</xsl:template>
 
-	<!-- production places -->
-	<xsl:template name="production-places-dc">
-		<xsl:variable name="value" select="
+	<!-- associated parties -->
+	<xsl:template name="contributor-dc">
+		<xsl:variable name="associated_person_value" select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type')) = 'http://www.cidoc-crm.org/cidoc-crm/E21_Person'
+			]
+		" />
+		<xsl:variable name="associated_organisation_value" select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type')) = 'http://www.cidoc-crm.org/cidoc-crm/E74_Group'
+			]
+		" />
+		<xsl:if test="$associated_person_value or $associated_organisation_value">
+			<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$associated_person_value">
+					<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
+					<map>
+						<xsl:if test="$party-iri">
+							<string key='id'><xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" /></string>
+						</xsl:if>
+						<!-- type -->
+						<string key='type'><xsl:text>Person</xsl:text></string>
+						<!-- person name -->
+						<xsl:copy-of select="xmljson:render-as-string('title', 
+							path:forward(., ('crm:P12_occurred_in_the_presence_of', 'crm:P1_is_identified_by'))[
+								path:forward(., 'rdf:type') = 'https://linked.art/ns/terms/Name'
+							]
+							/path:forward(., 'rdf:value')
+						)" />
+						<!-- date -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P4_has_time-span', 'rdfs:label') ) )" />
+						<!-- role -->
+						<xsl:copy-of select="xmljson:render-as-string('roleName', path:forward(., 'rdfs:label') )" />
+						<!-- NB: no interactionType as not production -->
+						<!-- description/notes -->
+						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
+					</map>
+				</xsl:for-each>
+				<xsl:for-each select="$associated_organisation_value">
+					<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
+					<map>
+						<xsl:if test="$party-iri">
+							<string key='id'><xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" /></string>
+						</xsl:if>
+						<!-- type -->
+						<string key='type'><xsl:text>Organisation</xsl:text></string>
+						<!-- organisation label -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') ) )" />
+						<!-- date -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P4_has_time-span', 'rdfs:label') ) )" />
+						<!-- role -->
+						<xsl:copy-of select="xmljson:render-as-string('roleName', path:forward(., 'rdfs:label') )" />
+						<!-- NB: no interactionType as not production -->
+						<!-- description/notes -->
+						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
+					</map>
+				</xsl:for-each>
+			</array>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- production places & associated places -->
+	<xsl:template name="spatial-dc">
+		<xsl:variable name="production_place_value" select="
 			path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
 				path:forward(., 'crm:P7_took_place_at')
 			]
 		" />
-		<xsl:if test="$value">
+		<xsl:variable name="associated_place_value" select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type')) = 'http://www.cidoc-crm.org/cidoc-crm/E53_Place'
+			]
+		" />
+		<xsl:if test="$production_place_value or $associated_place_value">
 			<array key="spatial" xmlns="http://www.w3.org/2005/xpath-functions">
-				<xsl:for-each select="$value">
+				<xsl:for-each select="$production_place_value">
 					<xsl:variable name="place-iri" select="path:forward(., 'crm:P7_took_place_at')" />
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
-						<string key='id'>
-							<xsl:value-of select="replace($place-iri, '(.*/)([^/]*)(#)$', '$2')" />
-						</string>
+					<map>
+						<xsl:if test="$place-iri">
+							<string key='id'><xsl:value-of select="replace($place-iri, '(.*/)([^/]*)(#)$', '$2')" /></string>
+						</xsl:if>
 						<!-- type -->
 						<string key='type'><xsl:text>Place</xsl:text></string>
 						<!-- place name -->
@@ -328,22 +392,44 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<!-- description/notes -->
 						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
 					</map>
-			</xsl:for-each>
+				</xsl:for-each>
+				<xsl:for-each select="$associated_place_value">
+					<xsl:variable name="place-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
+					<map>
+						<xsl:if test="$place-iri">
+							<string key='id'><xsl:value-of select="replace($place-iri, '(.*/)([^/]*)(#)$', '$2')" /></string>
+						</xsl:if>
+						<!-- type -->
+						<string key='type'><xsl:text>Place</xsl:text></string>
+						<!-- place name -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') ) )" />
+						<!-- role -->
+						<xsl:copy-of select="xmljson:render-as-string('roleName', path:forward(., 'rdfs:label') )" />
+						<!-- NB: no interactionType as not production -->
+						<!-- description/notes -->
+						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
+					</map>
+				</xsl:for-each>
 			</array>
 		</xsl:if>
 	</xsl:template>
-	
-	<!-- production dates -->
-	<xsl:template name="production-dates-dc">
-		<xsl:variable name="value" select="
+
+	<!-- production dates and associated dates -->
+	<xsl:template name="temporal-dc">
+		<xsl:variable name="production_date_value" select="
 			path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
 				path:forward(., 'crm:P4_has_time-span')
 			]
 		" />
-		<xsl:if test="$value">
+		<xsl:variable name="associated_date_value" select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., ('crm:P4_has_time-span', 'rdf:type')) = 'http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span'
+			]
+		" />
+		<xsl:if test="$production_date_value or $associated_date_value">
 			<array key="temporal" xmlns="http://www.w3.org/2005/xpath-functions">
-				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$production_date_value">
+					<map>
 						<!-- type -->
 						<string key='type'><xsl:text>Event</xsl:text></string>
 						<!-- date value -->
@@ -355,51 +441,11 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<!-- description/notes -->
 						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
 					</map>
-			</xsl:for-each>
-			</array>
-		</xsl:if>
-	</xsl:template>
-
-	<!-- associated parties -->
-	<xsl:template name="associated-parties-dc">
-		<xsl:variable name="value" select="path:forward('crm:P12i_was_present_at')" />
-		<xsl:if test="$value">
-			<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
-				<xsl:for-each select="$value">
-					<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
+				</xsl:for-each>
+				<xsl:for-each select="$associated_date_value">
 					<map>
-						<xsl:if test="$party-iri">
-							<string key='id'>
-								<xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" />
-							</string>
-						</xsl:if>
 						<!-- type -->
-						<xsl:variable name="party-type" select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type') )" />
-						<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E21_Person'">
-							<string key='type'><xsl:text>Person</xsl:text></string>
-						</xsl:if>
-						<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E74_Group'">
-							<string key='type'><xsl:text>Organisation</xsl:text></string>
-						</xsl:if>
-						<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E53_Place'">
-							<string key='type'><xsl:text>Place</xsl:text></string>
-						</xsl:if>
-						<xsl:if test="$party-type='http://www.cidoc-crm.org/cidoc-crm/E5_Event'">
-							<string key='type'><xsl:text>Event</xsl:text></string>
-						</xsl:if>
-						<xsl:variable name="date-type" select="path:forward(., ('crm:P4_has_time-span', 'rdf:type') )" />
-						<xsl:if test="$date-type='http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span'">
-							<string key='type'><xsl:text>Event</xsl:text></string>
-						</xsl:if>
-						<!-- person name -->
-						<xsl:copy-of select="xmljson:render-as-string('title', 
-							path:forward(., ('crm:P12_occurred_in_the_presence_of', 'crm:P1_is_identified_by'))[
-								path:forward(., 'rdf:type') = 'https://linked.art/ns/terms/Name'
-							]
-							/path:forward(., 'rdf:value')
-						)" />
-						<!-- organisation label -->
-						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') ) )" />
+						<string key='type'><xsl:text>Event</xsl:text></string>
 						<!-- date -->
 						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P4_has_time-span', 'rdfs:label') ) )" />
 						<!-- role -->
@@ -408,11 +454,11 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<!-- description/notes -->
 						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
 					</map>
-			</xsl:for-each>
+				</xsl:for-each>
 			</array>
 		</xsl:if>
 	</xsl:template>
-	
+
 	<!-- acknowledgement -->
 	<xsl:template name="acknowledgement-dc">
 		<xsl:copy-of select="xmljson:render-as-string('acknowledgement', 

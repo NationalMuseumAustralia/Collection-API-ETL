@@ -98,7 +98,7 @@
 	</x:scenario>
 
 	<x:scenario label="Convert production parties">
-		<x:call template="production-parties-dc" />
+		<x:call template="creator-dc" />
 		<x:expect label="should return xpath:array of creator maps">
 			<array key="creator" xmlns="http://www.w3.org/2005/xpath-functions">
 				<map>
@@ -120,7 +120,7 @@
 	</x:scenario>
 
 	<x:scenario label="Convert production places">
-		<x:call template="production-places-dc" />
+		<x:call template="spatial-dc" />
 		<x:expect label="should return xpath:array of spatial map">
 			<array key="spatial" xmlns="http://www.w3.org/2005/xpath-functions">
 				<map>
@@ -135,7 +135,7 @@
 	</x:scenario>
 
 	<x:scenario label="Convert production dates">
-		<x:call template="production-dates-dc" />
+		<x:call template="temporal-dc" />
 		<x:expect label="should return xpath:array of temporal map">
 			<array key="temporal" xmlns="http://www.w3.org/2005/xpath-functions">
 				<map>
@@ -148,11 +148,11 @@
 		</x:expect>
 	</x:scenario>
 
-	<!-- TODO: 'associated-parties-dc' template works in ETL but only outputs 'roleName' 
+	<!-- TODO: 'contributor-dc' template works in ETL but only outputs 'roleName' 
 		during XSpec tests -->
 	<x:pending label="Problem in test output, needs investigation">
 		<x:scenario label="Convert associated parties">
-			<x:call template="associated-parties-dc" />
+			<x:call template="contributor-dc" />
 			<x:expect label="should return xpath:array of contributor maps">
 				<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
 					<map>
