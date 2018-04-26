@@ -391,6 +391,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<string key='interactionType'><xsl:text>Production</xsl:text></string>
 						<!-- description/notes -->
 						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
+						<!-- geo location -->
+						<xsl:copy-of select="xmljson:render-as-string('location', path:forward(., ('crm:P7_took_place_at', 'crm:P168_place_is_defined_by', 'rdf:value') ))" />
 					</map>
 				</xsl:for-each>
 				<xsl:for-each select="$associated_place_value">
@@ -408,6 +410,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<!-- NB: no interactionType as not production -->
 						<!-- description/notes -->
 						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
+						<!-- geo location -->
+						<xsl:copy-of select="xmljson:render-as-string('location', path:forward(., ('crm:P7_took_place_at', 'crm:P168_place_is_defined_by', 'rdf:value') ))" />
 					</map>
 				</xsl:for-each>
 			</array>
