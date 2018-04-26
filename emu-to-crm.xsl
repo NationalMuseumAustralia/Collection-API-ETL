@@ -67,7 +67,7 @@
 			</xsl:call-template>
 			
 			<!-- date modified -->
-			<xsl:call-template name="date-modified">
+			<xsl:call-template name="record-metadata">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:call-template>
 
@@ -1050,7 +1050,7 @@
 			</xsl:choose>
 	</xsl:template>
 
-	<xsl:template name="date-modified">
+	<xsl:template name="record-metadata">
 		<xsl:param name="entity-iri" />
 		<crm:P70i_is_documented_in>
 			<crm:E31_Document rdf:about="{$entity-iri}"><!-- identifies the RDF graph itself -->
@@ -1058,6 +1058,12 @@
 					<dc:modified>
 						<xsl:value-of select="dateutil:to-iso-date(AdmDateModified)" />
 					</dc:modified>
+				</xsl:if>
+				<xsl:if test="WebReleaseDate">
+					<!-- dc:issued is more precise than dc:available - http://dublincore.org/documents/date-element/ -->
+					<dc:issued>
+						<xsl:value-of select="dateutil:to-iso-date(WebReleaseDate)" />
+					</dc:issued>
 				</xsl:if>
 			</crm:E31_Document>
 		</crm:P70i_is_documented_in>

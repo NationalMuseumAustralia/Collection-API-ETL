@@ -119,15 +119,17 @@
 		<x:context>
 			<record>
 				<AdmDateModified>12/03/2018</AdmDateModified>
+				<WebReleaseDate>07/06/2007</WebReleaseDate>
 			</record>
 		</x:context>
-		<x:call template="date-modified">
+		<x:call template="record-metadata">
 			<x:param name="entity-iri" select=" 'narrative/3346' " />
 		</x:call>
 		<x:expect label="should return crm:P70i_is_documented_in">
 			<crm:P70i_is_documented_in>
 				<crm:E31_Document rdf:about="narrative/3346">
 					<dc:modified>2018-03-12</dc:modified>
+					<dc:issued>2007-06-07</dc:issued>
 				</crm:E31_Document>
 			</crm:P70i_is_documented_in>
 		</x:expect>
