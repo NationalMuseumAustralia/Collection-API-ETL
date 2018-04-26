@@ -153,6 +153,7 @@
 			<!-- DesVersionDate (optional) TODO ??? barely used -->
 			<!-- AdmDateModified TODO use prov:atTime -->
 			<!-- AssMasterNarrativeRef (optional) = IGNORE as inverse of SubNarrative.irn -->
+			<!-- TODO: add blanket rights statement for all narrative images? -->
 
 			<!-- Narrative title -->
 			<xsl:apply-templates select="NarTitle" />
@@ -676,17 +677,17 @@
 			<xsl:choose>
 				<xsl:when test=". = 'Public Domain'">
 					<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
-						<rdf:value><xsl:text>CC PD 1.0</xsl:text></rdf:value>
+						<rdf:value><xsl:text>Public Domain</xsl:text></rdf:value>
 					</crm:E30_Right>
 				</xsl:when>
 				<xsl:when test=". = 'Creative Commons Commercial Use'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by/4.0/">
-						<rdf:value><xsl:text>CC BY 4.0</xsl:text></rdf:value>
+					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
+						<rdf:value><xsl:text>CC BY-SA 4.0</xsl:text></rdf:value>
 					</crm:E30_Right>
 				</xsl:when>
 				<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc/4.0/">
-						<rdf:value><xsl:text>CC BY-NC 4.0</xsl:text></rdf:value>
+					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+						<rdf:value><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdf:value>
 					</crm:E30_Right>
 				</xsl:when>
 				<!-- fall back to most conservative -->

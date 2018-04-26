@@ -511,7 +511,7 @@
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
 				<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
-					<rdf:value>CC PD 1.0</rdf:value>
+					<rdf:value>Public Domain</rdf:value>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
 		</x:expect>
@@ -523,8 +523,8 @@
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
-				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by/4.0/">
-					<rdf:value>CC BY 4.0</rdf:value>
+				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
+					<rdf:value>CC BY-SA 4.0</rdf:value>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
 		</x:expect>
@@ -536,8 +536,8 @@
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
-				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc/4.0/">
-					<rdf:value>CC BY-NC 4.0</rdf:value>
+				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+					<rdf:value>CC BY-NC-SA 4.0</rdf:value>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
 		</x:expect>

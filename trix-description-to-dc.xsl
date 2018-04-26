@@ -56,7 +56,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
 			<xsl:call-template name="associated-parties-dc" />
 			<xsl:call-template name="acknowledgement-dc" />
-			<xsl:call-template name="rights-dc" />
+			<!-- NB: rights are placed alongside each media rather than at the record level -->
 			<!-- TODO: add representation mimetype format, once added to CRM -->
 			<xsl:call-template name="representations-dc" />
 			
@@ -423,9 +423,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		)" />
 	</xsl:template>
 	
-	<!-- rights -->
+	<!-- rights (embedded with each media) -->
 	<xsl:template name="rights-dc">
-		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward( ('crm:P104_is_subject_to', 'rdf:value') ))" />
+		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward('crm:P104_is_subject_to'))" />
+		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( ('crm:P104_is_subject_to', 'rdf:value') ))" />
 	</xsl:template>
 
 	<!-- TODO: separate into named templates the rendering of representation-level and digital-file-level, 
@@ -448,6 +449,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						</string>
 						<xsl:copy-of select="xmljson:render-as-string('identifier', .)" />
 						<xsl:copy-of select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
+						<!-- embed record-level rights next to each media (as that's what it refers to) -->
+						<xsl:call-template name="rights-dc" />
 						<!-- digital media files for this representation -->
 						<xsl:variable name="value2"
 							select="path:forward(., 'crm:P138i_has_representation')" />
