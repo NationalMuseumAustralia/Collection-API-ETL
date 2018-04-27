@@ -50,7 +50,11 @@
 	<x:scenario label="Convert collection">
 		<x:call template="collection-dc" />
 		<x:expect label="should return xpath:string collection">
-			<xpath:string key="collection">Ruth Oldfield collection</xpath:string>
+			<map key="collection" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string key="id">3952</string>
+				<string key="type">collection</string>
+				<string key="title">Ruth Oldfield collection</string>
+			</map>
 		</x:expect>
 	</x:scenario>
 
@@ -139,6 +143,7 @@
 					<string key="title">...</string>
 					<string key="roleName">Place made</string>
 					<string key="interactionType">Production</string>
+					<string key="location">-33.85,151.2</string>
 				</map>
 			</array>
 		</x:expect>
@@ -150,7 +155,7 @@
 			<array key="temporal" xmlns="http://www.w3.org/2005/xpath-functions">
 				<map>
 					<string key="type">Event</string>
-					<string key="title">14/12/1928</string>
+					<string key="title">1928-12-14</string>
 					<string key="roleName">Date of production</string>
 					<string key="interactionType">Production</string>
 				</map>
@@ -158,12 +163,11 @@
 		</x:expect>
 	</x:scenario>
 
-	<!-- TODO: 'contributor-dc' template works in ETL but only outputs 'roleName' during 
-		XSpec tests -->
+	<!-- TODO: 'contributor-dc' template works in ETL but is empty during XSpec tests -->
 	<x:pending label="Problem in test output, needs investigation">
-		<x:scenario label="Convert associated parties">
-			<x:call template="contributor-dc" />
-			<x:expect label="should return xpath:array of contributor maps">
+	<x:scenario label="Convert associated parties">
+		<x:call template="contributor-dc" />
+		<x:expect label="should return xpath:array of contributor maps">
 				<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
 					<map>
 						<string key="id">10310</string>
@@ -178,12 +182,6 @@
 						<string key="roleName">Cricketer</string>
 					</map>
 					<map>
-						<string key="id">1869</string>
-						<string key="type">Place</string>
-						<string key="title">...</string>
-						<string key="roleName">Place of event</string>
-					</map>
-					<map>
 						<string key="id">12925</string>
 						<string key="type">Organisation</string>
 						<string key="title">English Cricket Team</string>
@@ -196,8 +194,8 @@
 						<string key="roleName">Associated organisation</string>
 					</map>
 				</array>
-			</x:expect>
-		</x:scenario>
+		</x:expect>
+	</x:scenario>
 	</x:pending>
 
 	<x:scenario label="Convert acknowledgement">
@@ -207,7 +205,10 @@
 
 	<x:scenario label="Convert rights">
 		<x:call template="rights-dc" />
-		<x:expect label="should return empty" />
+		<x:expect label="should return xpath:string rights and rightsTitle">
+			<string key="rights" xmlns="http://www.w3.org/2005/xpath-functions">https://creativecommons.org/publicdomain/mark/1.0/</string>
+			<string key="rightsTitle" xmlns="http://www.w3.org/2005/xpath-functions">Public Domain</string>
+		</x:expect>
 	</x:scenario>
 
 	<x:scenario label="Convert representations">
@@ -218,18 +219,12 @@
 					<string key="id">MA22991348</string>
 					<string key="type">StillImage</string>
 					<string key="identifier">...</string>
+					<string key="rights">https://creativecommons.org/publicdomain/mark/1.0/</string>
+					<string key="rightsTitle">Public Domain</string>
 					<array key="hasVersion">
 						<map>
 							<string key="type">StillImage</string>
-							<string key="identifier">...</string>
-						</map>
-						<map>
-							<string key="type">StillImage</string>
-							<string key="identifier">...</string>
-						</map>
-						<map>
-							<string key="type">StillImage</string>
-							<string key="version">large image</string>
+							<string key="version">...</string>
 							<string key="identifier">...</string>
 						</map>
 						<map>
@@ -243,24 +238,7 @@
 						</map>
 						<map>
 							<string key="type">StillImage</string>
-							<string key="version">thumbnail image</string>
-							<string key="identifier">...</string>
-						</map>
-					</array>
-				</map>
-				<map>
-					<string key="id">54112</string>
-					<string key="type">StillImage</string>
-					<string key="identifier">...</string>
-					<array key="hasVersion">
-						<map>
-							<string key="type">StillImage</string>
-							<string key="version">thumbnail image</string>
-							<string key="identifier">...</string>
-						</map>
-						<map>
-							<string key="type">StillImage</string>
-							<string key="version">preview image</string>
+							<string key="version">...</string>
 							<string key="identifier">...</string>
 						</map>
 					</array>
