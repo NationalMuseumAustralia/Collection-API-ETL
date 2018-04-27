@@ -63,9 +63,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<!-- PARTY FIELDS -->
 			<xsl:call-template name="full-name-dc" />
 			<xsl:call-template name="first-name-dc" />
-			<!-- TODO: add middle name -->
+			<xsl:call-template name="middle-name-dc" />
 			<xsl:call-template name="last-name-dc" />
-			<!-- TODO: add other names -->
+			<xsl:call-template name="other-name-dc" />
 			<xsl:call-template name="gender-dc" />
 
 			<!-- PLACE FIELDS -->
@@ -555,6 +555,17 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		)" />
 	</xsl:template>
 	
+	<!-- middle name -->
+	<xsl:template name="middle-name-dc">
+		<xsl:copy-of
+			select="xmljson:render-as-string('middleName', 
+			path:forward( ('crm:P1_is_identified_by', 'crm:P106_is_composed_of') )[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404654'
+			]
+			/path:forward(., 'rdf:value')
+		)" />
+	</xsl:template>
+
 	<!-- last name -->
 	<xsl:template name="last-name-dc">
 		<xsl:copy-of select="xmljson:render-as-string('familyName', 
@@ -563,6 +574,25 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 			/path:forward(., 'rdf:value')
 		)" />
+	</xsl:template>
+
+	<!-- other names -->
+	<xsl:template name="other-name-dc">
+		<xsl:variable name="value"
+			select="
+			path:forward( ('crm:P1_is_identified_by', 'crm:P106_is_composed_of') )[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404654'
+			]
+			/path:forward(., 'rdf:value')
+		" />
+		<xsl:if test="$value">
+			<array key="alternativeNames" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<!-- NB: no JSON string labels -->
+					<xsl:copy-of select="xmljson:render-as-string('', .)" />
+				</xsl:for-each>
+			</array>
+		</xsl:if>
 	</xsl:template>
 	
 	<!-- gender -->
