@@ -38,6 +38,15 @@
 			test="starts-with(xpath:string[@key='title']/text(), 'Cricket scene showing')" />
 	</x:scenario>
 
+	<x:scenario label="Convert record metadata">
+		<x:call template="record-metadata-dc" />
+		<x:expect label="should return xpath:map meta">
+			<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string key="hasFormat">http://collectionsearch.nma.gov.au/object/122751</string>
+			</map>
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert collection">
 		<x:call template="collection-dc" />
 		<x:expect label="should return xpath:string collection">
@@ -83,7 +92,8 @@
 
 	<x:scenario label="Convert physical description">
 		<x:call template="physical-description-dc" />
-		<x:expect label="should return xpath:string physicalDescription starting with specified text"
+		<x:expect
+			label="should return xpath:string physicalDescription starting with specified text"
 			test="starts-with(xpath:string[@key='physicalDescription']/text(), 'A black and white')" />
 	</x:scenario>
 
@@ -148,8 +158,8 @@
 		</x:expect>
 	</x:scenario>
 
-	<!-- TODO: 'contributor-dc' template works in ETL but only outputs 'roleName' 
-		during XSpec tests -->
+	<!-- TODO: 'contributor-dc' template works in ETL but only outputs 'roleName' during 
+		XSpec tests -->
 	<x:pending label="Problem in test output, needs investigation">
 		<x:scenario label="Convert associated parties">
 			<x:call template="contributor-dc" />

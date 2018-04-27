@@ -16,6 +16,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<xsl:param name="root-resource" /><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:variable name="api-base-uri" select="replace($root-resource, '(.*)/.*/[^#]*#.*', '$1')"/>
+	<xsl:variable name="collection-explorer-uri" select=" 'http://collectionsearch.nma.gov.au/' "/>
 
 	<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
 	<xsl:variable name="type" select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/>
@@ -78,6 +79,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="narrative-children-dc" />
 			<xsl:call-template name="narrative-objects-dc" />
 
+			<!-- COMMON FIELDS (footer) -->
+
+			<xsl:call-template name="record-metadata-dc" />
+
 		</map>
 	</xsl:template>
 	
@@ -106,6 +111,32 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<!-- duplicate organisation title into name field -->
 		<xsl:if test="$type='party'">
 			<xsl:copy-of select="xmljson:render-as-string('name', path:forward('rdfs:label'))" />
+		</xsl:if>
+	</xsl:template>
+
+	<!-- record metadata: modified, issued, collection explorer link -->
+	<xsl:template name="record-metadata-dc">
+		<xsl:if test="$type='object' or $type='narrative'">
+			<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
+				<!-- modified -->
+				<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:modified') )">
+					<string key='modified'><xsl:value-of select="." /></string>
+				</xsl:for-each>
+				<!-- web release -->
+				<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:issued') )">
+					<string key='issued'><xsl:value-of select="." /></string>
+				</xsl:for-each>
+				<!-- collection explorer link -->
+				<xsl:variable name="ceLink">
+					<xsl:value-of select="$collection-explorer-uri" />
+					<xsl:choose>
+						<xsl:when test="$type='object'"><xsl:text>object/</xsl:text></xsl:when>
+						<xsl:when test="$type='narrative'"><xsl:text>set/</xsl:text></xsl:when>
+					</xsl:choose>
+					<xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(#)$', '$2')" />
+				</xsl:variable>
+				<string key='hasFormat'><xsl:value-of select="$ceLink" /></string>
+			</map>
 		</xsl:if>
 	</xsl:template>
 	

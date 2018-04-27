@@ -66,7 +66,8 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 		<xsl:variable name="iri-2" select="replace($iri-1, 'rdfs:', 'http://www.w3.org/2000/01/rdf-schema#')" />
 		<xsl:variable name="iri-3" select="replace($iri-2, 'crm:', 'http://www.cidoc-crm.org/cidoc-crm/')" />
 		<xsl:variable name="iri-4" select="replace($iri-3, 'ore:', 'http://www.openarchives.org/ore/terms/')" />
-		<xsl:value-of select="$iri-4" />
+		<xsl:variable name="iri-5" select="replace($iri-4, 'dc:', 'http://purl.org/dc/elements/1.1/')" />
+		<xsl:value-of select="$iri-5" />
 	</xsl:function>
 
 </xsl:stylesheet>
