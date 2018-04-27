@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../trix-description-to-dc.xsl">
+
+	<!-- load a media trix record into the global $graph variable -->
+	<x:import href="resources/trix-record-party-8343.xspec" />
+
+	<x:param name="root-resource" select=" 'http://nma-dev.conaltuohy.com/xproc-z/party/8343#' " />
+
+	<x:scenario label="Convert id">
+		<x:call template="id-dc" />
+		<x:expect label="should return xpath:string id">
+			<xpath:string key="id">8343</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type">
+		<x:call template="type-dc" />
+		<x:expect label="should return xpath:string type">
+			<xpath:string key="type">party</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert title">
+		<x:call template="title-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert full name">
+		<x:call template="full-name-dc" />
+		<x:expect label="should return xpath:string name">
+			<xpath:string key="name">Mrs Mary J. Cochrane</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert first name">
+		<x:call template="first-name-dc" />
+		<x:expect label="should return xpath:string first name">
+			<xpath:string key="givenName">Mary</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert middle name">
+		<x:call template="middle-name-dc" />
+		<x:expect label="should return xpath:string middle name">
+			<xpath:string key="middleName">Jane</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert last name">
+		<x:call template="last-name-dc" />
+		<x:expect label="should return xpath:string last name">
+			<xpath:string key="familyName">Cochrane</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert other name">
+		<x:call template="other-name-dc" />
+		<x:expect label="should return xpath:string other names">
+			<xpath:array key="alternativeNames">
+				<string>Miss Mary Jane Coughran</string>
+			</xpath:array>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert gender">
+		<x:call template="gender-dc" />
+		<x:expect label="should return xpath:string gender">
+			<xpath:string key="gender">Female</xpath:string>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

@@ -31,6 +31,8 @@ else
   run_test emu-to-crm-place
   run_test emu-to-crm-collection
   run_test trix-description-to-dc-object
+  run_test trix-description-to-dc-narrative
   run_test trix-description-to-dc-media
+  run_test trix-description-to-dc-party
   run_test trix-description-to-solr-object
 fi

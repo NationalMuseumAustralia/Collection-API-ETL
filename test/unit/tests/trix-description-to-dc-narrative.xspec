@@ -38,4 +38,13 @@
 			test="contains(xpath:string[@key='description']/text(), 'Wanydjarrpu')" />
 	</x:scenario>
 
+	<x:scenario label="Convert record metadata">
+		<x:call template="record-metadata-dc" />
+		<x:expect label="should return xpath:map meta">
+			<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string key="hasFormat">http://collectionsearch.nma.gov.au/set/3346</string>
+			</map>
+		</x:expect>
+	</x:scenario>
+
 </x:description>

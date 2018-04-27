@@ -26,6 +26,7 @@ CALL :runtest emu-to-crm-collection
 CALL :runtest trix-description-to-dc-object
 CALL :runtest trix-description-to-dc-narrative
 CALL :runtest trix-description-to-dc-media
+CALL :runtest trix-description-to-dc-party
 CALL :runtest trix-description-to-solr-object
 
 :end
