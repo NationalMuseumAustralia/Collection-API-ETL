@@ -17,6 +17,9 @@ WHERE {
 	ore:aggregates |
 	ore:aggregates/crm:P138i_has_representation |
 	ore:aggregates/crm:P138i_has_representation/crm:P2_has_type |
+  	# documents which describe the aggregated objects
+  	ore:aggregates/crm:P129i_is_subject_of |
+	ore:aggregates/crm:P129i_is_subject_of/crm:P2_has_type |
 	# metadata about the source record
 	crm:P70i_is_documented_in
 	?resource
