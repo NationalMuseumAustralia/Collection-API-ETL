@@ -754,12 +754,12 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751</uri>
-				<uri>http://purl.org/dc/elements/1.1/issued</uri>
+				<uri>http://purl.org/dc/terms/issued</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2007-06-07</typedLiteral>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751</uri>
-				<uri>http://purl.org/dc/elements/1.1/modified</uri>
+				<uri>http://purl.org/dc/terms/modified</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2018-04-05</typedLiteral>
 			</triple>
 			<triple>

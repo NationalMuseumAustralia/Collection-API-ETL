@@ -4,7 +4,7 @@
 	xmlns:aat="http://vocab.getty.edu/aat/" 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
 	xmlns:ore="http://www.openarchives.org/ore/terms/"
-	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:dc="http://purl.org/dc/terms/"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
 	xmlns:uri="tag:conaltuohy.com,2018:nma/uri-utility">

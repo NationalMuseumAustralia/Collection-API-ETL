@@ -392,7 +392,7 @@
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346</uri>
-         <uri>http://purl.org/dc/elements/1.1/modified</uri>
+         <uri>http://purl.org/dc/terms/modified</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2018-03-21</typedLiteral>
       </triple>
       <triple>
@@ -1572,7 +1572,7 @@
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#text</uri>
-         <uri>http://purl.org/dc/elements/1.1/format</uri>
+         <uri>http://purl.org/dc/terms/format</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">text/html</typedLiteral>
       </triple>
       <triple>

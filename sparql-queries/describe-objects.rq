@@ -1,5 +1,5 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dc: <http://purl.org/dc/terms/>
 DESCRIBE «resource-uri» ?resource
 WHERE {
 	«resource-uri»

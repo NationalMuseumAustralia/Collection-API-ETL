@@ -1362,12 +1362,12 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620</uri>
-         <uri>http://purl.org/dc/elements/1.1/issued</uri>
+         <uri>http://purl.org/dc/terms/issued</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2011-03-02</typedLiteral>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620</uri>
-         <uri>http://purl.org/dc/elements/1.1/modified</uri>
+         <uri>http://purl.org/dc/terms/modified</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2018-03-18</typedLiteral>
       </triple>
       <triple>
