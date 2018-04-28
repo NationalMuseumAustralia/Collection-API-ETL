@@ -678,7 +678,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 				<xsl:for-each select="$value">
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
 						<!-- id -->
-						<xsl:copy-of select="xmljson:render-as-string('id', .)" />
+						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
 						<string key='type'><xsl:text>narrative</xsl:text></string>
 						<!-- title -->
@@ -701,7 +701,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 				<xsl:for-each select="$value">
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
 						<!-- id -->
-						<xsl:copy-of select="xmljson:render-as-string('id', .)" />
+						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
 						<string key='type'><xsl:text>narrative</xsl:text></string>
 						<!-- title -->
@@ -724,7 +724,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 				<xsl:for-each select="$value">
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
 						<!-- id -->
-						<xsl:copy-of select="xmljson:render-as-string('id', .)" />
+						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
 						<string key='type'><xsl:text>object</xsl:text></string>
 						<!-- title -->

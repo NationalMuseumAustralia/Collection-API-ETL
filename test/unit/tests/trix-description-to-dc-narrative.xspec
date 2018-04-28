@@ -32,12 +32,6 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert text">
-		<x:call template="narrative-text-dc" />
-		<x:expect label="should return xpath:string description containing specified text"
-			test="contains(xpath:string[@key='description']/text(), 'Wanydjarrpu')" />
-	</x:scenario>
-
 	<x:scenario label="Convert record metadata">
 		<x:call template="record-metadata-dc" />
 		<x:expect label="should return xpath:map meta">
@@ -45,6 +39,68 @@
 				<string key="modified">2018-03-21</string>
 				<string key="hasFormat">http://collectionsearch.nma.gov.au/set/3346</string>
 			</map>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert text">
+		<x:call template="narrative-text-dc" />
+		<x:expect label="should return xpath:string description containing specified text"
+			test="contains(xpath:string[@key='description']/text(), 'Wanydjarrpu')" />
+	</x:scenario>
+
+	<x:scenario label="Convert parent narrative">
+		<x:call template="narrative-parent-dc" />
+		<x:expect label="should return xpath:array isPartOf">
+			<xpath:array key="isPartOf">
+				<xpath:map>
+					<xpath:string key="id">3314</xpath:string>
+					<xpath:string key="type">narrative</xpath:string>
+					<xpath:string key="title">Plants</xpath:string>
+				</xpath:map>
+			</xpath:array>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert children narratives">
+		<x:call template="narrative-children-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert narrative objects">
+		<x:call template="narrative-objects-dc" />
+		<x:expect label="should return xpath:array aggregates">
+			<xpath:array key="aggregates">
+				<xpath:map>
+					<xpath:string key="id">241494</xpath:string>
+					<xpath:string key="type">object</xpath:string>
+					<xpath:string key="title">...</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="id">241465</xpath:string>
+					<xpath:string key="type">object</xpath:string>
+					<xpath:string key="title">...</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="id">241466</xpath:string>
+					<xpath:string key="type">object</xpath:string>
+					<xpath:string key="title">...</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="id">241493</xpath:string>
+					<xpath:string key="type">object</xpath:string>
+					<xpath:string key="title">...</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="id">241451</xpath:string>
+					<xpath:string key="type">object</xpath:string>
+					<xpath:string key="title">...</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="id">241464</xpath:string>
+					<xpath:string key="type">object</xpath:string>
+					<xpath:string key="title">...</xpath:string>
+				</xpath:map>
+			</xpath:array>
 		</x:expect>
 	</x:scenario>
 

@@ -3,7 +3,8 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
-	xmlns:la="https://linked.art/ns/terms/" stylesheet="../../../emu-to-crm.xsl">
+	xmlns:la="https://linked.art/ns/terms/" xmlns:ore="http://www.openarchives.org/ore/terms/"
+	xmlns:dc="http://purl.org/dc/terms/" stylesheet="../../../emu-to-crm.xsl">
 
 	<!-- NARRATIVE FIELDS -->
 
@@ -13,6 +14,162 @@
 		</x:context>
 		<x:expect label="should return rdfs:label">
 			<rdfs:label>Wanydjarrpu</rdfs:label>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert narrative type">
+		<x:context>
+			<DesType_tab>
+				<DesType>Web Highlight</DesType>
+				<DesType>Home page</DesType>
+			</DesType_tab>
+		</x:context>
+		<x:expect label="should return crm:P2_has_type">
+			<crm:P2_has_type>
+				<crm:E55_Type>
+					<rdfs:label>Web Highlight</rdfs:label>
+				</crm:E55_Type>
+			</crm:P2_has_type>
+			<crm:P2_has_type>
+				<crm:E55_Type>
+					<rdfs:label>Home page</rdfs:label>
+				</crm:E55_Type>
+			</crm:P2_has_type>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert intended audience">
+		<x:context>
+			<DesIntendedAudience_tab>
+				<DesIntendedAudience>Collection Explorer Publish</DesIntendedAudience>
+			</DesIntendedAudience_tab>
+		</x:context>
+		<x:expect label="should return crm:P2_has_type">
+			<crm:P2_has_type>
+				<crm:E55_Type>
+					<rdfs:label>Collection Explorer Publish</rdfs:label>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300192793" />
+				</crm:E55_Type>
+			</crm:P2_has_type>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert narrative text">
+		<x:context>
+			<NarNarrative>Wanydjarrpu (Yolngu name) belongs to the Dhuwa moiety.
+			</NarNarrative>
+		</x:context>
+		<x:expect label="should return ore:aggregates">
+			<ore:aggregates>
+				<crm:E33_Linguistic_Object rdf:about="#text">
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300263751" />
+					<rdf:value>...</rdf:value>
+					<dc:format>text/html</dc:format>
+				</crm:E33_Linguistic_Object>
+			</ore:aggregates>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert narrative media">
+		<x:context>
+			<MulMultiMediaRef_tab>
+				<image>
+					<banner_small>139/150/oldmasters700x300.jpg</banner_small>
+					<banner_large>139/151/oldmasters1600x200.jpg</banner_large>
+				</image>
+			</MulMultiMediaRef_tab>
+		</x:context>
+		<x:expect label="should return ore:aggregates">
+			<ore:aggregates>
+				<crm:E36_Visual_Item>
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/banner-image" />
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item
+							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/139/150/oldmasters700x300.jpg">
+							<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/small-banner-image" />
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+					<crm:P138i_has_representation>
+						<crm:E36_Visual_Item
+							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/139/151/oldmasters1600x200.jpg">
+							<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/large-banner-image" />
+						</crm:E36_Visual_Item>
+					</crm:P138i_has_representation>
+				</crm:E36_Visual_Item>
+			</ore:aggregates>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert sub narratives">
+		<x:context>
+			<SubNarratives>
+				<SubNarrative>
+					<SubNarrative.irn>1762</SubNarrative.irn>
+					<SubNarrative.title>Figures in the landscape</SubNarrative.title>
+				</SubNarrative>
+				<SubNarrative>
+					<SubNarrative.irn>1763</SubNarrative.irn>
+					<SubNarrative.title>Dynamic figures</SubNarrative.title>
+				</SubNarrative>
+			</SubNarratives>
+		</x:context>
+		<x:expect label="should return 2x ore:aggregates">
+			<ore:aggregates>
+				<rdf:Description rdf:about="narrative/1762#">
+					<ore:isAggregatedBy rdf:resource="#" />
+				</rdf:Description>
+			</ore:aggregates>
+			<ore:aggregates>
+				<rdf:Description rdf:about="narrative/1763#">
+					<ore:isAggregatedBy rdf:resource="#" />
+				</rdf:Description>
+			</ore:aggregates>
+
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert narrative objects">
+		<x:context>
+			<ObjObjectsRef_tab>
+				<ObjObjectsRef>
+					<irn>241493</irn>
+					<AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+					<AcsAPI_tab>
+						<AcsAPI>Internal</AcsAPI>
+						<AcsAPI>Public</AcsAPI>
+					</AcsAPI_tab>
+				</ObjObjectsRef>
+				<ObjObjectsRef>
+					<irn>241494</irn>
+					<AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+					<AcsAPI_tab>
+						<AcsAPI>Public</AcsAPI>
+						<AcsAPI>Public Restricted</AcsAPI>
+					</AcsAPI_tab>
+				</ObjObjectsRef>
+				<ObjObjectsRef>
+					<irn>241466</irn>
+					<AdmPublishWebNoPassword>Yes</AdmPublishWebNoPassword>
+				</ObjObjectsRef>
+			</ObjObjectsRef_tab>
+		</x:context>
+		<x:expect label="should return ore:aggregates">
+			<ore:aggregates>
+				<rdf:Description rdf:about="object/241493#">
+					<ore:isAggregatedBy rdf:resource="#" />
+				</rdf:Description>
+			</ore:aggregates>
+			<ore:aggregates>
+				<rdf:Description rdf:about="object/241494#">
+					<ore:isAggregatedBy rdf:resource="#" />
+				</rdf:Description>
+			</ore:aggregates>
+			<ore:aggregates>
+				<rdf:Description rdf:about="object/241466#">
+					<ore:isAggregatedBy rdf:resource="#" />
+				</rdf:Description>
+			</ore:aggregates>
 		</x:expect>
 	</x:scenario>
 

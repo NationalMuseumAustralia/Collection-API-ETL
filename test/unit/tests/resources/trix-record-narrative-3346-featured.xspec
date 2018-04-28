@@ -3,71 +3,238 @@
 	<x:variable name="graph">
 		<graph xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 			<triple>
-				<id>8e7b1e7d86f864266a3e04fefd5c4687</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
 			</triple>
 			<triple>
-				<id>8e7b1e7d86f864266a3e04fefd5c4687</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-096-wm-vs1_o3.jpg
+				</uri>
 			</triple>
 			<triple>
-				<id>8e7b1e7d86f864266a3e04fefd5c4687</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-096-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-096-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-096-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<id>b47443abc1cad3d7bc0da7fea43bc59b</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
 			</triple>
 			<triple>
-				<id>8e7b1e7d86f864266a3e04fefd5c4687</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60785888#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60785888#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-082-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60785888#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-082-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60785888#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-082-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60785888#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-082-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60785888#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60785888#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<id>38ccc2bbde3ae93c0cbe8d8b8b8a2045</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
+			</triple>
+			<triple>
+				<id>ce7cee22ab6ea61106b3b88253959755</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
+			</triple>
+			<triple>
+				<id>ce7cee22ab6ea61106b3b88253959755</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
+			</triple>
+			<triple>
+				<id>ce7cee22ab6ea61106b3b88253959755</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>b7d9823c07767a0714b985b2b8c4cf26</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
+			</triple>
+			<triple>
+				<id>b7d9823c07767a0714b985b2b8c4cf26</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
+			</triple>
+			<triple>
+				<id>b7d9823c07767a0714b985b2b8c4cf26</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
+			</triple>
+			<triple>
+				<id>b7d9823c07767a0714b985b2b8c4cf26</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
 			</triple>
 			<triple>
-				<id>8f5c4d5dbcc234d0801ec4e9c63907d0</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-099-wm-vs1_o3.jpg
 				</uri>
 			</triple>
 			<triple>
-				<id>8f5c4d5dbcc234d0801ec4e9c63907d0</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-099-wm-vs1_o2.jpg
+				</uri>
 			</triple>
 			<triple>
-				<id>8f5c4d5dbcc234d0801ec4e9c63907d0</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-099-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-099-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<id>1a9aaca72e51825c10b5b81412161a2a</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
+			</triple>
+			<triple>
+				<id>1a9aaca72e51825c10b5b81412161a2a</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
+			</triple>
+			<triple>
+				<id>1a9aaca72e51825c10b5b81412161a2a</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
-				<id>9fa5715cfd63c74a06c5dcebc2586f7a</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-				<id>8e7b1e7d86f864266a3e04fefd5c4687</id>
+				<uri>http://collectionsearch.nma.gov.au/object/241451</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
 			</triple>
 			<triple>
-				<id>9fa5715cfd63c74a06c5dcebc2586f7a</id>
+				<uri>http://collectionsearch.nma.gov.au/object/241451</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer
+				</typedLiteral>
 			</triple>
 			<triple>
-				<id>9fa5715cfd63c74a06c5dcebc2586f7a</id>
+				<uri>http://collectionsearch.nma.gov.au/object/241451</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>c21a43949e0dfabbc3f348a0a4b59147</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
+			</triple>
+			<triple>
+				<id>2da0ed5d6b05792235bfa7e9612bfa94</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+				<id>9688443ccf9c98986a7f542056601cca</id>
+			</triple>
+			<triple>
+				<id>2da0ed5d6b05792235bfa7e9612bfa94</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date made</typedLiteral>
+			</triple>
+			<triple>
+				<id>2da0ed5d6b05792235bfa7e9612bfa94</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
-				<id>fb636a32e77711c667df9ee518777156</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
-				</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241464</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
 			</triple>
 			<triple>
-				<id>fb636a32e77711c667df9ee518777156</id>
+				<uri>http://collectionsearch.nma.gov.au/object/241464</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer
+				</typedLiteral>
 			</triple>
 			<triple>
-				<id>fb636a32e77711c667df9ee518777156</id>
+				<uri>http://collectionsearch.nma.gov.au/object/241464</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
+				<id>3ee32eabba7313fce1a3f7be4199b387</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
@@ -104,11 +271,6 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>73b1c383cfbb5f3bc6e2cdffc31b388e</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#width</uri>
 			</triple>
@@ -125,13 +287,23 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>cd4dd9424df7b054f9f8d69d788cc39e</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241494</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
 				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
-				<id>cd93af99f67bf094f3a7aed5b1856a33</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<id>8470df354069f8b51b1329e26fcf2bbc</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
@@ -140,25 +312,14 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>6999287e42177e58413e8655ddf8c0d9</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#depth</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>8f5c4d5dbcc234d0801ec4e9c63907d0</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">'Wanydjarrpu', bark painting, native
-					plant species
-				</typedLiteral>
+					plant species</typedLiteral>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
@@ -168,13 +329,18 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>7ac6ecb6207b2efb2acfaac55e4f0625</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>227c8aec028551e496e6df5a11701924</id>
+				<id>b7eb7b0d351f290d806591daeb075b75</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
@@ -183,105 +349,319 @@
 				</uri>
 			</triple>
 			<triple>
-				<id>3cb89568fc1a7763b804b247a3924880</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
-			</triple>
-			<triple>
-				<id>3cb89568fc1a7763b804b247a3924880</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
-			</triple>
-			<triple>
-				<id>3cb89568fc1a7763b804b247a3924880</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
-			</triple>
-			<triple>
-				<id>227fa548929c7d180aa074ba8a630eec</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
-			</triple>
-			<triple>
-				<id>227fa548929c7d180aa074ba8a630eec</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
-			</triple>
-			<triple>
-				<id>227fa548929c7d180aa074ba8a630eec</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>fba6b071b3436c6a58e77074e6178731</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
-			</triple>
-			<triple>
-				<id>fba6b071b3436c6a58e77074e6178731</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
-			</triple>
-			<triple>
-				<id>fba6b071b3436c6a58e77074e6178731</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>fa88cdc4c4619fe4423560fece6e4b1d</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
-			</triple>
-			<triple>
-				<id>a9852da1ff854f4ca030db2b3fc984a4</id>
+				<id>f650af47c918f4fe1ee98b60786049a3</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
 				<uri>http://vocab.getty.edu/aat/300192793</uri>
 			</triple>
 			<triple>
-				<id>a9852da1ff854f4ca030db2b3fc984a4</id>
+				<id>f650af47c918f4fe1ee98b60786049a3</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Collection Explorer publish
 				</typedLiteral>
 			</triple>
 			<triple>
-				<id>a9852da1ff854f4ca030db2b3fc984a4</id>
+				<id>f650af47c918f4fe1ee98b60786049a3</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>779ce9f5ca8e81bf4f81fe7fdcc34771</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">A botanical painting in natural pigments
+					and ochres on eucalyptus stringy bark, depicting the native plant species
+					'Wanydjarrpu'. The painting features a crosshatch design in white, ochre
+					yellow and red with a yellow border. There are two predominant tuber like
+					forms painted in white. On the reverse of the bark, the number '4724 U' is
+					handwritten in black ink, and there is a 'BUKU-LARRNGAY MULKA' adhesive
+					label attached, including the artist's name and other details.
+				</typedLiteral>
 			</triple>
 			<triple>
-				<id>779ce9f5ca8e81bf4f81fe7fdcc34771</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
 			</triple>
 			<triple>
-				<id>779ce9f5ca8e81bf4f81fe7fdcc34771</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#physicalDescription
+				</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
 			</triple>
 			<triple>
-				<id>cd4f8b25a36a3f10ca9e533238464599</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">description</typedLiteral>
 			</triple>
 			<triple>
-				<id>f31e05db3a39c91969af848bb13cfcb0</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-188-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-188-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-188-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-188-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">significance assessment (survey)
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+			</triple>
+			<triple>
+				<id>0aedb0ab88d689bc544fba70e8747790</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
 			</triple>
 			<triple>
-				<id>f31e05db3a39c91969af848bb13cfcb0</id>
+				<id>0aedb0ab88d689bc544fba70e8747790</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
 			</triple>
 			<triple>
-				<id>f31e05db3a39c91969af848bb13cfcb0</id>
+				<id>0aedb0ab88d689bc544fba70e8747790</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>32f2dd5d38a451a09260c99239ee7ddf</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">No date provided</typedLiteral>
+			</triple>
+			<triple>
+				<id>32f2dd5d38a451a09260c99239ee7ddf</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<id>32f2dd5d38a451a09260c99239ee7ddf</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>b63807783f42660df51e1c212ee3292a</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
+			</triple>
+			<triple>
+				<id>b63807783f42660df51e1c212ee3292a</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
+			</triple>
+			<triple>
+				<id>b63807783f42660df51e1c212ee3292a</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>088c3a287124aaf9c94bc295e7a46942</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+				<id>c233c2f8524424ba07dcc4e7ff1b7995</id>
+			</triple>
+			<triple>
+				<id>088c3a287124aaf9c94bc295e7a46942</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<id>32f2dd5d38a451a09260c99239ee7ddf</id>
+			</triple>
+			<triple>
+				<id>088c3a287124aaf9c94bc295e7a46942</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+			</triple>
+			<triple>
+				<id>088c3a287124aaf9c94bc295e7a46942</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784802#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784802#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-187-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784802#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-187-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784802#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-187-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784802#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-187-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784802#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784802#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333001#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333001#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Photography/nma-56073968-003-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333001#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/Photography/nma-56073968-003-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333001#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/dams_ingest/Hot%20Folders/Photography/nma-56073968-003-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333001#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/dams_ingest/Hot%20Folders/Photography/nma-56073968-003-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333001#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333001#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The collection consists of nine
+					larrakitj, or painted hollow logs, and 113 bark paintings painted between
+					2011 and 2014 by Mulkun Wirrpanda, a senior female Yolngu artist at
+					Yirrkala in north east Arnhem Land. These works are a product of
+					Wirrpanda's interest in documenting the ecology of her country following
+					her participation in a joint project with non-Indigeous artists,
+					printmakers and academics, charting the country and yam supply at Blue Mud
+					Bay.
+
+					The works in this collection provide a unique visual record of Yolngu
+					knowledge of plants and food-bearing and medicinal species. Wirrpanda
+					depicts aspects of the plants' life cycle across numerous works, including
+					the gestational period through to fruiting and the interconnections between
+					the food source and the extensive freshwater flood plains and rivers,
+					beaches, sandhills, salt flats and estuaries in her Yolngu country.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>9d7de88e850b7b45f12bd15aa13c4d05</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
+				</uri>
+			</triple>
+			<triple>
+				<id>9d7de88e850b7b45f12bd15aa13c4d05</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
+			</triple>
+			<triple>
+				<id>9d7de88e850b7b45f12bd15aa13c4d05</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>0e9644cb7a9b0b0a208f6f917d3aae65</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>24b15792318bc7639a316963612a18b4</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
@@ -293,11 +673,6 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/7682#</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>9e15600ea0b232eaf5df39b880e5daa9</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
@@ -313,17 +688,12 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>c9469d7956fabdb9dbafba80535c02cf</id>
+				<id>0cbaf30aeb131e22754357a33cc00076</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>d8b8666ba9b2e435fbe61b6549a1b5f8</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
@@ -333,14 +703,18 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>8695df8a80d63dcfe4cce6c80087f50e</id>
+				<id>c21a43949e0dfabbc3f348a0a4b59147</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241464</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">'Wanydjarrpu', bark painting, native
-					plant species
-				</typedLiteral>
+					plant species</typedLiteral>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
@@ -356,6 +730,11 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>1a9aaca72e51825c10b5b81412161a2a</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
 			</triple>
@@ -367,11 +746,6 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
-				<id>eb7be527da3dff60b459d015d38c5cf6</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464</uri>
 			</triple>
@@ -379,6 +753,11 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
+				<id>3afc88e4db42c9c01d7a5fb443fa953c</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
@@ -397,19 +776,29 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#width</uri>
 			</triple>
 			<triple>
-				<id>28aed97fac24a397f42030ee07d146c3</id>
+				<id>cd4dd9424df7b054f9f8d69d788cc39e</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
 			</triple>
 			<triple>
-				<id>28aed97fac24a397f42030ee07d146c3</id>
+				<id>cd4dd9424df7b054f9f8d69d788cc39e</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
 			</triple>
 			<triple>
-				<id>28aed97fac24a397f42030ee07d146c3</id>
+				<id>cd4dd9424df7b054f9f8d69d788cc39e</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">significance</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346</uri>
@@ -422,49 +811,203 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E31_Document</uri>
 			</triple>
 			<triple>
-				<id>f755c10c923d5bfed2bad91e14c6fd0f</id>
+				<id>7ac6ecb6207b2efb2acfaac55e4f0625</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
+				</uri>
 			</triple>
 			<triple>
-				<id>f755c10c923d5bfed2bad91e14c6fd0f</id>
+				<id>7ac6ecb6207b2efb2acfaac55e4f0625</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
 			</triple>
 			<triple>
-				<id>f755c10c923d5bfed2bad91e14c6fd0f</id>
+				<id>7ac6ecb6207b2efb2acfaac55e4f0625</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
-				<id>5bbf4433e5b9b61a74105b9a619bb541</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
+				<id>77e991ef052495ac0f02a3af3b5fd208</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>088c3a287124aaf9c94bc295e7a46942</id>
 			</triple>
 			<triple>
-				<id>5bbf4433e5b9b61a74105b9a619bb541</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
+				<id>77e991ef052495ac0f02a3af3b5fd208</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>592122ebd5def625732218204b2fe001</id>
 			</triple>
 			<triple>
-				<id>5bbf4433e5b9b61a74105b9a619bb541</id>
+				<id>77e991ef052495ac0f02a3af3b5fd208</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>31199045dbdc78e276de38d4a7c1ea64</id>
+			</triple>
+			<triple>
+				<id>77e991ef052495ac0f02a3af3b5fd208</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
 			</triple>
 			<triple>
-				<id>6999287e42177e58413e8655ddf8c0d9</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-161-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-161-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-161-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-161-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<id>5281070f6cd08139f4c04392a2226379</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
+				</uri>
+			</triple>
+			<triple>
+				<id>5281070f6cd08139f4c04392a2226379</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
+			</triple>
+			<triple>
+				<id>5281070f6cd08139f4c04392a2226379</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The collection consists of nine
+					larrakitj, or painted hollow logs, and 113 bark paintings painted between
+					2011 and 2014 by Mulkun Wirrpanda, a senior female Yolngu artist at
+					Yirrkala in north east Arnhem Land. These works are a product of
+					Wirrpanda's interest in documenting the ecology of her country following
+					her participation in a joint project with non-Indigeous artists,
+					printmakers and academics, charting the country and yam supply at Blue Mud
+					Bay.
+
+					The works in this collection provide a unique visual record of Yolngu
+					knowledge of plants and food-bearing and medicinal species. Wirrpanda
+					depicts aspects of the plants' life cycle across numerous works, including
+					the gestational period through to fruiting and the interconnections between
+					the food source and the extensive freshwater flood plains and rivers,
+					beaches, sandhills, salt flats and estuaries in her Yolngu country.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-162-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-162-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-162-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-162-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796662#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<id>52ec620542563e3ecd78334cc7269002</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
 			</triple>
 			<triple>
-				<id>6999287e42177e58413e8655ddf8c0d9</id>
+				<id>52ec620542563e3ecd78334cc7269002</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
 			</triple>
 			<triple>
-				<id>6999287e42177e58413e8655ddf8c0d9</id>
+				<id>52ec620542563e3ecd78334cc7269002</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>58eaabfad8fb8e1fc71013a317835f44</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
+			</triple>
+			<triple>
+				<id>58eaabfad8fb8e1fc71013a317835f44</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
+			</triple>
+			<triple>
+				<id>58eaabfad8fb8e1fc71013a317835f44</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
@@ -473,28 +1016,28 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>e065d719af855aaa579380094e2ebf33</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
 				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
-				<id>9a78c561f3abe1785b838f8ca005d7c6</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241466</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>81b1625438da1b01f6cf28c64ec6ed38</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
+				<id>66edf99487ea2d9b25c37d735451d3ef</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>796bff8cdec3f9447d15b3a4603f05ba</id>
+				<id>b47443abc1cad3d7bc0da7fea43bc59b</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>37cce77b1e69bde87ac6f82d7266b520</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
@@ -514,14 +1057,14 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#contentDescription
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#repositorynumber
 				</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#repositorynumber
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#contentDescription
 				</uri>
 			</triple>
 			<triple>
@@ -533,8 +1076,12 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string"> 'Wanydjarrpu', bark painting, native
-					plant species
-				</typedLiteral>
+					plant species</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>ce7cee22ab6ea61106b3b88253959755</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
@@ -555,13 +1102,13 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>b63807783f42660df51e1c212ee3292a</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>069342bd4f5207b3108627a60d852634</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60797662#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#</uri>
@@ -580,6 +1127,22 @@
 				</uri>
 			</triple>
 			<triple>
+				<id>262c75b652ea2b7568b3fa6862087e50</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
+				</uri>
+			</triple>
+			<triple>
+				<id>262c75b652ea2b7568b3fa6862087e50</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
+			</triple>
+			<triple>
+				<id>262c75b652ea2b7568b3fa6862087e50</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
 				<uri>http://vocab.getty.edu/aat/300404621</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">repository number</typedLiteral>
@@ -590,171 +1153,550 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>e065d719af855aaa579380094e2ebf33</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
-			</triple>
-			<triple>
-				<id>e065d719af855aaa579380094e2ebf33</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
-			</triple>
-			<triple>
-				<id>e065d719af855aaa579380094e2ebf33</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
-			</triple>
-			<triple>
-				<id>db3372068b3deb6b7da9178ab05af08c</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
-			</triple>
-			<triple>
-				<id>db3372068b3deb6b7da9178ab05af08c</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
-			</triple>
-			<triple>
-				<id>db3372068b3deb6b7da9178ab05af08c</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>227c8aec028551e496e6df5a11701924</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
-			</triple>
-			<triple>
-				<id>227c8aec028551e496e6df5a11701924</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
-			</triple>
-			<triple>
-				<id>227c8aec028551e496e6df5a11701924</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
-			</triple>
-			<triple>
-				<id>f8431a807599b865e5f37f8804636a94</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300192793</uri>
-			</triple>
-			<triple>
-				<id>f8431a807599b865e5f37f8804636a94</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Collection Explorer publish
-				</typedLiteral>
-			</triple>
-			<triple>
-				<id>f8431a807599b865e5f37f8804636a94</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
-			</triple>
-			<triple>
-				<id>eb7be527da3dff60b459d015d38c5cf6</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>02d916b315b64724b5b5175a036a775d</id>
-			</triple>
-			<triple>
-				<id>eb7be527da3dff60b459d015d38c5cf6</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>d307f29c218233fb77957a7ff1f43ef6</id>
-			</triple>
-			<triple>
-				<id>eb7be527da3dff60b459d015d38c5cf6</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>d0eba094f4c4a544c64fe1028d545a88</id>
-			</triple>
-			<triple>
-				<id>eb7be527da3dff60b459d015d38c5cf6</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
-			</triple>
-			<triple>
-				<id>f3040e221a432c5c7c24de8d173a1e7b</id>
+				<id>c9957bc0e43c721773c9f6a47e75fb12</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
 			</triple>
 			<triple>
-				<id>f3040e221a432c5c7c24de8d173a1e7b</id>
+				<id>c9957bc0e43c721773c9f6a47e75fb12</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
 			</triple>
 			<triple>
-				<id>f3040e221a432c5c7c24de8d173a1e7b</id>
+				<id>c9957bc0e43c721773c9f6a47e75fb12</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
-				<id>101b350e33b75db590a84356ad14bed3</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The collection consists of nine
+					larrakitj, or painted hollow logs, and 113 bark paintings painted between
+					2011 and 2014 by Mulkun Wirrpanda, a senior female Yolngu artist at
+					Yirrkala in north east Arnhem Land. These works are a product of
+					Wirrpanda's interest in documenting the ecology of her country following
+					her participation in a joint project with non-Indigeous artists,
+					printmakers and academics, charting the country and yam supply at Blue Mud
+					Bay.
+
+					The works in this collection provide a unique visual record of Yolngu
+					knowledge of plants and food-bearing and medicinal species. Wirrpanda
+					depicts aspects of the plants' life cycle across numerous works, including
+					the gestational period through to fruiting and the interconnections between
+					the food source and the extensive freshwater flood plains and rivers,
+					beaches, sandhills, salt flats and estuaries in her Yolngu country.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>8470df354069f8b51b1329e26fcf2bbc</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796409#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796409#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-100-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796409#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-100-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796409#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-100-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796409#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-100-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796409#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60796409#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60789883#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60789883#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-081-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60789883#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-081-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60789883#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-081-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60789883#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-081-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60789883#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60789883#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">A botanical painting in natural pigments
+					and ochres on eucalyptus stringy bark, depicting the native plant species
+					'WANYDJARRPU'. The painting features three plant forms, one at the bottom
+					and two at the top, in yellow-ochre and white detailing. The stems of each
+					plant are crosshatched while the leaves are outlined in white. The
+					background is crosshatched in white, red-brown and yellow-ochre. The
+					painting is bordered with a thick yellow-ochre line followed by
+					crosshatching in white, red-brown and yellow-ochre then lines of white and
+					yellow-ochre. On the reverse of the bark, the number '4724V' is handwritten
+					in black ink, and there is a 'BUKU-LARRNGAY MULKA' adhesive label attached,
+					including the artist's name and other details.</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wanydjarrpu (Yolngu name)
+					Austrodolichos errabundus (Scott) Verdc. (Latin name)
+					Austrodolichos (Common name)
+					This plant belongs to the Dhuwa moiety
+
+					Botanical information about this plant:
+					Commonly found from the western side of Cape York to western Arnhem Land on well
+					drained soils in Eucalypt savanna.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wanydjarrpu (Yolngu name)
+					Austrodolichos errabundus (Scott) Verdc. (Latin name)
+					Austrodolichos (Common name)
+					This plant belongs to the Dhuwa moiety
+
+					Botanical information about this plant:
+					Commonly found from the western side of Cape York to western Arnhem Land on well
+					drained soils in Eucalypt savanna.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>4b1dad19101c17e8b27f5b906995a2cb</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
+			</triple>
+			<triple>
+				<id>4b1dad19101c17e8b27f5b906995a2cb</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
+			</triple>
+			<triple>
+				<id>4b1dad19101c17e8b27f5b906995a2cb</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<id>74162c98ca4431a5c31934e7aabfbad6</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
+			</triple>
+			<triple>
+				<id>74162c98ca4431a5c31934e7aabfbad6</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
+			</triple>
+			<triple>
+				<id>74162c98ca4431a5c31934e7aabfbad6</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784532#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784532#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/WM_56073968/nma-56073968-095-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784532#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/WM_56073968/nma-56073968-095-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784532#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-095-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784532#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/DAMS_INGEST/JOBS/WM_56073968/nma-56073968-095-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784532#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60784532#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<id>3afc88e4db42c9c01d7a5fb443fa953c</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>48d13ad8f037d9ca375b2a7414033d78</id>
+			</triple>
+			<triple>
+				<id>3afc88e4db42c9c01d7a5fb443fa953c</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>37311f9d92ed04436f1c7924f6af834f</id>
+			</triple>
+			<triple>
+				<id>3afc88e4db42c9c01d7a5fb443fa953c</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>4b1dad19101c17e8b27f5b906995a2cb</id>
+			</triple>
+			<triple>
+				<id>3afc88e4db42c9c01d7a5fb443fa953c</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
+			</triple>
+			<triple>
+				<id>20067edaf6172cccd141f352439a3280</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
 			</triple>
 			<triple>
-				<id>101b350e33b75db590a84356ad14bed3</id>
+				<id>20067edaf6172cccd141f352439a3280</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
 			</triple>
 			<triple>
-				<id>101b350e33b75db590a84356ad14bed3</id>
+				<id>20067edaf6172cccd141f352439a3280</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
-				<id>e6d1a073d146a08ec4148078e99e2dbc</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
-			</triple>
-			<triple>
-				<id>e6d1a073d146a08ec4148078e99e2dbc</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
-			</triple>
-			<triple>
-				<id>e6d1a073d146a08ec4148078e99e2dbc</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
-			</triple>
-			<triple>
-				<id>e6d1a073d146a08ec4148078e99e2dbc</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
-			</triple>
-			<triple>
-				<id>9e15600ea0b232eaf5df39b880e5daa9</id>
+				<id>0cbaf30aeb131e22754357a33cc00076</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
 				</uri>
 			</triple>
 			<triple>
-				<id>9e15600ea0b232eaf5df39b880e5daa9</id>
+				<id>0cbaf30aeb131e22754357a33cc00076</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
 			</triple>
 			<triple>
-				<id>9e15600ea0b232eaf5df39b880e5daa9</id>
+				<id>0cbaf30aeb131e22754357a33cc00076</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
-				<id>a9c9bd9c062fe4e922c1e6a0c3ee8819</id>
+				<id>919cf08b9212728b0da0ba862de82c41</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300192793</uri>
+			</triple>
+			<triple>
+				<id>919cf08b9212728b0da0ba862de82c41</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Collection Explorer publish
+				</typedLiteral>
+			</triple>
+			<triple>
+				<id>919cf08b9212728b0da0ba862de82c41</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+			</triple>
+			<triple>
+				<id>37cce77b1e69bde87ac6f82d7266b520</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
+				</uri>
+			</triple>
+			<triple>
+				<id>37cce77b1e69bde87ac6f82d7266b520</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
+			</triple>
+			<triple>
+				<id>37cce77b1e69bde87ac6f82d7266b520</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>43ad24c8e67263336e629fcd9c0f457e</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
+			</triple>
+			<triple>
+				<id>43ad24c8e67263336e629fcd9c0f457e</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
+			</triple>
+			<triple>
+				<id>43ad24c8e67263336e629fcd9c0f457e</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wanydjarrpu (Yolngu name)
+					Austrodolichos errabundus (Scott) Verdc. (Latin name)
+					Austrodolichos (Common name)
+					This plant belongs to the Dhuwa moiety
+
+					Botanical information about this plant:
+					Commonly found from the western side of Cape York to western Arnhem Land on well
+					drained soils in Eucalypt savanna.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241494#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>31199045dbdc78e276de38d4a7c1ea64</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
+			</triple>
+			<triple>
+				<id>31199045dbdc78e276de38d4a7c1ea64</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
+			</triple>
+			<triple>
+				<id>31199045dbdc78e276de38d4a7c1ea64</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wanydjarrpu (Yolngu name)
+					Austrodolichos errabundus (Scott) Verdc. (Latin name)
+					Austrodolichos (Common name)
+					This plant belongs to the Dhuwa moiety
+
+					Botanical information about this plant:
+					Commonly found from the western side of Cape York to western Arnhem Land on well
+					drained soils in Eucalypt savanna.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>37311f9d92ed04436f1c7924f6af834f</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
+			</triple>
+			<triple>
+				<id>37311f9d92ed04436f1c7924f6af834f</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
+			</triple>
+			<triple>
+				<id>37311f9d92ed04436f1c7924f6af834f</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<id>aa5c6247b540514b30dd9c99642d8741</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
 			</triple>
 			<triple>
-				<id>a9c9bd9c062fe4e922c1e6a0c3ee8819</id>
+				<id>aa5c6247b540514b30dd9c99642d8741</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
 			</triple>
 			<triple>
-				<id>a9c9bd9c062fe4e922c1e6a0c3ee8819</id>
+				<id>aa5c6247b540514b30dd9c99642d8741</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
 			</triple>
 			<triple>
-				<id>a9c9bd9c062fe4e922c1e6a0c3ee8819</id>
+				<id>aa5c6247b540514b30dd9c99642d8741</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
+			</triple>
+			<triple>
+				<id>b7eb7b0d351f290d806591daeb075b75</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
+			</triple>
+			<triple>
+				<id>b7eb7b0d351f290d806591daeb075b75</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
+			</triple>
+			<triple>
+				<id>b7eb7b0d351f290d806591daeb075b75</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>bcf0b95a48059dea45d497502aa6345b</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
+			</triple>
+			<triple>
+				<id>bcf0b95a48059dea45d497502aa6345b</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
+			</triple>
+			<triple>
+				<id>bcf0b95a48059dea45d497502aa6345b</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
 				<uri>http://vocab.getty.edu/aat/300025976</uri>
@@ -768,6 +1710,26 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
+				<id>2979f1317410646699062fa0ab330d74</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>c707724fb82d0386138c080b15587544</id>
+			</triple>
+			<triple>
+				<id>2979f1317410646699062fa0ab330d74</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>43ad24c8e67263336e629fcd9c0f457e</id>
+			</triple>
+			<triple>
+				<id>2979f1317410646699062fa0ab330d74</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>74162c98ca4431a5c31934e7aabfbad6</id>
+			</triple>
+			<triple>
+				<id>2979f1317410646699062fa0ab330d74</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
+			</triple>
+			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60793972#</uri>
@@ -779,13 +1741,13 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>cd4f8b25a36a3f10ca9e533238464599</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
+				<id>f5917c6c67fd8a3c7e4748ffba92ce60</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
@@ -832,11 +1794,6 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>3cb89568fc1a7763b804b247a3924880</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#repositorynumber
 				</uri>
@@ -845,13 +1802,12 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">'Wanydjarrpu', bark painting, native
-					plant species
-				</typedLiteral>
+					plant species</typedLiteral>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>f755c10c923d5bfed2bad91e14c6fd0f</id>
+				<id>9d7de88e850b7b45f12bd15aa13c4d05</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
@@ -867,8 +1823,23 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
-				<id>9ed93fc4541fce09256cce3bfb70f8c4</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>0aedb0ab88d689bc544fba70e8747790</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<id>899369cfe5b8278fa8977dbfc215322c</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241493</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>20067edaf6172cccd141f352439a3280</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
@@ -876,102 +1847,60 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493</uri>
 			</triple>
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241493#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>b57d43582db8bb6cd2c4243e49a5e020</id>
-			</triple>
-			<triple>
-				<id>f1a93f70cf90e0bc179cbef85d5292d3</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
-			</triple>
-			<triple>
-				<id>f1a93f70cf90e0bc179cbef85d5292d3</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
-			</triple>
-			<triple>
-				<id>f1a93f70cf90e0bc179cbef85d5292d3</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>81b1625438da1b01f6cf28c64ec6ed38</id>
+				<id>d9e24859e9cba4f0365f5e437ef52b97</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
 			</triple>
 			<triple>
-				<id>81b1625438da1b01f6cf28c64ec6ed38</id>
+				<id>d9e24859e9cba4f0365f5e437ef52b97</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
 			</triple>
 			<triple>
-				<id>81b1625438da1b01f6cf28c64ec6ed38</id>
+				<id>d9e24859e9cba4f0365f5e437ef52b97</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
-				<id>3a89959f9b34827fdca1536ea733f3bc</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
-			</triple>
-			<triple>
-				<id>3a89959f9b34827fdca1536ea733f3bc</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">physical description</typedLiteral>
 			</triple>
 			<triple>
-				<id>3a89959f9b34827fdca1536ea733f3bc</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>d8b8666ba9b2e435fbe61b6549a1b5f8</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
+				<id>f5917c6c67fd8a3c7e4748ffba92ce60</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>0dfe732e9cbd23603b8a6771680139f3</id>
 			</triple>
 			<triple>
-				<id>d8b8666ba9b2e435fbe61b6549a1b5f8</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
+				<id>f5917c6c67fd8a3c7e4748ffba92ce60</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>bcf0b95a48059dea45d497502aa6345b</id>
 			</triple>
 			<triple>
-				<id>d8b8666ba9b2e435fbe61b6549a1b5f8</id>
+				<id>f5917c6c67fd8a3c7e4748ffba92ce60</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
-			</triple>
-			<triple>
-				<id>8695df8a80d63dcfe4cce6c80087f50e</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
-			</triple>
-			<triple>
-				<id>069342bd4f5207b3108627a60d852634</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
-				</uri>
-			</triple>
-			<triple>
-				<id>069342bd4f5207b3108627a60d852634</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
-			</triple>
-			<triple>
-				<id>069342bd4f5207b3108627a60d852634</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
-				<id>674ab03c8159289bc603ef0ac0af3018</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">'Wanydjarrpu' bark painting, native
-					plant species
-				</typedLiteral>
+					plant species</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241451</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>5281070f6cd08139f4c04392a2226379</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
@@ -980,18 +1909,13 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#width</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782085#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>fb636a32e77711c667df9ee518777156</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#width</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
@@ -1017,6 +1941,11 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>8aec1aff6eddcd8237248186fbb0c3f3</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#significanceStatement
 				</uri>
@@ -1033,6 +1962,16 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<id>0e9644cb7a9b0b0a208f6f917d3aae65</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>d9e24859e9cba4f0365f5e437ef52b97</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 			</triple>
@@ -1044,18 +1983,13 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>fa88cdc4c4619fe4423560fece6e4b1d</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
 				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>79581195808d4361de51ad5c431de967</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
+				<id>2979f1317410646699062fa0ab330d74</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
@@ -1070,61 +2004,99 @@
 				</uri>
 			</triple>
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>f31e05db3a39c91969af848bb13cfcb0</id>
+				<id>3ee32eabba7313fce1a3f7be4199b387</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>294e15796aed0c5a331780f10aa71f99</id>
 			</triple>
 			<triple>
-				<id>b57d43582db8bb6cd2c4243e49a5e020</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
-				</uri>
+				<id>3ee32eabba7313fce1a3f7be4199b387</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>c9957bc0e43c721773c9f6a47e75fb12</id>
 			</triple>
 			<triple>
-				<id>b57d43582db8bb6cd2c4243e49a5e020</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
-			</triple>
-			<triple>
-				<id>b57d43582db8bb6cd2c4243e49a5e020</id>
+				<id>3ee32eabba7313fce1a3f7be4199b387</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
 			</triple>
 			<triple>
-				<id>e1eeb7bf19a0f86ccc1849b2d1b874ed</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">A botanical painting in natural pigments
+					and ochres on eucalyptus stringy bark, depicting the native plant species
+					Wandydjarrpu. The painting features three plant forms with ovoid tubers at
+					the bottom extending into leaves at the top. The tubers are crosshatched in
+					white, red-brown, yellow-ochre and black, and outlined in white. The leaves
+					are white. The background is crosshatched in black, white and yellow-ochre.
+					The entire painting is bordered in red-brown. On the reverse of the bark,
+					the number '4609I' is handwritten in black ink on the label, and there is a
+					'BUKU-LARRNGAY MULKA' adhesive label attached, including the artist's name
+					and other details.</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wanydjarrpu (Yolngu name)
+					Austrodolichos errabundus (Scott) Verdc. (Latin name)
+					Austrodolichos (Common name)
+					This plant belongs to the Dhuwa moiety
+
+					Botanical information about this plant:
+					Commonly found from the western side of Cape York to western Arnhem Land on well
+					drained soils in Eucalypt savanna.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>c707724fb82d0386138c080b15587544</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-				<id>a9c9bd9c062fe4e922c1e6a0c3ee8819</id>
+				<id>b7d9823c07767a0714b985b2b8c4cf26</id>
 			</triple>
 			<triple>
-				<id>e1eeb7bf19a0f86ccc1849b2d1b874ed</id>
+				<id>c707724fb82d0386138c080b15587544</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date made</typedLiteral>
 			</triple>
 			<triple>
-				<id>e1eeb7bf19a0f86ccc1849b2d1b874ed</id>
+				<id>c707724fb82d0386138c080b15587544</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>796bff8cdec3f9447d15b3a4603f05ba</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
-			</triple>
-			<triple>
-				<id>7c216a450d1d337b930709bd8195423c</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paint%20-%20non%20specific%22
-				</uri>
-			</triple>
-			<triple>
-				<id>7c216a450d1d337b930709bd8195423c</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paint - non specific</typedLiteral>
-			</triple>
-			<triple>
-				<id>7c216a450d1d337b930709bd8195423c</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
@@ -1140,11 +2112,6 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>f8431a807599b865e5f37f8804636a94</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
@@ -1184,8 +2151,18 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/narrative/3346</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<id>f650af47c918f4fe1ee98b60786049a3</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
@@ -1198,22 +2175,22 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
 			</triple>
 			<triple>
-				<id>d3995145c723950fe8caeb6f96acd039</id>
+				<id>9688443ccf9c98986a7f542056601cca</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
 			</triple>
 			<triple>
-				<id>d3995145c723950fe8caeb6f96acd039</id>
+				<id>9688443ccf9c98986a7f542056601cca</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
 			</triple>
 			<triple>
-				<id>d3995145c723950fe8caeb6f96acd039</id>
+				<id>9688443ccf9c98986a7f542056601cca</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2014</typedLiteral>
 			</triple>
 			<triple>
-				<id>d3995145c723950fe8caeb6f96acd039</id>
+				<id>9688443ccf9c98986a7f542056601cca</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
 			</triple>
@@ -1286,17 +2263,12 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
 				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3318#</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
-				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3321#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
 				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3348#</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3318#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
@@ -1306,12 +2278,22 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
 				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3328#</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3348#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
 				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3339#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
+				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3328#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
+				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3332#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
@@ -1325,8 +2307,8 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
-				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3332#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<id>919cf08b9212728b0da0ba862de82c41</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
@@ -1355,8 +2337,8 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>a9852da1ff854f4ca030db2b3fc984a4</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/narrative/3314</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3314#</uri>
@@ -1374,34 +2356,167 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3324#</uri>
 			</triple>
 			<triple>
-				<id>9ed93fc4541fce09256cce3bfb70f8c4</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>227fa548929c7d180aa074ba8a630eec</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">A botanical painting in natural pigments
+					and ochres on eucalyptus stringy bark, depicting the native plant species
+					Wanydjarrpu. The painting features three tuber like shapes at the bottom of
+					the bark with branch-like white lines coming out the top of each tuber. The
+					tubers are coloured with white, black, red and yellow crosshatch designs.
+					The background is black, white and red crosshatching. On the reverse of the
+					bark there is a 'BUKU-LARRNGAY MULKA' adhesive label attached, including
+					the the number '4609H' and other details.</typedLiteral>
 			</triple>
 			<triple>
-				<id>9ed93fc4541fce09256cce3bfb70f8c4</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>f3040e221a432c5c7c24de8d173a1e7b</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
 			</triple>
 			<triple>
-				<id>9ed93fc4541fce09256cce3bfb70f8c4</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#physicalDescription
+				</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
 			</triple>
 			<triple>
-				<id>c9469d7956fabdb9dbafba80535c02cf</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
+				<id>48d13ad8f037d9ca375b2a7414033d78</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+				<id>aa5c6247b540514b30dd9c99642d8741</id>
 			</triple>
 			<triple>
-				<id>c9469d7956fabdb9dbafba80535c02cf</id>
+				<id>48d13ad8f037d9ca375b2a7414033d78</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date made</typedLiteral>
 			</triple>
 			<triple>
-				<id>c9469d7956fabdb9dbafba80535c02cf</id>
+				<id>48d13ad8f037d9ca375b2a7414033d78</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The collection consists of nine
+					larrakitj, or painted hollow logs, and 113 bark paintings painted between
+					2011 and 2014 by Mulkun Wirrpanda, a senior female Yolngu artist at
+					Yirrkala in north east Arnhem Land. These works are a product of
+					Wirrpanda's interest in documenting the ecology of her country following
+					her participation in a joint project with non-Indigeous artists,
+					printmakers and academics, charting the country and yam supply at Blue Mud
+					Bay.
+
+					The works in this collection provide a unique visual record of Yolngu
+					knowledge of plants and food-bearing and medicinal species. Wirrpanda
+					depicts aspects of the plants' life cycle across numerous works, including
+					the gestational period through to fruiting and the interconnections between
+					the food source and the extensive freshwater flood plains and rivers,
+					beaches, sandhills, salt flats and estuaries in her Yolngu country.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The collection consists of nine
+					larrakitj, or painted hollow logs, and 113 bark paintings painted between
+					2011 and 2014 by Mulkun Wirrpanda, a senior female Yolngu artist at
+					Yirrkala in north east Arnhem Land. These works are a product of
+					Wirrpanda's interest in documenting the ecology of her country following
+					her participation in a joint project with non-Indigeous artists,
+					printmakers and academics, charting the country and yam supply at Blue Mud
+					Bay.
+
+					The works in this collection provide a unique visual record of Yolngu
+					knowledge of plants and food-bearing and medicinal species. Wirrpanda
+					depicts aspects of the plants' life cycle across numerous works, including
+					the gestational period through to fruiting and the interconnections between
+					the food source and the extensive freshwater flood plains and rivers,
+					beaches, sandhills, salt flats and estuaries in her Yolngu country.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The collection consists of nine
+					larrakitj, or painted hollow logs, and 113 bark paintings painted between
+					2011 and 2014 by Mulkun Wirrpanda, a senior female Yolngu artist at
+					Yirrkala in north east Arnhem Land. These works are a product of
+					Wirrpanda's interest in documenting the ecology of her country following
+					her participation in a joint project with non-Indigeous artists,
+					printmakers and academics, charting the country and yam supply at Blue Mud
+					Bay.
+
+					The works in this collection provide a unique visual record of Yolngu
+					knowledge of plants and food-bearing and medicinal species. Wirrpanda
+					depicts aspects of the plants' life cycle across numerous works, including
+					the gestational period through to fruiting and the interconnections between
+					the food source and the extensive freshwater flood plains and rivers,
+					beaches, sandhills, salt flats and estuaries in her Yolngu country.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300379612</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#significanceStatement
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/significanceStatement</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#significanceStatement
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#repositorynumber
@@ -1422,39 +2537,121 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
-				<id>73b1c383cfbb5f3bc6e2cdffc31b388e</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
+				<id>66edf99487ea2d9b25c37d735451d3ef</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>2da0ed5d6b05792235bfa7e9612bfa94</id>
 			</triple>
 			<triple>
-				<id>1f49780616c8ee2d23db6a8168c688cc</id>
+				<id>66edf99487ea2d9b25c37d735451d3ef</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>58eaabfad8fb8e1fc71013a317835f44</id>
+			</triple>
+			<triple>
+				<id>66edf99487ea2d9b25c37d735451d3ef</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>fe3ff48cff7d1479bacd29aea608fe45</id>
+			</triple>
+			<triple>
+				<id>66edf99487ea2d9b25c37d735451d3ef</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
+			</triple>
+			<triple>
+				<id>294e15796aed0c5a331780f10aa71f99</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
 			</triple>
 			<triple>
-				<id>1f49780616c8ee2d23db6a8168c688cc</id>
+				<id>294e15796aed0c5a331780f10aa71f99</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
 			</triple>
 			<triple>
-				<id>1f49780616c8ee2d23db6a8168c688cc</id>
+				<id>294e15796aed0c5a331780f10aa71f99</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
-				<id>019267d8e4f6af776aeb70fac082f2bb</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241494</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
 			</triple>
 			<triple>
-				<id>019267d8e4f6af776aeb70fac082f2bb</id>
+				<uri>http://collectionsearch.nma.gov.au/object/241494</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer
+				</typedLiteral>
 			</triple>
 			<triple>
-				<id>019267d8e4f6af776aeb70fac082f2bb</id>
+				<uri>http://collectionsearch.nma.gov.au/object/241494</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241466</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241466</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241466</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>24b15792318bc7639a316963612a18b4</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
+			</triple>
+			<triple>
+				<id>24b15792318bc7639a316963612a18b4</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
+			</triple>
+			<triple>
+				<id>24b15792318bc7639a316963612a18b4</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>517d4c3e62139e798dbd0fee8dc354d8</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
+			</triple>
+			<triple>
+				<id>517d4c3e62139e798dbd0fee8dc354d8</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
+			</triple>
+			<triple>
+				<id>517d4c3e62139e798dbd0fee8dc354d8</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>c233c2f8524424ba07dcc4e7ff1b7995</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+			</triple>
+			<triple>
+				<id>c233c2f8524424ba07dcc4e7ff1b7995</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+			</triple>
+			<triple>
+				<id>c233c2f8524424ba07dcc4e7ff1b7995</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string" />
+			</triple>
+			<triple>
+				<id>c233c2f8524424ba07dcc4e7ff1b7995</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
@@ -1479,13 +2676,28 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>262c75b652ea2b7568b3fa6862087e50</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/241465</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA60782355#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>52ec620542563e3ecd78334cc7269002</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
@@ -1512,14 +2724,14 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>9b01494f9e78809d97d43dc6350a5558</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#repositorynumber
 				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>517d4c3e62139e798dbd0fee8dc354d8</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
@@ -1528,25 +2740,19 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>101b350e33b75db590a84356ad14bed3</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">'Wanydjarrpu,' bark painting, native
-					species
-				</typedLiteral>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>28aed97fac24a397f42030ee07d146c3</id>
+					species</typedLiteral>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
 				<uri>http://rightsstatements.org/vocab/InC/1.0/</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<id>38ccc2bbde3ae93c0cbe8d8b8b8a2045</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
@@ -1556,12 +2762,7 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
-				<id>f0a57019e6028db16e0fd83ee7e2d055</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>7c216a450d1d337b930709bd8195423c</id>
+				<id>77e991ef052495ac0f02a3af3b5fd208</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
@@ -1570,69 +2771,70 @@
 				</uri>
 			</triple>
 			<triple>
-				<id>d307f29c218233fb77957a7ff1f43ef6</id>
+				<id>0dfe732e9cbd23603b8a6771680139f3</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
 			</triple>
 			<triple>
-				<id>d307f29c218233fb77957a7ff1f43ef6</id>
+				<id>0dfe732e9cbd23603b8a6771680139f3</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
 			</triple>
 			<triple>
-				<id>d307f29c218233fb77957a7ff1f43ef6</id>
+				<id>0dfe732e9cbd23603b8a6771680139f3</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
-				<id>cd93af99f67bf094f3a7aed5b1856a33</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>019267d8e4f6af776aeb70fac082f2bb</id>
+				<id>592122ebd5def625732218204b2fe001</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1489#</uri>
 			</triple>
 			<triple>
-				<id>cd93af99f67bf094f3a7aed5b1856a33</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>fba6b071b3436c6a58e77074e6178731</id>
+				<id>592122ebd5def625732218204b2fe001</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
 			</triple>
 			<triple>
-				<id>cd93af99f67bf094f3a7aed5b1856a33</id>
+				<id>592122ebd5def625732218204b2fe001</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
-				<id>9b01494f9e78809d97d43dc6350a5558</id>
+				<id>899369cfe5b8278fa8977dbfc215322c</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark paintings</typedLiteral>
 			</triple>
 			<triple>
-				<id>02b5fee057a4e85e6d3e2bd852b0e114</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-				<id>e6d1a073d146a08ec4148078e99e2dbc</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">A botanical painting in natural pigments
+					and ochres on eucalyptus stringy bark, depicting the native plant species
+					Wanydjarrpu. The painting features nine white plant forms arranged in three
+					rows, each with tubers at the base and leaves protruding from the top. The
+					tubers and background are crosshatched in red-brown, yellow ochre, white
+					and black. On the reverse of the bark, the number '4609T' is handwritten in
+					black ink, and there is a 'BUKU-LARRNGAY MULKA' adhesive label attached,
+					including the artist's name and other details.</typedLiteral>
 			</triple>
 			<triple>
-				<id>02b5fee057a4e85e6d3e2bd852b0e114</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date made</typedLiteral>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
 			</triple>
 			<triple>
-				<id>02b5fee057a4e85e6d3e2bd852b0e114</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241466#physicalDescription
+				</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>02d916b315b64724b5b5175a036a775d</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-				<id>d3995145c723950fe8caeb6f96acd039</id>
-			</triple>
-			<triple>
-				<id>02d916b315b64724b5b5175a036a775d</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date made</typedLiteral>
-			</triple>
-			<triple>
-				<id>02d916b315b64724b5b5175a036a775d</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#text</uri>
@@ -1645,8 +2847,7 @@
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">&lt;p&gt;&lt;em&gt;Wanydjarrpu&lt;/em&gt;
 					(Yolngu name)&lt;br /&gt;&lt;em&gt;Austrodolichos errabundus&lt;/em&gt;
 					(Latin name)&lt;br /&gt;austrodolichos (common name)&lt;br
-					/&gt;&lt;em&gt;Wanydjarrpu&lt;/em&gt; belongs to the Dhuwa
-					moiety&lt;/p&gt;
+					/&gt;&lt;em&gt;Wanydjarrpu&lt;/em&gt; belongs to the Dhuwa moiety&lt;/p&gt;
 				</typedLiteral>
 			</triple>
 			<triple>
@@ -1660,94 +2861,180 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
 			</triple>
 			<triple>
-				<id>674ab03c8159289bc603ef0ac0af3018</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>02b5fee057a4e85e6d3e2bd852b0e114</id>
+				<id>8aec1aff6eddcd8237248186fbb0c3f3</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Ochre%22</uri>
 			</triple>
 			<triple>
-				<id>674ab03c8159289bc603ef0ac0af3018</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>1f49780616c8ee2d23db6a8168c688cc</id>
+				<id>8aec1aff6eddcd8237248186fbb0c3f3</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ochre</typedLiteral>
 			</triple>
 			<triple>
-				<id>674ab03c8159289bc603ef0ac0af3018</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>3a89959f9b34827fdca1536ea733f3bc</id>
-			</triple>
-			<triple>
-				<id>674ab03c8159289bc603ef0ac0af3018</id>
+				<id>8aec1aff6eddcd8237248186fbb0c3f3</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
-				<id>f0a57019e6028db16e0fd83ee7e2d055</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>9fa5715cfd63c74a06c5dcebc2586f7a</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#physicalDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">A botanical painting in natural pigments
+					and ochres on eucalyptus stringy bark, depicting the native plant species
+					Wanydjarrpu. The painting is split into two sections. The top section
+					features four tuber like shapes with plants growing from them. The lower
+					two thirds of the painting features several more tuber like shapes with
+					leaves. The tubers and the background both feature crosshatching in ochre
+					yellow, white, red/brown and grey. On the reverse of the bark, the number
+					'4568S' is handwritten in black ink,and there is a 'BUKU-LARRNGAY MULKA'
+					adhesive label attached, including the artist's name and other details.
+				</typedLiteral>
 			</triple>
 			<triple>
-				<id>f0a57019e6028db16e0fd83ee7e2d055</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>db3372068b3deb6b7da9178ab05af08c</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
 			</triple>
 			<triple>
-				<id>f0a57019e6028db16e0fd83ee7e2d055</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>5bbf4433e5b9b61a74105b9a619bb541</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#physicalDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
 			</triple>
 			<triple>
-				<id>f0a57019e6028db16e0fd83ee7e2d055</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#physicalDescription
+				</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
 			</triple>
 			<triple>
-				<id>d0eba094f4c4a544c64fe1028d545a88</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241464#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Photography/nma-56073968-004-wm-vs1_o3.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/Photography/nma-56073968-004-wm-vs1_o2.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/dams_ingest/Hot%20Folders/Photography/nma-56073968-004-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/dams_ingest/Hot%20Folders/Photography/nma-56073968-004-wm-vs1.jpg
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA63333091#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wanydjarrpu (Yolngu name)
+					Austrodolichos errabundus (Scott) Verdc. (Latin name)
+					Austrodolichos (Common name)
+					This plant belongs to the Dhuwa moiety
+
+					Botanical information about this plant:
+					Commonly found from the western side of Cape York to western Arnhem Land on well
+					drained soils in Eucalypt savanna.
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#contentDescription
+				</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241451#contentDescription
+				</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">description (document) </typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://vocab.getty.edu/aat/300411780</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241493</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241493</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241493</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241465</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241465</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer
+				</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://collectionsearch.nma.gov.au/object/241465</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>fe3ff48cff7d1479bacd29aea608fe45</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/23234#</uri>
 			</triple>
 			<triple>
-				<id>d0eba094f4c4a544c64fe1028d545a88</id>
+				<id>fe3ff48cff7d1479bacd29aea608fe45</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Artist</typedLiteral>
 			</triple>
 			<triple>
-				<id>d0eba094f4c4a544c64fe1028d545a88</id>
+				<id>fe3ff48cff7d1479bacd29aea608fe45</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>9a78c561f3abe1785b838f8ca005d7c6</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>e1eeb7bf19a0f86ccc1849b2d1b874ed</id>
-			</triple>
-			<triple>
-				<id>9a78c561f3abe1785b838f8ca005d7c6</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>779ce9f5ca8e81bf4f81fe7fdcc34771</id>
-			</triple>
-			<triple>
-				<id>9a78c561f3abe1785b838f8ca005d7c6</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>f1a93f70cf90e0bc179cbef85d5292d3</id>
-			</triple>
-			<triple>
-				<id>9a78c561f3abe1785b838f8ca005d7c6</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
-			</triple>
-			<triple>
-				<id>79581195808d4361de51ad5c431de967</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Bark%22</uri>
-			</triple>
-			<triple>
-				<id>79581195808d4361de51ad5c431de967</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bark</typedLiteral>
-			</triple>
-			<triple>
-				<id>79581195808d4361de51ad5c431de967</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 		</graph>
 	</x:variable>
