@@ -42,6 +42,8 @@
 		<x:call template="record-metadata-dc" />
 		<x:expect label="should return xpath:map meta">
 			<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string key="modified">2018-04-05</string>
+				<string key="issued">2007-06-07</string>
 				<string key="hasFormat">http://collectionsearch.nma.gov.au/object/122751</string>
 			</map>
 		</x:expect>

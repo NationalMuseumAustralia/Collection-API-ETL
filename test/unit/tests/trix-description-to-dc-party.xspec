@@ -61,7 +61,7 @@
 		<x:call template="other-name-dc" />
 		<x:expect label="should return xpath:string other names">
 			<xpath:array key="alternativeNames">
-				<string>Miss Mary Jane Coughran</string>
+				<xpath:string>Miss Mary Jane Coughran</xpath:string>
 			</xpath:array>
 		</x:expect>
 	</x:scenario>
@@ -69,7 +69,7 @@
 	<x:scenario label="Convert gender">
 		<x:call template="gender-dc" />
 		<x:expect label="should return xpath:string gender">
-			<xpath:string key="gender">Female</xpath:string>
+			<xpath:string key="gender">female</xpath:string>
 		</x:expect>
 	</x:scenario>
 

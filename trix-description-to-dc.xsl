@@ -619,7 +619,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<xsl:variable name="value"
 			select="
 			path:forward( ('crm:P1_is_identified_by', 'crm:P106_is_composed_of') )[
-				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404654'
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300264273'
 			]
 			/path:forward(., 'rdf:value')
 		" />

@@ -1,6 +1,26 @@
 <trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
   <graph>
       <triple>
+         <id>9edd5f1309a53a7a1aae7c7ce3c475e9</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Zoological specimens</typedLiteral>
+      </triple>
+      <triple>
+         <id>83549c354128c2216ddec683ac6ef073</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Agua Caliente Handicap in 1932.</typedLiteral>
+      </triple>
+      <triple>
+         <id>83549c354128c2216ddec683ac6ef073</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>83549c354128c2216ddec683ac6ef073</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+      </triple>
+      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/term/thumbnail</uri>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">thumbnail image</typedLiteral>
@@ -11,26 +31,6 @@
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <id>2a1c979f-4adc-4468-b79e-4bc482727f13</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/718#</uri>
-      </triple>
-      <triple>
-         <id>2a1c979f-4adc-4468-b79e-4bc482727f13</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>24dcbfa2-36cd-4cd9-9e8c-2a950147ff2a</id>
-      </triple>
-      <triple>
-         <id>2a1c979f-4adc-4468-b79e-4bc482727f13</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
-      </triple>
-      <triple>
-         <id>2a1c979f-4adc-4468-b79e-4bc482727f13</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/Working%20Masters/nma.img-ci20092429-817-wm-vs1_o2.jpg</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
@@ -38,47 +38,12 @@
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#creation</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-         <id>db50170b-d883-4e69-b9b4-e544b5b9296d</id>
+         <id>91d1274ab333a3d056316028357a5305</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#creation</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E65_Creation</uri>
-      </triple>
-      <triple>
-         <id>cbdd8e76-6696-47ec-aac4-559b0097118a</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-         <id>161aa28d-2f8c-41f0-9103-1ab403f5c04e</id>
-      </triple>
-      <triple>
-         <id>cbdd8e76-6696-47ec-aac4-559b0097118a</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>6210cc67-7365-4a9d-a70e-c906a5e84d87</id>
-      </triple>
-      <triple>
-         <id>cbdd8e76-6696-47ec-aac4-559b0097118a</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of event</typedLiteral>
-      </triple>
-      <triple>
-         <id>cbdd8e76-6696-47ec-aac4-559b0097118a</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
-         <id>6d18d2d8-2d20-4095-9105-1264a4cfe5aa</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">R</typedLiteral>
-      </triple>
-      <triple>
-         <id>6d18d2d8-2d20-4095-9105-1264a4cfe5aa</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300404654</uri>
-      </triple>
-      <triple>
-         <id>6d18d2d8-2d20-4095-9105-1264a4cfe5aa</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
@@ -89,16 +54,6 @@
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-819-wm-vs1_o5.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-819-wm-vs1_o4.jpg</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
@@ -122,28 +77,43 @@
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>8a41a41d-159c-4247-b022-3405fe4a6386</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#</uri>
+         <id>dea4dbcd32b315acdf9d8dfd3183542e</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Woodcock</typedLiteral>
       </triple>
       <triple>
-         <id>8a41a41d-159c-4247-b022-3405fe4a6386</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>d04f8f17-589c-4127-ac6c-1c35cb1e1c3a</id>
+         <id>dea4dbcd32b315acdf9d8dfd3183542e</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300404652</uri>
       </triple>
       <triple>
-         <id>8a41a41d-159c-4247-b022-3405fe4a6386</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
-      </triple>
-      <triple>
-         <id>8a41a41d-159c-4247-b022-3405fe4a6386</id>
+         <id>dea4dbcd32b315acdf9d8dfd3183542e</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
+         <uri>https://linked.art/ns/terms/Name</uri>
+      </triple>
+      <triple>
+         <id>443b8084346ab809764c5ebe62ff9a9a</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">R</typedLiteral>
+      </triple>
+      <triple>
+         <id>443b8084346ab809764c5ebe62ff9a9a</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300404654</uri>
+      </triple>
+      <triple>
+         <id>443b8084346ab809764c5ebe62ff9a9a</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/1248#</uri>
@@ -157,6 +127,11 @@
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/1248#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/1248</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/1248#</uri>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Mexico</typedLiteral>
       </triple>
@@ -166,29 +141,24 @@
          <uri>http://www.cidoc-crm.org/cidoc-crm/E53_Place</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-816-wm-vs1_o4.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbHeight</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-         <id>a7d10557-3a0f-4405-ac3d-c40f358bfff5</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbHeight</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">200</typedLiteral>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbHeight</uri>
+         <id>92aba2970f407fa3a0d721c0112d4da8</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300055644</uri>
+         <uri>http://vocab.getty.edu/aat/300189559</uri>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbHeight</uri>
+         <id>92aba2970f407fa3a0d721c0112d4da8</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300055147</uri>
+      </triple>
+      <triple>
+         <id>92aba2970f407fa3a0d721c0112d4da8</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+      </triple>
+      <triple>
+         <id>92aba2970f407fa3a0d721c0112d4da8</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
       </triple>
       <triple>
          <uri>http://vocab.getty.edu/aat/300055647</uri>
@@ -201,19 +171,29 @@
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-815-wm-vs1_o5.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+         <id>91d1274ab333a3d056316028357a5305</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
       </triple>
       <triple>
-         <id>e9ee5a23-e7f2-444b-bd1f-b6c58723921b</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Animal material - non specific</typedLiteral>
+         <id>91d1274ab333a3d056316028357a5305</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
       <triple>
-         <id>e9ee5a23-e7f2-444b-bd1f-b6c58723921b</id>
+         <id>e99466d9e32cb93fdcc839b5f37601ae</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place where Phar Lap was foaled.</typedLiteral>
+      </triple>
+      <triple>
+         <id>e99466d9e32cb93fdcc839b5f37601ae</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>e99466d9e32cb93fdcc839b5f37601ae</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#educationalSignificance</uri>
@@ -246,89 +226,19 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
          <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
-         <id>9af9a945-4bf9-423a-bf8b-4afca90956cf</id>
+         <id>e706671ec3ebd5dd21c7ac0918a532b7</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Agua Caliente Handicap in 1932.</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Melbourne Cup in 1930.</typedLiteral>
       </triple>
       <triple>
-         <id>9af9a945-4bf9-423a-bf8b-4afca90956cf</id>
+         <id>e706671ec3ebd5dd21c7ac0918a532b7</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300411780</uri>
       </triple>
       <triple>
-         <id>9af9a945-4bf9-423a-bf8b-4afca90956cf</id>
+         <id>e706671ec3ebd5dd21c7ac0918a532b7</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
-         <id>94ac0c0e-4948-47c0-93fc-dfce06a8faab</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Melbourne Cup in 1930 carrying a 62.6 kilogram handicap.</typedLiteral>
-      </triple>
-      <triple>
-         <id>94ac0c0e-4948-47c0-93fc-dfce06a8faab</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>94ac0c0e-4948-47c0-93fc-dfce06a8faab</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
-         <id>f99493dd-9d1c-4348-9b72-5e14a243b84c</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/80047#</uri>
-      </triple>
-      <triple>
-         <id>f99493dd-9d1c-4348-9b72-5e14a243b84c</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>9cf62cbb-23e8-48f6-b459-f65e6d19917f</id>
-      </triple>
-      <triple>
-         <id>f99493dd-9d1c-4348-9b72-5e14a243b84c</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated organisation</typedLiteral>
-      </triple>
-      <triple>
-         <id>f99493dd-9d1c-4348-9b72-5e14a243b84c</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
-         <id>53a0310c-c91d-4bb0-a990-9afc4d809596</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#</uri>
-      </triple>
-      <triple>
-         <id>53a0310c-c91d-4bb0-a990-9afc4d809596</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>b7b64b40-fdf1-40f1-b534-96056b255b8c</id>
-      </triple>
-      <triple>
-         <id>53a0310c-c91d-4bb0-a990-9afc4d809596</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
-      </triple>
-      <triple>
-         <id>53a0310c-c91d-4bb0-a990-9afc4d809596</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
-         <id>42a41820-73d6-4226-8a3a-993dab0fc6e7</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Harry</typedLiteral>
-      </triple>
-      <triple>
-         <id>42a41820-73d6-4226-8a3a-993dab0fc6e7</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300404651</uri>
-      </triple>
-      <triple>
-         <id>42a41820-73d6-4226-8a3a-993dab0fc6e7</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/Working%20Masters/nma.img-ci20092429-819-wm-vs1_o2.jpg</uri>
@@ -344,46 +254,6 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
          <uri>http://vocab.getty.edu/aat/300404651</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
-      </triple>
-      <triple>
-         <id>df71694a-53de-4d19-b076-2416ebfeed85</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932</typedLiteral>
-      </triple>
-      <triple>
-         <id>df71694a-53de-4d19-b076-2416ebfeed85</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932</typedLiteral>
-      </triple>
-      <triple>
-         <id>df71694a-53de-4d19-b076-2416ebfeed85</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932</typedLiteral>
-      </triple>
-      <triple>
-         <id>df71694a-53de-4d19-b076-2416ebfeed85</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
-      </triple>
-      <triple>
-         <id>019e09dc-4426-4690-9803-aa75e622f6f2</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300189559</uri>
-      </triple>
-      <triple>
-         <id>019e09dc-4426-4690-9803-aa75e622f6f2</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300055147</uri>
-      </triple>
-      <triple>
-         <id>019e09dc-4426-4690-9803-aa75e622f6f2</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
-      </triple>
-      <triple>
-         <id>019e09dc-4426-4690-9803-aa75e622f6f2</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-818-wm-vs1_o3.jpg</uri>
@@ -408,16 +278,6 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067914#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-815-wm-vs1_o5.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067914#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-815-wm-vs1_o4.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067914#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-815-wm-vs1_o3.jpg</uri>
       </triple>
       <triple>
@@ -437,8 +297,28 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067914#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067914#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+      </triple>
+      <triple>
+         <id>64452022cd8a4f54fcf2d6b57304c339</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date that Phar Lap was foaled.</typedLiteral>
+      </triple>
+      <triple>
+         <id>64452022cd8a4f54fcf2d6b57304c339</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>64452022cd8a4f54fcf2d6b57304c339</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/PH2429/Collection/Working%20Masters/nma_23066534.jpg</uri>
@@ -451,64 +331,69 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>45ced93b-fef2-4228-9a11-acb8eabf10b5</id>
+         <id>05a00d34d7994632485ef831da17a2ba</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Roberts was Phar Lap's breeder.</typedLiteral>
+      </triple>
+      <triple>
+         <id>05a00d34d7994632485ef831da17a2ba</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>05a00d34d7994632485ef831da17a2ba</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+      </triple>
+      <triple>
+         <id>38f425ae616936cd2c3a4ff718a707f8</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300189559</uri>
       </triple>
       <triple>
-         <id>45ced93b-fef2-4228-9a11-acb8eabf10b5</id>
+         <id>38f425ae616936cd2c3a4ff718a707f8</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300055147</uri>
       </triple>
       <triple>
-         <id>45ced93b-fef2-4228-9a11-acb8eabf10b5</id>
+         <id>38f425ae616936cd2c3a4ff718a707f8</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
       </triple>
       <triple>
-         <id>45ced93b-fef2-4228-9a11-acb8eabf10b5</id>
+         <id>38f425ae616936cd2c3a4ff718a707f8</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-817-wm-vs1_o4.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <id>21812a78-8ad9-4e0b-96c4-9fe12277dc66</id>
+         <id>88a7ee447d9fcc54714d55e064ab1a89</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/1248#</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#</uri>
       </triple>
       <triple>
-         <id>21812a78-8ad9-4e0b-96c4-9fe12277dc66</id>
+         <id>88a7ee447d9fcc54714d55e064ab1a89</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>9af9a945-4bf9-423a-bf8b-4afca90956cf</id>
+         <id>05a00d34d7994632485ef831da17a2ba</id>
       </triple>
       <triple>
-         <id>21812a78-8ad9-4e0b-96c4-9fe12277dc66</id>
+         <id>88a7ee447d9fcc54714d55e064ab1a89</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
       </triple>
       <triple>
-         <id>21812a78-8ad9-4e0b-96c4-9fe12277dc66</id>
+         <id>88a7ee447d9fcc54714d55e064ab1a89</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
-         <uri>http://vocab.getty.edu/aat/300025976</uri>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">collection (object grouping)</typedLiteral>
-      </triple>
-      <triple>
-         <uri>http://vocab.getty.edu/aat/300025976</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/80047#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/80047#repositorynumber</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/80047#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/80047</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/80047#</uri>
@@ -523,7 +408,7 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of</uri>
-         <id>45ced93b-fef2-4228-9a11-acb8eabf10b5</id>
+         <id>38f425ae616936cd2c3a4ff718a707f8</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#</uri>
@@ -537,8 +422,33 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
+      </triple>
+      <triple>
+         <id>10f84365b2a4620b78063d2f1b8e5f03</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">kg</typedLiteral>
+      </triple>
+      <triple>
+         <id>10f84365b2a4620b78063d2f1b8e5f03</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
+      </triple>
+      <triple>
+         <id>5267f67b13bb5105038ffff4b85b9545</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
+      </triple>
+      <triple>
+         <id>5267f67b13bb5105038ffff4b85b9545</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
@@ -549,16 +459,6 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-818-wm-vs1_o5.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-818-wm-vs1_o4.jpg</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
@@ -582,8 +482,28 @@ Horseracing has long been a popular sport in Australia and New Zealand. The firs
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+      </triple>
+      <triple>
+         <id>fb3a888f94b84512c512de67201bc257</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Alick</typedLiteral>
+      </triple>
+      <triple>
+         <id>fb3a888f94b84512c512de67201bc257</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300404651</uri>
+      </triple>
+      <triple>
+         <id>fb3a888f94b84512c512de67201bc257</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#contentDescription</uri>
@@ -628,16 +548,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-820-wm-vs1_o5.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-820-wm-vs1_o4.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-820-wm-vs1_o3.jpg</uri>
       </triple>
       <triple>
@@ -654,6 +564,11 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/PH2429/Collection/Working%20Masters/nma_23067624.jpg</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
@@ -681,16 +596,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>7ad7ba6f-84f7-42ea-b661-c770e7ce78bc</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
-      </triple>
-      <triple>
-         <id>7ad7ba6f-84f7-42ea-b661-c770e7ce78bc</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
-      </triple>
-      <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/PH2429/Collection/Working%20Masters/nma_23067624.jpg</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/term/thumbnail</uri>
@@ -711,19 +616,29 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#name</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>feba724a-0736-4ddc-84cf-640abc3f9792</id>
+         <id>091e9ad46417450eb04afcc572a77c13</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
+      </triple>
+      <triple>
+         <id>091e9ad46417450eb04afcc572a77c13</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>6d18d2d8-2d20-4095-9105-1264a4cfe5aa</id>
+         <id>3b60172cb8fdb6f8e8a755f671d9a070</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>42a41820-73d6-4226-8a3a-993dab0fc6e7</id>
+         <id>443b8084346ab809764c5ebe62ff9a9a</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#name</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
+         <id>31a03fbc98e8f72c5f420ab195121178</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#name</uri>
@@ -781,26 +696,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>a2ac5aa9-4a22-498e-90b1-66a68db90c4e</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300189559</uri>
-      </triple>
-      <triple>
-         <id>a2ac5aa9-4a22-498e-90b1-66a68db90c4e</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300055147</uri>
-      </triple>
-      <triple>
-         <id>a2ac5aa9-4a22-498e-90b1-66a68db90c4e</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
-      </triple>
-      <triple>
-         <id>a2ac5aa9-4a22-498e-90b1-66a68db90c4e</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
-      </triple>
-      <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-820-wm-vs1_o3.jpg</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/term/large</uri>
@@ -811,29 +706,29 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>2c3baaf5-8705-4464-8b20-3ae93d500075</id>
+         <id>a4eee0c881f652ea4e7c69f85f782d6d</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#</uri>
       </triple>
       <triple>
-         <id>2c3baaf5-8705-4464-8b20-3ae93d500075</id>
+         <id>a4eee0c881f652ea4e7c69f85f782d6d</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>f588d4e8-b3a4-42a9-9dec-a39b8b7dfbac</id>
+         <id>ea769396d70a68d733d6acf4a9259be6</id>
       </triple>
       <triple>
-         <id>2c3baaf5-8705-4464-8b20-3ae93d500075</id>
+         <id>a4eee0c881f652ea4e7c69f85f782d6d</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated place</typedLiteral>
       </triple>
       <triple>
-         <id>2c3baaf5-8705-4464-8b20-3ae93d500075</id>
+         <id>a4eee0c881f652ea4e7c69f85f782d6d</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of</uri>
-         <id>a2ac5aa9-4a22-498e-90b1-66a68db90c4e</id>
+         <id>0c2a3772fda9148c0fb1747936e33539</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#</uri>
@@ -847,53 +742,63 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
       <triple>
-         <id>904d98ff-a2de-48b9-981e-ffde16989ad6</id>
+         <id>3d9e575bee51fab793e4dbbe016b6bf2</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Agua Caliente Handicap in 1932.</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">David</typedLiteral>
       </triple>
       <triple>
-         <id>904d98ff-a2de-48b9-981e-ffde16989ad6</id>
+         <id>3d9e575bee51fab793e4dbbe016b6bf2</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
+         <uri>http://vocab.getty.edu/aat/300404651</uri>
       </triple>
       <triple>
-         <id>904d98ff-a2de-48b9-981e-ffde16989ad6</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
-         <id>d04f8f17-589c-4127-ac6c-1c35cb1e1c3a</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Telford was Phar Lap's trainer, and presented the heart to the Australian Institute of Anatomy.</typedLiteral>
-      </triple>
-      <triple>
-         <id>d04f8f17-589c-4127-ac6c-1c35cb1e1c3a</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>d04f8f17-589c-4127-ac6c-1c35cb1e1c3a</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
-         <id>feba724a-0736-4ddc-84cf-640abc3f9792</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Telford</typedLiteral>
-      </triple>
-      <triple>
-         <id>feba724a-0736-4ddc-84cf-640abc3f9792</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300404652</uri>
-      </triple>
-      <triple>
-         <id>feba724a-0736-4ddc-84cf-640abc3f9792</id>
+         <id>3d9e575bee51fab793e4dbbe016b6bf2</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>https://linked.art/ns/terms/Name</uri>
+      </triple>
+      <triple>
+         <id>0c2a3772fda9148c0fb1747936e33539</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300189559</uri>
+      </triple>
+      <triple>
+         <id>0c2a3772fda9148c0fb1747936e33539</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300055147</uri>
+      </triple>
+      <triple>
+         <id>0c2a3772fda9148c0fb1747936e33539</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+      </triple>
+      <triple>
+         <id>0c2a3772fda9148c0fb1747936e33539</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
+      </triple>
+      <triple>
+         <id>9bb9f57fa7750dbfc74356cf256476e4</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Davis was Phar Lap's owner.</typedLiteral>
+      </triple>
+      <triple>
+         <id>9bb9f57fa7750dbfc74356cf256476e4</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>9bb9f57fa7750dbfc74356cf256476e4</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://vocab.getty.edu/aat/300404654</uri>
@@ -938,12 +843,72 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>adf75ca6-0592-4477-8c41-7a0db1e980e5</id>
+         <id>c80bafe1b612842fcf6167631a33d1d9</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
-         <uri>http://rightsstatements.org/vocab/InC/1.0/</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>45292aa2642a0e50600292152f0e7a2e</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>88a7ee447d9fcc54714d55e064ab1a89</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>00b1e1f9b4d3eefd01492b364498c70a</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <id>9edd5f1309a53a7a1aae7c7ce3c475e9</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+         <id>4a80dd05ab28b45b9315baa0243e64fc</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>25b72115f2875db2bfda4e05035700ee</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for</uri>
+         <id>83d4e8b0163d06e41ff18a4f73bef59f</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#width</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap's Heart</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#physicalDescription</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
@@ -953,72 +918,17 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>cbdd8e76-6696-47ec-aac4-559b0097118a</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for</uri>
-         <id>6c614b73-ab04-46eb-85e3-40a32aced76d</id>
+         <id>a4eee0c881f652ea4e7c69f85f782d6d</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>8a41a41d-159c-4247-b022-3405fe4a6386</id>
+         <id>c30356a8863ba682abe2647c5d0fcbe1</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-         <id>e9ee5a23-e7f2-444b-bd1f-b6c58723921b</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>f99493dd-9d1c-4348-9b72-5e14a243b84c</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-         <id>56d4acb5-37a2-41a9-adb9-8bfd5e34cb94</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>6dc678f1-beed-40ee-a0b1-a8fd6f34dc80</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>11335c7e-4ee1-4457-b31f-864b101bda0a</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <id>870b3fc0-d0b3-4957-86d0-f5f308630dab</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#physicalDescription</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#depth</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
@@ -1027,38 +937,8 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>946318e3-29e3-44a3-99ed-5b8b5873ebf8</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>2c3baaf5-8705-4464-8b20-3ae93d500075</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>21812a78-8ad9-4e0b-96c4-9fe12277dc66</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-         <id>f92b240c-0506-464f-8955-d5ec9ad87da0</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#weight</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/collection/2060#</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
@@ -1068,12 +948,17 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>e4a326b8-ccfe-4b4f-997e-4f249a8a280b</id>
+         <id>c1445bbc81a898e8c99c3b7ccaef38b8</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>81302a3ef0efb54e597cedd1f88421c1</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
@@ -1083,27 +968,52 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>2a1c979f-4adc-4468-b79e-4bc482727f13</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>53a0310c-c91d-4bb0-a990-9afc4d809596</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap's Heart</typedLiteral>
+         <id>a5a16ffaadd8df647cbf14ce8699287e</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#depth</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#weight</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+         <id>bc208e8326a6dfb5f9bc93085c0be956</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <uri>http://collectionsearch.nma.gov.au/object/64620</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
+         <uri>https://creativecommons.org/licenses/by-nc-sa/4.0/</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>83f394b31cfdbd15dccc4b74c6fc7938</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>dd7ce46c2bb8d84d165bc9e6935b6a37</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+         <id>a50926d0236d4935bd3f17b1a6810058</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
@@ -1112,63 +1022,23 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+         <id>1c9326a51d4558e348aa320a52607dc5</id>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>c602e75c-4453-4d27-bd4b-e90dd657676f</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of</uri>
-         <id>08a32e3d-9b7f-44c9-b48f-35c074a1b429</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#width</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-         <id>e84261f3-f909-4098-b122-83f231540f29</id>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-819-wm-vs1_o4.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <id>a3542597-de31-428a-9061-064f2de7e3fd</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap died at Menlo Park in suspicious circumstances.</typedLiteral>
-      </triple>
-      <triple>
-         <id>a3542597-de31-428a-9061-064f2de7e3fd</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>a3542597-de31-428a-9061-064f2de7e3fd</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
-         <id>ce5ce0fb-edfc-433a-94f6-38936bba5b30</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
-      </triple>
-      <triple>
-         <id>ce5ce0fb-edfc-433a-94f6-38936bba5b30</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
-      </triple>
-      <triple>
-         <id>f1904797-2cb9-44c0-99f5-00574237eedd</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
-      </triple>
-      <triple>
-         <id>f1904797-2cb9-44c0-99f5-00574237eedd</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
+         <id>f332a54dd4846343c46f491bce4b3b2c</id>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/PH2429/Collection/Working%20Masters/nma_23066584.jpg</uri>
@@ -1181,29 +1051,14 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewWidth</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-         <id>00c05262-8630-4867-a6ea-b71e9e93761e</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewWidth</uri>
+         <uri>https://creativecommons.org/licenses/by-nc-sa/4.0/</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">534</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">CC BY-NC-SA 4.0</typedLiteral>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewWidth</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300055647</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewWidth</uri>
+         <uri>https://creativecommons.org/licenses/by-nc-sa/4.0/</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-818-wm-vs1_o5.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E30_Right</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/PH2429/Collection/Working%20Masters/nma_23067624.jpg</uri>
@@ -1237,6 +1092,11 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/718#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/718</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/718#</uri>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Flemington, Melbourne, Victoria, Australia</typedLiteral>
       </triple>
@@ -1253,12 +1113,12 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>3c5b6c96-c3e3-4cf2-a04f-3a9bce69e939</id>
+         <id>dea4dbcd32b315acdf9d8dfd3183542e</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>b1641517-d412-419d-b8a1-72e55179471a</id>
+         <id>1e248fbbaa498bfa79efbfd7766e7ada</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#name</uri>
@@ -1281,24 +1141,19 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbWidth</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-         <id>611ae931-e8ff-4dce-8d85-07eabc1c8908</id>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbWidth</uri>
+         <id>f90e28f7579e53abcecba3843f7cde73</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">167</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap died at Menlo Park in suspicious circumstances.</typedLiteral>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbWidth</uri>
+         <id>f90e28f7579e53abcecba3843f7cde73</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300055647</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbWidth</uri>
+         <id>f90e28f7579e53abcecba3843f7cde73</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-814-wm-vs1_o3.jpg</uri>
@@ -1311,24 +1166,29 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>08a006c6-3b7d-4623-b0eb-a30a6598a8a3</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1930</typedLiteral>
+         <id>b5fc8c6dd610a3d754d45b55992c6c73</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
       </triple>
       <triple>
-         <id>08a006c6-3b7d-4623-b0eb-a30a6598a8a3</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1930</typedLiteral>
-      </triple>
-      <triple>
-         <id>08a006c6-3b7d-4623-b0eb-a30a6598a8a3</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1930</typedLiteral>
-      </triple>
-      <triple>
-         <id>08a006c6-3b7d-4623-b0eb-a30a6598a8a3</id>
+         <id>b5fc8c6dd610a3d754d45b55992c6c73</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
+      </triple>
+      <triple>
+         <id>83d4e8b0163d06e41ff18a4f73bef59f</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300054766</uri>
+      </triple>
+      <triple>
+         <id>83d4e8b0163d06e41ff18a4f73bef59f</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">, Landmarks, Acton</typedLiteral>
+      </triple>
+      <triple>
+         <id>83d4e8b0163d06e41ff18a4f73bef59f</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
       </triple>
       <triple>
          <uri>http://vocab.getty.edu/aat/300404670</uri>
@@ -1341,39 +1201,39 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <id>870b3fc0-d0b3-4957-86d0-f5f308630dab</id>
+         <id>4a80dd05ab28b45b9315baa0243e64fc</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Animal%20material%20-%20non%20specific%22</uri>
+      </triple>
+      <triple>
+         <id>4a80dd05ab28b45b9315baa0243e64fc</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Zoological specimens</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Animal material - non specific</typedLiteral>
       </triple>
       <triple>
-         <id>8bf51ba4-f6e4-41d1-bd22-6b6b2b600475</id>
+         <id>4a80dd05ab28b45b9315baa0243e64fc</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+      </triple>
+      <triple>
+         <id>3b60172cb8fdb6f8e8a755f671d9a070</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Davis</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Telford</typedLiteral>
       </triple>
       <triple>
-         <id>8bf51ba4-f6e4-41d1-bd22-6b6b2b600475</id>
+         <id>3b60172cb8fdb6f8e8a755f671d9a070</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300404652</uri>
       </triple>
       <triple>
-         <id>8bf51ba4-f6e4-41d1-bd22-6b6b2b600475</id>
+         <id>3b60172cb8fdb6f8e8a755f671d9a070</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
-         <id>dc977790-57dd-422f-8b4c-d254cd3acaf2</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">kg</typedLiteral>
-      </triple>
-      <triple>
-         <id>dc977790-57dd-422f-8b4c-d254cd3acaf2</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
-      </triple>
-      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#creation</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-         <id>f1904797-2cb9-44c0-99f5-00574237eedd</id>
+         <id>091e9ad46417450eb04afcc572a77c13</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#creation</uri>
@@ -1381,34 +1241,54 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E65_Creation</uri>
       </triple>
       <triple>
-         <id>e4a326b8-ccfe-4b4f-997e-4f249a8a280b</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-         <id>df71694a-53de-4d19-b076-2416ebfeed85</id>
+         <id>c30356a8863ba682abe2647c5d0fcbe1</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#</uri>
       </triple>
       <triple>
-         <id>e4a326b8-ccfe-4b4f-997e-4f249a8a280b</id>
+         <id>c30356a8863ba682abe2647c5d0fcbe1</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>904d98ff-a2de-48b9-981e-ffde16989ad6</id>
+         <id>f90e28f7579e53abcecba3843f7cde73</id>
       </triple>
       <triple>
-         <id>e4a326b8-ccfe-4b4f-997e-4f249a8a280b</id>
+         <id>c30356a8863ba682abe2647c5d0fcbe1</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of event</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
       </triple>
       <triple>
-         <id>e4a326b8-ccfe-4b4f-997e-4f249a8a280b</id>
+         <id>c30356a8863ba682abe2647c5d0fcbe1</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
-         <id>56d4acb5-37a2-41a9-adb9-8bfd5e34cb94</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Perspex</typedLiteral>
+         <id>b38c8a63befb6330ad827a4c3d6ede5d</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">J</typedLiteral>
       </triple>
       <triple>
-         <id>56d4acb5-37a2-41a9-adb9-8bfd5e34cb94</id>
+         <id>b38c8a63befb6330ad827a4c3d6ede5d</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300404654</uri>
+      </triple>
+      <triple>
+         <id>b38c8a63befb6330ad827a4c3d6ede5d</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+         <uri>https://linked.art/ns/terms/Name</uri>
+      </triple>
+      <triple>
+         <id>847109bd50ef392c7d6939c4bc71431a</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The heart was displayed at the Institute before it was transferred to the National Museum of Australia.</typedLiteral>
+      </triple>
+      <triple>
+         <id>847109bd50ef392c7d6939c4bc71431a</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>847109bd50ef392c7d6939c4bc71431a</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/PH2429/Collection/Working%20Masters/nma_23067914.jpg</uri>
@@ -1421,9 +1301,24 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-820-wm-vs1_o5.jpg</uri>
+         <id>048ddbe3497236d3e8c3cccbf3dbbd9b</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1926-10-04</typedLiteral>
+      </triple>
+      <triple>
+         <id>048ddbe3497236d3e8c3cccbf3dbbd9b</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1926-10-04</typedLiteral>
+      </triple>
+      <triple>
+         <id>048ddbe3497236d3e8c3cccbf3dbbd9b</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1926-10-04</typedLiteral>
+      </triple>
+      <triple>
+         <id>048ddbe3497236d3e8c3cccbf3dbbd9b</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
@@ -1434,16 +1329,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-816-wm-vs1_o5.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-816-wm-vs1_o4.jpg</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
@@ -1467,8 +1352,38 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620</uri>
+         <uri>http://purl.org/dc/elements/1.1/issued</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2011-03-02</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620</uri>
+         <uri>http://purl.org/dc/elements/1.1/modified</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2018-03-18</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E31_Document</uri>
+      </triple>
+      <triple>
+         <id>8758314ad86a7c09877db52cef35e6f9</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
+      </triple>
+      <triple>
+         <id>8758314ad86a7c09877db52cef35e6f9</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
@@ -1479,16 +1394,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-817-wm-vs1_o5.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-817-wm-vs1_o4.jpg</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
@@ -1512,33 +1417,38 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23068984#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>3c5b6c96-c3e3-4cf2-a04f-3a9bce69e939</id>
+         <id>2282b6645314502183abf3930bc8f578</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Woodcock</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Davis</typedLiteral>
       </triple>
       <triple>
-         <id>3c5b6c96-c3e3-4cf2-a04f-3a9bce69e939</id>
+         <id>2282b6645314502183abf3930bc8f578</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300404652</uri>
       </triple>
       <triple>
-         <id>3c5b6c96-c3e3-4cf2-a04f-3a9bce69e939</id>
+         <id>2282b6645314502183abf3930bc8f578</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>c491cb76-8c50-45e4-880a-9dd0b42c545a</id>
+         <id>a3baa06ab5983f7e952a1b2614bdd19e</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>28039413-142c-4f91-ade4-97bfd87dc66c</id>
+         <id>fb3a888f94b84512c512de67201bc257</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#name</uri>
@@ -1561,14 +1471,24 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
-         <id>97bcaebb-9c28-44df-9bd2-abbc640ea6eb</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
+         <id>dd7ce46c2bb8d84d165bc9e6935b6a37</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#</uri>
       </triple>
       <triple>
-         <id>97bcaebb-9c28-44df-9bd2-abbc640ea6eb</id>
+         <id>dd7ce46c2bb8d84d165bc9e6935b6a37</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>e8756f9a7654c9c834e5e6ea2e7d93ce</id>
+      </triple>
+      <triple>
+         <id>dd7ce46c2bb8d84d165bc9e6935b6a37</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
+      </triple>
+      <triple>
+         <id>dd7ce46c2bb8d84d165bc9e6935b6a37</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-816-wm-vs1_o3.jpg</uri>
@@ -1581,24 +1501,24 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewHeight</uri>
+         <id>a5a16ffaadd8df647cbf14ce8699287e</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewWidth</uri>
+         <id>a5a16ffaadd8df647cbf14ce8699287e</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>e99466d9e32cb93fdcc839b5f37601ae</id>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/preview</uri>
+         <id>a5a16ffaadd8df647cbf14ce8699287e</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg</uri>
+         <id>a5a16ffaadd8df647cbf14ce8699287e</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#referencenumber</uri>
@@ -1616,24 +1536,24 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
-         <id>f588d4e8-b3a4-42a9-9dec-a39b8b7dfbac</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The heart was displayed for many years at the Australian Institute of Anatomy in Canberra, and is now in the care of the National Museum of Australia.</typedLiteral>
+         <id>f332a54dd4846343c46f491bce4b3b2c</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/1248#</uri>
       </triple>
       <triple>
-         <id>f588d4e8-b3a4-42a9-9dec-a39b8b7dfbac</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
+         <id>f332a54dd4846343c46f491bce4b3b2c</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>abf8ab7fe54d6467c542be22a91fd61b</id>
       </triple>
       <triple>
-         <id>f588d4e8-b3a4-42a9-9dec-a39b8b7dfbac</id>
+         <id>f332a54dd4846343c46f491bce4b3b2c</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
+      </triple>
+      <triple>
+         <id>f332a54dd4846343c46f491bce4b3b2c</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-815-wm-vs1_o4.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/PH2429/Collection/Working%20Masters/nma_23067914.jpg</uri>
@@ -1642,46 +1562,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/PH2429/Collection/Working%20Masters/nma_23067914.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <id>fa427baf-d7b6-4331-a840-0a7236605964</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">J</typedLiteral>
-      </triple>
-      <triple>
-         <id>fa427baf-d7b6-4331-a840-0a7236605964</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300404654</uri>
-      </triple>
-      <triple>
-         <id>fa427baf-d7b6-4331-a840-0a7236605964</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>https://linked.art/ns/terms/Name</uri>
-      </triple>
-      <triple>
-         <id>2081b5b6-2392-487b-a56d-2e8f4fab0201</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300189559</uri>
-      </triple>
-      <triple>
-         <id>2081b5b6-2392-487b-a56d-2e8f4fab0201</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300055147</uri>
-      </triple>
-      <triple>
-         <id>2081b5b6-2392-487b-a56d-2e8f4fab0201</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
-      </triple>
-      <triple>
-         <id>2081b5b6-2392-487b-a56d-2e8f4fab0201</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-814-wm-vs1_o5.jpg</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
@@ -1696,6 +1576,21 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
+         <uri>http://collectionsearch.nma.gov.au/object/64620</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300264578</uri>
+      </triple>
+      <triple>
+         <uri>http://collectionsearch.nma.gov.au/object/64620</uri>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://collectionsearch.nma.gov.au/object/64620</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+      </triple>
+      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/term/educationalSignificance</uri>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">educational significance</typedLiteral>
@@ -1706,16 +1601,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <id>00c05262-8630-4867-a6ea-b71e9e93761e</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
-      </triple>
-      <triple>
-         <id>00c05262-8630-4867-a6ea-b71e9e93761e</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
-      </triple>
-      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P94i_was_created_by</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#creation</uri>
@@ -1724,16 +1609,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-814-wm-vs1_o5.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-814-wm-vs1_o4.jpg</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
@@ -1757,6 +1632,11 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066584#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
@@ -1771,19 +1651,29 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>28039413-142c-4f91-ade4-97bfd87dc66c</id>
+         <id>1e248fbbaa498bfa79efbfd7766e7ada</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Alick</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Tommy</typedLiteral>
       </triple>
       <triple>
-         <id>28039413-142c-4f91-ade4-97bfd87dc66c</id>
+         <id>1e248fbbaa498bfa79efbfd7766e7ada</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300404651</uri>
       </triple>
       <triple>
-         <id>28039413-142c-4f91-ade4-97bfd87dc66c</id>
+         <id>1e248fbbaa498bfa79efbfd7766e7ada</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>https://linked.art/ns/terms/Name</uri>
+      </triple>
+      <triple>
+         <id>2be7f3c285a972e38af1c425959f3dce</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
+      </triple>
+      <triple>
+         <id>2be7f3c285a972e38af1c425959f3dce</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#</uri>
@@ -1794,6 +1684,11 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#repositorynumber</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#</uri>
@@ -1808,7 +1703,7 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#creation</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-         <id>97bcaebb-9c28-44df-9bd2-abbc640ea6eb</id>
+         <id>b5fc8c6dd610a3d754d45b55992c6c73</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23070024#creation</uri>
@@ -1819,6 +1714,56 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/Working%20Masters/nma.img-ci20092429-818-wm-vs1_o2.jpg</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+      </triple>
+      <triple>
+         <id>abf8ab7fe54d6467c542be22a91fd61b</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Agua Caliente Handicap in 1932.</typedLiteral>
+      </triple>
+      <triple>
+         <id>abf8ab7fe54d6467c542be22a91fd61b</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>abf8ab7fe54d6467c542be22a91fd61b</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+      </triple>
+      <triple>
+         <id>8b7a40cf06f4f2e5719a97a263aa6c23</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300189559</uri>
+      </triple>
+      <triple>
+         <id>8b7a40cf06f4f2e5719a97a263aa6c23</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300055147</uri>
+      </triple>
+      <triple>
+         <id>8b7a40cf06f4f2e5719a97a263aa6c23</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+      </triple>
+      <triple>
+         <id>8b7a40cf06f4f2e5719a97a263aa6c23</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
+      </triple>
+      <triple>
+         <id>e8756f9a7654c9c834e5e6ea2e7d93ce</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Woodcock was Phar Lap's strapper in Australia, and travelled with him to America in the role of trainer. Woodcock was with Phar Lap when he died.</typedLiteral>
+      </triple>
+      <triple>
+         <id>e8756f9a7654c9c834e5e6ea2e7d93ce</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>e8756f9a7654c9c834e5e6ea2e7d93ce</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#repositorynumber</uri>
@@ -1834,21 +1779,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/80015#repositorynumber</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
-      </triple>
-      <triple>
-         <id>69cf0719-2842-4110-bcd5-7f21ab23dc3b</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date that Phar Lap died.</typedLiteral>
-      </triple>
-      <triple>
-         <id>69cf0719-2842-4110-bcd5-7f21ab23dc3b</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>69cf0719-2842-4110-bcd5-7f21ab23dc3b</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-817-wm-vs1_o3.jpg</uri>
@@ -1872,6 +1802,11 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#</uri>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Menlo Park, San Mateo, California, United States of America</typedLiteral>
       </triple>
@@ -1883,7 +1818,7 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#creation</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-         <id>9b37fc5a-7f17-4804-91e4-08c0cb1b55f0</id>
+         <id>563c2a4136e24fe8917858798afc7a05</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067624#creation</uri>
@@ -1891,24 +1826,9 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E65_Creation</uri>
       </triple>
       <triple>
-         <id>b7b64b40-fdf1-40f1-b534-96056b255b8c</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Woodcock was Phar Lap's strapper in Australia, and travelled with him to America in the role of trainer. Woodcock was with Phar Lap when he died.</typedLiteral>
-      </triple>
-      <triple>
-         <id>b7b64b40-fdf1-40f1-b534-96056b255b8c</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>b7b64b40-fdf1-40f1-b534-96056b255b8c</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of</uri>
-         <id>2081b5b6-2392-487b-a56d-2e8f4fab0201</id>
+         <id>92aba2970f407fa3a0d721c0112d4da8</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#</uri>
@@ -1922,41 +1842,11 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894</uri>
       </triple>
       <triple>
-         <id>db50170b-d883-4e69-b9b4-e544b5b9296d</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
-      </triple>
-      <triple>
-         <id>db50170b-d883-4e69-b9b4-e544b5b9296d</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.640x640.jpg</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <id>aeff752a-a04f-406e-8611-890727c4af11</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
-      </triple>
-      <triple>
-         <id>aeff752a-a04f-406e-8611-890727c4af11</id>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
@@ -1969,26 +1859,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/PH2429/Collection/Working%20Masters/nma_23070024.jpg</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-816-wm-vs1_o5.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#repositorynumber</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2319</typedLiteral>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#repositorynumber</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300404621</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#repositorynumber</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
          <uri>http://vocab.getty.edu/aat/300379612</uri>
@@ -2011,24 +1881,19 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>fe5d9168-128a-474e-b7ed-4cbc16a246ee</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">05/04/1932</typedLiteral>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#repositorynumber</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2319</typedLiteral>
       </triple>
       <triple>
-         <id>fe5d9168-128a-474e-b7ed-4cbc16a246ee</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">05/04/1932</typedLiteral>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#repositorynumber</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300404621</uri>
       </triple>
       <triple>
-         <id>fe5d9168-128a-474e-b7ed-4cbc16a246ee</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">05/04/1932</typedLiteral>
-      </triple>
-      <triple>
-         <id>fe5d9168-128a-474e-b7ed-4cbc16a246ee</id>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#repositorynumber</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
@@ -2041,34 +1906,34 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <id>08a32e3d-9b7f-44c9-b48f-35c074a1b429</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">MacKenzie collection</typedLiteral>
+         <id>c1445bbc81a898e8c99c3b7ccaef38b8</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+         <id>abc047e4c369b0800629ccbaa54fbad1</id>
       </triple>
       <triple>
-         <id>08a32e3d-9b7f-44c9-b48f-35c074a1b429</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300025976</uri>
+         <id>c1445bbc81a898e8c99c3b7ccaef38b8</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>a5c004ffa13ac80cfd8da79d4815d9bb</id>
       </triple>
       <triple>
-         <id>08a32e3d-9b7f-44c9-b48f-35c074a1b429</id>
+         <id>c1445bbc81a898e8c99c3b7ccaef38b8</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of event</typedLiteral>
+      </triple>
+      <triple>
+         <id>c1445bbc81a898e8c99c3b7ccaef38b8</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
-         <id>9cf62cbb-23e8-48f6-b459-f65e6d19917f</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The heart was displayed at the Institute before it was transferred to the National Museum of Australia.</typedLiteral>
+         <id>cb4e09e27b4bde4b6553623e328da74b</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
       </triple>
       <triple>
-         <id>9cf62cbb-23e8-48f6-b459-f65e6d19917f</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>9cf62cbb-23e8-48f6-b459-f65e6d19917f</id>
+         <id>cb4e09e27b4bde4b6553623e328da74b</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/term/contentDescription</uri>
@@ -2081,24 +1946,14 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <id>11335c7e-4ee1-4457-b31f-864b101bda0a</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#</uri>
-      </triple>
-      <triple>
-         <id>11335c7e-4ee1-4457-b31f-864b101bda0a</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>e7f7469f-7901-4bde-b192-fe1796e0a660</id>
-      </triple>
-      <triple>
-         <id>11335c7e-4ee1-4457-b31f-864b101bda0a</id>
+         <id>4f04d893363c6663758003db8ee24dc0</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
       </triple>
       <triple>
-         <id>11335c7e-4ee1-4457-b31f-864b101bda0a</id>
+         <id>4f04d893363c6663758003db8ee24dc0</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/Working%20Masters/nma.img-ci20092429-820-wm-vs1_o2.jpg</uri>
@@ -2106,34 +1961,59 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>6210cc67-7365-4a9d-a70e-c906a5e84d87</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date that Phar Lap was foaled.</typedLiteral>
+         <id>abc047e4c369b0800629ccbaa54fbad1</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1930</typedLiteral>
       </triple>
       <triple>
-         <id>6210cc67-7365-4a9d-a70e-c906a5e84d87</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
+         <id>abc047e4c369b0800629ccbaa54fbad1</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1930</typedLiteral>
       </triple>
       <triple>
-         <id>6210cc67-7365-4a9d-a70e-c906a5e84d87</id>
+         <id>abc047e4c369b0800629ccbaa54fbad1</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1930</typedLiteral>
+      </triple>
+      <triple>
+         <id>abc047e4c369b0800629ccbaa54fbad1</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
+      </triple>
+      <triple>
+         <id>83f394b31cfdbd15dccc4b74c6fc7938</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/718#</uri>
+      </triple>
+      <triple>
+         <id>83f394b31cfdbd15dccc4b74c6fc7938</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>e706671ec3ebd5dd21c7ac0918a532b7</id>
+      </triple>
+      <triple>
+         <id>83f394b31cfdbd15dccc4b74c6fc7938</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
+      </triple>
+      <triple>
+         <id>83f394b31cfdbd15dccc4b74c6fc7938</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>8bf51ba4-f6e4-41d1-bd22-6b6b2b600475</id>
+         <id>2282b6645314502183abf3930bc8f578</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>fa427baf-d7b6-4331-a840-0a7236605964</id>
+         <id>b38c8a63befb6330ad827a4c3d6ede5d</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#name</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-         <id>c1158f4f-1ff9-4a88-bd67-44e98e1ffdbb</id>
+         <id>3d9e575bee51fab793e4dbbe016b6bf2</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#name</uri>
@@ -2156,17 +2036,17 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
-         <id>24dcbfa2-36cd-4cd9-9e8c-2a950147ff2a</id>
+         <id>1880b68880f2d5d975dd514a2f47d502</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Melbourne Cup in 1930.</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Telford was Phar Lap's trainer, and presented the heart to the Australian Institute of Anatomy.</typedLiteral>
       </triple>
       <triple>
-         <id>24dcbfa2-36cd-4cd9-9e8c-2a950147ff2a</id>
+         <id>1880b68880f2d5d975dd514a2f47d502</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300411780</uri>
       </triple>
       <triple>
-         <id>24dcbfa2-36cd-4cd9-9e8c-2a950147ff2a</id>
+         <id>1880b68880f2d5d975dd514a2f47d502</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
@@ -2179,6 +2059,21 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://vocab.getty.edu/aat/300189559</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+      </triple>
+      <triple>
+         <id>ea769396d70a68d733d6acf4a9259be6</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">The heart was displayed for many years at the Australian Institute of Anatomy in Canberra, and is now in the care of the National Museum of Australia.</typedLiteral>
+      </triple>
+      <triple>
+         <id>ea769396d70a68d733d6acf4a9259be6</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>ea769396d70a68d733d6acf4a9259be6</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20092429-819-wm-vs1_o3.jpg</uri>
@@ -2199,31 +2094,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://vocab.getty.edu/aat/300404621</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
-      </triple>
-      <triple>
-         <id>469a1764-7d43-4d1f-bb32-06c10c7c00d9</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
-      </triple>
-      <triple>
-         <id>469a1764-7d43-4d1f-bb32-06c10c7c00d9</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
-      </triple>
-      <triple>
-         <id>9b37fc5a-7f17-4804-91e4-08c0cb1b55f0</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
-      </triple>
-      <triple>
-         <id>9b37fc5a-7f17-4804-91e4-08c0cb1b55f0</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-818-wm-vs1_o4.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/PH2429/Collection/Working%20Masters/nma_23064154.jpg</uri>
@@ -2251,27 +2121,72 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-817-wm-vs1_o5.jpg</uri>
+         <id>31a03fbc98e8f72c5f420ab195121178</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Harry</typedLiteral>
+      </triple>
+      <triple>
+         <id>31a03fbc98e8f72c5f420ab195121178</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300404651</uri>
+      </triple>
+      <triple>
+         <id>31a03fbc98e8f72c5f420ab195121178</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+         <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
-         <id>e84261f3-f909-4098-b122-83f231540f29</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-         <id>08a006c6-3b7d-4623-b0eb-a30a6598a8a3</id>
+         <id>81302a3ef0efb54e597cedd1f88421c1</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#</uri>
       </triple>
       <triple>
-         <id>e84261f3-f909-4098-b122-83f231540f29</id>
+         <id>81302a3ef0efb54e597cedd1f88421c1</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>94ac0c0e-4948-47c0-93fc-dfce06a8faab</id>
+         <id>9bb9f57fa7750dbfc74356cf256476e4</id>
       </triple>
       <triple>
-         <id>e84261f3-f909-4098-b122-83f231540f29</id>
+         <id>81302a3ef0efb54e597cedd1f88421c1</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
+      </triple>
+      <triple>
+         <id>81302a3ef0efb54e597cedd1f88421c1</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
+      </triple>
+      <triple>
+         <id>bc208e8326a6dfb5f9bc93085c0be956</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Perspex%22</uri>
+      </triple>
+      <triple>
+         <id>bc208e8326a6dfb5f9bc93085c0be956</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Perspex</typedLiteral>
+      </triple>
+      <triple>
+         <id>bc208e8326a6dfb5f9bc93085c0be956</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+      </triple>
+      <triple>
+         <id>c80bafe1b612842fcf6167631a33d1d9</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+         <id>53db70656fe66f5f2daa7702930c51c7</id>
+      </triple>
+      <triple>
+         <id>c80bafe1b612842fcf6167631a33d1d9</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>6e27dc3ca9d495f0460cf12262cc0b40</id>
+      </triple>
+      <triple>
+         <id>c80bafe1b612842fcf6167631a33d1d9</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of event</typedLiteral>
       </triple>
       <triple>
-         <id>e84261f3-f909-4098-b122-83f231540f29</id>
+         <id>c80bafe1b612842fcf6167631a33d1d9</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
@@ -2281,79 +2196,49 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>c491cb76-8c50-45e4-880a-9dd0b42c545a</id>
+         <id>a3baa06ab5983f7e952a1b2614bdd19e</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Roberts</typedLiteral>
       </triple>
       <triple>
-         <id>c491cb76-8c50-45e4-880a-9dd0b42c545a</id>
+         <id>a3baa06ab5983f7e952a1b2614bdd19e</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
          <uri>http://vocab.getty.edu/aat/300404652</uri>
       </triple>
       <triple>
-         <id>c491cb76-8c50-45e4-880a-9dd0b42c545a</id>
+         <id>a3baa06ab5983f7e952a1b2614bdd19e</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>https://linked.art/ns/terms/Name</uri>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewHeight</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-         <id>469a1764-7d43-4d1f-bb32-06c10c7c00d9</id>
+         <id>45292aa2642a0e50600292152f0e7a2e</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/80047#</uri>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewHeight</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">640</typedLiteral>
+         <id>45292aa2642a0e50600292152f0e7a2e</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>847109bd50ef392c7d6939c4bc71431a</id>
       </triple>
       <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewHeight</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300055644</uri>
-      </triple>
-      <triple>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#previewHeight</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
-      </triple>
-      <triple>
-         <id>a7d10557-3a0f-4405-ac3d-c40f358bfff5</id>
+         <id>45292aa2642a0e50600292152f0e7a2e</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated organisation</typedLiteral>
       </triple>
       <triple>
-         <id>a7d10557-3a0f-4405-ac3d-c40f358bfff5</id>
+         <id>45292aa2642a0e50600292152f0e7a2e</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067914#creation</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-         <id>aeff752a-a04f-406e-8611-890727c4af11</id>
+         <id>8758314ad86a7c09877db52cef35e6f9</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23067914#creation</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E65_Creation</uri>
-      </triple>
-      <triple>
-         <id>6dc678f1-beed-40ee-a0b1-a8fd6f34dc80</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2319#</uri>
-      </triple>
-      <triple>
-         <id>6dc678f1-beed-40ee-a0b1-a8fd6f34dc80</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>a3542597-de31-428a-9061-064f2de7e3fd</id>
-      </triple>
-      <triple>
-         <id>6dc678f1-beed-40ee-a0b1-a8fd6f34dc80</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
-      </triple>
-      <triple>
-         <id>6dc678f1-beed-40ee-a0b1-a8fd6f34dc80</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/term/preview</uri>
@@ -2366,29 +2251,29 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-820-wm-vs1_o4.jpg</uri>
+         <id>00b1e1f9b4d3eefd01492b364498c70a</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+         <id>7b965dada9f93ad261cab4971578e07c</id>
+      </triple>
+      <triple>
+         <id>00b1e1f9b4d3eefd01492b364498c70a</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>83549c354128c2216ddec683ac6ef073</id>
+      </triple>
+      <triple>
+         <id>00b1e1f9b4d3eefd01492b364498c70a</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of event</typedLiteral>
+      </triple>
+      <triple>
+         <id>00b1e1f9b4d3eefd01492b364498c70a</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <id>c1158f4f-1ff9-4a88-bd67-44e98e1ffdbb</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">David</typedLiteral>
-      </triple>
-      <triple>
-         <id>c1158f4f-1ff9-4a88-bd67-44e98e1ffdbb</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300404651</uri>
-      </triple>
-      <triple>
-         <id>c1158f4f-1ff9-4a88-bd67-44e98e1ffdbb</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>https://linked.art/ns/terms/Name</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#width</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-         <id>104293e0-a999-4e0c-acaf-60938a2d432f</id>
+         <id>4f04d893363c6663758003db8ee24dc0</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#width</uri>
@@ -2406,19 +2291,24 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
       </triple>
       <triple>
-         <id>b1641517-d412-419d-b8a1-72e55179471a</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Tommy</typedLiteral>
+         <id>7b965dada9f93ad261cab4971578e07c</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932</typedLiteral>
       </triple>
       <triple>
-         <id>b1641517-d412-419d-b8a1-72e55179471a</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300404651</uri>
+         <id>7b965dada9f93ad261cab4971578e07c</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932</typedLiteral>
       </triple>
       <triple>
-         <id>b1641517-d412-419d-b8a1-72e55179471a</id>
+         <id>7b965dada9f93ad261cab4971578e07c</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932</typedLiteral>
+      </triple>
+      <triple>
+         <id>7b965dada9f93ad261cab4971578e07c</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>https://linked.art/ns/terms/Name</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#physicalDescription</uri>
@@ -2441,66 +2331,6 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
-         <id>161aa28d-2f8c-41f0-9103-1ab403f5c04e</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">04/10/1926</typedLiteral>
-      </triple>
-      <triple>
-         <id>161aa28d-2f8c-41f0-9103-1ab403f5c04e</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">04/10/1926</typedLiteral>
-      </triple>
-      <triple>
-         <id>161aa28d-2f8c-41f0-9103-1ab403f5c04e</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">04/10/1926</typedLiteral>
-      </triple>
-      <triple>
-         <id>161aa28d-2f8c-41f0-9103-1ab403f5c04e</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
-      </triple>
-      <triple>
-         <id>937c4548-21b5-47fe-9483-7f64530b9059</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
-      </triple>
-      <triple>
-         <id>937c4548-21b5-47fe-9483-7f64530b9059</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
-      </triple>
-      <triple>
-         <id>104293e0-a999-4e0c-acaf-60938a2d432f</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
-      </triple>
-      <triple>
-         <id>104293e0-a999-4e0c-acaf-60938a2d432f</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20092429-819-wm-vs1_o5.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
-         <id>e7f7469f-7901-4bde-b192-fe1796e0a660</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place where Phar Lap was foaled.</typedLiteral>
-      </triple>
-      <triple>
-         <id>e7f7469f-7901-4bde-b192-fe1796e0a660</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>e7f7469f-7901-4bde-b192-fe1796e0a660</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#repositorynumber</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">64620</typedLiteral>
@@ -2518,12 +2348,27 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#creation</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-         <id>ce5ce0fb-edfc-433a-94f6-38936bba5b30</id>
+         <id>2be7f3c285a972e38af1c425959f3dce</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23064154#creation</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/E65_Creation</uri>
+      </triple>
+      <triple>
+         <id>1c9326a51d4558e348aa320a52607dc5</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Liquid%20-%20non%20specific%22</uri>
+      </triple>
+      <triple>
+         <id>1c9326a51d4558e348aa320a52607dc5</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Liquid - non specific</typedLiteral>
+      </triple>
+      <triple>
+         <id>1c9326a51d4558e348aa320a52607dc5</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#repositorynumber</uri>
@@ -2541,14 +2386,19 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
-         <id>611ae931-e8ff-4dce-8d85-07eabc1c8908</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
+         <id>a5c004ffa13ac80cfd8da79d4815d9bb</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Phar Lap won the Melbourne Cup in 1930 carrying a 62.6 kilogram handicap.</typedLiteral>
       </triple>
       <triple>
-         <id>611ae931-e8ff-4dce-8d85-07eabc1c8908</id>
+         <id>a5c004ffa13ac80cfd8da79d4815d9bb</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
+      </triple>
+      <triple>
+         <id>a5c004ffa13ac80cfd8da79d4815d9bb</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv2/Working%20Masters/nma.img-ci20092429-816-wm-vs1_o2.jpg</uri>
@@ -2556,19 +2406,19 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
       </triple>
       <triple>
-         <id>6c614b73-ab04-46eb-85e3-40a32aced76d</id>
+         <id>6e27dc3ca9d495f0460cf12262cc0b40</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date that Phar Lap died.</typedLiteral>
+      </triple>
+      <triple>
+         <id>6e27dc3ca9d495f0460cf12262cc0b40</id>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300054766</uri>
+         <uri>http://vocab.getty.edu/aat/300411780</uri>
       </triple>
       <triple>
-         <id>6c614b73-ab04-46eb-85e3-40a32aced76d</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Case 01, Flemington Racecourse, Landmarks, Acton</typedLiteral>
-      </triple>
-      <triple>
-         <id>6c614b73-ab04-46eb-85e3-40a32aced76d</id>
+         <id>6e27dc3ca9d495f0460cf12262cc0b40</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#repositorynumber</uri>
@@ -2586,24 +2436,9 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
-         <id>fd4b9489-8309-48c9-bb5a-f492413bb56b</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Roberts was Phar Lap's breeder.</typedLiteral>
-      </triple>
-      <triple>
-         <id>fd4b9489-8309-48c9-bb5a-f492413bb56b</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>fd4b9489-8309-48c9-bb5a-f492413bb56b</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
-      </triple>
-      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#weight</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-         <id>dc977790-57dd-422f-8b4c-d254cd3acaf2</id>
+         <id>10f84365b2a4620b78063d2f1b8e5f03</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#weight</uri>
@@ -2646,39 +2481,9 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
-         <id>c602e75c-4453-4d27-bd4b-e90dd657676f</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/2894#</uri>
-      </triple>
-      <triple>
-         <id>c602e75c-4453-4d27-bd4b-e90dd657676f</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>7ae60b45-0782-45bc-b518-89f866baa4ac</id>
-      </triple>
-      <triple>
-         <id>c602e75c-4453-4d27-bd4b-e90dd657676f</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
-      </triple>
-      <triple>
-         <id>c602e75c-4453-4d27-bd4b-e90dd657676f</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
-         <uri>http://vocab.getty.edu/aat/300055644</uri>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">height</typedLiteral>
-      </triple>
-      <triple>
-         <uri>http://vocab.getty.edu/aat/300055644</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
-      </triple>
-      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of</uri>
-         <id>019e09dc-4426-4690-9803-aa75e622f6f2</id>
+         <id>8b7a40cf06f4f2e5719a97a263aa6c23</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#</uri>
@@ -2692,13 +2497,13 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883</uri>
       </triple>
       <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20092429-814-wm-vs1_o4.jpg</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#</uri>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
       <triple>
          <uri>http://vocab.getty.edu/aat/300411780</uri>
@@ -2711,39 +2516,9 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <id>f92b240c-0506-464f-8955-d5ec9ad87da0</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Liquid - non specific</typedLiteral>
-      </triple>
-      <triple>
-         <id>f92b240c-0506-464f-8955-d5ec9ad87da0</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbHeight</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/media/16195#thumbWidth</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/term/thumbnail</uri>
-      </triple>
-      <triple>
-         <uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/16/195/nma.img-__wets0083-000-vi-vs1.200x200.jpg</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-      </triple>
-      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#depth</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-         <id>937c4548-21b5-47fe-9483-7f64530b9059</id>
+         <id>5267f67b13bb5105038ffff4b85b9545</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/object/64620#depth</uri>
@@ -2761,6 +2536,26 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
       </triple>
       <triple>
+         <id>a50926d0236d4935bd3f17b1a6810058</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3161#</uri>
+      </triple>
+      <triple>
+         <id>a50926d0236d4935bd3f17b1a6810058</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>1880b68880f2d5d975dd514a2f47d502</id>
+      </triple>
+      <triple>
+         <id>a50926d0236d4935bd3f17b1a6810058</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
+      </triple>
+      <triple>
+         <id>a50926d0236d4935bd3f17b1a6810058</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
+      </triple>
+      <triple>
          <uri>http://vocab.getty.edu/aat/300312355</uri>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
          <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">accession number</typedLiteral>
@@ -2771,24 +2566,24 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
       </triple>
       <triple>
-         <uri>http://rightsstatements.org/vocab/InC/1.0/</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">All Rights Reserved</typedLiteral>
+         <id>25b72115f2875db2bfda4e05035700ee</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+         <id>048ddbe3497236d3e8c3cccbf3dbbd9b</id>
       </triple>
       <triple>
-         <uri>http://rightsstatements.org/vocab/InC/1.0/</uri>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E30_Right</uri>
+         <id>25b72115f2875db2bfda4e05035700ee</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+         <id>64452022cd8a4f54fcf2d6b57304c339</id>
       </triple>
       <triple>
-         <uri>http://vocab.getty.edu/aat/300055147</uri>
+         <id>25b72115f2875db2bfda4e05035700ee</id>
          <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">sex role</typedLiteral>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of event</typedLiteral>
       </triple>
       <triple>
-         <uri>http://vocab.getty.edu/aat/300055147</uri>
+         <id>25b72115f2875db2bfda4e05035700ee</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/party/3883#repositorynumber</uri>
@@ -2806,6 +2601,36 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
       </triple>
       <triple>
+         <uri>http://vocab.getty.edu/aat/300055147</uri>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">sex role</typedLiteral>
+      </triple>
+      <triple>
+         <uri>http://vocab.getty.edu/aat/300055147</uri>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+      </triple>
+      <triple>
+         <id>53db70656fe66f5f2daa7702930c51c7</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932-04-05</typedLiteral>
+      </triple>
+      <triple>
+         <id>53db70656fe66f5f2daa7702930c51c7</id>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932-04-05</typedLiteral>
+      </triple>
+      <triple>
+         <id>53db70656fe66f5f2daa7702930c51c7</id>
+         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1932-04-05</typedLiteral>
+      </triple>
+      <triple>
+         <id>53db70656fe66f5f2daa7702930c51c7</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
+      </triple>
+      <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P168_place_is_defined_by</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#location</uri>
@@ -2814,6 +2639,11 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#repositorynumber</uri>
+      </triple>
+      <triple>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+         <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317</uri>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/place/2317#</uri>
@@ -2828,7 +2658,7 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#creation</uri>
          <uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-         <id>7ad7ba6f-84f7-42ea-b661-c770e7ce78bc</id>
+         <id>cb4e09e27b4bde4b6553623e328da74b</id>
       </triple>
       <triple>
          <uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA23066534#creation</uri>
@@ -2836,59 +2666,14 @@ Between 2006 and 2008, scientists used a synchrotron in Chicago to analyse a sam
          <uri>http://www.cidoc-crm.org/cidoc-crm/E65_Creation</uri>
       </triple>
       <triple>
-         <id>adf75ca6-0592-4477-8c41-7a0db1e980e5</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of</uri>
-         <uri>http://nma-dev.conaltuohy.com/xproc-z/party/17012#</uri>
+         <id>563c2a4136e24fe8917858798afc7a05</id>
+         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#label</uri>
+         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">George Serras</typedLiteral>
       </triple>
       <triple>
-         <id>adf75ca6-0592-4477-8c41-7a0db1e980e5</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>fd4b9489-8309-48c9-bb5a-f492413bb56b</id>
-      </triple>
-      <triple>
-         <id>adf75ca6-0592-4477-8c41-7a0db1e980e5</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated person</typedLiteral>
-      </triple>
-      <triple>
-         <id>adf75ca6-0592-4477-8c41-7a0db1e980e5</id>
+         <id>563c2a4136e24fe8917858798afc7a05</id>
          <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
-         <id>946318e3-29e3-44a3-99ed-5b8b5873ebf8</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-         <id>fe5d9168-128a-474e-b7ed-4cbc16a246ee</id>
-      </triple>
-      <triple>
-         <id>946318e3-29e3-44a3-99ed-5b8b5873ebf8</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-         <id>69cf0719-2842-4110-bcd5-7f21ab23dc3b</id>
-      </triple>
-      <triple>
-         <id>946318e3-29e3-44a3-99ed-5b8b5873ebf8</id>
-         <uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of event</typedLiteral>
-      </triple>
-      <triple>
-         <id>946318e3-29e3-44a3-99ed-5b8b5873ebf8</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-      </triple>
-      <triple>
-         <id>7ae60b45-0782-45bc-b518-89f866baa4ac</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-         <typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Davis was Phar Lap's owner.</typedLiteral>
-      </triple>
-      <triple>
-         <id>7ae60b45-0782-45bc-b518-89f866baa4ac</id>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-         <uri>http://vocab.getty.edu/aat/300411780</uri>
-      </triple>
-      <triple>
-         <id>7ae60b45-0782-45bc-b518-89f866baa4ac</id>
-         <uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-         <uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+         <uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
       </triple>
   </graph>
 </trix>

@@ -19,19 +19,24 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
 			</triple>
 			<triple>
-				<id>b0235ce7-62b7-4632-b898-ae8a54891855</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Walter (Wally)</typedLiteral>
-			</triple>
-			<triple>
-				<id>b0235ce7-62b7-4632-b898-ae8a54891855</id>
+				<id>e486d8bfadd18eedf6dad8e2764031f0</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300404651</uri>
+				<uri>http://vocab.getty.edu/aat/300189559</uri>
 			</triple>
 			<triple>
-				<id>b0235ce7-62b7-4632-b898-ae8a54891855</id>
+				<id>e486d8bfadd18eedf6dad8e2764031f0</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300055147</uri>
+			</triple>
+			<triple>
+				<id>e486d8bfadd18eedf6dad8e2764031f0</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+			</triple>
+			<triple>
+				<id>e486d8bfadd18eedf6dad8e2764031f0</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>https://linked.art/ns/terms/Name</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
 			</triple>
 			<triple>
 				<uri>http://vocab.getty.edu/aat/300055147</uri>
@@ -44,94 +49,19 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>4dfa9144-aace-487f-8572-8007555ca3de</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#</uri>
+				<id>cfc697791f518c497cd351efef4271c2</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Wood%22</uri>
 			</triple>
 			<triple>
-				<id>4dfa9144-aace-487f-8572-8007555ca3de</id>
+				<id>cfc697791f518c497cd351efef4271c2</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Photographer</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wood</typedLiteral>
 			</triple>
 			<triple>
-				<id>4dfa9144-aace-487f-8572-8007555ca3de</id>
+				<id>cfc697791f518c497cd351efef4271c2</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>89dec0d0-2741-46ec-87e3-98e64b8ad754</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Fishwick</typedLiteral>
-			</triple>
-			<triple>
-				<id>89dec0d0-2741-46ec-87e3-98e64b8ad754</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300404652</uri>
-			</triple>
-			<triple>
-				<id>89dec0d0-2741-46ec-87e3-98e64b8ad754</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>https://linked.art/ns/terms/Name</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.640x640.jpg
-				</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewHeight</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.640x640.jpg
-				</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewWidth</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.640x640.jpg
-				</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/preview</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.640x640.jpg
-				</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-			</triple>
-			<triple>
-				<id>1283957a-e240-4c4f-ad1e-e3416face6f5</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
-				</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
-			</triple>
-			<triple>
-				<id>1283957a-e240-4c4f-ad1e-e3416face6f5</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Cricketer</typedLiteral>
-			</triple>
-			<triple>
-				<id>1283957a-e240-4c4f-ad1e-e3416face6f5</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewHeight</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-				<id>c71a0fa1-28af-4179-b848-d8a13a23dd71</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewHeight</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">425</typedLiteral>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewHeight</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300055644</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewHeight</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#referencenumber
@@ -159,6 +89,11 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12924#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12924</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12924#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Australian Cricket Team</typedLiteral>
 			</triple>
@@ -168,29 +103,29 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
 			</triple>
 			<triple>
-				<id>3c112b7e-a005-4863-8d61-68d95025f061</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
+				<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Public Domain</typedLiteral>
 			</triple>
 			<triple>
-				<id>3c112b7e-a005-4863-8d61-68d95025f061</id>
+				<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E30_Right</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>6545746b-ce85-4b5a-bfcc-305b6db0d5eb</id>
+				<id>30ef700671004edfb4124ef23f0dea99</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>15a9fa8e-ca22-4259-bc4b-6bba43e393de</id>
+				<id>9feb59eb71d37ac74f980bbc32317414</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>b0235ce7-62b7-4632-b898-ae8a54891855</id>
+				<id>49c1c0619147d7e5d1e007fa16a9910a</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#name</uri>
@@ -214,30 +149,24 @@
 				<uri>https://linked.art/ns/terms/Name</uri>
 			</triple>
 			<triple>
-				<id>4db11ff2-1e14-43e3-baa3-6710cf4c2020</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
-				</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12924#</uri>
+				<id>5aeea2d52c3b3082485214a3d12153f8</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1928-12-20</typedLiteral>
 			</triple>
 			<triple>
-				<id>4db11ff2-1e14-43e3-baa3-6710cf4c2020</id>
+				<id>5aeea2d52c3b3082485214a3d12153f8</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1928-12-14</typedLiteral>
+			</triple>
+			<triple>
+				<id>5aeea2d52c3b3082485214a3d12153f8</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated organisation</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">1928-12-14</typedLiteral>
 			</triple>
 			<triple>
-				<id>4db11ff2-1e14-43e3-baa3-6710cf4c2020</id>
+				<id>5aeea2d52c3b3082485214a3d12153f8</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-			</triple>
-			<triple>
-				<id>56a405bc-04da-44cd-b97f-6e02daac336b</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
-			</triple>
-			<triple>
-				<id>56a405bc-04da-44cd-b97f-6e02daac336b</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
 			</triple>
 			<triple>
 				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivT/PH2055/Collection/Working%20Masters/nma_22991348.jpg
@@ -252,6 +181,36 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
 			</triple>
 			<triple>
+				<id>794392e7fa4d8bbc7f2bde3eca8beda1</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
+			</triple>
+			<triple>
+				<id>794392e7fa4d8bbc7f2bde3eca8beda1</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
+			</triple>
+			<triple>
+				<id>920a45c2518b07e67419d88e4d5d9a5c</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300189559</uri>
+			</triple>
+			<triple>
+				<id>920a45c2518b07e67419d88e4d5d9a5c</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300055147</uri>
+			</triple>
+			<triple>
+				<id>920a45c2518b07e67419d88e4d5d9a5c</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+			</triple>
+			<triple>
+				<id>920a45c2518b07e67419d88e4d5d9a5c</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
+			</triple>
+			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P168_place_is_defined_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#location</uri>
@@ -260,6 +219,11 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#repositorynumber</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#</uri>
@@ -275,7 +239,7 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#length</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-				<id>9d564f36-1813-467d-8ebf-c3cccb3b980e</id>
+				<id>8dc895c0b8f4dc0ec455a71c7068da73</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#length</uri>
@@ -291,16 +255,6 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#length</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
-			</triple>
-			<triple>
-				<id>c35c7980-9802-4cf0-8adc-a9967124c757</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Wood</typedLiteral>
-			</triple>
-			<triple>
-				<id>c35c7980-9802-4cf0-8adc-a9967124c757</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12925#repositorynumber
@@ -321,24 +275,29 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
-				<id>6dd97313-592d-46a0-9033-8d74c97523ee</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300189559</uri>
+				<id>e8f329c87b2650bb0c588c9486b54708</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>87aea259eff67a3065599fa19245768d</id>
 			</triple>
 			<triple>
-				<id>6dd97313-592d-46a0-9033-8d74c97523ee</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300055147</uri>
+				<id>e8f329c87b2650bb0c588c9486b54708</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>d15788933e81dca42a2ecb486fc5d657</id>
 			</triple>
 			<triple>
-				<id>6dd97313-592d-46a0-9033-8d74c97523ee</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+				<id>e8f329c87b2650bb0c588c9486b54708</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>af5125ea7f62678ed91f841591bbceee</id>
 			</triple>
 			<triple>
-				<id>6dd97313-592d-46a0-9033-8d74c97523ee</id>
+				<id>e8f329c87b2650bb0c588c9486b54708</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
+				<id>eccea9bf68d3c574db1e21a3daaaf5ac</id>
+			</triple>
+			<triple>
+				<id>e8f329c87b2650bb0c588c9486b54708</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
 			</triple>
 			<triple>
 				<uri>http://vocab.getty.edu/aat/300404670</uri>
@@ -353,7 +312,7 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#depth</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-				<id>6d0a7437-0a1c-48e9-8c1e-1a0e867b3a8e</id>
+				<id>7acc2f99689a9c60cc01fead5b60f39a</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#depth</uri>
@@ -382,6 +341,11 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1869#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1869</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1869#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Sydney Cricket Ground, Moore Park,
 					Sydney, New South Wales, Australia</typedLiteral>
@@ -407,12 +371,28 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
-				<id>397dc68c-214d-44b5-b570-0509cf1c6023</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
+				<id>2fdd99b04096f0f77705105cab6f3581</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
+				</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#</uri>
 			</triple>
 			<triple>
-				<id>397dc68c-214d-44b5-b570-0509cf1c6023</id>
+				<id>2fdd99b04096f0f77705105cab6f3581</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Cricketer</typedLiteral>
+			</triple>
+			<triple>
+				<id>2fdd99b04096f0f77705105cab6f3581</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
+			</triple>
+			<triple>
+				<id>7acc2f99689a9c60cc01fead5b60f39a</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
+			</triple>
+			<triple>
+				<id>7acc2f99689a9c60cc01fead5b60f39a</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
 			</triple>
@@ -445,14 +425,9 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>6d0a7437-0a1c-48e9-8c1e-1a0e867b3a8e</id>
+				<id>e514a7692a38288ae18c152cd0008ee2</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
-			</triple>
-			<triple>
-				<id>6d0a7437-0a1c-48e9-8c1e-1a0e867b3a8e</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Photographs</typedLiteral>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#repositorynumber</uri>
@@ -470,23 +445,32 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
-				<id>f013c3a6-1f31-45f0-9d5c-a547bc31b7e5</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Photographs</typedLiteral>
+				<id>03d2f7e8e672117f67abd9b48e3dbe46</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300189559</uri>
 			</triple>
 			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20082055-001-wm-vs1_o5.jpg
-				</uri>
+				<id>03d2f7e8e672117f67abd9b48e3dbe46</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300055147</uri>
+			</triple>
+			<triple>
+				<id>03d2f7e8e672117f67abd9b48e3dbe46</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+			</triple>
+			<triple>
+				<id>03d2f7e8e672117f67abd9b48e3dbe46</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
 			</triple>
 			<triple>
-				<uri>http://vocab.getty.edu/aat/300055644</uri>
+				<uri>http://vocab.getty.edu/aat/300404688</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">height</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">full name (personal name)</typedLiteral>
 			</triple>
 			<triple>
-				<uri>http://vocab.getty.edu/aat/300055644</uri>
+				<uri>http://vocab.getty.edu/aat/300404688</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
@@ -509,131 +493,66 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
-				<id>9d564f36-1813-467d-8ebf-c3cccb3b980e</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
-			</triple>
-			<triple>
-				<id>9d564f36-1813-467d-8ebf-c3cccb3b980e</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
-			</triple>
-			<triple>
-				<uri>http://vocab.getty.edu/aat/300404688</uri>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">full name (personal name)</typedLiteral>
-			</triple>
-			<triple>
-				<uri>http://vocab.getty.edu/aat/300404688</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
-			</triple>
-			<triple>
-				<id>4cc52f13-8ac6-44bf-a8ae-e410910e1049</id>
+				<id>e7da68cc5c1e7f587ab595607c5e1632</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
 				</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12925#</uri>
 			</triple>
 			<triple>
-				<id>4cc52f13-8ac6-44bf-a8ae-e410910e1049</id>
+				<id>e7da68cc5c1e7f587ab595607c5e1632</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated organisation</typedLiteral>
 			</triple>
 			<triple>
-				<id>4cc52f13-8ac6-44bf-a8ae-e410910e1049</id>
+				<id>e7da68cc5c1e7f587ab595607c5e1632</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
 			</triple>
 			<triple>
-				<id>fc68de5f-2825-4db9-b62c-f7d224143d22</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
-				<id>46df1021-364a-4980-958a-d9b2fa59bcc9</id>
+				<id>3488813121c5b9730cbe8d64c18f9e0e</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Fishwick</typedLiteral>
 			</triple>
 			<triple>
-				<id>fc68de5f-2825-4db9-b62c-f7d224143d22</id>
+				<id>3488813121c5b9730cbe8d64c18f9e0e</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300404652</uri>
+			</triple>
+			<triple>
+				<id>3488813121c5b9730cbe8d64c18f9e0e</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>https://linked.art/ns/terms/Name</uri>
+			</triple>
+			<triple>
+				<id>d15788933e81dca42a2ecb486fc5d657</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#</uri>
+			</triple>
+			<triple>
+				<id>d15788933e81dca42a2ecb486fc5d657</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of production</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
 			</triple>
 			<triple>
-				<id>fc68de5f-2825-4db9-b62c-f7d224143d22</id>
+				<id>d15788933e81dca42a2ecb486fc5d657</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.200x200.jpg
+				<id>e61af9d985b14c54a0e3b5f52513222e</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
 				</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
 			</triple>
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.640x640.jpg
-				</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-			</triple>
-			<triple>
-				<id>4d7e9cdd-2b65-4f91-b812-2d65ffad09ec</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>fc68de5f-2825-4db9-b62c-f7d224143d22</id>
-			</triple>
-			<triple>
-				<id>4d7e9cdd-2b65-4f91-b812-2d65ffad09ec</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>96435408-8f3e-4d17-bbbc-54893ce78408</id>
-			</triple>
-			<triple>
-				<id>4d7e9cdd-2b65-4f91-b812-2d65ffad09ec</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>384e02c7-8332-4599-9156-5e7bf0ec8d36</id>
-			</triple>
-			<triple>
-				<id>4d7e9cdd-2b65-4f91-b812-2d65ffad09ec</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P9_consists_of</uri>
-				<id>4dfa9144-aace-487f-8572-8007555ca3de</id>
-			</triple>
-			<triple>
-				<id>4d7e9cdd-2b65-4f91-b812-2d65ffad09ec</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E12_Production</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.200x200.jpg
-				</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbHeight</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.200x200.jpg
-				</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P43_has_dimension</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbWidth</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.200x200.jpg
-				</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/thumbnail</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/emu/54/112/cd_54112.200x200.jpg
-				</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-			</triple>
-			<triple>
-				<id>cd944579-c450-481b-80d3-068a151874f1</id>
+				<id>e61af9d985b14c54a0e3b5f52513222e</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Photographic emulsion</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Cricketer</typedLiteral>
 			</triple>
 			<triple>
-				<id>cd944579-c450-481b-80d3-068a151874f1</id>
+				<id>e61af9d985b14c54a0e3b5f52513222e</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
 			</triple>
 			<triple>
 				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv3/Working%20Masters/nma.img-ci20082055-001-wm-vs1_o3.jpg
@@ -668,25 +587,24 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>8d8c393c-c83b-4dbb-8d97-3931b2e3871b</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
-				</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#</uri>
+				<id>30ef700671004edfb4124ef23f0dea99</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Hammond</typedLiteral>
 			</triple>
 			<triple>
-				<id>8d8c393c-c83b-4dbb-8d97-3931b2e3871b</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Cricketer</typedLiteral>
+				<id>30ef700671004edfb4124ef23f0dea99</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300404652</uri>
 			</triple>
 			<triple>
-				<id>8d8c393c-c83b-4dbb-8d97-3931b2e3871b</id>
+				<id>30ef700671004edfb4124ef23f0dea99</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
+				<uri>https://linked.art/ns/terms/Name</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#width</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-				<id>39dbce32-0d56-43db-b304-924551c8012a</id>
+				<id>794392e7fa4d8bbc7f2bde3eca8beda1</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#width</uri>
@@ -704,45 +622,31 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
 			</triple>
 			<triple>
-				<id>46df1021-364a-4980-958a-d9b2fa59bcc9</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">20/12/1928</typedLiteral>
+				<id>eb479fc8bbe57c86db1cadba93f2fe16</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
+				</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12924#</uri>
 			</triple>
 			<triple>
-				<id>46df1021-364a-4980-958a-d9b2fa59bcc9</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">14/12/1928</typedLiteral>
-			</triple>
-			<triple>
-				<id>46df1021-364a-4980-958a-d9b2fa59bcc9</id>
+				<id>eb479fc8bbe57c86db1cadba93f2fe16</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">14/12/1928</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Associated organisation</typedLiteral>
 			</triple>
 			<triple>
-				<id>46df1021-364a-4980-958a-d9b2fa59bcc9</id>
+				<id>eb479fc8bbe57c86db1cadba93f2fe16</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span</uri>
-			</triple>
-			<triple>
-				<id>6545746b-ce85-4b5a-bfcc-305b6db0d5eb</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Hammond</typedLiteral>
-			</triple>
-			<triple>
-				<id>6545746b-ce85-4b5a-bfcc-305b6db0d5eb</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300404652</uri>
-			</triple>
-			<triple>
-				<id>6545746b-ce85-4b5a-bfcc-305b6db0d5eb</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>https://linked.art/ns/terms/Name</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/80363#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/80363#repositorynumber
 				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/80363#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/80363</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/80363#</uri>
@@ -765,32 +669,36 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<uri>http://vocab.getty.edu/aat/300025976</uri>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">collection (object grouping)
-				</typedLiteral>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of
+				</uri>
+				<id>03d2f7e8e672117f67abd9b48e3dbe46</id>
 			</triple>
 			<triple>
-				<uri>http://vocab.getty.edu/aat/300025976</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#name</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#repositorynumber
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv5/Working%20Masters/nma.img-ci20082055-001-wm-vs1_o5.jpg
-				</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20082055-001-wm-vs1_o4.jpg
-				</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
@@ -818,60 +726,13 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of
-				</uri>
-				<id>6dd97313-592d-46a0-9033-8d74c97523ee</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#name</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#repositorynumber
-				</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbWidth</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-				<id>56a405bc-04da-44cd-b97f-6e02daac336b</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbWidth</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">200</typedLiteral>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbWidth</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300055647</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbWidth</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
-			</triple>
-			<triple>
-				<id>39dbce32-0d56-43db-b304-924551c8012a</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
-			</triple>
-			<triple>
-				<id>39dbce32-0d56-43db-b304-924551c8012a</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#repositorynumber
@@ -892,6 +753,21 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751</uri>
+				<uri>http://purl.org/dc/elements/1.1/issued</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2007-06-07</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751</uri>
+				<uri>http://purl.org/dc/elements/1.1/modified</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">2018-04-05</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E31_Document</uri>
+			</triple>
+			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/physicalDescription</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">physical description</typedLiteral>
@@ -906,6 +782,11 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12925#repositorynumber
 				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12925#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12925</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/12925#</uri>
@@ -944,24 +825,19 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
 			</triple>
 			<triple>
-				<id>834301f7-f2ca-4321-866b-70999a34468b</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300189559</uri>
+				<id>eccea9bf68d3c574db1e21a3daaaf5ac</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#</uri>
 			</triple>
 			<triple>
-				<id>834301f7-f2ca-4321-866b-70999a34468b</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300055147</uri>
-			</triple>
-			<triple>
-				<id>834301f7-f2ca-4321-866b-70999a34468b</id>
+				<id>eccea9bf68d3c574db1e21a3daaaf5ac</id>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Photographer</typedLiteral>
 			</triple>
 			<triple>
-				<id>834301f7-f2ca-4321-866b-70999a34468b</id>
+				<id>eccea9bf68d3c574db1e21a3daaaf5ac</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
 				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderivW/PH2055/Collection/Working%20Masters/nma_22991348.jpg
@@ -976,40 +852,34 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
 			</triple>
 			<triple>
-				<id>55f5804d-8d9a-420d-b7ed-6d6738f3ee54</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
-				</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1869#</uri>
-			</triple>
-			<triple>
-				<id>55f5804d-8d9a-420d-b7ed-6d6738f3ee54</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
-			</triple>
-			<triple>
-				<id>55f5804d-8d9a-420d-b7ed-6d6738f3ee54</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbHeight</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-				<id>397dc68c-214d-44b5-b570-0509cf1c6023</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbHeight</uri>
+				<id>9feb59eb71d37ac74f980bbc32317414</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">133</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Reginald</typedLiteral>
 			</triple>
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbHeight</uri>
+				<id>9feb59eb71d37ac74f980bbc32317414</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300055644</uri>
+				<uri>http://vocab.getty.edu/aat/300404654</uri>
 			</triple>
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#thumbHeight</uri>
+				<id>9feb59eb71d37ac74f980bbc32317414</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
+				<uri>https://linked.art/ns/terms/Name</uri>
+			</triple>
+			<triple>
+				<id>2a0e818d1ac24e74adee5311534faa46</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Herbert</typedLiteral>
+			</triple>
+			<triple>
+				<id>2a0e818d1ac24e74adee5311534faa46</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300404651</uri>
+			</triple>
+			<triple>
+				<id>2a0e818d1ac24e74adee5311534faa46</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>https://linked.art/ns/terms/Name</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/preview</uri>
@@ -1024,12 +894,12 @@
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>89dec0d0-2741-46ec-87e3-98e64b8ad754</id>
+				<id>3488813121c5b9730cbe8d64c18f9e0e</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>61e47374-ccf2-498a-82cb-a400e8615f64</id>
+				<id>2a0e818d1ac24e74adee5311534faa46</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#name</uri>
@@ -1055,7 +925,7 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of
 				</uri>
-				<id>e90f06f8-c0c0-4034-8eda-85ce597867c3</id>
+				<id>e486d8bfadd18eedf6dad8e2764031f0</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#</uri>
@@ -1070,53 +940,28 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10310#</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E21_Person</uri>
 			</triple>
 			<triple>
-				<id>08eda7df-648b-434c-bd33-dfb8918385d9</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#location</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bert</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">-33.85,151.2</typedLiteral>
 			</triple>
 			<triple>
-				<id>08eda7df-648b-434c-bd33-dfb8918385d9</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#location</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300264273</uri>
+				<uri>http://vocab.getty.edu/aat/300380194</uri>
 			</triple>
 			<triple>
-				<id>08eda7df-648b-434c-bd33-dfb8918385d9</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#location</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>https://linked.art/ns/terms/Name</uri>
-			</triple>
-			<triple>
-				<id>a0ca9848-9319-4c9c-87f5-0c3e0968d9e8</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">William 'Bert'</typedLiteral>
-			</triple>
-			<triple>
-				<id>a0ca9848-9319-4c9c-87f5-0c3e0968d9e8</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300404651</uri>
-			</triple>
-			<triple>
-				<id>a0ca9848-9319-4c9c-87f5-0c3e0968d9e8</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>https://linked.art/ns/terms/Name</uri>
-			</triple>
-			<triple>
-				<id>61e47374-ccf2-498a-82cb-a400e8615f64</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Herbert</typedLiteral>
-			</triple>
-			<triple>
-				<id>61e47374-ccf2-498a-82cb-a400e8615f64</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300404651</uri>
-			</triple>
-			<triple>
-				<id>61e47374-ccf2-498a-82cb-a400e8615f64</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>https://linked.art/ns/terms/Name</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E94_Space_Primitive</uri>
 			</triple>
 			<triple>
 				<uri>http://vocab.getty.edu/aat/300264273</uri>
@@ -1129,19 +974,65 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>e6962882-1a32-42df-9689-eaa053a9704c</id>
+				<id>af5125ea7f62678ed91f841591bbceee</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/80363#</uri>
+			</triple>
+			<triple>
+				<id>af5125ea7f62678ed91f841591bbceee</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Publisher</typedLiteral>
+			</triple>
+			<triple>
+				<id>af5125ea7f62678ed91f841591bbceee</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
+			</triple>
+			<triple>
+				<id>58d1dd5221c0ebc4ea7a1d0f2f552f3e</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Albert Stanley</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Bert</typedLiteral>
 			</triple>
 			<triple>
-				<id>e6962882-1a32-42df-9689-eaa053a9704c</id>
+				<id>58d1dd5221c0ebc4ea7a1d0f2f552f3e</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300404654</uri>
+				<uri>http://vocab.getty.edu/aat/300264273</uri>
 			</triple>
 			<triple>
-				<id>e6962882-1a32-42df-9689-eaa053a9704c</id>
+				<id>58d1dd5221c0ebc4ea7a1d0f2f552f3e</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>https://linked.art/ns/terms/Name</uri>
+			</triple>
+			<triple>
+				<id>8a55dbb718ee673cb26e51672b71180f</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Photographic%20emulsion%22
+				</uri>
+			</triple>
+			<triple>
+				<id>8a55dbb718ee673cb26e51672b71180f</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Photographic emulsion</typedLiteral>
+			</triple>
+			<triple>
+				<id>8a55dbb718ee673cb26e51672b71180f</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
+			</triple>
+			<triple>
+				<id>f57ad33c05f4c964a2bd1b6b31bcd2ee</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?medium=%22Paper%22</uri>
+			</triple>
+			<triple>
+				<id>f57ad33c05f4c964a2bd1b6b31bcd2ee</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paper</typedLiteral>
+			</triple>
+			<triple>
+				<id>f57ad33c05f4c964a2bd1b6b31bcd2ee</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/large</uri>
@@ -1152,21 +1043,6 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/large</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
-			</triple>
-			<triple>
-				<id>bf12eb60-41db-4d93-9d66-69cc3f30a2e2</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ruth Oldfield collection</typedLiteral>
-			</triple>
-			<triple>
-				<id>bf12eb60-41db-4d93-9d66-69cc3f30a2e2</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300025976</uri>
-			</triple>
-			<triple>
-				<id>bf12eb60-41db-4d93-9d66-69cc3f30a2e2</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#repositorynumber
@@ -1187,44 +1063,55 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
-				<id>e90f06f8-c0c0-4034-8eda-85ce597867c3</id>
+				<uri>http://collectionsearch.nma.gov.au/object/122751</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300189559</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
 			</triple>
 			<triple>
-				<id>e90f06f8-c0c0-4034-8eda-85ce597867c3</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300055147</uri>
-			</triple>
-			<triple>
-				<id>e90f06f8-c0c0-4034-8eda-85ce597867c3</id>
+				<uri>http://collectionsearch.nma.gov.au/object/122751</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">male</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">View on Collection Explorer
+				</typedLiteral>
 			</triple>
 			<triple>
-				<id>e90f06f8-c0c0-4034-8eda-85ce597867c3</id>
+				<uri>http://collectionsearch.nma.gov.au/object/122751</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E74_Group</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E33_Linguistic_Object</uri>
+			</triple>
+			<triple>
+				<id>87aea259eff67a3065599fa19245768d</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span</uri>
+				<id>5aeea2d52c3b3082485214a3d12153f8</id>
+			</triple>
+			<triple>
+				<id>87aea259eff67a3065599fa19245768d</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Date of production</typedLiteral>
+			</triple>
+			<triple>
+				<id>87aea259eff67a3065599fa19245768d</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>08eda7df-648b-434c-bd33-dfb8918385d9</id>
+				<id>58d1dd5221c0ebc4ea7a1d0f2f552f3e</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>ea9a2c0e-b034-4beb-8be6-9d982dd0ae10</id>
+				<id>6d05d2d8a33eb7b3faa67b0c39df8365</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>e6962882-1a32-42df-9689-eaa053a9704c</id>
+				<id>7294873dfb467b36e25d19198e045282</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#name</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P106_is_composed_of</uri>
-				<id>a0ca9848-9319-4c9c-87f5-0c3e0968d9e8</id>
+				<id>40c8769f5e0302279b9c5ca7fe95ab48</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/10292#name</uri>
@@ -1248,26 +1135,6 @@
 				<uri>https://linked.art/ns/terms/Name</uri>
 			</triple>
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewWidth</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P91_has_unit</uri>
-				<id>3c112b7e-a005-4863-8d61-68d95025f061</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewWidth</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">640</typedLiteral>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewWidth</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300055647</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#previewWidth</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E54_Dimension</uri>
-			</triple>
-			<triple>
 				<uri>http://vocab.getty.edu/aat/300404652</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">last name</typedLiteral>
@@ -1281,7 +1148,7 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P107i_is_current_or_former_member_of
 				</uri>
-				<id>834301f7-f2ca-4321-866b-70999a34468b</id>
+				<id>920a45c2518b07e67419d88e4d5d9a5c</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#</uri>
@@ -1292,6 +1159,11 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#repositorynumber</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/6514#</uri>
@@ -1307,6 +1179,16 @@
 				<uri>http://vocab.getty.edu/aat/300189559</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
+			</triple>
+			<triple>
+				<id>8dc895c0b8f4dc0ec455a71c7068da73</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">mm</typedLiteral>
+			</triple>
+			<triple>
+				<id>8dc895c0b8f4dc0ec455a71c7068da73</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
 			</triple>
 			<triple>
 				<uri>http://vocab.getty.edu/aat/300055647</uri>
@@ -1337,39 +1219,31 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E42_Identifier</uri>
 			</triple>
 			<triple>
-				<id>384e02c7-8332-4599-9156-5e7bf0ec8d36</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/party/80363#</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952#</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#seeAlso</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object?collection=%22Ruth%20Oldfield%20collection%22
+				</uri>
 			</triple>
 			<triple>
-				<id>384e02c7-8332-4599-9156-5e7bf0ec8d36</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952#repositorynumber
+				</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952#</uri>
 				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Publisher</typedLiteral>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Ruth Oldfield collection</typedLiteral>
 			</triple>
 			<triple>
-				<id>384e02c7-8332-4599-9156-5e7bf0ec8d36</id>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952#</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>15a9fa8e-ca22-4259-bc4b-6bba43e393de</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Reginald</typedLiteral>
-			</triple>
-			<triple>
-				<id>15a9fa8e-ca22-4259-bc4b-6bba43e393de</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://vocab.getty.edu/aat/300404654</uri>
-			</triple>
-			<triple>
-				<id>15a9fa8e-ca22-4259-bc4b-6bba43e393de</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>https://linked.art/ns/terms/Name</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-				<id>8d8c393c-c83b-4dbb-8d97-3931b2e3871b</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E78_Collection</uri>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
@@ -1385,8 +1259,8 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>cd944579-c450-481b-80d3-068a151874f1</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+				<id>acf40638ca8f113d8fbc32ba8484ed3a</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
@@ -1395,33 +1269,39 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Cricket scene showing W.R. 'Wally' Hammond and W.A. 'Bert' Oldfield</typedLiteral>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<id>f013c3a6-1f31-45f0-9d5c-a547bc31b7e5</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
-				<id>4d7e9cdd-2b65-4f91-b812-2d65ffad09ec</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>b0a97e6d-ae7d-4b8e-8ac6-beeb3e3cb040</id>
+				<id>cfc697791f518c497cd351efef4271c2</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Cricket scene showing W.R. 'Wally'
+					Hammond and W.A. 'Bert' Oldfield</typedLiteral>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
+				<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/collection/3952#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P70i_is_documented_in</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+				<id>e7da68cc5c1e7f587ab595607c5e1632</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-				<id>1283957a-e240-4c4f-ad1e-e3416face6f5</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
@@ -1431,28 +1311,23 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/54112#</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P106i_forms_part_of</uri>
-				<id>bf12eb60-41db-4d93-9d66-69cc3f30a2e2</id>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-				<id>55f5804d-8d9a-420d-b7ed-6d6738f3ee54</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P108i_was_produced_by</uri>
+				<id>e8f329c87b2650bb0c588c9486b54708</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
-				<id>c35c7980-9802-4cf0-8adc-a9967124c757</id>
+				<id>8a55dbb718ee673cb26e51672b71180f</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P45_consists_of</uri>
+				<id>f57ad33c05f4c964a2bd1b6b31bcd2ee</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-				<id>4cc52f13-8ac6-44bf-a8ae-e410910e1049</id>
+				<id>eb479fc8bbe57c86db1cadba93f2fe16</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
@@ -1461,8 +1336,18 @@
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<id>e514a7692a38288ae18c152cd0008ee2</id>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://collectionsearch.nma.gov.au/object/122751</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
-				<id>4db11ff2-1e14-43e3-baa3-6710cf4c2020</id>
+				<id>2fdd99b04096f0f77705105cab6f3581</id>
 			</triple>
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
@@ -1475,45 +1360,9 @@
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#width</uri>
 			</triple>
 			<triple>
-				<id>96435408-8f3e-4d17-bbbc-54893ce78408</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/47#</uri>
-			</triple>
-			<triple>
-				<id>96435408-8f3e-4d17-bbbc-54893ce78408</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place made</typedLiteral>
-			</triple>
-			<triple>
-				<id>96435408-8f3e-4d17-bbbc-54893ce78408</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E7_Activity</uri>
-			</triple>
-			<triple>
-				<id>b0a97e6d-ae7d-4b8e-8ac6-beeb3e3cb040</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Paper</typedLiteral>
-			</triple>
-			<triple>
-				<id>b0a97e6d-ae7d-4b8e-8ac6-beeb3e3cb040</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E57_Material</uri>
-			</triple>
-			<triple>
-				<id>c71a0fa1-28af-4179-b848-d8a13a23dd71</id>
-				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
-				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">pixels</typedLiteral>
-			</triple>
-			<triple>
-				<id>c71a0fa1-28af-4179-b848-d8a13a23dd71</id>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E58_Measurement_Unit</uri>
-			</triple>
-			<triple>
-				<uri>http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/prodderiv4/Working%20Masters/nma.img-ci20082055-001-wm-vs1_o4.jpg
-				</uri>
-				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P12i_was_present_at</uri>
+				<id>e61af9d985b14c54a0e3b5f52513222e</id>
 			</triple>
 			<triple>
 				<uri>http://vocab.getty.edu/aat/300411780</uri>
@@ -1526,21 +1375,81 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E55_Type</uri>
 			</triple>
 			<triple>
-				<id>ea9a2c0e-b034-4beb-8be6-9d982dd0ae10</id>
+				<id>40c8769f5e0302279b9c5ca7fe95ab48</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">William 'Bert'</typedLiteral>
+			</triple>
+			<triple>
+				<id>40c8769f5e0302279b9c5ca7fe95ab48</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300404651</uri>
+			</triple>
+			<triple>
+				<id>40c8769f5e0302279b9c5ca7fe95ab48</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>https://linked.art/ns/terms/Name</uri>
+			</triple>
+			<triple>
+				<id>acf40638ca8f113d8fbc32ba8484ed3a</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P12_occurred_in_the_presence_of
+				</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/place/1869#</uri>
+			</triple>
+			<triple>
+				<id>acf40638ca8f113d8fbc32ba8484ed3a</id>
+				<uri>http://www.w3.org/2000/01/rdf-schema#label</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Place of event</typedLiteral>
+			</triple>
+			<triple>
+				<id>acf40638ca8f113d8fbc32ba8484ed3a</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E5_Event</uri>
+			</triple>
+			<triple>
+				<id>49c1c0619147d7e5d1e007fa16a9910a</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Walter (Wally)</typedLiteral>
+			</triple>
+			<triple>
+				<id>49c1c0619147d7e5d1e007fa16a9910a</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300404651</uri>
+			</triple>
+			<triple>
+				<id>49c1c0619147d7e5d1e007fa16a9910a</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>https://linked.art/ns/terms/Name</uri>
+			</triple>
+			<triple>
+				<id>7294873dfb467b36e25d19198e045282</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Albert Stanley</typedLiteral>
+			</triple>
+			<triple>
+				<id>7294873dfb467b36e25d19198e045282</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300404654</uri>
+			</triple>
+			<triple>
+				<id>7294873dfb467b36e25d19198e045282</id>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>https://linked.art/ns/terms/Name</uri>
+			</triple>
+			<triple>
+				<id>6d05d2d8a33eb7b3faa67b0c39df8365</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#value</uri>
 				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Oldfield</typedLiteral>
 			</triple>
 			<triple>
-				<id>ea9a2c0e-b034-4beb-8be6-9d982dd0ae10</id>
+				<id>6d05d2d8a33eb7b3faa67b0c39df8365</id>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
 				<uri>http://vocab.getty.edu/aat/300404652</uri>
 			</triple>
 			<triple>
-				<id>ea9a2c0e-b034-4beb-8be6-9d982dd0ae10</id>
+				<id>6d05d2d8a33eb7b3faa67b0c39df8365</id>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>https://linked.art/ns/terms/Name</uri>
 			</triple>
 		</graph>
 	</x:variable>
-
 </x:description>
