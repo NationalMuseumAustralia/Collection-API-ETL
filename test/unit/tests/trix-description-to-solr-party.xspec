@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
+	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/" xmlns:xpath="http://www.w3.org/2005/xpath-functions"
+	stylesheet="../../../trix-description-to-solr.xsl">
+
+	<!-- loads source trix record being tested into global $graph variable -->
+	<x:import href="resources/trix-record-party-8343.xspec" />
+
+	<x:param name="root-resource" select=" 'http://nma-dev.conaltuohy.com/xproc-z/party/8343#' " />
+
+	<x:scenario label="Convert id">
+		<x:call template="id-solr" />
+		<x:expect label="should return field id">
+			<field name="id">party/8343</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type">
+		<x:call template="type-solr" />
+		<x:expect label="should return field type">
+			<field name="type">party</field>
+			<field name="type">http://www.cidoc-crm.org/cidoc-crm/E21_Person</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert name">
+		<x:call template="names-solr" />
+		<x:expect label="should return field name x5">
+			<field name="name">Mrs Mary J. Cochrane</field>
+			<field name="name">Mary</field>
+			<field name="name">Miss Mary Jane Coughran</field>
+			<field name="name">Cochrane</field>
+			<field name="name">Jane</field>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

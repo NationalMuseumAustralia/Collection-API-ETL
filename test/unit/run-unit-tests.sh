@@ -35,4 +35,6 @@ else
   run_test trix-description-to-dc-media
   run_test trix-description-to-dc-party
   run_test trix-description-to-solr-object
+  run_test trix-description-to-solr-narrative
+  run_test trix-description-to-solr-party
 fi

@@ -28,6 +28,8 @@ CALL :runtest trix-description-to-dc-narrative
 CALL :runtest trix-description-to-dc-media
 CALL :runtest trix-description-to-dc-party
 CALL :runtest trix-description-to-solr-object
+CALL :runtest trix-description-to-solr-narrative
+CALL :runtest trix-description-to-solr-party
 
 :end
 EXIT /B %ERRORLEVEL%

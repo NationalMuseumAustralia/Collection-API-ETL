@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
+	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/" xmlns:xpath="http://www.w3.org/2005/xpath-functions"
+	stylesheet="../../../trix-description-to-solr.xsl">
+
+	<!-- loads source trix record being tested into global $graph variable -->
+	<x:import href="resources/trix-record-narrative-3346-featured.xspec" />
+
+	<x:param name="root-resource"
+		select=" 'http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#' " />
+
+	<x:scenario label="Convert id">
+		<x:call template="id-solr" />
+		<x:expect label="should return field id">
+			<field name="id">narrative/3346</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type">
+		<x:call template="type-solr" />
+		<x:expect label="should return field type">
+			<field name="type">narrative</field>
+			<field name="type">http://www.openarchives.org/ore/terms/Aggregation</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert title">
+		<x:call template="title-solr" />
+		<x:expect label="should return field title">
+			<field name="title">Wanydjarrpu</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert record metadata">
+		<x:call template="record-metadata-solr" />
+		<x:expect label="should return field modified">
+			<field name="modified">2018-03-21</field>
+			<field name="modified_date">2018-03-21</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert text">
+		<x:call template="narrative-text-solr" />
+		<x:expect label="should return field description containing specified text"
+			test="contains(field[@name='description']/text(), 'Wanydjarrpu')" />
+	</x:scenario>
+
+	<x:scenario label="Convert parent narrative">
+		<x:call template="narrative-parent-solr" />
+		<x:expect label="should return field isPartOf and title">
+			<field name="narrative_isPartOf_id">3314</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert children narratives">
+		<x:call template="narrative-children-solr" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert narrative objects">
+		<x:call template="narrative-objects-solr" />
+		<x:expect label="should return field aggregates">
+			<field name="aggregates_id">241494</field>
+			<field name="aggregates_id">241465</field>
+			<field name="aggregates_id">241466</field>
+			<field name="aggregates_id">241493</field>
+			<field name="aggregates_id">241451</field>
+			<field name="aggregates_id">241464</field>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

@@ -56,11 +56,7 @@
 						<xsl:call-template name="narrative-objects-solr" />
 
 						<!-- PARTY FIELDS -->
-						<xsl:call-template name="full-name-solr" />
-						<xsl:call-template name="first-name-solr" />
-						<!-- TODO: add middle name -->
-						<xsl:call-template name="last-name-solr" />
-						<!-- TODO: add other names -->
+						<xsl:call-template name="names-solr" />
 						<xsl:call-template name="gender-solr" />
 
 						<!-- PLACE FIELDS -->
@@ -415,10 +411,7 @@
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
-				<!-- id -->
 				<field name="narrative_isPartOf_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
-				<!-- title -->
-				<field name="title"><xsl:value-of select="path:forward($value, 'rdfs:label')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
@@ -432,10 +425,7 @@
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
-				<!-- id -->
 				<field name="narrative_hasPart_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
-				<!-- title -->
-				<field name="title"><xsl:value-of select="path:forward($value, 'rdfs:label')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
@@ -449,7 +439,6 @@
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
-				<!-- id -->
 				<field name="aggregates_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:if>
@@ -457,23 +446,19 @@
 
 	<!-- PARTY FIELDS -->
 	
-	<!-- full name -->
-	<xsl:template name="full-name-solr">
+	<!-- name and parts of name -->
+	<xsl:template name="names-solr">
 		<xsl:for-each select="
 			path:forward('crm:P1_is_identified_by')[
-			path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404688'
-		]
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300404688'
+			]
 		">
-		<field name="name"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
+			<field name="name"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
+			<!-- name parts -->
+			<xsl:for-each select="path:forward(., ('crm:P106_is_composed_of', 'rdf:value') )">
+				<field name="name"><xsl:value-of select="."/></field>
+			</xsl:for-each>
 		</xsl:for-each>
-	</xsl:template>
-	
-	<!-- first name -->
-	<xsl:template name="first-name-solr">
-	</xsl:template>
-	
-	<!-- last name -->
-	<xsl:template name="last-name-solr">
 	</xsl:template>
 	
 	<!-- gender -->
