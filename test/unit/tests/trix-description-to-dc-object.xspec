@@ -249,6 +249,8 @@
 		</x:expect>
 	</x:scenario>
 
+	<!-- don't exist in object so should be empty -->
+
 	<x:scenario label="Convert full name">
 		<x:call template="full-name-dc" />
 		<x:expect label="should return empty" />

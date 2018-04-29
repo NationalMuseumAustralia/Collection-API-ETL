@@ -14,6 +14,7 @@
 
 	<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
 	<xsl:variable name="type" select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/>
+	<xsl:variable name="api-base-uri" select="replace($root-resource, '(.*)/.*/[^#]*#.*', '$1')"/>
 	
 	<xsl:template match="/">
 		<c:request method="post" href="http://localhost:8983/solr/core_nma_{$dataset}/update" detailed="true">
@@ -27,6 +28,7 @@
 						<xsl:call-template name="type-solr" />
 						<xsl:call-template name="additional-type-solr" />
 						<xsl:call-template name="title-solr" />
+						<xsl:call-template name="record-metadata-solr" />
 
 						<!-- OBJECT FIELDS -->
 						<xsl:call-template name="collection-solr" />
@@ -37,11 +39,9 @@
 						<xsl:call-template name="physical-description-solr" />
 						<xsl:call-template name="significance-statement-solr" />
 						<xsl:call-template name="educational-significance-solr" />
-						<xsl:call-template name="production-events-solr" />
 						<xsl:call-template name="production-parties-solr" />
 						<xsl:call-template name="production-places-solr" />
 						<xsl:call-template name="production-dates-solr" />
-						<xsl:call-template name="associated-roles-solr" />
 						<xsl:call-template name="associated-parties-solr" />
 						<xsl:call-template name="associated-places-solr" />
 						<xsl:call-template name="associated-dates-solr" />
@@ -103,13 +103,13 @@
 		<xsl:for-each select="path:forward('rdf:type')">
 			<field name="type"><xsl:value-of select="."/></field>
 		</xsl:for-each>
-		<xsl:for-each select="path:forward( ('crm:P2_has_type', 'rdfs:label') )">
-			<field name="type"><xsl:value-of select="."/></field>
-		</xsl:for-each>
 	</xsl:template>
 
 	<!-- additional type -->
 	<xsl:template name="additional-type-solr">
+		<xsl:for-each select="path:forward( ('crm:P2_has_type', 'rdfs:label') )">
+			<field name="type"><xsl:value-of select="."/></field>
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- title -->
@@ -126,12 +126,28 @@
 			</xsl:if>
 		</xsl:for-each>
 	</xsl:template>
+
+	<!-- record metadata: modified, issued -->
+	<xsl:template name="record-metadata-solr">
+		<!-- modified -->
+		<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:modified') )">
+			<field name="modified">
+				<xsl:value-of select="." />
+			</field>
+		</xsl:for-each>
+		<!-- web release -->
+		<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:issued') )">
+			<field name="issued">
+				<xsl:value-of select="." />
+			</field>
+		</xsl:for-each>
+	</xsl:template>
 	
 	<!-- OBJECT FIELDS -->
 
 	<!-- collection -->
 	<xsl:template name="collection-solr">
-		<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdf:label') )">
+		<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdfs:label') )">
 			<field name="collection"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
@@ -163,127 +179,203 @@
 	
 	<!-- content description -->
 	<xsl:template name="content-description-solr">
-		<xsl:for-each select="path:forward( ('crm:P129i_is_subject_of', 'rdf:value') )">
-			<field name="description"><xsl:value-of select="."/></field>
+		<xsl:for-each select="
+			path:forward('crm:P129i_is_subject_of')[
+				path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/contentDescription')
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="contentDescription"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 
 	<!-- physical description -->
 	<xsl:template name="physical-description-solr">
+		<xsl:for-each select="
+			path:forward('crm:P129i_is_subject_of')[
+				path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/physicalDescription')
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="physicalDescription"><xsl:value-of select="."/></field>
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- significance statement -->
 	<xsl:template name="significance-statement-solr">
+		<xsl:for-each select="
+			path:forward('crm:P129i_is_subject_of')[
+				path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/significanceStatement')
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="significanceStatement"><xsl:value-of select="."/></field>
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- educational significance -->
 	<xsl:template name="educational-significance-solr">
+		<xsl:for-each select="
+			path:forward('crm:P129i_is_subject_of')[
+				path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/educationalSignificance')
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="educationalSignificance"><xsl:value-of select="."/></field>
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- production parties -->
 	<xsl:template name="production-parties-solr">
-	</xsl:template>
-
-	<!-- production events -->
-	<xsl:template name="production-events-solr">
-		<xsl:variable name="value" select="path:forward('crm:P108i_was_produced_by')"/>
-		<xsl:for-each select="path:forward($value, 'crm:P9_consists_of')">
-			<!-- role: party person name -->
-			<xsl:for-each select="
+		<xsl:for-each select="
+			path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
+				path:forward(., 'crm:P14_carried_out_by')
+			]
+		">
+			<!-- party id -->
+			<xsl:variable name="party-id" select="path:forward(., 'crm:P14_carried_out_by')" />
+			<field name="creator"><xsl:value-of select="replace($party-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<!-- person name -->
+			<field name="creator"><xsl:value-of select="
 				path:forward(., ('crm:P14_carried_out_by', 'crm:P1_is_identified_by'))[
 					path:forward(., 'rdf:type') = 'https://linked.art/ns/terms/Name'
 				]
 				/path:forward(., 'rdf:value')
-			">
-				<field name="creator"><xsl:value-of select="."/></field>
-			</xsl:for-each>
-			<!-- role: party organisation label -->
-			<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdfs:label') )">
-				<field name="creator"><xsl:value-of select="."/></field>
-			</xsl:for-each>
-			<!-- role: date -->
-			<xsl:for-each select="path:forward(.[path:forward(., 'crm:P4_has_time-span')], 'rdfs:label')">
-				<field name="temporal"><xsl:value-of select="."/></field>
-			</xsl:for-each>
-			<!-- role: place -->
-			<xsl:for-each select="path:forward(.[path:forward(., 'crm:P7_took_place_at')], 'rdfs:label')">
-				<field name="spatial"><xsl:value-of select="."/></field>
-			</xsl:for-each>
-			<!-- party -->
-			<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdf:value'))">
-				<field name="creator"><xsl:value-of select="."/></field>
-			</xsl:for-each>
-			<!-- date -->
-			<xsl:for-each select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label'))">
-				<field name="temporal"><xsl:value-of select="."/></field>
-			</xsl:for-each>
-			<!-- place -->
-			<xsl:for-each select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label'))">
-				<field name="spatial"><xsl:value-of select="."/></field>
-			</xsl:for-each>
+			"/></field>
+			<!-- organisation label -->
+			<field name="creator"><xsl:value-of select="path:forward(., ('crm:P14_carried_out_by', 'rdfs:label') )"/></field>
+			<!-- role -->
+			<field name="creator"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
+			<!-- description/notes -->
+			<field name="creator"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
 		</xsl:for-each>
 	</xsl:template>
 
 	<!-- production places -->
 	<xsl:template name="production-places-solr">
+		<xsl:for-each select="
+			path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
+				path:forward(., 'crm:P7_took_place_at')
+			]
+		">
+			<!-- place id -->
+			<xsl:variable name="place-id" select="path:forward(., 'crm:P7_took_place_at')" />
+			<field name="spatial"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<!-- label -->
+			<field name="spatial"><xsl:value-of select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label') )"/></field>
+			<!-- role -->
+			<field name="spatial"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
+			<!-- description/notes -->
+			<field name="spatial"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
+		</xsl:for-each>
 	</xsl:template>
-	
+
 	<!-- production dates -->
 	<xsl:template name="production-dates-solr">
-	</xsl:template>
-
-	<!-- TODO: group activities in the same event by P9_consists_of -->
-	<!-- TODO: date/place should go to spatial/temporal, not contributor -->
-	
-	<!-- associated roles -->
-	<xsl:template name="associated-roles-solr">
-		<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'rdfs:label') )">
-			<field name="contributor"><xsl:value-of select="."/></field>
-		</xsl:for-each>
-	</xsl:template>
-	
-	<!-- associated parties -->
-	<!-- NB: organisations have a title (not an la:Name), so are picked up by associated places -->
-	<xsl:template name="associated-parties-solr">
 		<xsl:for-each select="
-			path:forward( ('crm:P12i_was_present_at', 'crm:P12_occurred_in_the_presence_of', 'crm:P1_is_identified_by'))[
-				path:forward(., 'rdf:type') = 'https://linked.art/ns/terms/Name'
+			path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[
+				path:forward(., 'crm:P4_has_time-span')
 			]
-			/path:forward(., 'rdf:value')
 		">
-			<field name="contributor"><xsl:value-of select="."/></field>
+			<!-- value -->
+			<field name="temporal"><xsl:value-of select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )"/></field>
+			<!-- role -->
+			<field name="temporal"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
+			<!-- description/notes -->
+			<field name="temporal"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
 		</xsl:for-each>
 	</xsl:template>
 
-	<!-- associated places (incl. associated organisations) -->
-	<xsl:template name="associated-places-solr">
-		<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P12_occurred_in_the_presence_of', 'rdfs:label') )">
-			<field name="contributor"><xsl:value-of select="."/></field>
+	<!-- associated parties -->
+	<xsl:template name="associated-parties-solr">
+		<xsl:variable name="associated_person_value" select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type')) = 'http://www.cidoc-crm.org/cidoc-crm/E21_Person'
+			]
+		" />
+		<xsl:variable name="associated_organisation_value" select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type')) = 'http://www.cidoc-crm.org/cidoc-crm/E74_Group'
+			]
+		" />
+		<xsl:for-each select="$associated_organisation_value | $associated_person_value">
+			<!-- id -->
+			<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
+			<xsl:if test="$party-iri">
+				<field name="contributor"><xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" /></field>
+			</xsl:if>
+			<!-- person name -->
+			<field name="contributor"><xsl:value-of select="
+				path:forward(., ('crm:P12_occurred_in_the_presence_of', 'crm:P1_is_identified_by'))[
+					path:forward(., 'rdf:type') = 'https://linked.art/ns/terms/Name'
+				]
+				/path:forward(., 'rdf:value')
+			"/></field>
+			<!-- organisation label -->
+			<field name="contributor"><xsl:value-of select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') )"/></field>
+			<!-- date -->
+			<field name="contributor"><xsl:value-of select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )"/></field>
+			<!-- role -->
+			<field name="contributor"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
+			<!-- description/notes -->
+			<field name="contributor"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
 		</xsl:for-each>
 	</xsl:template>
-	
+
+	<!-- associated places -->
+	<xsl:template name="associated-places-solr">
+		<xsl:for-each select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdf:type')) = 'http://www.cidoc-crm.org/cidoc-crm/E53_Place'
+			]
+		">
+			<!-- place id -->
+			<xsl:variable name="place-id" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
+			<field name="spatial"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<!-- label -->
+			<field name="spatial"><xsl:value-of select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') )"/></field>
+			<!-- role -->
+			<field name="spatial"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
+			<!-- description/notes -->
+			<field name="spatial"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
+		</xsl:for-each>
+	</xsl:template>
+
 	<!-- associated dates -->
 	<xsl:template name="associated-dates-solr">
-		<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P4_has_time-span', 'rdfs:label') )">
-			<field name="contributor"><xsl:value-of select="."/></field>
+		<xsl:for-each select="
+			path:forward('crm:P12i_was_present_at')[
+				path:forward(., 'crm:P4_has_time-span')
+			]
+		">
+			<!-- value -->
+			<field name="temporal"><xsl:value-of select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )"/></field>
+			<!-- role -->
+			<field name="temporal"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
+			<!-- description/notes -->
+			<field name="temporal"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
 		</xsl:for-each>
 	</xsl:template>
-	
+
 	<!-- acknowledgement -->
 	<xsl:template name="acknowledgement-solr">
 	</xsl:template>
 
 	<!-- rights -->
 	<xsl:template name="rights-solr">
-		<xsl:for-each select="path:forward( ('crm:P104_is_subject_to', 'rdf:value') )">
+		<xsl:for-each select="path:forward('crm:P104_is_subject_to')">
 			<field name="rights"><xsl:value-of select="."/></field>
+			<field name="rights"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
 	<!-- representations - identifiers only -->
 	<xsl:template name="representations-solr">
 		<xsl:for-each select="path:forward('crm:P138i_has_representation')">
-			<field name="media"><xsl:value-of select="."/></field>
+			<field name="media"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<xsl:for-each select="path:forward(., 'crm:P138i_has_representation')">
+				<field name="media"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
 

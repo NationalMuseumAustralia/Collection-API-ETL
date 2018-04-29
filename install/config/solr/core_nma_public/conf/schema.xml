@@ -200,11 +200,16 @@
   <field name="_version_" type="plong" indexed="false" stored="false"/>
   <!-- 'text' is NMA's catchall full-text field we copy most textual content into -->
   <field name="text" type="text_general"/>
+  <!-- 'description' catchs the separate description fields -->
+  <field name="description" type="text_general"/>
   <!-- NMA fields -->
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="type" type="text_general"/>
   <field name="title" type="text_general"/>
-  <field name="description" type="text_general"/>
+  <field name="contentDescription" type="text_general"/>
+  <field name="physicalDescription" type="text_general"/>
+  <field name="significanceStatement" type="text_general"/>
+  <field name="educationalSignificance" type="text_general"/>
   <!-- object -->
   <field name="identifier" type="text_general"/>
   <field name="collection" type="text_general"/>
@@ -254,6 +259,11 @@
   <copyField source="rights" dest="text"/>
   <copyField source="name" dest="text"/>
   <copyField source="gender" dest="text"/>
+  <!-- build 'description' catchall full-text field -->
+  <copyField source="contentDescription" dest="description"/>
+  <copyField source="physicalDescription" dest="description"/>
+  <copyField source="significanceStatement" dest="description"/>
+  <copyField source="educationalSignificance" dest="description"/>
 <!-- BLOBs
   <copyField source="simple" dest="simple_str" maxChars="256"/>
   <copyField source="json-ld" dest="json-ld_str" maxChars="256"/>

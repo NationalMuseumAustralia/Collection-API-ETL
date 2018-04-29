@@ -12,12 +12,203 @@
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
 
+	<x:scenario label="Convert id">
+		<x:call template="id-solr" />
+		<x:expect label="should return field id">
+			<field name="id">object/122751</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert type">
+		<x:call template="type-solr" />
+		<x:expect label="should return field type">
+			<field name="type">object</field>
+			<field name="type">http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert additional type">
+		<x:call template="additional-type-solr" />
+		<x:expect label="should return field type">
+			<field name="type">Photographs</field>
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert title">
 		<x:call template="title-solr" />
 		<x:expect label="should return field title starting with specified text"
 			test="starts-with(field[@name='title']/text(), 'Cricket scene showing')" />
 		<x:expect label="should return fields title and text">
 			<field name="title">...</field>
+		</x:expect>
+	</x:scenario>
+
+
+	<x:scenario label="Convert record metadata">
+		<x:call template="record-metadata-solr" />
+		<x:expect label="should return field modified and issued">
+			<field name="modified">2018-04-05</field>
+			<field name="issued">2007-06-07</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert collection">
+		<x:call template="collection-solr" />
+		<x:expect label="should return field collection">
+			<field name="collection">Ruth Oldfield collection</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert accession number">
+		<x:call template="accession-number-solr" />
+		<x:expect label="should return field identifier">
+			<field name="identifier">1985.0033.0002</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert materials">
+		<x:call template="materials-solr" />
+		<x:expect label="should return field medium x3">
+			<field name="medium">Wood</field>
+			<field name="medium">Photographic emulsion</field>
+			<field name="medium">Paper</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert dimensions">
+		<x:call template="dimensions-solr" />
+		<x:expect label="should return field dimension x3">
+			<field name="dimension">1020</field>
+			<field name="dimension">20</field>
+			<field name="dimension">820</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert content description">
+		<x:call template="content-description-solr" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert physical description">
+		<x:call template="physical-description-solr" />
+		<x:expect label="should return field physicalDescription">
+			<field name="physicalDescription">...</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert significance statement">
+		<x:call template="significance-statement-solr" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert educational significance">
+		<x:call template="educational-significance-solr" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert production parties">
+		<x:call template="production-parties-solr" />
+		<!-- each party: id, person, organisation, role, notes -->
+		<x:expect label="should return field creator x10">
+			<field name="creator">80363</field>
+			<field name="creator"></field>
+			<field name="creator">Sydney Mail</field>
+			<field name="creator">Publisher</field>
+			<field name="creator"></field>
+			<field name="creator">6514</field>
+			<field name="creator">Mr Herbert Fishwick</field>
+			<field name="creator"></field>
+			<field name="creator">Photographer</field>
+			<field name="creator"></field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production places">
+		<x:call template="production-places-solr" />
+		<!-- each place: id, label role, notes -->
+		<x:expect label="should return field creator x4">
+			<field name="spatial">47</field>
+			<field name="spatial">...</field>
+			<field name="spatial">Place made</field>
+			<field name="spatial"></field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert production dates">
+		<x:call template="production-dates-solr" />
+		<!-- each date: value role, notes -->
+		<x:expect label="should return field creator x3">
+			<field name="temporal">1928-12-14</field>
+			<field name="temporal">Date of production</field>
+			<field name="temporal"></field>
+		</x:expect>
+	</x:scenario>
+
+	<!-- TODO: associated templates works in ETL but is empty during XSpec tests -->
+
+	<x:pending label="Problem in test output, needs investigation">
+	<x:scenario label="Convert associated parties">
+		<x:call template="associated-parties-solr" />
+		<!-- each party: id, person, organisation, role, notes -->
+		<x:expect label="should return field contributor x10">
+			<field name="contributor">...</field>
+			<field name="contributor">Cricketer</field>
+			<field name="contributor">...</field>
+			<field name="contributor">Cricketer</field>
+			<field name="contributor">English Cricket Team</field>
+			<field name="contributor">Associated organisation</field>
+			<field name="contributor">Australian Cricket Team</field>
+			<field name="contributor">Associated organisation</field>
+		</x:expect>
+	</x:scenario>
+	</x:pending>
+
+	<x:pending label="Problem in test output, needs investigation">
+	<x:scenario label="Convert associated places">
+		<x:call template="associated-places-solr" />
+		<!-- each place: id, label role, notes -->
+		<x:expect label="should return field spatial x4">
+			<field name="spatial">47</field>
+			<field name="spatial">...</field>
+			<field name="spatial">Place made</field>
+			<field name="spatial"></field>
+		</x:expect>
+	</x:scenario>
+	</x:pending>
+
+	<x:pending label="Problem in test output, needs investigation">
+	<x:scenario label="Convert associated dates">
+		<x:call template="associated-dates-solr" />
+		<!-- each date: value role, notes -->
+		<x:expect label="should return field temporal x3">
+			<field name="temporal">1928-12-14</field>
+			<field name="temporal">Date of production</field>
+			<field name="temporal"></field>
+		</x:expect>
+	</x:scenario>
+	</x:pending>
+
+	<x:scenario label="Convert acknowledgement">
+		<x:call template="acknowledgement-solr" />
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Convert rights">
+		<x:call template="rights-solr" />
+		<x:expect label="should return field rights x2">
+			<field name="rights">https://creativecommons.org/publicdomain/mark/1.0/</field>
+			<field name="rights">Public Domain</field>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert representations">
+		<x:call template="representations-solr" />
+		<x:expect label="should return field of media x5">
+			<field name="media">MA22991348</field>
+			<field name="media">...</field>
+			<field name="media">...</field>
+			<field name="media">...</field>
+			<field name="media">...</field>
 		</x:expect>
 	</x:scenario>
 
