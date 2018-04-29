@@ -18,7 +18,6 @@
 			test="starts-with(field[@name='title']/text(), 'Cricket scene showing')" />
 		<x:expect label="should return fields title and text">
 			<field name="title">...</field>
-			<field name="text">...</field>
 		</x:expect>
 	</x:scenario>
 

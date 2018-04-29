@@ -105,7 +105,6 @@
 		</xsl:for-each>
 		<xsl:for-each select="path:forward( ('crm:P2_has_type', 'rdfs:label') )">
 			<field name="type"><xsl:value-of select="."/></field>
-			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -117,9 +116,6 @@
 	<xsl:template name="title-solr">
 		<xsl:for-each select="path:forward('rdfs:label')">
 			<field name="title">
-				<xsl:value-of select="." />
-			</field>
-			<field name="text">
 				<xsl:value-of select="." />
 			</field>
 			<!-- duplicate organisation name into name field -->
@@ -137,7 +133,6 @@
 	<xsl:template name="collection-solr">
 		<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdf:label') )">
 			<field name="collection"><xsl:value-of select="."/></field>
-			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
@@ -149,7 +144,6 @@
 			]
 		">
 			<field name="identifier"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
-			<field name="text"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
 		</xsl:for-each>
 	</xsl:template>	
 
@@ -157,7 +151,6 @@
 	<xsl:template name="materials-solr">
 		<xsl:for-each select="path:forward( ('crm:P45_consists_of', 'rdfs:label') )">
 			<field name="medium"><xsl:value-of select="."/></field>
-			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -172,7 +165,6 @@
 	<xsl:template name="content-description-solr">
 		<xsl:for-each select="path:forward( ('crm:P129i_is_subject_of', 'rdf:value') )">
 			<field name="description"><xsl:value-of select="."/></field>
-			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -204,37 +196,30 @@
 				/path:forward(., 'rdf:value')
 			">
 				<field name="creator"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
 			</xsl:for-each>
 			<!-- role: party organisation label -->
 			<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdfs:label') )">
 				<field name="creator"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
 			</xsl:for-each>
 			<!-- role: date -->
 			<xsl:for-each select="path:forward(.[path:forward(., 'crm:P4_has_time-span')], 'rdfs:label')">
 				<field name="temporal"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
 			</xsl:for-each>
 			<!-- role: place -->
 			<xsl:for-each select="path:forward(.[path:forward(., 'crm:P7_took_place_at')], 'rdfs:label')">
 				<field name="spatial"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
 			</xsl:for-each>
 			<!-- party -->
 			<xsl:for-each select="path:forward(., ('crm:P14_carried_out_by', 'rdf:value'))">
 				<field name="creator"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
 			</xsl:for-each>
 			<!-- date -->
 			<xsl:for-each select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label'))">
 				<field name="temporal"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
 			</xsl:for-each>
 			<!-- place -->
 			<xsl:for-each select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label'))">
 				<field name="spatial"><xsl:value-of select="."/></field>
-				<field name="text"><xsl:value-of select="."/></field>
 			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
@@ -252,10 +237,9 @@
 	
 	<!-- associated roles -->
 	<xsl:template name="associated-roles-solr">
-						<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'rdfs:label') )">
-							<field name="contributor"><xsl:value-of select="."/></field>
-							<field name="text"><xsl:value-of select="."/></field>
-						</xsl:for-each>
+		<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'rdfs:label') )">
+			<field name="contributor"><xsl:value-of select="."/></field>
+		</xsl:for-each>
 	</xsl:template>
 	
 	<!-- associated parties -->
@@ -268,7 +252,6 @@
 			/path:forward(., 'rdf:value')
 		">
 			<field name="contributor"><xsl:value-of select="."/></field>
-			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 
@@ -276,7 +259,6 @@
 	<xsl:template name="associated-places-solr">
 		<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P12_occurred_in_the_presence_of', 'rdfs:label') )">
 			<field name="contributor"><xsl:value-of select="."/></field>
-			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
@@ -284,7 +266,6 @@
 	<xsl:template name="associated-dates-solr">
 		<xsl:for-each select="path:forward( ('crm:P12i_was_present_at', 'crm:P4_has_time-span', 'rdfs:label') )">
 			<field name="contributor"><xsl:value-of select="."/></field>
-			<field name="text"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
@@ -316,7 +297,6 @@
 		]
 		">
 		<field name="name"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
-			<field name="text"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
