@@ -131,15 +131,13 @@
 	<xsl:template name="record-metadata-solr">
 		<!-- modified -->
 		<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:modified') )">
-			<field name="modified">
-				<xsl:value-of select="." />
-			</field>
+			<field name="modified"><xsl:value-of select="." /></field>
+			<field name="modified_date"><xsl:value-of select="." /></field>
 		</xsl:for-each>
 		<!-- web release -->
 		<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:issued') )">
-			<field name="issued">
-				<xsl:value-of select="." />
-			</field>
+			<field name="issued"><xsl:value-of select="." /></field>
+			<field name="issued_date"><xsl:value-of select="." /></field>
 		</xsl:for-each>
 	</xsl:template>
 	
@@ -279,6 +277,7 @@
 		">
 			<!-- value -->
 			<field name="temporal"><xsl:value-of select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )"/></field>
+			<field name="temporal_date"><xsl:value-of select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )"/></field>
 			<!-- role -->
 			<field name="temporal"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
 			<!-- description/notes -->
@@ -350,6 +349,7 @@
 		">
 			<!-- value -->
 			<field name="temporal"><xsl:value-of select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )"/></field>
+			<field name="temporal_date"><xsl:value-of select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )"/></field>
 			<!-- role -->
 			<field name="temporal"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
 			<!-- description/notes -->

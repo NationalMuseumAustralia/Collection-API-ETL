@@ -46,6 +46,8 @@
   </fieldType>
   <fieldType name="pdate" class="solr.DatePointField" docValues="true"/>
   <fieldType name="pdates" class="solr.DatePointField" docValues="true" multiValued="true"/>
+  <fieldType name="pdate_range" class="solr.DateRangeField" docValues="true"/>
+  <fieldType name="pdate_ranges" class="solr.DateRangeField" docValues="true" multiValued="true"/>
   <fieldType name="pdouble" class="solr.DoublePointField" docValues="true"/>
   <fieldType name="pdoubles" class="solr.DoublePointField" docValues="true" multiValued="true"/>
   <fieldType name="pfloat" class="solr.FloatPointField" docValues="true"/>
@@ -217,11 +219,16 @@
   <field name="contributor" type="text_general"/>
   <field name="spatial" type="text_general"/>
   <field name="temporal" type="text_general"/>
+  <field name="temporal_date" type="pdate_ranges"/>
   <field name="dimension" type="pfloats"/>
   <field name="medium" type="text_general"/>
   <field name="media" type="text_general"/>
+  <field name="modified" type="text_general"/>
+  <field name="modified_date" type="pdate_range"/>
+  <field name="issued" type="text_general"/>
+  <field name="issued_date" type="pdate_range"/>
   <!-- media -->
-  <field name="rights" type="text_general"/>
+  <field name="rights" type="pdate_range"/>
   <!-- party -->
   <field name="name" type="text_general"/>
   <field name="gender" type="text_general"/>
@@ -241,6 +248,8 @@
   <copyField source="spatial" dest="spatial_str" maxChars="256"/>
   <copyField source="temporal" dest="temporal_str" maxChars="256"/>
   <copyField source="medium" dest="medium_str" maxChars="256"/>
+  <copyField source="modified" dest="modified_str" maxChars="256"/>
+  <copyField source="issued" dest="issued_str" maxChars="256"/>
   <copyField source="media" dest="media_str" maxChars="256"/>
   <copyField source="rights" dest="rights_str" maxChars="256"/>
   <copyField source="name" dest="name_str" maxChars="256"/>
