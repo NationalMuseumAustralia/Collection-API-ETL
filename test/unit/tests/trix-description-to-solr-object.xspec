@@ -57,6 +57,7 @@
 	<x:scenario label="Convert collection">
 		<x:call template="collection-solr" />
 		<x:expect label="should return field collection">
+			<field name="collection_id">3952</field>
 			<field name="collection">Ruth Oldfield collection</field>
 		</x:expect>
 	</x:scenario>
@@ -112,12 +113,12 @@
 		<x:call template="production-parties-solr" />
 		<!-- each party: id, person, organisation, role, notes -->
 		<x:expect label="should return field creator x10">
-			<field name="creator">80363</field>
+			<field name="creator_id">80363</field>
 			<field name="creator"></field>
 			<field name="creator">Sydney Mail</field>
 			<field name="creator">Publisher</field>
 			<field name="creator"></field>
-			<field name="creator">6514</field>
+			<field name="creator_id">6514</field>
 			<field name="creator">Mr Herbert Fishwick</field>
 			<field name="creator"></field>
 			<field name="creator">Photographer</field>
@@ -129,7 +130,7 @@
 		<x:call template="production-places-solr" />
 		<!-- each place: id, label role, notes -->
 		<x:expect label="should return field creator x4">
-			<field name="spatial">47</field>
+			<field name="spatial_id">47</field>
 			<field name="spatial">...</field>
 			<field name="location_geo">...</field>
 			<field name="spatial">Place made</field>
@@ -172,7 +173,7 @@
 		<x:call template="associated-places-solr" />
 		<!-- each place: id, label role, notes -->
 		<x:expect label="should return field spatial x4">
-			<field name="spatial">47</field>
+			<field name="spatial_id">47</field>
 			<field name="spatial">...</field>
 			<field name="spatial">Place made</field>
 			<field name="spatial"></field>
@@ -210,10 +211,15 @@
 		<x:call template="representations-solr" />
 		<x:expect label="should return field of media x5">
 			<field name="media">MA22991348</field>
+			<field name="media_id">MA22991348</field>
 			<field name="media">...</field>
+			<field name="media_id">...</field>
 			<field name="media">...</field>
+			<field name="media_id">...</field>
 			<field name="media">...</field>
+			<field name="media_id">...</field>
 			<field name="media">...</field>
+			<field name="media_id">...</field>
 		</x:expect>
 	</x:scenario>
 

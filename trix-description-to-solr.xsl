@@ -49,6 +49,12 @@
 						<xsl:call-template name="rights-solr" />
 						<xsl:call-template name="representations-solr" />
 
+						<!-- NARRATIVE FIELDS -->
+						<xsl:call-template name="narrative-text-solr" />
+						<xsl:call-template name="narrative-parent-solr" />
+						<xsl:call-template name="narrative-children-solr" />
+						<xsl:call-template name="narrative-objects-solr" />
+
 						<!-- PARTY FIELDS -->
 						<xsl:call-template name="full-name-solr" />
 						<xsl:call-template name="first-name-solr" />
@@ -145,8 +151,9 @@
 
 	<!-- collection -->
 	<xsl:template name="collection-solr">
-		<xsl:for-each select="path:forward( ('crm:P106i_forms_part_of', 'rdfs:label') )">
-			<field name="collection"><xsl:value-of select="."/></field>
+		<xsl:for-each select="path:forward('crm:P106i_forms_part_of')">
+			<field name="collection_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<field name="collection"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
@@ -232,7 +239,7 @@
 		">
 			<!-- party id -->
 			<xsl:variable name="party-id" select="path:forward(., 'crm:P14_carried_out_by')" />
-			<field name="creator"><xsl:value-of select="replace($party-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<field name="creator_id"><xsl:value-of select="replace($party-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
 			<!-- person name -->
 			<field name="creator"><xsl:value-of select="
 				path:forward(., ('crm:P14_carried_out_by', 'crm:P1_is_identified_by'))[
@@ -258,7 +265,7 @@
 		">
 			<!-- place id -->
 			<xsl:variable name="place-id" select="path:forward(., 'crm:P7_took_place_at')" />
-			<field name="spatial"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<field name="spatial_id"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
 			<!-- label -->
 			<field name="spatial"><xsl:value-of select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label') )"/></field>
 			<!-- geo location -->
@@ -303,7 +310,7 @@
 			<!-- id -->
 			<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
 			<xsl:if test="$party-iri">
-				<field name="contributor"><xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" /></field>
+				<field name="contributor_id"><xsl:value-of select="replace($party-iri, '(.*/)([^/]*)(#)$', '$2')" /></field>
 			</xsl:if>
 			<!-- person name -->
 			<field name="contributor"><xsl:value-of select="
@@ -377,10 +384,75 @@
 	<xsl:template name="representations-solr">
 		<xsl:for-each select="path:forward('crm:P138i_has_representation')">
 			<field name="media"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<field name="media_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			<xsl:for-each select="path:forward(., 'crm:P138i_has_representation')">
 				<field name="media"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+				<field name="media_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:for-each>
+	</xsl:template>
+
+	<!-- NARRATIVE FIELDS -->
+	
+	<!-- narrative text -->
+	<xsl:template name="narrative-text-solr">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300263751'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<field name="description"><xsl:value-of select="path:forward($value, 'rdf:value')"/></field>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- parent narrative -->
+	<xsl:template name="narrative-parent-solr">
+		<xsl:variable name="value" select="
+			path:forward('ore:isAggregatedBy')[
+				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<xsl:for-each select="$value">
+				<!-- id -->
+				<field name="narrative_isPartOf_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+				<!-- title -->
+				<field name="title"><xsl:value-of select="path:forward($value, 'rdfs:label')"/></field>
+			</xsl:for-each>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- children narratives -->
+	<xsl:template name="narrative-children-solr">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<xsl:for-each select="$value">
+				<!-- id -->
+				<field name="narrative_hasPart_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+				<!-- title -->
+				<field name="title"><xsl:value-of select="path:forward($value, 'rdfs:label')"/></field>
+			</xsl:for-each>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- related objects -->
+	<xsl:template name="narrative-objects-solr">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<xsl:for-each select="$value">
+				<!-- id -->
+				<field name="aggregates_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			</xsl:for-each>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- PARTY FIELDS -->
