@@ -240,10 +240,9 @@
   <!-- place -->
   <field name="location" type="text_general"/>
   <field name="location_geo" type="slocation"/>
-<!-- BLOBs
-  <field name="simple" type="text_general"/>
-  <field name="json-ld" type="text_general"/>
--->
+  <!-- BLOBs -->
+  <field name="simple" type="text_general" indexed="false"/>
+  <field name="json-ld" type="text_general" indexed="false"/>
   <!-- _str for exact token-like matching (e.g. case/punctuation is preserved) -->
   <copyField source="type" dest="type_str" maxChars="256"/>
   <copyField source="title" dest="title_str" maxChars="256"/>
@@ -286,7 +285,9 @@
   <!-- _sort forces single value, uses exact token-like matching (e.g. case/punctuation is preserved) -->
   <dynamicField name="*_sort" type="strings" docValues="true" multiValued="false" indexed="true" stored="false"/>
   <copyField source="title" dest="title_sort" maxChars="256"/>
+<!--
   <copyField source="type" dest="type_sort" maxChars="256"/>
+-->
   <copyField source="modified" dest="modified_sort" maxChars="256"/>
   
 </schema>
