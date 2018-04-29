@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema name="nma-api-config" version="1.0">
+<schema name="nma-api-config" version="1.6">
   <uniqueKey>id</uniqueKey>
   <fieldType name="ancestor_path" class="solr.TextField">
     <analyzer type="index">
@@ -46,8 +46,8 @@
   </fieldType>
   <fieldType name="pdate" class="solr.DatePointField" docValues="true"/>
   <fieldType name="pdates" class="solr.DatePointField" docValues="true" multiValued="true"/>
-  <fieldType name="pdate_range" class="solr.DateRangeField" docValues="true"/>
-  <fieldType name="pdate_ranges" class="solr.DateRangeField" docValues="true" multiValued="true"/>
+  <fieldType name="pdate_range" class="solr.DateRangeField"/>
+  <fieldType name="pdate_ranges" class="solr.DateRangeField" multiValued="true"/>
   <fieldType name="pdouble" class="solr.DoublePointField" docValues="true"/>
   <fieldType name="pdoubles" class="solr.DoublePointField" docValues="true" multiValued="true"/>
   <fieldType name="pfloat" class="solr.FloatPointField" docValues="true"/>
@@ -196,7 +196,7 @@
   <!-- Solr schemaless defaults -->
   <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
   <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
-  <field name="_version_" type="plong" indexed="false" stored="false"/>
+  <field name="_version_" type="plong" indexed="false" stored="false" multiValued="false"/>
   <!-- 'text' is NMA's catchall full-text field we copy most textual content into -->
   <field name="text" type="text_general"/>
   <!-- 'description' catchs the separate description fields -->
