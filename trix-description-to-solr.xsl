@@ -261,6 +261,8 @@
 			<field name="spatial"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
 			<!-- label -->
 			<field name="spatial"><xsl:value-of select="path:forward(., ('crm:P7_took_place_at', 'rdfs:label') )"/></field>
+			<!-- geo location -->
+			<field name="location_geo"><xsl:value-of select="path:forward(., ('crm:P7_took_place_at', 'crm:P168_place_is_defined_by', 'rdf:value') )"/></field>
 			<!-- role -->
 			<field name="spatial"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
 			<!-- description/notes -->
@@ -333,6 +335,8 @@
 			<field name="spatial"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
 			<!-- label -->
 			<field name="spatial"><xsl:value-of select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') )"/></field>
+			<!-- geo location -->
+			<field name="location_geo"><xsl:value-of select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'crm:P168_place_is_defined_by', 'rdf:value') )"/></field>
 			<!-- role -->
 			<field name="spatial"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
 			<!-- description/notes -->
@@ -413,6 +417,7 @@
 	<xsl:template name="location-solr">
 		<xsl:for-each select="path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') )">
 			<field name="location"><xsl:value-of select="."/></field>
+			<field name="location_geo"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 	

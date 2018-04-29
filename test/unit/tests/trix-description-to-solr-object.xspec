@@ -131,6 +131,7 @@
 		<x:expect label="should return field creator x4">
 			<field name="spatial">47</field>
 			<field name="spatial">...</field>
+			<field name="location_geo">...</field>
 			<field name="spatial">Place made</field>
 			<field name="spatial"></field>
 		</x:expect>
