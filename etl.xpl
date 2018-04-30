@@ -85,7 +85,7 @@
 		<p:load href="vocabulary.rdf" name="raw-vocabulary"/>
 		<cx:message message="Loading local RDF vocabularies into SPARQL store..."/>
 		<p:add-attribute attribute-name="xml:base" match="/*" name="localised-vocabulary">
-			<p:with-option name="attribute-value" select="concat('http://', $hostname, '/xproc-z/term/')"/>
+			<p:with-option name="attribute-value" select="concat('http://', $hostname, '/term/')"/>
 		</p:add-attribute>
 		<nma:store-graph dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
@@ -225,7 +225,7 @@
 			<p:when test="$record-type='piction'">
 				<p:output port="result"/>
 				<p:xslt name="piction-to-rdf">
-					<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
+					<p:with-param name="base-uri" select="concat('http://', $hostname, '/')"/>
 					<p:with-param name="record-type" select="$record-type"/>
 					<p:input port="stylesheet">
 						<p:document href="piction-to-rdf.xsl"/>
@@ -235,7 +235,7 @@
 			<p:otherwise>
 				<p:output port="result"/>
 				<p:xslt name="emu-objects-to-rdf">
-					<p:with-param name="base-uri" select="concat('http://', $hostname, '/xproc-z/')"/>
+					<p:with-param name="base-uri" select="concat('http://', $hostname, '/')"/>
 					<p:with-param name="record-type" select="$record-type"/>
 					<p:input port="stylesheet">
 						<p:document href="emu-to-crm.xsl"/>
