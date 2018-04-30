@@ -30,7 +30,7 @@
 	<x:scenario label="Convert additional type">
 		<x:call template="additional-type-solr" />
 		<x:expect label="should return field type">
-			<field name="type">Photographs</field>
+			<field name="additionalType">Photographs</field>
 		</x:expect>
 	</x:scenario>
 
@@ -114,38 +114,32 @@
 		<!-- each party: id, person, organisation, role, notes -->
 		<x:expect label="should return field creator x10">
 			<field name="creator_id">80363</field>
-			<field name="creator"></field>
 			<field name="creator">Sydney Mail</field>
 			<field name="creator">Publisher</field>
-			<field name="creator"></field>
 			<field name="creator_id">6514</field>
 			<field name="creator">Mr Herbert Fishwick</field>
-			<field name="creator"></field>
 			<field name="creator">Photographer</field>
-			<field name="creator"></field>
 		</x:expect>
 	</x:scenario>
 
 	<x:scenario label="Convert production places">
 		<x:call template="production-places-solr" />
 		<!-- each place: id, label role, notes -->
-		<x:expect label="should return field creator x4">
+		<x:expect label="should return field spatial x4">
 			<field name="spatial_id">47</field>
 			<field name="spatial">...</field>
-			<field name="location_geo">...</field>
+			<field name="spatial_geo">...</field>
 			<field name="spatial">Place made</field>
-			<field name="spatial"></field>
 		</x:expect>
 	</x:scenario>
 
 	<x:scenario label="Convert production dates">
 		<x:call template="production-dates-solr" />
 		<!-- each date: value role, notes -->
-		<x:expect label="should return field creator x3">
+		<x:expect label="should return field temporal x3">
 			<field name="temporal">1928-12-14</field>
 			<field name="temporal_date">1928-12-14</field>
 			<field name="temporal">Date of production</field>
-			<field name="temporal"></field>
 		</x:expect>
 	</x:scenario>
 
@@ -174,7 +168,7 @@
 		<!-- each place: id, label role, notes -->
 		<x:expect label="should return field spatial x4">
 			<field name="spatial_id">47</field>
-			<field name="spatial">...</field>
+			<field name="spatial_geo">...</field>
 			<field name="spatial">Place made</field>
 			<field name="spatial"></field>
 		</x:expect>

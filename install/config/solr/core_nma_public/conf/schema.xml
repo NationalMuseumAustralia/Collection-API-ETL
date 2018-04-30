@@ -160,6 +160,7 @@
     </analyzer>
   </fieldType>
   <fieldType name="slocation" class="solr.LatLonPointSpatialField" docValues="true" indexed="true"/>
+  <fieldType name="slocations" class="solr.LatLonPointSpatialField" docValues="true" indexed="true" multiValued="true"/>
   <fieldType name="slocation_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
   <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight" indexed="true" stored="true"/>
   <dynamicField name="*_descendent_path" type="descendent_path" indexed="true" stored="true"/>
@@ -204,6 +205,7 @@
   <!-- NMA fields -->
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="type" type="text_general"/>
+  <field name="additionalType" type="text_general"/>
   <field name="title" type="text_general"/>
   <field name="contentDescription" type="text_general"/>
   <field name="physicalDescription" type="text_general"/>
@@ -219,11 +221,13 @@
   <field name="contributor_id" type="strings"/>
   <field name="spatial" type="text_general"/>
   <field name="spatial_id" type="strings"/>
+  <field name="spatial_geo" type="slocations"/>
   <field name="temporal" type="text_general"/>
   <field name="temporal_date" type="pdate_ranges"/>
   <field name="dimension" type="pfloats"/>
   <field name="medium" type="text_general"/>
   <field name="media" type="text_general"/>
+  <field name="media_id" type="strings"/>
   <field name="modified" type="text_general"/>
   <field name="modified_date" type="pdate_range"/>
   <field name="issued" type="text_general"/>
@@ -245,6 +249,7 @@
   <field name="json-ld" type="text_general" indexed="false"/>
   <!-- _str for exact token-like matching (e.g. case/punctuation is preserved) -->
   <copyField source="type" dest="type_str" maxChars="256"/>
+  <copyField source="additionalType" dest="additionalType_str" maxChars="256"/>
   <copyField source="title" dest="title_str" maxChars="256"/>
   <copyField source="identifier" dest="identifier_str" maxChars="256"/>
   <copyField source="collection" dest="collection_str" maxChars="256"/>
@@ -261,6 +266,8 @@
   <copyField source="gender" dest="gender_str" maxChars="256"/>
   <!-- build 'text' catchall full-text field -->
   <copyField source="title" dest="text"/>
+  <copyField source="type" dest="text"/>
+  <copyField source="additionalType" dest="text"/>
   <copyField source="identifier" dest="text"/>
   <copyField source="collection" dest="text"/>
   <copyField source="description" dest="text"/>
@@ -278,16 +285,10 @@
   <copyField source="physicalDescription" dest="description"/>
   <copyField source="significanceStatement" dest="description"/>
   <copyField source="educationalSignificance" dest="description"/>
-<!-- BLOBs
-  <copyField source="simple" dest="simple_str" maxChars="256"/>
-  <copyField source="json-ld" dest="json-ld_str" maxChars="256"/>
--->
   <!-- _sort forces single value, uses exact token-like matching (e.g. case/punctuation is preserved) -->
   <dynamicField name="*_sort" type="strings" docValues="true" multiValued="false" indexed="true" stored="false"/>
   <copyField source="title" dest="title_sort" maxChars="256"/>
-<!--
   <copyField source="type" dest="type_sort" maxChars="256"/>
--->
   <copyField source="modified" dest="modified_sort" maxChars="256"/>
   
 </schema>
