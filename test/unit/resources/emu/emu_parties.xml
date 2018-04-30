@@ -15,6 +15,22 @@
   </NamOtherNames_tab>
   <NamSex>Female</NamSex>
  </record>
+ <!-- multiple other names -->
+ <record>
+  <irn>14293</irn>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Paddy</NamFirst>
+  <NamMiddle>Gwambany Carlton</NamMiddle>
+  <NamLast>Joolama</NamLast>
+  <NamFullName>Paddy G. Joolama</NamFullName>
+  <NamOtherNames_tab>
+   <NamOtherName>Paddy Carlton</NamOtherName>
+   <NamOtherName>Paddy Gwambany Carlton</NamOtherName>
+   <NamOtherName>Paddy Malgbirr Joolama</NamOtherName>
+   <NamOtherName>Gwanguny</NamOtherName>
+  </NamOtherNames_tab>
+  <NamSex>Male</NamSex>
+ </record>
  <!-- organisation -->
  <record>
   <irn>24664</irn>

@@ -288,7 +288,9 @@
   <!-- _sort forces single value, uses exact token-like matching (e.g. case/punctuation is preserved) -->
   <dynamicField name="*_sort" type="strings" docValues="true" multiValued="false" indexed="true" stored="false"/>
   <copyField source="title" dest="title_sort" maxChars="256"/>
+<!-- 
   <copyField source="type" dest="type_sort" maxChars="256"/>
+ -->
   <copyField source="modified" dest="modified_sort" maxChars="256"/>
   
 </schema>
