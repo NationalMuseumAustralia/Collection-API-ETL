@@ -35,6 +35,7 @@ echo "JAVA_HOME=/usr/lib/jvm/default-java" > /etc/environment
 echo =========== Installing Apache HTTP Server
 apt install apache2 -y
 a2enmod proxy_http
+a2enmod headers
 mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.original
 ln -s $CONFIG_DIR/apache/000-default.conf /etc/apache2/sites-available/
 #
