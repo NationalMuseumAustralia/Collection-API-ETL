@@ -4,6 +4,7 @@
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#", 
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#", 
     "dc": "http://purl.org/dc/elements/1.1/", 
+    "ore": "http://www.openarchives.org/ore/terms/",
     "dcterms": "http://purl.org/dc/terms/", 
     "schema": "http://schema.org/", 
     "skos": "http://www.w3.org/2004/02/skos/core#", 
@@ -658,6 +659,28 @@
     "claimed_part_of": {
       "@id": "la:claimed_part", 
       "@type": "@id"
-    }
+    },
+    "documented_in": {
+      "@id": "crm:P70i_is_documented_in", 
+      "@type": "@id"
+    }, 
+    "Aggregation": {
+      "@context": {}, 
+      "@id": "ore:Aggregation"
+    },     
+    "aggregates": {
+      "@id": "ore:aggregates", 
+      "@type": "@id", 
+      "@container": "@set"
+    }, 
+    "aggregated_by": {
+      "@id": "ore:isAggregatedBy", 
+      "@type": "ore:Aggregation", 
+      "@container": "@set"
+    },     
+    "modified": "dcterms:modified",
+     "issued": "dcterms:issued",
+     "see_also": "rdfs:seeAlso",
+     "place_is_defined_by": "crm:P168_place_is_defined_by"
   }
 }

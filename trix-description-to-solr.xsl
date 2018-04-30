@@ -66,7 +66,7 @@
 						<xsl:variable name="json-ld-in-xml">
 							<xsl:call-template name="resource-as-json-ld-xml">
 								<xsl:with-param name="resource" select="$root-resource"/>
-								<xsl:with-param name="context" select=" 'https://linked.art/ns/v1/linked-art.json' "/>
+								<xsl:with-param name="context" select=" '/context.json' "/>
 							</xsl:call-template>
 						</xsl:variable>
 						<xsl:variable name="compact-json-ld-in-xml">
