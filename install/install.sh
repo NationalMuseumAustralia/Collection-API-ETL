@@ -164,8 +164,9 @@ npm install
 sudo -u postgres psql --command="CREATE USER konga;"
 sudo -u postgres psql --command="ALTER USER konga WITH PASSWORD 'konga';"
 sudo -u postgres psql --command="CREATE DATABASE konga_database OWNER konga;"
+sudo -u postgres PGOPTIONS='--client-min-messages=warning' psql -X -q -1 -v ON_ERROR_STOP=1 --pset pager=off -d konga_database -f $CONFIG_DIR/konga/konga_db_setup.sql -L konga_restore.log
 ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
-npm start &
+npm run production &
 #
 # NAGIOS
 #
