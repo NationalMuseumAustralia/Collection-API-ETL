@@ -137,13 +137,14 @@ sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations up
 kong stop
-cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
+ln -s $CONFIG_DIR/kong/kong.service /etc/systemd/system
 systemctl enable kong
 service kong start
 #
 # KONGA UI
 #
 echo =========== Installing Konga UI
+# nodejs
 cd $INSTALL_DIR
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
@@ -156,17 +157,25 @@ npm install -g bower
 npm install -g gulp
 npm install -g sails
 npm install -g sails-postgresql --save
+# konga
 cd /etc
 git clone https://github.com/pantsel/konga.git
 cd /etc/konga
 npm run bower-deps
 npm install
+ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
+# database
 sudo -u postgres psql --command="CREATE USER konga;"
 sudo -u postgres psql --command="ALTER USER konga WITH PASSWORD 'konga';"
 sudo -u postgres psql --command="CREATE DATABASE konga_database OWNER konga;"
 sudo -u postgres PGOPTIONS='--client-min-messages=warning' psql -X -q -1 -v ON_ERROR_STOP=1 --pset pager=off -d konga_database -f $CONFIG_DIR/konga/konga_db_setup.sql -L konga_restore.log
-ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
-npm run production &
+# service - https://certsimple.com/blog/deploy-node-on-linux
+cd /etc/konga
+sed -i '1 i\#!/usr/bin/env' app.js
+sudo chmod a+x app.js
+ln -s $CONFIG_DIR/konga/konga.service /etc/systemd/system
+systemctl enable konga
+service konga start
 #
 # NAGIOS
 #

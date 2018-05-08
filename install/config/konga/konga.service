@@ -1,0 +1,17 @@
+# https://certsimple.com/blog/deploy-node-on-linux
+
+[Unit]
+Description=konga service
+After=syslog.target network.target
+
+[Service]
+User=root
+Group=root
+Restart=always
+ExecStart=/etc/konga/app.js
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/etc/konga
+ 
+[Install]
+WantedBy=multi-user.target
