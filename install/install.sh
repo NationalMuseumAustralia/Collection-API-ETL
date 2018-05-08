@@ -137,7 +137,7 @@ sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations up
 kong stop
-ln -s $CONFIG_DIR/kong/kong.service /etc/systemd/system
+cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
 systemctl enable kong
 service kong start
 #
@@ -172,8 +172,8 @@ sudo -u postgres PGOPTIONS='--client-min-messages=warning' psql -X -q -1 -v ON_E
 # service - https://certsimple.com/blog/deploy-node-on-linux
 cd /etc/konga
 sed -i '1 i\#!/usr/bin/env' app.js
-sudo chmod a+x app.js
-ln -s $CONFIG_DIR/konga/konga.service /etc/systemd/system
+chmod a+x app.js
+cp $CONFIG_DIR/konga/konga.service /etc/systemd/system/
 systemctl enable konga
 service konga start
 #
