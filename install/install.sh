@@ -50,7 +50,7 @@ ln -s $CONFIG_DIR/tomcat/tomcat8 /etc/default/
 #
 echo =========== Installing Solr
 cd $INSTALL_DIR
-wget http://apache.mirror.digitalpacific.com.au/lucene/solr/7.2.1/solr-7.2.1.tgz -O solr-7.2.1.tgz
+wget http://archive.apache.org/dist/lucene/solr/7.2.1/solr-7.2.1.tgz -O solr-7.2.1.tgz
 tar xzf solr-7.2.1.tgz solr-7.2.1/bin/install_solr_service.sh --strip-components=2
 ./install_solr_service.sh $INSTALL_DIR/solr-7.2.1.tgz
 # create cores, only link config parts (so data files aren't in git)
@@ -72,7 +72,7 @@ chown -R solr:solr $CONFIG_DIR/solr
 echo =========== Installing Jena
 apt install unzip
 cd $INSTALL_DIR
-wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-3.6.0.zip -O jena-3.6.0.zip
+wget http://archive.apache.org/dist/jena/binaries/apache-jena-3.6.0.zip -O jena-3.6.0.zip
 unzip jena-3.6.0.zip -d /usr/local
 ln -s /usr/local/apache-jena-3.6.0 /usr/local/jena
 #
@@ -83,7 +83,7 @@ mkdir -p /etc/fuseki/configuration
 ln -s $CONFIG_DIR/fuseki/public.ttl /etc/fuseki/configuration/
 chown -R tomcat8:tomcat8 /etc/fuseki/
 cd $INSTALL_DIR
-wget http://apache.mirror.serversaustralia.com.au/jena/binaries/apache-jena-fuseki-3.6.0.zip -O fuseki-3.6.0.zip
+wget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-3.6.0.zip -O fuseki-3.6.0.zip
 unzip -j fuseki-3.6.0.zip apache-jena-fuseki-3.6.0/fuseki.war -d /var/lib/tomcat8/webapps/
 #
 # XML Calabash (XProc processor)
