@@ -538,56 +538,78 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<!-- TODO: separate into named templates the rendering of representation-level and digital-file-level, 
 	     then call appropriately if root-resource is an 'object' entity (repn) or 'media' entity (files) -->
-	
+
 	<!-- representations and their digital media files -->
 	<xsl:template name="representations-dc">
-		<xsl:variable name="value"
-			select="path:forward('crm:P138i_has_representation')" />
-		<xsl:if test="$value">
+		<!-- display preferred first, then any unpreferred -->
+		<xsl:variable name="value-preferred" select="
+			path:forward('crm:P138i_has_representation')[
+				path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred'
+			]
+		" />
+		<xsl:variable name="value-unpreferred" select="
+			path:forward('crm:P138i_has_representation')[
+				not( path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred' )
+			]
+		" />
+		<xsl:if test="$value-preferred or $value-unpreferred">
 			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
-				<xsl:for-each select="$value">
-					<map>
-						<!-- if media entity, a representation is a digital file, which doesn't have an id -->
-						<xsl:if test="not($type='media')">
-							<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
-						</xsl:if>
-						<string key='type'>
-							<xsl:text>StillImage</xsl:text>
-						</string>
-						<xsl:copy-of select="xmljson:render-as-string('identifier', .)" />
-						<xsl:copy-of select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
-						<!-- embed record-level rights next to each media (as that's what it refers to) -->
-						<xsl:call-template name="rights-dc" />
-						<!-- digital media files for this representation -->
-						<xsl:variable name="value2"
-							select="path:forward(., 'crm:P138i_has_representation')" />
-						<xsl:if test="$value2">
-							<array key="hasVersion">
-								<xsl:for-each select="$value2">
-								<map>
-									<string key='type'>
-										<xsl:text>StillImage</xsl:text>
-									</string>
-									<xsl:copy-of select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
-									<string key='identifier'>
-										<xsl:value-of select="." />
-										<xsl:value-of select="path:forward(., 'rdf:value')" />
-									</string>
-									<!-- 
-									<xsl:for-each select="path:forward(., 'crm:P43_has_dimension')">
-										<string key='dimension'>
-											<xsl:value-of select="path:forward(., 'rdf:value')" />
-										</string>
-									</xsl:for-each>
-								 	-->
-								</map>
-								</xsl:for-each>
-							</array>
-						</xsl:if>
-					</map>
+				<xsl:for-each select="$value-preferred">
+					<xsl:call-template name="representations-dc-display">
+						<xsl:with-param name="value" select="$value-preferred" />
+					</xsl:call-template>
+				</xsl:for-each>
+				<xsl:for-each select="$value-unpreferred">
+					<xsl:call-template name="representations-dc-display">
+						<xsl:with-param name="value" select="$value-unpreferred" />
+					</xsl:call-template>
 				</xsl:for-each>
 			</array>
 		</xsl:if>
+	</xsl:template>
+
+	<!-- display a representation -->
+	<xsl:template name="representations-dc-display">
+		<xsl:param name="value" />
+		<map xmlns="http://www.w3.org/2005/xpath-functions">
+			<!-- if media entity, a representation is a digital file, which doesn't have an id -->
+			<xsl:if test="not($type='media')">
+				<xsl:copy-of
+					select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+			</xsl:if>
+			<string key='type'>
+				<xsl:text>StillImage</xsl:text>
+			</string>
+			<xsl:copy-of select="xmljson:render-as-string('identifier', .)" />
+			<!-- NB: for media P2/version is preferred flag, for file is thumb/preview/etc -->
+			<xsl:copy-of
+				select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
+			<!-- embed record-level rights next to each media (as that's what it refers to) -->
+			<xsl:call-template name="rights-dc" />
+			<!-- digital media files for this representation -->
+			<xsl:variable name="value2"
+				select="path:forward(., 'crm:P138i_has_representation')" />
+			<xsl:if test="$value2">
+				<array key="hasVersion">
+					<xsl:for-each select="$value2">
+						<map>
+							<string key='type'>
+								<xsl:text>StillImage</xsl:text>
+							</string>
+							<xsl:copy-of
+								select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
+							<string key='identifier'>
+								<xsl:value-of select="." />
+								<xsl:value-of select="path:forward(., 'rdf:value')" />
+							</string>
+							<!-- <xsl:for-each select="path:forward(., 'crm:P43_has_dimension')"> <string 
+								key='dimension'> <xsl:value-of select="path:forward(., 'rdf:value')" /> </string> 
+								</xsl:for-each> -->
+						</map>
+					</xsl:for-each>
+				</array>
+			</xsl:if>
+		</map>
 	</xsl:template>
 
 	<!-- PARTY FIELDS -->

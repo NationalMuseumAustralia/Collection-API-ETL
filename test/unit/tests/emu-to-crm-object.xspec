@@ -630,6 +630,7 @@
 		<x:expect label="should return 2x crm:P138i_has_representation">
 			<crm:P138i_has_representation>
 				<crm:E36_Visual_Item rdf:about="media/01#">
+					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preferred" />
 					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
