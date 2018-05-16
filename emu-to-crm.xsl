@@ -681,38 +681,40 @@
 		</crm:P67i_is_referred_to_by>
 	</xsl:template>
 
-	<!-- TODO: should CC licences be no-derivatives? -->
 	<!-- TODO: look at rightsstatements.org as suggested by Linked Art -->
 	
 	<!-- rights -->
 	<!-- https://linked.art/model/object/rights/#rights-assertions -->
 	<xsl:template match="AcsCCStatus">
 		<xsl:param name="entity-iri" />
-		<crm:P104_is_subject_to>
-			<xsl:choose>
-				<xsl:when test=". = 'Public Domain'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
-						<rdf:value><xsl:text>Public Domain</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:when>
-				<xsl:when test=". = 'Creative Commons Commercial Use'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
-						<rdf:value><xsl:text>CC BY-SA 4.0</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:when>
-				<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-						<rdf:value><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:when>
-				<!-- fall back to most conservative -->
-				<xsl:otherwise>
-					<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
-						<rdf:value><xsl:text>All Rights Reserved</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:otherwise>
-			</xsl:choose>
-		</crm:P104_is_subject_to>
+		<!-- only include rights if there is actually some media -->
+		<xsl:if test="//WebMultiMediaRef_tab">
+			<crm:P104_is_subject_to>
+				<xsl:choose>
+					<xsl:when test=". = 'Public Domain'">
+						<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
+							<rdf:value><xsl:text>Public Domain</xsl:text></rdf:value>
+						</crm:E30_Right>
+					</xsl:when>
+					<xsl:when test=". = 'Creative Commons Commercial Use'">
+						<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
+							<rdf:value><xsl:text>CC BY-SA 4.0</xsl:text></rdf:value>
+						</crm:E30_Right>
+					</xsl:when>
+					<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
+						<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+							<rdf:value><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdf:value>
+						</crm:E30_Right>
+					</xsl:when>
+					<!-- fall back to most conservative -->
+					<xsl:otherwise>
+						<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
+							<rdf:value><xsl:text>All Rights Reserved</xsl:text></rdf:value>
+						</crm:E30_Right>
+					</xsl:otherwise>
+				</xsl:choose>
+			</crm:P104_is_subject_to>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- TODO: add additional location levels and ancestor structure -->
