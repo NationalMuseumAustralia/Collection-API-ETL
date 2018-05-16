@@ -45,6 +45,7 @@
 						<xsl:call-template name="associated-parties-solr" />
 						<xsl:call-template name="associated-places-solr" />
 						<xsl:call-template name="associated-dates-solr" />
+						<xsl:call-template name="related-solr" />
 						<xsl:call-template name="acknowledgement-solr" />
 						<xsl:call-template name="rights-solr" />
 						<xsl:call-template name="representations-solr" />
@@ -405,6 +406,13 @@
 			<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 				<field name="temporal"><xsl:value-of select="."/></field>
 			</xsl:for-each>
+		</xsl:for-each>
+	</xsl:template>
+
+	<!-- related - identifiers only (titles would skew keyword searches) -->
+	<xsl:template name="related-solr">
+		<xsl:for-each select="path:forward('dc:related')">
+			<field name="related_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 		</xsl:for-each>
 	</xsl:template>
 

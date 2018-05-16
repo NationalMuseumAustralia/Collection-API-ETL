@@ -55,6 +55,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="contributor-dc" />
 			<xsl:call-template name="spatial-dc" />
 			<xsl:call-template name="temporal-dc" />
+			<xsl:call-template name="related-dc" />
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
 			<xsl:call-template name="acknowledgement-dc" />
 			<!-- NB: rights are placed alongside each media rather than at the record level -->
@@ -501,6 +502,24 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 	</xsl:template>
 
+	<!-- related -->
+	<xsl:template name="related-dc">
+		<xsl:variable name="value" select="path:forward('dc:related')" />
+		<xsl:if test="$value">
+			<array key="related" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map>
+						<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>
+						<!-- type (assuming same type) -->
+						<xsl:copy-of select="xmljson:render-as-string('type', $type)" />
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+				</xsl:for-each>
+			</array>
+		</xsl:if>
+	</xsl:template>
+	
 	<!-- acknowledgement -->
 	<xsl:template name="acknowledgement-dc">
 		<xsl:copy-of select="xmljson:render-as-string('acknowledgement', 

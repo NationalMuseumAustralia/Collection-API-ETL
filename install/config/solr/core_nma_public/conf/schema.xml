@@ -226,6 +226,7 @@
   <field name="temporal_date" type="pdate_ranges"/>
   <field name="dimension" type="pfloats"/>
   <field name="medium" type="text_general"/>
+  <field name="related_id" type="strings"/>
   <field name="media" type="text_general"/>
   <field name="media_id" type="strings"/>
   <field name="modified" type="text_general"/>

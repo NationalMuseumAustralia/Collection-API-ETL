@@ -128,6 +128,9 @@
 			<!-- associations -->
 			<xsl:apply-templates select="AssociatedParties | AssociatedPlaces | AssociatedDates" />
 
+			<!-- related objects -->
+			<xsl:apply-templates select="RelRelatedObjects_tab/RelatedObject" />
+
 			<!-- TODO: exclude credit line if RigAcknowledgement=false -->
 
 			<!-- acknowledgement -->
@@ -652,6 +655,16 @@
 			<xsl:with-param name="unit-value" select="$unit" />
 		</xsl:call-template>
 	</xsl:template>
+
+	<!-- TODO: should related objects only be included if RelPublishedonCE=Yes? -->
+
+	<!-- related objects -->
+	<!-- https://linked.art/model/object/aboutness/index.html#related-objects -->
+	<xsl:template match="RelatedObject">
+		<xsl:variable name="related-entity-iri" select="concat('object/', ./relirn)" />
+		<dc:related rdf:resource="{$related-entity-iri}" />
+	</xsl:template>
+
 
 	<!-- acknowledgement -->
 	<!-- https://linked.art/model/object/rights/#credit-attribution-statement -->

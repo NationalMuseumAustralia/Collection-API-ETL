@@ -8,6 +8,8 @@
 	<!-- load an object trix record into the global $graph variable -->
 	<x:import href="resources/trix-record-object-122751-cricket.xspec" />
 
+	<!-- TODO: untested fields (as not in object record 122751): content description, significance statement, educational significance, acknowledgement, related -->
+
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
 
