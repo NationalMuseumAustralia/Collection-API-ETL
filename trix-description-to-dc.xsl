@@ -103,7 +103,15 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<!-- additional type -->
 	<xsl:template name="additional-type-dc">
-		<xsl:copy-of select="xmljson:render-as-string('additionalType', path:forward( ('crm:P2_has_type','rdfs:label') ))" />
+		<xsl:variable name="value" select="path:forward( ('crm:P2_has_type','rdfs:label') )" />
+		<xsl:if test="$value">
+			<array key="additionalType" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<!-- NB: no JSON string labels -->
+					<xsl:copy-of select="xmljson:render-as-string('', .)" />
+				</xsl:for-each>
+			</array>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- title -->

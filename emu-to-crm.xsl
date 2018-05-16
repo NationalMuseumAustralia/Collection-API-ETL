@@ -98,8 +98,9 @@
 			<!-- object type -->
 			<xsl:apply-templates select="TitObjectName" />
 			
-			<!-- TODO: add secondary object type -->
-
+			<!-- secondary object type -->
+			<xsl:apply-templates select="TitSecondaryObjectType" />
+			
 			<!-- descriptions -->
 			<xsl:apply-templates select="PhyDescription | PhyContentDescription | StaNmaSOSPublic | CreProvenance">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
@@ -268,7 +269,8 @@
 	</xsl:template>
 
 	<!-- object type -->
-	<xsl:template match="TitObjectName">
+	<!-- secondary object type -->
+	<xsl:template match="TitObjectName | TitSecondaryObjectType">
 		<crm:P2_has_type>
 			<rdf:Description>
 				<rdfs:label><xsl:value-of select="." /></rdfs:label>

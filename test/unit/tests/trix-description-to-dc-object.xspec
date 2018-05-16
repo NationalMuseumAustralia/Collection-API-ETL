@@ -8,7 +8,8 @@
 	<!-- load an object trix record into the global $graph variable -->
 	<x:import href="resources/trix-record-object-122751-cricket.xspec" />
 
-	<!-- TODO: untested fields (as not in object record 122751): content description, significance statement, educational significance, acknowledgement, related -->
+	<!-- TODO: untested fields (as not in object record 122751): 
+	secondary object type, content description, significance statement, educational significance, acknowledgement, related -->
 
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
@@ -30,7 +31,9 @@
 	<x:scenario label="Convert additional type">
 		<x:call template="additional-type-dc" />
 		<x:expect label="should return xpath:string additional type">
-			<xpath:string key="additionalType">Photographs</xpath:string>
+			<array key="additionalType" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string>Photographs</string>
+			</array>
 		</x:expect>
 	</x:scenario>
 

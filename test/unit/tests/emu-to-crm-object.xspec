@@ -53,6 +53,26 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Convert secondary object type">
+		<x:context>
+			<TitSecondaryObjectType>Sculptures</TitSecondaryObjectType>
+			<TitObjectName>Artworks</TitObjectName>
+		</x:context>
+		<x:expect label="should return 2x crm:P2_has_type">
+			<crm:P2_has_type>
+				<rdf:Description>
+					<rdfs:label>Sculptures</rdfs:label>
+				</rdf:Description>
+			</crm:P2_has_type>
+			<crm:P2_has_type>
+				<rdf:Description>
+					<rdfs:label>Artworks</rdfs:label>
+				</rdf:Description>
+			</crm:P2_has_type>
+		</x:expect>
+	</x:scenario>
+
+
 	<x:scenario label="Convert physical description">
 		<x:context>
 			<PhyDescription>A black and white photographic enlargement.</PhyDescription>
