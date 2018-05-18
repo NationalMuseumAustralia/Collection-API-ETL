@@ -26,8 +26,13 @@
 	"/>
 	
 	<xsl:template match="/">
+		<xsl:call-template name="do-redaction" />
+	</xsl:template>
+	
+	<xsl:template name="do-redaction">
 		<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 			<graph>
+				<!-- ############################################################################## -->
 				<!-- Slim down the description of any objects which are contained within narratives -->
 				
 				<!-- Find the identifiers of all the resources which are web pages. 
@@ -52,6 +57,7 @@
 				<!-- All the OTHER narrative objects' triples must be unwanted -->
 				<xsl:variable name="unwanted-narrative-object-triples" select="$narrative-object-triples except $desired-narrative-object-triples"/>
 
+				<!-- ############################################################################## -->
 				<!-- Having good quality images from Piction means we don't need any images from EMu -->
 				
 				<!-- identify any objects which have Piction images -->
@@ -76,8 +82,30 @@
 							]
 				"/>
 				
+				<!-- ############################################################################## -->
+				<!-- We don't want a rights statement if there isn't actually any media attached -->
+				
+				<!-- identify any objects without media -->
+				<xsl:variable name="objects-with-no-media" select="
+					$objects
+						[
+							not( 
+								path:forward(., ('crm:P138i_has_representation'))
+							)
+						]
+				"/>
+				<!-- identify any rights statements which can be discarded -->
+				<xsl:variable name="unwanted-rights-statements" select="
+					$graph/
+						trix:triple
+							[*[1]=$objects-with-no-media]
+							[*[2]='http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to']
+				"/>
+				
+				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:copy-of select="$graph/trix:triple except ($unwanted-narrative-object-triples, $unwanted-emu-images)"/>
+				<xsl:copy-of select="$graph/trix:triple except ($unwanted-narrative-object-triples, $unwanted-emu-images, $unwanted-rights-statements)"/>
+				
 			</graph>
 		</trix>
 	</xsl:template>

@@ -23,6 +23,7 @@ CALL :runtest emu-to-crm-narrative
 CALL :runtest emu-to-crm-party
 CALL :runtest emu-to-crm-place
 CALL :runtest emu-to-crm-collection
+CALL :runtest trix-description-redact-object
 CALL :runtest trix-description-to-dc-object
 CALL :runtest trix-description-to-dc-narrative
 CALL :runtest trix-description-to-dc-media
