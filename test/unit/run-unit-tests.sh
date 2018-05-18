@@ -30,6 +30,7 @@ else
   run_test emu-to-crm-party
   run_test emu-to-crm-place
   run_test emu-to-crm-collection
+  run_test trix-description-redact-object
   run_test trix-description-to-dc-object
   run_test trix-description-to-dc-narrative
   run_test trix-description-to-dc-media
