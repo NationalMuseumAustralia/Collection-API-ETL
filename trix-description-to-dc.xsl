@@ -778,8 +778,22 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<string key='type'><xsl:text>object</xsl:text></string>
 						<!-- title -->
 						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+						<!-- media - only preferred, but include all files -->
+						<xsl:variable name="value-preferred" select="
+							path:forward(., 'crm:P138i_has_representation')[
+								path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred'
+							]
+						" />
+						<!-- NB: assuming only one preferred -->
+						<xsl:for-each select="$value-preferred">
+							<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+								<xsl:call-template name="representations-dc-display">
+									<xsl:with-param name="value" select="$value-preferred" />
+								</xsl:call-template>
+							</array>
+						</xsl:for-each>
 					</map>
-			</xsl:for-each>
+				</xsl:for-each>
 			</array>
 		</xsl:if>
 	</xsl:template>
