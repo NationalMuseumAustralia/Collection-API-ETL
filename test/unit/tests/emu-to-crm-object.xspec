@@ -543,19 +543,9 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert rights: No media">
-		<x:context>
-			<AcsCCStatus>Anything</AcsCCStatus>
-		</x:context>
-		<x:expect label="should return empty" />
-	</x:scenario>
-
 	<x:scenario label="Convert rights: PD">
 		<x:context>
 			<AcsCCStatus>Public Domain</AcsCCStatus>
-			<WebMultiMediaRef_tab>
-				<image />
-			</WebMultiMediaRef_tab>
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
@@ -563,21 +553,12 @@
 					<rdf:value>Public Domain</rdf:value>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
-			<crm:P138i_has_representation>
-				<crm:E36_Visual_Item rdf:about="media/#">
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preferred" />
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
-				</crm:E36_Visual_Item>
-			</crm:P138i_has_representation>
 		</x:expect>
 	</x:scenario>
 
 	<x:scenario label="Convert rights: CC-BY">
 		<x:context>
 			<AcsCCStatus>Creative Commons Commercial Use</AcsCCStatus>
-			<WebMultiMediaRef_tab>
-				<image />
-			</WebMultiMediaRef_tab>
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
@@ -585,21 +566,12 @@
 					<rdf:value>CC BY-SA 4.0</rdf:value>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
-			<crm:P138i_has_representation>
-				<crm:E36_Visual_Item rdf:about="media/#">
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preferred" />
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
-				</crm:E36_Visual_Item>
-			</crm:P138i_has_representation>
 		</x:expect>
 	</x:scenario>
 
 	<x:scenario label="Convert rights: CC-BY-NC">
 		<x:context>
 			<AcsCCStatus>Creative Commons Non-Commercial Use</AcsCCStatus>
-			<WebMultiMediaRef_tab>
-				<image />
-			</WebMultiMediaRef_tab>
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
@@ -607,21 +579,12 @@
 					<rdf:value>CC BY-NC-SA 4.0</rdf:value>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
-			<crm:P138i_has_representation>
-				<crm:E36_Visual_Item rdf:about="media/#">
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preferred" />
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
-				</crm:E36_Visual_Item>
-			</crm:P138i_has_representation>
 		</x:expect>
 	</x:scenario>
 
 	<x:scenario label="Convert rights: default to ARR">
 		<x:context>
 			<AcsCCStatus>any other text</AcsCCStatus>
-			<WebMultiMediaRef_tab>
-				<image />
-			</WebMultiMediaRef_tab>
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
@@ -629,12 +592,6 @@
 					<rdf:value>All Rights Reserved</rdf:value>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
-			<crm:P138i_has_representation>
-				<crm:E36_Visual_Item rdf:about="media/#">
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preferred" />
-					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
-				</crm:E36_Visual_Item>
-			</crm:P138i_has_representation>
 		</x:expect>
 	</x:scenario>
 
