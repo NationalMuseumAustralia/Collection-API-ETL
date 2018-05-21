@@ -51,7 +51,7 @@
 	<x:scenario label="Convert parent narrative">
 		<x:call template="narrative-parent-solr" />
 		<x:expect label="should return field isPartOf and title">
-			<field name="narrative_isPartOf_id">3314</field>
+			<field name="isPartOf_narrative_id">3314</field>
 		</x:expect>
 	</x:scenario>
 

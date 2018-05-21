@@ -17,51 +17,62 @@
 	<xsl:variable name="api-base-uri" select="replace($root-resource, '(.*)/.*/[^#]*#.*', '$1')"/>
 	
 	<xsl:template match="/">
+		<!-- discover if this is a child object (has a parent object) -->
+		<xsl:variable name="object_parents" select="
+			path:forward('ore:isAggregatedBy')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
+			]
+		" />
 		<c:request method="post" href="http://localhost:8983/solr/core_nma_{$dataset}/update" detailed="true">
 			<c:body content-type="application/xml">
 				<add commitWithin="10000">
 					<doc>
-						<!-- TODO: remove text fields and use copyField in the Solr schema -->
+						<!-- for child objects, we load the data but don't index (can retrieve but can't search) -->
+						<xsl:if test="not($type='object' and $object_parents)">
 
-						<!-- COMMON FIELDS -->
-						<xsl:call-template name="id-solr" />
-						<xsl:call-template name="type-solr" />
-						<xsl:call-template name="additional-type-solr" />
-						<xsl:call-template name="title-solr" />
-						<xsl:call-template name="record-metadata-solr" />
+							<!-- COMMON FIELDS -->
+							<xsl:call-template name="id-solr" />
+							<xsl:call-template name="type-solr" />
+							<xsl:call-template name="additional-type-solr" />
+							<xsl:call-template name="title-solr" />
+							<xsl:call-template name="record-metadata-solr" />
 
-						<!-- OBJECT FIELDS -->
-						<xsl:call-template name="collection-solr" />
-						<xsl:call-template name="accession-number-solr" />
-						<xsl:call-template name="materials-solr" />
-						<xsl:call-template name="dimensions-solr" />
-						<xsl:call-template name="content-description-solr" />
-						<xsl:call-template name="physical-description-solr" />
-						<xsl:call-template name="significance-statement-solr" />
-						<xsl:call-template name="educational-significance-solr" />
-						<xsl:call-template name="production-parties-solr" />
-						<xsl:call-template name="production-places-solr" />
-						<xsl:call-template name="production-dates-solr" />
-						<xsl:call-template name="associated-parties-solr" />
-						<xsl:call-template name="associated-places-solr" />
-						<xsl:call-template name="associated-dates-solr" />
-						<xsl:call-template name="related-solr" />
-						<xsl:call-template name="acknowledgement-solr" />
-						<xsl:call-template name="rights-solr" />
-						<xsl:call-template name="representations-solr" />
+							<!-- OBJECT FIELDS -->
+							<xsl:call-template name="collection-solr" />
+							<xsl:call-template name="accession-number-solr" />
+							<xsl:call-template name="materials-solr" />
+							<xsl:call-template name="dimensions-solr" />
+							<xsl:call-template name="content-description-solr" />
+							<xsl:call-template name="physical-description-solr" />
+							<xsl:call-template name="significance-statement-solr" />
+							<xsl:call-template name="educational-significance-solr" />
+							<xsl:call-template name="production-parties-solr" />
+							<xsl:call-template name="production-places-solr" />
+							<xsl:call-template name="production-dates-solr" />
+							<xsl:call-template name="associated-parties-solr" />
+							<xsl:call-template name="associated-places-solr" />
+							<xsl:call-template name="associated-dates-solr" />
+							<xsl:call-template name="acknowledgement-solr" />
+							<xsl:call-template name="rights-solr" />
+							<xsl:call-template name="object-parent-solr" />
+							<xsl:call-template name="object-children-solr" />
+							<xsl:call-template name="related-solr" />
+							<xsl:call-template name="representations-solr" />
 
-						<!-- NARRATIVE FIELDS -->
-						<xsl:call-template name="narrative-text-solr" />
-						<xsl:call-template name="narrative-parent-solr" />
-						<xsl:call-template name="narrative-children-solr" />
-						<xsl:call-template name="narrative-objects-solr" />
+							<!-- NARRATIVE FIELDS -->
+							<xsl:call-template name="narrative-text-solr" />
+							<xsl:call-template name="narrative-parent-solr" />
+							<xsl:call-template name="narrative-children-solr" />
+							<xsl:call-template name="narrative-objects-solr" />
 
-						<!-- PARTY FIELDS -->
-						<xsl:call-template name="names-solr" />
-						<xsl:call-template name="gender-solr" />
+							<!-- PARTY FIELDS -->
+							<xsl:call-template name="names-solr" />
+							<xsl:call-template name="gender-solr" />
 
-						<!-- PLACE FIELDS -->
-						<xsl:call-template name="location-solr" />
+							<!-- PLACE FIELDS -->
+							<xsl:call-template name="location-solr" />
+
+						</xsl:if>
 					
 						<!-- Linked Art JSON-LD blob -->
 						<xsl:variable name="json-ld-in-xml">
@@ -409,13 +420,6 @@
 		</xsl:for-each>
 	</xsl:template>
 
-	<!-- related - identifiers only (titles would skew keyword searches) -->
-	<xsl:template name="related-solr">
-		<xsl:for-each select="path:forward('dc:related')">
-			<field name="related_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
-		</xsl:for-each>
-	</xsl:template>
-
 	<!-- acknowledgement -->
 	<xsl:template name="acknowledgement-solr">
 	</xsl:template>
@@ -428,6 +432,41 @@
 		</xsl:for-each>
 	</xsl:template>
 	
+	<!-- parent object - identifiers only (titles would skew keyword searches) -->
+	<xsl:template name="object-parent-solr">
+		<xsl:variable name="value" select="
+			path:forward('ore:isAggregatedBy')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
+			]
+		" />
+		<xsl:if test="$type='object' and $value">
+			<xsl:for-each select="$value">
+				<field name="isPartOf_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			</xsl:for-each>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- children objects - identifiers only (titles would skew keyword searches) -->
+	<xsl:template name="object-children-solr">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
+			]
+		" />
+		<xsl:if test="$type='object' and $value">
+			<xsl:for-each select="$value">
+				<field name="hasPart_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			</xsl:for-each>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- related - identifiers only (titles would skew keyword searches) -->
+	<xsl:template name="related-solr">
+		<xsl:for-each select="path:forward('dc:related')">
+			<field name="related_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+		</xsl:for-each>
+	</xsl:template>
+
 	<!-- representations - identifiers only -->
 	<xsl:template name="representations-solr">
 		<xsl:for-each select="path:forward('crm:P138i_has_representation')">
@@ -463,7 +502,7 @@
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
-				<field name="narrative_isPartOf_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+				<field name="isPartOf_narrative_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
@@ -477,12 +516,12 @@
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
-				<field name="narrative_hasPart_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+				<field name="hasPart_narrative_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
 	
-	<!-- related objects -->
+	<!-- narrative's related objects -->
 	<xsl:template name="narrative-objects-solr">
 		<xsl:variable name="value" select="
 			path:forward('ore:aggregates')[

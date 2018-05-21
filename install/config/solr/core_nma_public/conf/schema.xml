@@ -226,7 +226,9 @@
   <field name="temporal_date" type="pdate_ranges"/>
   <field name="dimension" type="pfloats"/>
   <field name="medium" type="text_general"/>
-  <field name="related_id" type="strings"/>
+  <field name="isPartOf_object_id" type="strings"/>
+  <field name="hasPart_object_id" type="strings"/>
+  <field name="related_object_id" type="strings"/>
   <field name="media" type="text_general"/>
   <field name="media_id" type="strings"/>
   <field name="modified" type="text_general"/>
@@ -234,8 +236,8 @@
   <field name="issued" type="text_general"/>
   <field name="issued_date" type="pdate_range"/>
   <!-- narrative -->
-  <field name="narrative_isPartOf_id" type="strings"/>
-  <field name="narrative_hasPart_id" type="strings"/>
+  <field name="isPartOf_narrative_id" type="strings"/>
+  <field name="hasPart_narrative_id" type="strings"/>
   <field name="aggregates_id" type="strings"/>
   <!-- media -->
   <field name="rights" type="text_general"/>

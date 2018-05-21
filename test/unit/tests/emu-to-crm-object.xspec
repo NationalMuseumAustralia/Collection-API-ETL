@@ -4,7 +4,7 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
 	xmlns:dc="http://purl.org/dc/terms/" xmlns:la="https://linked.art/ns/terms/"
-	stylesheet="../../../emu-to-crm.xsl">
+	xmlns:ore="http://www.openarchives.org/ore/terms/" stylesheet="../../../emu-to-crm.xsl">
 
 	<!-- OBJECT FIELDS -->
 
@@ -72,6 +72,20 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Convert parent">
+		<!-- here, 12345 is child -->
+		<x:context>
+			<AssParentObjectRef>67890</AssParentObjectRef>
+		</x:context>
+		<!-- NB: rdf:resource is empty as XSpec can't pass params to applied templates -->
+		<x:expect label="should return ore:aggregates">
+			<ore:isAggregatedBy>
+				<rdf:Description rdf:about="object/67890#">
+					<ore:aggregates rdf:resource="#" />
+				</rdf:Description>
+			</ore:isAggregatedBy>
+		</x:expect>
+	</x:scenario>
 
 	<x:scenario label="Convert physical description">
 		<x:context>

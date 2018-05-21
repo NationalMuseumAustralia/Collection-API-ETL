@@ -149,6 +149,12 @@
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
 
+			<!-- object parent -->
+			<!-- NB: we don't use TitObjectType as AssParentObjectRef adds parent AND child links -->
+			<xsl:apply-templates select="AssParentObjectRef">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
+			
 			<!-- media -->
 			<xsl:apply-templates select="WebMultiMediaRef_tab/image" />
 
@@ -182,6 +188,7 @@
 			</xsl:apply-templates>
 
 			<!-- Sub-narrative -->
+			<!-- NB: this adds parent AND child links -->
 			<xsl:apply-templates select="SubNarratives/SubNarrative">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
@@ -276,6 +283,19 @@
 				<rdfs:label><xsl:value-of select="." /></rdfs:label>
 			</rdf:Description>
 		</crm:P2_has_type>
+	</xsl:template>
+
+	<!-- object parent -->
+	<!-- NB: ignoring TitObjectType as this provides part/hasPart -->
+	<xsl:template match="AssParentObjectRef">
+		<xsl:param name="entity-iri" />
+		<xsl:variable name="parent-iri" select="concat('object/', ., '#')" />
+		<!-- this child object is contained by the specified parent object... which (in reverse) contains this child object -->
+		<ore:isAggregatedBy>
+			<rdf:Description rdf:about="{$parent-iri}">
+				<ore:aggregates rdf:resource="{$entity-iri}#" />
+			</rdf:Description>
+		</ore:isAggregatedBy>
 	</xsl:template>
 
 	<!-- physical description -->
@@ -664,9 +684,9 @@
 	<!-- https://linked.art/model/object/aboutness/index.html#related-objects -->
 	<xsl:template match="RelatedObject">
 		<xsl:variable name="related-entity-iri" select="concat('object/', ./relirn)" />
+		<!-- NB: We don't put in the reverse relationship in case curators only intended one-way -->
 		<dc:related rdf:resource="{$related-entity-iri}" />
 	</xsl:template>
-
 
 	<!-- acknowledgement -->
 	<!-- https://linked.art/model/object/rights/#credit-attribution-statement -->
@@ -828,8 +848,9 @@
 		<rdfs:label><xsl:value-of select="." /></rdfs:label>
 	</xsl:template>
 
-	<!-- DesType_tab (optional), containing sequence of DesType (string) ??? Barely 
-		used; get clarity on meaning -->
+	<!-- TODO: DesType is barely used; get clarity on meaning -->
+
+	<!-- DesType_tab (optional), containing sequence of DesType (string) -->
 	<xsl:template match="DesType">
 		<crm:P2_has_type>
 			<crm:E55_Type>
@@ -838,8 +859,7 @@
 		</crm:P2_has_type>
 	</xsl:template>
 
-	<!-- TODO DesIntendedAudience_tab, containing sequence of DesIntendedAudience (string) -->
-
+	<!-- DesIntendedAudience_tab (optional) - sequence of DesIntendedAudience (string) -->
 	<xsl:template match="DesIntendedAudience">
 		<crm:P2_has_type>
 			<crm:E55_Type>
@@ -861,7 +881,7 @@
 		</ore:aggregates>
 	</xsl:template>
 
-	<!-- MulMultiMediaRef_tab (optional) sequence of image banner_small banner_large -->
+	<!-- MulMultiMediaRef_tab (optional) - sequence of image banner_small banner_large -->
 	<xsl:template match="MulMultiMediaRef_tab/image">
 		<ore:aggregates>
 			<crm:E36_Visual_Item>
@@ -883,11 +903,15 @@
 		</ore:aggregates>
 	</xsl:template>
 
-	<!-- optionally, either of ObjObjectsRef_tab or SubNarratives -->
-	<!-- ObjObjectsRef_tab (optional) sequence of ObjObjectsRef, irn (string), AdmPublishWebNoPassword, 
+	<!-- NMA narratives contain optionally, either of ObjObjectsRef_tab OR SubNarratives -->
+	
+	<!-- TODO: we don't include isAggregatedBy from objects to containing narratives, though this could be a seeAlso canned search -->
+
+	<!-- ObjObjectsRef_tab (optional) - sequence of ObjObjectsRef, irn (string), AdmPublishWebNoPassword, 
 		AcsAPI_tab sequence of AcsAPI (string) -->
 	<xsl:template match="ObjObjectsRef">
 		<xsl:param name="entity-iri" />
+		<!-- this narrative contains the specified object... which (in reverse) is contained by this narrative -->
 		<ore:aggregates>
 			<rdf:Description rdf:about="{concat('object/', irn, '#')}">
 				<ore:isAggregatedBy rdf:resource="{$entity-iri}#" />
@@ -895,9 +919,10 @@
 		</ore:aggregates>
 	</xsl:template>
 
-	<!-- SubNarratives sequence of SubNarrative SubNarrative.irn -->
+	<!-- SubNarratives - sequence of SubNarrative SubNarrative.irn -->
 	<xsl:template match="SubNarrative">
 		<xsl:param name="entity-iri" />
+		<!-- this narrative contains the specified sub-narrative... which (in reverse) is contained by this narrative -->
 		<ore:aggregates>
 			<rdf:Description rdf:about="{concat('narrative/', SubNarrative.irn, '#')}">
 				<ore:isAggregatedBy rdf:resource="{$entity-iri}#" />

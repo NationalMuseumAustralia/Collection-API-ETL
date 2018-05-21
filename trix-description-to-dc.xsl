@@ -55,9 +55,11 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="contributor-dc" />
 			<xsl:call-template name="spatial-dc" />
 			<xsl:call-template name="temporal-dc" />
-			<xsl:call-template name="related-dc" />
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
 			<xsl:call-template name="acknowledgement-dc" />
+			<xsl:call-template name="object-parent-dc" />
+			<xsl:call-template name="object-children-dc" />
+			<xsl:call-template name="related-dc" />
 			<!-- NB: rights are placed alongside each media rather than at the record level -->
 			<!-- TODO: add representation mimetype format, once added to CRM -->
 			<xsl:call-template name="representations-dc" />
@@ -510,6 +512,68 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 	</xsl:template>
 
+	<!-- acknowledgement -->
+	<xsl:template name="acknowledgement-dc">
+		<xsl:copy-of select="xmljson:render-as-string('acknowledgement', 
+			path:forward('crm:P67i_is_referred_to_by')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300026687'
+			]
+			/path:forward(., 'rdf:value')
+		)" />
+	</xsl:template>
+	
+	<!-- rights (embedded with each media) -->
+	<xsl:template name="rights-dc">
+		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward('crm:P104_is_subject_to'))" />
+		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( ('crm:P104_is_subject_to', 'rdf:value') ))" />
+	</xsl:template>
+
+	<!-- parent object -->
+	<xsl:template name="object-parent-dc">
+		<xsl:variable name="value" select="
+			path:forward('ore:isAggregatedBy')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
+			]
+		" />
+		<xsl:if test="$type='object' and $value">
+			<array key="isPartOf" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<!-- id -->
+						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+						<!-- type -->
+						<xsl:copy-of select="xmljson:render-as-string('type', $type)" />
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+			</xsl:for-each>
+			</array>
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- children objects -->
+	<xsl:template name="object-children-dc">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
+			]
+		" />
+		<xsl:if test="$type='object' and $value">
+			<array key="hasPart" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<!-- id -->
+						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+						<!-- type -->
+						<xsl:copy-of select="xmljson:render-as-string('type', $type)" />
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+			</xsl:for-each>
+			</array>
+		</xsl:if>
+	</xsl:template>
+	
 	<!-- related -->
 	<xsl:template name="related-dc">
 		<xsl:variable name="value" select="path:forward('dc:related')" />
@@ -528,22 +592,6 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 	</xsl:template>
 	
-	<!-- acknowledgement -->
-	<xsl:template name="acknowledgement-dc">
-		<xsl:copy-of select="xmljson:render-as-string('acknowledgement', 
-			path:forward('crm:P67i_is_referred_to_by')[
-				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300026687'
-			]
-			/path:forward(., 'rdf:value')
-		)" />
-	</xsl:template>
-	
-	<!-- rights (embedded with each media) -->
-	<xsl:template name="rights-dc">
-		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward('crm:P104_is_subject_to'))" />
-		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( ('crm:P104_is_subject_to', 'rdf:value') ))" />
-	</xsl:template>
-
 	<!-- TODO: separate into named templates the rendering of representation-level and digital-file-level, 
 	     then call appropriately if root-resource is an 'object' entity (repn) or 'media' entity (files) -->
 
@@ -705,6 +753,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	
 	<!-- narrative text -->
 	<xsl:template name="narrative-text-dc">
+		<!-- AAT 300263751 is text (i.e. description) -->
 		<xsl:variable name="value" select="
 			path:forward('ore:aggregates')[
 				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300263751'
@@ -761,7 +810,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 	</xsl:template>
 	
-	<!-- related objects -->
+	<!-- narrative's related objects -->
 	<xsl:template name="narrative-objects-dc">
 		<xsl:variable name="value" select="
 			path:forward('ore:aggregates')[
