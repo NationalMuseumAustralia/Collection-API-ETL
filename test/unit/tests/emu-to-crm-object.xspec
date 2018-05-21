@@ -616,12 +616,16 @@
 				<LocLevel2>Landmarks</LocLevel2>
 				<LocLevel3>Flemington Racecourse</LocLevel3>
 				<LocLevel4>Case 01</LocLevel4>
+				<!-- level 5 empty -->
+				<LocLevel5></LocLevel5>
+				<!-- level 6 missing -->
+				<LocLevel7>Level 7</LocLevel7>
 			</LocCurrentLocationRef>
 		</x:context>
 		<x:expect label="should return crm:P16i_was_used_for">
 			<crm:P16i_was_used_for>
 				<crm:E7_Activity>
-					<rdfs:label>Case 01, Flemington Racecourse, Landmarks, Acton</rdfs:label>
+					<rdfs:label>Level 7, Case 01, Flemington Racecourse, Landmarks, Acton</rdfs:label>
 					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300054766" />
 				</crm:E7_Activity>
 			</crm:P16i_was_used_for>

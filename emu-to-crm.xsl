@@ -735,29 +735,17 @@
 		</crm:P104_is_subject_to>
 	</xsl:template>
 
-	<!-- TODO: add additional location levels and ancestor structure -->
+	<!-- TODO: add detailed exhibition location ancestor structure -->
 
 	<!-- exhibition location -->
 	<!-- https://linked.art/model/exhibition/ -->
+	<!-- NB: externally filtered, so levels 3+ won't make it here for public API -->
 	<xsl:template match="LocCurrentLocationRef">
 		<crm:P16i_was_used_for>
 			<crm:E7_Activity>
 				<rdfs:label>
-					<xsl:if test="LocLevel4">
-						<xsl:value-of select="LocLevel4" />
-					</xsl:if>
-					<xsl:if test="LocLevel3">
-						<xsl:text>, </xsl:text>
-						<xsl:value-of select="LocLevel3" />
-					</xsl:if>
-					<xsl:if test="LocLevel2">
-						<xsl:text>, </xsl:text>
-						<xsl:value-of select="LocLevel2" />
-					</xsl:if>
-					<xsl:if test="LocLevel1">
-						<xsl:text>, </xsl:text>
-						<xsl:value-of select="LocLevel1" />
-					</xsl:if>
+					<!-- NB: filtering out empty locations using [. != ''] -->
+					<xsl:value-of select="string-join( (LocLevel8, LocLevel7, LocLevel6, LocLevel5, LocLevel4, LocLevel3, LocLevel2, LocLevel1)[. != ''], ', ')" />
 				</rdfs:label>
 				<!-- AAT 300054766: exhibitions (events) -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300054766" />

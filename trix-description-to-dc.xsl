@@ -57,11 +57,12 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="temporal-dc" />
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
 			<xsl:call-template name="acknowledgement-dc" />
+			<xsl:call-template name="exhibition-location-dc" />
 			<xsl:call-template name="object-parent-dc" />
 			<xsl:call-template name="object-children-dc" />
 			<xsl:call-template name="related-dc" />
-			<!-- NB: rights are placed alongside each media rather than at the record level -->
 			<!-- TODO: add representation mimetype format, once added to CRM -->
+			<!-- NB: rights are placed inside each media rather than at the object record level -->
 			<xsl:call-template name="representations-dc" />
 			
 			<!-- PARTY FIELDS -->
@@ -441,7 +442,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<!-- description/notes -->
 						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
 						<!-- geo location -->
-						<xsl:copy-of select="xmljson:render-as-string('location', path:forward(., ('crm:P7_took_place_at', 'crm:P168_place_is_defined_by', 'rdf:value') ))" />
+						<xsl:copy-of select="xmljson:render-as-string('geo', path:forward(., ('crm:P7_took_place_at', 'crm:P168_place_is_defined_by', 'rdf:value') ))" />
 					</map>
 				</xsl:for-each>
 				<xsl:for-each select="$associated_place_value">
@@ -460,7 +461,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<!-- description/notes -->
 						<xsl:copy-of select="xmljson:render-as-string('description', path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') ))" />
 						<!-- geo location -->
-						<xsl:copy-of select="xmljson:render-as-string('location', path:forward(., ('crm:P7_took_place_at', 'crm:P168_place_is_defined_by', 'rdf:value') ))" />
+						<xsl:copy-of select="xmljson:render-as-string('geo', path:forward(., ('crm:P7_took_place_at', 'crm:P168_place_is_defined_by', 'rdf:value') ))" />
 					</map>
 				</xsl:for-each>
 			</array>
@@ -522,10 +523,22 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		)" />
 	</xsl:template>
 	
-	<!-- rights (embedded with each media) -->
+	<!-- rights (called from within representations-dc-display) -->
 	<xsl:template name="rights-dc">
 		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward('crm:P104_is_subject_to'))" />
 		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( ('crm:P104_is_subject_to', 'rdf:value') ))" />
+	</xsl:template>
+
+	<!-- TODO: could mint 'workFeaturedIn' instead of location (as inverse to schema:workFeatured) -->
+
+	<!-- exhibition location -->
+	<xsl:template name="exhibition-location-dc">
+		<xsl:copy-of select="xmljson:render-as-string('location', 
+			path:forward('crm:P16i_was_used_for')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300054766'
+			]
+			/path:forward(., 'rdfs:label')
+		)" />
 	</xsl:template>
 
 	<!-- parent object -->
@@ -744,7 +757,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	
 	<!-- location -->
 	<xsl:template name="location-dc">
-		<xsl:copy-of select="xmljson:render-as-string('location', path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') ))" />
+		<xsl:copy-of select="xmljson:render-as-string('geo', path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') ))" />
 	</xsl:template>
 	
 	<!-- NARRATIVE FIELDS -->

@@ -159,9 +159,9 @@
       <tokenizer class="solr.WhitespaceTokenizerFactory"/>
     </analyzer>
   </fieldType>
-  <fieldType name="slocation" class="solr.LatLonPointSpatialField" docValues="true" indexed="true"/>
-  <fieldType name="slocations" class="solr.LatLonPointSpatialField" docValues="true" indexed="true" multiValued="true"/>
-  <fieldType name="slocation_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
+  <fieldType name="sgeolocation" class="solr.LatLonPointSpatialField" docValues="true" indexed="true"/>
+  <fieldType name="sgeolocations" class="solr.LatLonPointSpatialField" docValues="true" indexed="true" multiValued="true"/>
+  <fieldType name="sgeolocation_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
   <dynamicField name="*_txt_en_split_tight" type="text_en_splitting_tight" indexed="true" stored="true"/>
   <dynamicField name="*_descendent_path" type="descendent_path" indexed="true" stored="true"/>
   <dynamicField name="*_ancestor_path" type="ancestor_path" indexed="true" stored="true"/>
@@ -171,7 +171,7 @@
   <dynamicField name="*_s_lower" type="lowercase" indexed="true" stored="true"/>
   <dynamicField name="*_txt_en" type="text_en" indexed="true" stored="true"/>
   <dynamicField name="*_point" type="point" indexed="true" stored="true"/>
-  <dynamicField name="*_srpt" type="slocation_rpt" indexed="true" stored="true"/>
+  <dynamicField name="*_srpt" type="sgeolocation_rpt" indexed="true" stored="true"/>
   <dynamicField name="attr_*" type="text_general" multiValued="true" indexed="true" stored="true"/>
   <dynamicField name="*_txt" type="text_general" indexed="true" stored="true"/>
   <dynamicField name="*_str" type="strings" docValues="true" indexed="false" stored="false"/>
@@ -193,7 +193,7 @@
   <dynamicField name="*_b" type="boolean" indexed="true" stored="true"/>
   <dynamicField name="*_f" type="pfloat" indexed="true" stored="true"/>
   <dynamicField name="*_d" type="pdouble" indexed="true" stored="true"/>
-  <dynamicField name="*_p" type="slocation" indexed="true" stored="true"/>
+  <dynamicField name="*_p" type="sgeolocation" indexed="true" stored="true"/>
   <!-- Solr schemaless defaults -->
   <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
   <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
@@ -221,11 +221,12 @@
   <field name="contributor_id" type="strings"/>
   <field name="spatial" type="text_general"/>
   <field name="spatial_id" type="strings"/>
-  <field name="spatial_geo" type="slocations"/>
+  <field name="spatial_geo" type="sgeolocations"/>
   <field name="temporal" type="text_general"/>
   <field name="temporal_date" type="pdate_ranges"/>
   <field name="dimension" type="pfloats"/>
   <field name="medium" type="text_general"/>
+  <field name="location" type="text_general"/>
   <field name="isPartOf_object_id" type="strings"/>
   <field name="hasPart_object_id" type="strings"/>
   <field name="related_object_id" type="strings"/>
@@ -245,8 +246,7 @@
   <field name="name" type="text_general"/>
   <field name="gender" type="text_general"/>
   <!-- place -->
-  <field name="location" type="text_general"/>
-  <field name="location_geo" type="slocation"/>
+  <field name="geo" type="sgeolocation"/>
   <!-- BLOBs -->
   <field name="simple" type="text_general" indexed="false"/>
   <field name="json-ld" type="text_general" indexed="false"/>
@@ -265,29 +265,30 @@
   <copyField source="issued" dest="issued_str" maxChars="256"/>
   <copyField source="media" dest="media_str" maxChars="256"/>
   <copyField source="rights" dest="rights_str" maxChars="256"/>
+  <copyField source="location" dest="location_str" maxChars="256"/>
   <copyField source="name" dest="name_str" maxChars="256"/>
   <copyField source="gender" dest="gender_str" maxChars="256"/>
-  <!-- build 'text' catchall full-text field -->
-  <copyField source="title" dest="text"/>
-  <copyField source="type" dest="text"/>
-  <copyField source="additionalType" dest="text"/>
-  <copyField source="identifier" dest="text"/>
-  <copyField source="collection" dest="text"/>
-  <copyField source="description" dest="text"/>
-  <copyField source="creator" dest="text"/>
-  <copyField source="contributor" dest="text"/>
-  <copyField source="spatial" dest="text"/>
-  <copyField source="temporal" dest="text"/>
-  <copyField source="media" dest="text"/>
-  <copyField source="medium" dest="text"/>
-  <copyField source="rights" dest="text"/>
-  <copyField source="name" dest="text"/>
-  <copyField source="gender" dest="text"/>
   <!-- build 'description' catchall full-text field -->
   <copyField source="contentDescription" dest="description"/>
   <copyField source="physicalDescription" dest="description"/>
   <copyField source="significanceStatement" dest="description"/>
   <copyField source="educationalSignificance" dest="description"/>
+  <!-- build 'text' catchall full-text field -->
+  <!-- NB: to keep this default query field focused, we only include fields 'about' the resource, so other stray words don't skew results -->
+  <!-- excluded: id, collection, dimension, location, modified, issued, rights, geo -->
+  <copyField source="title" dest="text"/>
+  <copyField source="type" dest="text"/>
+  <copyField source="additionalType" dest="text"/>
+  <copyField source="identifier" dest="text"/>
+  <copyField source="description" dest="text"/>
+  <copyField source="creator" dest="text"/>
+  <copyField source="contributor" dest="text"/>
+  <copyField source="spatial" dest="text"/>
+  <copyField source="temporal" dest="text"/>
+  <copyField source="medium" dest="text"/>
+  <copyField source="media" dest="text"/>
+  <copyField source="name" dest="text"/>
+  <copyField source="gender" dest="text"/>
   <!-- _sort forces single value, uses exact token-like matching (e.g. case/punctuation is preserved) -->
   <dynamicField name="*_sort" type="strings" docValues="true" multiValued="false" indexed="true" stored="false"/>
   <copyField source="title" dest="title_sort" maxChars="256"/>

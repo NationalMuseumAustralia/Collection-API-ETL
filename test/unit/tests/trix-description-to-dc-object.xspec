@@ -9,7 +9,7 @@
 	<x:import href="resources/trix-record-object-122751-cricket.xspec" />
 
 	<!-- TODO: untested fields (as not in object record 122751): 
-	secondary object type, content description, significance statement, educational significance, acknowledgement, related -->
+	secondary object type, content description, significance statement, educational significance, acknowledgement, related, exhibition location -->
 
 	<x:param name="root-resource"
 		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
@@ -150,7 +150,7 @@
 					<string key="title">...</string>
 					<string key="roleName">Place made</string>
 					<string key="interactionType">Production</string>
-					<string key="location">-33.85,151.2</string>
+					<string key="geo">-33.85,151.2</string>
 				</map>
 			</array>
 		</x:expect>

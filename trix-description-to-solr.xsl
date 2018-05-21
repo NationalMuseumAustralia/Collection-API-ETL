@@ -54,6 +54,7 @@
 							<xsl:call-template name="associated-dates-solr" />
 							<xsl:call-template name="acknowledgement-solr" />
 							<xsl:call-template name="rights-solr" />
+							<xsl:call-template name="exhibition-location-solr" />
 							<xsl:call-template name="object-parent-solr" />
 							<xsl:call-template name="object-children-solr" />
 							<xsl:call-template name="related-solr" />
@@ -431,7 +432,19 @@
 			<field name="rights"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
 		</xsl:for-each>
 	</xsl:template>
-	
+
+	<!-- exhibition location -->
+	<xsl:template name="exhibition-location-solr">
+		<xsl:for-each select="
+			path:forward('crm:P16i_was_used_for')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300054766'
+			]
+			/path:forward(., 'rdfs:label')
+		">
+			<field name="location"><xsl:value-of select="."/></field>
+		</xsl:for-each>
+	</xsl:template>
+
 	<!-- parent object - identifiers only (titles would skew keyword searches) -->
 	<xsl:template name="object-parent-solr">
 		<xsl:variable name="value" select="
@@ -564,8 +577,7 @@
 	<!-- location -->
 	<xsl:template name="location-solr">
 		<xsl:for-each select="path:forward( ('crm:P168_place_is_defined_by', 'rdf:value') )">
-			<field name="location"><xsl:value-of select="."/></field>
-			<field name="location_geo"><xsl:value-of select="."/></field>
+			<field name="geo"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
 	
