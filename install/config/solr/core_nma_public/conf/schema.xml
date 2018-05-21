@@ -275,7 +275,7 @@
   <copyField source="educationalSignificance" dest="description"/>
   <!-- build 'text' catchall full-text field -->
   <!-- NB: to keep this default query field focused, we only include fields 'about' the resource, so other stray words don't skew results -->
-  <!-- excluded: id, collection, dimension, location, modified, issued, rights, geo -->
+  <!-- excluded: id, collection, dimension, location, modified, issued, rights, geo, narrative banner images -->
   <copyField source="title" dest="text"/>
   <copyField source="type" dest="text"/>
   <copyField source="additionalType" dest="text"/>

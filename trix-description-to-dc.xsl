@@ -79,6 +79,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<!-- NARRATIVE FIELDS -->
 			<!-- TODO: narrative author, audience, media, des-type -->
 			<xsl:call-template name="narrative-text-dc" />
+			<xsl:call-template name="narrative-image-dc" />
 			<xsl:call-template name="narrative-parent-dc" />
 			<xsl:call-template name="narrative-children-dc" />
 			<xsl:call-template name="narrative-objects-dc" />
@@ -774,6 +775,24 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:copy-of select="xmljson:render-as-string('description', path:forward($value, 'rdf:value') )" />
+		</xsl:if>
+	</xsl:template>
+	
+	<!-- narrative banner images -->
+	<xsl:template name="narrative-image-dc">
+		<xsl:variable name="value" select="
+			path:forward('ore:aggregates')[
+				path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/banner-image'
+			]
+		" />
+		<xsl:if test="$type='narrative' and $value">
+			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<xsl:call-template name="representations-dc-display">
+						<xsl:with-param name="value" select="$value" />
+					</xsl:call-template>
+				</xsl:for-each>
+			</array>
 		</xsl:if>
 	</xsl:template>
 	

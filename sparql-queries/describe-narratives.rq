@@ -15,6 +15,7 @@ WHERE {
 	ore:isAggregatedBy |
 	# sub-narratives (i.e. narratives included in this one), aggregated images, and texts
 	ore:aggregates |
+	ore:aggregates/crm:P2_has_type |
 	ore:aggregates/crm:P138i_has_representation |
 	ore:aggregates/crm:P138i_has_representation/crm:P2_has_type |
   	# documents which describe the aggregated objects

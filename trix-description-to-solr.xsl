@@ -506,6 +506,8 @@
 		</xsl:if>
 	</xsl:template>
 	
+	<!-- narrative banner images - not searchable -->
+	
 	<!-- parent narrative -->
 	<xsl:template name="narrative-parent-solr">
 		<xsl:variable name="value" select="
