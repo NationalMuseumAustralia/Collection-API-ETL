@@ -526,8 +526,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	
 	<!-- rights (called from within representations-dc-display) -->
 	<xsl:template name="rights-dc">
-		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward('crm:P104_is_subject_to'))" />
-		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( ('crm:P104_is_subject_to', 'rdf:value') ))" />
+		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward( ('crm:P104_is_subject_to', 'crm:P148_has_component') ))" />
+		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( ('crm:P104_is_subject_to', 'crm:P148_has_component', 'rdf:value') ))" />
+		<xsl:copy-of select="xmljson:render-as-string('rightsReason', path:forward( ('crm:P104_is_subject_to', 'crm:P129i_is_subject_of', 'rdf:value') ))" />
 	</xsl:template>
 
 	<!-- TODO: could mint 'workFeaturedIn' instead of location (as inverse to schema:workFeatured) -->

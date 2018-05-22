@@ -563,8 +563,12 @@
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
-				<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
-					<rdf:value>Public Domain</rdf:value>
+				<crm:E30_Right rdf:about="#rights">
+					<crm:P148_has_component>
+						<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
+							<rdf:value>Public Domain</rdf:value>
+						</crm:E30_Right>
+					</crm:P148_has_component>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
 		</x:expect>
@@ -576,8 +580,12 @@
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
-				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
-					<rdf:value>CC BY-SA 4.0</rdf:value>
+				<crm:E30_Right rdf:about="#rights">
+					<crm:P148_has_component>
+						<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
+							<rdf:value>CC BY-SA 4.0</rdf:value>
+						</crm:E30_Right>
+					</crm:P148_has_component>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
 		</x:expect>
@@ -589,8 +597,12 @@
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
-				<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-					<rdf:value>CC BY-NC-SA 4.0</rdf:value>
+				<crm:E30_Right rdf:about="#rights">
+					<crm:P148_has_component>
+						<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+							<rdf:value>CC BY-NC-SA 4.0</rdf:value>
+						</crm:E30_Right>
+					</crm:P148_has_component>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
 		</x:expect>
@@ -602,8 +614,36 @@
 		</x:context>
 		<x:expect label="should return crm:P104_is_subject_to">
 			<crm:P104_is_subject_to>
-				<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
-					<rdf:value>All Rights Reserved</rdf:value>
+				<crm:E30_Right rdf:about="#rights">
+					<crm:P148_has_component>
+						<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
+							<rdf:value>All Rights Reserved</rdf:value>
+						</crm:E30_Right>
+					</crm:P148_has_component>
+				</crm:E30_Right>
+			</crm:P104_is_subject_to>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert restriction reason">
+		<x:context>
+			<x:param name="reason" select="'Culturally Sensitive'" />
+			<AcsCCStatus>Copyright</AcsCCStatus>
+		</x:context>
+		<x:expect label="should return crm:P104_is_subject_to">
+			<crm:P104_is_subject_to>
+				<crm:E30_Right rdf:about="#rights">
+					<crm:P148_has_component>
+						<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
+							<rdf:value>All Rights Reserved</rdf:value>
+						</crm:E30_Right>
+					</crm:P148_has_component>
+					<crm:P129i_is_subject_of>
+						<crm:E33_Linguistic_Object rdf:about="#restrictionReason">
+							<rdf:value>Culturally Sensitive</rdf:value>
+							<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300404457" />
+						</crm:E33_Linguistic_Object>
+					</crm:P129i_is_subject_of>
 				</crm:E30_Right>
 			</crm:P104_is_subject_to>
 		</x:expect>
@@ -614,7 +654,7 @@
 			<LocCurrentLocationRef>
 				<LocLevel1>Acton</LocLevel1>
 				<LocLevel2>Landmarks</LocLevel2>
-				<LocLevel3>Flemington Racecourse</LocLevel3>
+				<LocLevel3>Flemington</LocLevel3>
 				<LocLevel4>Case 01</LocLevel4>
 				<!-- level 5 empty -->
 				<LocLevel5></LocLevel5>
@@ -625,7 +665,7 @@
 		<x:expect label="should return crm:P16i_was_used_for">
 			<crm:P16i_was_used_for>
 				<crm:E7_Activity>
-					<rdfs:label>Level 7, Case 01, Flemington Racecourse, Landmarks, Acton</rdfs:label>
+					<rdfs:label>Level 7, Case 01, Flemington, Landmarks, Acton</rdfs:label>
 					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300054766" />
 				</crm:E7_Activity>
 			</crm:P16i_was_used_for>

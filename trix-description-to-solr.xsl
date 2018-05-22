@@ -428,8 +428,12 @@
 	<!-- rights -->
 	<xsl:template name="rights-solr">
 		<xsl:for-each select="path:forward('crm:P104_is_subject_to')">
-			<field name="rights"><xsl:value-of select="."/></field>
-			<field name="rights"><xsl:value-of select="path:forward(., 'rdf:value')"/></field>
+			<!-- rights IRI -->
+			<field name="rights"><xsl:value-of select="path:forward(., 'crm:P148_has_component')"/></field>
+			<!-- rights label -->
+			<field name="rights"><xsl:value-of select="path:forward(., ('crm:P148_has_component', 'rdf:value') )"/></field>
+			<!-- rights restriction reason -->
+			<field name="rights"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
 		</xsl:for-each>
 	</xsl:template>
 

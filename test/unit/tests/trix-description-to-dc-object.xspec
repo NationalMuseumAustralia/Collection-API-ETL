@@ -210,6 +210,8 @@
 		<x:expect label="should return empty" />
 	</x:scenario>
 
+	<!-- TODO: Waiting for new TRIX version -->
+	<x:pending label="Waiting for new TRIX version">
 	<x:scenario label="Convert rights">
 		<x:call template="rights-dc" />
 		<x:expect label="should return xpath:string rights and rightsTitle">
@@ -217,7 +219,10 @@
 			<string key="rightsTitle" xmlns="http://www.w3.org/2005/xpath-functions">Public Domain</string>
 		</x:expect>
 	</x:scenario>
+	</x:pending>
 
+	<!-- TODO: Waiting for new TRIX version -->
+	<x:pending label="Waiting for new TRIX version">
 	<x:scenario label="Convert representations">
 		<x:call template="representations-dc" />
 		<x:expect label="should return xpath:array of hasVersion maps">
@@ -253,6 +258,7 @@
 			</array>
 		</x:expect>
 	</x:scenario>
+	</x:pending>
 
 	<!-- don't exist in object so should be empty -->
 

@@ -142,6 +142,7 @@
 			<!-- rights -->
 			<xsl:apply-templates select="AcsCCStatus">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
+				<xsl:with-param name="reason" select="AcsCCRestrictionReason" />
 			</xsl:apply-templates>
 
 			<!-- exhibition location -->
@@ -688,6 +689,8 @@
 		<dc:related rdf:resource="{$related-entity-iri}" />
 	</xsl:template>
 
+	<!-- TODO: RigAcknowledgement - appears to be empty -->
+
 	<!-- acknowledgement -->
 	<!-- https://linked.art/model/object/rights/#credit-attribution-statement -->
 	<xsl:template match="RigCreditLine2">
@@ -701,37 +704,51 @@
 		</crm:P67i_is_referred_to_by>
 	</xsl:template>
 
-	<!-- TODO: should CC licences be no-derivatives? -->
-	<!-- TODO: look at rightsstatements.org as suggested by Linked Art -->
-	
 	<!-- rights -->
+	<!-- restriction reason -->
 	<!-- https://linked.art/model/object/rights/#rights-assertions -->
 	<xsl:template match="AcsCCStatus">
 		<xsl:param name="entity-iri" />
+		<xsl:param name="reason" />
 		<crm:P104_is_subject_to>
-			<xsl:choose>
-				<xsl:when test=". = 'Public Domain'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
-						<rdf:value><xsl:text>Public Domain</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:when>
-				<xsl:when test=". = 'Creative Commons Commercial Use'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
-						<rdf:value><xsl:text>CC BY-SA 4.0</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:when>
-				<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
-					<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-						<rdf:value><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:when>
-				<!-- fall back to most conservative -->
-				<xsl:otherwise>
-					<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
-						<rdf:value><xsl:text>All Rights Reserved</xsl:text></rdf:value>
-					</crm:E30_Right>
-				</xsl:otherwise>
-			</xsl:choose>
+			<crm:E30_Right rdf:about="{$entity-iri}#rights">
+				<!-- right/licence -->
+				<crm:P148_has_component>
+					<xsl:choose>
+						<xsl:when test=". = 'Public Domain'">
+							<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
+								<rdf:value><xsl:text>Public Domain</xsl:text></rdf:value>
+							</crm:E30_Right>
+						</xsl:when>
+						<xsl:when test=". = 'Creative Commons Commercial Use'">
+							<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
+								<rdf:value><xsl:text>CC BY-SA 4.0</xsl:text></rdf:value>
+							</crm:E30_Right>
+						</xsl:when>
+						<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
+							<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+								<rdf:value><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdf:value>
+							</crm:E30_Right>
+						</xsl:when>
+						<!-- fall back to most conservative -->
+						<xsl:otherwise>
+							<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
+								<rdf:value><xsl:text>All Rights Reserved</xsl:text></rdf:value>
+							</crm:E30_Right>
+						</xsl:otherwise>
+					</xsl:choose>
+				</crm:P148_has_component>
+				<!-- restriction reason, if provided -->
+				<xsl:if test="$reason">
+					<crm:P129i_is_subject_of>
+						<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#restrictionReason">
+							<rdf:value><xsl:value-of select="$reason" /></rdf:value>
+							<!-- AAT 300404457: purpose (information indicator) -->
+							<crm:P2_has_type rdf:resource="{$aat-ns}300404457" />
+						</crm:E33_Linguistic_Object>
+					</crm:P129i_is_subject_of>
+				</xsl:if>
+			</crm:E30_Right>
 		</crm:P104_is_subject_to>
 	</xsl:template>
 

@@ -69,6 +69,9 @@ WHERE {
 	crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
 	# rights and acknowledgements
 	crm:P104_is_subject_to |
+	crm:P104_is_subject_to/crm:P148_has_component |
+	crm:P104_is_subject_to/crm:P129i_is_subject_of |
+	crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type |
 	crm:P67i_is_referred_to_by |
 	# the visual items that depict the object, and the creation of those images, and the photographers
 	# and the various derivative representations of that item, and their types (Piction images are typed)
