@@ -672,6 +672,43 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Convert notes: web link">
+		<x:context>
+			<NotText0>
+				<note_type>Web Link</note_type>
+				<note_text>&lt;a
+					href=&quot;http://www.nma.gov.au/collections/highlights/ellen_rogers_collection&quot;&gt;View
+					collection highlight&lt;/a&gt;</note_text>
+			</NotText0>
+		</x:context>
+		<x:expect label="should return crm:P129i_is_subject_of">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object
+					rdf:about="http://www.nma.gov.au/collections/highlights/ellen_rogers_collection">
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264578" />
+					<rdfs:label>View collection highlight</rdfs:label>
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert notes: text">
+		<x:context>
+			<NotText0>
+				<note_type>Note</note_type>
+				<note_text>Accumulative displasy time</note_text>
+			</NotText0>
+		</x:context>
+		<x:expect label="should return crm:P129i_is_subject_of">
+			<crm:P129i_is_subject_of>
+				<crm:E33_Linguistic_Object>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300027200" />
+					<rdf:value>Accumulative displasy time</rdf:value>
+				</crm:E33_Linguistic_Object>
+			</crm:P129i_is_subject_of>
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert 2x images">
 		<x:context>
 			<image>
