@@ -479,7 +479,7 @@
 	
 	<!-- related - identifiers only (titles would skew keyword searches) -->
 	<xsl:template name="related-solr">
-		<xsl:for-each select="path:forward('dc:related')">
+		<xsl:for-each select="path:forward('dc:relation')">
 			<field name="related_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 		</xsl:for-each>
 	</xsl:template>

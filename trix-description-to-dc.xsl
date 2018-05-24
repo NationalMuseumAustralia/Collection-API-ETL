@@ -591,9 +591,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	
 	<!-- related -->
 	<xsl:template name="related-dc">
-		<xsl:variable name="value" select="path:forward('dc:related')" />
+		<xsl:variable name="value" select="path:forward('dc:relation')" />
 		<xsl:if test="$value">
-			<array key="related" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="relation" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="$value">
 					<map>
 						<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>

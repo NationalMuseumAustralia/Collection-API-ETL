@@ -537,9 +537,9 @@
 				</RelatedObject>
 			</RelRelatedObjects_tab>
 		</x:context>
-		<x:expect label="should return dc:related">
-			<dc:related rdf:resource="object/356" />
-			<dc:related rdf:resource="object/316" />
+		<x:expect label="should return dc:relation">
+			<dc:relation rdf:resource="object/356" />
+			<dc:relation rdf:resource="object/316" />
 		</x:expect>
 	</x:scenario>
 
