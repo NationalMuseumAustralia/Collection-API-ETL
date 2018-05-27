@@ -773,11 +773,10 @@
 		</crm:P16i_was_used_for>
 	</xsl:template>
 
-	<!-- notes & web links -->
+	<!-- web links -->
 	<!-- https://linked.art/model/object/digital/#other-pages -->
 	<xsl:template match="NotText0">
-		<!-- if has structured link, parse out URL and label, otherwise assume is a note 
-			(currently ignoring note_type) -->
+		<!-- parse out URL and label (ignoring note_type) -->
 		<!-- example: &lt;a href=&quot;http://...&quot;&gt;Label&lt;/a&gt; -->
 		<!-- ie: <a href="http://...">Label</a> -->
 		<xsl:variable name="label">
@@ -797,28 +796,21 @@
 				<xsl:matching-substring>
 					<xsl:value-of select="regex-group(1)" />
 				</xsl:matching-substring>
-				<!-- NB: no xsl:non-matching-substring - if href not found, return the string 
-					in label (so href variable is empty) -->
+				<!-- NB: no xsl:non-matching-substring here - if href not found, 
+					 return the whole string in label (ie. empty href variable) -->
 			</xsl:analyze-string>
 		</xsl:variable>
 		<crm:P129i_is_subject_of>
 			<crm:E33_Linguistic_Object>
-				<xsl:choose>
-					<xsl:when test="not($href = '')">
-						<!-- found structured link, so must be a web page note -->
-						<xsl:attribute name="rdf:about"><xsl:value-of select="$href" /></xsl:attribute>
-						<!-- AAT 300264578: web pages (documents) -->
-						<crm:P2_has_type rdf:resource="{$aat-ns}300264578" />
-						<xsl:if test="$label">
-							<rdfs:label><xsl:value-of select="$label" /></rdfs:label>
-						</xsl:if>
-					</xsl:when>
-					<xsl:otherwise>
-						<!-- AAT 300027200: notes (documents) -->
-						<crm:P2_has_type rdf:resource="{$aat-ns}300027200" />
-						<rdf:value><xsl:value-of select="$label" /></rdf:value>
-					</xsl:otherwise>
-				</xsl:choose>
+				<!-- NB: defensive, in case href didn't parse -->
+				<xsl:if test="$href and not($href='')">
+					<xsl:attribute name="rdf:about"><xsl:value-of select="$href" /></xsl:attribute>
+				</xsl:if>
+				<xsl:if test="$label">
+					<rdfs:label><xsl:value-of select="$label" /></rdfs:label>
+				</xsl:if>
+				<!-- AAT 300264578: web pages (documents) -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300264578" />
 			</crm:E33_Linguistic_Object>
 		</crm:P129i_is_subject_of>
 	</xsl:template>
