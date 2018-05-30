@@ -452,7 +452,7 @@
 	<!-- parent object - identifiers only (titles would skew keyword searches) -->
 	<xsl:template name="object-parent-solr">
 		<xsl:variable name="value" select="
-			path:forward('ore:isAggregatedBy')[
+			path:forward('crm:P46i_forms_part_of')[
 				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
 			]
 		" />
@@ -466,7 +466,7 @@
 	<!-- children objects - identifiers only (titles would skew keyword searches) -->
 	<xsl:template name="object-children-solr">
 		<xsl:variable name="value" select="
-			path:forward('ore:aggregates')[
+			path:forward('crm:P46_is_composed_of')[
 				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
 			]
 		" />

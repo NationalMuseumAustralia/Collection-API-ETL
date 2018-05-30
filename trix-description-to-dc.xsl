@@ -546,7 +546,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<!-- parent object -->
 	<xsl:template name="object-parent-dc">
 		<xsl:variable name="value" select="
-			path:forward('ore:isAggregatedBy')[
+			path:forward('crm:P46i_forms_part_of')[
 				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
 			]
 		" />
@@ -569,7 +569,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<!-- children objects -->
 	<xsl:template name="object-children-dc">
 		<xsl:variable name="value" select="
-			path:forward('ore:aggregates')[
+			path:forward('crm:P46_is_composed_of')[
 				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object'
 			]
 		" />

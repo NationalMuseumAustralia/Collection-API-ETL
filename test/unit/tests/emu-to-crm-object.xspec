@@ -78,12 +78,12 @@
 			<AssParentObjectRef>67890</AssParentObjectRef>
 		</x:context>
 		<!-- NB: rdf:resource is empty as XSpec can't pass params to applied templates -->
-		<x:expect label="should return ore:aggregates">
-			<ore:isAggregatedBy>
+		<x:expect label="should return crm:P46_is_composed_of">
+			<crm:P46_is_composed_of>
 				<rdf:Description rdf:about="object/67890#">
-					<ore:aggregates rdf:resource="#" />
+					<crm:P46i_forms_part_of rdf:resource="#" />
 				</rdf:Description>
-			</ore:isAggregatedBy>
+			</crm:P46_is_composed_of>
 		</x:expect>
 	</x:scenario>
 
