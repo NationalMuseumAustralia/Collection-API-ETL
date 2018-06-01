@@ -543,7 +543,7 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert acknowledgement">
+	<x:scenario label="Convert acknowledgement - acknowledgement flag empty">
 		<x:context>
 			<RigCreditLine2>Donated through the Australian Government.</RigCreditLine2>
 		</x:context>
@@ -555,6 +555,29 @@
 				</crm:E33_Linguistic_Object>
 			</crm:P67i_is_referred_to_by>
 		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert acknowledgement - acknowledgement flag yes">
+		<x:context>
+			<RigCreditLine2>Donated through the Australian Government.</RigCreditLine2>
+			<x:param name="acknowledgement-flag" select="'yes'" />
+		</x:context>
+		<x:expect label="should return crm:P67i_is_referred_to_by">
+			<crm:P67i_is_referred_to_by>
+				<crm:E33_Linguistic_Object rdf:about="#acknowledgement">
+					<rdf:value>Donated through the Australian Government.</rdf:value>
+					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300026687" />
+				</crm:E33_Linguistic_Object>
+			</crm:P67i_is_referred_to_by>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert acknowledgement - acknowledgement flag no">
+		<x:context>
+			<RigCreditLine2>Donated through the Australian Government.</RigCreditLine2>
+			<x:param name="acknowledgement-flag" select="'no'" />
+		</x:context>
+		<x:expect label="should return empty" />
 	</x:scenario>
 
 	<x:scenario label="Convert rights: PD">
