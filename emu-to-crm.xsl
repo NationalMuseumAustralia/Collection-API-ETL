@@ -296,11 +296,11 @@
 		<xsl:variable name="parent-iri" select="concat('object/', ., '#')" />
 		<!-- this child object is contained by the specified parent object... 
 		     which (in reverse) contains this child object -->
-		<crm:P46_is_composed_of>
+		<crm:P46i_forms_part_of>
 			<rdf:Description rdf:about="{$parent-iri}">
-				<crm:P46i_forms_part_of rdf:resource="{$entity-iri}#" />
+				<crm:P46_is_composed_of rdf:resource="{$entity-iri}#" />
 			</rdf:Description>
-		</crm:P46_is_composed_of>
+		</crm:P46i_forms_part_of>
 	</xsl:template>
 
 	<!-- physical description -->
