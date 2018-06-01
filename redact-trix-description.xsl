@@ -14,6 +14,7 @@
 	<xsl:variable name="dc-ns" select=" 'http://purl.org/dc/terms/' "/> 
 	<xsl:variable name="rdfs-ns" select=" 'http://www.w3.org/2000/01/rdf-schema#' "/> 
 	<xsl:variable name="crm-ns" select=" 'http://www.cidoc-crm.org/cidoc-crm/' "/>
+	<xsl:variable name="nma-term-ns" select=" 'https://api.nma.gov.au/term/' " />
 
 	<!-- Objects within narratives have certain properties which we always want to retain: -->
 	<xsl:variable name="desired-narrative-object-predicates" select="
@@ -32,6 +33,16 @@
 	<xsl:template name="do-redaction">
 		<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 			<graph>
+				<!-- ############################################################################## -->
+				<!-- Remove narrative banner images (not rights-cleared)
+				
+				<!-- identify narrative banner images to be discarded -->
+				<xsl:variable name="unwanted-narrative-banner-images" select="
+					path:forward('ore:aggregates')[
+						path:forward(., 'crm:P2_has_type') = concat($nma-term-ns, 'banner-image')
+					]
+				"/>
+				
 				<!-- ############################################################################## -->
 				<!-- Slim down the description of any objects which are contained within narratives -->
 				
@@ -104,7 +115,7 @@
 				
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:copy-of select="$graph/trix:triple except ($unwanted-narrative-object-triples, $unwanted-emu-images, $unwanted-rights-statements)"/>
+				<xsl:copy-of select="$graph/trix:triple except ($unwanted-narrative-banner-images $unwanted-narrative-object-triples, $unwanted-emu-images, $unwanted-rights-statements)"/>
 				
 			</graph>
 		</trix>
