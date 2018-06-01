@@ -34,7 +34,7 @@
 		<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 			<graph>
 				<!-- ############################################################################## -->
-				<!-- Remove narrative banner images (not rights-cleared)
+				<!-- Remove narrative banner images (not rights-cleared) -->
 				
 				<!-- identify narrative banner images to be discarded -->
 				<xsl:variable name="unwanted-narrative-banner-images" select="
@@ -115,7 +115,7 @@
 				
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:copy-of select="$graph/trix:triple except ($unwanted-narrative-banner-images $unwanted-narrative-object-triples, $unwanted-emu-images, $unwanted-rights-statements)"/>
+				<xsl:copy-of select="$graph/trix:triple except ($unwanted-narrative-banner-images, $unwanted-narrative-object-triples, $unwanted-emu-images, $unwanted-rights-statements)"/>
 				
 			</graph>
 		</trix>
