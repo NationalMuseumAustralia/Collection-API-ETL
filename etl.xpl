@@ -145,19 +145,20 @@
 		</nma:list-input-data-files>
 		<p:for-each name="file">
 			<p:iteration-source select="//c:file"/>
+			<p:variable name="filename" select="/c:file/@name"/>
 			<cx:message>
 				<p:with-option name="message" select="
 					concat(
 						'Reading ', 
 						$file-name-component, 
 						' input file ', 
-						/c:file/@name, 
+						$filename, 
 						' ...'
 					)
 				"/>
 			</cx:message>
 			<p:load>
-				<p:with-option name="href" select="/c:file/@name"/>
+				<p:with-option name="href" select="$filename"/>
 			</p:load>
 			<!-- make any necessary redactions before publishing to the specified dataset  -->
 			<!-- NB 'public' dataset omits certains data, which are present only in the 'internal' dataset -->
@@ -182,6 +183,7 @@
 					</p:when>
 					<p:otherwise>
 						<nma:ingest-record>
+							<p:with-option name="file-name-component" select="$file-name-component"/>
 							<p:with-option name="dataset" select="$dataset"/>        
 							<p:with-option name="hostname" select="$hostname"/>
 							<p:with-option name="incremental" select="$incremental"/>
@@ -210,6 +212,7 @@
 	
 	<p:declare-step type="nma:ingest-record" name="ingest-record">
 		<!-- accepts a single XML record, transforms it to RDF and deposits it in the SPARQL graph store -->
+		<p:option name="file-name-component" required="true"/><!-- base name of the source file containing this record -->
 		<p:option name="dataset" required="true"/><!-- "public" or "internal" -->
 		<p:option name="hostname" required="true"/><!-- e.g. "nma.conaltuohy.com" or "data.nma.gov.au" -->
 		<p:option name="incremental" required="true"/><!-- 'true' if graph store is to be updated incrementally; 'false' for a full rebuild -->
@@ -220,7 +223,7 @@
 			<p:with-option name="message" select="concat('Transforming ', $file-name-component, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
 		</cx:message>
 		<p:choose name="transformation-to-rdf">
-			<p:when test="$file-name-component='solr'">
+			<p:when test="$file-name-component = 'solr'">
 				<p:output port="result"/>
 				<p:xslt name="piction-to-rdf">
 					<p:with-param name="base-uri" select="concat('http://', $hostname, '/')"/>
