@@ -8,16 +8,45 @@
 	<!-- load an object trix record into the global $graph variable -->
 	<x:variable name="graph">
 		<graph xmlns="http://www.w3.org/2004/03/trix/trix-1/">
+			<!-- base record type triple -->
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 			</triple>
-			<!-- rights triple to be redacted - as there is no media -->
+			<!-- rights triple to be retained - as there _is_ media -->
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
 				<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
+			</triple>
+			<!-- related object to be redacted - related object doesn't exist in API (no title) -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://purl.org/dc/terms/relation</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/999999#</uri>
+			</triple>
+			<!-- Piction image to be retained -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+			</triple>
+			<!-- EMu image to be redacted (as Piction image exists instead) -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/emu-image</uri>
 			</triple>
 		</graph>
 	</x:variable>
@@ -27,13 +56,34 @@
 
 	<x:scenario label="Perform redaction">
 		<x:call template="do-redaction" />
-		<x:expect label="should return type triple only">
+		<x:expect
+			label="should return type triple, piction image, and orphaned emu image type">
 			<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 				<graph>
 					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 						<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
+						<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/term/emu-image</uri>
 					</triple>
 				</graph>
 			</trix>

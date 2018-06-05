@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../redact-trix-description.xsl">
+
+	<!-- load a narrative trix record into the global $graph variable -->
+	<x:variable name="graph">
+		<graph xmlns="http://www.w3.org/2004/03/trix/trix-1/">
+			<!-- base record type triple -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.openarchives.org/ore/terms/Aggregation</uri>
+			</triple>
+			<!-- banner image triple to be redacted (not rights cleared) -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
+				<id>f650af47c918f4fe1ee98b60786049a3</id>
+			</triple>
+			<triple>
+				<id>f650af47c918f4fe1ee98b60786049a3</id>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>https://api.nma.gov.au/term/banner-image</uri>
+			</triple>
+			<!-- extra detail in aggregated object to be redacted (to reduce payload size) -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://example.org/extra-detail</uri>
+				<typedLiteral datatype="http://www.w3.org/2001/XMLSchema#string">Too much detail</typedLiteral>
+			</triple>
+			<!-- web link in aggregated object to be retained -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+				<uri>http://example.org/external-website</uri>
+			</triple>
+			<triple>
+				<uri>http://example.org/external-website</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+				<uri>http://vocab.getty.edu/aat/300264578</uri>
+			</triple>
+		</graph>
+	</x:variable>
+
+	<x:param name="root-resource"
+		select=" 'http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#' " />
+
+	<x:scenario label="Perform redaction">
+		<x:call template="do-redaction" />
+		<x:expect label="should return type triple, orphaned P2_has_type triple, aggregated object with web link">
+			<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
+				<graph>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+						<uri>http://www.openarchives.org/ore/terms/Aggregation</uri>
+					</triple>
+					<triple>
+						<id>f650af47c918f4fe1ee98b60786049a3</id>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+						<uri>https://api.nma.gov.au/term/banner-image</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+						<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+						<uri>http://example.org/external-website</uri>
+					</triple>
+					<triple>
+						<uri>http://example.org/external-website</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+						<uri>http://vocab.getty.edu/aat/300264578</uri>
+					</triple>
+				</graph>
+			</trix>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

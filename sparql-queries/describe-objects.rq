@@ -1,5 +1,7 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX dc: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 DESCRIBE «resource-uri» ?resource
 WHERE {
 	«resource-uri»
@@ -48,7 +50,6 @@ WHERE {
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of |
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at)/crm:P9_consists_of/crm:P14_carried_out_by/crm:P107i_is_current_or_former_member_of/crm:P2_has_type |
 	
-	
 	# parties associated with those events, and their names, groups, identifiers
 	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of |
 	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P2_has_type | 
@@ -61,8 +62,6 @@ WHERE {
 	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of |
 	crm:P12i_was_present_at/crm:P12_occurred_in_the_presence_of /crm:P107i_is_current_or_former_member_of/crm:P2_has_type |					
 
-
-	
 	# the dimensions of the object, the type of the dimensions, and their measurement unit
 	crm:P43_has_dimension |
 	crm:P43_has_dimension/crm:P2_has_type |
@@ -73,6 +72,11 @@ WHERE {
 	crm:P104_is_subject_to/crm:P129i_is_subject_of |
 	crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type |
 	crm:P67i_is_referred_to_by |
+	# related objects
+	dc:relation |
+	dc:relation/rdf:type |
+	dc:relation/rdfs:label |
+	
 	# the visual items that depict the object, and the creation of those images, and the photographers
 	# and the various derivative representations of that item, and their types (Piction images are typed)
 	# along with their dimensions, and the types and measurement units of the dimensions
