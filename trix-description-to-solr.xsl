@@ -449,7 +449,7 @@
 		">
 			<!-- place id -->
 			<xsl:variable name="place-id" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
-			<field name="spatial"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
+			<field name="spatial_id"><xsl:value-of select="replace($place-id, '(.*/)([^/]*)(#)$', '$2')"/></field>
 			<!-- label -->
 			<xsl:for-each select="path:forward(., ('crm:P12_occurred_in_the_presence_of', 'rdfs:label') )">
 				<field name="spatial"><xsl:value-of select="."/></field>
@@ -504,7 +504,9 @@
 			<!-- rights label -->
 			<field name="rights"><xsl:value-of select="path:forward(., ('crm:P148_has_component', 'rdf:value') )"/></field>
 			<!-- rights restriction reason -->
-			<field name="rights"><xsl:value-of select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )"/></field>
+			<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
+				<field name="rights"><xsl:value-of select="."/></field>
+			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
 

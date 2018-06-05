@@ -12,7 +12,7 @@
 	secondary object type, content description, significance statement, educational significance, acknowledgement, related, exhibition location, parent/child -->
 
 	<x:param name="root-resource"
-		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
+		select=" 'http://nma-dev.conaltuohy.com/object/122751#' " />
 
 	<x:scenario label="Convert id">
 		<x:call template="id-dc" />
@@ -152,6 +152,12 @@
 					<string key="interactionType">Production</string>
 					<string key="geo">-33.85,151.2</string>
 				</map>
+				<map>
+					<string key="id">1869</string>
+					<string key="type">Place</string>
+					<string key="title">...</string>
+					<string key="roleName">Place of event</string>
+				</map>
 			</array>
 		</x:expect>
 	</x:scenario>
@@ -170,8 +176,6 @@
 		</x:expect>
 	</x:scenario>
 
-	<!-- TODO: 'contributor-dc' template works in ETL but is empty during XSpec tests -->
-	<x:pending label="Problem in test output, needs investigation">
 	<x:scenario label="Convert associated parties">
 		<x:call template="contributor-dc" />
 		<x:expect label="should return xpath:array of contributor maps">
@@ -203,15 +207,12 @@
 				</array>
 		</x:expect>
 	</x:scenario>
-	</x:pending>
 
 	<x:scenario label="Convert acknowledgement">
 		<x:call template="acknowledgement-dc" />
 		<x:expect label="should return empty" />
 	</x:scenario>
 
-	<!-- TODO: Waiting for new TRIX version -->
-	<x:pending label="Waiting for new TRIX version">
 	<x:scenario label="Convert rights">
 		<x:call template="rights-dc" />
 		<x:expect label="should return xpath:string rights and rightsTitle">
@@ -219,10 +220,7 @@
 			<string key="rightsTitle" xmlns="http://www.w3.org/2005/xpath-functions">Public Domain</string>
 		</x:expect>
 	</x:scenario>
-	</x:pending>
 
-	<!-- TODO: Waiting for new TRIX version -->
-	<x:pending label="Waiting for new TRIX version">
 	<x:scenario label="Convert representations">
 		<x:call template="representations-dc" />
 		<x:expect label="should return xpath:array of hasVersion maps">
@@ -258,7 +256,6 @@
 			</array>
 		</x:expect>
 	</x:scenario>
-	</x:pending>
 
 	<!-- don't exist in object so should be empty -->
 

@@ -10,7 +10,7 @@
 	<x:import href="resources/trix-record-object-122751-cricket.xspec" />
 
 	<x:param name="root-resource"
-		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
+		select=" 'http://nma-dev.conaltuohy.com/object/122751#' " />
 
 	<x:scenario label="Convert id">
 		<x:call template="id-solr" />
@@ -126,7 +126,7 @@
 	<x:scenario label="Convert production places">
 		<x:call template="production-places-solr" />
 		<!-- each place: id, label role, notes -->
-		<x:expect label="should return field spatial x4">
+		<x:expect label="should return spatial fields x4">
 			<field name="spatial_id">47</field>
 			<field name="spatial">...</field>
 			<field name="spatial_geo">...</field>
@@ -144,66 +144,54 @@
 		</x:expect>
 	</x:scenario>
 
-	<!-- TODO: associated templates works in ETL but is empty during XSpec tests -->
+	<x:scenario label="Convert associated parties">
+		<x:call template="associated-parties-solr" />
+		<!-- each party: id, person, organisation, role, notes(none) -->
+		<x:expect label="should return contributor fields x14">
+			<field name="contributor_id">12925</field>
+			<field name="contributor" />
+			<field name="contributor">English Cricket Team</field>
+			<field name="contributor">Associated organisation</field>
+			<field name="contributor_id">12924</field>
+			<field name="contributor" />
+			<field name="contributor">Australian Cricket Team</field>
+			<field name="contributor">Associated organisation</field>
+			<field name="contributor_id">10310</field>
+			<field name="contributor">Mr Walter (Wally) R. Hammond</field>
+			<field name="contributor">Cricketer</field>
+			<field name="contributor_id">10292</field>
+			<field name="contributor">Mr William 'Bert' A. Oldfield</field>
+			<field name="contributor">Cricketer</field>
+		</x:expect>
+	</x:scenario>
 
-	<x:pending label="Problem in test output, needs investigation">
-		<x:scenario label="Convert associated parties">
-			<x:call template="associated-parties-solr" />
-			<!-- each party: id, person, organisation, role, notes -->
-			<x:expect label="should return field contributor x10">
-				<field name="contributor">...</field>
-				<field name="contributor">Cricketer</field>
-				<field name="contributor">...</field>
-				<field name="contributor">Cricketer</field>
-				<field name="contributor">English Cricket Team</field>
-				<field name="contributor">Associated organisation</field>
-				<field name="contributor">Australian Cricket Team</field>
-				<field name="contributor">Associated organisation</field>
-			</x:expect>
-		</x:scenario>
-	</x:pending>
+	<x:scenario label="Convert associated places">
+		<x:call template="associated-places-solr" />
+		<!-- each place: id, label role, notes -->
+		<x:expect label="should return spatial fields x3">
+			<field name="spatial_id">1869</field>
+			<field name="spatial">...</field>
+			<field name="spatial">Place of event</field>
+		</x:expect>
+	</x:scenario>
 
-	<x:pending label="Problem in test output, needs investigation">
-		<x:scenario label="Convert associated places">
-			<x:call template="associated-places-solr" />
-			<!-- each place: id, label role, notes -->
-			<x:expect label="should return field spatial x4">
-				<field name="spatial_id">47</field>
-				<field name="spatial_geo">...</field>
-				<field name="spatial">Place made</field>
-				<field name="spatial"></field>
-			</x:expect>
-		</x:scenario>
-	</x:pending>
-
-	<x:pending label="Problem in test output, needs investigation">
-		<x:scenario label="Convert associated dates">
-			<x:call template="associated-dates-solr" />
-			<!-- each date: value role, notes -->
-			<x:expect label="should return field temporal x3">
-				<field name="temporal">1928-12-14</field>
-				<field name="temporal_date">1928-12-14</field>
-				<field name="temporal">Date of production</field>
-				<field name="temporal"></field>
-			</x:expect>
-		</x:scenario>
-	</x:pending>
+	<x:scenario label="Convert associated dates">
+		<x:call template="associated-dates-solr" />
+		<x:expect label="should return empty" />
+	</x:scenario>
 
 	<x:scenario label="Convert acknowledgement">
 		<x:call template="acknowledgement-solr" />
 		<x:expect label="should return empty" />
 	</x:scenario>
 
-	<!-- TODO: Waiting for new TRIX version -->
-	<x:pending label="Waiting for new TRIX version">
-		<x:scenario label="Convert rights">
-			<x:call template="rights-solr" />
-			<x:expect label="should return field rights x2">
-				<field name="rights">https://creativecommons.org/publicdomain/mark/1.0/</field>
-				<field name="rights">Public Domain</field>
-			</x:expect>
-		</x:scenario>
-	</x:pending>
+	<x:scenario label="Convert rights">
+		<x:call template="rights-solr" />
+		<x:expect label="should return field rights x2">
+			<field name="rights">https://creativecommons.org/publicdomain/mark/1.0/</field>
+			<field name="rights">Public Domain</field>
+		</x:expect>
+	</x:scenario>
 
 	<x:scenario label="Convert representations">
 		<x:call template="representations-solr" />

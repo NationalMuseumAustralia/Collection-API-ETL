@@ -10,7 +10,7 @@
 	<!-- generate description for the specified resource -->
 	<p:option name="type" required="true" />
 	<p:option name="id"   required="true" />
-	<p:variable name="resource-uri" select="concat('http://nma-dev.conaltuohy.com/xproc-z/', $type, '/', $id, '#')" />
+	<p:variable name="resource-uri" select="concat('http://nma-dev.conaltuohy.com/', $type, '/', $id, '#')" />
 
 	<!-- uncomment the appropriate describe query for the resource type -->
 	<nma:index-resources name="index-physical-objects" describe-query="../sparql-queries/describe-objects.rq">
