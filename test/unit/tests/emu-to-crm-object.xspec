@@ -715,17 +715,17 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Convert notes: text">
+	<x:scenario label="Convert notes: web link unformatted">
 		<x:context>
 			<NotText0>
-				<note_type>Note</note_type>
-				<note_text>Accumulative displasy time</note_text>
+				<note_type>Web Link</note_type>
+				<note_text>http://www.nma.gov.au/collections/highlights/ellen_rogers_collectione</note_text>
 			</NotText0>
 		</x:context>
-		<x:expect label="should return crm:P129i_is_subject_of">
+		<x:expect label="should return crm:P129i_is_subject_of with label only">
 			<crm:P129i_is_subject_of>
 				<crm:E33_Linguistic_Object>
-					<rdfs:label>Accumulative displasy time</rdfs:label>
+					<rdfs:label>...</rdfs:label>
 					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264578" />
 				</crm:E33_Linguistic_Object>
 			</crm:P129i_is_subject_of>
