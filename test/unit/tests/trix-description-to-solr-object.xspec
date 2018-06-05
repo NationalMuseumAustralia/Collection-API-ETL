@@ -80,10 +80,11 @@
 
 	<x:scenario label="Convert dimensions">
 		<x:call template="dimensions-solr" />
-		<x:expect label="should return field dimension x3">
-			<field name="dimension">1020</field>
-			<field name="dimension">20</field>
-			<field name="dimension">820</field>
+		<x:expect label="should return dimension fields x4">
+			<field name="length">1020</field>
+			<field name="width">820</field>
+			<field name="depth">20</field>
+			<field name="unitText">mm</field>
 		</x:expect>
 	</x:scenario>
 
@@ -146,46 +147,46 @@
 	<!-- TODO: associated templates works in ETL but is empty during XSpec tests -->
 
 	<x:pending label="Problem in test output, needs investigation">
-	<x:scenario label="Convert associated parties">
-		<x:call template="associated-parties-solr" />
-		<!-- each party: id, person, organisation, role, notes -->
-		<x:expect label="should return field contributor x10">
-			<field name="contributor">...</field>
-			<field name="contributor">Cricketer</field>
-			<field name="contributor">...</field>
-			<field name="contributor">Cricketer</field>
-			<field name="contributor">English Cricket Team</field>
-			<field name="contributor">Associated organisation</field>
-			<field name="contributor">Australian Cricket Team</field>
-			<field name="contributor">Associated organisation</field>
-		</x:expect>
-	</x:scenario>
+		<x:scenario label="Convert associated parties">
+			<x:call template="associated-parties-solr" />
+			<!-- each party: id, person, organisation, role, notes -->
+			<x:expect label="should return field contributor x10">
+				<field name="contributor">...</field>
+				<field name="contributor">Cricketer</field>
+				<field name="contributor">...</field>
+				<field name="contributor">Cricketer</field>
+				<field name="contributor">English Cricket Team</field>
+				<field name="contributor">Associated organisation</field>
+				<field name="contributor">Australian Cricket Team</field>
+				<field name="contributor">Associated organisation</field>
+			</x:expect>
+		</x:scenario>
 	</x:pending>
 
 	<x:pending label="Problem in test output, needs investigation">
-	<x:scenario label="Convert associated places">
-		<x:call template="associated-places-solr" />
-		<!-- each place: id, label role, notes -->
-		<x:expect label="should return field spatial x4">
-			<field name="spatial_id">47</field>
-			<field name="spatial_geo">...</field>
-			<field name="spatial">Place made</field>
-			<field name="spatial"></field>
-		</x:expect>
-	</x:scenario>
+		<x:scenario label="Convert associated places">
+			<x:call template="associated-places-solr" />
+			<!-- each place: id, label role, notes -->
+			<x:expect label="should return field spatial x4">
+				<field name="spatial_id">47</field>
+				<field name="spatial_geo">...</field>
+				<field name="spatial">Place made</field>
+				<field name="spatial"></field>
+			</x:expect>
+		</x:scenario>
 	</x:pending>
 
 	<x:pending label="Problem in test output, needs investigation">
-	<x:scenario label="Convert associated dates">
-		<x:call template="associated-dates-solr" />
-		<!-- each date: value role, notes -->
-		<x:expect label="should return field temporal x3">
-			<field name="temporal">1928-12-14</field>
-			<field name="temporal_date">1928-12-14</field>
-			<field name="temporal">Date of production</field>
-			<field name="temporal"></field>
-		</x:expect>
-	</x:scenario>
+		<x:scenario label="Convert associated dates">
+			<x:call template="associated-dates-solr" />
+			<!-- each date: value role, notes -->
+			<x:expect label="should return field temporal x3">
+				<field name="temporal">1928-12-14</field>
+				<field name="temporal_date">1928-12-14</field>
+				<field name="temporal">Date of production</field>
+				<field name="temporal"></field>
+			</x:expect>
+		</x:scenario>
 	</x:pending>
 
 	<x:scenario label="Convert acknowledgement">
@@ -195,13 +196,13 @@
 
 	<!-- TODO: Waiting for new TRIX version -->
 	<x:pending label="Waiting for new TRIX version">
-	<x:scenario label="Convert rights">
-		<x:call template="rights-solr" />
-		<x:expect label="should return field rights x2">
-			<field name="rights">https://creativecommons.org/publicdomain/mark/1.0/</field>
-			<field name="rights">Public Domain</field>
-		</x:expect>
-	</x:scenario>
+		<x:scenario label="Convert rights">
+			<x:call template="rights-solr" />
+			<x:expect label="should return field rights x2">
+				<field name="rights">https://creativecommons.org/publicdomain/mark/1.0/</field>
+				<field name="rights">Public Domain</field>
+			</x:expect>
+		</x:scenario>
 	</x:pending>
 
 	<x:scenario label="Convert representations">

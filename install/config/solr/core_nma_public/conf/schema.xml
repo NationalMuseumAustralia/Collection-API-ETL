@@ -224,7 +224,14 @@
   <field name="spatial_geo" type="sgeolocations"/>
   <field name="temporal" type="text_general"/>
   <field name="temporal_date" type="pdate_ranges"/>
-  <field name="dimension" type="pfloats"/>
+  <field name="length" type="pfloats"/>
+  <field name="height" type="pfloats"/>
+  <field name="width" type="pfloats"/>
+  <field name="depth" type="pfloats"/>
+  <field name="diameter" type="pfloats"/>
+  <field name="weight" type="pfloats"/>
+  <field name="unitText" type="text_general"/>
+  <field name="unitTextWeight" type="text_general"/>
   <field name="medium" type="text_general"/>
   <field name="acknowledgement" type="text_general"/>
   <field name="location" type="text_general"/>
@@ -277,7 +284,7 @@
   <copyField source="educationalSignificance" dest="description"/>
   <!-- build 'text' catchall full-text field -->
   <!-- NB: to keep this default query field focused, we only include fields 'about' the resource, so other stray words don't skew results -->
-  <!-- excluded: id, collection, dimension, acknowledgement, location, modified, issued, rights, geo, narrative banner images -->
+  <!-- excluded: id, collection, dimensions, unitTexts, acknowledgement, location, modified, issued, rights, geo, narrative banner images -->
   <copyField source="title" dest="text"/>
   <copyField source="type" dest="text"/>
   <copyField source="additionalType" dest="text"/>

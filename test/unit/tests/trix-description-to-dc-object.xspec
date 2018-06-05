@@ -88,9 +88,9 @@
 		<x:expect label="should return xpath:map of string dimensions">
 			<map key="extent" xmlns="http://www.w3.org/2005/xpath-functions">
 				<string key="type">Measurement</string>
-				<string key="length">1020</string>
-				<string key="width">820</string>
-				<string key="depth">20</string>
+				<number key="length">1020</number>
+				<number key="width">820</number>
+				<number key="depth">20</number>
 				<string key="unitText">mm</string>
 			</map>
 		</x:expect>

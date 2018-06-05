@@ -177,9 +177,89 @@
 
 	<!-- dimensions -->
 	<xsl:template name="dimensions-solr">
-		<xsl:for-each select="path:forward( ('crm:P43_has_dimension', 'rdf:value') )">
-			<field name="dimension"><xsl:value-of select="."/></field>
+		<!-- length -->
+		<xsl:for-each select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055645'
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="length"><xsl:value-of select="."/></field>
 		</xsl:for-each>
+
+		<!-- height -->
+		<xsl:for-each select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055644'
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="height"><xsl:value-of select="."/></field>
+		</xsl:for-each>
+
+		<!-- width -->
+		<xsl:for-each select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055647'
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="width"><xsl:value-of select="."/></field>
+		</xsl:for-each>
+
+		<!-- depth -->
+		<xsl:for-each select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300072633'
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="depth"><xsl:value-of select="."/></field>
+		</xsl:for-each>
+
+		<!-- diameter -->
+		<xsl:for-each select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055624'
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="diameter"><xsl:value-of select="."/></field>
+		</xsl:for-each>
+
+		<!-- weight -->
+		<xsl:for-each select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300056240'
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="weight"><xsl:value-of select="."/></field>
+		</xsl:for-each>
+
+		<!-- linear units (taken from first non-weight dimension) -->
+		<xsl:variable name="linearDimensions" select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') != 'http://vocab.getty.edu/aat/300056240'
+			]
+		" />
+		<xsl:if test="$linearDimensions">
+			<field name="unitText">
+				<xsl:value-of select="path:forward($linearDimensions[1], ('crm:P91_has_unit', 'rdfs:label'))"/>
+			</field>
+		</xsl:if>
+
+		<!-- weight units (taken from first weight dimension) -->
+		<xsl:variable name="weightDimensions" select="
+			path:forward('crm:P43_has_dimension')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300056240'
+			]
+		" />
+		<xsl:if test="$weightDimensions">
+			<field name="unitTextWeight">
+				<xsl:value-of select="path:forward($weightDimensions[1], ('crm:P91_has_unit', 'rdfs:label'))"/>
+			</field>
+		</xsl:if>
 	</xsl:template>
 	
 	<!-- content description -->

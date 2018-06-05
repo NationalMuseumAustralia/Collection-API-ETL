@@ -198,7 +198,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					<string key='type'><xsl:text>Measurement</xsl:text></string>
 			
 					<!-- length -->
-					<xsl:copy-of select="xmljson:render-as-string('length', 
+					<xsl:copy-of select="xmljson:render-as-number('length', 
 						path:forward('crm:P43_has_dimension')[
 							path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055645'
 						]
@@ -206,7 +206,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					)" />
 
 					<!-- height -->
-					<xsl:copy-of select="xmljson:render-as-string('height', 
+					<xsl:copy-of select="xmljson:render-as-number('height', 
 						path:forward('crm:P43_has_dimension')[
 							path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055644'
 						]
@@ -214,7 +214,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					)" />
 
 					<!-- width -->
-					<xsl:copy-of select="xmljson:render-as-string('width', 
+					<xsl:copy-of select="xmljson:render-as-number('width', 
 						path:forward('crm:P43_has_dimension')[
 							path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055647'
 						]
@@ -222,7 +222,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					)" />
 
 					<!-- depth -->
-					<xsl:copy-of select="xmljson:render-as-string('depth', 
+					<xsl:copy-of select="xmljson:render-as-number('depth', 
 						path:forward('crm:P43_has_dimension')[
 							path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300072633'
 						]
@@ -230,7 +230,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					)" />
 
 					<!-- diameter -->
-					<xsl:copy-of select="xmljson:render-as-string('diameter', 
+					<xsl:copy-of select="xmljson:render-as-number('diameter', 
 						path:forward('crm:P43_has_dimension')[
 							path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300055624'
 						]
@@ -238,7 +238,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					)" />
 
 					<!-- weight -->
-					<xsl:copy-of select="xmljson:render-as-string('weight', 
+					<xsl:copy-of select="xmljson:render-as-number('weight', 
 						path:forward('crm:P43_has_dimension')[
 							path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300056240'
 						]
