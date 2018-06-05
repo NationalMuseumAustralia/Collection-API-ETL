@@ -50,6 +50,7 @@
 						<xsl:call-template name="object-parent-solr" />
 						<xsl:call-template name="object-children-solr" />
 						<xsl:call-template name="related-solr" />
+						<xsl:call-template name="media-parent-solr" />
 						<xsl:call-template name="representations-solr" />
 
 						<!-- NARRATIVE FIELDS -->
@@ -471,6 +472,13 @@
 	<xsl:template name="related-solr">
 		<xsl:for-each select="path:forward('dc:relation')">
 			<field name="related_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+		</xsl:for-each>
+	</xsl:template>
+
+	<!-- parent object for media -->
+	<xsl:template name="media-parent-solr">
+		<xsl:for-each select="path:forward('crm:P138_represents')">
+			<field name="media_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 		</xsl:for-each>
 	</xsl:template>
 

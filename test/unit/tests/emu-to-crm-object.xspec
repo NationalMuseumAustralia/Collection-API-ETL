@@ -734,6 +734,8 @@
 
 	<x:scenario label="Convert 2x images">
 		<x:context>
+			<x:param name="record-type" select="'object'" />
+			<x:param name="entity-iri" select="'object/12345'" />
 			<image>
 				<media_irn>01</media_irn>
 				<media_mimeformat>jpeg</media_mimeformat>
@@ -770,6 +772,7 @@
 				<crm:E36_Visual_Item rdf:about="media/01#">
 					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/preferred" />
 					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
+					<crm:P138_represents rdf:resource="object/12345#" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/01-640.jpg">
@@ -833,6 +836,7 @@
 				xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/">
 				<crm:E36_Visual_Item rdf:about="media/02#">
 					<crm:P2_has_type rdf:resource="https://api.nma.gov.au/term/emu-image" />
+					<crm:P138_represents rdf:resource="object/12345#" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/emu/02-640.jpg">

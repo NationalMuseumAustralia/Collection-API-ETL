@@ -233,6 +233,7 @@
   <field name="related_object_id" type="strings"/>
   <field name="media" type="text_general"/>
   <field name="media_id" type="strings"/>
+  <field name="media_object_id" type="strings"/>
   <field name="modified" type="text_general"/>
   <field name="modified_date" type="pdate_range"/>
   <field name="issued" type="text_general"/>

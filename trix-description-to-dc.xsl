@@ -61,6 +61,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="object-parent-dc" />
 			<xsl:call-template name="object-children-dc" />
 			<xsl:call-template name="related-dc" />
+			<xsl:call-template name="media-parent-dc" />
 			<!-- TODO: add representation mimetype format, once added to CRM -->
 			<!-- NB: rights are placed inside each media rather than at the object record level -->
 			<xsl:call-template name="representations-dc" />
@@ -607,6 +608,16 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 	</xsl:template>
 	
+	<!-- parent object for media -->
+	<xsl:template name="media-parent-dc">
+		<xsl:for-each select="path:forward('crm:P138_represents')">
+			<map key="isVersionOf" xmlns="http://www.w3.org/2005/xpath-functions">
+				<string key='type'><xsl:text>object</xsl:text></string>
+				<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+			</map>
+		</xsl:for-each>
+	</xsl:template>
+
 	<!-- TODO: separate into named templates the rendering of representation-level and digital-file-level, 
 	     then call appropriately if root-resource is an 'object' entity (repn) or 'media' entity (files) -->
 

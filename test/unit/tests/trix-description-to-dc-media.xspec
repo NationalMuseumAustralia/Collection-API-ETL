@@ -30,6 +30,16 @@
 		<x:expect label="should return empty" />
 	</x:scenario>
 
+	<x:scenario label="Convert media parent object">
+		<x:call template="media-parent-dc" />
+		<x:expect label="should return empty">
+			<xpath:map key="isVersionOf">
+				<xpath:string key="type">object</xpath:string>
+				<xpath:string key="id">122751</xpath:string>
+			</xpath:map>
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert representations">
 		<x:call template="representations-dc" />
 		<x:expect label="should return xpath:array of hasVersion maps">

@@ -175,7 +175,10 @@
 			<xsl:apply-templates select="NotText0" />
 			
 			<!-- media -->
-			<xsl:apply-templates select="WebMultiMediaRef_tab/image" />
+			<xsl:apply-templates select="WebMultiMediaRef_tab/image">
+				<xsl:with-param name="record-type" select="$record-type" />
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
 
 			<!-- NARRATIVE FIELDS -->
 
@@ -838,6 +841,8 @@
 	<!-- media -->
 	<!-- https://linked.art/model/object/digital/ -->
 	<xsl:template match="image">
+		<xsl:param name="record-type" />
+		<xsl:param name="entity-iri" />
 		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
 		<crm:P138i_has_representation>
 			<crm:E36_Visual_Item rdf:about="{$media-iri}#">
@@ -846,6 +851,10 @@
 					<crm:P2_has_type rdf:resource="{$nma-term-ns}preferred" />
 				</xsl:if>
 				<crm:P2_has_type rdf:resource="{$nma-term-ns}emu-image" />
+				<!-- add reverse link back to parent object entity -->
+				<xsl:if test="$record-type = 'object' and not($entity-iri= '')">
+					<crm:P138_represents rdf:resource="{$entity-iri}#" />
+				</xsl:if>
 
 				<!-- TODO: add identified_by for media IRN -->
 				<!-- TODO: add mime type/format -->
