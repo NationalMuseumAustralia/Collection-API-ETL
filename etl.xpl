@@ -46,33 +46,33 @@
 		</nma:load-vocabulary>
 		
 		<!-- process EMu objects, places, parties, collections, and narratives -->
-		<nma:process-data record-type="narrative" dataset="public">
+		<nma:process-data file-name-component="narratives" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data record-type="object" dataset="public">
+		<nma:process-data file-name-component="objects" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data record-type="place" dataset="public">
+		<nma:process-data file-name-component="sites" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data record-type="party" dataset="public">
+		<nma:process-data file-name-component="parties" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data record-type="collection" dataset="public">
+		<nma:process-data file-name-component="accessionlots" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 		
 		<!-- process Piction image metadata -->
-		<nma:process-data record-type="piction" dataset="public">
+		<nma:process-data file-name-component="solr" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
@@ -94,7 +94,7 @@
 	</p:declare-step>
 	
 	<p:declare-step type="nma:list-input-data-files" name="list-input-data-files">
-		<p:option name="record-type" required="true"/>
+		<p:option name="file-name-component" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<p:output port="result"/>
 		<p:variable name="input-folder" select="if ($incremental = 'true') then '/data/incremental' else '/data/full' "/>
@@ -104,7 +104,7 @@
 			<p:with-option name="include-filter" select="
 				concat(
 					'.*',
-					$record-type,
+					$file-name-component,
 					'.*\.xml'
 				)
 			"/>
@@ -134,30 +134,31 @@
 	</p:declare-step>
 	
 	<p:declare-step name="process-data" type="nma:process-data">
-		<p:option name="record-type" required="true"/>
+		<p:option name="file-name-component" required="true"/>
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<!-- search the input folder 'data' for data files containing records of this type -->
 		<nma:list-input-data-files>
-			<p:with-option name="record-type" select="$record-type"/>
+			<p:with-option name="file-name-component" select="$file-name-component"/>
 			<p:with-option name="incremental" select="$incremental"/>
 		</nma:list-input-data-files>
 		<p:for-each name="file">
 			<p:iteration-source select="//c:file"/>
+			<p:variable name="filename" select="/c:file/@name"/>
 			<cx:message>
 				<p:with-option name="message" select="
 					concat(
 						'Reading ', 
-						$record-type, 
+						$file-name-component, 
 						' input file ', 
-						/c:file/@name, 
+						$filename, 
 						' ...'
 					)
 				"/>
 			</cx:message>
 			<p:load>
-				<p:with-option name="href" select="/c:file/@name"/>
+				<p:with-option name="href" select="$filename"/>
 			</p:load>
 			<!-- make any necessary redactions before publishing to the specified dataset  -->
 			<!-- NB 'public' dataset omits certains data, which are present only in the 'internal' dataset -->
@@ -182,7 +183,7 @@
 					</p:when>
 					<p:otherwise>
 						<nma:ingest-record>
-							<p:with-option name="record-type" select="$record-type"/>
+							<p:with-option name="file-name-component" select="$file-name-component"/>
 							<p:with-option name="dataset" select="$dataset"/>        
 							<p:with-option name="hostname" select="$hostname"/>
 							<p:with-option name="incremental" select="$incremental"/>
@@ -211,7 +212,7 @@
 	
 	<p:declare-step type="nma:ingest-record" name="ingest-record">
 		<!-- accepts a single XML record, transforms it to RDF and deposits it in the SPARQL graph store -->
-		<p:option name="record-type" required="true"/><!-- "object", "image", "place", "party", or "narrative" -->
+		<p:option name="file-name-component" required="true"/><!-- base name of the source file containing this record -->
 		<p:option name="dataset" required="true"/><!-- "public" or "internal" -->
 		<p:option name="hostname" required="true"/><!-- e.g. "nma.conaltuohy.com" or "data.nma.gov.au" -->
 		<p:option name="incremental" required="true"/><!-- 'true' if graph store is to be updated incrementally; 'false' for a full rebuild -->
@@ -219,14 +220,13 @@
 		<!-- EMu records are uniquely identified by /response/record/irn, Piction records by /doc/field[@name='Multimedia ID'] -->
 		<p:variable name="identifier" select="/record/irn | doc/field[@name='Multimedia ID']"/>
 		<cx:message>
-			<p:with-option name="message" select="concat('Transforming ', $record-type, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
+			<p:with-option name="message" select="concat('Transforming ', $file-name-component, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
 		</cx:message>
 		<p:choose name="transformation-to-rdf">
-			<p:when test="$record-type='piction'">
+			<p:when test="$file-name-component = 'solr'">
 				<p:output port="result"/>
 				<p:xslt name="piction-to-rdf">
 					<p:with-param name="base-uri" select="concat('http://', $hostname, '/')"/>
-					<p:with-param name="record-type" select="$record-type"/>
 					<p:input port="stylesheet">
 						<p:document href="piction-to-rdf.xsl"/>
 					</p:input>
@@ -236,7 +236,6 @@
 				<p:output port="result"/>
 				<p:xslt name="emu-objects-to-rdf">
 					<p:with-param name="base-uri" select="concat('http://', $hostname, '/')"/>
-					<p:with-param name="record-type" select="$record-type"/>
 					<p:input port="stylesheet">
 						<p:document href="emu-to-crm.xsl"/>
 					</p:input>
@@ -244,7 +243,7 @@
 			</p:otherwise>
 		</p:choose>
 		<nma:store-graph>
-			<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/', $record-type, '/', $identifier)"/>
+			<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/', $file-name-component, '/', $identifier)"/>
 			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 		</nma:store-graph>

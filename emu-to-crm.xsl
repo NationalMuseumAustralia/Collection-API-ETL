@@ -12,7 +12,23 @@
 	<xsl:import href="util/date-util-functions.xsl"/>
 
 	<!-- record type of the input file, e.g. "object", "place", "party", or "narrative" -->
-	<xsl:param name="record-type" select="'object'" />
+	<xsl:variable name="record-type" select="
+		if (exists(//TitObjectNumber)) then 'object' else
+		if (exists(//NarTitle)) then 'narrative' else
+		if (exists(
+			//NamOrganisation | //NamFirst | //NamFirst | //NamMiddle | //NamLast | //NamOtherNames_tab
+		)) then 'party' else
+		if (exists(
+			//LocSpecialGeographicUnit_tab | //LocNearestNamedPlace_tab |
+			//LocTownship_tab | //LocDistrictCountyShire_tab |
+			//LocProvinceStateTerritory_tab | //LocCountry_tab |
+			//LocContinent_tab | //LocOcean_tab |
+			//LatCentroidLatitude0 | //LatCentroidLongitude0 | 
+			//LatCentroidLatitudeDec_tab | //LatCentroidLongitudeDec_tab
+		)) then 'place' else
+		if (exists(//AcqNmaCollectionTitle)) then 'collection' else
+		'unrecognised'
+	"/>
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
 	<xsl:param name="ce-uri-base" select="'http://collectionsearch.nma.gov.au/'" />
 	<xsl:param name="media-uri-base" select="'http://collectionsearch.nma.gov.au/nmacs-image-download/emu/'" />
