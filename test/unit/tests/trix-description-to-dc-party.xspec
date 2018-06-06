@@ -8,7 +8,7 @@
 	<!-- load a media trix record into the global $graph variable -->
 	<x:import href="resources/trix-record-party-8343.xspec" />
 
-	<x:param name="root-resource" select=" 'http://nma-dev.conaltuohy.com/xproc-z/party/8343#' " />
+	<x:param name="root-resource" select=" 'http://nma-dev.conaltuohy.com/party/8343#' " />
 
 	<x:scenario label="Convert id">
 		<x:call template="id-dc" />

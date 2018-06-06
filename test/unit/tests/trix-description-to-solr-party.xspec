@@ -9,7 +9,7 @@
 	<!-- loads source trix record being tested into global $graph variable -->
 	<x:import href="resources/trix-record-party-8343.xspec" />
 
-	<x:param name="root-resource" select=" 'http://nma-dev.conaltuohy.com/xproc-z/party/8343#' " />
+	<x:param name="root-resource" select=" 'http://nma-dev.conaltuohy.com/party/8343#' " />
 
 	<x:scenario label="Convert id">
 		<x:call template="id-solr" />
@@ -30,10 +30,10 @@
 		<x:call template="names-solr" />
 		<x:expect label="should return field name x5">
 			<field name="name">Mrs Mary J. Cochrane</field>
-			<field name="name">Mary</field>
 			<field name="name">Miss Mary Jane Coughran</field>
-			<field name="name">Cochrane</field>
 			<field name="name">Jane</field>
+			<field name="name">Cochrane</field>
+			<field name="name">Mary</field>
 		</x:expect>
 	</x:scenario>
 
