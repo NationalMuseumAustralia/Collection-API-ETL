@@ -36,8 +36,11 @@ echo =========== Installing Apache HTTP Server
 apt install apache2 -y
 a2enmod proxy_http
 a2enmod headers
+a2enmod ssl
 mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.original
+mv /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.original
 ln -s $CONFIG_DIR/apache/000-default.conf /etc/apache2/sites-available/
+ln -s $CONFIG_DIR/apache/default-ssl.conf /etc/apache2/sites-available/
 #
 # TOMCAT
 #
@@ -230,6 +233,7 @@ echo =========== Restarting services
 service apache2 restart
 service tomcat8 restart
 service solr restart
+service webmin restart
 service nagios restart
 #
 echo =========== API server install complete
