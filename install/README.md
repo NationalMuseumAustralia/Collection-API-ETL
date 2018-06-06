@@ -28,11 +28,14 @@ sudo kill -9 <process-id>
 sudo rm /var/cache/apt/archives/lock
 ```
 
-Setting passwords
+Set passwords
+* Add the appropriate passwords below before execution
 
 ```sh
 sudo su -
-/usr/share/webmin/changepass.pl /etc/webmin root ####
-htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin ####
+/usr/share/webmin/changepass.pl /etc/webmin root <admin-password>
+htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin <admin-password>
+htpasswd -bc /etc/apache2/graph-store-users.htpasswd apiadmin <admin-password>
+htpasswd -b  /etc/apache2/graph-store-users.htpasswd nmaapi <staff-password>
 exit
 ```
