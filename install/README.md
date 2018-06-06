@@ -33,9 +33,10 @@ Set passwords
 
 ```sh
 sudo su -
-/usr/share/webmin/changepass.pl /etc/webmin root <admin-password>
-htpasswd -bc /usr/local/nagios/etc/htpasswd.users nagiosadmin <admin-password>
-htpasswd -bc /etc/apache2/graph-store-users.htpasswd apiadmin <admin-password>
+htpasswd -bc /etc/apache2/admin-users.htpasswd admin <admin-password>
+htpasswd -b  /etc/apache2/admin-users.htpasswd nmaapi <staff-password>
+htpasswd -bc /etc/apache2/graph-store-users.htpasswd admin <admin-password>
 htpasswd -b  /etc/apache2/graph-store-users.htpasswd nmaapi <staff-password>
+/usr/share/webmin/changepass.pl /etc/webmin root <admin-password>
 exit
 ```

@@ -1,0 +1,17 @@
+# https://github.com/allinurl/goaccess/issues/684
+
+[Unit]
+Description=GoAccess Live Log Analyzer
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=always
+ExecStart=/usr/bin/goaccess
+ExecStop=/bin/kill -9 ${MAINPID}
+PrivateTmp=false
+
+[Install]
+WantedBy=multi-user.target

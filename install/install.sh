@@ -26,14 +26,14 @@ echo -e "127.0.0.1 localhost $HOSTNAME nma\n\n$(cat /etc/hosts)" > /etc/hosts
 #
 # JAVA
 #
-apt install default-jdk -y
+apt install -y default-jdk
 JAVA_HOME=/usr/lib/jvm/default-java
 echo "JAVA_HOME=/usr/lib/jvm/default-java" > /etc/environment
 #
 # APACHE HTTP SERVER
 #
 echo =========== Installing Apache HTTP Server
-apt install apache2 -y
+apt install -y apache2
 a2enmod proxy_http
 a2enmod headers
 a2enmod ssl
@@ -45,7 +45,7 @@ ln -s $CONFIG_DIR/apache/default-ssl.conf /etc/apache2/sites-available/
 # TOMCAT
 #
 echo =========== Installing tomcat
-apt install tomcat8 -y
+apt install -y tomcat8
 mv /etc/default/tomcat8 /etc/default/tomcat8.original 
 ln -s $CONFIG_DIR/tomcat/tomcat8 /etc/default/
 #
@@ -73,7 +73,7 @@ chown -R solr:solr $CONFIG_DIR/solr
 # JENA
 #
 echo =========== Installing Jena
-apt install unzip -y
+apt install -y unzip
 cd $INSTALL_DIR
 wget http://archive.apache.org/dist/jena/binaries/apache-jena-3.6.0.zip -O jena-3.6.0.zip
 unzip jena-3.6.0.zip -d /usr/local
@@ -125,14 +125,14 @@ chmod a+w /etc/xproc-z/
 cp /var/lib/tomcat8/webapps/xproc-z.war /etc/xproc-z/
 cd /etc/xproc-z/
 git clone https://github.com/Conal-Tuohy/NMA-API.git
-cp /etc/xproc-z/NMA-API/apiexplorer.html /var/lib/tomcat8/webapps/ROOT/
+cp /etc/xproc-z/NMA-API/apiexplorer.html /var/www/html/
 #
 # KONG API GATEWAY
 #
 echo =========== Installing Kong
 cd $INSTALL_DIR
 wget https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-0.13.0.xenial.all.deb -O kong.deb
-apt install ./kong.deb -y
+apt install -y ./kong.deb
 apt-get install postgresql postgresql-client
 sudo -u postgres psql --command="CREATE USER kong;"
 sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
@@ -155,7 +155,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install 8 --lts --latest-npm
 nvm use 8
-apt install nodejs-legacy -y
+apt install -y nodejs-legacy
 npm install -g bower
 npm install -g gulp
 npm install -g sails
@@ -217,15 +217,20 @@ make install
 echo =========== Installing Webmin
 sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
 wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
-apt install webmin -y
+apt install -y webmin
 #
 # GOACCESS
 #
 echo =========== Installing GoAccess
 echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/goaccess.list
 wget -O - https://deb.goaccess.io/gnugpg.key | apt-key add -
-apt install goaccess -y
-goaccess /var/log/apache2/access.log -o /var/lib/tomcat8/webapps/ROOT/usage.html --log-format=COMBINED --real-time-html &
+apt update
+apt install -y goaccess
+mv /etc/goaccess.conf /etc/goaccess.conf.original
+ln -s $CONFIG_DIR/goaccess/goaccess.conf /etc/
+cp $CONFIG_DIR/goaccess/goaccess.service /etc/systemd/system/
+systemctl enable goaccess
+service goaccess start
 #
 # REFRESH
 #
@@ -233,8 +238,9 @@ echo =========== Restarting services
 service apache2 restart
 service tomcat8 restart
 service solr restart
-service webmin restart
 service nagios restart
+service webmin restart
+service goaccess restart
 #
 echo =========== API server install complete
 date
