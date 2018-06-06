@@ -9,7 +9,7 @@
 	<x:import href="resources/trix-record-media-MA22991348.xspec" />
 
 	<x:param name="root-resource"
-		select=" 'http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#' " />
+		select=" 'http://nma-dev.conaltuohy.com/media/MA22991348#' " />
 
 	<x:scenario label="Convert id">
 		<x:call template="id-dc" />
