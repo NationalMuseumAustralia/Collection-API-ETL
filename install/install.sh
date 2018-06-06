@@ -70,7 +70,7 @@ chown -R solr:solr $CONFIG_DIR/solr
 # JENA
 #
 echo =========== Installing Jena
-apt install unzip
+apt install unzip -y
 cd $INSTALL_DIR
 wget http://archive.apache.org/dist/jena/binaries/apache-jena-3.6.0.zip -O jena-3.6.0.zip
 unzip jena-3.6.0.zip -d /usr/local
@@ -152,7 +152,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 nvm install 8 --lts --latest-npm
 nvm use 8
-apt install nodejs-legacy
+apt install nodejs-legacy -y
 npm install -g bower
 npm install -g gulp
 npm install -g sails
@@ -214,14 +214,14 @@ make install
 echo =========== Installing Webmin
 sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
 wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
-apt install webmin
+apt install webmin -y
 #
 # GOACCESS
 #
 echo =========== Installing GoAccess
 echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/goaccess.list
 wget -O - https://deb.goaccess.io/gnugpg.key | apt-key add -
-apt install goaccess
+apt install goaccess -y
 goaccess /var/log/apache2/access.log -o /var/lib/tomcat8/webapps/ROOT/usage.html --log-format=COMBINED --real-time-html &
 #
 # REFRESH
