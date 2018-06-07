@@ -10,7 +10,7 @@ User=root
 Group=root
 Restart=always
 ExecStart=/usr/bin/goaccess
-ExecStop=/bin/kill -9 ${MAINPID}
+ExecStop=/bin/kill -15 $MAINPID
 PrivateTmp=false
 
 [Install]
