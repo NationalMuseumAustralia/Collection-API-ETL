@@ -1,0 +1,3 @@
+# Run API ETL daily at 0:01 AM
+# structure: MIN(0-59) HOUR(0-23) DAYofMONTH(1-31) MONTH(1-12) DAYofWEEK(0(Sun)-6) USER COMMAND
+1 0 * * * root /usr/local/NMA-API-ETL/run-etl.sh full
