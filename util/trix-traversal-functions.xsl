@@ -26,8 +26,13 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 		<xsl:param name="from"/><!-- a URI identifying the start of the path to traverse -->
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
 		<xsl:variable name="step" select="path:expandNamespace($path[1])"/><!-- the next predicate to follow -->
-		<xsl:variable name="step-result" select="$graph/trix:triple[trix:*[1]/text()=$from and trix:*[2]/text()=$step]/*[3]/text()"/><!-- result of following that predicate -->
-
+		<!-- result of following that predicate: -->
+		<xsl:variable name="step-result" select="
+			key('object-by-subject-and-predicate', for $subject in $from return concat($subject, ' ', $step), $graph)
+		"/>
+		<!--
+		<xsl:variable name="step-result" select="$graph/trix:triple[trix:*[1]/text()=$from and trix:*[2]/text()=$step]/*[3]/text()"/>
+		-->
 		<xsl:choose>
 			<xsl:when test="count($path) = 1">
 				<xsl:copy-of select="$step-result"/>
@@ -38,7 +43,12 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:function>
-
+	
+	<!-- index subjects by object and predicate (only where the object is an identifier of some sort) -->
+	<xsl:key name="subject-by-object-and-predicate" match="trix:triple[*[3]/self::trix:uri | *[3]/self::trix:id]/*[1]" use="concat(../*[3], ' ', ../*[2])"/>
+	<!-- index objects by subject and predicate -->
+	<xsl:key name="object-by-subject-and-predicate" match="trix:triple/*[3]" use="concat(../*[1], ' ', ../*[2])"/>
+	
 	<xsl:function name="path:backward">
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
 		<xsl:copy-of select="path:backward($root-resource, $path)"/>
@@ -48,7 +58,13 @@ Function library for traversing an RDF graph expressed in TriX, in a manner simi
 		<xsl:param name="from"/><!-- a URI identifying the start of the path to traverse -->
 		<xsl:param name="path"/><!-- a sequence of URIs of the predicates to follow -->
 		<xsl:variable name="step" select="path:expandNamespace($path[1])"/><!-- the next predicate to follow -->
-		<xsl:variable name="step-result" select="$graph/trix:triple[*[3]/text()=$from and trix:*[2]/text()=$step]/trix:*[1]/text()"/><!-- result of following that predicate -->
+		<!-- result of following that predicate: -->
+		<xsl:variable name="step-result" select="
+			key('subject-by-object-and-predicate', for $object in $from return concat($object, ' ', $step), $graph)
+		"/>
+		<!--
+		<xsl:variable name="step-result" select="$graph/trix:triple[*[3]/text()=$from and trix:*[2]/text()=$step]/trix:*[1]/text()"/>
+		-->
 		<xsl:choose>
 			<xsl:when test="count($path) = 1">
 				<xsl:copy-of select="$step-result"/>
