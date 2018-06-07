@@ -118,6 +118,8 @@ ln -s $CONFIG_DIR/tomcat/xproc-z.xml /var/lib/tomcat8/conf/Catalina/localhost/
 mkdir /var/log/NMA-API-ETL
 mkdir /data
 chown ubuntu:ubuntu /data
+# set up crontab to run ETL
+cp $CONFIG_DIR/run-etl-crontab /etc/cron.d/
 #
 # XPROC-Z (API SHIM)
 #
@@ -221,6 +223,7 @@ make install
 echo =========== Installing Webmin
 sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
 wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
+apt update
 apt install -y webmin
 #
 # GOACCESS
