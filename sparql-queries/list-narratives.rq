@@ -2,4 +2,10 @@ PREFIX ore: <http://www.openarchives.org/ore/terms/>
 select distinct ?resource
 where {
 	?resource a ore:Aggregation.
-}	
+#	filter(
+#		?resource in (
+#			<http://nma-dev.conaltuohy.com/narrative/2686#>, 
+#			<http://nma-dev.conaltuohy.com/narrative/1946#>
+#		)
+#	)
+} 

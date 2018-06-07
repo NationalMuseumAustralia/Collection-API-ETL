@@ -147,6 +147,8 @@ kong stop
 cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
 systemctl enable kong
 service kong start
+# configure Kong
+sudo java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
 #
 # KONGA UI
 #
