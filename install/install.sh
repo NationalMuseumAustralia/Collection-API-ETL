@@ -94,9 +94,11 @@ unzip -j fuseki-3.6.0.zip apache-jena-fuseki-3.6.0/fuseki.war -d /var/lib/tomcat
 #
 echo =========== Installing XML Calabash
 cd $INSTALL_DIR
-wget https://github.com/ndw/xmlcalabash1/releases/download/1.1.16-98/xmlcalabash-1.1.16-98.jar -O xmlcalabash-1.1.16-98.jar
-echo 1 | java -jar ./xmlcalabash-1.1.16-98.jar
-ln -s /usr/local/xmlcalabash-1.1.16-98 /usr/local/xmlcalabash
+wget https://github.com/ndw/xmlcalabash1/releases/download/1.1.21-98/xmlcalabash-1.1.21-98.zip -O xmlcalabash.zip
+unzip xmlcalabash.zip -d /usr/local
+# create version-independent path for xmlcalabash executable: /usr/local/xmlcalabash/xmlcalabash.jar
+ln -s /usr/local/xmlcalabash-1.1.21-98 /usr/local/xmlcalabash
+ln -s /usr/local/xmlcalabash/xmlcalabash-1.1.21-98.jar /usr/local/xmlcalabash/xmlcalabash.jar
 #
 # XSpec (XSLT unit tests)
 #
