@@ -10,6 +10,7 @@ Notes
 
 ```sh
 sudo su -
+timedatectl set-timezone Australia/Melbourne
 apt update
 apt upgrade -y -f
 apt install git -y

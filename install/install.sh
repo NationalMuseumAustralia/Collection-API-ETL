@@ -4,7 +4,7 @@
 #
 # See README for usage instructions.
 #
-HOSTNAME=nma.conaltuohy.com
+HOSTNAME=data.nma.gov.au
 CONFIG_DIR=/usr/local/NMA-API-ETL/install/config
 INSTALL_DIR=/tmp/nma-api-install
 #
