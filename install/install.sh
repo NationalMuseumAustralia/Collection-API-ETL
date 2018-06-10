@@ -247,7 +247,6 @@ service tomcat8 restart
 service solr restart
 service nagios restart
 service webmin restart
-service goaccess restart
 #
 echo =========== API server install complete
 date
