@@ -136,7 +136,7 @@ cp /etc/xproc-z/NMA-API/apiexplorer.html /var/www/html/
 echo =========== Installing Kong
 cd $INSTALL_DIR
 wget https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-0.13.0.xenial.all.deb -O kong.deb
-apt install -y ./kong.deb
+apt install ./kong.deb -y
 apt-get install postgresql postgresql-client
 sudo -u postgres psql --command="CREATE USER kong;"
 sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
