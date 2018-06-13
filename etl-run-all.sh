@@ -49,7 +49,7 @@ case "$MODE" in
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
 		$SCRIPT_DIR/etl-to-sparql-full.sh
 		;;
-	incr|incremental)
+	incremental)
 		to_log "Starting incremental load to SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
 		$SCRIPT_DIR/etl-to-sparql-incremental.sh
