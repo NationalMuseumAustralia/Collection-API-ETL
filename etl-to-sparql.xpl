@@ -97,7 +97,7 @@
 		<p:option name="file-name-component" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<p:output port="result"/>
-		<p:variable name="input-folder" select="if ($incremental = 'true') then '/mnt/emudata/incr' else '/mnt/emudata/full' "/>
+		<p:variable name="input-folder" select="if ($incremental = 'true') then '/mnt/emudata/incremental' else '/mnt/emudata/full' "/>
 		<!-- search the input folder for files whose names contain the record type -->
 		<p:directory-list>
 			<p:with-option name="path" select="$input-folder"/>

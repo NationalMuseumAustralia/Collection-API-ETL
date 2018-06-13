@@ -1,10 +1,14 @@
 #!/bin/bash
 # Run the NMA API ETL end-to-end (SPARQL store load, extraction, Solr load)
 # Orchestrates the entire ETL process, archiving loaded files and log files
-# NB: Piction files are not to be moved after ingest (so may be stale)
 #
 # Intended to be run periodically via cron as root user
 # But can be run manually: sudo ./etl-run-all.sh [full|incr]
+#
+# EMu exports a new set of files into the full or incr directory daily
+# Emu files should be moved after ingest (as etl loads all *.xml files found)
+# Piction exports a single file that is constantly over-written daily
+# Piction file is not to be moved after ingest (so may be stale if export fails)
 
 # we mainly work/archive in the EMu dir (but pull in piction files too)
 DATA_DIR=/mnt/emudata
@@ -22,9 +26,10 @@ then
   MODE="$1"
 fi
 
-# Create output directory, eg: /mnt/emudata/full/job_yyyy-mm-dd_hh-mm-ss
-JOB_ID=job_$(date +"%Y-%m-%d_%H-%M-%S")
-OUT_DIR="$DATA_DIR/$MODE/$JOB_ID"
+# Create output directory, eg: /mnt/emudata/etl/yyyy-mm/job_yyyymmdd_hhmm_full
+JOB_ID=job_$(date +"%Y%m%d_%H%M")_$MODE
+JOB_DIR=$(date +"%Y-%m")
+OUT_DIR="$DATA_DIR/etl/$JOB_DIR/$JOB_ID"
 mkdir -p "$OUT_DIR"
 
 # Init logfile
@@ -37,7 +42,7 @@ to_log "ETL start - mode=$MODE, job=$JOB_ID"
 # ETL step 1 - load to sparql store
 cd $SCRIPT_DIR
 IN_DIR="$DATA_DIR/$MODE"
-PICTION_IN_DIR="$PICTION_DATA_DIR/$MODE"
+PICTION_IN_DIR="$PICTION_DATA_DIR"
 case "$MODE" in
 	full)
 		to_log "Starting full load to SPARQL store"
@@ -72,7 +77,17 @@ to_log "Finished extraction and Solr load"
 cp $LOGS_DIR/etl-to-solr.log $OUT_DIR/
 to_log "Copied Solr load log file to archive: $OUT_DIR"
 
-# log finished
+# delete stale archives
+to_log "Removing old data files (14 days):"
+find $DATA_DIR/etl -name *.xml -mtime +14 -print >> $LOGFILE
+find $DATA_DIR/etl -name *.xml -mtime +14 -exec rm '{}' \;
+to_log "Removing old etl job logs (6 months):"
+# NB: using 7 months as may delete the whole 6 month directory 
+find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -print >> $LOGFILE
+find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -exec rm -rf '{}' \;
+
+# log that we've finished
 to_log "ETL finished - mode=$MODE, job=$JOB_ID"
 cp $LOGS_DIR/etl-run-cron.log $OUT_DIR/
+# NB: don't need to copy etl-run-all.log as is already in the output dir
 exit 0
