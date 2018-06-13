@@ -3,9 +3,9 @@
 #
 # Cron structure: MIN(0-59) HOUR(0-23) DAYofMONTH(1-31) MONTH(1-12) DAYofWEEK(0(Sun)-6) USER COMMAND
 
-# Run API full ETL - daily at 9:00 PM
-# Assumption: EMu and Piction exports start daily at 7:00 PM and complete within one hour
-0 21 * * * root /usr/local/NMA-API-ETL/etl-run-all.sh full > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
+# Run API full ETL - Mon-Fri at 9:00 PM
+# Assumption: EMu and Piction exports start Mon-Fri at 7:00 PM and complete within one hour
+0 21 * * 1-5 root /usr/local/NMA-API-ETL/etl-run-all.sh full > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
 
 # Run API incremental ETL - daily at 4:00 AM
 #0 4 * * * root /usr/local/NMA-API-ETL/etl-run-all.sh incremental > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1

@@ -37,7 +37,7 @@ LOGFILE="$OUT_DIR/etl-run-all.log"
 to_log() {
   echo $(date +"%Y-%m-%d %H:%M:%S") $1 >> $LOGFILE
 }
-to_log "ETL start - mode=$MODE, job=$JOB_ID"
+to_log "BEGIN ETL - mode=$MODE, job=$JOB_ID"
 
 # ETL step 1 - load to sparql store
 cd $SCRIPT_DIR
@@ -45,12 +45,12 @@ IN_DIR="$DATA_DIR/$MODE"
 PICTION_IN_DIR="$PICTION_DATA_DIR"
 case "$MODE" in
 	full)
-		to_log "Starting full load to SPARQL store"
+		to_log "START STEP 1 - full load to SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
 		$SCRIPT_DIR/etl-to-sparql-full.sh
 		;;
 	incremental)
-		to_log "Starting incremental load to SPARQL store"
+		to_log "START STEP 1 - incremental load to SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
 		$SCRIPT_DIR/etl-to-sparql-incremental.sh
 		;;
@@ -59,7 +59,7 @@ case "$MODE" in
 		echo Usage: $0 [full\|incremental]
 		exit 1
 esac
-to_log "Finished load to SPARQL store"
+to_log "FINISH STEP 1 - load to SPARQL store"
 
 # move/copy loaded files and log
 # (we're not allowed to move piction files)
@@ -69,10 +69,10 @@ cp $PICTION_IN_DIR/*.xml $OUT_DIR 2>/dev/null
 to_log "Moved/copied ingested files to archive: $OUT_DIR"
 
 # ETL step 2 - extract from sparql store and load to solr
-to_log "Starting extraction and Solr load"
+to_log "START STEP 2 - sparql extraction and Solr load"
 cd $SCRIPT_DIR
 $SCRIPT_DIR/etl-to-solr.sh
-to_log "Finished extraction and Solr load"
+to_log "FINISH STEP 2 - sparql extraction and Solr load"
 # copy log
 cp $LOGS_DIR/etl-to-solr.log $OUT_DIR/
 to_log "Copied Solr load log file to archive: $OUT_DIR"
@@ -86,8 +86,8 @@ to_log "Removing old etl job logs (6 months):"
 find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -print >> $LOGFILE
 find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -exec rm -rf '{}' \;
 
-# log that we've finished
-to_log "ETL finished - mode=$MODE, job=$JOB_ID"
+# end of run
 cp $LOGS_DIR/etl-run-cron.log $OUT_DIR/
 # NB: don't need to copy etl-run-all.log as is already in the output dir
+to_log "END ETL - mode=$MODE, job=$JOB_ID"
 exit 0
