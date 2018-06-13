@@ -8,4 +8,4 @@
 0 21 * * * root /usr/local/NMA-API-ETL/etl-run-all.sh full > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
 
 # Run API incremental ETL - daily at 4:00 AM
-#0 4 * * * root /usr/local/NMA-API-ETL/etl-run-all.sh incr > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
+#0 4 * * * root /usr/local/NMA-API-ETL/etl-run-all.sh incremental > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
