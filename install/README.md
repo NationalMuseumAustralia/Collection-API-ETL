@@ -6,11 +6,15 @@ Installs and configures software for the NMA API on a bare Ubuntu server.
 
 Notes
 * Add the appropriate server name after `./install.sh` below before execution
-* The `apt upgrade` step may require manual input
+* Some install steps may require manual input, e.g. `Do you want to continue? [Y/n]`
+* The main install script takes around 15 minutes to run
 
 ```sh
 sudo su -
-timedatectl set-timezone Australia/Melbourne
+timedatectl set-timezone Australia/Canberra
+date
+/etc/init.d/cron restart
+export DEBIAN_FRONTEND=noninteractive
 apt update
 apt upgrade -y -f
 apt install git -y
