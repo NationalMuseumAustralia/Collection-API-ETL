@@ -45,12 +45,6 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:load-vocabulary>
 		
-		<!-- process Piction image metadata -->
-		<nma:process-piction-data dataset="public">
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-piction-data>
-		
 		<!-- process EMu objects, places, parties, collections, and narratives -->
 		<nma:process-data file-name-component="narratives" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
@@ -76,6 +70,12 @@
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
+		
+		<!-- process Piction image metadata -->
+		<nma:process-piction-data dataset="public">
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-piction-data>
 		
 	</p:group>
 	
@@ -246,7 +246,7 @@
 			<p:with-option name="message" select="concat('Transforming ', $file-name-component, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
 		</cx:message>
 		<p:choose name="transformation-to-rdf">
-			<p:when test="$file-name-component = 'solr'">
+			<p:when test="$file-name-component = 'piction'">
 				<p:output port="result"/>
 				<p:xslt name="piction-to-rdf">
 					<p:with-param name="base-uri" select="concat('http://', $hostname, '/')"/>
