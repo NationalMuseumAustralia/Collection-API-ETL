@@ -155,6 +155,7 @@
 				<p:with-option name="incremental" select="$incremental"/>
 			</nma:ingest-record>
 		</p:for-each>
+		<p:sink/>
 	</p:declare-step>	
 	
 	<p:declare-step name="process-data" type="nma:process-data">
