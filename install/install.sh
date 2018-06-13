@@ -135,10 +135,11 @@ wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/1.0c/xproc-z.war -
 mv xproc-z.war /var/lib/tomcat8/webapps/
 ln -s $CONFIG_DIR/tomcat/xproc-z.xml /var/lib/tomcat8/conf/Catalina/localhost/
 mkdir /var/log/NMA-API-ETL
-mkdir /data
+mkdir -p /data/public/n-quads
 chown ubuntu:ubuntu /data
 # set up crontab to run ETL
-cp $CONFIG_DIR/run-etl-crontab /etc/cron.d/
+chmod a+x /usr/local/NMA-API-ETL/etl-run-all.sh
+cp $CONFIG_DIR/run-apietl-crontab /etc/cron.d/
 #
 # XPROC-Z (API SHIM)
 #
