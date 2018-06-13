@@ -5,7 +5,7 @@ Installs and configures software for the NMA API on a bare Ubuntu server.
 ## Usage
 
 Notes
-* Add the appropriate server name after `./install.sh` below before execution
+* Add the appropriate server name before execution, e.g. `./install.sh "data.nma.gov.au"` 
 * Some install steps may require manual input, e.g. `Do you want to continue? [Y/n]`
 * The main install script takes around 15 minutes to run
 
@@ -26,19 +26,13 @@ chmod a+x install.sh
 exit
 ```
 
-NB: If the script stalls, you may need to kill any 'apt' processes before re-running:
-```sh
-ps -aux | grep 'apt'
-sudo kill -9 <process-id>
-sudo rm /var/cache/apt/archives/lock
-```
-
 Set passwords
 * Add the appropriate passwords below before execution
 
 ```sh
 sudo su -
-htpasswd -bc /etc/apache2/admin-users.htpasswd admin <admin-password>
+htpasswd -bc /etc/apache2/admin-users.htpasswd nagiosadmin <admin-password>
+htpasswd -b  /etc/apache2/admin-users.htpasswd admin <admin-password>
 htpasswd -b  /etc/apache2/admin-users.htpasswd nmaapi <staff-password>
 htpasswd -bc /etc/apache2/graph-store-users.htpasswd admin <admin-password>
 htpasswd -b  /etc/apache2/graph-store-users.htpasswd nmaapi <staff-password>
