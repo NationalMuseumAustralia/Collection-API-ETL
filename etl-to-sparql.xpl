@@ -149,7 +149,7 @@
 		<p:for-each name="record">
 			<p:iteration-source select="/add/doc"/>
 			<nma:ingest-record>
-				<p:with-option name="file-name-component" select="$file-name-component"/>
+				<p:with-option name="file-name-component" select=" 'piction' "/>
 				<p:with-option name="dataset" select="$dataset"/>        
 				<p:with-option name="hostname" select="$hostname"/>
 				<p:with-option name="incremental" select="$incremental"/>
