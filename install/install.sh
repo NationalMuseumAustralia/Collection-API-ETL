@@ -23,6 +23,25 @@ mv /etc/hostname /etc/hostname.original
 echo "$HOSTNAME" > /etc/hostname
 hostname $HOSTNAME
 echo -e "127.0.0.1 localhost $HOSTNAME nma\n\n$(cat /etc/hosts)" > /etc/hosts
+
+#
+# EXIM MAIL TRANSFER AGENT
+#
+# pre-fill exim package configuration
+echo "exim4-config exim4/use_split_config boolean false" | debconf-set-selections
+echo "exim4-config exim4/dc_other_hostnames string localhost" | debconf-set-selections
+echo "exim4-config exim4/dc_relay_domains string" | debconf-set-selections
+echo "exim4-config exim4/dc_relay_nets string" | debconf-set-selections
+echo "exim4-config exim4/dc_localdelivery select mbox format in /var/mail/" | debconf-set-selections
+echo "exim4-config exim4/dc_eximconfig_configtype select internet site; mail is sent and received directly using SMTP" | debconf-set-selections
+echo "exim4-config exim4/dc_postmaster string conal.tuohy+nma-dev-postmaster@gmail.com" | debconf-set-selections
+echo "exim4-config exim4/dc_local_interfaces string 127.0.0.1 ; ::1" | debconf-set-selections
+echo exim4-config exim4/mailname string $HOSTNAME | debconf-set-selections
+echo "exim4-config exim4/dc_minimaldns boolean false" | debconf-set-selections
+apt install -y sendemail exim4
+update-exim4.conf
+#sendemail -f '"Installer" installer@data.nma.gov.au' -t conal.tuohy@gmail.com -u 'exim installation' -m "This message sent by exim"
+
 #
 # JAVA
 #
