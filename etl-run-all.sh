@@ -11,8 +11,8 @@
 # Piction file is not to be moved after ingest (so may be stale if export fails)
 
 # we mainly work/archive in the EMu dir (but pull in piction files too)
-DATA_DIR=/mnt/emudata
-PICTION_DATA_DIR=/mnt/damsdata
+DATA_DIR=/mnt/emu_data
+PICTION_DATA_DIR=/mnt/dams_data
 # where the main steps operations are
 SCRIPT_DIR=/usr/local/NMA-API-ETL
 # where to find ETL logs (to copy/archive after each step)
@@ -26,7 +26,7 @@ then
   MODE="$1"
 fi
 
-# Create output directory, eg: /mnt/emudata/etl/yyyy-mm/job_yyyymmdd_hhmm_full
+# Create output directory, eg: /mnt/emu_data/etl/yyyy-mm/job_yyyymmdd_hhmm_full
 JOB_ID=job_$(date +"%Y%m%d_%H%M")_$MODE
 JOB_DIR=$(date +"%Y-%m")
 OUT_DIR="$DATA_DIR/etl/$JOB_DIR/$JOB_ID"

@@ -97,7 +97,7 @@
 		<p:option name="file-name-component" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<p:output port="result"/>
-		<p:variable name="input-folder" select="if ($incremental = 'true') then '/mnt/emudata/incremental' else '/mnt/emudata/full' "/>
+		<p:variable name="input-folder" select="if ($incremental = 'true') then '/mnt/emu_data/incremental' else '/mnt/emu_data/full' "/>
 		<!-- search the input folder for files whose names contain the record type -->
 		<p:directory-list>
 			<p:with-option name="path" select="$input-folder"/>
@@ -137,7 +137,7 @@
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
 		<p:option name="incremental" required="true"/>
-		<p:load href="/mnt/damsdata/solr_prod1.xml"/>
+		<p:load href="/mnt/dams_data/solr_prod1.xml"/>
 		<!-- make any necessary redactions before publishing to the specified dataset  -->
 		<!-- NB 'public' dataset omits certains data, which are present only in the 'internal' dataset -->
 		<p:xslt name="redact">
