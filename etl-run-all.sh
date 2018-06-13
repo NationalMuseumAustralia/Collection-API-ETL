@@ -4,7 +4,7 @@
 # NB: Piction files are not to be moved after ingest (so may be stale)
 #
 # Intended to be run periodically via cron as root user
-# But can be run manually: sudo run-etl.sh [full|incr]
+# But can be run manually: sudo ./etl-run-all.sh [full|incr]
 
 # we mainly work/archive in the EMu dir (but pull in piction files too)
 DATA_DIR=/mnt/emudata
@@ -28,25 +28,26 @@ OUT_DIR="$DATA_DIR/$MODE/$JOB_ID"
 mkdir -p "$OUT_DIR"
 
 # Init logfile
-LOGFILE="$OUT_DIR/run-etl.log"
+LOGFILE="$OUT_DIR/etl-run-all.log"
 to_log() {
   echo $(date +"%Y-%m-%d %H:%M:%S") $1 >> $LOGFILE
 }
 to_log "ETL start - mode=$MODE, job=$JOB_ID"
 
 # ETL step 1 - load to sparql store
+cd $SCRIPT_DIR
 IN_DIR="$DATA_DIR/$MODE"
 PICTION_IN_DIR="$PICTION_DATA_DIR/$MODE"
 case "$MODE" in
 	full)
 		to_log "Starting full load to SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
-		$SCRIPT_DIR/etl-full.sh
+		$SCRIPT_DIR/etl-to-sparql-full.sh
 		;;
 	incr|incremental)
 		to_log "Starting incremental load to SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
-		$SCRIPT_DIR/etl-incremental.sh
+		$SCRIPT_DIR/etl-to-sparql-incremental.sh
 		;;
 	*)
 		to_log "Unknown mode: $MODE"
@@ -57,19 +58,21 @@ to_log "Finished load to SPARQL store"
 
 # move/copy loaded files and log
 # (we're not allowed to move piction files)
-cp $LOGS_DIR/etl.log $OUT_DIR/
+cp $LOGS_DIR/etl-to-sparql.log $OUT_DIR/
 mv $IN_DIR/*.xml $OUT_DIR 2>/dev/null
 cp $PICTION_IN_DIR/*.xml $OUT_DIR 2>/dev/null
 to_log "Moved/copied ingested files to archive: $OUT_DIR"
 
 # ETL step 2 - extract from sparql store and load to solr
 to_log "Starting extraction and Solr load"
-$SCRIPT_DIR/sparql-to-solr.sh
+cd $SCRIPT_DIR
+$SCRIPT_DIR/etl-to-solr.sh
 to_log "Finished extraction and Solr load"
 # copy log
-cp $LOGS_DIR/sparql-to-solr.log $OUT_DIR/
+cp $LOGS_DIR/etl-to-solr.log $OUT_DIR/
 to_log "Copied Solr load log file to archive: $OUT_DIR"
 
 # log finished
 to_log "ETL finished - mode=$MODE, job=$JOB_ID"
+cp $LOGS_DIR/etl-run-cron.log $OUT_DIR/
 exit 0

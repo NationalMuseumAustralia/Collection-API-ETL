@@ -6,10 +6,11 @@
 find /data/public/n-quads/ -name "*.nq" -delete
 
 # execute XML-to-RDF transformations to generate new .nq files in /data/public/n-quads/
-java -Xmx2G -jar /usr/local/xmlcalabash/xmlcalabash.jar etl.xpl incremental="false" > /var/log/NMA-API-ETL/etl.log 2>&1
+cd /usr/local/NMA-API-ETL
+java -Xmx2G -jar /usr/local/xmlcalabash/xmlcalabash.jar etl.xpl incremental="false" > /var/log/NMA-API-ETL/etl-to-sparql.log 2>&1
 
 # stop fuseki in order to rebuild its tdb2 database
-service tomcat8 stop
+/etc/init.d/tomcat8 stop
 sleep 5
 # delete fuseki's lock file which why doesn't fuseki delete it itself?
 rm /etc/fuseki/databases/public/tdb.lock
@@ -23,7 +24,7 @@ rm /data/public/dataset.nq
 find /data/public/n-quads/ -name "*.nq" | xargs cat >> /data/public/dataset.nq
 
 # rebuild the fuseki db from the dataset file
-time sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbloader --tdb=/etc/fuseki/configuration/public.ttl /data/public/dataset.nq >> /var/log/NMA-API-ETL/etl.log
+time sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbloader --tdb=/etc/fuseki/configuration/public.ttl /data/public/dataset.nq >> /var/log/NMA-API-ETL/etl-to-sparql.log
 
 # restart fuseki server 
-service tomcat8 start
+/etc/init.d/tomcat8 start
