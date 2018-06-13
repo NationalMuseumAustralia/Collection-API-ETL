@@ -45,6 +45,12 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:load-vocabulary>
 		
+		<!-- process Piction image metadata -->
+		<nma:process-piction-data dataset="public">
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-piction-data>
+		
 		<!-- process EMu objects, places, parties, collections, and narratives -->
 		<nma:process-data file-name-component="narratives" dataset="public">
 			<p:with-option name="incremental" select="$incremental"/>
@@ -71,12 +77,6 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 		
-		<!-- process Piction image metadata -->
-		<nma:process-data file-name-component="solr" dataset="public">
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-data>
-		
 	</p:group>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
@@ -97,7 +97,7 @@
 		<p:option name="file-name-component" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<p:output port="result"/>
-		<p:variable name="input-folder" select="if ($incremental = 'true') then '/data/incremental' else '/data/full' "/>
+		<p:variable name="input-folder" select="if ($incremental = 'true') then '/mnt/emudata/incr' else '/mnt/emudata/full' "/>
 		<!-- search the input folder for files whose names contain the record type -->
 		<p:directory-list>
 			<p:with-option name="path" select="$input-folder"/>
@@ -132,6 +132,30 @@
 			</p:input>
 		</p:xslt>		
 	</p:declare-step>
+	
+	<p:declare-step name="process-piction-data" type="nma:process-piction-data">
+		<p:option name="hostname" required="true"/>
+		<p:option name="dataset" required="true"/>
+		<p:option name="incremental" required="true"/>
+		<p:load href="/mnt/damsdata/solr_prod1.xml"/>
+		<!-- make any necessary redactions before publishing to the specified dataset  -->
+		<!-- NB 'public' dataset omits certains data, which are present only in the 'internal' dataset -->
+		<p:xslt name="redact">
+			<p:with-param name="dataset" select="$dataset"/>
+			<p:input port="stylesheet">
+				<p:document href="filter.xsl"/>
+			</p:input>
+		</p:xslt>
+		<p:for-each name="record">
+			<p:iteration-source select="/add/doc"/>
+			<nma:ingest-record>
+				<p:with-option name="file-name-component" select="$file-name-component"/>
+				<p:with-option name="dataset" select="$dataset"/>        
+				<p:with-option name="hostname" select="$hostname"/>
+				<p:with-option name="incremental" select="$incremental"/>
+			</nma:ingest-record>
+		</p:for-each>
+	</p:declare-step>	
 	
 	<p:declare-step name="process-data" type="nma:process-data">
 		<p:option name="file-name-component" required="true"/>
@@ -169,8 +193,7 @@
 				</p:input>
 			</p:xslt>
 			<p:for-each name="record">
-				<p:iteration-source select="/response/record | /add/doc"/>
-				<!-- EMu records are /response/record, Piction records are /add/doc -->
+				<p:iteration-source select="/response/record"/>
 				<!-- EMu "partial-update" records are excluded from this processing, and handled separately below -->
 				<!-- because a partial-update can't be handled by transforming the record to an RDF graph and storing it using the SPARQL Graph Store protocol; -->
 				<!-- instead it has to delete a triple from a graph and insert a new one, using the SPARQL Update protocol -->
