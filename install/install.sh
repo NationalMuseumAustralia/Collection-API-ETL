@@ -247,7 +247,14 @@ wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
 apt update
 apt install -y webmin
 # remove SSL requirement config (server is behind a secure proxy)
+# see: https://doxfer.webmin.com/Webmin/Running_Webmin_Under_Apache
+# replace existing lines
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
+# append lines if missing
+grep -q -F 'ssl_redirect=0' /etc/webmin/miniserv.conf || echo 'ssl_redirect=0' >> /etc/webmin/miniserv.conf
+grep -q -F 'webprefix=/webmin' /etc/webmin/config || echo 'webprefix=/webmin' >> /etc/webmin/config
+grep -q -F 'webprefixnoredir=1' /etc/webmin/config || echo 'webprefixnoredir=1' >> /etc/webmin/config
+grep -q -F 'referer=1' /etc/webmin/config || echo 'referer=1' >> /etc/webmin/config
 #
 # GOACCESS
 #
