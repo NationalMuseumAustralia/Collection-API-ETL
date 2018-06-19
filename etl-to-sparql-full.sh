@@ -7,7 +7,7 @@ find /data/public/n-quads/ -name "*.nq" -delete
 
 # execute XML-to-RDF transformations to generate new .nq files in /data/public/n-quads/
 cd /usr/local/NMA-API-ETL
-java -Xmx2G -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-sparql.xpl incremental="false" > /var/log/NMA-API-ETL/etl-to-sparql.log 2>&1
+java -Xmx4G -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-sparql.xpl incremental="false" > /var/log/NMA-API-ETL/etl-to-sparql.log 2>&1
 
 # stop fuseki in order to rebuild its tdb2 database
 /etc/init.d/tomcat8 stop
