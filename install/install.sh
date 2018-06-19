@@ -246,6 +246,8 @@ sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" >
 wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
 apt update
 apt install -y webmin
+# remove SSL requirement config (server is behind a secure proxy)
+sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 #
 # GOACCESS
 #
