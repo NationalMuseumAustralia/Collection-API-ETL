@@ -277,6 +277,8 @@ service tomcat8 restart
 service solr restart
 service nagios restart
 service webmin restart
+# disable konga until high CPU usage solved
+service konga stop
 #
 echo =========== API server install complete
 date
