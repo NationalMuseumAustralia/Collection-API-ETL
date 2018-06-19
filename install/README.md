@@ -27,15 +27,13 @@ exit
 ```
 
 Set passwords
-* Add the appropriate passwords below before execution
+* Key in appropriate passwords when prompted
 
 ```sh
 sudo su -
-htpasswd -bc /etc/apache2/admin-users.htpasswd nagiosadmin <admin-password>
-htpasswd -b  /etc/apache2/admin-users.htpasswd admin <admin-password>
-htpasswd -b  /etc/apache2/admin-users.htpasswd nmaapi <staff-password>
-htpasswd -bc /etc/apache2/graph-store-users.htpasswd admin <admin-password>
-htpasswd -b  /etc/apache2/graph-store-users.htpasswd nmaapi <staff-password>
-/usr/share/webmin/changepass.pl /etc/webmin root <admin-password>
+htpasswd -c /etc/apache2/admin-users.htpasswd admin
+htpasswd    /etc/apache2/admin-users.htpasswd nagiosadmin
+htpasswd    /etc/apache2/admin-users.htpasswd nmaapi
+/usr/share/webmin/changepass.pl /etc/webmin root
 exit
 ```
