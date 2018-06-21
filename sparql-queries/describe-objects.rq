@@ -16,6 +16,9 @@ WHERE {
 	# the object's container, and its type
 	crm:P106i_forms_part_of | 
 	crm:P106i_forms_part_of/crm:P2_has_type | 
+	# the object's parts, and their types
+	crm:P46_is_composed_of | 
+	crm:P46_is_composed_of/crm:P2_has_type | 
 	# textual descriptions of the object, and their types
 	crm:P129i_is_subject_of |
 	crm:P129i_is_subject_of/crm:P2_has_type |

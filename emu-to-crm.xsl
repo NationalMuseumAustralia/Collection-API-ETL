@@ -708,7 +708,7 @@
 	<xsl:template match="RelatedObject">
 		<xsl:variable name="related-entity-iri" select="concat('object/', ./relirn)" />
 		<!-- NB: We don't put in the reverse relationship in case curators only intended one-way -->
-		<dc:relation rdf:resource="{$related-entity-iri}" />
+		<dc:relation rdf:resource="{$related-entity-iri}#" />
 	</xsl:template>
 
 	<!-- TODO: RigAcknowledgement - appears to be empty, unsure if flag will be 'no' or something else -->

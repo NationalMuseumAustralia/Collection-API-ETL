@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec">
 	<x:variable name="graph">
-		<!-- Piction media -->
 		<graph xmlns="http://www.w3.org/2004/03/trix/trix-1/">
       <triple>
          <uri>http://collectionsearch.nma.gov.au/object/122751</uri>
