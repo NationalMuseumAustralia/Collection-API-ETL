@@ -14,17 +14,6 @@
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.openarchives.org/ore/terms/Aggregation</uri>
 			</triple>
-			<!-- banner image triple to be redacted (not rights cleared) -->
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
-				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
-				<id>f650af47c918f4fe1ee98b60786049a3</id>
-			</triple>
-			<triple>
-				<id>f650af47c918f4fe1ee98b60786049a3</id>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>https://api.nma.gov.au/term/banner-image</uri>
-			</triple>
 			<!-- extra detail in aggregated object to be redacted (to reduce payload size) -->
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
@@ -67,11 +56,6 @@
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 						<uri>http://www.openarchives.org/ore/terms/Aggregation</uri>
-					</triple>
-					<triple>
-						<id>f650af47c918f4fe1ee98b60786049a3</id>
-						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-						<uri>https://api.nma.gov.au/term/banner-image</uri>
 					</triple>
 					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>

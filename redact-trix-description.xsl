@@ -101,23 +101,6 @@
 				"/>	
 							
 				<!-- ############################################################################## -->
-				<!-- Remove narrative banner images (as they aren't rights-cleared) -->
-				
-				<!-- identify banner images inside narratives -->
-				<xsl:variable name="narrative-banner-images" select="
-					path:forward('ore:aggregates')[
-						path:forward(., 'crm:P2_has_type') = concat($nma-term-ns, 'banner-image')
-					]
-				"/>
-				<!-- identify narrative banner images to be discarded -->
-				<xsl:variable name="unwanted-narrative-banner-images" select="
-					$graph/
-						trix:triple
-							[*[2]='http://www.openarchives.org/ore/terms/aggregates']
-							[*[3]=$narrative-banner-images]
-				"/>	
-				
-				<!-- ############################################################################## -->
 				<!-- Slim down the description of any objects which are contained within narratives -->
 				
 				<!-- Find the identifiers of all the resources which are web pages. 
@@ -142,7 +125,7 @@
 
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:copy-of select="$graph/trix:triple except ($unwanted-emu-images, $unwanted-rights-statements, $unwanted-related-objects, $unwanted-narrative-banner-images, $unwanted-narrative-object-triples)"/>
+				<xsl:copy-of select="$graph/trix:triple except ($unwanted-emu-images, $unwanted-rights-statements, $unwanted-related-objects, $unwanted-narrative-object-triples)"/>
 				
 			</graph>
 		</trix>

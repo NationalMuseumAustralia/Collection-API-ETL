@@ -46,6 +46,9 @@
 			]
 	"/>
 	
+	<!-- exclude narrative banner images -->
+	<xsl:template match="record/dataSource[@name='original_2']"/>
+	
 	<!-- TODO: what about AdmPublishWebNoPassword? -->
 	<!-- 1265 say "Yes", 555 say "No" -->
 	<!--
@@ -58,7 +61,7 @@
 	-->
 	
 	<!-- exclude original_2 Piction images from Public API  -->
-	<xsl:template match="record/dataSource[@name='original_2']"/>
+	<xsl:template match="record/MulMultiMediaRef_tab"/>
 	
 	<!-- remove all non-Acton locations from Public API -->
 	<xsl:template match="LocCurrentLocationRef[not(LocLevel1='Acton')]"/>
