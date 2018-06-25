@@ -41,4 +41,25 @@
 		<x:expect label="Should return ISO8601 date">2002</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Parse date type - yyyy">
+		<x:call function="dateutil:to-xml-schema-type">
+			<x:param name="input" select="'2002'" />
+		</x:call>
+		<x:expect label="Should return XML Schema gYear IRI">http://www.w3.org/2001/XMLSchema#gYear</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date type - /mm/yyyy">
+		<x:call function="dateutil:to-xml-schema-type">
+			<x:param name="input" select="'/02/2002'" />
+		</x:call>
+		<x:expect label="Should return XML Schema gYearMonth IRI">http://www.w3.org/2001/XMLSchema#gYearMonth</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Parse date type - dd/mm/yyyy">
+		<x:call function="dateutil:to-xml-schema-type">
+			<x:param name="input" select="'02/02/2002'" />
+		</x:call>
+		<x:expect label="Should return XML Schema date IRI">http://www.w3.org/2001/XMLSchema#date</x:expect>
+	</x:scenario>
+
 </x:description>

@@ -471,6 +471,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	</xsl:template>
 
 	<!-- production dates and associated dates -->
+	<!-- NB: if there is a note but no actual date the title will be empty (rather than including text when consumers are expecting an ISO date in the title) -->
 	<xsl:template name="temporal-dc">
 		<xsl:variable name="production_date_value" select="
 			path:forward( ('crm:P108i_was_produced_by', 'crm:P9_consists_of') )[

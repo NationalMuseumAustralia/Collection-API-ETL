@@ -490,19 +490,25 @@
 							</crm:E33_Linguistic_Object>
 						</crm:P129i_is_subject_of>
 					</xsl:if>
-					<crm:P4_has_time-span>
-						<crm:E52_Time-Span>
-							<rdfs:label>
-								<xsl:value-of select="dateutil:to-iso-date(ProDate0)" />
-							</rdfs:label>
-							<crm:P82a_begin_of_the_begin>
-								<xsl:value-of select="dateutil:to-iso-date(ProEarliestDate0)" />
-							</crm:P82a_begin_of_the_begin>
-							<crm:P82b_end_of_the_end>
-								<xsl:value-of select="dateutil:to-iso-date(ProLatestDate0)" />
-							</crm:P82b_end_of_the_end>
-						</crm:E52_Time-Span>
-					</crm:P4_has_time-span>
+					<!-- NB: sometimes ProDate0 is missing, but if there expect others too -->
+					<xsl:if test="ProDate0">
+						<crm:P4_has_time-span>
+							<crm:E52_Time-Span>
+								<rdfs:label>
+									<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(ProDate0)" /></xsl:attribute>
+									<xsl:value-of select="dateutil:to-iso-date(ProDate0)" />
+								</rdfs:label>
+								<crm:P82a_begin_of_the_begin>
+									<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(ProEarliestDate0)" /></xsl:attribute>
+									<xsl:value-of select="dateutil:to-iso-date(ProEarliestDate0)" />
+								</crm:P82a_begin_of_the_begin>
+								<crm:P82b_end_of_the_end>
+									<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(ProLatestDate0)" /></xsl:attribute>
+									<xsl:value-of select="dateutil:to-iso-date(ProLatestDate0)" />
+								</crm:P82b_end_of_the_end>
+							</crm:E52_Time-Span>
+						</crm:P4_has_time-span>
+					</xsl:if>
 				</crm:E7_Activity>
 			</crm:P9_consists_of>
 		</xsl:for-each>
@@ -589,12 +595,15 @@
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
 							<rdfs:label>
+								<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AssDate0)" /></xsl:attribute>
 								<xsl:value-of select="dateutil:to-iso-date(AssDate0)" />
 							</rdfs:label>
 							<crm:P82a_begin_of_the_begin>
+								<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AssEarliestDate0)" /></xsl:attribute>
 								<xsl:value-of select="dateutil:to-iso-date(AssEarliestDate0)" />
 							</crm:P82a_begin_of_the_begin>
 							<crm:P82b_end_of_the_end>
+								<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AssLatestDate0)" /></xsl:attribute>
 								<xsl:value-of select="dateutil:to-iso-date(AssLatestDate0)" />
 							</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
@@ -1179,12 +1188,14 @@
 			<crm:E31_Document rdf:about="{$entity-iri}"><!-- identifies the RDF graph itself -->
 				<xsl:if test="AdmDateModified">
 					<dc:modified>
+						<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AdmDateModified)" /></xsl:attribute>
 						<xsl:value-of select="dateutil:to-iso-date(AdmDateModified)" />
 					</dc:modified>
 				</xsl:if>
 				<xsl:if test="WebReleaseDate">
 					<!-- dc:issued is more precise than dc:available - http://dublincore.org/documents/date-element/ -->
 					<dc:issued>
+						<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(WebReleaseDate)" /></xsl:attribute>
 						<xsl:value-of select="dateutil:to-iso-date(WebReleaseDate)" />
 					</dc:issued>
 				</xsl:if>
