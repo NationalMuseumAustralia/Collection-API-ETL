@@ -46,8 +46,8 @@
 			]
 	"/>
 	
-	<!-- exclude narrative banner images -->
-	<xsl:template match="record/dataSource[@name='original_2']"/>
+	<!-- exclude original_2 Piction images from Public API  -->
+	<xsl:template match="doc/dataSource[@name='original_2']"/>
 	
 	<!-- TODO: what about AdmPublishWebNoPassword? -->
 	<!-- 1265 say "Yes", 555 say "No" -->
@@ -60,7 +60,7 @@
 						sequence of AcsAPI (string)
 	-->
 	
-	<!-- exclude original_2 Piction images from Public API  -->
+	<!-- exclude narrative banner images -->
 	<xsl:template match="record/MulMultiMediaRef_tab"/>
 	
 	<!-- remove all non-Acton locations from Public API -->
