@@ -33,6 +33,7 @@ else
   run_test piction-to-media
   run_test trix-description-redact-object
   run_test trix-description-redact-object-nomedia
+  run_test trix-description-redact-object-norights
   run_test trix-description-redact-narrative
   run_test trix-description-to-dc-object
   run_test trix-description-to-dc-narrative

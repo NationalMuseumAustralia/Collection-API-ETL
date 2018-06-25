@@ -26,6 +26,7 @@ CALL :runtest emu-to-crm-collection
 CALL :runtest piction-to-media
 CALL :runtest trix-description-redact-object
 CALL :runtest trix-description-redact-object-nomedia
+CALL :runtest trix-description-redact-object-norights
 CALL :runtest trix-description-redact-narrative
 CALL :runtest trix-description-to-dc-object
 CALL :runtest trix-description-to-dc-narrative

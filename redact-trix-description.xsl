@@ -35,6 +35,9 @@
 				<!-- Find the identifiers of all the physical objects in the graph -->
 				<xsl:variable name="objects" select="path:backward(concat($crm-ns, 'E19_Physical_Object'), 'rdf:type')"/>
 
+				<!-- Find the identifiers of all the media in the graph -->
+				<xsl:variable name="media" select="path:backward(concat($crm-ns, 'E36_Visual_Item'), 'rdf:type')"/>
+
 				<!-- ############################################################################## -->
 				<!-- Having good quality images from Piction means we don't need any images from EMu -->
 				
@@ -81,6 +84,51 @@
 				"/>
 				
 				<!-- ############################################################################## -->
+				<!-- Conversely, we can't include media if there isn't a rights statement -->
+
+				<!-- 1. Remove links to that media from within objects -->
+				
+				<!-- identify any objects with media but no rights -->
+				<xsl:variable name="objects-with-media-but-no-rights" select="
+					$objects
+						[
+							path:forward(., ('crm:P138i_has_representation'))
+							and
+							not( 
+								path:forward(., ('crm:P104_is_subject_to'))
+							)
+						]
+				"/>
+				<!-- identify any media statements which can be discarded -->
+				<xsl:variable name="unwanted-object-media-statements" select="
+					$graph/
+						trix:triple
+							[*[1]=$objects-with-media-but-no-rights]
+							[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation']
+				"/>
+
+				<!-- 2. Remove the media records themselves -->
+
+				<!-- identify any media from objects without rights -->
+				<xsl:variable name="media-from-objects-with-no-rights" select="
+					$media
+						[
+							path:forward(., ('crm:P138_represents'))
+								[
+									not( 
+										path:forward(., ('crm:P104_is_subject_to'))
+									)
+								]
+						]
+				"/>
+				<!-- identify any media statements which can be discarded -->
+				<xsl:variable name="unwanted-media-statements" select="
+					$graph/
+						trix:triple
+							[*[1]=$media-from-objects-with-no-rights]
+				"/>
+			
+				<!-- ############################################################################## -->
 				<!-- Exclude related objects that aren't available via the API -->
 
 				<!-- identify related objects that aren't in the API (don't have a title) -->
@@ -125,7 +173,7 @@
 
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:copy-of select="$graph/trix:triple except ($unwanted-emu-images, $unwanted-rights-statements, $unwanted-related-objects, $unwanted-narrative-object-triples)"/>
+				<xsl:copy-of select="$graph/trix:triple except ($unwanted-emu-images, $unwanted-rights-statements, $unwanted-object-media-statements, $unwanted-media-statements, $unwanted-related-objects, $unwanted-narrative-object-triples)"/>
 				
 			</graph>
 		</trix>
