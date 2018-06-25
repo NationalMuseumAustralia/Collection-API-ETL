@@ -31,6 +31,7 @@ else
   run_test emu-to-crm-place
   run_test emu-to-crm-collection
   run_test piction-to-media
+  run_test trix-description-redact-emu-image
   run_test trix-description-redact-object
   run_test trix-description-redact-object-nomedia
   run_test trix-description-redact-object-norights
