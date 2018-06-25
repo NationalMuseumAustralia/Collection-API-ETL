@@ -84,7 +84,10 @@
 									<xsl:when test="@name = 'original_3'">
 										<crm:P2_has_type rdf:resource="{concat($nma-term-ns, 'large')}" />
 									</xsl:when>
-									<!-- TODO: include other resolutions in internal API -->
+									<!-- full resolution in internal API -->
+									<xsl:when test="@name = 'original_2'">
+										<crm:P2_has_type rdf:resource="{concat($nma-term-ns, 'full')}" />
+									</xsl:when>
 									<!-- 
 									<xsl:otherwise>
 										<crm:P2_has_type rdf:resource="{concat($nma-term-ns, @name)}" />
