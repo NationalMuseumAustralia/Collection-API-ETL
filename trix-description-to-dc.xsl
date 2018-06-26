@@ -598,7 +598,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<array key="relation" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="$value">
 					<map>
-						<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>
+						<string key='id'><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')" /></string>
 						<!-- type (assuming same type) -->
 						<xsl:copy-of select="xmljson:render-as-string('type', $type)" />
 						<!-- title -->
