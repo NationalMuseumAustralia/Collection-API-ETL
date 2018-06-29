@@ -130,7 +130,7 @@ chown -R ubuntu:ubuntu /usr/local/NMA
 #
 echo =========== Installing XProc-Z ETL
 cd $INSTALL_DIR
-wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/1.0c/xproc-z.war -O xproc-z.war
+wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/untagged-3f67ca756afe7e11061f/xproc-z.war -O xproc-z.war
 mv xproc-z.war /var/lib/tomcat8/webapps/
 ln -s $CONFIG_DIR/tomcat/xproc-z.xml /var/lib/tomcat8/conf/Catalina/localhost/
 mkdir /var/log/NMA-API-ETL
