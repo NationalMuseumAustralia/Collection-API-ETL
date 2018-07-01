@@ -210,12 +210,13 @@ service konga start
 # NAGIOS
 #
 echo =========== Installing Nagios
+# https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu
 apt install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.0 libgd2-xpm-dev
 cd $INSTALL_DIR
 wget -O nagioscore-4.3.4.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.3.4.tar.gz
 tar xzf nagioscore-4.3.4.tar.gz
 cd $INSTALL_DIR/nagioscore-nagios-4.3.4/
-./configure --with-httpd-conf=/etc/apache2/sites-enabled
+./configure --with-httpd-conf=/etc/apache2/sites-available
 make all
 useradd nagios
 usermod -a -G nagios www-data
