@@ -47,16 +47,17 @@
 		</p:input>
 	</kong:send>
 	<p:sink/>
-<!--
-
-#need to add an anonymous consumer which the key-auth plugin can use when the api key is absent
-post to  http://localhost:8001/consumers/
-data 
-	"username=anonymous"
-	"custom_id=anonymous"
-
-# returns {"custom_id":"anonymous","created_at":1524720140000,"username":"anonymous","id":"61c105a1-eae0-4b36-ad70-d24dd09ab566"}
--->
+	
+	<!--
+	
+	# add an anonymous consumer which the key-auth plugin can use when the api key is absent
+	post to  http://localhost:8001/consumers/
+	data 
+		"username=anonymous"
+		"custom_id=anonymous"
+	
+	# returns {"custom_id":"anonymous","created_at":1524720140000,"username":"anonymous","id":"61c105a1-eae0-4b36-ad70-d24dd09ab566"}
+	-->
 	<kong:send name="create-anonymous-user" method="post" uri="http://localhost:8001/consumers/">
 		<p:input port="source">
 			<p:inline>
@@ -97,8 +98,70 @@ data 'name=key-auth'
 	<kong:send name="add-key-auth-plugin-with-anonymous-user" method="put" uri="http://localhost:8001/plugins/key-auth"/>
 	<p:sink/>
 	
-	<kong:get name="get-nma-api-plugins" uri="http://localhost:8001/services/nma-api/plugins/"/>
+	<!-- enable the ACL plugin for the service, defining two user groups "public" and "internal" -->
+	<!-- 
+		"This plugin requires an authentication plugin to have been already enabled on the Service or the Route" 
+		from: https://docs.konghq.com/plugins/acl/ 
+	-->
+	<kong:send name="add-acl-plugin" method="post" uri="http://localhost:8001/services/nma-api/plugins">
+		<p:input port="source">
+			<p:inline>
+				<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<string key="name">acl</string>
+					<map key="config">
+						<array key="whitelist">
+							<string>public</string>
+							<string>internal</string>
+						</array>
+					</map>
+				</map>
+			</p:inline>
+		</p:input>		
+	</kong:send>
+	<p:sink/>
 	
+	<!-- add the "anonymous" user to the "public" user group -->
+	<kong:send name="add-anonymous-user-to-internal-group" method="post" uri="http://localhost:8001/consumers/anonymous/acls">
+		<p:input port="source">
+			<p:inline>
+				<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<string key="group">public</string>
+				</map>
+			</p:inline>
+		</p:input>
+	</kong:send>
+	<p:sink/>
+	
+	<!-- throttle the anonymous user -->
+	<p:template name="anonymous-user-rate-limits">
+		<p:input port="parameters">
+			<p:empty/>
+		</p:input>
+		<p:input port="source">
+			<p:pipe step="get-anonymous-user" port="result"/>
+		</p:input>
+		<p:input port="template">
+			<p:inline>
+				<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<string key="name">rate-limiting</string>
+					<string key="consumer_id">{/c:response/c:body/fn:map/fn:string[@key='id']/text()}</string>
+					<map key="config">
+						<number key="second">10</number>
+						<number key="hour">3600</number>
+						<string key="limit_by">ip</string>
+						<string key="policy">local</string>
+					</map>
+				</map>
+			</p:inline>
+		</p:input>
+	</p:template>
+	<kong:send name="throttle-anonymous-user" method="post" uri="http://localhost:8001/plugins"/>
+	<p:sink/>	
+	
+	<!-- enable API key-based authentication -->
+	<!-- list the API's plugin configurations so we can update the "key-auth" one -->
+	<kong:get name="get-nma-api-plugins" uri="http://localhost:8001/services/nma-api/plugins/"/>
+	<!-- get the identifier of the key-auth plugin configuration, and patch it with the predefined configuration -->
 	<kong:send name="configure-key-auth-plugin" method="patch">
 		<p:with-option name="uri" select="
 			concat(
@@ -112,6 +175,7 @@ data 'name=key-auth'
 	</kong:send>
 	<p:sink/>
 	
+	<!-- collate the logged operations into a log file and save it -->
 	<p:wrap-sequence name="collate-log-of-operations" wrapper="responses">
 		<p:input port="source">
 			<p:pipe step="create-service" port="log"/>
@@ -120,6 +184,9 @@ data 'name=key-auth'
 			<p:pipe step="create-anonymous-user" port="log"/>
 			<p:pipe step="get-anonymous-user" port="log"/>
 			<p:pipe step="add-key-auth-plugin-with-anonymous-user" port="log"/>
+			<p:pipe step="add-acl-plugin" port="log"/>
+			<p:pipe step="add-anonymous-user-to-internal-group" port="log"/>
+			<p:pipe step="throttle-anonymous-user" port="log"/>
 			<p:pipe step="get-nma-api-plugins" port="log"/>
 			<p:pipe step="configure-key-auth-plugin" port="log"/>
 		</p:input>
