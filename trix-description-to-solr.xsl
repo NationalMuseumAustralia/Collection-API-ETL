@@ -50,6 +50,7 @@
 						<xsl:call-template name="object-parent-solr" />
 						<xsl:call-template name="object-children-solr" />
 						<xsl:call-template name="related-solr" />
+						<xsl:call-template name="web-links-solr" />
 						<xsl:call-template name="media-parent-solr" />
 						<xsl:call-template name="representations-solr" />
 
@@ -522,6 +523,18 @@
 		</xsl:for-each>
 	</xsl:template>
 
+	<!-- web links -->
+	<xsl:template name="web-links-solr">
+		<xsl:for-each select="
+			path:forward('rdfs:seeAlso')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300264578'
+			]
+			/path:forward(., 'crm:P1_is_identified_by')
+		">
+			<field name="seeAlso"><xsl:value-of select="."/></field>
+		</xsl:for-each>
+	</xsl:template>
+	
 	<!-- parent object - identifiers only (titles would skew keyword searches) -->
 	<xsl:template name="object-parent-solr">
 		<xsl:variable name="value" select="

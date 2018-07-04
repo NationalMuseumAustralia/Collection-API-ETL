@@ -235,6 +235,7 @@
   <field name="medium" type="text_general"/>
   <field name="acknowledgement" type="text_general"/>
   <field name="location" type="text_general"/>
+  <field name="seeAlso" type="text_general"/>
   <field name="isPartOf_object_id" type="strings"/>
   <field name="hasPart_object_id" type="strings"/>
   <field name="related_object_id" type="strings"/>
@@ -270,6 +271,7 @@
   <copyField source="spatial" dest="spatial_str" maxChars="256"/>
   <copyField source="temporal" dest="temporal_str" maxChars="256"/>
   <copyField source="medium" dest="medium_str" maxChars="256"/>
+  <copyField source="seeAlso" dest="seeAlso_str" maxChars="256"/>
   <copyField source="modified" dest="modified_str" maxChars="256"/>
   <copyField source="issued" dest="issued_str" maxChars="256"/>
   <copyField source="media" dest="media_str" maxChars="256"/>

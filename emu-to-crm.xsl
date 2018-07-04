@@ -172,7 +172,9 @@
 			</xsl:apply-templates>
 			
 			<!-- notes -->
-			<xsl:apply-templates select="NotText0" />
+			<xsl:apply-templates select="NotText0">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
 			
 			<!-- media -->
 			<xsl:apply-templates select="WebMultiMediaRef_tab/image">
@@ -808,6 +810,7 @@
 	<!-- web links -->
 	<!-- https://linked.art/model/object/digital/#other-pages -->
 	<xsl:template match="NotText0">
+		<xsl:param name="entity-iri" />
 		<!-- parse out URL and label (ignoring note_type) -->
 		<!-- example: &lt;a href=&quot;http://...&quot;&gt;Label&lt;/a&gt; -->
 		<!-- ie: <a href="http://...">Label</a> -->
@@ -832,19 +835,24 @@
 					 return the whole string in label (ie. empty href variable) -->
 			</xsl:analyze-string>
 		</xsl:variable>
-		<crm:P129i_is_subject_of>
-			<crm:E33_Linguistic_Object>
+		<rdfs:seeAlso>
+			<rdf:Description>
 				<!-- NB: defensive, in case href didn't parse -->
 				<xsl:if test="$href and not($href='')">
-					<xsl:attribute name="rdf:about"><xsl:value-of select="$href" /></xsl:attribute>
+					<!-- mint RDF ID for link from *this* entity -->
+					<xsl:attribute name="rdf:about"><xsl:value-of select="concat($entity-iri, '#link-', $href)" /></xsl:attribute>
+					<!-- and here's the actual link -->
+					<crm:P1_is_identified_by>
+					    <crm:E42_Identifier rdf:resource="{$href}" />
+					</crm:P1_is_identified_by>
 				</xsl:if>
 				<xsl:if test="$label">
 					<rdfs:label><xsl:value-of select="$label" /></rdfs:label>
 				</xsl:if>
 				<!-- AAT 300264578: web pages (documents) -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300264578" />
-			</crm:E33_Linguistic_Object>
-		</crm:P129i_is_subject_of>
+			</rdf:Description>
+		</rdfs:seeAlso>
 	</xsl:template>
 
 	<!-- media -->

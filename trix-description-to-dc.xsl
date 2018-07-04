@@ -62,6 +62,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="object-children-dc" />
 			<xsl:call-template name="related-dc" />
 			<xsl:call-template name="media-parent-dc" />
+			<xsl:call-template name="web-links-dc" />
 			<!-- TODO: add representation mimetype format, once added to CRM -->
 			<!-- NB: rights are placed inside each media rather than at the object record level -->
 			<xsl:call-template name="representations-dc" />
@@ -619,6 +620,26 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:for-each>
 	</xsl:template>
 
+	<!-- web links -->
+	<xsl:template name="web-links-dc">
+		<xsl:variable name="value" select="
+			path:forward('rdfs:seeAlso')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300264578'
+			]
+		" />
+		<xsl:if test="$value">
+			<array key="seeAlso" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map>
+						<string key='type'><xsl:text>Link</xsl:text></string>
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+						<xsl:copy-of select="xmljson:render-as-string('identifier', path:forward(., 'crm:P1_is_identified_by') )" />
+					</map>
+				</xsl:for-each>
+			</array>
+		</xsl:if>
+	</xsl:template>
+	
 	<!-- TODO: separate into named templates the rendering of representation-level and digital-file-level, 
 	     then call appropriately if root-resource is an 'object' entity (repn) or 'media' entity (files) -->
 
