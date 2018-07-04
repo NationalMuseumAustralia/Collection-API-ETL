@@ -183,42 +183,6 @@ service kong start
 # configure Kong
 java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
 #
-# KONGA UI
-#
-echo =========== Installing Konga UI
-# nodejs
-cd $INSTALL_DIR
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.9/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm install 8 --lts --latest-npm
-nvm use 8
-apt install -y nodejs-legacy
-npm install -g bower
-npm install -g gulp
-npm install -g sails
-npm install -g sails-postgresql --save
-# konga
-cd /etc
-git clone https://github.com/pantsel/konga.git
-cd /etc/konga
-npm run bower-deps
-npm install
-ln -s $CONFIG_DIR/konga/local.conf /etc/konga/config/
-# database
-sudo -u postgres psql --command="CREATE USER konga;"
-sudo -u postgres psql --command="ALTER USER konga WITH PASSWORD 'konga';"
-sudo -u postgres psql --command="CREATE DATABASE konga_database OWNER konga;"
-sudo -u postgres PGOPTIONS='--client-min-messages=warning' psql -X -q -1 -v ON_ERROR_STOP=1 --pset pager=off -d konga_database -f $CONFIG_DIR/konga/konga_db_setup.sql -L konga_restore.log
-# service - https://certsimple.com/blog/deploy-node-on-linux
-cd /etc/konga
-sed -i '1 i\#!/usr/bin/env' app.js
-chmod a+x app.js
-cp $CONFIG_DIR/konga/konga.service /etc/systemd/system/
-systemctl enable konga
-service konga start
-#
 # NAGIOS
 #
 echo =========== Installing Nagios
