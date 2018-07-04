@@ -63,7 +63,7 @@ ln -s $CONFIG_DIR/apache/000-default.conf /etc/apache2/sites-available/
 # TOMCAT
 #
 echo =========== Installing tomcat
-apt install -y tomcat8
+apt install -y tomcat8 
 mv /etc/default/tomcat8 /etc/default/tomcat8.original 
 ln -s $CONFIG_DIR/tomcat/tomcat8 /etc/default/
 #
@@ -118,6 +118,18 @@ unzip xmlcalabash.zip -d /usr/local
 ln -s /usr/local/xmlcalabash-1.1.21-98 /usr/local/xmlcalabash
 ln -s /usr/local/xmlcalabash/xmlcalabash-1.1.21-98.jar /usr/local/xmlcalabash/xmlcalabash.jar
 #
+## TOMCAT MANAGER
+#
+echo =========== Installing tomcat manager
+apt install -y tomcat8-admin
+# configure tomcat-users.xml to include credentials for manager app
+java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/tomcat/initialize-tomcat.xpl
+# restrict read access to the tomcat-users.xml file to root and tomcat users
+chown root:tomcat8 /var/lib/tomcat8/conf/tomcat-users.xml
+chmod u=rw,g=r,o= /var/lib/tomcat8/conf/tomcat-users.xml
+# restart tomcat to reload the new tomcat-users.xml
+service tomcat8 restart
+#
 # XSpec (XSLT unit tests)
 #
 echo =========== Installing XSpec
@@ -169,7 +181,7 @@ cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
 systemctl enable kong
 service kong start
 # configure Kong
-sudo java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
+java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
 #
 # KONGA UI
 #
