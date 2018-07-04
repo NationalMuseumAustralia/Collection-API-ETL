@@ -530,7 +530,7 @@
 				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300264578'
 			]
 			/path:forward(., 'crm:P1_is_identified_by')
-		" />
+		">
 			<field name="seeAlso"><xsl:value-of select="."/></field>
 		</xsl:for-each>
 	</xsl:template>
