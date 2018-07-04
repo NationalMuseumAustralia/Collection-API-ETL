@@ -131,7 +131,7 @@
 			<xsl:apply-templates select="PhyMaterials_tab" />
 
 			<!-- dimensions: linear -->
-			<xsl:apply-templates select="PhyRegistrationLength | PhyRegistrationWidth | PhyRegistrationWidth | PhyRegistrationDepth | PhyRegistrationDiameter">
+			<xsl:apply-templates select="PhyRegistrationLength | PhyRegistrationHeight | PhyRegistrationWidth | PhyRegistrationDepth | PhyRegistrationDiameter">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 				<xsl:with-param name="unit" select="PhyRegistrationUnitLength" />
 			</xsl:apply-templates>
