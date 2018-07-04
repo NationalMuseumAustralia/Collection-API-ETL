@@ -1,4 +1,4 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" 
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/"
 	xmlns="tag:conaltuohy.com,2018:nma/piction/"
@@ -44,7 +44,7 @@
 			<xsl:if test="$related-objects and $image-data-sources">
 				<!-- we have both P138_represents and P138i_has_representation, for bidirectional 
 					traversal between objects and images -->
-				<xsl:for-each select="tokenize( $related-objects, '[,\s?]+' )">
+				<xsl:for-each select="$related-objects!tokenize(., '[,\s?]+')">
 					<crm:E19_Physical_Object rdf:about="object/{translate(., ' ', '')}#">
 						<crm:P138i_has_representation rdf:resource="{$visual-item-graph}#" />
 					</crm:E19_Physical_Object>
