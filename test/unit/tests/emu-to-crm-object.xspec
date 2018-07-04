@@ -728,14 +728,17 @@
 					collection highlight&lt;/a&gt;</note_text>
 			</NotText0>
 		</x:context>
-		<x:expect label="should return crm:P129i_is_subject_of">
-			<crm:P129i_is_subject_of>
-				<crm:E33_Linguistic_Object
-					rdf:about="http://www.nma.gov.au/collections/highlights/ellen_rogers_collection">
+		<x:expect label="should return rdfs:seeAlso">
+			<rdfs:seeAlso>
+				<rdf:Description
+					rdf:about="#link-http://www.nma.gov.au/collections/highlights/ellen_rogers_collection">
+					<crm:P1_is_identified_by>
+					    <crm:E42_Identifier rdf:resource="http://www.nma.gov.au/collections/highlights/ellen_rogers_collection" />
+					</crm:P1_is_identified_by>
 					<rdfs:label>View collection highlight</rdfs:label>
 					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264578" />
-				</crm:E33_Linguistic_Object>
-			</crm:P129i_is_subject_of>
+				</rdf:Description>
+			</rdfs:seeAlso>
 		</x:expect>
 	</x:scenario>
 
@@ -746,13 +749,13 @@
 				<note_text>http://www.nma.gov.au/collections/highlights/ellen_rogers_collectione</note_text>
 			</NotText0>
 		</x:context>
-		<x:expect label="should return crm:P129i_is_subject_of with label only">
-			<crm:P129i_is_subject_of>
-				<crm:E33_Linguistic_Object>
+		<x:expect label="should return rdfs:seeAlso with label only">
+			<rdfs:seeAlso>
+				<rdf:Description>
 					<rdfs:label>...</rdfs:label>
 					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264578" />
-				</crm:E33_Linguistic_Object>
-			</crm:P129i_is_subject_of>
+				</rdf:Description>
+			</rdfs:seeAlso>
 		</x:expect>
 	</x:scenario>
 

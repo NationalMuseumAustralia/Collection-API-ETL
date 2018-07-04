@@ -79,6 +79,12 @@ WHERE {
 	dc:relation |
 	dc:relation/rdf:type |
 	dc:relation/rdfs:label |
+	# links
+	rdfs:seeAlso |
+	rdfs:seeAlso/rdf:type |
+	rdfs:seeAlso/rdfs:label |
+	rdfs:seeAlso/crm:P1_is_identified_by |
+	rdfs:seeAlso/crm:P2_has_type |
 	
 	# the visual items that depict the object, and the creation of those images, and the photographers
 	# and the various derivative representations of that item, and their types (Piction images are typed)
