@@ -78,9 +78,18 @@
 		<x:call template="materials-dc" />
 		<x:expect label="should return xpath:string materials">
 			<array key="medium" xmlns="http://www.w3.org/2005/xpath-functions">
-				<string>Wood</string>
-				<string>Photographic emulsion</string>
-				<string>Paper</string>
+				<map>
+					<string key="type">Material</string>
+					<string key="title">Wood</string>
+				</map>
+				<map>
+					<string key="type">Material</string>
+					<string key="title">Photographic emulsion</string>
+				</map>
+				<map>
+					<string key="type">Material</string>
+					<string key="title">Paper</string>
+				</map>
 			</array>
 		</x:expect>
 	</x:scenario>

@@ -185,8 +185,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<xsl:if test="$value">
 			<array key="medium" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="$value">
-					<!-- NB: no JSON string labels -->
-					<xsl:copy-of select="xmljson:render-as-string('', .)" />
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<string key='type'><xsl:text>Material</xsl:text></string>
+						<xsl:copy-of select="xmljson:render-as-string('title', .)" />
+					</map>
 				</xsl:for-each>
 			</array>
 		</xsl:if>
