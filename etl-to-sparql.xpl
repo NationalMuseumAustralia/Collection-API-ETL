@@ -28,6 +28,7 @@
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 	
 	<p:option name="incremental" required="true"/>
+	<p:option name="dataset" required="true"/>
 	
 	<p:exec name="read-hostname" command="hostname" result-is-xml="false">
 		<p:input port="source">
@@ -41,17 +42,20 @@
 		
 		<!-- load our local vocabulary data -->
 		<nma:load-vocabulary>
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:load-vocabulary>
 		
 		<!-- process EMu objects, places, parties, collections, and narratives -->
-		<nma:process-data file-name-component="narratives" dataset="public">
+		<nma:process-data file-name-component="narratives">
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data file-name-component="objects" dataset="public">
+		<nma:process-data file-name-component="objects">
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
@@ -61,18 +65,21 @@
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data file-name-component="parties" dataset="public">
+		<nma:process-data file-name-component="parties">
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 
-		<nma:process-data file-name-component="accessionlots" dataset="public">
+		<nma:process-data file-name-component="accessionlots">
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
 		
 		<!-- process Piction image metadata -->
-		<nma:process-piction-data dataset="public">
+		<nma:process-piction-data>
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-piction-data>
@@ -80,6 +87,7 @@
 	</p:group>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
+		<p:option name="dataset" required="true"/>
 		<p:option name="hostname" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<p:load href="vocabulary.rdf" name="raw-vocabulary"/>
@@ -87,7 +95,8 @@
 		<p:add-attribute attribute-name="xml:base" match="/*" name="localised-vocabulary">
 			<p:with-option name="attribute-value" select="concat('http://', $hostname, '/term/')"/>
 		</p:add-attribute>
-		<nma:store-graph dataset="public">
+		<nma:store-graph>
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="graph-uri" select="concat('http://', $hostname, '/fuseki/', $dataset, '/data/vocabulary')"/>
 		</nma:store-graph>
