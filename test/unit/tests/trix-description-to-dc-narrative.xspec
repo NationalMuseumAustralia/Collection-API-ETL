@@ -8,8 +8,7 @@
 	<!-- load a narrative trix record into the global $graph variable -->
 	<x:import href="resources/trix-record-narrative-3346-featured.xspec" />
 
-	<x:param name="root-resource"
-		select=" 'http://nma-dev.conaltuohy.com/narrative/3346#' " />
+	<x:param name="root-resource" select=" 'http://nma-dev.conaltuohy.com/narrative/3346#' " />
 
 	<x:scenario label="Convert id">
 		<x:call template="id-dc" />
@@ -49,28 +48,28 @@
 	</x:scenario>
 
 	<x:pending label="Banner images redacted in public API">
-	<x:scenario label="Convert banner image">
-		<x:call template="narrative-image-dc" />
-		<x:expect label="should return xpath:string hasVersion">
-			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
-				<map>
-					<string key="type">StillImage</string>
-					<array key="hasVersion">
-						<map>
-							<string key="type">StillImage</string>
-							<string key="version">...</string>
-							<string key="identifier">...</string>
-						</map>
-						<map>
-							<string key="type">StillImage</string>
-							<string key="version">...</string>
-							<string key="identifier">...</string>
-						</map>
-					</array>
-				</map>
-			</array>
-		</x:expect>
-	</x:scenario>
+		<x:scenario label="Convert banner image">
+			<x:call template="narrative-image-dc" />
+			<x:expect label="should return xpath:string hasVersion">
+				<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
+						<string key="type">StillImage</string>
+						<array key="hasVersion">
+							<map>
+								<string key="type">StillImage</string>
+								<string key="version">...</string>
+								<string key="identifier">...</string>
+							</map>
+							<map>
+								<string key="type">StillImage</string>
+								<string key="version">...</string>
+								<string key="identifier">...</string>
+							</map>
+						</array>
+					</map>
+				</array>
+			</x:expect>
+		</x:scenario>
 	</x:pending>
 
 	<x:scenario label="Convert parent narrative">
@@ -99,31 +98,49 @@
 					<xpath:string key="id">241465</xpath:string>
 					<xpath:string key="type">object</xpath:string>
 					<xpath:string key="title">...</xpath:string>
+					<xpath:map key="_meta">
+						<xpath:string key="hasFormat">http://collectionsearch.nma.gov.au/object/241465</xpath:string>
+					</xpath:map>
 				</xpath:map>
 				<xpath:map>
 					<xpath:string key="id">241464</xpath:string>
 					<xpath:string key="type">object</xpath:string>
 					<xpath:string key="title">...</xpath:string>
+					<xpath:map key="_meta">
+						<xpath:string key="hasFormat">...</xpath:string>
+					</xpath:map>
 				</xpath:map>
 				<xpath:map>
 					<xpath:string key="id">241466</xpath:string>
 					<xpath:string key="type">object</xpath:string>
 					<xpath:string key="title">...</xpath:string>
+					<xpath:map key="_meta">
+						<xpath:string key="hasFormat">...</xpath:string>
+					</xpath:map>
 				</xpath:map>
 				<xpath:map>
 					<xpath:string key="id">241451</xpath:string>
 					<xpath:string key="type">object</xpath:string>
 					<xpath:string key="title">...</xpath:string>
+					<xpath:map key="_meta">
+						<xpath:string key="hasFormat">...</xpath:string>
+					</xpath:map>
 				</xpath:map>
 				<xpath:map>
 					<xpath:string key="id">241493</xpath:string>
 					<xpath:string key="type">object</xpath:string>
 					<xpath:string key="title">...</xpath:string>
+					<xpath:map key="_meta">
+						<xpath:string key="hasFormat">...</xpath:string>
+					</xpath:map>
 				</xpath:map>
 				<xpath:map>
 					<xpath:string key="id">241494</xpath:string>
 					<xpath:string key="type">object</xpath:string>
 					<xpath:string key="title">...</xpath:string>
+					<xpath:map key="_meta">
+						<xpath:string key="hasFormat">...</xpath:string>
+					</xpath:map>
 				</xpath:map>
 			</xpath:array>
 		</x:expect>
