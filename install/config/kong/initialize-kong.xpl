@@ -147,7 +147,8 @@ data 'name=key-auth'
 					<string key="consumer_id">{/c:response/c:body/fn:map/fn:string[@key='id']/text()}</string>
 					<map key="config">
 						<number key="second">10</number>
-						<number key="hour">3600</number>
+						<number key="minute">60</number>
+						<!--<number key="hour">3600</number>-->
 						<string key="limit_by">ip</string>
 						<string key="policy">local</string>
 					</map>
