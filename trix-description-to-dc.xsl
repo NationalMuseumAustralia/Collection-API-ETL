@@ -185,8 +185,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<xsl:if test="$value">
 			<array key="medium" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="$value">
-					<!-- NB: no JSON string labels -->
-					<xsl:copy-of select="xmljson:render-as-string('', .)" />
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<string key='type'><xsl:text>Material</xsl:text></string>
+						<xsl:copy-of select="xmljson:render-as-string('title', .)" />
+					</map>
 				</xsl:for-each>
 			</array>
 		</xsl:if>
@@ -888,7 +890,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 				<xsl:for-each select="$value">
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
 						<!-- id -->
-						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+						<xsl:variable name="object-id" select="replace(., '(.*/)([^/]*)(#)$', '$2')" />
+						<xsl:copy-of select="xmljson:render-as-string('id', $object-id)" />
 						<!-- type -->
 						<string key='type'><xsl:text>object</xsl:text></string>
 						<!-- title -->
@@ -907,6 +910,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 								</xsl:call-template>
 							</array>
 						</xsl:for-each>
+						<!-- meta: collection explorer link -->
+						<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
+							<string key='hasFormat'><xsl:value-of select="concat($collection-explorer-uri, 'object/', $object-id)" /></string>
+						</map>
 					</map>
 				</xsl:for-each>
 			</array>
