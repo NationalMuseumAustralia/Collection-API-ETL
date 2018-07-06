@@ -531,9 +531,14 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	
 	<!-- rights (called from within representations-dc-display) -->
 	<xsl:template name="rights-dc">
-		<xsl:copy-of select="xmljson:render-as-string('rights', path:forward( ('crm:P104_is_subject_to', 'crm:P148_has_component') ))" />
-		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( ('crm:P104_is_subject_to', 'crm:P148_has_component', 'rdf:value') ))" />
-		<xsl:copy-of select="xmljson:render-as-string('rightsReason', path:forward( ('crm:P104_is_subject_to', 'crm:P129i_is_subject_of', 'rdf:value') ))" />
+		<!-- the object is represented by images which are aggregated into a bundle which is subject to certain legal rights -->
+		<xsl:variable name="rights" select="path:forward(('crm:P138i_has_representation', 'ore:isAggregatedBy', 'crm:P104_is_subject_to'))"/>
+		<!-- one component part of the rights is a formal licence (Creative Commons or similar) -->
+		<xsl:variable name="licence" select="path:forward($rights, 'crm:P148_has_component')"/>
+		<xsl:copy-of select="xmljson:render-as-string('rights', $licence)" />
+		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( $licence, 'rdfs:label' ))" />
+		<!-- the rights may also be described by a document whose textual value gives a reason for the restriction -->
+		<xsl:copy-of select="xmljson:render-as-string('rightsReason', path:forward( $rights, ('crm:P129i_is_subject_of', 'rdf:value') ))" />
 	</xsl:template>
 
 	<!-- TODO: could mint 'workFeaturedIn' instead of location (as inverse to schema:workFeatured) -->
@@ -660,14 +665,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		" />
 		<xsl:if test="$value-preferred or $value-unpreferred">
 			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
-				<xsl:for-each select="$value-preferred">
+				<xsl:for-each select="($value-preferred, $value-unpreferred)">
 					<xsl:call-template name="representations-dc-display">
 						<xsl:with-param name="value" select="$value-preferred" />
-					</xsl:call-template>
-				</xsl:for-each>
-				<xsl:for-each select="$value-unpreferred">
-					<xsl:call-template name="representations-dc-display">
-						<xsl:with-param name="value" select="$value-unpreferred" />
 					</xsl:call-template>
 				</xsl:for-each>
 			</array>

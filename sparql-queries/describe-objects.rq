@@ -69,11 +69,7 @@ WHERE {
 	crm:P43_has_dimension |
 	crm:P43_has_dimension/crm:P2_has_type |
 	crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
-	# rights and acknowledgements
-	crm:P104_is_subject_to |
-	crm:P104_is_subject_to/crm:P148_has_component |
-	crm:P104_is_subject_to/crm:P129i_is_subject_of |
-	crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type |
+	# acknowledgements
 	crm:P67i_is_referred_to_by |
 	# related objects
 	dc:relation |
@@ -88,7 +84,7 @@ WHERE {
 	
 	# the visual items that depict the object, and the creation of those images, and the photographers
 	# and the various derivative representations of that item, and their types (Piction images are typed)
-	# along with their dimensions, and the types and measurement units of the dimensions
+	# along with their dimensions, and the types and measurement units of the dimensions,
 	crm:P138i_has_representation |
 	crm:P138i_has_representation/crm:P94i_was_created_by |
 	crm:P138i_has_representation/crm:P94i_was_created_by/crm:P14_carried_out_by |
@@ -96,6 +92,14 @@ WHERE {
 	crm:P138i_has_representation/crm:P138i_has_representation/crm:P2_has_type |
 	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension |
 	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type |
-	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit
+	crm:P138i_has_representation/crm:P138i_has_representation/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
+	
+	# and also the aggregation which contains those images, and the rights that aggregation is subject to
+	crm:P138i_has_representation/ore:isAggregatedBy |
+	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to |
+	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P148_has_component |
+	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of |
+	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type |	
+	
 	?resource
 }

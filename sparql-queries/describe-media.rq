@@ -32,8 +32,14 @@ WHERE {
 	crm:P138_represents/crm:P43_has_dimension |
 	crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type |
 	crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
-	# parent object's rights
-	crm:P138_represents/crm:P104_is_subject_to |
+	
+	# the bundle of object images coverered by the same re-use rights which this image belongs to,
+	# and the rights themselves
+	ore:isAggregatedBy |
+	ore:isAggregatedBy/crm:P104_is_subject_to |
+	ore:isAggregatedBy/crm:P104_is_subject_to/crm:P148_has_component |
+	ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of |
+	ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type |	
 
 	# the creation of the images, and the photographers
 	# and the various derivative representations of that item, and their types (Piction images are typed)

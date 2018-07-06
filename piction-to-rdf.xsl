@@ -2,6 +2,7 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/"
 	xmlns="tag:conaltuohy.com,2018:nma/piction/"
+	xmlns:ore="http://www.openarchives.org/ore/terms/"
 	xmlns:dcterms="http://purl.org/dc/terms/">
 	
 	<xsl:param name="base-uri"/><!-- e.g. "http://api.nma.gov.au/" -->
@@ -64,6 +65,8 @@
 					</xsl:for-each>
 					<xsl:for-each select="$related-object-identifiers">
 						<crm:P138_represents rdf:resource="object/{translate(., ' ', '')}#" />
+						<!-- bundle this image up along with all the other images of this object, into an aggregation which is subject to the re-use rights -->
+						<ore:isAggregatedBy rdf:resource="object/{translate(., ' ', '')}#images"/>
 					</xsl:for-each>
 					<xsl:for-each select="$image-data-sources">
 						<crm:P138i_has_representation>

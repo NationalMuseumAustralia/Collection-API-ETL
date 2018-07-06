@@ -51,7 +51,7 @@
 								]
 						]
 				"/>
-				<!-- identify any EMu images which can be discarded -->
+				<!-- identify any EMu images which can therefore be discarded -->
 				<xsl:variable name="unwanted-emu-images" select="
 					$graph/
 						trix:triple
@@ -64,27 +64,7 @@
 				"/>
 				
 				<!-- ############################################################################## -->
-				<!-- We don't want a rights statement if there isn't actually any media attached -->
-				
-				<!-- identify any objects without media -->
-				<xsl:variable name="objects-with-no-media" select="
-					$objects
-						[
-							not( 
-								path:forward(., ('crm:P138i_has_representation'))
-							)
-						]
-				"/>
-				<!-- identify any rights statements which can be discarded -->
-				<xsl:variable name="unwanted-rights-statements" select="
-					$graph/
-						trix:triple
-							[*[1]=$objects-with-no-media]
-							[*[2]='http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to']
-				"/>
-				
-				<!-- ############################################################################## -->
-				<!-- Conversely, we can't include media if there isn't a rights statement -->
+				<!-- We can't include media if they are not bundled into an aggregation which is subject to a rights statement -->
 
 				<!-- 1. Remove links to that media from within objects -->
 				
@@ -95,7 +75,7 @@
 							path:forward(., ('crm:P138i_has_representation'))
 							and
 							not( 
-								path:forward(., ('crm:P104_is_subject_to'))
+								path:forward(., ('ore:isAggregatedBy', 'crm:P104_is_subject_to'))
 							)
 						]
 				"/>
@@ -108,7 +88,12 @@
 				"/>
 
 				<!-- 2. Remove the media records themselves -->
-
+				<!-- TODO check if this step 2 is actually needed -->
+				<!-- 
+					NB the JSON-LD serialization does not need it, since it simply traverses the graph from a "root" node,
+					and if the media objects are not themselves properties of the PhysicalObject, then they will not be
+					serialized (their descriptions will be disconnected sub-graphs)
+				-->
 				<!-- identify any media from objects without rights -->
 				<xsl:variable name="media-from-objects-with-no-rights" select="
 					$media

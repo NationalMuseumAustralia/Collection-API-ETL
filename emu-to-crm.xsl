@@ -73,6 +73,16 @@
 
 	<xsl:template match="record">
 		<xsl:variable name="entity-iri" select="concat(lower-case($record-type), '/', irn)" />
+		
+		<!-- 
+			Image re-use rights 
+			(NB unlike most of the data modelled here, these rights are not a property of the PhysicalObject; 
+			rather they are a property of the aggregation of the images which depict this PhysicalObject.
+		-->
+		<xsl:apply-templates select="AcsCCStatus">
+			<xsl:with-param name="entity-iri" select="$entity-iri" />
+			<xsl:with-param name="reason" select="AcsCCRestrictionReason" />
+		</xsl:apply-templates>
 
 		<rdf:Description rdf:about="{$entity-iri}#">
 
@@ -152,12 +162,6 @@
 			<xsl:apply-templates select="RigCreditLine2">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 				<xsl:with-param name="acknowledgement-flag" select="RigAcknowledgement" />
-			</xsl:apply-templates>
-			
-			<!-- rights -->
-			<xsl:apply-templates select="AcsCCStatus">
-				<xsl:with-param name="entity-iri" select="$entity-iri" />
-				<xsl:with-param name="reason" select="AcsCCRestrictionReason" />
 			</xsl:apply-templates>
 
 			<!-- exhibition location -->
@@ -747,46 +751,48 @@
 	<xsl:template match="AcsCCStatus">
 		<xsl:param name="entity-iri" />
 		<xsl:param name="reason" />
-		<crm:P104_is_subject_to>
-			<crm:E30_Right rdf:about="{$entity-iri}#rights">
-				<!-- right/licence -->
-				<crm:P148_has_component>
-					<xsl:choose>
-						<xsl:when test=". = 'Public Domain'">
-							<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
-								<rdf:value><xsl:text>Public Domain</xsl:text></rdf:value>
-							</crm:E30_Right>
-						</xsl:when>
-						<xsl:when test=". = 'Creative Commons Commercial Use'">
-							<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
-								<rdf:value><xsl:text>CC BY-SA 4.0</xsl:text></rdf:value>
-							</crm:E30_Right>
-						</xsl:when>
-						<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
-							<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-								<rdf:value><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdf:value>
-							</crm:E30_Right>
-						</xsl:when>
-						<!-- fall back to most conservative -->
-						<xsl:otherwise>
-							<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
-								<rdf:value><xsl:text>All Rights Reserved</xsl:text></rdf:value>
-							</crm:E30_Right>
-						</xsl:otherwise>
-					</xsl:choose>
-				</crm:P148_has_component>
-				<!-- restriction reason, if provided -->
-				<xsl:if test="$reason">
-					<crm:P129i_is_subject_of>
-						<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#restrictionReason">
-							<rdf:value><xsl:value-of select="$reason" /></rdf:value>
-							<!-- AAT 300404457: purpose (information indicator) -->
-							<crm:P2_has_type rdf:resource="{$aat-ns}300404457" />
-						</crm:E33_Linguistic_Object>
-					</crm:P129i_is_subject_of>
-				</xsl:if>
-			</crm:E30_Right>
-		</crm:P104_is_subject_to>
+		<ore:Aggregation rdf:about="{$entity-iri}#images">
+			<crm:P104_is_subject_to>
+				<crm:E30_Right rdf:about="{$entity-iri}#rights">
+					<!-- right/licence -->
+					<crm:P148_has_component>
+						<xsl:choose>
+							<xsl:when test=". = 'Public Domain'">
+								<crm:E30_Right rdf:about="https://creativecommons.org/publicdomain/mark/1.0/">
+									<rdfs:label><xsl:text>Public Domain</xsl:text></rdfs:label>
+								</crm:E30_Right>
+							</xsl:when>
+							<xsl:when test=". = 'Creative Commons Commercial Use'">
+								<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-sa/4.0/">
+									<rdfs:label><xsl:text>CC BY-SA 4.0</xsl:text></rdfs:label>
+								</crm:E30_Right>
+							</xsl:when>
+							<xsl:when test=". = 'Creative Commons Non-Commercial Use'">
+								<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+									<rdfs:label><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdfs:label>
+								</crm:E30_Right>
+							</xsl:when>
+							<!-- fall back to most conservative -->
+							<xsl:otherwise>
+								<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
+									<rdfs:label><xsl:text>All Rights Reserved</xsl:text></rdfs:label>
+								</crm:E30_Right>
+							</xsl:otherwise>
+						</xsl:choose>
+					</crm:P148_has_component>
+					<!-- restriction reason, if provided -->
+					<xsl:if test="$reason">
+						<crm:P129i_is_subject_of>
+							<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#restrictionReason">
+								<rdf:value><xsl:value-of select="$reason" /></rdf:value>
+								<!-- AAT 300404457: purpose (information indicator) -->
+								<crm:P2_has_type rdf:resource="{$aat-ns}300404457" />
+							</crm:E33_Linguistic_Object>
+						</crm:P129i_is_subject_of>
+					</xsl:if>
+				</crm:E30_Right>
+			</crm:P104_is_subject_to>
+		</ore:Aggregation>
 	</xsl:template>
 
 	<!-- TODO: add detailed exhibition location ancestor structure -->
@@ -863,6 +869,8 @@
 		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
 		<crm:P138i_has_representation>
 			<crm:E36_Visual_Item rdf:about="{$media-iri}#">
+				<!-- bundle this image up along with all the other images of this object, into an aggregation which is subject to the re-use rights -->
+				<ore:isAggregatedBy rdf:resource="{$entity-iri}#images"/>
 				<!-- flag first image as 'preferred' -->
 				<xsl:if test="position()=1">
 					<crm:P2_has_type rdf:resource="{$nma-term-ns}preferred" />
