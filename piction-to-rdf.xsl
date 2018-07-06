@@ -44,7 +44,8 @@
 			<xsl:if test="$related-objects and $image-data-sources">
 				<!-- we have both P138_represents and P138i_has_representation, for bidirectional 
 					traversal between objects and images -->
-				<xsl:for-each select="$related-objects!tokenize(., '[,\s?]+')">
+				<xsl:variable name="related-object-identifiers" select="$related-objects!tokenize(., '[,\s?]+')"/>
+				<xsl:for-each select="$related-object-identifiers">
 					<crm:E19_Physical_Object rdf:about="object/{translate(., ' ', '')}#">
 						<crm:P138i_has_representation rdf:resource="{$visual-item-graph}#" />
 					</crm:E19_Physical_Object>
@@ -57,7 +58,7 @@
 							<xsl:value-of select="." />
 						</rdf:label>
 					</xsl:for-each>
-					<xsl:for-each select="tokenize( $related-objects, '[,\s?]+' )">
+					<xsl:for-each select="$related-object-identifiers">
 						<crm:P138_represents rdf:resource="object/{translate(., ' ', '')}#" />
 					</xsl:for-each>
 					<xsl:for-each select="$image-data-sources">
