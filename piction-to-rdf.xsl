@@ -55,7 +55,7 @@
 				<crm:E36_Visual_Item rdf:about="{$visual-item-graph}#">
 					<crm:P2_has_type rdf:resource="{$nma-term-ns}piction-image" />
 					<!-- a record with <field name="Page Number">1</field> is marked as "preferred" -->
-					<xsl:if test="field[@name='Page Number']=1">
+					<xsl:if test="field[@name='Page Number']='1'">
 						<crm:P2_has_type rdf:resource="{$nma-term-ns}preferred" />	
 					</xsl:if>
 					<xsl:for-each select="field[@name='title']">
