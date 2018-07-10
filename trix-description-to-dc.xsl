@@ -541,18 +541,6 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 	</xsl:template>
 	
-	<!-- rights (called from within representations-dc-display) -->
-	<xsl:template name="rights-dc">
-		<!-- the object is represented by images which are aggregated into a bundle which is subject to certain legal rights -->
-		<xsl:variable name="rights" select="path:forward(('crm:P138i_has_representation', 'ore:isAggregatedBy', 'crm:P104_is_subject_to'))"/>
-		<!-- one component part of the rights is a formal licence (Creative Commons or similar) -->
-		<xsl:variable name="licence" select="path:forward($rights, 'crm:P148_has_component')"/>
-		<xsl:copy-of select="xmljson:render-as-string('rights', $licence)" />
-		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( $licence, 'rdfs:label' ))" />
-		<!-- the rights may also be described by a document whose textual value gives a reason for the restriction -->
-		<xsl:copy-of select="xmljson:render-as-string('rightsReason', path:forward( $rights, ('crm:P129i_is_subject_of', 'rdf:value') ))" />
-	</xsl:template>
-
 	<!-- TODO: could mint 'workFeaturedIn' instead of location (as inverse to schema:workFeatured) -->
 
 	<!-- exhibition location -->
@@ -664,17 +652,24 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<!-- representations and their digital media files -->
 	<xsl:template name="representations-dc">
-		<!-- display preferred first, then any unpreferred -->
+		<!-- embed record-level rights next to each media (as that's what it refers to) -->
+		<xsl:call-template name="rights-dc-display">
+			<xsl:with-param name="value" select="$root-resource" />
+		</xsl:call-template>
+		<!-- display preferred first (NB: only representations inside objects have preferred tagging) -->
 		<xsl:variable name="value-preferred" select="
 			path:forward('crm:P138i_has_representation')[
 				path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred'
 			]
 		" />
+		<!-- then unpreferred (this also picks up representations inside narratives/media) -->
 		<xsl:variable name="value-unpreferred" select="
 			path:forward('crm:P138i_has_representation')[
 				not( path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred' )
 			]
 		" />
+		<!-- for object: this is an array of media (which contain digital files) -->
+		<!-- for media: this is an array of the digital files inside this one media -->
 		<xsl:if test="$value-preferred or $value-unpreferred">
 			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="($value-preferred, $value-unpreferred)">
@@ -687,6 +682,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	</xsl:template>
 
 	<!-- display a representation -->
+	<!-- (called from within: representations-dc, narrative-image-dc, narrative-objects-dc) -->
+	<!-- NB: this displays the 'meat' of one representation (inside an array), which will be different depending on entity type -->
+	<!-- object: shows one media plus its multiple child digital files (2nd level P138 has representation) -->
+	<!-- media: shows one digital file (has no lower level P138 has representation) -->
 	<xsl:template name="representations-dc-display">
 		<xsl:param name="value" />
 		<map xmlns="http://www.w3.org/2005/xpath-functions">
@@ -703,8 +702,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:copy-of
 				select="xmljson:render-as-string('version', path:forward(., ('crm:P2_has_type', 'rdfs:label')))" />
 			<!-- embed record-level rights next to each media (as that's what it refers to) -->
-			<xsl:call-template name="rights-dc" />
-			<!-- digital media files for this representation -->
+			<xsl:call-template name="rights-dc-display">
+				<xsl:with-param name="value" select="$value" />
+			</xsl:call-template>
+			<!-- digital media files for this representation - only objects have a 2nd level -->
 			<xsl:variable name="value2"
 				select="path:forward(., 'crm:P138i_has_representation')" />
 			<xsl:if test="$value2">
@@ -728,6 +729,21 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 				</array>
 			</xsl:if>
 		</map>
+	</xsl:template>
+
+	<!-- display rights within a representation -->
+	<!-- (called from within representations-dc-display) -->
+	<!-- NB: will only display if the supplied representation is at the level that has ore:isAggregatedBy -->
+	<xsl:template name="rights-dc-display">
+		<xsl:param name="value" />
+		<!-- the object is represented by images which are aggregated into a bundle which is subject to certain legal rights -->
+		<xsl:variable name="rights" select="path:forward($value, ('ore:isAggregatedBy', 'crm:P104_is_subject_to'))"/>
+		<!-- one component part of the rights is a formal licence (Creative Commons or similar) -->
+		<xsl:variable name="licence" select="path:forward($rights, 'crm:P148_has_component')"/>
+		<xsl:copy-of select="xmljson:render-as-string('rights', $licence)" />
+		<xsl:copy-of select="xmljson:render-as-string('rightsTitle', path:forward( $licence, 'rdfs:label' ))" />
+		<!-- the rights may also be described by a document whose textual value gives a reason for the restriction -->
+		<xsl:copy-of select="xmljson:render-as-string('rightsReason', path:forward( $rights, ('crm:P129i_is_subject_of', 'rdf:value') ))" />
 	</xsl:template>
 
 	<!-- PARTY FIELDS -->
@@ -947,5 +963,5 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			</array>
 		</xsl:if>
 	</xsl:template>
-	
+
 </xsl:stylesheet>

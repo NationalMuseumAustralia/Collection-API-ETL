@@ -2,8 +2,9 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
 	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
-	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../redact-trix-description.xsl">
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:ore="http://www.openarchives.org/ore/terms/"
+	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/" xmlns:xpath="http://www.w3.org/2005/xpath-functions"
+	stylesheet="../../../redact-trix-description.xsl">
 
 	<!-- load an object trix record into the global $graph variable -->
 	<x:variable name="graph">
@@ -16,7 +17,7 @@
 			</triple>
 			<!-- rights triple (so media isn't removed) -->
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
 				<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
 			</triple>
@@ -31,6 +32,11 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
 			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
+			</triple>
 			<!-- emu image to be redacted, as piction image exists -->
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
@@ -42,6 +48,11 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/emu-image</uri>
 			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
+			</triple>
 		</graph>
 	</x:variable>
 
@@ -50,7 +61,7 @@
 
 	<x:scenario label="Perform redaction">
 		<x:call template="do-redaction" />
-		<x:expect label="should return type, piction, and orphaned emu type triple">
+		<x:expect label="should return type, piction, and orphaned emu type triples">
 			<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 				<graph>
 					<triple>
@@ -59,7 +70,7 @@
 						<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 					</triple>
 					<triple>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
 						<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
 						<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
 					</triple>
@@ -74,9 +85,19 @@
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
 					</triple>
 					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+						<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
+					</triple>
+					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
 						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/term/emu-image</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+						<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
 					</triple>
 				</graph>
 			</trix>

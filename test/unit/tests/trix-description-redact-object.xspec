@@ -16,7 +16,7 @@
 			</triple>
 			<!-- rights triple to be retained - as there _is_ media -->
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
 				<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
 			</triple>
@@ -26,18 +26,7 @@
 				<uri>http://purl.org/dc/terms/relation</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/999999#</uri>
 			</triple>
-			<!-- Piction image to be retained -->
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-			</triple>
-			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
-			</triple>
-			<!-- EMu image to be redacted (as Piction image exists instead) -->
+			<!-- EMu image to be retained (as no Piction image exists instead) -->
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
@@ -48,6 +37,11 @@
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/term/emu-image</uri>
 			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
+			</triple>
 		</graph>
 	</x:variable>
 
@@ -57,7 +51,7 @@
 	<x:scenario label="Perform redaction">
 		<x:call template="do-redaction" />
 		<x:expect
-			label="should return type triple, piction image, and orphaned emu image type">
+			label="should return type, rights, and emu image triples">
 			<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 				<graph>
 					<triple>
@@ -66,24 +60,24 @@
 						<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 					</triple>
 					<triple>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
 						<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
 						<uri>https://creativecommons.org/publicdomain/mark/1.0/</uri>
 					</triple>
 					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
 						<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-					</triple>
-					<triple>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/term/piction-image</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
 					</triple>
 					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
 						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/term/emu-image</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+						<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#media</uri>
 					</triple>
 				</graph>
 			</trix>

@@ -40,31 +40,35 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:pending label="Waiting for revised trix source record">
 	<x:scenario label="Convert representations">
 		<x:call template="representations-dc" />
-		<x:expect label="should return xpath:array of hasVersion maps">
-			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
-				<map>
-					<string key="type">StillImage</string>
-					<string key="identifier">...</string>
-					<string key="version">large image</string>
-				</map>
-				<map>
-					<string key="type">StillImage</string>
-					<string key="identifier">...</string>
-				</map>
-				<map>
-					<string key="type">StillImage</string>
-					<string key="identifier">...</string>
-					<string key="version">preview image</string>
-				</map>
-				<map>
-					<string key="type">StillImage</string>
-					<string key="identifier">...</string>
-					<string key="version">thumbnail image</string>
-				</map>
-			</array>
+		<x:expect label="should return rights and xpath:array of hasVersion maps">
+			<xpath:string key="rights">https://creativecommons.org/publicdomain/mark/1.0/</xpath:string>
+			<xpath:string key="rightsTitle">Public Domain</xpath:string>
+			<xpath:array key="hasVersion">
+				<xpath:map>
+					<xpath:string key="type">StillImage</xpath:string>
+					<xpath:string key="identifier">...</xpath:string>
+					<xpath:string key="version">large image</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="type">StillImage</xpath:string>
+					<xpath:string key="identifier">...</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="type">StillImage</xpath:string>
+					<xpath:string key="identifier">...</xpath:string>
+					<xpath:string key="version">preview image</xpath:string>
+				</xpath:map>
+				<xpath:map>
+					<xpath:string key="type">StillImage</xpath:string>
+					<xpath:string key="identifier">...</xpath:string>
+					<xpath:string key="version">thumbnail image</xpath:string>
+				</xpath:map>
+			</xpath:array>
 		</x:expect>
 	</x:scenario>
+	</x:pending>
 
 </x:description>
