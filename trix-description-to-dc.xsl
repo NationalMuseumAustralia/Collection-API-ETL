@@ -57,6 +57,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="temporal-dc" />
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
 			<xsl:call-template name="acknowledgement-dc" />
+			<xsl:call-template name="inwardloan-dc" />
 			<xsl:call-template name="exhibition-location-dc" />
 			<xsl:call-template name="object-parent-dc" />
 			<xsl:call-template name="object-children-dc" />
@@ -527,6 +528,17 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 			/path:forward(., 'rdf:value')
 		)" />
+	</xsl:template>
+	
+	<!-- inward loan -->
+	<xsl:template name="inwardloan-dc">
+		<xsl:if test="
+			path:forward('crm:P30i_custody_transferred_through')[
+				path:forward(., 'crm:P29_custody_received_by') = 'http://dbpedia.org/resource/National_Museum_of_Australia'
+			]
+		">
+			<string key='source'><xsl:text>Inward loan</xsl:text></string>
+		</xsl:if>
 	</xsl:template>
 	
 	<!-- rights (called from within representations-dc-display) -->

@@ -601,6 +601,28 @@
 			<RigCreditLine2>Donated through the Australian Government.</RigCreditLine2>
 			<x:param name="acknowledgement-flag" select="'no'" />
 		</x:context>
+		<x:expect label="should return empty">
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert inward loan: yes">
+		<x:context>
+			<InwardLoan>yes</InwardLoan>
+		</x:context>
+		<x:expect label="should return P30i_custody_transferred_through">
+			<crm:P30i_custody_transferred_through>
+				<crm:E10_Transfer_of_Custody>
+					<rdfs:label>Inward loan to NMA</rdfs:label>
+					<crm:P29_custody_received_by rdf:resource="..." />
+				</crm:E10_Transfer_of_Custody>
+			</crm:P30i_custody_transferred_through>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert inward loan: no">
+		<x:context>
+			<InwardLoan>no</InwardLoan>
+		</x:context>
 		<x:expect label="should return empty" />
 	</x:scenario>
 

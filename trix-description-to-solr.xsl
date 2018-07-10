@@ -45,6 +45,7 @@
 						<xsl:call-template name="associated-places-solr" />
 						<xsl:call-template name="associated-dates-solr" />
 						<xsl:call-template name="acknowledgement-solr" />
+						<xsl:call-template name="inwardloan-solr" />
 						<xsl:call-template name="rights-solr" />
 						<xsl:call-template name="exhibition-location-solr" />
 						<xsl:call-template name="object-parent-solr" />
@@ -495,6 +496,17 @@
 
 	<!-- acknowledgement -->
 	<xsl:template name="acknowledgement-solr">
+	</xsl:template>
+
+	<!-- inward loan -->
+	<xsl:template name="inwardloan-solr">
+		<xsl:if test="
+			path:forward('crm:P30i_custody_transferred_through')[
+				path:forward(., 'crm:P29_custody_received_by') = 'http://dbpedia.org/resource/National_Museum_of_Australia'
+			]
+		">
+			<field name='source'><xsl:text>Inward loan</xsl:text></field>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- rights -->

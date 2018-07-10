@@ -234,6 +234,7 @@
   <field name="unitTextWeight" type="text_general"/>
   <field name="medium" type="text_general"/>
   <field name="acknowledgement" type="text_general"/>
+  <field name="source" type="text_general"/>
   <field name="location" type="text_general"/>
   <field name="seeAlso" type="text_general"/>
   <field name="isPartOf_object_id" type="strings"/>
@@ -272,6 +273,7 @@
   <copyField source="spatial" dest="spatial_str" maxChars="256"/>
   <copyField source="temporal" dest="temporal_str" maxChars="256"/>
   <copyField source="medium" dest="medium_str" maxChars="256"/>
+  <copyField source="source" dest="source_str" maxChars="256"/>
   <copyField source="seeAlso" dest="seeAlso_str" maxChars="256"/>
   <copyField source="modified" dest="modified_str" maxChars="256"/>
   <copyField source="issued" dest="issued_str" maxChars="256"/>
@@ -287,7 +289,7 @@
   <copyField source="educationalSignificance" dest="description"/>
   <!-- build 'text' catchall full-text field -->
   <!-- NB: to keep this default query field focused, we only include fields 'about' the resource, so other stray words don't skew results -->
-  <!-- excluded: id, collection, dimensions, unitTexts, acknowledgement, location, modified, issued, rights, geo, narrative banner images -->
+  <!-- excluded: id, collection, dimensions, unitTexts, acknowledgement, source, location, modified, issued, rights, geo, narrative banner images -->
   <copyField source="title" dest="text"/>
   <copyField source="type" dest="text"/>
   <copyField source="additionalType" dest="text"/>
