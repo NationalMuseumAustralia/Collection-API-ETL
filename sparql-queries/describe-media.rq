@@ -1,4 +1,5 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX ore: <http://www.openarchives.org/ore/terms/>
 DESCRIBE «resource-uri» ?resource
 WHERE {
 	«resource-uri»

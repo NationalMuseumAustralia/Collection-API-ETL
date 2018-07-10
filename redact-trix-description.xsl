@@ -64,20 +64,19 @@
 				"/>
 				
 				<!-- ############################################################################## -->
-				<!-- We can't include media if they are not bundled into an aggregation which is subject to a rights statement -->
+				<!-- We can't include media unless they are bundled into an aggregation which is subject to a rights statement -->
 
-				<!-- 1. Remove links to that media from within objects -->
+				<!-- 1. Remove links to those media from within objects -->
 				
-				<!-- identify any objects with media but no rights -->
+				<!-- identify any objects with media which are not aggregated into a collection which is subject to some legal rights -->
 				<xsl:variable name="objects-with-media-but-no-rights" select="
-					$objects
-						[
-							path:forward(., ('crm:P138i_has_representation'))
-							and
+					$objects[
+						path:forward(., 'crm:P138i_has_representation')[
 							not( 
 								path:forward(., ('ore:isAggregatedBy', 'crm:P104_is_subject_to'))
 							)
 						]
+					]
 				"/>
 				<!-- identify any media statements which can be discarded -->
 				<xsl:variable name="unwanted-object-media-statements" select="
@@ -87,32 +86,7 @@
 							[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation']
 				"/>
 
-				<!-- 2. Remove the media records themselves -->
-				<!-- TODO check if this step 2 is actually needed -->
-				<!-- 
-					NB the JSON-LD serialization does not need it, since it simply traverses the graph from a "root" node,
-					and if the media objects are not themselves properties of the PhysicalObject, then they will not be
-					serialized (their descriptions will be disconnected sub-graphs)
-				-->
-				<!-- identify any media from objects without rights -->
-				<xsl:variable name="media-from-objects-with-no-rights" select="
-					$media
-						[
-							path:forward(., ('crm:P138_represents'))
-								[
-									not( 
-										path:forward(., ('crm:P104_is_subject_to'))
-									)
-								]
-						]
-				"/>
-				<!-- identify any media statements which can be discarded -->
-				<xsl:variable name="unwanted-media-statements" select="
-					$graph/
-						trix:triple
-							[*[1]=$media-from-objects-with-no-rights]
-				"/>
-			
+
 				<!-- ############################################################################## -->
 				<!-- Exclude related objects that aren't available via the API -->
 
@@ -158,7 +132,7 @@
 
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:copy-of select="$graph/trix:triple except ($unwanted-emu-images, $unwanted-rights-statements, $unwanted-object-media-statements, $unwanted-media-statements, $unwanted-related-objects, $unwanted-narrative-object-triples)"/>
+				<xsl:copy-of select="$graph/trix:triple except ($unwanted-emu-images, $unwanted-object-media-statements, $unwanted-related-objects, $unwanted-narrative-object-triples)"/>
 				
 			</graph>
 		</trix>

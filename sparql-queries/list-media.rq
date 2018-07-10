@@ -9,5 +9,5 @@ where {
 	}
 	filter(isuri(?resource)) # ignoring any visual items which have no URI
 	# for debugging, filter here:
-	# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
+	# filter (?resource in (<http://nma-dev.conaltuohy.com/media/MA22895583#> ))
 }	

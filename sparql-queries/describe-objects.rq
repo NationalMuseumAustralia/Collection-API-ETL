@@ -2,6 +2,8 @@ PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX dc: <http://purl.org/dc/terms/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ore: <http://www.openarchives.org/ore/terms/>
+
 DESCRIBE «resource-uri» ?resource
 WHERE {
 	«resource-uri»
@@ -99,7 +101,7 @@ WHERE {
 	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to |
 	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P148_has_component |
 	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of |
-	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type |	
+	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type 
 	
 	?resource
 }
