@@ -63,12 +63,12 @@
 	<x:scenario label="Convert narrative objects">
 		<x:call template="narrative-objects-solr" />
 		<x:expect label="should return field aggregates">
-			<field name="aggregates_id">241465</field>
-			<field name="aggregates_id">241464</field>
-			<field name="aggregates_id">241466</field>
-			<field name="aggregates_id">241451</field>
-			<field name="aggregates_id">241493</field>
-			<field name="aggregates_id">241494</field>
+			<field name="aggregates_object_id">241465</field>
+			<field name="aggregates_object_id">241464</field>
+			<field name="aggregates_object_id">241466</field>
+			<field name="aggregates_object_id">241451</field>
+			<field name="aggregates_object_id">241493</field>
+			<field name="aggregates_object_id">241494</field>
 		</x:expect>
 	</x:scenario>
 

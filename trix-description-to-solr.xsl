@@ -612,9 +612,16 @@
 				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
 			]
 		" />
+		<!-- this is a narrative under another narrative -->
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
 				<field name="isPartOf_narrative_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			</xsl:for-each>
+		</xsl:if>
+		<!-- this is an object under a narrative -->
+		<xsl:if test="$type='object' and $value">
+			<xsl:for-each select="$value">
+				<field name="isAggregatedBy_narrative_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
@@ -642,7 +649,7 @@
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
-				<field name="aggregates_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+				<field name="aggregates_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>

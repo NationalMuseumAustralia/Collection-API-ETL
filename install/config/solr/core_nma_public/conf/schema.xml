@@ -239,6 +239,7 @@
   <field name="isPartOf_object_id" type="strings"/>
   <field name="hasPart_object_id" type="strings"/>
   <field name="related_object_id" type="strings"/>
+  <field name="isAggregatedBy_narrative_id" type="strings"/>
   <field name="media" type="text_general"/>
   <field name="media_id" type="strings"/>
   <field name="media_object_id" type="strings"/>
@@ -249,7 +250,7 @@
   <!-- narrative -->
   <field name="isPartOf_narrative_id" type="strings"/>
   <field name="hasPart_narrative_id" type="strings"/>
-  <field name="aggregates_id" type="strings"/>
+  <field name="aggregates_object_id" type="strings"/>
   <!-- media -->
   <field name="rights" type="text_general"/>
   <!-- party -->

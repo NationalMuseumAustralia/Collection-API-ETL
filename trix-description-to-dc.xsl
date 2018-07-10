@@ -839,8 +839,24 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
 			]
 		" />
+		<!-- this is a narrative under another narrative -->
 		<xsl:if test="$type='narrative' and $value">
 			<array key="isPartOf" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<!-- id -->
+						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+						<!-- type -->
+						<string key='type'><xsl:text>narrative</xsl:text></string>
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+			</xsl:for-each>
+			</array>
+		</xsl:if>
+		<!-- this is an object under a narrative -->
+		<xsl:if test="$type='object' and $value">
+			<array key="isAggregatedBy" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="$value">
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
 						<!-- id -->

@@ -75,6 +75,10 @@ WHERE {
 	dc:relation |
 	dc:relation/rdf:type |
 	dc:relation/rdfs:label |
+	# narratives is within
+	ore:isAggregatedBy |
+	ore:isAggregatedBy/rdf:type |
+	ore:isAggregatedBy/rdfs:label |
 	# links
 	rdfs:seeAlso |
 	rdfs:seeAlso/rdf:type |
