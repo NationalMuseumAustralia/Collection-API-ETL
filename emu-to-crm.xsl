@@ -169,6 +169,9 @@
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
 
+			<!-- inward loan -->
+			<xsl:apply-templates select="InwardLoan" />
+
 			<!-- object parent -->
 			<!-- NB: we don't use TitObjectType as AssParentObjectRef adds parent AND child links -->
 			<xsl:apply-templates select="AssParentObjectRef">
@@ -811,6 +814,20 @@
 				<crm:P2_has_type rdf:resource="{$aat-ns}300054766" />
 			</crm:E7_Activity>
 		</crm:P16i_was_used_for>
+	</xsl:template>
+
+	<!-- inward loan -->
+	<!-- https://linked.art/model/exhibition/#exhibition-provenance-transfer-of-custody -->
+	<xsl:template match="InwardLoan">
+		<xsl:if test=". = 'yes'">
+			<crm:P30i_custody_transferred_through>
+				<crm:E10_Transfer_of_Custody>
+					<rdfs:label>Inward loan to NMA</rdfs:label>
+					<crm:P29_custody_received_by
+						rdf:resource="http://dbpedia.org/resource/National_Museum_of_Australia" />
+				</crm:E10_Transfer_of_Custody>
+			</crm:P30i_custody_transferred_through>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- web links -->

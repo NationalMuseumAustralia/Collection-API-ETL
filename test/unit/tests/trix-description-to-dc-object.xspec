@@ -10,7 +10,7 @@
 
 	<!-- TODO: untested fields (as not in object record 122751): 
 	secondary object type, content description, significance statement, 
-	educational significance, acknowledgement, related, exhibition location, 
+	educational significance, acknowledgement, source, related, exhibition location, 
 	parent/child, see-also web links -->
 
 	<x:param name="root-resource"

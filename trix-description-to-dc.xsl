@@ -57,6 +57,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<xsl:call-template name="temporal-dc" />
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
 			<xsl:call-template name="acknowledgement-dc" />
+			<xsl:call-template name="inwardloan-dc" />
 			<xsl:call-template name="exhibition-location-dc" />
 			<xsl:call-template name="object-parent-dc" />
 			<xsl:call-template name="object-children-dc" />
@@ -529,6 +530,17 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		)" />
 	</xsl:template>
 	
+	<!-- inward loan -->
+	<xsl:template name="inwardloan-dc">
+		<xsl:if test="
+			path:forward('crm:P30i_custody_transferred_through')[
+				path:forward(., 'crm:P29_custody_received_by') = 'http://dbpedia.org/resource/National_Museum_of_Australia'
+			]
+		">
+			<string key='source'><xsl:text>Inward loan</xsl:text></string>
+		</xsl:if>
+	</xsl:template>
+	
 	<!-- rights (called from within representations-dc-display) -->
 	<xsl:template name="rights-dc">
 		<!-- the object is represented by images which are aggregated into a bundle which is subject to certain legal rights -->
@@ -839,8 +851,24 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
 			]
 		" />
+		<!-- this is a narrative under another narrative -->
 		<xsl:if test="$type='narrative' and $value">
 			<array key="isPartOf" xmlns="http://www.w3.org/2005/xpath-functions">
+				<xsl:for-each select="$value">
+					<map xmlns="http://www.w3.org/2005/xpath-functions">
+						<!-- id -->
+						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
+						<!-- type -->
+						<string key='type'><xsl:text>narrative</xsl:text></string>
+						<!-- title -->
+						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., 'rdfs:label') )" />
+					</map>
+			</xsl:for-each>
+			</array>
+		</xsl:if>
+		<!-- this is an object under a narrative -->
+		<xsl:if test="$type='object' and $value">
+			<array key="isAggregatedBy" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="$value">
 					<map xmlns="http://www.w3.org/2005/xpath-functions">
 						<!-- id -->

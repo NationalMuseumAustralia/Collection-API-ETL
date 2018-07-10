@@ -45,6 +45,7 @@
 						<xsl:call-template name="associated-places-solr" />
 						<xsl:call-template name="associated-dates-solr" />
 						<xsl:call-template name="acknowledgement-solr" />
+						<xsl:call-template name="inwardloan-solr" />
 						<xsl:call-template name="rights-solr" />
 						<xsl:call-template name="exhibition-location-solr" />
 						<xsl:call-template name="object-parent-solr" />
@@ -497,6 +498,17 @@
 	<xsl:template name="acknowledgement-solr">
 	</xsl:template>
 
+	<!-- inward loan -->
+	<xsl:template name="inwardloan-solr">
+		<xsl:if test="
+			path:forward('crm:P30i_custody_transferred_through')[
+				path:forward(., 'crm:P29_custody_received_by') = 'http://dbpedia.org/resource/National_Museum_of_Australia'
+			]
+		">
+			<field name='source'><xsl:text>Inward loan</xsl:text></field>
+		</xsl:if>
+	</xsl:template>
+
 	<!-- rights -->
 	<xsl:template name="rights-solr">
 		<xsl:for-each select="path:forward('crm:P104_is_subject_to')">
@@ -612,9 +624,16 @@
 				path:forward(., 'rdf:type') = 'http://www.openarchives.org/ore/terms/Aggregation'
 			]
 		" />
+		<!-- this is a narrative under another narrative -->
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
 				<field name="isPartOf_narrative_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+			</xsl:for-each>
+		</xsl:if>
+		<!-- this is an object under a narrative -->
+		<xsl:if test="$type='object' and $value">
+			<xsl:for-each select="$value">
+				<field name="isAggregatedBy_narrative_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
@@ -642,7 +661,7 @@
 		" />
 		<xsl:if test="$type='narrative' and $value">
 			<xsl:for-each select="$value">
-				<field name="aggregates_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
+				<field name="aggregates_object_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>

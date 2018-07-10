@@ -68,6 +68,9 @@
 	
 	<!-- remove all locations other than levels 1 and 2, where level 1 is "Acton" -->
 	<xsl:template match="LocCurrentLocationRef[LocLevel1='Acton']/*[not(self::LocLevel1 | self::LocLevel2)]"/>
+
+	<!-- exclude object inwards loan flag -->
+	<xsl:template match="InwardLoan"/>
 	
 	<!-- remove all images if licence is not open -->
 	<xsl:template match="
