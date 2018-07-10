@@ -49,7 +49,7 @@
 			</xsl:analyze-string>
 			<xsl:text>"</xsl:text>
 			<xsl:choose>
-				<xsl:when test="$datatype">^^<xsl:value-of select="$datatype"/></xsl:when>
+				<xsl:when test="$datatype">^^&lt;<xsl:value-of select="$datatype"/>&gt;</xsl:when>
 				<xsl:otherwise>
 					<xsl:if test="$lang">@<xsl:value-of select="$lang"/></xsl:if>
 				</xsl:otherwise>
