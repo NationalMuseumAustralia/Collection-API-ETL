@@ -501,9 +501,7 @@
 	<!-- inward loan -->
 	<xsl:template name="inwardloan-solr">
 		<xsl:if test="
-			path:forward('crm:P30i_custody_transferred_through')[
-				path:forward(., 'crm:P29_custody_received_by') = 'http://dbpedia.org/resource/National_Museum_of_Australia'
-			]
+			path:forward(('crm:P30i_custody_transferred_through', 'crm:P29_custody_received_by')) = 'http://dbpedia.org/resource/National_Museum_of_Australia'
 		">
 			<field name='source'><xsl:text>Inward loan</xsl:text></field>
 		</xsl:if>
