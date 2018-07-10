@@ -39,6 +39,7 @@
 	<p:group>
 		<!-- capture the hostname so we can make URIs relative to this host -->
 		<p:variable name="hostname" select="normalize-space(/)"/>
+		<p:sink/>
 		
 		<!-- load our local vocabulary data -->
 		<nma:load-vocabulary>
@@ -46,43 +47,45 @@
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:load-vocabulary>
-		
-		<!-- process EMu objects, places, parties, collections, and narratives -->
-		<nma:process-data file-name-component="narratives">
-			<p:with-option name="dataset" select="$dataset"/>
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-data>
 
-		<nma:process-data file-name-component="objects">
-			<p:with-option name="dataset" select="$dataset"/>
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-data>
-
-		<nma:process-data file-name-component="sites" dataset="public">
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-data>
-
-		<nma:process-data file-name-component="parties">
-			<p:with-option name="dataset" select="$dataset"/>
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-data>
-
-		<nma:process-data file-name-component="accessionlots">
-			<p:with-option name="dataset" select="$dataset"/>
-			<p:with-option name="incremental" select="$incremental"/>
-			<p:with-option name="hostname" select="$hostname"/>
-		</nma:process-data>
-		
 		<!-- process Piction image metadata -->
-		<nma:process-piction-data>
+		<nma:process-piction-data name="import-images">
 			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-piction-data>
+		
+		<!-- process EMu objects, places, parties, collections, and narratives -->
+
+		<nma:process-data name="narratives" file-name-component="narratives">
+			<p:with-option name="dataset" select="$dataset"/>
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
+
+		<nma:process-data name="objects" file-name-component="objects">
+			<p:with-option name="dataset" select="$dataset"/>
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
+
+		<nma:process-data name="sites" file-name-component="sites">
+			<p:with-option name="dataset" select="$dataset"/>
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
+
+		<nma:process-data name="parties" file-name-component="parties">
+			<p:with-option name="dataset" select="$dataset"/>
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
+
+		<nma:process-data name="collections" file-name-component="accessionlots">
+			<p:with-option name="dataset" select="$dataset"/>
+			<p:with-option name="incremental" select="$incremental"/>
+			<p:with-option name="hostname" select="$hostname"/>
+		</nma:process-data>
 		
 	</p:group>
 	
@@ -157,7 +160,7 @@
 		</p:xslt>
 		<p:for-each name="record">
 			<p:iteration-source select="/add/doc"/>
-			<nma:ingest-record>
+			<nma:ingest-record name="save-the-piction-rdf">
 				<p:with-option name="file-name-component" select=" 'piction' "/>
 				<p:with-option name="dataset" select="$dataset"/>        
 				<p:with-option name="hostname" select="$hostname"/>
@@ -203,43 +206,15 @@
 			</p:xslt>
 			<p:for-each name="record">
 				<p:iteration-source select="/response/record"/>
-				<!-- EMu "partial-update" records are excluded from this processing, and handled separately below -->
-				<!-- because a partial-update can't be handled by transforming the record to an RDF graph and storing it using the SPARQL Graph Store protocol; -->
-				<!-- instead it has to delete a triple from a graph and insert a new one, using the SPARQL Update protocol -->
-				<p:choose>
-					<p:when test="/record[partial-update]">
-						<nma:partial-update>
-							<p:with-option name="dataset" select="$dataset"/>        
-							<p:with-option name="hostname" select="$hostname"/>
-						</nma:partial-update>
-					</p:when>
-					<p:otherwise>
-						<nma:ingest-record>
-							<p:with-option name="file-name-component" select="$file-name-component"/>
-							<p:with-option name="dataset" select="$dataset"/>        
-							<p:with-option name="hostname" select="$hostname"/>
-							<p:with-option name="incremental" select="$incremental"/>
-						</nma:ingest-record>
-					</p:otherwise>
-				</p:choose>
+				<nma:ingest-record>
+					<p:with-option name="file-name-component" select="$file-name-component"/>
+					<p:with-option name="dataset" select="$dataset"/>        
+					<p:with-option name="hostname" select="$hostname"/>
+					<p:with-option name="incremental" select="$incremental"/>
+				</nma:ingest-record>
+				<p:sink/>
 			</p:for-each>
 		</p:for-each>
-	</p:declare-step>
-	
-	<p:declare-step type="nma:partial-update" name="partial-update">
-		<!-- Process "partial-update" records which apply to objects only (not the other entity types) -->
-		<!-- EMu "partial-update" records can't be handled by transforming the record to an RDF graph and storing it using the SPARQL Graph Store protocol; -->
-		<!-- instead, each partial update must delete a triple from an existing graph and insert a new triple in its place, using the SPARQL Update protocol -->
-		<!-- EMu records are uniquely identified by /response/record/irn -->
-		<p:option name="dataset" required="true"/><!-- "public" or "internal" -->
-		<p:option name="hostname" required="true"/><!-- e.g. "nma.conaltuohy.com" or "data.nma.gov.au" -->
-		<p:input port="source"/>
-		<p:variable name="identifier" select="/record/irn"/>
-		<cx:message>
-			<p:with-option name="message" select="concat('Partially updating object ', $identifier, ' in ', $dataset, ' dataset...')"/>
-		</cx:message>
-		<!-- TODO generate and execute the appropriate SPARQL update -->
-		<p:sink name="simply-ignore-the-partial-update-record-for-now"/>
 	</p:declare-step>
 	
 	<p:declare-step type="nma:ingest-record" name="ingest-record">
@@ -333,12 +308,14 @@
 			</p:otherwise>
 		</p:choose>
 		<!-- store the RDF/XML as a file -->
+		<!--
 		<p:store indent="true">
 			<p:with-option name="href" select="concat('/data/', $dataset, '/rdf-xml/', encode-for-uri(encode-for-uri($graph-uri)), '.rdf')"/>
 			<p:input port="source">
 				<p:pipe step="store-graph" port="source"/>
 			</p:input>
-		</p:store>		
+		</p:store>
+		-->
 	</p:declare-step>
 	
 </p:declare-step>

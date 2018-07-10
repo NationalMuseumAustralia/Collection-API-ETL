@@ -9,6 +9,8 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:results="http://www.w3.org/2005/sparql-results#"
 >
+	<p:option name="dataset" required="true"/>
+	
 	<!-- import calabash extension library to enable use of file steps -->
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 
@@ -16,12 +18,24 @@
 	<!-- update Solr store by querying the SPARQL store -->
 
 	<!-- generate a Solr index of narratives, media, places, parties, collections, and physical objects -->
-	<nma:index-resources name="index-narratives" list-query="sparql-queries/list-narratives.rq" describe-query="sparql-queries/describe-narratives.rq"/>
-	<nma:index-resources name="index-collections" list-query="sparql-queries/list-collections.rq" describe-query="sparql-queries/describe-collections.rq"/>
-	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq"/>
-	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq"/>
-	<nma:index-resources name="index-parties" list-query="sparql-queries/list-parties.rq" describe-query="sparql-queries/describe-parties.rq"/>
-	<nma:index-resources name="index-places" list-query="sparql-queries/list-places.rq" describe-query="sparql-queries/describe-places.rq"/>
+	<nma:index-resources name="index-narratives" list-query="sparql-queries/list-narratives.rq" describe-query="sparql-queries/describe-narratives.rq">
+		<p:with-option name="dataset" select="$dataset"/>
+	</nma:index-resources>
+	<nma:index-resources name="index-collections" list-query="sparql-queries/list-collections.rq" describe-query="sparql-queries/describe-collections.rq">
+		<p:with-option name="dataset" select="$dataset"/>
+	</nma:index-resources>
+	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq">
+		<p:with-option name="dataset" select="$dataset"/>
+	</nma:index-resources>
+	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq">
+		<p:with-option name="dataset" select="$dataset"/>
+	</nma:index-resources>
+	<nma:index-resources name="index-parties" list-query="sparql-queries/list-parties.rq" describe-query="sparql-queries/describe-parties.rq">
+		<p:with-option name="dataset" select="$dataset"/>
+	</nma:index-resources>
+	<nma:index-resources name="index-places" list-query="sparql-queries/list-places.rq" describe-query="sparql-queries/describe-places.rq">
+		<p:with-option name="dataset" select="$dataset"/>
+	</nma:index-resources>
 	
 	<!-- load a (non-XML) sparql query from disk -->
 	<p:declare-step type="nma:load-sparql-query" name="load-sparql-query">
@@ -44,6 +58,7 @@
 		<!-- names of files containing the sparql queries to list, and to describe, entities of a particular type -->
 		<p:option name="list-query" required="true"/>
 		<p:option name="describe-query" required="true"/>
+		<p:option name="dataset" required="true"/>
 		<!-- load the non-XML sparql queries from file system -->
 		<nma:load-sparql-query name="resource-list-sparql-query">
 			<p:with-option name="query-file" select="$list-query"/>
@@ -52,7 +67,8 @@
 			<p:with-option name="query-file" select="$describe-query"/>
 		</nma:load-sparql-query>
 		<!-- execute the query to list all the resources to be indexed -->
-		<nma:sparql-query name="resources-to-index" accept="application/sparql-results+xml" dataset="public">
+		<nma:sparql-query name="resources-to-index" accept="application/sparql-results+xml">
+			<p:with-option name="dataset" select="$dataset"/>
 			<p:input port="source">
 				<p:pipe step="resource-list-sparql-query" port="result"/>
 			</p:input>
@@ -78,21 +94,23 @@
 				</p:input>
 			</p:xslt>
 			<!-- execute the query to generate a resource description -->
-			<nma:sparql-query name="resource-description" dataset="public" accept="application/trix+xml"/>
+			<nma:sparql-query name="resource-description" accept="application/trix+xml">
+				<p:with-option name="dataset" select="$dataset"/>
+			</nma:sparql-query>
 			<!-- make any necessary redactions to the RDF graph -->
 			<p:xslt name="redacted-description">
 				<p:input port="stylesheet">
 					<p:document href="redact-trix-description.xsl"/>
 				</p:input>
 				<p:with-param name="root-resource" select="$resource-uri"/>
-			</p:xslt>			
+			</p:xslt>		
 			<!-- transform the RDF graph into a Solr index update -->
 			<p:xslt name="trix-description-to-solr-doc">
 				<p:input port="stylesheet">
 					<p:document href="trix-description-to-solr.xsl"/>
 				</p:input>
 				<p:with-param name="root-resource" select="$resource-uri"/>
-				<p:with-param name="dataset" select=" 'public' "/>
+				<p:with-param name="dataset" select="$dataset"/>
 			</p:xslt>
 			<!-- convert the JSON-XML blobs into JSON before deposit in Solr -->
 			<p:try name="json-xml-to-json">
@@ -134,30 +152,34 @@
 					</p:xslt>
 				</p:catch>
 			</p:try>
-			<p:store href="/tmp/solr.xml" indent="true"/>
 			<!-- execute the Solr index update -->
-			<p:http-request name="solr-deposit">
-				<p:input port="source">
-					<p:pipe step="json-xml-to-json" port="result"/>
-				</p:input>
-			</p:http-request>
+			<p:http-request name="solr-deposit"/>
 			<!-- store latest error -->
 			<p:for-each name="error-response">
 				<p:iteration-source select="/c:response[number(@status) &gt;= 400]"/>
 				<p:store href="/tmp/last-solr-error.xml" indent="true"/>
 			</p:for-each>
+			<!-- store solr update -->
+			<!--
+			<p:store href="/tmp/solr.xml" indent="true">
+				<p:input port="source">
+					<p:pipe step="json-xml-to-json" port="result"/>
+				</p:input>
+			</p:store>
+			-->
 			<!-- store raw trix -->
-<!--
+			<!--
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
 				</p:input>
 			</p:store>
--->
-			<!-- store latest redacted output -->
+			-->
+			<!-- store redacted trix -->
 			<!--
-			<p:store href="/tmp/redacted-description.xml" indent="true">
+			<p:store indent="true">
+				<p:with-option name="href" select="concat('/data/public/redacted-trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
 				<p:input port="source">
 					<p:pipe step="redacted-description" port="result"/>
 				</p:input>

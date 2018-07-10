@@ -21,7 +21,7 @@ rm -r -f /etc/fuseki/databases/public/*
 rm -r -f /etc/fuseki/databases/internal/*
 
 # assemble all the nquads files (which contain single graphs) into a single nquads file containing the entire RDF dataset
-# first delete old dataset files
+# first delete any old dataset files which may have been left lying around
 rm /data/public/dataset.nq
 rm /data/internal/dataset.nq
 
@@ -29,9 +29,19 @@ rm /data/internal/dataset.nq
 find /data/public/n-quads/ -name "*.nq" | xargs cat >> /data/public/dataset.nq
 find /data/internal/n-quads/ -name "*.nq" | xargs cat >> /data/internal/dataset.nq
 
+# now remove the individual .nq files 
+find /data/public/n-quads/ -name "*.nq" -delete
+find /data/internal/n-quads/ -name "*.nq" -delete
+
 # rebuild the fuseki db from the dataset files
+echo Building Fuseki public dataset ...
 time sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbloader --tdb=/etc/fuseki/configuration/public.ttl /data/public/dataset.nq >> /var/log/NMA-API-ETL/etl-to-sparql.log
+echo Building Fuseki internal dataset ...
 time sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbloader --tdb=/etc/fuseki/configuration/internal.ttl /data/internal/dataset.nq >> /var/log/NMA-API-ETL/etl-to-sparql.log
+
+# delete the dataset nquads files now they've been imported into Fuseki
+rm /data/public/dataset.nq
+rm /data/internal/dataset.nq
 
 # restart fuseki server 
 sudo java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar manage-tomcat.xpl command="start?path=/fuseki"
