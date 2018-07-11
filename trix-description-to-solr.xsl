@@ -509,16 +509,20 @@
 
 	<!-- rights -->
 	<xsl:template name="rights-solr">
-		<xsl:for-each select="path:forward('crm:P104_is_subject_to')">
-			<!-- rights IRI -->
-			<field name="rights"><xsl:value-of select="path:forward(., 'crm:P148_has_component')"/></field>
-			<!-- rights label -->
-			<field name="rights"><xsl:value-of select="path:forward(., ('crm:P148_has_component', 'rdf:value') )"/></field>
-			<!-- rights restriction reason -->
-			<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
-				<field name="rights"><xsl:value-of select="."/></field>
+		<xsl:variable name="value" select="path:forward(('crm:P138i_has_representation', 'ore:isAggregatedBy', 'crm:P104_is_subject_to'))" />
+		<xsl:if test="$value">
+			<!-- all rights for representations of an object are the same, so just use the first one -->
+			<xsl:for-each select="$value[1]">
+				<!-- rights IRI -->
+				<field name="rights"><xsl:value-of select="path:forward(., 'crm:P148_has_component')"/></field>
+				<!-- rights label -->
+				<field name="rights"><xsl:value-of select="path:forward(., ('crm:P148_has_component', 'rdf:value') )"/></field>
+				<!-- rights restriction reason -->
+				<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
+					<field name="rights"><xsl:value-of select="."/></field>
+				</xsl:for-each>
 			</xsl:for-each>
-		</xsl:for-each>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- exhibition location -->
