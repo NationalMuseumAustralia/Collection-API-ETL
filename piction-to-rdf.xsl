@@ -65,8 +65,8 @@
 					</xsl:for-each>
 					<xsl:for-each select="$related-object-identifiers">
 						<crm:P138_represents rdf:resource="object/{translate(., ' ', '')}#" />
-						<!-- bundle this image up along with all the other images of this object, into an aggregation which is subject to the re-use rights -->
-						<ore:isAggregatedBy rdf:resource="object/{translate(., ' ', '')}#images"/>
+						<!-- bundle this media up along with all the other media of this object, into a parallel aggregation which is subject to the re-use rights -->
+						<ore:isAggregatedBy rdf:resource="object/{translate(., ' ', '')}#media"/>
 					</xsl:for-each>
 					<xsl:for-each select="$image-data-sources">
 						<crm:P138i_has_representation>

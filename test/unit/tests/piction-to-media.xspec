@@ -4,7 +4,7 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:aat="http://vocab.getty.edu/aat/"
 	xmlns:la="https://linked.art/ns/terms/" xmlns:dc="http://purl.org/dc/terms/"
-	stylesheet="../../../piction-to-rdf.xsl">
+	xmlns:ore="http://www.openarchives.org/ore/terms/" stylesheet="../../../piction-to-rdf.xsl">
 
 	<x:param name="base-uri" select="'http://api.nma.gov.au/'" />
 
@@ -27,6 +27,7 @@
 				<crm:E36_Visual_Item rdf:about="media/MA67853082#">
 					<crm:P2_has_type rdf:resource="http://api.nma.gov.au/term/piction-image" />
 					<crm:P138_represents rdf:resource="object/124567#" />
+					<ore:isAggregatedBy rdf:resource="object/124567#media" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/20183042.jpg">
@@ -41,7 +42,7 @@
 	<x:scenario label="Convert EMu IRN (multiple)">
 		<x:context>
 			<doc>
-				<field name="EMu IRN for Related Objects">124567, 124567</field>
+				<field name="EMu IRN for Related Objects">124567, 333445</field>
 				<field name="Multimedia ID">MA67853082</field>
 				<dataSource type="URLDataSource" baseUrl="\Collectionsearch\20183042.jpg"
 					name="web" />
@@ -52,13 +53,15 @@
 				<crm:E19_Physical_Object rdf:about="object/124567#">
 					<crm:P138i_has_representation rdf:resource="media/MA67853082#" />
 				</crm:E19_Physical_Object>
-				<crm:E19_Physical_Object rdf:about="object/124567#">
+				<crm:E19_Physical_Object rdf:about="object/333445#">
 					<crm:P138i_has_representation rdf:resource="media/MA67853082#" />
 				</crm:E19_Physical_Object>
 				<crm:E36_Visual_Item rdf:about="media/MA67853082#">
 					<crm:P2_has_type rdf:resource="http://api.nma.gov.au/term/piction-image" />
 					<crm:P138_represents rdf:resource="object/124567#" />
-					<crm:P138_represents rdf:resource="object/124567#" />
+					<ore:isAggregatedBy rdf:resource="object/124567#media" />
+					<crm:P138_represents rdf:resource="object/333445#" />
+					<ore:isAggregatedBy rdf:resource="object/333445#media" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item
 							rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/20183042.jpg">
@@ -88,6 +91,7 @@
 				<crm:E36_Visual_Item rdf:about="media/MA67853082#">
 					<crm:P2_has_type rdf:resource="http://api.nma.gov.au/term/piction-image" />
 					<crm:P138_represents rdf:resource="object/124567#" />
+					<ore:isAggregatedBy rdf:resource="object/124567#media" />
 					<crm:P138i_has_representation>
 						<crm:E36_Visual_Item rdf:about="http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/20183042.jpg">
 							<crm:P2_has_type rdf:resource="http://api.nma.gov.au/term/preview" />

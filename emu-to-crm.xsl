@@ -751,10 +751,12 @@
 	<!-- rights -->
 	<!-- restriction reason -->
 	<!-- https://linked.art/model/object/rights/#rights-assertions -->
+	<!-- NB: rights are NOT attached to the object IRI, but an images fragment: /object/nnn#media -->
+	<!-- this fragment is later connected to each media in the object - as a parallel aggregation of the media -->
 	<xsl:template match="AcsCCStatus">
 		<xsl:param name="entity-iri" />
 		<xsl:param name="reason" />
-		<ore:Aggregation rdf:about="{$entity-iri}#images">
+		<ore:Aggregation rdf:about="{$entity-iri}#media">
 			<crm:P104_is_subject_to>
 				<crm:E30_Right rdf:about="{$entity-iri}#rights">
 					<!-- right/licence -->
@@ -886,8 +888,9 @@
 		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
 		<crm:P138i_has_representation>
 			<crm:E36_Visual_Item rdf:about="{$media-iri}#">
-				<!-- bundle this image up along with all the other images of this object, into an aggregation which is subject to the re-use rights -->
-				<ore:isAggregatedBy rdf:resource="{$entity-iri}#images"/>
+				<!-- bundle this media up along with all the other media of this object, into a parallel aggregation which is subject to the re-use rights -->
+				<!-- NB: see AcsCCStatus template -->
+				<ore:isAggregatedBy rdf:resource="{$entity-iri}#media"/>
 				<!-- flag first image as 'preferred' -->
 				<xsl:if test="position()=1">
 					<crm:P2_has_type rdf:resource="{$nma-term-ns}preferred" />
