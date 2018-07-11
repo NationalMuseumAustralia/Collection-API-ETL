@@ -154,10 +154,35 @@
 			</p:try>
 			<!-- execute the Solr index update -->
 			<p:http-request name="solr-deposit"/>
-			<!-- store latest error -->
+			<!-- store any errors -->
 			<p:for-each name="error-response">
 				<p:iteration-source select="/c:response[number(@status) &gt;= 400]"/>
-				<p:store href="/tmp/last-solr-error.xml" indent="true"/>
+				<cx:message>
+					<p:with-option name="message" select="
+						concat(
+							'Error depositing resource &lt;',
+							$resource-uri,
+							'&gt; in Solr'
+						)
+					"/>
+				</cx:message>
+				<p:wrap-sequence wrapper="failed-solr-deposit">
+					<p:input port="source">
+						<p:pipe step="resource-description" port="result"/>
+						<p:pipe step="redacted-description" port="result"/>
+						<p:pipe step="json-xml-to-json" port="result"/>
+						<p:pipe step="solr-deposit" port="result"/>
+					</p:input>
+				</p:wrap-sequence>
+				<p:store indent="true">
+					<p:with-option name="href" select="
+						concat(
+							'/data/failed-solr-deposits/',
+							encode-for-uri(encode-for-uri($resource-uri)),
+							'.xml'
+						)
+					"/>
+				</p:store>
 			</p:for-each>
 			<!-- store solr update -->
 			<!--
@@ -187,6 +212,8 @@
 			-->
 		</p:for-each>	
 	</p:declare-step>
+	
+
 		
 	<p:declare-step type="nma:sparql-query" name="sparql-query">
 		<p:input port="source"/>
