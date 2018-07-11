@@ -101,6 +101,7 @@ ln -s /usr/local/apache-jena-3.6.0 /usr/local/jena
 #
 echo =========== Installing Fuseki
 mkdir -p /etc/fuseki/configuration
+ln -s $CONFIG_DIR/fuseki/log4j.properties /etc/fuseki/
 ln -s $CONFIG_DIR/fuseki/public.ttl /etc/fuseki/configuration/
 ln -s $CONFIG_DIR/fuseki/internal.ttl /etc/fuseki/configuration/
 chown -R tomcat8:tomcat8 /etc/fuseki/
