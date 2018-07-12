@@ -229,6 +229,8 @@
 		<cx:message>
 			<p:with-option name="message" select="concat('Transforming ', $file-name-component, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
 		</cx:message>
+		<!-- remove empty leaf elements -->
+		<p:delete match="*[not(*)][not(normalize-space(.))]"/>
 		<p:choose name="transformation-to-rdf">
 			<p:when test="$file-name-component = 'piction'">
 				<p:output port="result"/>
