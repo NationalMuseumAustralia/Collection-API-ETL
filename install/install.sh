@@ -85,6 +85,9 @@ ln -s $CONFIG_DIR/solr/$SOLR_CORE_1_NAME/core.properties /var/solr/data/$SOLR_CO
 ln -s $CONFIG_DIR/solr/$SOLR_CORE_1_NAME/conf            /var/solr/data/$SOLR_CORE_1_NAME/conf
 ln -s $CONFIG_DIR/solr/$SOLR_CORE_2_NAME/core.properties /var/solr/data/$SOLR_CORE_2_NAME/core.properties
 ln -s $CONFIG_DIR/solr/$SOLR_CORE_2_NAME/conf            /var/solr/data/$SOLR_CORE_2_NAME/conf
+# replace Solr's default "includes" (config) file with a customised version
+rm /etc/default/solr.in.sh
+ln -s $CONFIG_DIR/solr/solr.in.sh /etc/default/solr.in.sh
 # solr dynamically updates schema files so needs write permission
 chown -R solr:solr $CONFIG_DIR/solr
 #
@@ -256,8 +259,6 @@ service tomcat8 restart
 service solr restart
 service nagios restart
 service webmin restart
-# disable konga until high CPU usage solved
-service konga stop
 #
 echo =========== API server install complete
 date
