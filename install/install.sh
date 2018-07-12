@@ -163,7 +163,7 @@ mkdir /etc/xproc-z/
 chmod a+w /etc/xproc-z/
 cp /var/lib/tomcat8/webapps/xproc-z.war /etc/xproc-z/
 cd /etc/xproc-z/
-git clone https://github.com/Conal-Tuohy/NMA-API.git
+git clone https://github.com/NationalMuseumAustralia/Collection-API.git NMA-API
 cp /etc/xproc-z/NMA-API/apiexplorer.html /var/www/html/
 #
 # KONG API GATEWAY
