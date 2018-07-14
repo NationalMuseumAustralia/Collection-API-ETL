@@ -3,7 +3,7 @@
 
 set CALABASH_HOME=C:/project/lib/xmlcalabash-1.1.16-98
 set XSPEC_HOME=file:///C:/project/lib/xspec/
-set XSPEC_DATA_DIR_IN=file:///C:/Project/Git/NMA/NMA-API-ETL/test
+set XSPEC_DATA_DIR_IN=file:///C:/Project/Git/NMA/Collection-API-ETL/test
 set XSPEC_DATA_DIR_OUT=file:///C:/Project/Stage/NMA-unit-test-output
 
 :: Create unit test output directory
