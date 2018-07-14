@@ -11,6 +11,7 @@
 	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:param name="dataset"/>
+	<xsl:param name="hash"/>
 
 	<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
 	<xsl:variable name="type" select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/>
@@ -21,7 +22,9 @@
 			<c:body content-type="application/xml">
 				<add commitWithin="10000">
 					<doc>
-
+						<!-- The hash is used as an identifier for this current version of this record -->
+						<field name="hash"><xsl:value-of select="$hash"/></field>
+						
 						<!-- COMMON FIELDS -->
 						<xsl:call-template name="id-solr" />
 						<xsl:call-template name="type-solr" />

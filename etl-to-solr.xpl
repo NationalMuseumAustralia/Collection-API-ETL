@@ -103,7 +103,58 @@
 					<p:document href="redact-trix-description.xsl"/>
 				</p:input>
 				<p:with-param name="root-resource" select="$resource-uri"/>
-			</p:xslt>		
+			</p:xslt>
+			<!-- Check if the Solr store already contains a record with the same identifier, based on identical RDF -->
+			<p:wrap wrapper="hash" match="/*"/>
+			<p:add-attribute attribute-name="value" match="/hash" attribute-value=" '' "/>
+			<p:hash name="computed-hash" match="/hash/@value" algorithm="crc">
+				<p:input port="parameters"><p:empty/></p:input>
+				<p:with-option name="value" select="/hash/*"/>
+			</p:hash>
+			<p:group>
+				<p:variable name="hash" select="/hash/@value"/>
+				<!-- check if Solr has this record with the same hash as the just-computed hash -->
+				<p:load name="still-current-solr-record">
+					<p:with-option name="href" select="
+						concat(
+							'http://localhost:8983/solr/core_nma_',
+							$dataset,
+							'/select?wt=xml&amp;q=id:',
+							replace($resource-uri, '(.*/)([^/]*/[^/]*)(#)$', '$2'),
+							'%20AND%20hash:',
+							$hash
+						)
+					"/>
+				</p:load>
+				<p:choose>
+					<p:when test="/response/result/@numFound='1'">
+						<!-- there is a record in Solr which is still valid -->
+						<cx:message message="Solr's version of this record is still valid"/>
+						<p:sink/>
+					</p:when>
+					<p:otherwise>
+						<!-- Solr does not contain an up-to-date version of this record -->
+						<!-- derive new publication formats from the RDF and store in Solr -->
+						<cx:message message="Solr does not contain a current version of this record"/>
+						<nma:update-solr>
+							<p:with-option name="resource-uri" select="$resource-uri"/>
+							<p:with-option name="dataset" select="$dataset"/>
+							<p:with-option name="hash" select="$hash"/>
+							<p:input port="source">
+								<p:pipe step="redacted-description" port="result"/>
+							</p:input>
+						</nma:update-solr>
+					</p:otherwise>
+				</p:choose>
+			</p:group>
+		</p:for-each>	
+	</p:declare-step>
+	
+	<p:declare-step type="nma:update-solr" name="update-solr">	
+			<p:input port="source"/>
+			<p:option name="resource-uri" required="true"/>
+			<p:option name="dataset" required="true"/>
+			<p:option name="hash" required="true"/>
 			<!-- transform the RDF graph into a Solr index update -->
 			<p:xslt name="trix-description-to-solr-doc">
 				<p:input port="stylesheet">
@@ -111,6 +162,7 @@
 				</p:input>
 				<p:with-param name="root-resource" select="$resource-uri"/>
 				<p:with-param name="dataset" select="$dataset"/>
+				<p:with-param name="hash" select="$hash"/>
 			</p:xslt>
 			<!-- convert the JSON-XML blobs into JSON before deposit in Solr -->
 			<p:try name="json-xml-to-json">
@@ -168,8 +220,7 @@
 				</cx:message>
 				<p:wrap-sequence wrapper="failed-solr-deposit">
 					<p:input port="source">
-						<p:pipe step="resource-description" port="result"/>
-						<p:pipe step="redacted-description" port="result"/>
+						<p:pipe step="update-solr" port="source"/>
 						<p:pipe step="json-xml-to-json" port="result"/>
 						<p:pipe step="solr-deposit" port="result"/>
 					</p:input>
@@ -210,9 +261,7 @@
 				</p:input>
 			</p:store>
 			-->
-		</p:for-each>	
 	</p:declare-step>
-	
 
 		
 	<p:declare-step type="nma:sparql-query" name="sparql-query">

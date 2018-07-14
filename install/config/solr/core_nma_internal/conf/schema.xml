@@ -198,6 +198,9 @@
   <field name="_root_" type="string" docValues="false" indexed="true" stored="false"/>
   <field name="_text_" type="text_general" multiValued="true" indexed="true" stored="false"/>
   <field name="_version_" type="plong" indexed="false" stored="false" multiValued="false"/>
+  <!-- metadata -->
+  <!-- 'hash' is a hash of the RDF source, used to invalidate Solr records when source data has changed -->
+  <field name="hash" type="string"/>
   <!-- 'text' is NMA's catchall full-text field we copy most textual content into -->
   <field name="text" type="text_general"/>
   <!-- 'description' catchs the separate description fields -->

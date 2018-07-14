@@ -132,7 +132,26 @@
 
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:copy-of select="$graph/trix:triple except ($unwanted-emu-images, $unwanted-object-media-statements, $unwanted-related-objects, $unwanted-narrative-object-triples)"/>
+				<xsl:variable name="published-triples" select="
+					$graph/trix:triple except (
+						$unwanted-emu-images, 
+						$unwanted-object-media-statements, 
+						$unwanted-related-objects, 
+						$unwanted-narrative-object-triples
+					)
+				"/>
+				
+				<!-- sort the triples into a stable order, to facilitate checking for changes later in the pipeline -->
+				<!-- NB trix:id elements (blank nodes) are not used for sorting since their values are not stable -->
+				<xsl:for-each select="$published-triples">
+					<xsl:sort select="*[1]/self::trix:uri"/>
+					<xsl:sort select="*[2]"/>
+					<xsl:sort select="*[3]/self::trix:plainLiteral"/>
+					<xsl:sort select="*[3]/self::trix:plainLiteral/@xml:lang"/>
+					<xsl:sort select="*[3]/self::trix:typedLiteral"/>
+					<xsl:sort select="*[3]/self::trix:typedLiteral/@dataType"/>
+					<xsl:copy-of select="."/>
+				</xsl:for-each>
 				
 			</graph>
 		</trix>
