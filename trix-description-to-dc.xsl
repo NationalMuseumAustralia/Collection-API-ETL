@@ -473,6 +473,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			</array>
 		</xsl:if>
 	</xsl:template>
+	
+	<!-- TODO: Add earliest/latest dates -->
 
 	<!-- production dates and associated dates -->
 	<!-- NB: if there is a note but no actual date the title will be empty (rather than including text when consumers are expecting an ISO date in the title) -->

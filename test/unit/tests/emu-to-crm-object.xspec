@@ -230,6 +230,93 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Convert time span - empty">
+		<x:call template="time-span">
+			<x:param name="defaultDate"></x:param>
+			<x:param name="earliestDate"></x:param>
+			<x:param name="latestDate"></x:param>
+		</x:call>
+		<!-- NB: expect only call if one of the dates exists -->
+		<x:expect label="should return crm:E52_Time-Span">
+			<crm:E52_Time-Span>
+				<rdfs:label />
+			</crm:E52_Time-Span>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert time span - earliest only">
+		<x:call template="time-span">
+			<x:param name="defaultDate"></x:param>
+			<x:param name="earliestDate">02/03/2004</x:param>
+			<x:param name="latestDate"></x:param>
+		</x:call>
+		<x:expect label="should return crm:E52_Time-Span">
+			<crm:E52_Time-Span>
+				<rdfs:label>2 March 2004 -</rdfs:label>
+				<crm:P82a_begin_of_the_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2004-03-02</crm:P82a_begin_of_the_begin>
+			</crm:E52_Time-Span>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert time span - latest only">
+		<x:call template="time-span">
+			<x:param name="defaultDate"></x:param>
+			<x:param name="earliestDate"></x:param>
+			<x:param name="latestDate">02/03/2004</x:param>
+		</x:call>
+		<x:expect label="should return crm:E52_Time-Span">
+			<crm:E52_Time-Span>
+				<rdfs:label>- 2 March 2004</rdfs:label>
+				<crm:P82b_end_of_the_end rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2004-03-02</crm:P82b_end_of_the_end>
+			</crm:E52_Time-Span>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert time span - earliest and latest">
+		<x:call template="time-span">
+			<x:param name="defaultDate"></x:param>
+			<x:param name="earliestDate">02/03/2004</x:param>
+			<x:param name="latestDate">2008</x:param>
+		</x:call>
+		<x:expect label="should return crm:E52_Time-Span">
+			<crm:E52_Time-Span>
+				<rdfs:label>2 March 2004 - 2008</rdfs:label>
+				<crm:P82a_begin_of_the_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2004-03-02</crm:P82a_begin_of_the_begin>
+				<crm:P82b_end_of_the_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2008</crm:P82b_end_of_the_end>
+			</crm:E52_Time-Span>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert time span - earliest and latest (same)">
+		<x:call template="time-span">
+			<x:param name="defaultDate"></x:param>
+			<x:param name="earliestDate">2004</x:param>
+			<x:param name="latestDate">2004</x:param>
+		</x:call>
+		<x:expect label="should return crm:E52_Time-Span">
+			<crm:E52_Time-Span>
+				<rdfs:label>2004</rdfs:label>
+				<crm:P82a_begin_of_the_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2004</crm:P82a_begin_of_the_begin>
+				<crm:P82b_end_of_the_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2004</crm:P82b_end_of_the_end>
+			</crm:E52_Time-Span>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert time span - default only">
+		<x:call template="time-span">
+			<x:param name="defaultDate">/03/2004</x:param>
+			<x:param name="earliestDate"></x:param>
+			<x:param name="latestDate"></x:param>
+		</x:call>
+		<x:expect label="should return crm:E52_Time-Span">
+			<crm:E52_Time-Span>
+				<rdfs:label>March 2004</rdfs:label>
+				<crm:P82a_begin_of_the_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYearMonth">2004-03</crm:P82a_begin_of_the_begin>
+				<crm:P82b_end_of_the_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYearMonth">2004-03</crm:P82b_end_of_the_end>
+			</crm:E52_Time-Span>
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert production: dates">
 		<x:context>
 			<ProductionDates>
@@ -254,7 +341,7 @@
 					</crm:P129i_is_subject_of>
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
-							<rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1928-12-14</rdfs:label>
+							<rdfs:label>14 December 1928 - 20 December 1928</rdfs:label>
 							<crm:P82a_begin_of_the_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1928-12-14</crm:P82a_begin_of_the_begin>
 							<crm:P82b_end_of_the_end rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1928-12-20</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
@@ -370,7 +457,7 @@
 					</crm:P129i_is_subject_of>
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
-							<rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1926-10-04</rdfs:label>
+							<rdfs:label>4 October 1926</rdfs:label>
 							<crm:P82a_begin_of_the_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1926-10-04</crm:P82a_begin_of_the_begin>
 							<crm:P82b_end_of_the_end rdf:datatype="http://www.w3.org/2001/XMLSchema#date">1926-10-04</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
@@ -388,7 +475,7 @@
 					</crm:P129i_is_subject_of>
 					<crm:P4_has_time-span>
 						<crm:E52_Time-Span>
-							<rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1930</rdfs:label>
+							<rdfs:label>1930</rdfs:label>
 							<crm:P82a_begin_of_the_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1930</crm:P82a_begin_of_the_begin>
 							<crm:P82b_end_of_the_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1930</crm:P82b_end_of_the_end>
 						</crm:E52_Time-Span>
