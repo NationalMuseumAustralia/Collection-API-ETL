@@ -48,22 +48,52 @@
 		<x:expect label="Should return empty"></x:expect>
 	</x:scenario>
 
-	<x:scenario label="Display date - yyyy-mm-dd">
+	<x:scenario label="Display date - dd/mm/yyyy">
 		<x:call function="dateutil:to-display-date">
-			<x:param name="input" select="'2002-02-02'" />
+			<x:param name="input" select="'02/02/2002'" />
 		</x:call>
 		<x:expect label="Should return displayable date">2 February 2002</x:expect>
 	</x:scenario>
 
-	<x:scenario label="Display date - yyyy-mm">
+	<x:scenario label="Display date - /mm/yyyy">
 		<x:call function="dateutil:to-display-date">
-			<x:param name="input" select="'2002-02'" />
+			<x:param name="input" select="'/02/2002'" />
 		</x:call>
 		<x:expect label="Should return displayable date">February 2002</x:expect>
 	</x:scenario>
 
 	<x:scenario label="Display date - yyyy">
 		<x:call function="dateutil:to-display-date">
+			<x:param name="input" select="'2002'" />
+		</x:call>
+		<x:expect label="Should return displayable date">2002</x:expect>
+	</x:scenario>
+
+
+
+	<x:scenario label="Display date iso - empty">
+		<x:call function="dateutil:to-display-date-iso">
+			<x:param name="input" select="''" />
+		</x:call>
+		<x:expect label="Should return empty"></x:expect>
+	</x:scenario>
+
+	<x:scenario label="Display date iso - yyyy-mm-dd">
+		<x:call function="dateutil:to-display-date-iso">
+			<x:param name="input" select="'2002-02-02'" />
+		</x:call>
+		<x:expect label="Should return displayable date">2 February 2002</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Display date iso - yyyy-mm">
+		<x:call function="dateutil:to-display-date-iso">
+			<x:param name="input" select="'2002-02'" />
+		</x:call>
+		<x:expect label="Should return displayable date">February 2002</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Display date iso - yyyy">
+		<x:call function="dateutil:to-display-date-iso">
 			<x:param name="input" select="'2002'" />
 		</x:call>
 		<x:expect label="Should return displayable date">2002</x:expect>
