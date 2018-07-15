@@ -180,6 +180,8 @@
 				<map>
 					<string key="type">Event</string>
 					<string key="title">1928-12-14</string>
+					<string key="startDate">1928-12-14</string>
+					<string key="endDate">1928-12-20</string>
 					<string key="roleName">Date of production</string>
 					<string key="interactionType">Production</string>
 				</map>
