@@ -61,7 +61,7 @@
 		<x:expect label="should return xpath:string collection">
 			<map key="collection" xmlns="http://www.w3.org/2005/xpath-functions">
 				<string key="id">3952</string>
-				<string key="type">collection</string>
+				<string key="type">Collection</string>
 				<string key="title">Ruth Oldfield collection</string>
 			</map>
 		</x:expect>

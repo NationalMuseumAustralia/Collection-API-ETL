@@ -164,7 +164,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<xsl:if test="$value">
 			<map key="collection" xmlns="http://www.w3.org/2005/xpath-functions">
 				<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>
-				<string key='type'><xsl:text>collection</xsl:text></string>
+				<string key='type'><xsl:text>Collection</xsl:text></string>
 				<xsl:copy-of select="xmljson:render-as-string('title', path:forward($value, 'rdfs:label'))" />
 			</map>
 		</xsl:if>
