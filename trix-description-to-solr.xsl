@@ -385,11 +385,17 @@
 				path:forward(., 'crm:P4_has_time-span')
 			]
 		">
-			<!-- value -->
+			<!-- display date -->
 			<xsl:for-each select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )">
 				<field name="temporal"><xsl:value-of select="."/></field>
-				<field name="temporal_date"><xsl:value-of select="."/></field>
 			</xsl:for-each>
+			<!-- encoded date -->
+			<field name="temporal_date">
+				<xsl:call-template name="format-solr-date-range">
+					<xsl:with-param name="startDate" select="path:forward(., ('crm:P4_has_time-span', 'crm:P82a_begin_of_the_begin') )"/>
+					<xsl:with-param name="endDate" select="path:forward(., ('crm:P4_has_time-span', 'crm:P82b_end_of_the_end') )"/>
+				</xsl:call-template>
+			</field>
 			<!-- role -->
 			<xsl:for-each select="path:forward(., 'rdfs:label')">
 				<field name="temporal"><xsl:value-of select="."/></field>
@@ -481,11 +487,17 @@
 				path:forward(., 'crm:P4_has_time-span')
 			]
 		">
-			<!-- value -->
+			<!-- display date -->
 			<xsl:for-each select="path:forward(., ('crm:P4_has_time-span', 'rdfs:label') )">
 				<field name="temporal"><xsl:value-of select="."/></field>
-				<field name="temporal_date"><xsl:value-of select="."/></field>
 			</xsl:for-each>
+			<!-- encoded date -->
+			<field name="temporal_date">
+				<xsl:call-template name="format-solr-date-range">
+					<xsl:with-param name="startDate" select="path:forward(., ('crm:P4_has_time-span', 'crm:P82a_begin_of_the_begin') )"/>
+					<xsl:with-param name="endDate" select="path:forward(., ('crm:P4_has_time-span', 'crm:P82b_end_of_the_end') )"/>
+				</xsl:call-template>
+			</field>
 			<!-- role -->
 			<xsl:for-each select="path:forward(., 'rdfs:label')">
 				<field name="temporal"><xsl:value-of select="."/></field>
@@ -704,4 +716,40 @@
 		</xsl:for-each>
 	</xsl:template>
 	
+	<!-- FUNCTIONS -->
+
+	<!-- format solr date range -->
+	<!-- solr.DateRangeField: "[start|* TO end|*]", or single date if both the same -->
+	<!-- https://lucene.apache.org/solr/guide/working-with-dates.html -->
+	<xsl:template name="format-solr-date-range">
+		<xsl:param name="startDate" />
+		<xsl:param name="endDate" />
+		<xsl:choose>
+			<xsl:when test="$startDate = $endDate">
+				<xsl:value-of select="$startDate" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>[</xsl:text>
+				<xsl:choose>
+					<xsl:when test="$startDate">
+						<xsl:value-of select="$startDate" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>*</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:text> TO </xsl:text>
+				<xsl:choose>
+					<xsl:when test="$endDate">
+						<xsl:value-of select="$endDate" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:text>*</xsl:text>
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:text>]</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
 </xsl:stylesheet>

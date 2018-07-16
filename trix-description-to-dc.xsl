@@ -164,7 +164,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<xsl:if test="$value">
 			<map key="collection" xmlns="http://www.w3.org/2005/xpath-functions">
 				<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>
-				<string key='type'><xsl:text>collection</xsl:text></string>
+				<string key='type'><xsl:text>Collection</xsl:text></string>
 				<xsl:copy-of select="xmljson:render-as-string('title', path:forward($value, 'rdfs:label'))" />
 			</map>
 		</xsl:if>
@@ -473,6 +473,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			</array>
 		</xsl:if>
 	</xsl:template>
+	
+	<!-- TODO: Add earliest/latest dates -->
 
 	<!-- production dates and associated dates -->
 	<!-- NB: if there is a note but no actual date the title will be empty (rather than including text when consumers are expecting an ISO date in the title) -->
@@ -493,8 +495,11 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					<map>
 						<!-- type -->
 						<string key='type'><xsl:text>Event</xsl:text></string>
-						<!-- date value -->
+						<!-- display date -->
 						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P4_has_time-span', 'rdfs:label') ) )" />
+						<!-- earliest/latest date -->
+						<xsl:copy-of select="xmljson:render-as-string('startDate', path:forward(., ('crm:P4_has_time-span', 'crm:P82a_begin_of_the_begin') ) )" />
+						<xsl:copy-of select="xmljson:render-as-string('endDate', path:forward(., ('crm:P4_has_time-span', 'crm:P82b_end_of_the_end') ) )" />
 						<!-- role -->
 						<xsl:copy-of select="xmljson:render-as-string('roleName', path:forward(., 'rdfs:label') )" />
 						<!-- production flag -->
@@ -507,8 +512,11 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					<map>
 						<!-- type -->
 						<string key='type'><xsl:text>Event</xsl:text></string>
-						<!-- date -->
+						<!-- display date -->
 						<xsl:copy-of select="xmljson:render-as-string('title', path:forward(., ('crm:P4_has_time-span', 'rdfs:label') ) )" />
+						<!-- earliest/latest date -->
+						<xsl:copy-of select="xmljson:render-as-string('startDate', path:forward(., ('crm:P4_has_time-span', 'crm:P82a_begin_of_the_begin') ) )" />
+						<xsl:copy-of select="xmljson:render-as-string('endDate', path:forward(., ('crm:P4_has_time-span', 'crm:P82b_end_of_the_end') ) )" />
 						<!-- role -->
 						<xsl:copy-of select="xmljson:render-as-string('roleName', path:forward(., 'rdfs:label') )" />
 						<!-- NB: no interactionType as not production -->

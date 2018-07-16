@@ -61,7 +61,7 @@
 		<x:expect label="should return xpath:string collection">
 			<map key="collection" xmlns="http://www.w3.org/2005/xpath-functions">
 				<string key="id">3952</string>
-				<string key="type">collection</string>
+				<string key="type">Collection</string>
 				<string key="title">Ruth Oldfield collection</string>
 			</map>
 		</x:expect>
@@ -180,6 +180,8 @@
 				<map>
 					<string key="type">Event</string>
 					<string key="title">1928-12-14</string>
+					<string key="startDate">1928-12-14</string>
+					<string key="endDate">1928-12-20</string>
 					<string key="roleName">Date of production</string>
 					<string key="interactionType">Production</string>
 				</map>

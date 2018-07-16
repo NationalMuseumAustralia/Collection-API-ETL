@@ -499,23 +499,13 @@
 							</crm:E33_Linguistic_Object>
 						</crm:P129i_is_subject_of>
 					</xsl:if>
-					<!-- NB: sometimes ProDate0 is missing, but if there expect others too -->
-					<xsl:if test="ProDate0">
+					<xsl:if test="ProDate0 or ProEarliestDate0 or ProLatestDate0">
 						<crm:P4_has_time-span>
-							<crm:E52_Time-Span>
-								<rdfs:label>
-									<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(ProDate0)" /></xsl:attribute>
-									<xsl:value-of select="dateutil:to-iso-date(ProDate0)" />
-								</rdfs:label>
-								<crm:P82a_begin_of_the_begin>
-									<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(ProEarliestDate0)" /></xsl:attribute>
-									<xsl:value-of select="dateutil:to-iso-date(ProEarliestDate0)" />
-								</crm:P82a_begin_of_the_begin>
-								<crm:P82b_end_of_the_end>
-									<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(ProLatestDate0)" /></xsl:attribute>
-									<xsl:value-of select="dateutil:to-iso-date(ProLatestDate0)" />
-								</crm:P82b_end_of_the_end>
-							</crm:E52_Time-Span>
+							<xsl:call-template name="time-span">
+								<xsl:with-param name="defaultDate" select="ProDate0" />
+								<xsl:with-param name="earliestDate" select="ProEarliestDate0" />
+								<xsl:with-param name="latestDate" select="ProLatestDate0" />
+							</xsl:call-template>
 						</crm:P4_has_time-span>
 					</xsl:if>
 				</crm:E7_Activity>
@@ -601,22 +591,15 @@
 							</crm:E33_Linguistic_Object>
 						</crm:P129i_is_subject_of>
 					</xsl:if>
-					<crm:P4_has_time-span>
-						<crm:E52_Time-Span>
-							<rdfs:label>
-								<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AssDate0)" /></xsl:attribute>
-								<xsl:value-of select="dateutil:to-iso-date(AssDate0)" />
-							</rdfs:label>
-							<crm:P82a_begin_of_the_begin>
-								<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AssEarliestDate0)" /></xsl:attribute>
-								<xsl:value-of select="dateutil:to-iso-date(AssEarliestDate0)" />
-							</crm:P82a_begin_of_the_begin>
-							<crm:P82b_end_of_the_end>
-								<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AssLatestDate0)" /></xsl:attribute>
-								<xsl:value-of select="dateutil:to-iso-date(AssLatestDate0)" />
-							</crm:P82b_end_of_the_end>
-						</crm:E52_Time-Span>
-					</crm:P4_has_time-span>
+					<xsl:if test="AssDate0 or AssEarliestDate0 or AssLatestDate0">
+						<crm:P4_has_time-span>
+							<xsl:call-template name="time-span">
+								<xsl:with-param name="defaultDate" select="AssDate0" />
+								<xsl:with-param name="earliestDate" select="AssEarliestDate0" />
+								<xsl:with-param name="latestDate" select="AssLatestDate0" />
+							</xsl:call-template>
+						</crm:P4_has_time-span>
+					</xsl:if>
 				</crm:E5_Event>
 			</crm:P12i_was_present_at>
 		</xsl:for-each>
@@ -1271,6 +1254,82 @@
 				</crm:E12_Production>
 			</crm:P108i_was_produced_by>
 		</xsl:if>
+	</xsl:template>
+
+	<!-- display time span -->
+	<!-- assumes AT LEAST ONE date will be supplied -->
+	<xsl:template name="time-span">
+		<xsl:param name="defaultDate" />
+		<xsl:param name="earliestDate" />
+		<xsl:param name="latestDate" />
+		
+		<!-- if only have default date, copy into earliest and latest -->
+		<xsl:variable name="earliestDatePopulated">
+			<xsl:choose>
+				<xsl:when test="not($earliestDate) and not($latestDate)">
+					<xsl:value-of select="$defaultDate" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$earliestDate" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="latestDatePopulated">
+			<xsl:choose>
+				<xsl:when test="not($earliestDate) and not($latestDate)">
+					<xsl:value-of select="$defaultDate" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$latestDate" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+
+		<xsl:variable name="earliestDisplayDate" select="dateutil:to-display-date($earliestDatePopulated)" />
+		<xsl:variable name="latestDisplayDate" select="dateutil:to-display-date($latestDatePopulated)" />
+
+		<crm:E52_Time-Span>
+			<rdfs:label>
+				<xsl:choose>
+					<!-- 1) "earliest - latest" -->
+					<xsl:when test="$earliestDisplayDate != $latestDisplayDate">
+						<xsl:value-of select="$earliestDisplayDate" />
+						<xsl:text> - </xsl:text>
+						<xsl:value-of select="$latestDisplayDate" />
+					</xsl:when>
+					<!-- 2) "earliest" (as earliest is same as latest) -->
+					<xsl:when test="$earliestDisplayDate = $latestDisplayDate">
+						<xsl:value-of select="$earliestDisplayDate" />
+					</xsl:when>
+					<!-- 3) "earliest -" -->
+					<xsl:when test="$earliestDisplayDate">
+						<xsl:value-of select="$earliestDisplayDate" />
+						<xsl:text> -</xsl:text>
+					</xsl:when>
+					<!-- 4) "- latest" -->
+					<xsl:when test="$latestDisplayDate">
+						<xsl:text>- </xsl:text>
+						<xsl:value-of select="$latestDisplayDate" />
+					</xsl:when>
+				</xsl:choose>
+			</rdfs:label>
+			<xsl:if test="$earliestDisplayDate">
+				<crm:P82a_begin_of_the_begin>
+					<xsl:attribute name="rdf:datatype">
+						<xsl:value-of select="dateutil:to-xml-schema-type($earliestDatePopulated)" />
+					</xsl:attribute>
+					<xsl:value-of select="dateutil:to-iso-date($earliestDatePopulated)" />
+				</crm:P82a_begin_of_the_begin>
+			</xsl:if>
+			<xsl:if test="$latestDisplayDate">
+				<crm:P82b_end_of_the_end>
+					<xsl:attribute name="rdf:datatype">
+						<xsl:value-of select="dateutil:to-xml-schema-type($latestDatePopulated)" />
+					</xsl:attribute>
+					<xsl:value-of select="dateutil:to-iso-date($latestDatePopulated)" />
+				</crm:P82b_end_of_the_end>
+			</xsl:if>
+		</crm:E52_Time-Span>
 	</xsl:template>
 
 	<!-- person names -->

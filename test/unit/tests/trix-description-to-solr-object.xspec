@@ -139,7 +139,7 @@
 		<!-- each date: value role, notes -->
 		<x:expect label="should return field temporal x3">
 			<field name="temporal">1928-12-14</field>
-			<field name="temporal_date">1928-12-14</field>
+			<field name="temporal_date">[1928-12-14 TO 1928-12-20]</field>
 			<field name="temporal">Date of production</field>
 		</x:expect>
 	</x:scenario>
@@ -209,6 +209,54 @@
 			<field name="media">...</field>
 			<field name="media_id">...</field>
 		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Format solr date range - empty">
+		<x:call template="format-solr-date-range">
+			<x:param name="startDate"></x:param>
+			<x:param name="endDate"></x:param>
+		</x:call>
+		<x:expect label="should return date range">[* TO *]</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Format solr date range - different">
+		<x:call template="format-solr-date-range">
+			<x:param name="startDate">2004</x:param>
+			<x:param name="endDate">2008</x:param>
+		</x:call>
+		<x:expect label="should return date range">[2004 TO 2008]</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Format solr date range - same">
+		<x:call template="format-solr-date-range">
+			<x:param name="startDate">2004</x:param>
+			<x:param name="endDate">2004</x:param>
+		</x:call>
+		<x:expect label="should return date range">2004</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Format solr date range - start only">
+		<x:call template="format-solr-date-range">
+			<x:param name="startDate">2004</x:param>
+			<x:param name="endDate"></x:param>
+		</x:call>
+		<x:expect label="should return date range">[2004 TO *]</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Format solr date range - end only">
+		<x:call template="format-solr-date-range">
+			<x:param name="startDate"></x:param>
+			<x:param name="endDate">2004</x:param>
+		</x:call>
+		<x:expect label="should return date range">[* TO 2004]</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Format solr date range - earliest only">
+		<x:call template="format-solr-date-range">
+			<x:param name="startDate">2004</x:param>
+			<x:param name="endDate"></x:param>
+		</x:call>
+		<x:expect label="should return date range">[2004 TO *]</x:expect>
 	</x:scenario>
 
 </x:description>
