@@ -109,7 +109,9 @@
 			<p:add-attribute attribute-name="value" match="/hash" attribute-value=" '' "/>
 			<p:hash name="computed-hash" match="/hash/@value" algorithm="crc">
 				<p:input port="parameters"><p:empty/></p:input>
-				<p:with-option name="value" select="/hash/*"/>
+				<p:with-option name="value" 
+					xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+					select="string-join(//trix:triple/*[not(self::trix:id)])"/>
 			</p:hash>
 			<p:group>
 				<p:variable name="hash" select="/hash/@value"/>
