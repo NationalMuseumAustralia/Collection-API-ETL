@@ -134,12 +134,12 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="record-metadata-dc">
 		<xsl:if test="$type='object' or $type='narrative'">
 			<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
-				<!-- modified -->
-				<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:modified') )">
+				<xsl:variable name="primary-source-graph" select="path:forward('crm:P70i_is_documented_in')[1]"/>
+				<xsl:for-each select="path:forward($primary-source-graph, 'dc:modified')[1]">
 					<string key='modified'><xsl:value-of select="." /></string>
 				</xsl:for-each>
 				<!-- web release -->
-				<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'dc:issued') )">
+				<xsl:for-each select="path:forward($primary-source-graph, 'dc:issued'[1] )">
 					<string key='issued'><xsl:value-of select="." /></string>
 				</xsl:for-each>
 				<!-- collection explorer link -->
@@ -960,7 +960,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 							]
 						" />
 						<!-- NB: assuming only one preferred -->
-						<xsl:for-each select="$value-preferred">
+						<xsl:for-each select="$value-preferred[1]">
 							<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
 								<xsl:call-template name="representations-dc-display">
 									<xsl:with-param name="value" select="$value-preferred" />
