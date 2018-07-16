@@ -1,7 +1,11 @@
 PREFIX ore: <http://www.openarchives.org/ore/terms/>
+PREFIX aat: <http://vocab.getty.edu/aat/>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+
 select distinct ?resource
 where {
 	?resource a ore:Aggregation.
+	?resource crm:P2_has_type aat:300025976 # "object collections"
 #	filter(
 #		?resource in (
 #			<http://nma-dev.conaltuohy.com/narrative/2686#>, 
