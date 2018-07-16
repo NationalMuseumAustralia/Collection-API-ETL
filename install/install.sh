@@ -57,6 +57,8 @@ apt install -y apache2
 a2enmod proxy_http
 a2enmod headers
 a2enmod ssl
+# to receive X-Forward-For from F5 proxy server
+a2enmod remoteip
 mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.original
 ln -s $CONFIG_DIR/apache/000-default.conf /etc/apache2/sites-available/
 #
