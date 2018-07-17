@@ -47,30 +47,10 @@
 			test="contains(xpath:string[@key='description']/text(), 'Wanydjarrpu')" />
 	</x:scenario>
 
-	<x:pending label="Banner images redacted in public API">
-		<x:scenario label="Convert banner image">
-			<x:call template="narrative-image-dc" />
-			<x:expect label="should return xpath:string hasVersion">
-				<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
-					<map>
-						<string key="type">StillImage</string>
-						<array key="hasVersion">
-							<map>
-								<string key="type">StillImage</string>
-								<string key="version">...</string>
-								<string key="identifier">...</string>
-							</map>
-							<map>
-								<string key="type">StillImage</string>
-								<string key="version">...</string>
-								<string key="identifier">...</string>
-							</map>
-						</array>
-					</map>
-				</array>
-			</x:expect>
-		</x:scenario>
-	</x:pending>
+	<x:scenario label="Convert banner image">
+		<x:call template="narrative-image-dc" />
+		<x:expect label="should return empty" />
+	</x:scenario>
 
 	<x:scenario label="Convert parent narrative">
 		<x:call template="narrative-parent-dc" />
