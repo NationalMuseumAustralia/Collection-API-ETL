@@ -155,7 +155,7 @@
 		<p:add-attribute attribute-name="value" match="/hash" attribute-value=" '' "/>
 		<p:hash name="computed-hash" match="/hash/@value" algorithm="crc">
 			<p:input port="parameters"><p:empty/></p:input>
-			<p:with-option name="value" 	select="/"/>
+			<p:with-option name="value" 	select="serialize(/)"/>
 		</p:hash>
 	</p:declare-step>
 	
