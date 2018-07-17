@@ -8,6 +8,7 @@
 	xmlns:cx="http://xmlcalabash.com/ns/extensions"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:results="http://www.w3.org/2005/sparql-results#"
+	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
 >
 	<p:option name="dataset" required="true"/>
 	
@@ -105,14 +106,8 @@
 				<p:with-param name="root-resource" select="$resource-uri"/>
 			</p:xslt>
 			<!-- Check if the Solr store already contains a record with the same identifier, based on identical RDF -->
-			<p:wrap wrapper="hash" match="/*"/>
-			<p:add-attribute attribute-name="value" match="/hash" attribute-value=" '' "/>
-			<p:hash name="computed-hash" match="/hash/@value" algorithm="crc">
-				<p:input port="parameters"><p:empty/></p:input>
-				<p:with-option name="value" 
-					xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
-					select="string-join(//trix:triple/*[not(self::trix:id)])"/>
-			</p:hash>
+			<p:delete name="remove-unstable-blank-node-identifiers" match="//trix:id"/>
+			<nma:hash name="trix-hash"/>
 			<p:group>
 				<p:variable name="hash" select="/hash/@value"/>
 				<!-- check if Solr has this record with the same hash as the just-computed hash -->
@@ -150,6 +145,18 @@
 				</p:choose>
 			</p:group>
 		</p:for-each>	
+	</p:declare-step>
+	
+	<!-- compute a hash of a document, replacing it with <hash value="xxx"/> -->
+	<p:declare-step name="hash" type="nma:hash">
+		<p:input port="source"/>
+		<p:output port="result"/>
+		<p:wrap wrapper="hash" match="/*"/>
+		<p:add-attribute attribute-name="value" match="/hash" attribute-value=" '' "/>
+		<p:hash name="computed-hash" match="/hash/@value" algorithm="crc">
+			<p:input port="parameters"><p:empty/></p:input>
+			<p:with-option name="value" 	select="/"/>
+		</p:hash>
 	</p:declare-step>
 	
 	<p:declare-step type="nma:update-solr" name="update-solr">	
