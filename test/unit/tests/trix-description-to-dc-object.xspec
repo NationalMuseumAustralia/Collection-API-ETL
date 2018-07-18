@@ -49,7 +49,7 @@
 		<x:call template="record-metadata-dc" />
 		<x:expect label="should return xpath:map meta">
 			<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
-				<string key="modified">2018-04-05</string>
+				<string key="modified">2018-06-07</string>
 				<string key="issued">2007-06-07</string>
 				<string key="hasFormat">http://collectionsearch.nma.gov.au/object/122751</string>
 			</map>
@@ -80,15 +80,15 @@
 			<array key="medium" xmlns="http://www.w3.org/2005/xpath-functions">
 				<map>
 					<string key="type">Material</string>
+					<string key="title">Paper</string>
+				</map>
+				<map>
+					<string key="type">Material</string>
 					<string key="title">Wood</string>
 				</map>
 				<map>
 					<string key="type">Material</string>
 					<string key="title">Photographic emulsion</string>
-				</map>
-				<map>
-					<string key="type">Material</string>
-					<string key="title">Paper</string>
 				</map>
 			</array>
 		</x:expect>
@@ -179,7 +179,7 @@
 			<array key="temporal" xmlns="http://www.w3.org/2005/xpath-functions">
 				<map>
 					<string key="type">Event</string>
-					<string key="title">1928-12-14</string>
+					<string key="title">14 December 1928 - 20 December 1928</string>
 					<string key="startDate">1928-12-14</string>
 					<string key="endDate">1928-12-20</string>
 					<string key="roleName">Date of production</string>
@@ -192,32 +192,32 @@
 	<x:scenario label="Convert associated parties">
 		<x:call template="contributor-dc" />
 		<x:expect label="should return xpath:array of contributor maps">
-				<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
-					<map>
-						<string key="id">10310</string>
-						<string key="type">Person</string>
-						<string key="title">...</string>
-						<string key="roleName">Cricketer</string>
-					</map>
-					<map>
-						<string key="id">10292</string>
-						<string key="type">Person</string>
-						<string key="title">...</string>
-						<string key="roleName">Cricketer</string>
-					</map>
-					<map>
-						<string key="id">12925</string>
-						<string key="type">Organisation</string>
-						<string key="title">English Cricket Team</string>
-						<string key="roleName">Associated organisation</string>
-					</map>
-					<map>
-						<string key="id">12924</string>
-						<string key="type">Organisation</string>
-						<string key="title">Australian Cricket Team</string>
-						<string key="roleName">Associated organisation</string>
-					</map>
-				</array>
+			<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
+				<map>
+					<string key="id">10310</string>
+					<string key="type">Person</string>
+					<string key="title">...</string>
+					<string key="roleName">Cricketer</string>
+				</map>
+				<map>
+					<string key="id">10292</string>
+					<string key="type">Person</string>
+					<string key="title">...</string>
+					<string key="roleName">Cricketer</string>
+				</map>
+				<map>
+					<string key="id">12924</string>
+					<string key="type">Organisation</string>
+					<string key="title">Australian Cricket Team</string>
+					<string key="roleName">Associated organisation</string>
+				</map>
+				<map>
+					<string key="id">12925</string>
+					<string key="type">Organisation</string>
+					<string key="title">English Cricket Team</string>
+					<string key="roleName">Associated organisation</string>
+				</map>
+			</array>
 		</x:expect>
 	</x:scenario>
 

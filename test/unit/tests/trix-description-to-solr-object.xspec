@@ -47,8 +47,8 @@
 	<x:scenario label="Convert record metadata">
 		<x:call template="record-metadata-solr" />
 		<x:expect label="should return field modified and issued">
-			<field name="modified">2018-04-05</field>
-			<field name="modified_date">2018-04-05</field>
+			<field name="modified">2018-06-07</field>
+			<field name="modified_date">2018-06-07</field>
 			<field name="issued">2007-06-07</field>
 			<field name="issued_date">2007-06-07</field>
 		</x:expect>
@@ -72,9 +72,9 @@
 	<x:scenario label="Convert materials">
 		<x:call template="materials-solr" />
 		<x:expect label="should return field medium x3">
+			<field name="medium">Paper</field>
 			<field name="medium">Wood</field>
 			<field name="medium">Photographic emulsion</field>
-			<field name="medium">Paper</field>
 		</x:expect>
 	</x:scenario>
 
@@ -138,7 +138,7 @@
 		<x:call template="production-dates-solr" />
 		<!-- each date: value role, notes -->
 		<x:expect label="should return field temporal x3">
-			<field name="temporal">1928-12-14</field>
+			<field name="temporal">14 December 1928 - 20 December 1928</field>
 			<field name="temporal_date">[1928-12-14 TO 1928-12-20]</field>
 			<field name="temporal">Date of production</field>
 		</x:expect>
@@ -148,13 +148,13 @@
 		<x:call template="associated-parties-solr" />
 		<!-- each party: id, person, organisation, role, notes(none) -->
 		<x:expect label="should return contributor fields x14">
-			<field name="contributor_id">12925</field>
-			<field name="contributor" />
-			<field name="contributor">English Cricket Team</field>
-			<field name="contributor">Associated organisation</field>
 			<field name="contributor_id">12924</field>
 			<field name="contributor" />
 			<field name="contributor">Australian Cricket Team</field>
+			<field name="contributor">Associated organisation</field>
+			<field name="contributor_id">12925</field>
+			<field name="contributor" />
+			<field name="contributor">English Cricket Team</field>
 			<field name="contributor">Associated organisation</field>
 			<field name="contributor_id">10310</field>
 			<field name="contributor">Mr Walter (Wally) R. Hammond</field>
@@ -195,6 +195,7 @@
 	</x:scenario>
 	</x:pending>
 
+	<x:pending label="Waiting for revised trix source record">
 	<x:scenario label="Convert representations">
 		<x:call template="representations-solr" />
 		<x:expect label="should return field of media x5">
@@ -210,6 +211,7 @@
 			<field name="media_id">...</field>
 		</x:expect>
 	</x:scenario>
+	</x:pending>
 
 	<x:scenario label="Format solr date range - empty">
 		<x:call template="format-solr-date-range">

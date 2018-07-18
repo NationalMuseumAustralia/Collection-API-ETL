@@ -32,11 +32,13 @@
 
 	<x:scenario label="Convert media parent object">
 		<x:call template="media-parent-dc" />
-		<x:expect label="should return empty">
-			<xpath:map key="isVersionOf">
-				<xpath:string key="type">object</xpath:string>
-				<xpath:string key="id">122751</xpath:string>
-			</xpath:map>
+		<x:expect label="should return isVersionOf">
+			<xpath:array key="isVersionOf">
+				<xpath:map>
+					<xpath:string key="type">object</xpath:string>
+					<xpath:string key="id">122751</xpath:string>
+				</xpath:map>
+			</xpath:array>
 		</x:expect>
 	</x:scenario>
 
