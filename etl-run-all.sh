@@ -43,6 +43,45 @@ to_log "BEGIN ETL - mode=$MODE, job=$JOB_ID"
 cd $SCRIPT_DIR
 IN_DIR="$DATA_DIR/$MODE"
 PICTION_IN_DIR="$PICTION_DATA_DIR"
+
+# check for existence of data files; if any are missing, abort the ETL
+echo Checking for existence of source data files ... >> $LOGFILE
+if compgen -G $IN_DIR/*object*.xml > /dev/null ; then
+        echo Objects file exists >> $LOGFILE
+else
+        echo Objects file missing! ETL aborting. >> $LOGFILE
+        exit 1
+fi
+if compgen -G $IN_DIR/*narratives*.xml > /dev/null ; then
+        echo Narratives file exists >> $LOGFILE
+else
+        echo Narratives file missing! ETL aborting.  >> $LOGFILE
+        exit 1
+fi
+if compgen -G $IN_DIR/*accessionlots*.xml > /dev/null ; then
+        echo Accession lots file exists >> $LOGFILE
+else
+        echo Accession lots file missing! ETL aborting.  >> $LOGFILE
+        exit 1
+fi
+if compgen -G $IN_DIR/*sites*.xml > /dev/null ; then
+        echo Sites file exists >> $LOGFILE
+else
+        echo Sites file missing! ETL aborting.  >> $LOGFILE
+        exit 1
+fi
+if compgen -G $IN_DIR/*parties*.xml > /dev/null ; then
+        echo Parties file exists >> $LOGFILE
+else
+        echo Parties file missing! ETL aborting.  >> $LOGFILE
+        exit 1
+fi
+if compgen -G $PICTION_IN_DIR/solr_prod1.xml > /dev/null ; then
+        echo Piction file exists >> $LOGFILE
+else
+        echo Piction file missing! ETL aborting.  >> $LOGFILE
+        exit 1
+fi
 case "$MODE" in
 	full)
 		to_log "START STEP 1 - full load to SPARQL store"
