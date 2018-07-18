@@ -177,7 +177,7 @@ echo =========== Installing Kong
 cd $INSTALL_DIR
 wget https://bintray.com/kong/kong-community-edition-deb/download_file?file_path=dists/kong-community-edition-0.13.0.xenial.all.deb -O kong.deb
 apt install -y ./kong.deb
-apt-get install postgresql postgresql-client
+apt install -y postgresql postgresql-client
 sudo -u postgres psql --command="CREATE USER kong;"
 sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
 sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
@@ -260,7 +260,6 @@ service apache2 restart
 service tomcat8 restart
 service solr restart
 service nagios restart
-service webmin restart
 #
 echo =========== API server install complete
 date
