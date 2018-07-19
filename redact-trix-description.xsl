@@ -88,32 +88,40 @@
 
 
 				<!-- ############################################################################## -->
-				<!-- Exclude related objects that aren't available via the API -->
+				<!-- Related objects -->
+				<xsl:variable name="related-objects" select="path:forward('dc:relation')"/>
 
 				<!-- identify related objects that aren't in the API (don't have a title) -->
 				<xsl:variable name="related-objects-that-are-empty" select="
-					path:forward(('dc:relation'))
+					$related-objects
 						[
 							not(
 								path:forward(., ('rdfs:label'))
 							)
 						]
 				"/>
-				<!-- identify any related object statements which can be discarded -->
+				<!-- Exclude any links to those empty objects -->
 				<xsl:variable name="empty-related-objects-triples" select="
 					$graph/
 						trix:triple
 							[*[2]='http://purl.org/dc/terms/relation']
 							[*[3]=$related-objects-that-are-empty] 
 				"/>	
-				<!-- dc:relation properties of resources other than the root resource are superfluous, and 
-				are deleted to avoid combinatorial explosion in JSON-LD rendering, since often a group of
+				<!-- Various properties of the 'related' objects are superfluous, and dc:relation especially
+				should be pruned to avoid combinatorial explosion in JSON-LD rendering, since often a group of
 				objects are related together in a dense cluster -->
+				<xsl:variable name="desired-related-objects-properties" select="
+					(
+						'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
+						'http://www.w3.org/2000/01/rdf-schema#label',
+						'http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation'
+					)
+				"/>
 				<xsl:variable name="superfluous-related-objects-triples" select="
 					$graph/
 						trix:triple
-							[*[1]!=$root-resource]
-							[*[2]='http://purl.org/dc/terms/relation']
+							[*[1]=$related-objects]
+							[not(*[2]=$desired-related-objects-properties)]
 				"/>	
 				
 				<!-- ############################################################################## -->
