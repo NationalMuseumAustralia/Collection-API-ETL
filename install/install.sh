@@ -156,6 +156,7 @@ mkdir /var/log/NMA-API-ETL
 mkdir /mnt
 chown -R ubuntu:ubuntu /mnt
 mkdir -p /data/public/n-quads
+mkdir -p /data/internal/n-quads
 chown -R ubuntu:ubuntu /data
 # set up crontab to run ETL
 chmod a+x /usr/local/NMA-API-ETL/etl-run-all.sh
