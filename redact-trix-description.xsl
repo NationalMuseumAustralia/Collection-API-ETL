@@ -100,13 +100,22 @@
 						]
 				"/>
 				<!-- identify any related object statements which can be discarded -->
-				<xsl:variable name="unwanted-related-objects" select="
+				<xsl:variable name="empty-related-objects-triples" select="
 					$graph/
 						trix:triple
 							[*[2]='http://purl.org/dc/terms/relation']
-							[*[3]=$related-objects-that-are-empty]
+							[*[3]=$related-objects-that-are-empty] 
 				"/>	
-							
+				<!-- dc:relation properties of resources other than the root resource are superfluous, and 
+				are deleted to avoid combinatorial explosion in JSON-LD rendering, since often a group of
+				objects are related together in a dense cluster -->
+				<xsl:variable name="superfluous-related-objects-triples" select="
+					$graph/
+						trix:triple
+							[*[1]!=$root-resource]
+							[*[2]='http://purl.org/dc/terms/relation']
+				"/>	
+				
 				<!-- ############################################################################## -->
 				<!-- Slim down the description of any objects which are contained within narratives -->
 				
@@ -136,7 +145,8 @@
 					$graph/trix:triple except (
 						$unwanted-emu-images, 
 						$unwanted-object-media-statements, 
-						$unwanted-related-objects, 
+						$empty-related-objects-triples, 
+						$superfluous-related-objects-triples, 
 						$unwanted-narrative-object-triples
 					)
 				"/>
