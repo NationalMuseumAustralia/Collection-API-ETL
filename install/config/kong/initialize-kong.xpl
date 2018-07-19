@@ -164,8 +164,11 @@ data 'name=key-auth'
 	
 	<!-- enable API key-based authentication -->
 	<!-- list the API's plugin configurations so we can update the "key-auth" one -->
+	<!--
 	<kong:get name="get-nma-api-plugins" uri="http://localhost:8001/services/nma-api/plugins/"/>
+	-->
 	<!-- get the identifier of the key-auth plugin configuration, and patch it with the predefined configuration -->
+	<!--
 	<kong:send name="configure-key-auth-plugin" method="patch">
 		<p:with-option name="uri" select="
 			concat(
@@ -178,6 +181,7 @@ data 'name=key-auth'
 		</p:input>
 	</kong:send>
 	<p:sink/>
+	-->
 	
 	<!-- collate the logged operations into a log file and save it -->
 	<p:wrap-sequence name="collate-log-of-operations" wrapper="responses">
@@ -191,8 +195,10 @@ data 'name=key-auth'
 			<p:pipe step="add-acl-plugin" port="log"/>
 			<p:pipe step="add-anonymous-user-to-internal-group" port="log"/>
 			<p:pipe step="throttle-anonymous-user" port="log"/>
+			<!--
 			<p:pipe step="get-nma-api-plugins" port="log"/>
 			<p:pipe step="configure-key-auth-plugin" port="log"/>
+			-->
 		</p:input>
 	</p:wrap-sequence>
 	<p:store name="store-long" indent="true" href="/var/log/NMA-API-ETL/kong-config.xml"/>
