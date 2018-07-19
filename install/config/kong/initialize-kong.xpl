@@ -95,7 +95,10 @@ data 'name=key-auth'
 			</p:inline>
 		</p:input>
 	</p:template>
+	<!--
 	<kong:send name="add-key-auth-plugin-with-anonymous-user" method="put" uri="http://localhost:8001/plugins/key-auth"/>
+	-->
+	<kong:send name="add-key-auth-plugin-with-anonymous-user" method="post" uri="http://localhost:8001/plugins"/>
 	<p:sink/>
 	
 	<!-- enable the ACL plugin for the service, defining two user groups "public" and "internal" -->
