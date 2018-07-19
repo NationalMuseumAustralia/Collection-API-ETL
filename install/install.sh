@@ -260,6 +260,7 @@ service apache2 restart
 service tomcat8 restart
 service solr restart
 service nagios restart
+service webmin restart
 #
 echo =========== API server install complete
 date
