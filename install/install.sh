@@ -226,7 +226,8 @@ make install
 # WEBMIN
 #
 echo =========== Installing Webmin
-sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
+# fixed download: https://sourceforge.net/p/webadmin/bugs/4742/#e776
+sh -c 'echo "deb http://webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
 wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
 apt update
 apt install -y webmin

@@ -230,7 +230,9 @@
 			<p:with-option name="message" select="concat('Transforming ', $file-name-component, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
 		</cx:message>
 		<!-- remove empty leaf elements -->
+<!--
 		<p:delete match="*[not(*)][not(normalize-space(.))]"/>
+-->
 		<p:choose name="transformation-to-rdf">
 			<p:when test="$file-name-component = 'piction'">
 				<p:output port="result"/>
@@ -310,14 +312,14 @@
 			</p:otherwise>
 		</p:choose>
 		<!-- store the RDF/XML as a file -->
-		<!--
+<!--
 		<p:store indent="true">
 			<p:with-option name="href" select="concat('/data/', $dataset, '/rdf-xml/', encode-for-uri(encode-for-uri($graph-uri)), '.rdf')"/>
 			<p:input port="source">
 				<p:pipe step="store-graph" port="source"/>
 			</p:input>
 		</p:store>
-		-->
+-->
 	</p:declare-step>
 	
 </p:declare-step>
