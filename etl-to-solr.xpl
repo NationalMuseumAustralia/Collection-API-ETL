@@ -82,7 +82,7 @@
 			<!-- generate description for this resource -->
 			<p:variable name="resource-uri" select="/results:result/results:binding/results:uri"/>
 			<cx:message>
-				<p:with-option name="message" select="concat('Querying SPARQL store for ', $resource-uri, ' ...')"/>
+				<p:with-option name="message" select="concat('Querying ', $dataset, ' SPARQL store for ', $resource-uri, ' ...')"/>
 			</cx:message>
 			<!-- substitute the URI of the resource to be indexed into the query template -->
 			<p:xslt name="generate-sparql-query">
@@ -155,7 +155,7 @@
 		<p:add-attribute attribute-name="value" match="/hash" attribute-value=" '' "/>
 		<p:hash name="computed-hash" match="/hash/@value" algorithm="crc">
 			<p:input port="parameters"><p:empty/></p:input>
-			<p:with-option name="value" 	select="serialize(/)"/>
+			<p:with-option name="value" select="serialize(/)"/>
 		</p:hash>
 	</p:declare-step>
 	
