@@ -240,6 +240,10 @@ grep -q -F 'ssl_redirect=0' /etc/webmin/miniserv.conf || echo 'ssl_redirect=0' >
 grep -q -F 'webprefix=/webmin' /etc/webmin/config || echo 'webprefix=/webmin' >> /etc/webmin/config
 grep -q -F 'webprefixnoredir=1' /etc/webmin/config || echo 'webprefixnoredir=1' >> /etc/webmin/config
 grep -q -F 'referer=1' /etc/webmin/config || echo 'referer=1' >> /etc/webmin/config
+# remove shell
+rm -rf /etc/webmin/shell
+rm -rf /usr/share/webmin/shell
+sed -i 's/shell//g' /etc/webmin/webmin.acl
 #
 # GOACCESS
 #
