@@ -531,7 +531,7 @@
 				<!-- rights IRI -->
 				<field name="rights"><xsl:value-of select="path:forward(., 'crm:P148_has_component')"/></field>
 				<!-- rights label -->
-				<field name="rights"><xsl:value-of select="path:forward(., ('crm:P148_has_component', 'rdf:value') )"/></field>
+				<field name="rights"><xsl:value-of select="path:forward(., ('crm:P148_has_component', 'rdfs:label') )"/></field>
 				<!-- rights restriction reason -->
 				<xsl:for-each select="path:forward(., ('crm:P129i_is_subject_of', 'rdf:value') )">
 					<field name="rights"><xsl:value-of select="."/></field>

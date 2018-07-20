@@ -687,7 +687,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
 				<xsl:for-each select="($value-preferred, $value-unpreferred)">
 					<xsl:call-template name="representations-dc-display">
-						<xsl:with-param name="value" select="$value-preferred" />
+						<xsl:with-param name="value" select="." />
 					</xsl:call-template>
 				</xsl:for-each>
 			</array>

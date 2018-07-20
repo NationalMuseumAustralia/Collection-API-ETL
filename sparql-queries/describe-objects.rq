@@ -107,6 +107,7 @@ WHERE {
 	crm:P138i_has_representation/ore:isAggregatedBy |
 	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to |
 	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P148_has_component |
+	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P148_has_component/rdfs:label |
 	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of |
 	crm:P138i_has_representation/ore:isAggregatedBy/crm:P104_is_subject_to/crm:P129i_is_subject_of/crm:P2_has_type 
 	

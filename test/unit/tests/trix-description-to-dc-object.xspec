@@ -84,11 +84,11 @@
 				</map>
 				<map>
 					<string key="type">Material</string>
-					<string key="title">Wood</string>
+					<string key="title">Photographic emulsion</string>
 				</map>
 				<map>
 					<string key="type">Material</string>
-					<string key="title">Photographic emulsion</string>
+					<string key="title">Wood</string>
 				</map>
 			</array>
 		</x:expect>
@@ -194,13 +194,13 @@
 		<x:expect label="should return xpath:array of contributor maps">
 			<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
 				<map>
-					<string key="id">10310</string>
+					<string key="id">10292</string>
 					<string key="type">Person</string>
 					<string key="title">...</string>
 					<string key="roleName">Cricketer</string>
 				</map>
 				<map>
-					<string key="id">10292</string>
+					<string key="id">10310</string>
 					<string key="type">Person</string>
 					<string key="title">...</string>
 					<string key="roleName">Cricketer</string>
@@ -226,17 +226,6 @@
 		<x:expect label="should return empty" />
 	</x:scenario>
 
-	<x:pending label="Waiting for revised trix source record">
-	<x:scenario label="Convert rights">
-		<x:call template="rights-dc" />
-		<x:expect label="should return xpath:string rights and rightsTitle">
-			<string key="rights" xmlns="http://www.w3.org/2005/xpath-functions">https://creativecommons.org/publicdomain/mark/1.0/</string>
-			<string key="rightsTitle" xmlns="http://www.w3.org/2005/xpath-functions">Public Domain</string>
-		</x:expect>
-	</x:scenario>
-	</x:pending>
-
-	<x:pending label="Waiting for revised trix source record">
 	<x:scenario label="Convert representations">
 		<x:call template="representations-dc" />
 		<x:expect label="should return xpath:array of hasVersion maps">
@@ -250,11 +239,7 @@
 					<array key="hasVersion">
 						<map>
 							<string key="type">StillImage</string>
-							<string key="version">...</string>
-							<string key="identifier">...</string>
-						</map>
-						<map>
-							<string key="type">StillImage</string>
+							<string key="version">large image</string>
 							<string key="identifier">...</string>
 						</map>
 						<map>
@@ -264,7 +249,7 @@
 						</map>
 						<map>
 							<string key="type">StillImage</string>
-							<string key="version">...</string>
+							<string key="version">thumbnail image</string>
 							<string key="identifier">...</string>
 						</map>
 					</array>
@@ -272,7 +257,6 @@
 			</array>
 		</x:expect>
 	</x:scenario>
-	</x:pending>
 
 	<!-- don't exist in object so should be empty -->
 

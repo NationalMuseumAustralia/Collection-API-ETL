@@ -73,8 +73,8 @@
 		<x:call template="materials-solr" />
 		<x:expect label="should return field medium x3">
 			<field name="medium">Paper</field>
-			<field name="medium">Wood</field>
 			<field name="medium">Photographic emulsion</field>
+			<field name="medium">Wood</field>
 		</x:expect>
 	</x:scenario>
 
@@ -156,11 +156,11 @@
 			<field name="contributor" />
 			<field name="contributor">English Cricket Team</field>
 			<field name="contributor">Associated organisation</field>
-			<field name="contributor_id">10310</field>
-			<field name="contributor">Mr Walter (Wally) R. Hammond</field>
-			<field name="contributor">Cricketer</field>
 			<field name="contributor_id">10292</field>
 			<field name="contributor">Mr William 'Bert' A. Oldfield</field>
+			<field name="contributor">Cricketer</field>
+			<field name="contributor_id">10310</field>
+			<field name="contributor">Mr Walter (Wally) R. Hammond</field>
 			<field name="contributor">Cricketer</field>
 		</x:expect>
 	</x:scenario>
@@ -185,7 +185,6 @@
 		<x:expect label="should return empty" />
 	</x:scenario>
 
-	<x:pending label="Waiting for revised trix source record">
 	<x:scenario label="Convert rights">
 		<x:call template="rights-solr" />
 		<x:expect label="should return field rights x2">
@@ -193,9 +192,7 @@
 			<field name="rights">Public Domain</field>
 		</x:expect>
 	</x:scenario>
-	</x:pending>
 
-	<x:pending label="Waiting for revised trix source record">
 	<x:scenario label="Convert representations">
 		<x:call template="representations-solr" />
 		<x:expect label="should return field of media x5">
@@ -207,11 +204,8 @@
 			<field name="media_id">...</field>
 			<field name="media">...</field>
 			<field name="media_id">...</field>
-			<field name="media">...</field>
-			<field name="media_id">...</field>
 		</x:expect>
 	</x:scenario>
-	</x:pending>
 
 	<x:scenario label="Format solr date range - empty">
 		<x:call template="format-solr-date-range">

@@ -42,7 +42,6 @@
 		</x:expect>
 	</x:scenario>
 
-	<x:pending label="Waiting for revised trix source record">
 	<x:scenario label="Convert representations">
 		<x:call template="representations-dc" />
 		<x:expect label="should return rights and xpath:array of hasVersion maps">
@@ -57,10 +56,6 @@
 				<xpath:map>
 					<xpath:string key="type">StillImage</xpath:string>
 					<xpath:string key="identifier">...</xpath:string>
-				</xpath:map>
-				<xpath:map>
-					<xpath:string key="type">StillImage</xpath:string>
-					<xpath:string key="identifier">...</xpath:string>
 					<xpath:string key="version">preview image</xpath:string>
 				</xpath:map>
 				<xpath:map>
@@ -71,6 +66,5 @@
 			</xpath:array>
 		</x:expect>
 	</x:scenario>
-	</x:pending>
 
 </x:description>
