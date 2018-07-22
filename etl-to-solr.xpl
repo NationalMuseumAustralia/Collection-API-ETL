@@ -157,6 +157,7 @@
 			<p:input port="parameters"><p:empty/></p:input>
 			<p:with-option name="value" select="serialize(/)"/>
 		</p:hash>
+		<p:delete match="/hash/*"/>
 	</p:declare-step>
 	
 	<p:declare-step type="nma:update-solr" name="update-solr">	
