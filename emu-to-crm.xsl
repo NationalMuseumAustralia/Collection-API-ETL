@@ -851,7 +851,7 @@
 					<xsl:attribute name="rdf:about"><xsl:value-of select="concat($entity-iri, '#link-', $href)" /></xsl:attribute>
 					<!-- and here's the actual link -->
 					<crm:P1_is_identified_by>
-					    <crm:E42_Identifier rdf:resource="{$href}" />
+					    <crm:E42_Identifier rdf:about="{$href}" />
 					</crm:P1_is_identified_by>
 				</xsl:if>
 				<xsl:if test="$label">

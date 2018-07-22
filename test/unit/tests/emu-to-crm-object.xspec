@@ -852,7 +852,7 @@
 				<rdf:Description
 					rdf:about="#link-http://www.nma.gov.au/collections/highlights/ellen_rogers_collection">
 					<crm:P1_is_identified_by>
-					    <crm:E42_Identifier rdf:resource="http://www.nma.gov.au/collections/highlights/ellen_rogers_collection" />
+					    <crm:E42_Identifier rdf:about="http://www.nma.gov.au/collections/highlights/ellen_rogers_collection" />
 					</crm:P1_is_identified_by>
 					<rdfs:label>View collection highlight</rdfs:label>
 					<crm:P2_has_type rdf:resource="http://vocab.getty.edu/aat/300264578" />
