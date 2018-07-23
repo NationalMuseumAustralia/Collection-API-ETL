@@ -398,9 +398,11 @@
 			<xsl:variable name="party-iri" select="concat('party/', ProPersonRef_tab.irn, '#')" />
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
-					<rdfs:label>
-						<xsl:value-of select="ProPersonType_tab" />
-					</rdfs:label>
+					<xsl:if test="ProPersonType_tab">
+						<rdfs:label>
+							<xsl:value-of select="ProPersonType_tab" />
+						</rdfs:label>
+					</xsl:if>
 					<xsl:if test="ProPersonNotes_tab">
 						<crm:P129i_is_subject_of>
 							<crm:E33_Linguistic_Object>
@@ -455,9 +457,11 @@
 			<xsl:variable name="place-iri" select="concat('place/', ProPlaceRef_tab.irn, '#')" />
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
-					<rdfs:label>
-						<xsl:value-of select="ProPlaceType_tab" />
-					</rdfs:label>
+					<xsl:if test="ProPlaceType_tab">
+						<rdfs:label>
+							<xsl:value-of select="ProPlaceType_tab" />
+						</rdfs:label>
+					</xsl:if>
 					<xsl:if test="ProPlaceNotes_tab">
 						<crm:P129i_is_subject_of>
 							<crm:E33_Linguistic_Object>
@@ -485,9 +489,11 @@
 		<xsl:for-each select="ProductionDate">
 			<crm:P9_consists_of>
 				<crm:E7_Activity>
-					<rdfs:label>
-						<xsl:value-of select="ProDateType_tab" />
-					</rdfs:label>
+					<xsl:if test="ProDateType_tab">
+						<rdfs:label>
+							<xsl:value-of select="ProDateType_tab" />
+						</rdfs:label>
+					</xsl:if>
 					<xsl:if test="ProDateNotes_tab">
 						<crm:P129i_is_subject_of>
 							<crm:E33_Linguistic_Object>
@@ -520,9 +526,11 @@
 			<xsl:variable name="party-iri" select="concat('party/', AssPersonRef_tab.irn, '#')" />
 			<crm:P12i_was_present_at>
 				<crm:E5_Event>
-					<rdfs:label>
-						<xsl:value-of select="AssPersonType_tab" />
-					</rdfs:label>
+					<xsl:if test="AssPersonType_tab">
+						<rdfs:label>
+							<xsl:value-of select="AssPersonType_tab" />
+						</rdfs:label>
+					</xsl:if>
 					<xsl:if test="AssPersonNotes_tab">
 						<crm:P129i_is_subject_of>
 							<crm:E33_Linguistic_Object>
@@ -550,9 +558,11 @@
 			<xsl:variable name="place-iri" select="concat('place/', AssPlaceRef_tab.irn, '#')" />
 			<crm:P12i_was_present_at>
 				<crm:E5_Event>
-					<rdfs:label>
-						<xsl:value-of select="AssPlaceType_tab" />
-					</rdfs:label>
+					<xsl:if test="AssPlaceType_tab">
+						<rdfs:label>
+							<xsl:value-of select="AssPlaceType_tab" />
+						</rdfs:label>
+					</xsl:if>
 					<xsl:if test="AssPlaceNotes_tab">
 						<crm:P129i_is_subject_of>
 							<crm:E33_Linguistic_Object>
@@ -577,9 +587,11 @@
 		<xsl:for-each select="AssociatedDates">
 			<crm:P12i_was_present_at>
 				<crm:E5_Event>
-					<rdfs:label>
-						<xsl:value-of select="AssDateType_tab" />
-					</rdfs:label>
+					<xsl:if test="AssDateType_tab">
+						<rdfs:label>
+							<xsl:value-of select="AssDateType_tab" />
+						</rdfs:label>
+					</xsl:if>
 					<xsl:if test="AssDateNotes_tab">
 						<crm:P129i_is_subject_of>
 							<crm:E33_Linguistic_Object>

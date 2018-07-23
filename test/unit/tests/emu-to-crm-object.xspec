@@ -162,6 +162,25 @@
 		</x:expect>
 	</x:scenario>
 
+	<x:scenario label="Convert production: parties, no label">
+		<x:context>
+			<ProductionParties>
+				<ProductionParty>
+					<ProPersonRef_tab.irn>6514</ProPersonRef_tab.irn>
+				</ProductionParty>
+			</ProductionParties>
+		</x:context>
+		<x:expect label="should return crm:P9_consists_of">
+			<crm:P9_consists_of>
+				<crm:E7_Activity>
+					<crm:P14_carried_out_by>
+						<rdf:Description rdf:about="party/6514#" />
+					</crm:P14_carried_out_by>
+				</crm:E7_Activity>
+			</crm:P9_consists_of>
+		</x:expect>
+	</x:scenario>
+
 	<x:scenario label="Convert production: parties">
 		<x:context>
 			<ProductionParties>
