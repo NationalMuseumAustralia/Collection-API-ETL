@@ -82,8 +82,13 @@
 			<!-- generate description for this resource -->
 			<p:variable name="resource-uri" select="/results:result/results:binding/results:uri"/>
 			<cx:message>
-				<p:with-option name="message" select="concat('Querying ', $dataset, ' SPARQL store for ', $resource-uri, ' ...')"/>
+				<p:with-option name="message" select="concat(current-dateTime(), ' copying ', $resource-uri, ' from ', $dataset, ' dataset ...')"/>
 			</cx:message>
+			<!--
+			<cx:message>
+				<p:with-option name="message" select="concat(current-dateTime(), ' generating SPARQL query ...')"/>
+			</cx:message>
+			-->
 			<!-- substitute the URI of the resource to be indexed into the query template -->
 			<p:xslt name="generate-sparql-query">
 				<p:with-param name="resource-uri" select="$resource-uri"/>
@@ -95,10 +100,20 @@
 				</p:input>
 			</p:xslt>
 			<!-- execute the query to generate a resource description -->
+			<!--
+			<cx:message>
+				<p:with-option name="message" select="concat(current-dateTime(), ' executing SPARQL query ...')"/>
+			</cx:message>
+			-->
 			<nma:sparql-query name="resource-description" accept="application/trix+xml">
 				<p:with-option name="dataset" select="$dataset"/>
 			</nma:sparql-query>
 			<!-- make any necessary redactions to the RDF graph -->
+			<!--
+			<cx:message>
+				<p:with-option name="message" select="concat(current-dateTime(), ' redacting query results ...')"/>
+			</cx:message>
+			-->
 			<p:xslt name="redacted-description">
 				<p:input port="stylesheet">
 					<p:document href="redact-trix-description.xsl"/>
@@ -106,11 +121,21 @@
 				<p:with-param name="root-resource" select="$resource-uri"/>
 			</p:xslt>
 			<!-- Check if the Solr store already contains a record with the same identifier, based on identical RDF -->
+			<!--
+			<cx:message>
+				<p:with-option name="message" select="concat(current-dateTime(), ' generating hash of results ...')"/>
+			</cx:message>
+			-->
 			<p:delete name="remove-unstable-blank-node-identifiers" match="//trix:id"/>
 			<nma:hash name="trix-hash"/>
 			<p:group>
 				<p:variable name="hash" select="/hash/@value"/>
 				<!-- check if Solr has this record with the same hash as the just-computed hash -->
+				<!--
+				<cx:message>
+					<p:with-option name="message" select="concat(current-dateTime(), ' querying Solr for hash equality ...')"/>
+				</cx:message>
+				-->
 				<p:load name="still-current-solr-record">
 					<p:with-option name="href" select="
 						concat(
@@ -126,13 +151,17 @@
 				<p:choose>
 					<p:when test="/response/result/@numFound='1'">
 						<!-- there is a record in Solr which is still valid -->
-						<cx:message message="Solr's version of this record is still valid"/>
+						<cx:message>
+							<p:with-option name="message" select="concat(current-dateTime(), ' the record in Solr was still valid')"/>
+						</cx:message>
 						<p:sink/>
 					</p:when>
 					<p:otherwise>
 						<!-- Solr does not contain an up-to-date version of this record -->
 						<!-- derive new publication formats from the RDF and store in Solr -->
-						<cx:message message="Solr does not contain a current version of this record"/>
+						<cx:message>
+							<p:with-option name="message" select="concat(current-dateTime(), ' the record in Solr was stale')"/>
+						</cx:message>
 						<nma:update-solr>
 							<p:with-option name="resource-uri" select="$resource-uri"/>
 							<p:with-option name="dataset" select="$dataset"/>
