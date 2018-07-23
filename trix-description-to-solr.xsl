@@ -511,6 +511,14 @@
 
 	<!-- acknowledgement -->
 	<xsl:template name="acknowledgement-solr">
+		<xsl:for-each select="
+			path:forward('crm:P67i_is_referred_to_by')[
+				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300026687'
+			]
+			/path:forward(., 'rdf:value')
+		">
+			<field name="acknowledgement"><xsl:value-of select="."/></field>
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- inward loan -->
@@ -518,7 +526,7 @@
 		<xsl:if test="
 			path:forward(('crm:P30i_custody_transferred_through', 'crm:P29_custody_received_by')) = 'http://dbpedia.org/resource/National_Museum_of_Australia'
 		">
-			<field name='source'><xsl:text>Inward loan</xsl:text></field>
+			<field name="source"><xsl:text>Inward loan</xsl:text></field>
 		</xsl:if>
 	</xsl:template>
 
