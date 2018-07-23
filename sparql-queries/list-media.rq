@@ -4,8 +4,11 @@ select distinct ?resource
 where {
 	?resource a crm:E36_Visual_Item.
 	# only top level visual items (i.e. those which directly represent a physical object)
-  	?resource ^crm:P138i_has_representation / rdf:type crm:E19_Physical_Object.
+  	?resource ^crm:P138i_has_representation ?object.
+  	?object rdf:type crm:E19_Physical_Object.
+  	?object rdfs:label ?label.
 	filter(isuri(?resource)) # ignoring any visual items which have no URI
 	# for debugging, filter here:
 	# filter (?resource in (<http://nma-dev.conaltuohy.com/media/109738#> ))
 }
+order by ?resource
