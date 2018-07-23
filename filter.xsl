@@ -72,18 +72,18 @@
 	<!-- exclude object inwards loan flag -->
 	<xsl:template match="InwardLoan"/>
 	
-	<!-- remove all images if licence is not open -->
-	<xsl:template match="
-		record[
-			not(
-				AcsStatus = (
-					'Public Domain', 
-					'Creative Commons Commercial Use', 
-					'Creative Commons Non-Commercial Use'
-				)
-			)
-		]/WebMultiMediaRef_tab
+	<xsl:variable name="open-rights" select="
+		(
+			'Public Domain', 
+			'Creative Commons Commercial Use', 
+			'Creative Commons Non-Commercial Use'
+		)
 	"/>
+	<!-- remove all images if licence is not open -->
+	<xsl:template match="record[not(AcsStatus = $open-rights)]/WebMultiMediaRef_tab"/>
+	
+	<!-- remove rights data altogether if restricted; this will cause all images (including Piction images) to be redacted -->
+	<xsl:template match="record/AcsStatus[not(. = $open-rights)]"/>
 	
 	<!-- Exclude any narrative whose intended audience does not include "Collection Explorer publish" -->
 	<xsl:template match="
