@@ -7,32 +7,33 @@ WHERE {
 	crm:P2_has_type | 
 	# the object(s) which the visual item depicts, and its type, descriptions, etc (but excluding visual items which depict it
 	# the object's type
+	crm:P138_represents| 
 	crm:P138_represents/crm:P2_has_type | 
 	# the object's identifiers, and their types
 	crm:P138_represents/crm:P1_is_identified_by | 
 	crm:P138_represents/crm:P1_is_identified_by/crm:P2_has_type | 
 	# the object's materials, and their types
-	crm:P138_represents/crm:P45_consists_of | 
-	crm:P138_represents/crm:P45_consists_of/crm:P2_has_type |
+#	crm:P138_represents/crm:P45_consists_of | 
+#	crm:P138_represents/crm:P45_consists_of/crm:P2_has_type |
 	# the object's container, and its type
-	crm:P138_represents/crm:P106i_forms_part_of | 
-	crm:P138_represents/crm:P106i_forms_part_of/crm:P2_has_type | 
+#	crm:P138_represents/crm:P106i_forms_part_of | 
+#	crm:P138_represents/crm:P106i_forms_part_of/crm:P2_has_type | 
 	# textual descriptions of the object, and their types
 	crm:P138_represents/crm:P129i_is_subject_of |
 	crm:P138_represents/crm:P129i_is_subject_of/crm:P2_has_type |
 	# the production of the object, the sub-activities that made up that production, 
 	# the parties carrying out those activities, and the role they played,
 	# and the locations and dates of those activities
-	crm:P138_represents/crm:P108i_was_produced_by |
-	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of |
-	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by |
-	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by/crm:P14.1_in_the_role_of |
-	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:P7_took_place_at |
-	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:P4_has_time-span | 
+#	crm:P138_represents/crm:P108i_was_produced_by |
+#	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of |
+#	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by |
+#	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:PC14_carried_out_by/crm:P14.1_in_the_role_of |
+#	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:P7_took_place_at |
+#	crm:P138_represents/crm:P108i_was_produced_by/crm:P9_consists_of/crm:P4_has_time-span | 
 	# the dimensions of the object, the type of the dimensions, and their measurement unit
-	crm:P138_represents/crm:P43_has_dimension |
-	crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type |
-	crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
+#	crm:P138_represents/crm:P43_has_dimension |
+#	crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type |
+#	crm:P138_represents/crm:P43_has_dimension/crm:P2_has_type/crm:P91_has_unit |
 	
 	# the bundle of object images coverered by the same re-use rights which this image belongs to,
 	# and the rights themselves
