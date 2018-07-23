@@ -101,6 +101,9 @@ cd $INSTALL_DIR
 wget http://archive.apache.org/dist/jena/binaries/apache-jena-3.6.0.zip -O jena-3.6.0.zip
 unzip jena-3.6.0.zip -d /usr/local
 ln -s /usr/local/apache-jena-3.6.0 /usr/local/jena
+# add tdb2.tdbstats script missing from jena distro
+cp $CONFIG_DIR/fuseki/tdb2.tdbstats /usr/local/jena/bin/
+chmod a+x /usr/local/jena/bin/fuseki/tdb2.tdbstats
 #
 # FUSEKI
 #

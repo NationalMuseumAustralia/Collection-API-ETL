@@ -14,8 +14,9 @@ java -Xmx4G -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-sparql.xpl increm
 # stop fuseki in order to rebuild its tdb2 database
 sudo java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar manage-tomcat.xpl command="stop?path=/fuseki"
 sleep 5
-# delete fuseki's lock file which why doesn't fuseki delete it itself?
+# delete fuseki's lock files which why doesn't fuseki delete it itself?
 rm /etc/fuseki/databases/public/tdb.lock
+rm /etc/fuseki/databases/internal/tdb.lock
 # delete fuseki's datasets
 rm -r -f /etc/fuseki/databases/public/*
 rm -r -f /etc/fuseki/databases/internal/*
@@ -38,6 +39,15 @@ echo Building Fuseki public dataset ...
 time sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbloader --tdb=/etc/fuseki/configuration/public.ttl /data/public/dataset.nq >> /var/log/NMA-API-ETL/etl-to-sparql.log
 echo Building Fuseki internal dataset ...
 time sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbloader --tdb=/etc/fuseki/configuration/internal.ttl /data/internal/dataset.nq >> /var/log/NMA-API-ETL/etl-to-sparql.log
+
+# generate triple pattern statistics for Fuseki query optimizer
+echo Generating triple pattern statistics for internal dataset ...
+sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbstats --graph urn:x-arq:UnionGraph --loc /etc/fuseki/databases/internal > /tmp/stats.opt
+sudo -u tomcat8 cp /tmp/stats.opt /etc/fuseki/databases/internal/
+echo Generating triple pattern statistics for public dataset ...
+sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbstats --graph urn:x-arq:UnionGraph --loc /etc/fuseki/databases/public > /tmp/stats.opt
+sudo -u tomcat8 cp /tmp/stats.opt /etc/fuseki/databases/public/
+
 
 # delete the dataset nquads files now they've been imported into Fuseki
 rm /data/public/dataset.nq
