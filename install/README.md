@@ -31,9 +31,10 @@ Set passwords
 
 ```sh
 sudo su -
-htpasswd -c /etc/apache2/admin-users.htpasswd admin
-htpasswd    /etc/apache2/admin-users.htpasswd nagiosadmin
-htpasswd    /etc/apache2/admin-users.htpasswd nmaapi
+touch /etc/apache2/admin-users.htpasswd
+htpasswd /etc/apache2/admin-users.htpasswd admin
+htpasswd /etc/apache2/admin-users.htpasswd nagiosadmin
+htpasswd /etc/apache2/admin-users.htpasswd nmaapi
 /usr/share/webmin/changepass.pl /etc/webmin root 'password'
 exit
 ```
