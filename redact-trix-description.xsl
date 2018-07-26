@@ -158,7 +158,7 @@
 						$unwanted-narrative-object-triples
 					)
 				"/>
-				
+
 				<!-- sort the triples into a stable order, to facilitate checking for changes later in the pipeline -->
 				<!-- NB trix:id elements (blank nodes) are not used for sorting since their values are not stable -->
 				<xsl:for-each select="$published-triples">
