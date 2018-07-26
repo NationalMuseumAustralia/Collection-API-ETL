@@ -17,10 +17,14 @@ WHERE {
 	crm:P45_consists_of/crm:P2_has_type |
 	# the object's container, and its type
 	crm:P106i_forms_part_of | 
+	crm:P106i_forms_part_of/rdf:type | 
 	crm:P106i_forms_part_of/crm:P2_has_type | 
+	crm:P106i_forms_part_of/rdfs:label | 
 	# the object's parts, and their types
 	crm:P46_is_composed_of | 
+	crm:P46_is_composed_of/rdf:type | 
 	crm:P46_is_composed_of/crm:P2_has_type | 
+	crm:P46_is_composed_of/rdfs:label | 
 	# textual descriptions of the object, and their types
 	crm:P129i_is_subject_of |
 	crm:P129i_is_subject_of/crm:P2_has_type |
