@@ -31,7 +31,7 @@ rm -r -f "/etc/fuseki/databases/$DATASET/*"
 rm "/data/$DATASET/dataset.nq"
 
 # concatenate n-quads files into new dataset file
-find "/data/$DATASET/n-quads/" -name "*.nq" | xargs cat >> "/data/$DATASET/$DATASET.nq"
+find "/data/$DATASET/n-quads/" -name "*.nq" | xargs cat >> "/data/$DATASET/dataset.nq"
 
 # now remove the individual .nq files 
 find "/data/$DATASET/n-quads/" -name "*.nq" -delete
