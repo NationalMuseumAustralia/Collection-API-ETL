@@ -84,37 +84,45 @@ else
 fi
 case "$MODE" in
 	full)
-		to_log "START STEP 1 - full load to SPARQL store"
+		to_log "START STEP 1 - full load to Fuseki SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
-		$SCRIPT_DIR/etl-to-sparql-full.sh
+		to_log "Loading files to Fuseki public dataset"
+		$SCRIPT_DIR/etl-to-fuseki-full.sh public
+		to_log "Loading files to Fuseki internal dataset"
+		$SCRIPT_DIR/etl-to-fuseki-full.sh internal
 		;;
 	incremental)
-		to_log "START STEP 1 - incremental load to SPARQL store"
+		to_log "START STEP 1 - incremental load to Fuseki SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
-		$SCRIPT_DIR/etl-to-sparql-incremental.sh
+		to_log "Loading files to Fuseki public dataset"
+		$SCRIPT_DIR/etl-to-fuseki-incremental.sh public
+		to_log "Loading files to Fuseki internal dataset"
+		$SCRIPT_DIR/etl-to-fuseki-incremental.sh internal
 		;;
 	*)
 		to_log "Unknown mode: $MODE"
 		echo Usage: $0 [full\|incremental]
 		exit 1
 esac
-to_log "FINISH STEP 1 - load to SPARQL store"
+to_log "FINISH STEP 1 - load to Fuseki SPARQL store"
 
 # move/copy loaded files and log
 # (we're not allowed to move piction files)
-cp $LOGS_DIR/etl-to-sparql.log $OUT_DIR/
+cp $LOGS_DIR/etl-to-fuseki*.log $OUT_DIR/
 mv $IN_DIR/*.xml $OUT_DIR 2>/dev/null
 cp $PICTION_IN_DIR/*.xml $OUT_DIR 2>/dev/null
 to_log "Moved/copied ingested files to archive: $OUT_DIR"
 
 # ETL step 2 - extract from sparql store and load to solr
-to_log "START STEP 2 - sparql extraction and Solr load"
+to_log "START STEP 2 - initiate sparql extraction and Solr load"
 cd $SCRIPT_DIR
-$SCRIPT_DIR/etl-to-solr.sh
-to_log "FINISH STEP 2 - sparql extraction and Solr load"
-# copy log
-cp $LOGS_DIR/etl-to-solr.log $OUT_DIR/
-to_log "Copied Solr load log file to archive: $OUT_DIR"
+# kick off public and internal in parallel background processes, provide final destination for log files
+$SCRIPT_DIR/etl-to-solr.sh public $OUT_DIR/ &
+$SCRIPT_DIR/etl-to-solr.sh internal $OUT_DIR/ &
+to_log "FINISH STEP 2 - initiate sparql extraction and Solr load"
+# copy log (deprecated - now done within solr script)
+#cp $LOGS_DIR/etl-to-solr.log $OUT_DIR/
+#to_log "Copied Solr load log file to archive: $OUT_DIR"
 
 # delete stale archives
 to_log "Removing old data files (14 days):"
