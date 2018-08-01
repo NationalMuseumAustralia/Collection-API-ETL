@@ -1,13 +1,14 @@
 @ECHO OFF
 :: Run unit tests using XSpec within XProc
+:: https://github.com/xspec/xspec/wiki/Running-with-XProc
 
-set CALABASH_HOME=C:/project/lib/xmlcalabash-1.1.16-98
-set XSPEC_HOME=file:///C:/project/lib/xspec/
-set XSPEC_DATA_DIR_IN=file:///C:/Project/Git/NMA/Collection-API-ETL/test
-set XSPEC_DATA_DIR_OUT=file:///C:/Project/Stage/NMA-unit-test-output
+set CALABASH_HOME=%USERPROFILE%\lib\xmlcalabash-1.1.21-98
+set XSPEC_DATA_DIR_IN=%USERPROFILE%\Git\NMA\Collection-API-ETL\test
+set XSPEC_DATA_DIR_OUT=C:\Project\Stage\NMA-unit-test-output
+set XSPEC_HOME=%USERPROFILE%\lib\xspec\
 
 :: Create unit test output directory
-mkdir "%XSPEC_DATA_DIR_OUT%"/unit/tests
+mkdir "%XSPEC_DATA_DIR_OUT%\unit\tests"
 
 :: Optional command-line arg for a single test to run
 IF NOT %1.==. (
@@ -42,7 +43,8 @@ EXIT /B %ERRORLEVEL%
 :: function to run the specified unit test
 :runtest
 ECHO ================= TEST %~1 =================
-set XSPEC_IN="%XSPEC_DATA_DIR_IN%"/unit/tests/%~1%.xspec
-set XSPEC_OUT="%XSPEC_DATA_DIR_OUT%"/unit/tests/%~1%-test-result.html
-java -cp "%CALABASH_HOME%"/xmlcalabash-1.1.16-98.jar com.xmlcalabash.drivers.Main -i source="%XSPEC_IN%" -p xspec-home="%XSPEC_HOME%" -o result="%XSPEC_OUT%" "%XSPEC_HOME%"/src/harnesses/saxon/saxon-xslt-harness.xproc 
+:: NB: ':\=/' converts Windows filepaths from backslash to forward-slash 
+set XSPEC_IN=%XSPEC_DATA_DIR_IN:\=/%/unit/tests/%~1%.xspec
+set XSPEC_OUT=%XSPEC_DATA_DIR_OUT:\=/%/unit/tests/%~1%-test-result.html
+java -cp %CALABASH_HOME%\xmlcalabash-1.1.21-98.jar com.xmlcalabash.drivers.Main -i source=%XSPEC_IN% -p xspec-home=file:///%XSPEC_HOME:\=/% -o result=%XSPEC_OUT% %XSPEC_HOME%src\harnesses\saxon\saxon-xslt-harness.xproc
 EXIT /B 0
