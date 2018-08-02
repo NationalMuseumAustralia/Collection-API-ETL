@@ -114,15 +114,14 @@ cp $PICTION_IN_DIR/*.xml $OUT_DIR 2>/dev/null
 to_log "Moved/copied ingested files to archive: $OUT_DIR"
 
 # ETL step 2 - extract from sparql store and load to solr
-to_log "START STEP 2 - initiate sparql extraction and Solr load"
+to_log "START STEP 2 - sparql extraction and Solr load"
 cd $SCRIPT_DIR
-# kick off public and internal in parallel background processes, provide final destination for log files
-$SCRIPT_DIR/etl-to-solr.sh public $OUT_DIR/ &
-$SCRIPT_DIR/etl-to-solr.sh internal $OUT_DIR/ &
-to_log "FINISH STEP 2 - initiate sparql extraction and Solr load"
-# copy log (deprecated - now done within solr script)
-#cp $LOGS_DIR/etl-to-solr.log $OUT_DIR/
-#to_log "Copied Solr load log file to archive: $OUT_DIR"
+$SCRIPT_DIR/etl-to-solr.sh public
+cp $LOGS_DIR/etl-to-solr-public.log $OUT_DIR/
+$SCRIPT_DIR/etl-to-solr.sh internal
+cp $LOGS_DIR/etl-to-solr-internal.log $OUT_DIR/
+to_log "FINISH STEP 2 - sparql extraction and Solr load"
+to_log "Copied Solr load log files to archive: $OUT_DIR"
 
 # delete stale archives
 to_log "Removing old data files (14 days):"
