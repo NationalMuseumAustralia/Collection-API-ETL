@@ -80,10 +80,10 @@
 		)
 	"/>
 	<!-- remove all images if licence is not open -->
-	<xsl:template match="record[not(AcsStatus = $open-rights)]/WebMultiMediaRef_tab"/>
+	<xsl:template match="record[not(AcsCCStatus = $open-rights)]/WebMultiMediaRef_tab"/>
 	
 	<!-- remove rights data altogether if restricted; this will cause all images (including Piction images) to be redacted -->
-	<xsl:template match="record/AcsStatus[not(. = $open-rights)]"/>
+	<xsl:template match="record/AcsCCStatus[not(. = $open-rights)]"/>
 	
 	<!-- Exclude any narrative whose intended audience does not include "Collection Explorer publish" -->
 	<xsl:template match="
