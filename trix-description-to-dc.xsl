@@ -672,13 +672,13 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<!-- display preferred first (NB: only representations inside objects have preferred tagging) -->
 		<xsl:variable name="value-preferred" select="
 			path:forward('crm:P138i_has_representation')[
-				path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred'
+				path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/preferred')
 			]
 		" />
 		<!-- then unpreferred (this also picks up representations inside narratives/media) -->
 		<xsl:variable name="value-unpreferred" select="
 			path:forward('crm:P138i_has_representation')[
-				not( path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred' )
+				not( path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/preferred') )
 			]
 		" />
 		<!-- for object: this is an array of media (which contain digital files) -->
@@ -859,7 +859,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="narrative-image-dc">
 		<xsl:variable name="value" select="
 			path:forward('ore:aggregates')[
-				path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/banner-image'
+				path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/banner-image')
 			]
 		" />
 		<xsl:if test="$type='narrative' and $value">
@@ -956,7 +956,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						<!-- media - only preferred, but include all files -->
 						<xsl:variable name="value-preferred" select="
 							path:forward(., 'crm:P138i_has_representation')[
-								path:forward(., 'crm:P2_has_type') = 'https://api.nma.gov.au/term/preferred'
+								path:forward(., 'crm:P2_has_type') = concat($api-base-uri, '/term/preferred')
 							]
 						" />
 						<!-- NB: assuming only one preferred -->

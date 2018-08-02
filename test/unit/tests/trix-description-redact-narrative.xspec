@@ -14,7 +14,7 @@
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.openarchives.org/ore/terms/Aggregation</uri>
 			</triple>
-			<!-- extra detail in aggregated object to be redacted (to reduce payload size) -->
+			<!-- connect object to narrative -->
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
 				<uri>http://www.openarchives.org/ore/terms/aggregates</uri>
@@ -25,6 +25,23 @@
 				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 			</triple>
+			<!-- representation in aggregated object to be retained -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+				<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#media</uri>
+			</triple>
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#media</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#rights</uri>
+			</triple>
+			<!-- extra detail in aggregated object to be redacted (to reduce payload size) -->
 			<triple>
 				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://example.org/extra-detail</uri>
@@ -32,7 +49,7 @@
 			</triple>
 			<!-- web link in aggregated object to be retained -->
 			<triple>
-				<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 				<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
 				<uri>http://example.org/external-website</uri>
 			</triple>
@@ -49,13 +66,19 @@
 
 	<x:scenario label="Perform redaction">
 		<x:call template="do-redaction" />
-		<x:expect label="should return type triple, orphaned P2_has_type triple, aggregated object with web link">
+		<x:expect
+			label="should return type triple and aggregated object with representation and web link">
 			<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 				<graph>
 					<triple>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
-						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-						<uri>http://www.openarchives.org/ore/terms/Aggregation</uri>
+						<uri>http://example.org/external-website</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
+						<uri>http://vocab.getty.edu/aat/300264578</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+						<uri>http://www.openarchives.org/ore/terms/isAggregatedBy</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#media</uri>
 					</triple>
 					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
@@ -63,19 +86,29 @@
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 					</triple>
 					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
+						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+						<uri>http://www.openarchives.org/ore/terms/Aggregation</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
+						<uri>http://example.org/external-website</uri>
+					</triple>
+					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/12345#</uri>
+					</triple>
+					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#</uri>
 						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
 						<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 					</triple>
 					<triple>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/narrative/3346#</uri>
-						<uri>http://www.cidoc-crm.org/cidoc-crm/P129i_is_subject_of</uri>
-						<uri>http://example.org/external-website</uri>
-					</triple>
-					<triple>
-						<uri>http://example.org/external-website</uri>
-						<uri>http://www.cidoc-crm.org/cidoc-crm/P2_has_type</uri>
-						<uri>http://vocab.getty.edu/aat/300264578</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#media</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P104_is_subject_to</uri>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/241465#rights</uri>
 					</triple>
 				</graph>
 			</trix>

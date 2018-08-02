@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description
+	xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/"
+	xmlns:aat="http://vocab.getty.edu/aat/"
+	xmlns:la="https://linked.art/ns/terms/"
+	stylesheet="../../../filter.xsl">
+
+	<!-- Tests for redacting content in the public API -->
+
+	<x:scenario label="Filter API records: Public">
+		<x:context>
+			<record>
+				<TitObjectType>Object</TitObjectType>
+				<AcsAPI_tab>
+					<AcsAPI>Public</AcsAPI>
+				</AcsAPI_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return record">
+			<record>
+				<TitObjectType>Object</TitObjectType>
+				<AcsAPI_tab>
+					<AcsAPI>Public</AcsAPI>
+				</AcsAPI_tab>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter API records: Public restricted">
+		<x:context>
+			<record>
+				<TitObjectType>Object</TitObjectType>
+				<AcsAPI_tab>
+					<AcsAPI>Public Restricted</AcsAPI>
+				</AcsAPI_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return record">
+			<record>
+				<TitObjectType>Object</TitObjectType>
+				<AcsAPI_tab>
+					<AcsAPI>Public Restricted</AcsAPI>
+				</AcsAPI_tab>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter API records: not Public">
+		<x:context>
+			<record>
+				<TitObjectType>Object</TitObjectType>
+				<AcsAPI_tab>
+					<AcsAPI>Something else</AcsAPI>
+				</AcsAPI_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+	<x:scenario label="Filter objects in narratives">
+		<x:context>
+			<record>
+				<ObjObjectsRef_tab>
+					<ObjObjectsRef>
+						<irn>241493</irn>
+						<AcsAPI_tab>
+							<AcsAPI>Internal</AcsAPI>
+						</AcsAPI_tab>
+					</ObjObjectsRef>
+					<ObjObjectsRef>
+						<irn>241494</irn>
+						<AcsAPI_tab>
+							<AcsAPI>Public</AcsAPI>
+						</AcsAPI_tab>
+					</ObjObjectsRef>
+				</ObjObjectsRef_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return narrative with one object">
+			<record>
+				<ObjObjectsRef_tab>
+					<ObjObjectsRef>
+						<irn>241494</irn>
+						<AcsAPI_tab>
+							<AcsAPI>Public</AcsAPI>
+						</AcsAPI_tab>
+					</ObjObjectsRef>
+				</ObjObjectsRef_tab>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter Piction object_2">
+		<x:context>
+			<doc>
+				<dataSource name="thumbnail" />
+				<dataSource name="web" />
+				<dataSource name="original_2" />
+				<dataSource name="original_3" />
+				<dataSource name="original_4" />
+				<dataSource name="original_5" />
+			</doc>
+		</x:context>
+		<x:expect label="should return dataSource x5">
+			<doc>
+				<dataSource name="thumbnail" />
+				<dataSource name="web" />
+				<dataSource name="original_3" />
+				<dataSource name="original_4" />
+				<dataSource name="original_5" />
+			</doc>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter narrative banner images">
+		<x:context>
+			<record>
+				<NarTitle>Wanydjarrpu</NarTitle>
+				<MulMultiMediaRef_tab>
+					<image>
+						<banner_small>139/150/oldmasters700x300.jpg</banner_small>
+						<banner_large>139/151/oldmasters1600x200.jpg</banner_large>
+					</image>
+				</MulMultiMediaRef_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return record with title">
+			<record>
+				<NarTitle>Wanydjarrpu</NarTitle>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter gallery locations: Acton">
+		<x:context>
+			<record>
+				<LocCurrentLocationRef>
+					<LocLevel1>Acton</LocLevel1>
+					<LocLevel2>Landmarks</LocLevel2>
+					<LocLevel3>Flemington Racecourse</LocLevel3>
+					<LocLevel4>Case 01</LocLevel4>
+				</LocCurrentLocationRef>
+			</record>
+		</x:context>
+		<x:expect
+			label="should return record with LocLevel1 and LocLevel2">
+			<record>
+				<LocCurrentLocationRef>
+					<LocLevel1>Acton</LocLevel1>
+					<LocLevel2>Landmarks</LocLevel2>
+				</LocCurrentLocationRef>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter gallery locations: not Acton">
+		<x:context>
+			<record>
+				<LocCurrentLocationRef>
+					<LocLevel1>Somewhere</LocLevel1>
+					<LocLevel2>Else</LocLevel2>
+					<LocLevel3>Altogether</LocLevel3>
+				</LocCurrentLocationRef>
+			</record>
+		</x:context>
+		<x:expect label="should return empty record">
+			<record />
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter media licence: PD">
+		<x:context>
+			<record>
+				<AcsCCStatus>Public Domain</AcsCCStatus>
+				<WebMultiMediaRef_tab>
+					<image>
+						<media_irn>16195</media_irn>
+					</image>
+				</WebMultiMediaRef_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return record with licence and media">
+			<record>
+				<AcsCCStatus>Public Domain</AcsCCStatus>
+				<WebMultiMediaRef_tab>
+					<image>
+						<media_irn>16195</media_irn>
+					</image>
+				</WebMultiMediaRef_tab>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter media licence: CC">
+		<x:context>
+			<record>
+				<AcsCCStatus>Creative Commons Commercial Use</AcsCCStatus>
+				<WebMultiMediaRef_tab>
+					<image>
+						<media_irn>16195</media_irn>
+					</image>
+				</WebMultiMediaRef_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return record with licence and media">
+			<record>
+				<AcsCCStatus>Creative Commons Commercial Use</AcsCCStatus>
+				<WebMultiMediaRef_tab>
+					<image>
+						<media_irn>16195</media_irn>
+					</image>
+				</WebMultiMediaRef_tab>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter media licence: CC-NC">
+		<x:context>
+			<record>
+				<AcsCCStatus>Creative Commons Non-Commercial Use</AcsCCStatus>
+				<WebMultiMediaRef_tab>
+					<image>
+						<media_irn>16195</media_irn>
+					</image>
+				</WebMultiMediaRef_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return record with licence and media">
+			<record>
+				<AcsCCStatus>Creative Commons Non-Commercial Use</AcsCCStatus>
+				<WebMultiMediaRef_tab>
+					<image>
+						<media_irn>16195</media_irn>
+					</image>
+				</WebMultiMediaRef_tab>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter media licence: ARR">
+		<x:context>
+			<record>
+				<AcsCCStatus>All Rights Reserved</AcsCCStatus>
+				<WebMultiMediaRef_tab>
+					<image>
+						<media_irn>16195</media_irn>
+					</image>
+				</WebMultiMediaRef_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return empty record">
+			<record />
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter narrative target: published">
+		<x:context>
+			<record>
+				<NarTitle>Wanydjarrpu</NarTitle>
+				<DesIntendedAudience_tab>
+					<DesIntendedAudience>Collection Explorer publish</DesIntendedAudience>
+				</DesIntendedAudience_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return record with audience">
+			<record>
+				<NarTitle>Wanydjarrpu</NarTitle>
+				<DesIntendedAudience_tab>
+					<DesIntendedAudience>Collection Explorer publish</DesIntendedAudience>
+				</DesIntendedAudience_tab>
+			</record>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Filter narrative target: unpublished">
+		<x:context>
+			<record>
+				<NarTitle>Wanydjarrpu</NarTitle>
+				<DesIntendedAudience_tab>
+					<DesIntendedAudience>Collection Explorer draft</DesIntendedAudience>
+				</DesIntendedAudience_tab>
+			</record>
+		</x:context>
+		<x:expect label="should return empty" />
+	</x:scenario>
+
+</x:description>

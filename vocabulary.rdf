@@ -19,6 +19,9 @@
 	<crm:E55_Type rdf:about="full">
 		<rdfs:label>full image</rdfs:label>
 	</crm:E55_Type>
+	<crm:E55_Type rdf:about="banner-image">
+		<rdfs:label>banner image</rdfs:label>
+	</crm:E55_Type>
 	<crm:E55_Type rdf:about="small-banner-image">
 		<rdfs:label>small banner image</rdfs:label>
 	</crm:E55_Type>
