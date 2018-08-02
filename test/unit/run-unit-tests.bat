@@ -24,6 +24,7 @@ CALL :runtest emu-to-crm-narrative
 CALL :runtest emu-to-crm-party
 CALL :runtest emu-to-crm-place
 CALL :runtest emu-to-crm-collection
+CALL :runtest emu-to-crm-filter
 CALL :runtest piction-to-media
 CALL :runtest trix-description-redact-emu-image
 CALL :runtest trix-description-redact-object
