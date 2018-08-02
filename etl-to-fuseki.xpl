@@ -238,6 +238,14 @@
 			</p:xslt>
 			<p:for-each name="record">
 				<p:iteration-source select="/response/record"/>
+				<!-- If AdmDateModified missing, insert an arbitrary date in the past -->
+				<p:insert match="/record[not(AdmDateModified)]" position="last-child">
+					<p:input port="insertion">
+						<p:inline>
+							<AdmDateModified>01/01/2018</AdmDateModified>
+						</p:inline>
+					</p:input>
+				</p:insert>
 				<nma:ingest-record>
 					<p:with-option name="file-name-component" select="$file-name-component"/>
 					<p:with-option name="dataset" select="$dataset"/>        
