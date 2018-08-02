@@ -122,6 +122,13 @@
 					</xsl:if>
 					<!-- TODO other metadata fields -->
 					<!-- "Other Numbers Kind" "Other Numbers Value" "Page Number" -->
+					<crm:P70i_is_documented_in>
+						<crm:E31_Document rdf:about="{$visual-item-graph}"><!-- identifies the RDF graph itself -->
+							<dc:modified 
+								rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+								xmlns:dc="http://purl.org/dc/terms/"><xsl:value-of select="@date-modified" /></dc:modified>
+						</crm:E31_Document>
+					</crm:P70i_is_documented_in>
 				</crm:E36_Visual_Item>
 			</xsl:if>
 		</rdf:RDF>

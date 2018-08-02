@@ -56,7 +56,7 @@
 		</nma:process-piction-data>
 		
 		<!-- process EMu objects, places, parties, collections, and narratives -->
-
+<!--
 		<nma:process-data name="narratives" file-name-component="narratives">
 			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
@@ -86,7 +86,7 @@
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-		
+-->		
 	</p:group>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
@@ -149,11 +149,44 @@
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
 		<p:option name="incremental" required="true"/>
-		<p:load href="/mnt/dams_data/solr_prod1.xml"/>
+		<p:load name="new-piction-data" href="/mnt/dams_data/solr_prod1.xml"/>
+		<!-- track the "last-updated" date of the individual records -->
+		<p:try name="cached-piction-data">
+			<p:group name="load-cached-piction-data">
+				<p:output port="result"/>
+				<cx:message message="Loading cached Piction data..."/>
+				<p:load href="/data/cache/piction.xml"/>
+			</p:group>
+			<p:catch name="no-cached-data">
+				<p:output port="result"/>
+				<cx:message message="No cached Piction data found, using current data..."/>
+				<p:add-attribute match="/add/doc" attribute-name="date-modified">
+					<p:with-option name="attribute-value" select="current-date()"/>
+				</p:add-attribute>
+			</p:catch>
+		</p:try>
+		<p:wrap-sequence name="new-and-cached-piction-data" wrapper="comparison">
+			<p:input port="source">
+				<p:pipe step="new-piction-data" port="result"/>
+				<p:pipe step="cached-piction-data" port="result"/>
+			</p:input>
+		</p:wrap-sequence>
+		<cx:message message="Calculating Piction last-modified dates..."/>
+		<p:xslt name="compute-date-modified">
+			<p:input port="parameters"><p:empty/></p:input>
+			<p:input port="stylesheet">
+				<p:document href="compute-piction-date-modified.xsl"/>
+			</p:input>
+		</p:xslt>
+		<cx:message message="Caching Piction data..."/>
+		<p:store href="/data/cache/piction.xml" indent="true"/>
 		<!-- make any necessary redactions before publishing to the specified dataset  -->
 		<!-- NB 'public' dataset omits certains data, which are present only in the 'internal' dataset -->
 		<p:xslt name="redact">
 			<p:with-param name="dataset" select="$dataset"/>
+			<p:input port="source">
+				<p:pipe step="compute-date-modified" port="result"/>
+			</p:input>
 			<p:input port="stylesheet">
 				<p:document href="filter.xsl"/>
 			</p:input>
