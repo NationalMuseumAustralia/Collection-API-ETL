@@ -42,7 +42,7 @@ WHERE {
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P7_took_place_at |
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P7_took_place_at/crm:P168_place_is_defined_by |
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P12_occurred_in_the_presence_of |
-	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P12_occurred_in_the_presence_of/crm:P168_place_is_defined_by |
+	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P9_consists_of/crm:P12_occurred_in_the_presence_of/crm:P168_place_is_defined_by | #TODO check semantics of this path
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by | 
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P1_is_identified_by/crm:P2_has_type | 
 	(crm:P108i_was_produced_by|crm:P12i_was_present_at) /crm:P7_took_place_at/crm:P168_place_is_defined_by |
