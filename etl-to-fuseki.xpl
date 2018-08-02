@@ -56,7 +56,6 @@
 		</nma:process-piction-data>
 		
 		<!-- process EMu objects, places, parties, collections, and narratives -->
-<!--
 		<nma:process-data name="narratives" file-name-component="narratives">
 			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
@@ -86,7 +85,7 @@
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
--->		
+		
 	</p:group>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
