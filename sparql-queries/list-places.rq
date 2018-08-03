@@ -1,8 +1,14 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-select distinct ?resource
-where {
-	?resource a crm:E53_Place 
-	filter(isuri(?resource)) # ignoring places which have no URI
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT
+	DISTINCT ?resource
+	(MAX(?date) AS ?lastUpdated)
+	(1 AS ?sourceCount) # place descriptions are drawn from a single source: the EMu "sites" file
+WHERE {
+	?resource a crm:E53_Place .
+	?resource crm:P70i_is_documented_in / dcterms:modified ?date
+	FILTER(isuri(?resource)) # ignoring places which have no URI    ?resource
 	# for debugging, filter here:
 	# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
 }	
+GROUP BY ?resource

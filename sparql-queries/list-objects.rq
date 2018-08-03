@@ -1,8 +1,25 @@
+PREFIX ore: <http://www.openarchives.org/ore/terms/>
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-select distinct ?resource
-where {
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT 
+	?resource 
+	(MAX(?date) AS ?lastUpdated) 
+	(COUNT(?date) AS ?sourceCount)
+WHERE {
 	?resource a crm:E19_Physical_Object.
+	?resource
+		crm:P70i_is_documented_in / dcterms:modified |
+		crm:P106i_forms_part_of / crm:P70i_is_documented_in / dcterms:modified |
+		(crm:P108i_was_produced_by|crm:P12i_was_present_at) / # an event
+			crm:P9_consists_of* / # optionally part of a larger event
+				(crm:P14_carried_out_by | crm:P12_occurred_in_the_presence_of | crm:P7_took_place_at) / # actor or place of event
+					crm:P70i_is_documented_in / dcterms:modified |
+		(dcterms:relation | ore:isAggregatedBy) / crm:P70i_is_documented_in / dcterms:modified | # related objects
+		crm:P138i_has_representation / crm:P70i_is_documented_in / dcterms:modified # depictions
+			?date.
 	# only include objects which have an identifier (sourced from EMu), since Piction records may have bogus IRNs that instantiate bogus Physical Objects
 	?resource crm:P1_is_identified_by ?identifier
 	filter(isuri(?resource)) # ignoring objects which have no URI (at present these are actually collections, but represented as physical objects
 }	
+GROUP BY ?resource

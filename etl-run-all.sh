@@ -116,9 +116,9 @@ to_log "Moved/copied ingested files to archive: $OUT_DIR"
 # ETL step 2 - extract from sparql store and load to solr
 to_log "START STEP 2 - sparql extraction and Solr load"
 cd $SCRIPT_DIR
-$SCRIPT_DIR/etl-to-solr.sh public
+$SCRIPT_DIR/etl-to-solr.sh public $MODE
 cp $LOGS_DIR/etl-to-solr-public.log $OUT_DIR/
-$SCRIPT_DIR/etl-to-solr.sh internal
+$SCRIPT_DIR/etl-to-solr.sh internal $MODE
 cp $LOGS_DIR/etl-to-solr-internal.log $OUT_DIR/
 to_log "FINISH STEP 2 - sparql extraction and Solr load"
 to_log "Copied Solr load log files to archive: $OUT_DIR"

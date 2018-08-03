@@ -201,6 +201,10 @@
   <!-- metadata -->
   <!-- 'hash' is a hash of the RDF source, used to invalidate Solr records when source data has changed -->
   <field name="hash" type="string"/>
+  <!-- 'datestamp' is the date of the last-updated of the resource's source records, used to support incremental harvesting by Trove et al -->
+  <field name="datestamp" type="pdate_range"/>
+  <!-- 'source-count' is the number of the resource's source records, used to support incremental harvesting by Trove et al -->
+  <field name="source_count" type="string"/>
   <!-- 'text' is NMA's catchall full-text field we copy most textual content into -->
   <field name="text" type="text_general"/>
   <!-- 'description' catchs the separate description fields -->

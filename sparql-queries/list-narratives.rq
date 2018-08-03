@@ -1,15 +1,18 @@
 PREFIX ore: <http://www.openarchives.org/ore/terms/>
 PREFIX aat: <http://vocab.getty.edu/aat/>
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
-select distinct ?resource
-where {
+SELECT DISTINCT 
+	?resource 
+	(MAX(?date) AS ?lastUpdated) 
+	(COUNT(?date) AS ?sourceCount)
+WHERE {
 	?resource a ore:Aggregation.
-	?resource crm:P2_has_type aat:300025976 # "object collections"
-#	filter(
-#		?resource in (
-#			<http://nma-dev.conaltuohy.com/narrative/2686#>, 
-#			<http://nma-dev.conaltuohy.com/narrative/1946#>
-#		)
-#	)
+	?resource crm:P2_has_type aat:300025976. # "object collections"
+	?resource
+		crm:P70i_is_documented_in / dcterms:modified |
+		ore:aggregates / crm:P70i_is_documented_in / dcterms:modified
+			?date
 } 
+GROUP BY ?resource

@@ -1,16 +1,27 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
-select distinct ?resource
-where {
+SELECT DISTINCT 
+	?resource 
+	(MAX(?date) AS ?lastUpdated) 
+	(COUNT(?date) AS ?sourceCount)
+
+WHERE {
 	?resource a crm:E36_Visual_Item.
 	# only top level visual items (i.e. those which directly represent a physical object)
   	?resource ^crm:P138i_has_representation ?object.
   	?object rdf:type crm:E19_Physical_Object.
   	?object rdfs:label ?label.
+	?resource
+		crm:P70i_is_documented_in / dcterms:modified |
+		crm:P138_represents / crm:P70i_is_documented_in / dcterms:modified
+			?date
+  	
 	filter(isuri(?resource)) # ignoring any visual items which have no URI
 	# for debugging, filter here:
 	# filter (?resource in (<http://nma-dev.conaltuohy.com/media/109738#> ))
 }
-order by ?resource
+GROUP BY ?resource
+ORDER BY ?resource

@@ -12,6 +12,8 @@
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:param name="dataset"/>
 	<xsl:param name="hash"/>
+	<xsl:param name="datestamp"/>
+	<xsl:param name="source-count"/>
 
 	<!-- type = the second-to-last component of the URI's path, e.g. "object" or "party" -->
 	<xsl:variable name="type" select="replace($root-resource, '(.*/)([^/]*)(/.*)$', '$2')"/>
@@ -24,6 +26,8 @@
 					<doc>
 						<!-- The hash is used as an identifier for this current version of this record -->
 						<field name="hash"><xsl:value-of select="$hash"/></field>
+						<field name="datestamp"><xsl:value-of select="$datestamp"/></field>
+						<field name="source_count"><xsl:value-of select="$source-count"/></field>
 						
 						<!-- COMMON FIELDS -->
 						<xsl:call-template name="id-solr" />

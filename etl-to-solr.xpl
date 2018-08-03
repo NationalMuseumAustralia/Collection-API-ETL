@@ -11,6 +11,7 @@
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
 >
 	<p:option name="dataset" required="true"/>
+	<p:option name="mode" required="true"/><!-- "incremental" or "full" -->
 	
 	<!-- import calabash extension library to enable use of file steps -->
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
@@ -19,23 +20,47 @@
 	<!-- update Solr store by querying the SPARQL store -->
 
 	<!-- generate a Solr index of narratives, media, places, parties, collections, and physical objects -->
-	<nma:index-resources name="index-narratives" list-query="sparql-queries/list-narratives.rq" describe-query="sparql-queries/describe-narratives.rq">
+	<nma:index-resources name="index-narratives" 
+		solr-type="narrative" 
+		list-query="sparql-queries/list-narratives.rq" 
+		describe-query="sparql-queries/describe-narratives.rq">
 		<p:with-option name="dataset" select="$dataset"/>
+		<p:with-option name="mode" select="$mode"/>
 	</nma:index-resources>
-	<nma:index-resources name="index-collections" list-query="sparql-queries/list-collections.rq" describe-query="sparql-queries/describe-collections.rq">
+	<nma:index-resources name="index-collections" 
+		solr-type="collection"
+		list-query="sparql-queries/list-collections.rq" 
+		describe-query="sparql-queries/describe-collections.rq">
 		<p:with-option name="dataset" select="$dataset"/>
+		<p:with-option name="mode" select="$mode"/>
 	</nma:index-resources>
-	<nma:index-resources name="index-media" list-query="sparql-queries/list-media.rq" describe-query="sparql-queries/describe-media.rq">
+	<nma:index-resources name="index-media" 
+		solr-type="media"
+		list-query="sparql-queries/list-media.rq" 
+		describe-query="sparql-queries/describe-media.rq">
 		<p:with-option name="dataset" select="$dataset"/>
+		<p:with-option name="mode" select="$mode"/>
 	</nma:index-resources>
-	<nma:index-resources name="index-physical-objects" list-query="sparql-queries/list-objects.rq" describe-query="sparql-queries/describe-objects.rq">
+	<nma:index-resources name="index-physical-objects" 
+		solr-type="object"
+		list-query="sparql-queries/list-objects.rq" 
+		describe-query="sparql-queries/describe-objects.rq">
 		<p:with-option name="dataset" select="$dataset"/>
+		<p:with-option name="mode" select="$mode"/>
 	</nma:index-resources>
-	<nma:index-resources name="index-parties" list-query="sparql-queries/list-parties.rq" describe-query="sparql-queries/describe-parties.rq">
+	<nma:index-resources name="index-parties" 
+		solr-type="party" 
+		list-query="sparql-queries/list-parties.rq" 
+		describe-query="sparql-queries/describe-parties.rq">
 		<p:with-option name="dataset" select="$dataset"/>
+		<p:with-option name="mode" select="$mode"/>
 	</nma:index-resources>
-	<nma:index-resources name="index-places" list-query="sparql-queries/list-places.rq" describe-query="sparql-queries/describe-places.rq">
+	<nma:index-resources name="index-places" 
+		solr-type="place"
+		list-query="sparql-queries/list-places.rq" 
+		describe-query="sparql-queries/describe-places.rq">
 		<p:with-option name="dataset" select="$dataset"/>
+		<p:with-option name="mode" select="$mode"/>
 	</nma:index-resources>
 	
 	<!-- load a (non-XML) sparql query from disk -->
@@ -60,6 +85,8 @@
 		<p:option name="list-query" required="true"/>
 		<p:option name="describe-query" required="true"/>
 		<p:option name="dataset" required="true"/>
+		<p:option name="solr-type" required="true"/>
+		<p:option name="mode" required="true"/>
 		<!-- load the non-XML sparql queries from file system -->
 		<nma:load-sparql-query name="resource-list-sparql-query">
 			<p:with-option name="query-file" select="$list-query"/>
@@ -74,13 +101,46 @@
 				<p:pipe step="resource-list-sparql-query" port="result"/>
 			</p:input>
 		</nma:sparql-query>
+		<p:choose>
+			<p:when test="$mode = 'incremental' ">
+				<!-- query solr for records of this type -->
+				<p:load name="resources-in-solr-index">
+					<p:with-option name="href" select="
+						concat(
+							'http://localhost:8983/solr/core_nma_',
+							$dataset,
+							'/select?fl=id,hash,datestamp,source_count&amp;q=type:',
+							$solr-type,
+							'&amp;rows=2147483647&amp;wt=xml'
+						)
+					"/>
+				</p:load>
+				<!-- compare "resources-to-index" with "resources-in-solr-index" and remove any which are unchanged -->
+				<p:wrap-sequence name="comparison" wrapper="comparison">
+					<p:input port="source">
+						<p:pipe step="resources-to-index" port="result"/>
+						<p:pipe step="resources-in-solr-index" port="result"/>
+					</p:input>
+				</p:wrap-sequence>
+				<!-- remove resources from list of indexable resources if they are unchanged from the version in the solr index already -->
+				<p:xslt name="filter-resources-to-index">
+					<p:input port="parameters"><p:empty/></p:input>
+					<p:input port="stylesheet">
+						<p:document href="filter-resources-to-index.xsl"/>
+					</p:input>
+				</p:xslt>
+			</p:when>
+			<p:otherwise><!-- $mode = "full" -->
+				<p:identity name="index-all-resources"/>
+			</p:otherwise>
+		</p:choose>
 		<!-- iterate through the resources, indexing each one individually -->
 		<p:for-each name="resource">
-			<p:iteration-source select="/results:sparql/results:results/results:result">
-				<p:pipe step="resources-to-index" port="result"/>
-			</p:iteration-source>
+			<p:iteration-source select="/results:sparql/results:results/results:result"/>
 			<!-- generate description for this resource -->
-			<p:variable name="resource-uri" select="/results:result/results:binding/results:uri"/>
+			<p:variable name="resource-uri" select="/results:result/results:binding[@name='resource']/results:uri"/>
+			<p:variable name="datestamp" select="/results:result/results:binding[@name='lastUpdated']/results:literal"/>
+			<p:variable name="source-count" select="/results:result/results:binding[@name='sourceCount']/results:literal"/>
 			<cx:message>
 				<p:with-option name="message" select="concat(current-dateTime(), ' copying ', $resource-uri, ' from ', $dataset, ' dataset ...')"/>
 			</cx:message>
@@ -150,26 +210,37 @@
 				</p:load>
 				<p:choose>
 					<p:when test="/response/result/@numFound='1'">
-						<!-- there is a record in Solr which is still valid -->
+						<!-- there is a record in Solr which was derived from the same source data -->
 						<cx:message>
-							<p:with-option name="message" select="concat(current-dateTime(), ' the record in Solr was still valid')"/>
+							<p:with-option name="message" select="concat(current-dateTime(), ' the source data for the record in Solr was still valid')"/>
 						</cx:message>
-						<p:sink/>
 					</p:when>
 					<p:otherwise>
-						<!-- Solr does not contain an up-to-date version of this record -->
-						<!-- derive new publication formats from the RDF and store in Solr -->
+						<!-- solr didn't contain a record based on the same source data -->
 						<cx:message>
-							<p:with-option name="message" select="concat(current-dateTime(), ' the record in Solr was stale')"/>
+							<p:with-option name="message" select="concat(current-dateTime(), ' the source data for the record in Solr was stale')"/>
 						</cx:message>
+					</p:otherwise>
+				</p:choose>
+				<p:choose>
+					<p:when test="/response/result/@numFound='0' or $mode='full' ">
+						<!-- Solr does not contain an up-to-date version of this record -->
+						<!-- or we are performing a "full" population of Solr anyway -->
+						<!-- so derive new publication formats from the RDF and store in Solr -->
+						<cx:message message="updating Solr ..."/>
 						<nma:update-solr>
 							<p:with-option name="resource-uri" select="$resource-uri"/>
 							<p:with-option name="dataset" select="$dataset"/>
 							<p:with-option name="hash" select="$hash"/>
+							<p:with-option name="datestamp" select="$datestamp"/>
+							<p:with-option name="source-count" select="$source-count"/>
 							<p:input port="source">
 								<p:pipe step="redacted-description" port="result"/>
 							</p:input>
 						</nma:update-solr>
+					</p:when>
+					<p:otherwise>
+						<p:sink/>
 					</p:otherwise>
 				</p:choose>
 			</p:group>
@@ -194,6 +265,8 @@
 			<p:option name="resource-uri" required="true"/>
 			<p:option name="dataset" required="true"/>
 			<p:option name="hash" required="true"/>
+			<p:option name="datestamp" required="true"/>
+			<p:option name="source-count" required="true"/>
 			<!-- transform the RDF graph into a Solr index update -->
 			<p:xslt name="trix-description-to-solr-doc">
 				<p:input port="stylesheet">
@@ -202,6 +275,8 @@
 				<p:with-param name="root-resource" select="$resource-uri"/>
 				<p:with-param name="dataset" select="$dataset"/>
 				<p:with-param name="hash" select="$hash"/>
+				<p:with-param name="datestamp" select="$datestamp"/>
+				<p:with-param name="source-count" select="$source-count"/>
 			</p:xslt>
 			<!-- convert the JSON-XML blobs into JSON before deposit in Solr -->
 			<p:try name="json-xml-to-json">

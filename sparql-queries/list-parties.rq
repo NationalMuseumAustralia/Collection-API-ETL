@@ -1,12 +1,18 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
-select distinct ?resource
-where {
+PREFIX dcterms: <http://purl.org/dc/terms/>
+SELECT
+	DISTINCT ?resource
+	(MAX(?date) AS ?lastUpdated)
+	(1 AS ?sourceCount) # party descriptions are drawn from a single source: the EMu "parties" file
+WHERE {
 	{
 		?resource a crm:E21_Person 
-	} union {
+	} UNION {
 		?resource a crm:E74_Group
 	}
-	filter(isuri(?resource)) # ignoring parties which have no URI
-# for debugging, filter here:
-# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
-}	
+	?resource crm:P70i_is_documented_in / dcterms:modified ?date
+	FILTER(isuri(?resource)) # ignoring parties which have no URI
+	# for debugging, filter here:
+	# filter (?resource in (<http://nma-dev.conaltuohy.com/xproc-z/object/45929#>, <http://nma-dev.conaltuohy.com/xproc-z/object/122751#> ))
+}
+GROUP BY ?resource
