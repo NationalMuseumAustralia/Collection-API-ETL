@@ -49,13 +49,14 @@
 
 	<x:scenario label="Perform redaction">
 		<x:call template="do-redaction" />
-		<x:expect label="should return type and orphaned media triples">
+		<x:expect
+			label="should return type and orphaned media triples">
 			<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 				<graph>
 					<triple>
+						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
-						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
-						<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 					</triple>
 					<triple>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
@@ -73,9 +74,9 @@
 						<uri>http://www.cidoc-crm.org/cidoc-crm/E36_Visual_Item</uri>
 					</triple>
 					<triple>
-						<uri>http://nma-dev.conaltuohy.com/xproc-z/media/MA22991348#</uri>
-						<uri>http://www.cidoc-crm.org/cidoc-crm/P138_represents</uri>
 						<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+						<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+						<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
 					</triple>
 				</graph>
 			</trix>
