@@ -84,7 +84,7 @@ else
 fi
 case "$MODE" in
 	full)
-		to_log "START STEP 1 - full load to Fuseki SPARQL store"
+		to_log "START ETL STEP 1 - full load to Fuseki SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
 		to_log "Loading files to Fuseki public dataset"
 		$SCRIPT_DIR/etl-to-fuseki-full.sh public
@@ -92,7 +92,7 @@ case "$MODE" in
 		$SCRIPT_DIR/etl-to-fuseki-full.sh internal
 		;;
 	incremental)
-		to_log "START STEP 1 - incremental load to Fuseki SPARQL store"
+		to_log "START ETL STEP 1 - incremental load to Fuseki SPARQL store"
 		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
 		to_log "Loading files to Fuseki public dataset"
 		$SCRIPT_DIR/etl-to-fuseki-incremental.sh public
@@ -104,7 +104,7 @@ case "$MODE" in
 		echo Usage: $0 [full\|incremental]
 		exit 1
 esac
-to_log "FINISH STEP 1 - load to Fuseki SPARQL store"
+to_log "FINISH ETL STEP 1 - load to Fuseki SPARQL store"
 
 # move/copy loaded files and log
 # (we're not allowed to move piction files)
@@ -114,14 +114,17 @@ cp $PICTION_IN_DIR/*.xml $OUT_DIR 2>/dev/null
 to_log "Moved/copied ingested files to archive: $OUT_DIR"
 
 # ETL step 2 - extract from sparql store and load to solr
-to_log "START STEP 2 - sparql extraction and Solr load"
+to_log "START ETL STEP 2 - load to Solr"
+to_log "Loading files to Solr public core"
 cd $SCRIPT_DIR
 $SCRIPT_DIR/etl-to-solr.sh public $MODE
 cp $LOGS_DIR/etl-to-solr-public.log $OUT_DIR/
+to_log "Copied Solr public load log files to archive: $OUT_DIR"
+to_log "Loading files to Solr internal core"
 $SCRIPT_DIR/etl-to-solr.sh internal $MODE
 cp $LOGS_DIR/etl-to-solr-internal.log $OUT_DIR/
-to_log "FINISH STEP 2 - sparql extraction and Solr load"
-to_log "Copied Solr load log files to archive: $OUT_DIR"
+to_log "Copied Solr internal load log files to archive: $OUT_DIR"
+to_log "FINISH ETL STEP 2 - load to Solr"
 
 # delete stale archives
 to_log "Removing old data files (14 days):"
