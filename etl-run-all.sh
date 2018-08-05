@@ -88,9 +88,9 @@ case "$MODE" in
 	incremental)
 		# we only need at least one EMu XML file for incremental
 		if compgen -G $IN_DIR/*.xml > /dev/null ; then
-			echo Update file(s) exist >> $LOGFILE
+			echo EMu update files exist >> $LOGFILE
 		else
-			echo Update files missing! ETL aborting. >> $LOGFILE
+			echo EMu update files missing! ETL aborting. >> $LOGFILE
 			exit 1
 		fi
 		;;
