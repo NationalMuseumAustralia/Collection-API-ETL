@@ -46,42 +46,60 @@ PICTION_IN_DIR="$PICTION_DATA_DIR"
 
 # check for existence of data files; if any are missing, abort the ETL
 echo Checking for existence of source data files ... >> $LOGFILE
-if compgen -G $IN_DIR/*object*.xml > /dev/null ; then
-        echo Objects file exists >> $LOGFILE
-else
-        echo Objects file missing! ETL aborting. >> $LOGFILE
-        exit 1
-fi
-if compgen -G $IN_DIR/*narratives*.xml > /dev/null ; then
-        echo Narratives file exists >> $LOGFILE
-else
-        echo Narratives file missing! ETL aborting.  >> $LOGFILE
-        exit 1
-fi
-if compgen -G $IN_DIR/*accessionlots*.xml > /dev/null ; then
-        echo Accession lots file exists >> $LOGFILE
-else
-        echo Accession lots file missing! ETL aborting.  >> $LOGFILE
-        exit 1
-fi
-if compgen -G $IN_DIR/*sites*.xml > /dev/null ; then
-        echo Sites file exists >> $LOGFILE
-else
-        echo Sites file missing! ETL aborting.  >> $LOGFILE
-        exit 1
-fi
-if compgen -G $IN_DIR/*parties*.xml > /dev/null ; then
-        echo Parties file exists >> $LOGFILE
-else
-        echo Parties file missing! ETL aborting.  >> $LOGFILE
-        exit 1
-fi
-if compgen -G $PICTION_IN_DIR/solr_prod1.xml > /dev/null ; then
-        echo Piction file exists >> $LOGFILE
-else
-        echo Piction file missing! ETL aborting.  >> $LOGFILE
-        exit 1
-fi
+case "$MODE" in
+	full)
+		if compgen -G $IN_DIR/*object*.xml > /dev/null ; then
+			echo Objects file exists >> $LOGFILE
+		else
+			echo Objects file missing! ETL aborting. >> $LOGFILE
+			exit 1
+		fi
+		if compgen -G $IN_DIR/*narratives*.xml > /dev/null ; then
+			echo Narratives file exists >> $LOGFILE
+		else
+			echo Narratives file missing! ETL aborting.  >> $LOGFILE
+			exit 1
+		fi
+		if compgen -G $IN_DIR/*accessionlots*.xml > /dev/null ; then
+			echo Accession lots file exists >> $LOGFILE
+		else
+			echo Accession lots file missing! ETL aborting.  >> $LOGFILE
+			exit 1
+		fi
+		if compgen -G $IN_DIR/*sites*.xml > /dev/null ; then
+			echo Sites file exists >> $LOGFILE
+		else
+			echo Sites file missing! ETL aborting.  >> $LOGFILE
+			exit 1
+		fi
+		if compgen -G $IN_DIR/*parties*.xml > /dev/null ; then
+			echo Parties file exists >> $LOGFILE
+		else
+			echo Parties file missing! ETL aborting.  >> $LOGFILE
+			exit 1
+		fi
+		if compgen -G $PICTION_IN_DIR/solr_prod1.xml > /dev/null ; then
+			echo Piction file exists >> $LOGFILE
+		else
+			echo Piction file missing! ETL aborting.  >> $LOGFILE
+			exit 1
+		fi
+		;;
+	incremental)
+		# we only need at least one EMu XML file for incremental
+		if compgen -G $IN_DIR/*.xml > /dev/null ; then
+			echo Update file(s) exist >> $LOGFILE
+		else
+			echo Update files missing! ETL aborting. >> $LOGFILE
+			exit 1
+		fi
+		;;
+	*)
+		to_log "Unknown mode: $MODE"
+		echo Usage: $0 [full\|incremental]
+		exit 1
+esac
+
 case "$MODE" in
 	full)
 		to_log "START ETL STEP 1 - full load to Fuseki SPARQL store"
@@ -99,10 +117,6 @@ case "$MODE" in
 		to_log "Loading files to Fuseki internal dataset"
 		$SCRIPT_DIR/etl-to-fuseki-incremental.sh internal
 		;;
-	*)
-		to_log "Unknown mode: $MODE"
-		echo Usage: $0 [full\|incremental]
-		exit 1
 esac
 to_log "FINISH ETL STEP 1 - load to Fuseki SPARQL store"
 
