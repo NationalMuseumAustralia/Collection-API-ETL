@@ -244,6 +244,20 @@
 					</p:otherwise>
 				</p:choose>
 			</p:group>
+			<!-- store raw trix -->
+			<p:store indent="true">
+				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
+				<p:input port="source">
+					<p:pipe step="resource-description" port="result"/>
+				</p:input>
+			</p:store>
+			<!-- store redacted trix -->
+			<p:store indent="true">
+				<p:with-option name="href" select="concat('/data/public/redacted-trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
+				<p:input port="source">
+					<p:pipe step="redacted-description" port="result"/>
+				</p:input>
+			</p:store>
 		</p:for-each>	
 	</p:declare-step>
 	
@@ -353,20 +367,6 @@
 			<p:store href="/tmp/solr.xml" indent="true">
 				<p:input port="source">
 					<p:pipe step="json-xml-to-json" port="result"/>
-				</p:input>
-			</p:store>
-			<!-- store raw trix -->
-			<p:store indent="true">
-				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
-				<p:input port="source">
-					<p:pipe step="resource-description" port="result"/>
-				</p:input>
-			</p:store>
-			<!-- store redacted trix -->
-			<p:store indent="true">
-				<p:with-option name="href" select="concat('/data/public/redacted-trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
-				<p:input port="source">
-					<p:pipe step="redacted-description" port="result"/>
 				</p:input>
 			</p:store>
 	</p:declare-step>
