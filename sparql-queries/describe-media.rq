@@ -1,8 +1,8 @@
 PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
 PREFIX ore: <http://www.openarchives.org/ore/terms/>
-DESCRIBE «resource-uri» ?resource
+DESCRIBE <resource-uri> ?resource
 WHERE {
-	«resource-uri»
+	<resource-uri>
 	# the visual item's type
 	crm:P2_has_type | 
 	# the object(s) which the visual item depicts, and its type, descriptions, etc (but excluding visual items which depict it
