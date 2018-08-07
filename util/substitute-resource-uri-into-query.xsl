@@ -8,7 +8,7 @@
 	
 	<xsl:template match="/*">
 		<xsl:copy>
-			<xsl:analyze-string select="text()" regex="&lt;resource-uri&gt;">
+			<xsl:analyze-string select="text()" regex="«resource-uri»">
 				<xsl:matching-substring>
 					<xsl:value-of select="concat('&lt;', $resource-uri, '&gt;')"/>
 				</xsl:matching-substring>

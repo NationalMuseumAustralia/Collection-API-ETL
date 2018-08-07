@@ -72,7 +72,7 @@
 			<p:input port="source"><p:empty/></p:input>
 			<p:input port="template">
 				<p:inline>
-					<c:request href="{encode-for-uri($query-file)}" method="get" override-content-type="text/plain"/>
+					<c:request href="{encode-for-uri($query-file)}" method="get" override-content-type="text/plain; charset=UTF-8"/>
 				</p:inline>
 			</p:input>
 		</p:template>
