@@ -8,7 +8,8 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json"
 	xmlns:f="http://www.w3.org/2005/xpath-functions" 
 	xmlns:map="http://www.w3.org/2005/xpath-functions/map"
-	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/">
+	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns="http://www.w3.org/2005/xpath-functions">
 
 	<xsl:import href="util/trix-traversal-functions.xsl" />
 	<xsl:import href="util/xmljson-functions.xsl" />
@@ -32,7 +33,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<xsl:template name="dc-xml">
 		<xsl:param name="resource" required="true" />
-		<map xmlns="http://www.w3.org/2005/xpath-functions">
+		<map>
 
 			<!-- COMMON FIELDS -->
 
@@ -112,7 +113,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="additional-type-dc">
 		<xsl:variable name="value" select="path:forward( ('crm:P2_has_type','rdfs:label') )" />
 		<xsl:if test="$value">
-			<array key="additionalType" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="additionalType">
 				<xsl:for-each select="$value">
 					<!-- NB: no JSON string labels -->
 					<xsl:copy-of select="xmljson:render-as-string('', .)" />
@@ -133,7 +134,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<!-- record metadata: modified, issued, collection explorer link -->
 	<xsl:template name="record-metadata-dc">
 		<xsl:if test="$type='object' or $type='narrative'">
-			<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
+			<map key="_meta">
 				<xsl:variable name="primary-source-graph" select="path:forward('crm:P70i_is_documented_in')[1]"/>
 				<xsl:for-each select="path:forward($primary-source-graph, 'dc:modified')[1]">
 					<string key='modified'><xsl:value-of select="." /></string>
@@ -162,7 +163,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="collection-dc">
 		<xsl:variable name="value" select="path:forward('crm:P106i_forms_part_of')" />
 		<xsl:if test="$value">
-			<map key="collection" xmlns="http://www.w3.org/2005/xpath-functions">
+			<map key="collection">
 				<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>
 				<string key='type'><xsl:text>Collection</xsl:text></string>
 				<xsl:copy-of select="xmljson:render-as-string('title', path:forward($value, 'rdfs:label'))" />
@@ -184,9 +185,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="materials-dc">
 		<xsl:variable name="value" select="path:forward( ('crm:P45_consists_of','rdfs:label') )" />
 		<xsl:if test="$value">
-			<array key="medium" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="medium">
 				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<string key='type'><xsl:text>Material</xsl:text></string>
 						<xsl:copy-of select="xmljson:render-as-string('title', .)" />
 					</map>
@@ -198,7 +199,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<!-- dimensions -->
 	<xsl:template name="dimensions-dc">
 		<xsl:if test="path:forward('crm:P43_has_dimension')">
-			<map key="extent" xmlns="http://www.w3.org/2005/xpath-functions">
+			<map key="extent">
 					<string key='type'><xsl:text>Measurement</xsl:text></string>
 			
 					<!-- length -->
@@ -319,11 +320,11 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$value">
-			<array key="creator" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="creator">
 				<xsl:for-each select="$value">
 					<xsl:variable name="party-id" select="path:forward(., 'crm:P14_carried_out_by')" />
 					<xsl:variable name="party-iri" select="$party-id/self::trix:uri"/>
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<xsl:if test="$party-id">
 							<string key='id'><xsl:value-of select="replace($party-id, '(.*/)([^/]*)(#)$', '$2')" /></string>
 						</xsl:if>
@@ -369,7 +370,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$associated_person_value or $associated_organisation_value">
-			<array key="contributor" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="contributor">
 				<xsl:for-each select="$associated_person_value">
 					<xsl:variable name="party-iri" select="path:forward(., 'crm:P12_occurred_in_the_presence_of')" />
 					<map>
@@ -430,7 +431,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$production_place_value or $associated_place_value">
-			<array key="spatial" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="spatial">
 				<xsl:for-each select="$production_place_value">
 					<xsl:variable name="place-iri" select="path:forward(., 'crm:P7_took_place_at')" />
 					<map>
@@ -490,7 +491,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$production_date_value or $associated_date_value">
-			<array key="temporal" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="temporal">
 				<xsl:for-each select="$production_date_value">
 					<map>
 						<!-- type -->
@@ -569,9 +570,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$type='object' and $value">
-			<array key="isPartOf" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="isPartOf">
 				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<!-- id -->
 						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
@@ -592,9 +593,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$type='object' and $value">
-			<array key="hasPart" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="hasPart">
 				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<!-- id -->
 						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
@@ -611,7 +612,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="related-dc">
 		<xsl:variable name="value" select="path:forward('dc:relation')" />
 		<xsl:if test="$value">
-			<array key="relation" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="relation">
 				<xsl:for-each select="$value">
 					<map>
 						<string key='id'><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')" /></string>
@@ -629,9 +630,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<xsl:template name="media-parent-dc">
 		<xsl:variable name="objects-represented-by-media" select="path:forward('crm:P138_represents')"/>
 		<xsl:if test="$objects-represented-by-media">
-			<array key="isVersionOf" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="isVersionOf">
 				<xsl:for-each select="$objects-represented-by-media">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<string key='type'><xsl:text>object</xsl:text></string>
 						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 					</map>
@@ -648,7 +649,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$value">
-			<array key="seeAlso" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="seeAlso">
 				<xsl:for-each select="$value">
 					<map>
 						<string key='type'><xsl:text>Link</xsl:text></string>
@@ -684,7 +685,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<!-- for object: this is an array of media (which contain digital files) -->
 		<!-- for media: this is an array of the digital files inside this one media -->
 		<xsl:if test="$value-preferred or $value-unpreferred">
-			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="hasVersion">
 				<xsl:for-each select="($value-preferred, $value-unpreferred)">
 					<xsl:call-template name="representations-dc-display">
 						<xsl:with-param name="value" select="." />
@@ -701,7 +702,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 	<!-- media: shows one digital file (has no lower level P138 has representation) -->
 	<xsl:template name="representations-dc-display">
 		<xsl:param name="value" />
-		<map xmlns="http://www.w3.org/2005/xpath-functions">
+		<map>
 			<!-- if media entity, a representation is a digital file, which doesn't have an id -->
 			<xsl:if test="not($type='media')">
 				<xsl:copy-of
@@ -812,7 +813,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			/path:forward(., 'rdf:value')
 		" />
 		<xsl:if test="$value">
-			<array key="alternativeNames" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="alternativeNames">
 				<xsl:for-each select="$value">
 					<!-- NB: no JSON string labels -->
 					<xsl:copy-of select="xmljson:render-as-string('', .)" />
@@ -863,7 +864,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$type='narrative' and $value">
-			<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="hasVersion">
 				<xsl:for-each select="$value">
 					<xsl:call-template name="representations-dc-display">
 						<xsl:with-param name="value" select="$value" />
@@ -882,9 +883,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		" />
 		<!-- this is a narrative under another narrative -->
 		<xsl:if test="$type='narrative' and $value">
-			<array key="isPartOf" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="isPartOf">
 				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<!-- id -->
 						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
@@ -897,9 +898,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		</xsl:if>
 		<!-- this is an object under a narrative -->
 		<xsl:if test="$type='object' and $value">
-			<array key="isAggregatedBy" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="isAggregatedBy">
 				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<!-- id -->
 						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
@@ -920,9 +921,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$type='narrative' and $value">
-			<array key="hasPart" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="hasPart">
 				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<!-- id -->
 						<xsl:copy-of select="xmljson:render-as-string('id', replace(., '(.*/)([^/]*)(#)$', '$2'))" />
 						<!-- type -->
@@ -943,9 +944,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			]
 		" />
 		<xsl:if test="$type='narrative' and $value">
-			<array key="aggregates" xmlns="http://www.w3.org/2005/xpath-functions">
+			<array key="aggregates">
 				<xsl:for-each select="$value">
-					<map xmlns="http://www.w3.org/2005/xpath-functions">
+					<map>
 						<!-- id -->
 						<xsl:variable name="object-id" select="replace(., '(.*/)([^/]*)(#)$', '$2')" />
 						<xsl:copy-of select="xmljson:render-as-string('id', $object-id)" />
@@ -961,14 +962,14 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 						" />
 						<!-- NB: assuming only one preferred -->
 						<xsl:for-each select="$value-preferred[1]">
-							<array key="hasVersion" xmlns="http://www.w3.org/2005/xpath-functions">
+							<array key="hasVersion">
 								<xsl:call-template name="representations-dc-display">
 									<xsl:with-param name="value" select="$value-preferred" />
 								</xsl:call-template>
 							</array>
 						</xsl:for-each>
 						<!-- meta: collection explorer link -->
-						<map key="_meta" xmlns="http://www.w3.org/2005/xpath-functions">
+						<map key="_meta">
 							<string key='hasFormat'><xsl:value-of select="concat($collection-explorer-uri, 'object/', $object-id)" /></string>
 						</map>
 					</map>
