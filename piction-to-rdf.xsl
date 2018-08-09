@@ -1,5 +1,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" 
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/"
 	xmlns="tag:conaltuohy.com,2018:nma/piction/"
 	xmlns:ore="http://www.openarchives.org/ore/terms/"
@@ -59,9 +60,9 @@
 						<crm:P2_has_type rdf:resource="{$nma-term-ns}preferred" />	
 					</xsl:if>
 					<xsl:for-each select="field[@name='title']">
-						<rdf:label>
+						<rdfs:label>
 							<xsl:value-of select="." />
-						</rdf:label>
+						</rdfs:label>
 					</xsl:for-each>
 					<xsl:for-each select="$related-object-identifiers">
 						<crm:P138_represents rdf:resource="object/{translate(., ' ', '')}#" />
@@ -111,9 +112,9 @@
 								<xsl:for-each select="field[@name='Photographer'][normalize-space()]">
 									<crm:P14_carried_out_by>
 										<crm:E21_Person>
-											<rdf:label>
+											<rdfs:label>
 												<xsl:value-of select="." />
-											</rdf:label>
+											</rdfs:label>
 										</crm:E21_Person>
 									</crm:P14_carried_out_by>
 								</xsl:for-each>
