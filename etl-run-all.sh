@@ -46,8 +46,10 @@ PICTION_IN_DIR="$PICTION_DATA_DIR"
 
 # check for existence of data files; if any are missing, abort the ETL
 echo Checking for existence of source data files ... >> $LOGFILE
+# Fuseki build is now always "full"
 case "$MODE" in
-	full)
+#	full)
+	full|incremental)
 		if compgen -G $IN_DIR/*object*.xml > /dev/null ; then
 			echo Objects file exists >> $LOGFILE
 		else
@@ -84,40 +86,29 @@ case "$MODE" in
 			echo Piction file missing! ETL aborting.  >> $LOGFILE
 			exit 1
 		fi
-		;;
-	incremental)
+#		;;
+#	incremental)
 		# we only need at least one EMu XML file for incremental
-		if compgen -G $IN_DIR/*.xml > /dev/null ; then
-			echo EMu update files exist >> $LOGFILE
-		else
-			echo EMu update files missing! ETL aborting. >> $LOGFILE
-			exit 1
-		fi
-		;;
+#		if compgen -G $IN_DIR/*.xml > /dev/null ; then
+#			echo EMu update files exist >> $LOGFILE
+#		else
+#			echo EMu update files missing! ETL aborting. >> $LOGFILE
+#			exit 1
+#		fi
+#		;;
 	*)
 		to_log "Unknown mode: $MODE"
 		echo Usage: $0 [full\|incremental]
 		exit 1
 esac
 
-case "$MODE" in
-	full)
-		to_log "START ETL STEP 1 - full load to Fuseki SPARQL store"
-		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
-		to_log "Loading files to Fuseki public dataset"
-		$SCRIPT_DIR/etl-to-fuseki-full.sh public
-		to_log "Loading files to Fuseki internal dataset"
-		$SCRIPT_DIR/etl-to-fuseki-full.sh internal
-		;;
-	incremental)
-		to_log "START ETL STEP 1 - incremental load to Fuseki SPARQL store"
-		to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
-		to_log "Loading files to Fuseki public dataset"
-		$SCRIPT_DIR/etl-to-fuseki-incremental.sh public
-		to_log "Loading files to Fuseki internal dataset"
-		$SCRIPT_DIR/etl-to-fuseki-incremental.sh internal
-		;;
-esac
+to_log "START ETL STEP 1 - full load to Fuseki SPARQL store"
+to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
+to_log "Loading files to Fuseki public dataset"
+$SCRIPT_DIR/etl-to-fuseki-full.sh public
+to_log "Loading files to Fuseki internal dataset"
+$SCRIPT_DIR/etl-to-fuseki-full.sh internal
+
 to_log "FINISH ETL STEP 1 - load to Fuseki SPARQL store"
 
 # move/copy loaded files and log
