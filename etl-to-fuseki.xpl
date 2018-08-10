@@ -39,7 +39,7 @@
 	<p:group>
 		<!-- capture the hostname so we can make URIs relative to this host -->
 		<p:variable name="hostname" select="normalize-space(/)"/>
-		<p:sink/>
+		<p:sink name="discard-hostname"/>
 		
 		<!-- load our local vocabulary data -->
 		<nma:load-vocabulary>
@@ -148,44 +148,84 @@
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
 		<p:option name="incremental" required="true"/>
+		<!-- current date, used to tag new records and exclude old records, where necessary -->
+		<p:variable name="current-date" select="current-date()"/>
+		<!-- the file which contains previously processed version of the piction data -->
+		<p:variable name="piction-cache" select="
+			concat(
+				'/data/cache/piction-',
+				$dataset,
+				'.xml'
+			)
+		"/>
+		<p:documentation>the file containing the current, as yet unprocessed, piction data</p:documentation>
 		<p:load name="new-piction-data" href="/mnt/dams_data/solr_prod1.xml"/>
-		<!-- track the "last-updated" date of the individual records -->
+		<p:documentation>track the "last-updated" date of the individual records</p:documentation>
 		<p:try name="cached-piction-data">
 			<p:group name="load-cached-piction-data">
 				<p:output port="result"/>
 				<cx:message message="Loading cached Piction data..."/>
-				<p:load href="/data/cache/piction.xml"/>
+				<p:load>
+					<p:with-option name="href" select="$piction-cache"/>
+				</p:load>
 			</p:group>
 			<p:catch name="no-cached-data">
 				<p:output port="result"/>
 				<cx:message message="No cached Piction data found, using current data..."/>
 				<p:add-attribute match="/add/doc" attribute-name="date-modified">
-					<p:with-option name="attribute-value" select="current-date()"/>
+					<p:with-option name="attribute-value" select="$current-date"/>
 				</p:add-attribute>
 			</p:catch>
 		</p:try>
+		<p:documentation>aggregate the new and cached piction, for comparison</p:documentation>
 		<p:wrap-sequence name="new-and-cached-piction-data" wrapper="comparison">
 			<p:input port="source">
 				<p:pipe step="new-piction-data" port="result"/>
 				<p:pipe step="cached-piction-data" port="result"/>
 			</p:input>
 		</p:wrap-sequence>
-		<cx:message message="Calculating Piction last-modified dates..."/>
+		<p:documentation>generate a version of the new piction data, with date-modified attribute on each record</p:documentation>
 		<p:xslt name="compute-date-modified">
-			<p:input port="parameters"><p:empty/></p:input>
+			<p:with-param name="current-date" select="$current-date"/>
+			<p:input port="source">
+				<p:pipe step="new-and-cached-piction-data" port="result"/>
+			</p:input>
 			<p:input port="stylesheet">
 				<p:document href="compute-piction-date-modified.xsl"/>
 			</p:input>
 		</p:xslt>
-		<cx:message message="Caching Piction data..."/>
-		<p:store href="/data/cache/piction.xml" indent="true"/>
-		<!-- make any necessary redactions before publishing to the specified dataset  -->
-		<!-- NB 'public' dataset omits certains data, which are present only in the 'internal' dataset -->
+		<p:documentation>for incremental updates, exclude records which have not changed since the previously cached versions</p:documentation>
+		<p:choose name="ingestible-piction-records">
+			<p:when test=" $incremental = 'true' ">
+				<p:output port="result"/>
+				<p:xslt name="exclude-unchanged-records">
+					<p:with-param name="current-date" select="$current-date"/>
+					<p:input port="source">
+						<p:pipe step="new-and-cached-piction-data" port="result"/>
+					</p:input>
+					<p:input port="stylesheet">
+						<p:document href="exclude-unchanged-piction-records.xsl"/>
+					</p:input>		
+				</p:xslt>
+			</p:when>
+			<p:otherwise>
+				<p:output port="result"/>
+				<p:identity name="include-all-piction-records"/>
+			</p:otherwise>
+		</p:choose>
+		<cx:message>
+			<p:with-option name="message" select="
+				concat(
+					'Processing ',
+					count(/add/doc),
+					' updated Piction records ...'
+				)
+			"/>
+		</cx:message>
+		<p:documentation>First make any necessary redactions before publishing to the specified dataset.
+		NB 'public' dataset omits certains data, which are present only in the 'internal' dataset</p:documentation>
 		<p:xslt name="redact">
 			<p:with-param name="dataset" select="$dataset"/>
-			<p:input port="source">
-				<p:pipe step="compute-date-modified" port="result"/>
-			</p:input>
 			<p:input port="stylesheet">
 				<p:document href="filter.xsl"/>
 			</p:input>
@@ -199,6 +239,14 @@
 				<p:with-option name="incremental" select="$incremental"/>
 			</nma:ingest-record>
 		</p:for-each>
+		<cx:message message="Caching Piction data..." cx:depends-on="record">
+			<p:input port="source">
+				<p:pipe step="ingestible-piction-records" port="result"/>
+			</p:input>
+		</cx:message>
+		<p:store indent="true">
+			<p:with-option name="href" select="$piction-cache"/>
+		</p:store>
 	</p:declare-step>	
 	
 	<p:declare-step name="process-data" type="nma:process-data">
@@ -252,9 +300,9 @@
 					<p:with-option name="hostname" select="$hostname"/>
 					<p:with-option name="incremental" select="$incremental"/>
 				</nma:ingest-record>
-				<p:sink/>
 			</p:for-each>
 		</p:for-each>
+		<p:sink/>
 	</p:declare-step>
 	
 	<p:declare-step type="nma:ingest-record" name="ingest-record">
@@ -269,10 +317,6 @@
 		<cx:message>
 			<p:with-option name="message" select="concat('Transforming ', $file-name-component, ' record ', $identifier, ' for ', $dataset, ' dataset...')"/>
 		</cx:message>
-		<!-- remove empty leaf elements -->
-<!--
-		<p:delete match="*[not(*)][not(normalize-space(.))]"/>
--->
 		<p:choose name="transformation-to-rdf">
 			<p:when test="$file-name-component = 'piction'">
 				<p:output port="result"/>
