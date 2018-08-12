@@ -95,7 +95,7 @@ case "$MODE" in
 #			echo EMu update files missing! ETL aborting. >> $LOGFILE
 #			exit 1
 #		fi
-#		;;
+		;;
 	*)
 		to_log "Unknown mode: $MODE"
 		echo Usage: $0 [full\|incremental]
