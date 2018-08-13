@@ -28,6 +28,9 @@ echo -e "127.0.0.1 localhost $HOSTNAME nma\n\n$(cat /etc/hosts)" > /etc/hosts
 # EXIM MAIL TRANSFER AGENT
 #
 echo =========== Installing Exim Mail Transfer Agent
+chmod a+x $CONFIG_DIR/exim/configure.sh
+$CONFIG_DIR/exim/configure.sh
+
 # pre-fill exim package configuration
 echo "exim4-config exim4/use_split_config boolean false" | debconf-set-selections
 echo "exim4-config exim4/dc_other_hostnames string localhost" | debconf-set-selections
