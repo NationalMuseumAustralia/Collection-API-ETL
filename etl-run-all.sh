@@ -41,7 +41,9 @@ to_log "BEGIN ETL - mode=$MODE, job=$JOB_ID"
 
 # ETL step 1 - load to sparql store
 cd $SCRIPT_DIR
-IN_DIR="$DATA_DIR/$MODE"
+# Fuseki build is now always "full"
+#IN_DIR="$DATA_DIR/$MODE"
+IN_DIR="$DATA_DIR/full"
 PICTION_IN_DIR="$PICTION_DATA_DIR"
 
 # check for existence of data files; if any are missing, abort the ETL
