@@ -7,6 +7,7 @@
 	xmlns:dc="http://purl.org/dc/terms/"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
 	xmlns:uri="tag:conaltuohy.com,2018:nma/uri-utility">
 	
 	<xsl:import href="util/date-util-functions.xsl"/>
@@ -832,11 +833,11 @@
 	<xsl:template match="NotText0">
 		<xsl:param name="entity-iri" />
 		<!-- parse out URL and label (ignoring note_type) -->
-		<!-- example: &lt;a href=&quot;http://...&quot;&gt;Label&lt;/a&gt; -->
+		<!-- example: &lt;a href="http://..." target="blank"&gt;Label&lt;/a&gt; -->
 		<!-- ie: <a href="http://...">Label</a> -->
+		<xsl:variable name="link-parser">.*href=&quot;([^&quot;]+).*&quot;&gt;(.*)&lt;/a&gt;.*</xsl:variable>
 		<xsl:variable name="label">
-			<xsl:analyze-string select="normalize-space(note_text)"
-				regex=".*href=&quot;(.*)&quot;&gt;(.*)&lt;/a&gt;.*">
+			<xsl:analyze-string select="normalize-space(note_text)" regex="{$link-parser}">
 				<xsl:matching-substring>
 					<xsl:value-of select="regex-group(2)" />
 				</xsl:matching-substring>
@@ -846,8 +847,7 @@
 			</xsl:analyze-string>
 		</xsl:variable>
 		<xsl:variable name="href">
-			<xsl:analyze-string select="normalize-space(note_text)"
-				regex=".*href=&quot;(.*)&quot;&gt;(.*)&lt;/a&gt;.*">
+			<xsl:analyze-string select="normalize-space(note_text)" regex="{$link-parser}">
 				<xsl:matching-substring>
 					<xsl:value-of select="regex-group(1)" />
 				</xsl:matching-substring>
@@ -860,7 +860,7 @@
 				<!-- NB: defensive, in case href didn't parse -->
 				<xsl:if test="$href and not($href='')">
 					<!-- mint RDF ID for link from *this* entity -->
-					<xsl:attribute name="rdf:about"><xsl:value-of select="concat($entity-iri, '#link-', $href)" /></xsl:attribute>
+					<xsl:attribute name="rdf:about"><xsl:value-of select="concat($entity-iri, '#link-', encode-for-uri($href))" /></xsl:attribute>
 					<!-- and here's the actual link -->
 					<crm:P1_is_identified_by>
 					    <crm:E42_Identifier rdf:about="{$href}" />
