@@ -233,11 +233,11 @@ make install
 # WEBMIN
 #
 echo =========== Installing Webmin
-# fixed download: https://sourceforge.net/p/webadmin/bugs/4742/#e776
-sh -c 'echo "deb http://webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
-wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
-apt update
-apt install -y webmin
+# download from sourceforge as webmin.com is unreliable
+cd $INSTALL_DIR
+wget https://downloads.sourceforge.net/project/webadmin/webmin/1.890/webmin_1.890_all.deb -O webmin_1.890_all.deb
+# -f to install dependencies
+apt install -f -y ./webmin_1.890_all.deb
 # remove SSL requirement config (server is behind a secure proxy)
 # see: https://doxfer.webmin.com/Webmin/Running_Webmin_Under_Apache
 # replace existing lines
