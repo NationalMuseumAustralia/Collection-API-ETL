@@ -51,17 +51,5 @@
 		</xsl:variable>
 		<xsl:sequence select="matches($uri, $uri-regex, 'x')"/>
 	</xsl:function>
-	
-	<xsl:template match="uri">
-		<xsl:copy>
-			<xsl:attribute name="is-uri" select="uri:is-uri(.)"/>
-			<xsl:apply-templates/>
-		</xsl:copy>
-	</xsl:template>
-	<xsl:template match="*">
-		<xsl:copy>
-			<xsl:apply-templates/>
-		</xsl:copy>
-	</xsl:template>
 
 </xsl:stylesheet>
