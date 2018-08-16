@@ -304,7 +304,7 @@
 	<!-- https://linked.art/cookbook/getty/photoarchive/ -->
 	<xsl:template match="AccAccessionLotRef">
 		<xsl:variable name="collection-iri" select="concat('collection/', ., '#')" />
-		<crm:P106i_forms_part_of rdf:resource="{$collection-iri}" />
+		<crm:P46i_forms_part_of rdf:resource="{$collection-iri}" />
 	</xsl:template>
 
 	<!-- object type -->
