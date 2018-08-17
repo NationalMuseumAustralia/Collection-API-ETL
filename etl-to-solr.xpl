@@ -9,6 +9,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:results="http://www.w3.org/2005/sparql-results#"
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns:sparql="http://www.w3.org/2005/sparql-results#"
 >
 	<p:option name="dataset" required="true"/>
 	<p:option name="mode" required="true"/><!-- "incremental" or "full" -->
@@ -101,6 +102,15 @@
 				<p:pipe step="resource-list-sparql-query" port="result"/>
 			</p:input>
 		</nma:sparql-query>
+		<cx:message>
+			<p:with-option name="message" select="
+				concat(
+					'The &quot;', $dataset, '&quot; SPARQL dataset ',
+					'has ', count(/sparql:sparql/sparql:results/sparql:result), ' resources ',
+					'with type &quot;', $solr-type, '&quot;...'
+				)
+			"/>
+		</cx:message>
 		<p:choose>
 			<p:when test="$mode = 'incremental' ">
 				<!-- query solr for records of this type -->
@@ -115,6 +125,15 @@
 						)
 					"/>
 				</p:load>
+				<cx:message>
+					<p:with-option name="message" select="
+						concat(
+							'The &quot;', $dataset, '&quot; Solr core ',
+							'has ', count(/response/result[@name='response']/doc), ' records ',
+							'with type &quot;', $solr-type, '&quot;.'
+						)
+					"/>
+				</cx:message>
 				<!-- compare "resources-to-index" with "resources-in-solr-index" and remove any which are unchanged -->
 				<p:wrap-sequence name="comparison" wrapper="comparison">
 					<p:input port="source">
@@ -134,6 +153,9 @@
 				<p:identity name="index-all-resources"/>
 			</p:otherwise>
 		</p:choose>
+		<cx:message>
+			<p:with-option name="message" select="concat(count(/sparql:sparql/sparql:results/sparql:result), ' resources need to be indexed.')"/>
+		</cx:message>
 		<!-- iterate through the resources, indexing each one individually -->
 		<p:for-each name="resource">
 			<p:iteration-source select="/results:sparql/results:results/results:result"/>
@@ -263,6 +285,12 @@
 			</p:store>
 			-->
 		</p:for-each>	
+		<p:store>
+			<p:with-option name="href" select="concat('/tmp/', $solr-type, '.xml')"/>
+			<p:input port="source">
+				<p:pipe step="resources-to-index" port="result"/>
+			</p:input>
+		</p:store>
 	</p:declare-step>
 	
 	<!-- compute a hash of a document, replacing it with <hash value="xxx"/> -->
