@@ -316,7 +316,7 @@
 			<!-- transform the RDF graph into a Solr index update -->
 			<p:xslt name="trix-description-to-solr-doc">
 				<p:input port="stylesheet">
-					<p:document href="trix-description-to-solr.xsl"/>
+					<p:document href="build-solr.xsl"/>
 				</p:input>
 				<p:with-param name="root-resource" select="$resource-uri"/>
 				<p:with-param name="dataset" select="$dataset"/>

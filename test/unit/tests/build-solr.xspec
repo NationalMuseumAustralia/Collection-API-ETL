@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:xmljson="tag:conaltuohy.com,2018:nma/xml-to-json" xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/"
+	xmlns:c="http://www.w3.org/ns/xproc-step" 
+	xmlns:xpath="http://www.w3.org/2005/xpath-functions" stylesheet="../../../build-solr.xsl">
+
+	<!-- load an object trix record into the global $graph variable -->
+	<x:variable name="graph">
+		<graph xmlns="http://www.w3.org/2004/03/trix/trix-1/">
+			<!-- base record type triple -->
+			<triple>
+				<uri>http://nma-dev.conaltuohy.com/xproc-z/object/122751#</uri>
+				<uri>http://www.w3.org/1999/02/22-rdf-syntax-ns#type</uri>
+				<uri>http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</uri>
+			</triple>
+		</graph>
+	</x:variable>
+
+	<x:param name="root-resource"
+		select=" 'http://nma-dev.conaltuohy.com/xproc-z/object/122751#' " />
+	<x:param name="hash" select="'123456'" />
+
+	<x:scenario label="Convert simple - current version">
+		<x:call template="dc-xml">
+			<x:param name="resource" select="$root-resource" />
+		</x:call>
+		<x:expect label="should return xpath:map">
+			<map xmlns="http://www.w3.org/2005/xpath-functions">...</map>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert simple - v0">
+		<x:call template="dc-xml-v0">
+			<x:param name="resource" select="$root-resource" />
+		</x:call>
+		<x:expect label="should return xpath:map">
+			<map xmlns="http://www.w3.org/2005/xpath-functions">...</map>
+		</x:expect>
+	</x:scenario>
+
+	<x:scenario label="Convert record">
+		<x:call template="solr-record" />
+		<x:expect label="should return c:request">
+			<c:request method="post" href="http://localhost:8983/solr/core_nma_/update" detailed="true">
+				<c:body content-type="application/xml">
+					<add commitWithin="10000">
+						<doc>
+							<field name="hash">123456</field>
+							<field name="datestamp" />
+							<field name="source_count" />
+							<field name="id">object/122751</field>
+							<field name="type">object</field>
+							<field name="type">http://www.cidoc-crm.org/cidoc-crm/E19_Physical_Object</field>
+							<field name="json-ld">
+  { "@context" : "\/context.json",
+    "id" : "http:\/\/nma-dev.conaltuohy.com\/xproc-z\/object\/122751#",
+    "type" : "PhysicalObject" }</field>
+							<field name="simple">
+								<map xmlns="http://www.w3.org/2005/xpath-functions">
+									<string key="id">122751</string>
+									<string key="type">object</string>
+									<map key="_meta">
+										<string key="hasFormat">http://collectionsearch.nma.gov.au/object/122751</string>
+									</map>
+								</map>
+							</field>
+							<field name="simple-v0">
+								<map xmlns="http://www.w3.org/2005/xpath-functions">
+									<string key="id">122751</string>
+									<string key="type">object</string>
+									<map key="_meta">
+										<string key="hasFormat">http://collectionsearch.nma.gov.au/object/122751</string>
+									</map>
+								</map>
+							</field>
+						</doc>
+					</add>
+				</c:body>
+			</c:request>
+		</x:expect>
+	</x:scenario>
+
+</x:description>

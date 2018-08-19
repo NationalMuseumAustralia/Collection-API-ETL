@@ -43,4 +43,5 @@ else
   run_test trix-description-to-solr-object
   run_test trix-description-to-solr-narrative
   run_test trix-description-to-solr-party
+  run_test build-solr
 fi

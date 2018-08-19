@@ -37,6 +37,7 @@ CALL :runtest trix-description-to-dc-party
 CALL :runtest trix-description-to-solr-object
 CALL :runtest trix-description-to-solr-narrative
 CALL :runtest trix-description-to-solr-party
+CALL :runtest build-solr
 
 :end
 EXIT /B %ERRORLEVEL%
