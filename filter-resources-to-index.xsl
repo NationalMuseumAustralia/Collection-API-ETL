@@ -7,8 +7,8 @@ are matched by a Solr doc's id, last-updated, and source-count fields -->
 <xsl:stylesheet  version="3.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:sparql="http://www.w3.org/2005/sparql-results#">
-	<xsl:template match="/">
-		<xsl:apply-templates select="comparison/sparql:sparql"/>
+	<xsl:template match="/comparison">
+		<xsl:apply-templates select="sparql:sparql"/>
 	</xsl:template>
 	<xsl:template match="*">
 		<xsl:copy>

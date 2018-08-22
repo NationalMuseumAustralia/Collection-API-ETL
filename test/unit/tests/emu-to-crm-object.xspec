@@ -35,8 +35,8 @@
 		<x:context>
 			<AccAccessionLotRef>3952</AccAccessionLotRef>
 		</x:context>
-		<x:expect label="should return crm:P106i_forms_part_of">
-			<crm:P106i_forms_part_of rdf:resource="collection/3952#" />
+		<x:expect label="should return crm:P46i_forms_part_of">
+			<crm:P46i_forms_part_of rdf:resource="collection/3952#" />
 		</x:expect>
 	</x:scenario>
 
@@ -869,7 +869,7 @@
 		<x:expect label="should return rdfs:seeAlso">
 			<rdfs:seeAlso>
 				<rdf:Description
-					rdf:about="#link-http://www.nma.gov.au/collections/highlights/ellen_rogers_collection">
+					rdf:about="#link-http%3A%2F%2Fwww.nma.gov.au%2Fcollections%2Fhighlights%2Fellen_rogers_collection">
 					<crm:P1_is_identified_by>
 					    <crm:E42_Identifier rdf:about="http://www.nma.gov.au/collections/highlights/ellen_rogers_collection" />
 					</crm:P1_is_identified_by>
