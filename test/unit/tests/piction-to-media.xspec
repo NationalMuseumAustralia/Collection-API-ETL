@@ -34,6 +34,11 @@
 							<crm:P2_has_type rdf:resource="http://api.nma.gov.au/term/preview" />
 						</crm:E36_Visual_Item>
 					</crm:P138i_has_representation>
+					<crm:P70i_is_documented_in>
+						<crm:E31_Document rdf:about="media/MA67853082">
+							<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date" />
+						</crm:E31_Document>
+					</crm:P70i_is_documented_in>
 				</crm:E36_Visual_Item>
 			</rdf:RDF>
 		</x:expect>
@@ -68,6 +73,11 @@
 							<crm:P2_has_type rdf:resource="http://api.nma.gov.au/term/preview" />
 						</crm:E36_Visual_Item>
 					</crm:P138i_has_representation>
+					<crm:P70i_is_documented_in>
+						<crm:E31_Document rdf:about="media/MA67853082">
+							<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date" />
+						</crm:E31_Document>
+					</crm:P70i_is_documented_in>
 				</crm:E36_Visual_Item>
 			</rdf:RDF>
 		</x:expect>
@@ -101,11 +111,16 @@
 						<crm:E65_Creation rdf:about="media/MA67853082#creation">
 							<crm:P14_carried_out_by>
 								<crm:E21_Person>
-									<rdf:label>Amanda Crnkovic</rdf:label>
+									<rdfs:label>Amanda Crnkovic</rdfs:label>
 								</crm:E21_Person>
 							</crm:P14_carried_out_by>
 						</crm:E65_Creation>
 					</crm:P94i_was_created_by>
+					<crm:P70i_is_documented_in>
+						<crm:E31_Document rdf:about="media/MA67853082">
+							<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date" />
+						</crm:E31_Document>
+					</crm:P70i_is_documented_in>
 				</crm:E36_Visual_Item>
 			</rdf:RDF>
 		</x:expect>
