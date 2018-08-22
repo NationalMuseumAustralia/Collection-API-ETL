@@ -202,70 +202,13 @@
 				</p:input>
 				<p:with-param name="root-resource" select="$resource-uri"/>
 			</p:xslt>
-			<!-- Check if the Solr store already contains a record with the same identifier, based on identical RDF -->
-			<!--
-			<cx:message>
-				<p:with-option name="message" select="concat(current-dateTime(), ' generating hash of results ...')"/>
-			</cx:message>
-			-->
-			<p:delete name="remove-unstable-blank-node-identifiers" match="//trix:id"/>
-			<nma:hash name="trix-hash"/>
-			<p:group>
-				<p:variable name="hash" select="/hash/@value"/>
-				<!-- check if Solr has this record with the same hash as the just-computed hash -->
-				<!--
-				<cx:message>
-					<p:with-option name="message" select="concat(current-dateTime(), ' querying Solr for hash equality ...')"/>
-				</cx:message>
-				-->
-				<p:load name="still-current-solr-record">
-					<p:with-option name="href" select="
-						concat(
-							'http://localhost:8983/solr/core_nma_',
-							$dataset,
-							'/select?wt=xml&amp;q=id:',
-							replace($resource-uri, '(.*/)([^/]*/[^/]*)(#)$', '$2'),
-							'%20AND%20hash:',
-							$hash
-						)
-					"/>
-				</p:load>
-				<p:choose>
-					<p:when test="/response/result/@numFound='1'">
-						<!-- there is a record in Solr which was derived from the same source data -->
-						<cx:message>
-							<p:with-option name="message" select="concat(current-dateTime(), ' the source data for the record in Solr was still valid')"/>
-						</cx:message>
-					</p:when>
-					<p:otherwise>
-						<!-- solr didn't contain a record based on the same source data -->
-						<cx:message>
-							<p:with-option name="message" select="concat(current-dateTime(), ' the source data for the record in Solr was stale')"/>
-						</cx:message>
-					</p:otherwise>
-				</p:choose>
-				<p:choose>
-					<p:when test="/response/result/@numFound='0' or $mode='full' ">
-						<!-- Solr does not contain an up-to-date version of this record -->
-						<!-- or we are performing a "full" population of Solr anyway -->
-						<!-- so derive new publication formats from the RDF and store in Solr -->
-						<cx:message message="updating Solr ..."/>
-						<nma:update-solr>
-							<p:with-option name="resource-uri" select="$resource-uri"/>
-							<p:with-option name="dataset" select="$dataset"/>
-							<p:with-option name="hash" select="$hash"/>
-							<p:with-option name="datestamp" select="$datestamp"/>
-							<p:with-option name="source-count" select="$source-count"/>
-							<p:input port="source">
-								<p:pipe step="redacted-description" port="result"/>
-							</p:input>
-						</nma:update-solr>
-					</p:when>
-					<p:otherwise>
-						<p:sink/>
-					</p:otherwise>
-				</p:choose>
-			</p:group>
+			<nma:update-solr>
+				<p:with-option name="resource-uri" select="$resource-uri"/>
+				<p:with-option name="dataset" select="$dataset"/>
+				<p:with-option name="hash" select=" '' "/>
+				<p:with-option name="datestamp" select="$datestamp"/>
+				<p:with-option name="source-count" select="$source-count"/>
+			</nma:update-solr>
 			<!-- store raw trix -->
 			<!--
 			<p:store indent="true">
