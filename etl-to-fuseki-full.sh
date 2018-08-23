@@ -33,7 +33,8 @@ rm -r -f "/etc/fuseki/databases/$DATASET/*" >> "/var/log/NMA-API-ETL/etl-to-fuse
 rm "/data/$DATASET/dataset.nq"
 
 # concatenate n-quads files into new dataset file
-find "/data/$DATASET/n-quads/" -name "*.nq" | xargs cat >> "/data/$DATASET/dataset.nq" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+echo Joining individual graphs into a single dataset file for import... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+find "/data/$DATASET/n-quads/" -name "*.nq" | xargs cat >> "/data/$DATASET/dataset.nq"
 
 # now remove the individual .nq files 
 find "/data/$DATASET/n-quads/" -name "*.nq" -delete >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
