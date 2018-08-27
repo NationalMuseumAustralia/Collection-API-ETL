@@ -1,4 +1,5 @@
 @prefix :      <http://base/#> .
+@prefix tdb:   <http://jena.hpl.hp.com/2008/tdb#> .
 @prefix tdb2:   <http://jena.apache.org/2016/tdb#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix ja:    <http://jena.hpl.hp.com/2005/11/Assembler#> .
@@ -17,6 +18,6 @@
         fuseki:serviceUpload          "upload" .
 
 :tdb_dataset_readwrite
-        a             tdb2:DatasetTDB2 ;
-	tdb2:unionDefaultGraph true ;
-        tdb2:location  "/etc/fuseki/databases/public" .
+        a             tdb:DatasetTDB ;
+	tdb:unionDefaultGraph true ;
+        tdb:location  "/etc/fuseki/databases/public" .

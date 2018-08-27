@@ -41,7 +41,7 @@ find "/data/$DATASET/n-quads/" -name "*.nq" -delete >> "/var/log/NMA-API-ETL/etl
 
 # rebuild the fuseki db from the dataset files
 echo Building Fuseki $DATASET dataset ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-time sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbloader --tdb="/etc/fuseki/configuration/$DATASET.ttl" "/data/$DATASET/dataset.nq" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+time sudo -u tomcat8 /usr/local/jena/bin/tdbloader --loc "/etc/fuseki/databases/$DATASET" "/data/$DATASET/dataset.nq" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # generate triple pattern statistics for Fuseki query optimizer
 echo Generating triple pattern statistics for $DATASET dataset ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
