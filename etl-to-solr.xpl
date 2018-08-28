@@ -201,6 +201,7 @@
 					<p:document href="redact-trix-description.xsl"/>
 				</p:input>
 				<p:with-param name="root-resource" select="$resource-uri"/>
+				<p:with-param name="debug" select=" 'false' "/>
 			</p:xslt>
 			<nma:update-solr>
 				<p:with-option name="resource-uri" select="$resource-uri"/>
@@ -228,12 +229,14 @@
 			</p:store>
 			-->
 		</p:for-each>	
+		<!--
 		<p:store>
 			<p:with-option name="href" select="concat('/tmp/', $solr-type, '.xml')"/>
 			<p:input port="source">
 				<p:pipe step="resources-to-index" port="result"/>
 			</p:input>
 		</p:store>
+		-->
 	</p:declare-step>
 	
 	<!-- compute a hash of a document, replacing it with <hash value="xxx"/> -->

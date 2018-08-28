@@ -3,6 +3,7 @@
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/">
 	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
+	<xsl:param name="debug" select=" 'false' "/><!-- 'true' will log the various of the redacted triples --> 
 	<xsl:import href="util/trix-traversal-functions.xsl"/>
 	
 	<xsl:variable name="graph" select="/trix:trix/trix:graph" />
@@ -136,10 +137,12 @@
 				<!-- Find all the triples which define properties of those "narrative objects" -->
 				<xsl:variable name="narrative-object-triples" select="$graph/trix:triple[*[1]=$narrative-objects]"/>
 				<!-- The properties to retain are those whose predicates are always desired, OR
+				where the object is the root object of this graph, OR
 				where the predicate is 'is_subject_of' and the value is a web page (i.e. links to Collection Explorer pages) -->
 				<xsl:variable name="desired-narrative-object-triples" select="
 					$narrative-object-triples
 						[
+							*[1]=$root-resource or
 							*[2]=$desired-narrative-object-predicates or
 							*[2]=concat($crm-ns, 'P129i_is_subject_of') and *[3] = $web-pages
 						]
@@ -158,6 +161,27 @@
 						$unwanted-narrative-object-triples
 					)
 				"/>
+				
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">unwanted emu images</xsl:with-param>
+					<xsl:with-param name="redaction" select="$unwanted-emu-images"/>
+				</xsl:call-template>
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">unwanted object media statements</xsl:with-param>
+					<xsl:with-param name="redaction" select="$unwanted-object-media-statements"/>
+				</xsl:call-template>
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">empty related objects triples</xsl:with-param>
+					<xsl:with-param name="redaction" select="$empty-related-objects-triples"/>
+				</xsl:call-template>
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">superfluous related objects triples</xsl:with-param>
+					<xsl:with-param name="redaction" select="$superfluous-related-objects-triples"/>
+				</xsl:call-template>
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">unwanted narrative object triples</xsl:with-param>
+					<xsl:with-param name="redaction" select="$unwanted-narrative-object-triples"/>
+				</xsl:call-template>
 
 				<!-- sort the triples into a stable order, to facilitate checking for changes later in the pipeline -->
 				<!-- NB trix:id elements (blank nodes) are not used for sorting since their values are not stable -->
@@ -173,6 +197,17 @@
 				
 			</graph>
 		</trix>
+	</xsl:template>
+	
+	<xsl:template name="debug-list-redacted-triples">
+		<xsl:param name="reason"/>
+		<xsl:param name="redaction"/>
+		<xsl:if test="($debug = 'true') and $redaction">
+			<xsl:message>Redacting: <xsl:value-of select="$reason"/></xsl:message>
+			<xsl:for-each select="$redaction">
+				<xsl:message><xsl:value-of select="string-join(*, ' ')"/></xsl:message>
+			</xsl:for-each>
+		</xsl:if>
 	</xsl:template>
 	
 </xsl:stylesheet>
