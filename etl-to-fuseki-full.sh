@@ -26,7 +26,7 @@ sleep 5
 rm "/etc/fuseki/databases/$DATASET/tdb.lock"
 # delete fuseki's datasets
 echo Deleting existing fuseki dataset files ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-rm -r -f "/etc/fuseki/databases/$DATASET/*" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+rm -r -f /etc/fuseki/databases/$DATASET/* >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # assemble all the nquads files (which contain single graphs) into a single nquads file containing the entire RDF dataset
 # first delete any old dataset files which may have been left lying around
