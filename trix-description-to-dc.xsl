@@ -161,7 +161,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<!-- collection -->
 	<xsl:template name="collection-dc">
-		<xsl:variable name="value" select="path:forward('crm:P106i_forms_part_of')" />
+		<xsl:variable name="value" select="path:forward('crm:P46i_forms_part_of')" />
 		<xsl:if test="$value">
 			<map key="collection">
 				<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>
