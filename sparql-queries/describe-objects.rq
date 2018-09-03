@@ -35,6 +35,9 @@ WHERE {
 	# inwards loan
 	crm:P30i_custody_transferred_through |
 	crm:P30i_custody_transferred_through/crm:P29_custody_received_by |
+	# exhibition
+	crm:P16i_was_used_for |
+	crm:P16i_was_used_for/crm:P7_took_place_at |
 	
 	# the production of, or other event involving the object, and sub-activities that made up that event, 
 	# parties present at those events or carrying out those activities

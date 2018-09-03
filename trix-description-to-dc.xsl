@@ -554,12 +554,14 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<!-- exhibition location -->
 	<xsl:template name="exhibition-location-dc">
-		<xsl:copy-of select="xmljson:render-as-string('location', 
+		<xsl:for-each select="
 			path:forward('crm:P16i_was_used_for')[
 				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300054766'
 			]
-			/path:forward(., 'rdfs:label')
-		)" />
+			/path:forward(., ('crm:P7_took_place_at', 'rdfs:label'))
+		">
+			<xsl:copy-of select="xmljson:render-as-string('location', .)" />
+		</xsl:for-each>
 	</xsl:template>
 
 	<!-- parent object -->

@@ -166,9 +166,8 @@
 			</xsl:apply-templates>
 
 			<!-- exhibition location -->
-			<xsl:apply-templates select="LocCurrentLocationRef">
-				<xsl:with-param name="entity-iri" select="$entity-iri" />
-			</xsl:apply-templates>
+			<!-- All items on exhibition will have a DisplayGallery element, and some will also have the more detailed LocCurrentLocationRef -->
+			<xsl:call-template name="exhibition"/>
 
 			<!-- inward loan -->
 			<xsl:apply-templates select="InwardLoan" />
@@ -802,16 +801,35 @@
 	<!-- https://linked.art/model/exhibition/ -->
 	<!-- NB: externally filtered, so levels 3+ won't make it here for public API -->
 	<xsl:template match="LocCurrentLocationRef">
-		<crm:P16i_was_used_for>
-			<crm:E7_Activity>
+		<crm:P7_took_place_at>
+			<crm:E53_Place>
 				<rdfs:label>
 					<!-- NB: filtering out empty locations using [. != ''] -->
 					<xsl:value-of select="string-join( (LocLevel8, LocLevel7, LocLevel6, LocLevel5, LocLevel4, LocLevel3, LocLevel2, LocLevel1)[. != ''], ', ')" />
 				</rdfs:label>
-				<!-- AAT 300054766: exhibitions (events) -->
-				<crm:P2_has_type rdf:resource="{$aat-ns}300054766" />
-			</crm:E7_Activity>
-		</crm:P16i_was_used_for>
+			</crm:E53_Place>
+		</crm:P7_took_place_at>
+	</xsl:template>
+	
+	<xsl:template match="DisplayGallery">
+		<crm:P7_took_place_at>
+			<crm:E53_Place>
+				<rdfs:label><xsl:value-of select="."/></rdfs:label>
+			</crm:E53_Place>
+		</crm:P7_took_place_at>
+	</xsl:template>
+	
+	<xsl:template name="exhibition">
+		<xsl:if test="DisplayGallery">
+			<!-- item is on display -->
+			<crm:P16i_was_used_for>
+				<crm:E7_Activity rdf:about="#exhibition">
+					<xsl:apply-templates select="DisplayGallery | LocCurrentLocationRef"/>
+					<!-- AAT 300054766: exhibitions (events) -->
+					<crm:P2_has_type rdf:resource="{$aat-ns}300054766" />
+				</crm:E7_Activity>
+			</crm:P16i_was_used_for>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- inward loan -->
