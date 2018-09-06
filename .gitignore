@@ -1,3 +1,4 @@
 # ignore backup files created by jEdit text editor
 *.*~
-
+# ignore performance test logs
+test/performance/logs
