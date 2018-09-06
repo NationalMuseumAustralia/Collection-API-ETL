@@ -25,6 +25,8 @@ WHERE {
   	ore:aggregates/crm:P129i_is_subject_of |
 	ore:aggregates/crm:P129i_is_subject_of/crm:P2_has_type |
 	# metadata about the source record
-	crm:P70i_is_documented_in
+	crm:P70i_is_documented_in |
+	crm:P70i_is_documented_in/crm:P104_is_subject_to |
+	crm:P70i_is_documented_in/crm:P104_is_subject_to/crm:P148_has_component 
 	?resource
 }

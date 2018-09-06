@@ -32,6 +32,8 @@ WHERE {
 	crm:P70i_is_documented_in |
 	crm:P70i_is_documented_in/dc:issued | 
 	crm:P70i_is_documented_in/dc:modified |
+	crm:P70i_is_documented_in/crm:P104_is_subject_to |
+	crm:P70i_is_documented_in/crm:P104_is_subject_to/crm:P148_has_component |
 	# inwards loan
 	crm:P30i_custody_transferred_through |
 	crm:P30i_custody_transferred_through/crm:P29_custody_received_by |

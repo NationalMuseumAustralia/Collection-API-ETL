@@ -1,6 +1,15 @@
 <!-- local vocabularies; especially labels for locally-defined types and a cache of certain locally-used AAT types -->
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <!-- local types -->
+	<!-- metadata licence -->
+	<crm:E30_Right rdf:about="metadata-rights">
+		<rdfs:label>Copyright National Museum of Australia / CC BY-NC</rdfs:label>
+		<crm:P148_has_component>
+			<crm:E30_Right rdf:about="https://creativecommons.org/licenses/by-nc/4.0/">
+				<rdfs:label>CC BY-NC</rdfs:label>
+			</crm:E30_Right>
+		</crm:P148_has_component>
+	</crm:E30_Right>
+	<!-- local types -->
 	<crm:E55_Type rdf:about="preferred">
 		<rdfs:label>preferred image</rdfs:label>
 	</crm:E55_Type>

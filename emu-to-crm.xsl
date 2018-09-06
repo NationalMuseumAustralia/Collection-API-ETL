@@ -167,7 +167,9 @@
 
 			<!-- exhibition location -->
 			<!-- All items on exhibition will have a DisplayGallery element, and some will also have the more detailed LocCurrentLocationRef -->
-			<xsl:call-template name="exhibition"/>
+			<xsl:call-template name="exhibition">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:call-template>
 
 			<!-- inward loan -->
 			<xsl:apply-templates select="InwardLoan" />
@@ -753,7 +755,7 @@
 		<xsl:param name="reason" />
 		<ore:Aggregation rdf:about="{$entity-iri}#media">
 			<crm:P104_is_subject_to>
-				<crm:E30_Right rdf:about="{$entity-iri}#rights">
+				<crm:E30_Right rdf:about="{$entity-iri}#media-rights">
 					<!-- right/licence -->
 					<crm:P148_has_component>
 						<xsl:choose>
@@ -820,10 +822,11 @@
 	</xsl:template>
 	
 	<xsl:template name="exhibition">
+		<xsl:param name="entity-iri" />
 		<xsl:if test="DisplayGallery">
 			<!-- item is on display -->
 			<crm:P16i_was_used_for>
-				<crm:E7_Activity rdf:about="#exhibition">
+				<crm:E7_Activity rdf:about="{$entity-iri}#exhibition">
 					<xsl:apply-templates select="DisplayGallery | LocCurrentLocationRef"/>
 					<!-- AAT 300054766: exhibitions (events) -->
 					<crm:P2_has_type rdf:resource="{$aat-ns}300054766" />
@@ -1235,6 +1238,7 @@
 		<xsl:param name="entity-iri" />
 		<crm:P70i_is_documented_in>
 			<crm:E31_Document rdf:about="{$entity-iri}"><!-- identifies the RDF graph itself -->
+				<crm:P104_is_subject_to rdf:resource="{$nma-term-ns}metadata-rights"/>
 				<xsl:if test="AdmDateModified">
 					<dc:modified>
 						<xsl:attribute name="rdf:datatype"><xsl:value-of select="dateutil:to-xml-schema-type(AdmDateModified)" /></xsl:attribute>

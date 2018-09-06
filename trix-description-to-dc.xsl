@@ -144,6 +144,7 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					<string key='issued'><xsl:value-of select="." /></string>
 				</xsl:for-each>
 				<!-- collection explorer link -->
+				<!-- TODO move these links to the RDF -->
 				<xsl:variable name="ceLink">
 					<xsl:value-of select="$collection-explorer-uri" />
 					<xsl:choose>
@@ -153,6 +154,10 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 					<xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(#)$', '$2')" />
 				</xsl:variable>
 				<string key='hasFormat'><xsl:value-of select="$ceLink" /></string>
+				<!-- rights -->
+				<xsl:variable name="right" select="path:forward($primary-source-graph, 'crm:P104_is_subject_to')"/>
+				<string key="copyright"><xsl:value-of select="path:forward($right, 'rdfs:label')"/></string>
+				<string key="licence"><xsl:value-of select="path:forward($right, 'crm:P148_has_component')"/></string>
 			</map>
 		</xsl:if>
 	</xsl:template>
@@ -161,7 +166,12 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<!-- collection -->
 	<xsl:template name="collection-dc">
-		<xsl:variable name="value" select="path:forward('crm:P46i_forms_part_of')" />
+		<!-- NB the object may be part of another object, but here we are only interested in the Collection which it's part of -->
+		<xsl:variable name="value" select="
+			path:forward('crm:P46i_forms_part_of')[
+				path:forward(., 'rdf:type') = 'http://www.cidoc-crm.org/cidoc-crm/E78_Collection'
+			]
+		" />
 		<xsl:if test="$value">
 			<map key="collection">
 				<string key='id'><xsl:value-of select="replace($value, '(.*/)([^/]*)(#)$', '$2')" /></string>
@@ -554,14 +564,19 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 
 	<!-- exhibition location -->
 	<xsl:template name="exhibition-location-dc">
-		<xsl:for-each select="
+		<xsl:variable name="location-names" select="
 			path:forward('crm:P16i_was_used_for')[
 				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300054766'
 			]
 			/path:forward(., ('crm:P7_took_place_at', 'rdfs:label'))
-		">
-			<xsl:copy-of select="xmljson:render-as-string('location', .)" />
-		</xsl:for-each>
+		"/>
+		<xsl:if test="$location-names">
+			<array key="location">
+				<xsl:for-each select="$location-names">
+					<string><xsl:value-of select="."/></string>
+				</xsl:for-each>
+			</array>
+		</xsl:if>
 	</xsl:template>
 
 	<!-- parent object -->
