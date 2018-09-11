@@ -266,6 +266,9 @@
   <field name="gender" type="text_general"/>
   <!-- place -->
   <field name="geo" type="sgeolocation"/>
+  <!-- deletion and any other http statuses -->
+  <field name="reason" type="text_general" multiValued="false" />
+  <field name="status_code" type="text_general" multiValued="false" />
   <!-- BLOBs -->
   <field name="simple" type="text_general" indexed="false"/>
   <field name="json-ld" type="text_general" indexed="false"/>

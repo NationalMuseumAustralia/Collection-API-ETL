@@ -26,13 +26,13 @@
 	
 	<!-- redaction rules -->
 	
-	<!-- exclude object record whose status isn’t either “Public” or “Public Restricted -->
+	<!-- exclude object record whose status isn’t either “Public” or “Public Restricted" or "Removed" -->
 	<xsl:template match="
 		record
 			[TitObjectType]
 			[
 				not(
-					AcsAPI_tab/AcsAPI  = ('Public', 'Public Restricted')
+					AcsAPI_tab/AcsAPI  = ('Public', 'Public Restricted', 'Removed')
 				)
 			]
 	"/>

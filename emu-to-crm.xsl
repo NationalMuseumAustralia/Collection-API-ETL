@@ -8,7 +8,8 @@
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:dateutil="tag:conaltuohy.com,2018:nma/date-util"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-	xmlns:uri="tag:conaltuohy.com,2018:nma/uri-utility">
+	xmlns:uri="tag:conaltuohy.com,2018:nma/uri-utility"
+	xmlns:http="http://www.w3.org/2011/http#">
 	
 	<xsl:import href="util/date-util-functions.xsl"/>
 
@@ -70,6 +71,25 @@
 			<!-- for debugging on full XML input file -->
 			<xsl:apply-templates select="response/record" />
 		</rdf:RDF>
+	</xsl:template>
+	
+	<xsl:template match="record[AcsAPI_tab/AcsAPI='Removed']">
+		<xsl:variable name="entity-iri" select="concat(lower-case($record-type), '/', irn)" />
+		<rdf:Description rdf:about="{$entity-iri}#">
+			<xsl:call-template name="entity-type">
+				<xsl:with-param name="record-type" select="$record-type" />
+			</xsl:call-template>
+			
+			<!-- date modified -->
+			<xsl:call-template name="record-metadata">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:call-template>
+
+			<!-- irn -->
+			<xsl:apply-templates select="irn">
+				<xsl:with-param name="entity-iri" select="$entity-iri" />
+			</xsl:apply-templates>
+		</rdf:Description>
 	</xsl:template>
 
 	<xsl:template match="record">
@@ -1238,6 +1258,14 @@
 		<xsl:param name="entity-iri" />
 		<crm:P70i_is_documented_in>
 			<crm:E31_Document rdf:about="{$entity-iri}"><!-- identifies the RDF graph itself -->
+				<xsl:if test="AcsAPI_tab/AcsAPI='Removed'">
+					<http:resp>
+						<http:Response>
+							<http:statusCodeValue>410</http:statusCodeValue>
+							<http:reasonPhrase>Gone</http:reasonPhrase>
+						</http:Response>
+					</http:resp>
+				</xsl:if>
 				<crm:P104_is_subject_to rdf:resource="{$nma-term-ns}metadata-rights"/>
 				<xsl:if test="AdmDateModified">
 					<dc:modified>

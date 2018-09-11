@@ -136,28 +136,41 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 		<xsl:if test="$type='object' or $type='narrative'">
 			<map key="_meta">
 				<xsl:variable name="primary-source-graph" select="path:forward('crm:P70i_is_documented_in')[1]"/>
+				<xsl:variable name="response" select="path:forward($primary-source-graph, 'http://www.w3.org/2011/http#resp')"/>
 				<xsl:for-each select="path:forward($primary-source-graph, 'dc:modified')[1]">
 					<string key='modified'><xsl:value-of select="." /></string>
 				</xsl:for-each>
-				<!-- web release -->
-				<xsl:for-each select="path:forward($primary-source-graph, 'dc:issued'[1] )">
-					<string key='issued'><xsl:value-of select="." /></string>
-				</xsl:for-each>
-				<!-- collection explorer link -->
-				<!-- TODO move these links to the RDF -->
-				<xsl:variable name="ceLink">
-					<xsl:value-of select="$collection-explorer-uri" />
-					<xsl:choose>
-						<xsl:when test="$type='object'"><xsl:text>object/</xsl:text></xsl:when>
-						<xsl:when test="$type='narrative'"><xsl:text>set/</xsl:text></xsl:when>
-					</xsl:choose>
-					<xsl:value-of select="replace($root-resource, '(.*/)([^/]*)(#)$', '$2')" />
-				</xsl:variable>
-				<string key='hasFormat'><xsl:value-of select="$ceLink" /></string>
-				<!-- rights -->
-				<xsl:variable name="right" select="path:forward($primary-source-graph, 'crm:P104_is_subject_to')"/>
-				<string key="copyright"><xsl:value-of select="path:forward($right, 'rdfs:label')"/></string>
-				<string key="licence"><xsl:value-of select="path:forward($right, 'crm:P148_has_component')"/></string>
+				<xsl:choose>
+					<xsl:when test="$response">
+						<!-- an explicit response, e.g. a 410 Gone means that we don't need to include other metata such as licence -->
+						<xsl:for-each select="path:forward($response, 'http://www.w3.org/2011/http#statusCodeValue')[1]">
+							<string key='statusCode'><xsl:value-of select="." /></string>
+						</xsl:for-each>
+						<xsl:for-each select="path:forward($response, 'http://www.w3.org/2011/http#reasonPhrase')[1]">
+							<string key='reason'><xsl:value-of select="." /></string>
+						</xsl:for-each>
+					</xsl:when>
+					<xsl:otherwise>
+						<!-- a regular (200 OK) response needs to include metadata -->
+						<!-- web release -->
+						<xsl:for-each select="path:forward($primary-source-graph, 'dc:issued' )[1]">
+							<string key='issued'><xsl:value-of select="." /></string>
+						</xsl:for-each>
+						<!-- collection explorer link -->
+						<!-- This is the resource which this object is the subject of, and whose type is "web page" -->
+						<xsl:for-each select="
+							path:forward($root-resource, 'crm:P129i_is_subject_of')[
+								path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300264578'
+							][1]
+						">
+							<string key="hasFormat"><xsl:value-of select="."/></string>
+						</xsl:for-each>
+						<!-- rights -->
+						<xsl:variable name="right" select="path:forward($primary-source-graph, 'crm:P104_is_subject_to')"/>
+						<string key="copyright"><xsl:value-of select="path:forward($right, 'rdfs:label')"/></string>
+						<string key="licence"><xsl:value-of select="path:forward($right, 'crm:P148_has_component')"/></string>
+					</xsl:otherwise>
+				</xsl:choose>
 			</map>
 		</xsl:if>
 	</xsl:template>

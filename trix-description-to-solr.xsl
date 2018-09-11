@@ -154,6 +154,13 @@
 			<field name="issued"><xsl:value-of select="." /></field>
 			<field name="issued_date"><xsl:value-of select="." /></field>
 		</xsl:for-each>
+		
+		<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'http://www.w3.org/2011/http#resp', 'http://www.w3.org/2011/http#statusCodeValue') )[1]">
+			<field name="status_code"><xsl:value-of select="." /></field>
+		</xsl:for-each>
+		<xsl:for-each select="path:forward( ('crm:P70i_is_documented_in', 'http://www.w3.org/2011/http#resp', 'http://www.w3.org/2011/http#reasonPhrase') )[1]">
+			<field name="reason"><xsl:value-of select="." /></field>
+		</xsl:for-each>
 	</xsl:template>
 	
 	<!-- OBJECT FIELDS -->
