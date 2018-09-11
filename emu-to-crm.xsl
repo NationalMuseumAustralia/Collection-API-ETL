@@ -182,7 +182,6 @@
 			<!-- acknowledgement -->
 			<xsl:apply-templates select="RigCreditLine2">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
-				<xsl:with-param name="acknowledgement-flag" select="RigAcknowledgement" />
 			</xsl:apply-templates>
 
 			<!-- exhibition location -->
@@ -746,23 +745,17 @@
 		<dc:relation rdf:resource="{$related-entity-iri}#" />
 	</xsl:template>
 
-	<!-- TODO: RigAcknowledgement - appears to be empty, unsure if flag will be 'no' or something else -->
-
 	<!-- acknowledgement -->
 	<!-- https://linked.art/model/object/rights/#credit-attribution-statement -->
 	<xsl:template match="RigCreditLine2">
 		<xsl:param name="entity-iri" />
-		<xsl:param name="acknowledgement-flag" />
-		<!-- include by default, unless RigAcknowledgement = 'no' -->
-		<xsl:if test="not($acknowledgement-flag = 'no')">
-			<crm:P67i_is_referred_to_by>
-				<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#acknowledgement">
-					<rdf:value><xsl:value-of select="." /></rdf:value>
-					<!-- AAT 300026687: acknowledgements -->
-					<crm:P2_has_type rdf:resource="{$aat-ns}300026687" />
-					</crm:E33_Linguistic_Object>
-			</crm:P67i_is_referred_to_by>
-		</xsl:if>
+		<crm:P67i_is_referred_to_by>
+			<crm:E33_Linguistic_Object rdf:about="{$entity-iri}#acknowledgement">
+				<rdf:value><xsl:value-of select="." /></rdf:value>
+				<!-- AAT 300026687: acknowledgements -->
+				<crm:P2_has_type rdf:resource="{$aat-ns}300026687" />
+				</crm:E33_Linguistic_Object>
+		</crm:P67i_is_referred_to_by>
 	</xsl:template>
 
 	<!-- rights -->
