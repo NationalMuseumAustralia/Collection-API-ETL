@@ -754,7 +754,7 @@
 				<rdf:value><xsl:value-of select="." /></rdf:value>
 				<!-- AAT 300026687: acknowledgements -->
 				<crm:P2_has_type rdf:resource="{$aat-ns}300026687" />
-				</crm:E33_Linguistic_Object>
+			</crm:E33_Linguistic_Object>
 		</crm:P67i_is_referred_to_by>
 	</xsl:template>
 
