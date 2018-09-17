@@ -19,8 +19,11 @@ WHERE {
 	ore:aggregates/crm:P2_has_type |
 	ore:aggregates/crm:P2_has_type/rdf:value |
 	ore:aggregates/crm:P2_has_type/dc:format |
-	ore:aggregates/crm:P138i_has_representation |
-	ore:aggregates/crm:P138i_has_representation/crm:P2_has_type |
+	# bundle of images has a licence
+	ore:aggregates/crm:P138i_has_representation/ore:isAggregatedBy |
+	# different types of images
+	ore:aggregates/crm:P138i_has_representation+ |
+	ore:aggregates/crm:P138i_has_representation+/crm:P2_has_type |
   	# documents which describe the aggregated objects
   	ore:aggregates/crm:P129i_is_subject_of |
 	ore:aggregates/crm:P129i_is_subject_of/crm:P2_has_type |

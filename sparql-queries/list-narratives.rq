@@ -12,7 +12,9 @@ WHERE {
 	?resource crm:P2_has_type aat:300025976. # "object collections"
 	?resource
 		crm:P70i_is_documented_in / dcterms:modified |
-		ore:aggregates / crm:P70i_is_documented_in / dcterms:modified
+		ore:aggregates / crm:P70i_is_documented_in / dcterms:modified | # objects in the narrative
+		ore:aggregates / crm:P138i_has_representation / crm:P70i_is_documented_in / dcterms:modified # depictions of the objects
 			?date
+	FILTER(?resource = <http://nma-dev.conaltuohy.com/narrative/3371#>)
 } 
 GROUP BY ?resource

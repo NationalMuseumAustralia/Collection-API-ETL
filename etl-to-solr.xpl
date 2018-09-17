@@ -191,18 +191,37 @@
 				<p:with-option name="dataset" select="$dataset"/>
 			</nma:sparql-query>
 			<!-- make any necessary redactions to the RDF graph -->
-			<!--
-			<cx:message>
-				<p:with-option name="message" select="concat(current-dateTime(), ' redacting query results ...')"/>
-			</cx:message>
-			-->
-			<p:xslt name="redacted-description">
-				<p:input port="stylesheet">
-					<p:document href="redact-trix-description.xsl"/>
-				</p:input>
-				<p:with-param name="root-resource" select="$resource-uri"/>
-				<p:with-param name="debug" select=" 'false' "/>
-			</p:xslt>
+			<p:group name="redaction">
+				<p:choose>
+					<p:when test=" $dataset = 'public' ">
+						<cx:message message="redacting unlicensed images..."/>
+						<p:xslt name="description-with-unlicensed-images-redacted">
+							<p:input port="stylesheet">
+								<p:document href="redact-unlicensed-images-from-trix-description.xsl"/>
+							</p:input>
+							<p:with-param name="root-resource" select="$resource-uri"/>
+							<p:with-param name="debug" select=" 'true' "/>
+						</p:xslt>
+					</p:when>
+					<p:otherwise>
+						<p:identity name="unlicensed-images-not-redacted-from-internal-api"/>
+					</p:otherwise>
+				</p:choose>
+				<p:xslt name="description-with-emu-images-redacted">
+					<p:input port="stylesheet">
+						<p:document href="redact-low-quality-images-from-trix-description.xsl"/>
+					</p:input>
+					<p:with-param name="root-resource" select="$resource-uri"/>
+					<p:with-param name="debug" select=" 'false' "/>
+				</p:xslt>
+				<p:xslt name="redacted-description">
+					<p:input port="stylesheet">
+						<p:document href="redact-trix-description.xsl"/>
+					</p:input>
+					<p:with-param name="root-resource" select="$resource-uri"/>
+					<p:with-param name="debug" select=" 'false' "/>
+				</p:xslt>
+			</p:group>
 			<nma:update-solr>
 				<p:with-option name="resource-uri" select="$resource-uri"/>
 				<p:with-option name="dataset" select="$dataset"/>
@@ -211,14 +230,12 @@
 				<p:with-option name="source-count" select="$source-count"/>
 			</nma:update-solr>
 			<!-- store raw trix -->
-			<!--
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
 				</p:input>
 			</p:store>
-			-->
 			<!-- store redacted trix -->
 			<!--
 			<p:store indent="true">
