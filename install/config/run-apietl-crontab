@@ -7,5 +7,5 @@
 # Assumption: EMu and Piction exports start Mon-Fri at 7:00 PM and complete within one hour
 0 21 * * 5 root /usr/local/NMA-API-ETL/etl-run-all.sh full > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
 
-# Run API incremental ETL - Sun-Thu at 9:00 PM
-0 21 * * 0-4 root /usr/local/NMA-API-ETL/etl-run-all.sh incremental > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
+# Run API incremental ETL - Mon-Thu at 9:00 PM
+0 21 * * 1-4 root /usr/local/NMA-API-ETL/etl-run-all.sh incremental > /var/log/NMA-API-ETL/etl-run-cron.log 2>&1
