@@ -194,13 +194,12 @@
 			<p:group name="redaction">
 				<p:choose>
 					<p:when test=" $dataset = 'public' ">
-						<cx:message message="redacting unlicensed images..."/>
 						<p:xslt name="description-with-unlicensed-images-redacted">
 							<p:input port="stylesheet">
 								<p:document href="redact-unlicensed-images-from-trix-description.xsl"/>
 							</p:input>
 							<p:with-param name="root-resource" select="$resource-uri"/>
-							<p:with-param name="debug" select=" 'true' "/>
+							<p:with-param name="debug" select=" 'false' "/>
 						</p:xslt>
 					</p:when>
 					<p:otherwise>
@@ -230,12 +229,14 @@
 				<p:with-option name="source-count" select="$source-count"/>
 			</nma:update-solr>
 			<!-- store raw trix -->
+			<!--
 			<p:store indent="true">
 				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
 				</p:input>
 			</p:store>
+			-->
 			<!-- store redacted trix -->
 			<!--
 			<p:store indent="true">
@@ -276,8 +277,28 @@
 			<p:option name="hash" required="true"/>
 			<p:option name="datestamp" required="true"/>
 			<p:option name="source-count" required="true"/>
+			<!-- generate the Solr metadata fields -->
+			<p:template name="solr-metadata-fields">
+				<p:with-param name="hash" select="$hash"/>
+				<p:with-param name="datestamp" select="$datestamp"/>
+				<p:with-param name="source-count" select="$source-count"/>
+				<p:input port="template">
+					<p:inline>
+						<doc>
+							<!-- The hash is used as an identifier for this current version of this record -->
+							<field name="hash">{$hash}</field>
+							<field name="datestamp">{$datestamp}</field>
+							<field name="source_count">{$source-count}</field>
+						</doc>
+					</p:inline>
+				</p:input>
+			</p:template>
 			<!-- transform the RDF graph into a Solr index update -->
-			<p:xslt name="trix-description-to-solr-doc">
+			<!-- generate all the search and metadata fields -->
+			<p:xslt name="trix-description-to-solr-search-fields">
+				<p:input port="source">
+					<p:pipe step="update-solr" port="source"/>
+				</p:input>
 				<p:input port="stylesheet">
 					<p:document href="trix-description-to-solr.xsl"/>
 				</p:input>
@@ -287,46 +308,52 @@
 				<p:with-param name="datestamp" select="$datestamp"/>
 				<p:with-param name="source-count" select="$source-count"/>
 			</p:xslt>
-			<!-- convert the JSON-XML blobs into JSON before deposit in Solr -->
-			<p:try name="json-xml-to-json">
-				<p:group>
-					<p:output port="result"/>
-					<p:xslt>
-						<p:input port="parameters"><p:empty/></p:input>
-						<p:input port="stylesheet">
-							<p:document href="json-xml-to-json.xsl"/>
-						</p:input>
-					</p:xslt>
-				</p:group>
-				<p:catch name="json-xml-could-not-be-serialized-as-json-string">
-					<p:output port="result"/>
-					<cx:message message="json xml could not be serialized as a json string"/>
-					<p:xslt name="serialize-json-xml-as-xml-string">
-						<p:input port="parameters"><p:empty/></p:input>
-						<p:input port="source">
-							<p:pipe step="trix-description-to-solr-doc" port="result"/>
-						</p:input>
-						<p:input port="stylesheet">
-							<p:inline>
-								<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0" >
-									<xsl:template match="*">
-										<xsl:copy>
-											<xsl:copy-of select="@*"/>
-											<xsl:apply-templates/>
-										</xsl:copy>
-									</xsl:template>
-									<xsl:template match="field[@name='simple']/*">
-										<xsl:value-of select="serialize(., map{'indent':true()})"/>
-									</xsl:template>
-									<xsl:template match="field[@name='type']/text()">
-										<xsl:text>json-error</xsl:text>
-									</xsl:template>
-								</xsl:stylesheet>
-							</p:inline>
-						</p:input>
-					</p:xslt>
-				</p:catch>
-			</p:try>
+			<!-- generate the "simple" response payload field -->
+			<nma:trix-description-to-solr-field name="trix-description-to-simple-json"
+				field-name="simple">
+				<p:input port="source">
+					<p:pipe step="update-solr" port="source"/>
+				</p:input>
+				<p:input port="stylesheet">
+					<p:document href="trix-description-to-dc.xsl"/>
+				</p:input>
+				<p:with-option name="root-resource" select="$resource-uri"/>
+			</nma:trix-description-to-solr-field>
+			<!-- generate the "json-ld" response payload field -->
+			<nma:trix-description-to-solr-field name="trix-description-to-json-ld"
+				field-name="json-ld">
+				<p:input port="source">
+					<p:pipe step="update-solr" port="source"/>
+				</p:input>
+				<p:input port="stylesheet">
+					<p:document href="trix-description-to-json-ld.xsl"/>
+				</p:input>
+				<p:with-option name="root-resource" select="$resource-uri"/>
+			</nma:trix-description-to-solr-field>
+				
+			<!-- aggregate the fields contained in the 4 <doc> elements into a single <doc> and format it for HTTP POST to Solr -->
+			<p:wrap-sequence wrapper="doc">
+				<p:input port="source" select="/doc/field">
+					<p:pipe step="solr-metadata-fields" port="result"/>
+					<p:pipe step="trix-description-to-solr-search-fields" port="result"/>
+					<p:pipe step="trix-description-to-simple-json" port="result"/>
+					<p:pipe step="trix-description-to-json-ld" port="result"/>
+				</p:input>
+			</p:wrap-sequence>
+			<p:template name="create-solr-request">
+				<p:with-param name="dataset" select="$dataset"/>
+				<p:input port="template">
+					<p:inline>
+						<c:request method="post" href="http://localhost:8983/solr/core_nma_{$dataset}/update" detailed="true">
+							<c:body content-type="application/xml">
+								<add commitWithin="10000">
+									{/doc}
+								</add>
+							</c:body>
+						</c:request>
+					</p:inline>
+				</p:input>
+			</p:template>
 			<!-- execute the Solr index update -->
 			<p:http-request name="solr-deposit"/>
 			<!-- store any errors -->
@@ -344,7 +371,7 @@
 				<p:wrap-sequence wrapper="failed-solr-deposit">
 					<p:input port="source">
 						<p:pipe step="update-solr" port="source"/>
-						<p:pipe step="json-xml-to-json" port="result"/>
+						<p:pipe step="create-solr-request" port="result"/>
 						<p:pipe step="solr-deposit" port="result"/>
 					</p:input>
 				</p:wrap-sequence>
@@ -368,6 +395,65 @@
 			-->
 	</p:declare-step>
 
+	<!-- converts an RDF graph in TriX format into JSON XML using the specified stylesheet, 
+	passing the $root-resource parameter to the stylesheet to identify the main resource in the graph,
+	then converts the resulting JSON-XML into JSON,
+	and wraps it in a Solr <field name="xxx"> element with the specified field-name --> 
+	<p:declare-step type="nma:trix-description-to-solr-field" name="trix-description-to-solr-field">
+		<p:input port="source"/>
+		<p:input port="stylesheet"/>
+		<p:output port="result"/>
+		<p:option name="field-name" required="true"/>
+		<p:option name="root-resource" required="true"/>
+		<!-- apply the stylesheet to the trix source to produce JSON XML -->
+		<p:xslt name="convert-trix-to-json-xml">
+			<p:input port="source">
+				<p:pipe step="trix-description-to-solr-field" port="source"/>
+			</p:input>
+			<p:input port="stylesheet">
+				<p:pipe step="trix-description-to-solr-field" port="stylesheet"/>
+			</p:input>
+			<p:with-param name="root-resource" select="$root-resource"/>
+		</p:xslt>
+		<!--
+		<p:store name="debug-save-json-xml">
+			<p:with-option name="href" select="
+				concat(
+					'/data/json-xml/',
+					encode-for-uri(encode-for-uri($root-resource)),
+					'/',
+					$field-name,
+					'.xml'
+				)
+			"/>
+		</p:store>
+		-->
+		<p:identity>
+			<p:input port="source"><p:pipe step="convert-trix-to-json-xml" port="result"/></p:input>
+		</p:identity>
+		<!-- wrap as Solr doc/field -->
+		<p:wrap name="solr-field" match="/*" wrapper="field"/>
+		<p:add-attribute name="solr-field-name" match="/field" attribute-name="name">
+			<p:with-option name="attribute-value" select="$field-name"/>
+		</p:add-attribute>
+		<p:wrap name="solr-doc" match="/field" wrapper="doc"/>
+		<!-- convert to JSON  -->
+		<p:try name="json-xml-to-json">
+			<p:group>
+				<p:output port="result"/>
+				<p:xslt>
+					<p:input port="parameters"><p:empty/></p:input>
+					<p:input port="stylesheet">
+						<p:document href="json-xml-to-json.xsl"/>
+					</p:input>
+				</p:xslt>
+			</p:group>
+			<p:catch name="json-xml-could-not-be-serialized-as-json-string">
+				<p:output port="result"/>
+				<p:identity/>
+			</p:catch>
+		</p:try>
+	</p:declare-step>
 		
 	<p:declare-step type="nma:sparql-query" name="sparql-query">
 		<p:input port="source"/>

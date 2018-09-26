@@ -10,6 +10,9 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 	xmlns:map="http://www.w3.org/2005/xpath-functions/map"
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/">
 	
+	<xsl:import href="util/trix-traversal-functions.xsl" />
+	<xsl:import href="util/compact-json-ld.xsl"/>
+	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:variable name="graph" select="/trix:trix/trix:graph"/>
 	
@@ -17,13 +20,14 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 		<xsl:variable name="json-ld-in-xml">
 			<xsl:call-template name="resource-as-json-ld-xml">
 				<xsl:with-param name="resource" select="$root-resource"/>
+				<xsl:with-param name="context" select=" '/context.json' "/>
 			</xsl:call-template>
 		</xsl:variable>
-		<xsl:copy-of select="$json-ld-in-xml"/>
-		<xsl:comment>
-			<!-- see https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping for definition of the elements used here -->
-			<xsl:value-of select="xml-to-json($json-ld-in-xml, map{'indent':true()})"/>
-		</xsl:comment>
+		<xsl:variable name="compact-json-ld-in-xml">
+			<xsl:apply-templates select="$json-ld-in-xml" mode="compact"/>
+		</xsl:variable>
+		<xsl:copy-of select="$compact-json-ld-in-xml"/>
+		<!-- see https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping for definition of the elements used here -->
 	</xsl:template>
 	
 	<xsl:template name="resource-as-json-ld-xml">
