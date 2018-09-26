@@ -63,12 +63,9 @@
 	<!-- exclude narrative banner images -->
 	<xsl:template match="record/MulMultiMediaRef_tab"/>
 	
-	<!-- remove all non-Acton locations from Public API -->
-	<xsl:template match="LocCurrentLocationRef[not(LocLevel1='Acton')]"/>
+	<!-- remove all precise locations from Public API -->
+	<xsl:template match="LocCurrentLocationRef"/>
 	
-	<!-- remove all locations other than levels 1 and 2, where level 1 is "Acton" -->
-	<xsl:template match="LocCurrentLocationRef[LocLevel1='Acton']/*[not(self::LocLevel1 | self::LocLevel2)]"/>
-
 	<!-- exclude object inwards loan flag -->
 	<xsl:template match="InwardLoan"/>
 	

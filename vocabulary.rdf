@@ -82,10 +82,13 @@
 		<rdfs:label>acknowledgement</rdfs:label>
 	</crm:E55_Type>
 	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300264578">
-		<rdfs:label>web pages (document) </rdfs:label>
+		<rdfs:label>web page</rdfs:label>
 	</crm:E55_Type>
 	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300027200">
-		<rdfs:label>notes (document) </rdfs:label>
+		<rdfs:label>note</rdfs:label>
+	</crm:E55_Type>
+	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300240057">
+		<rdfs:label>gallery</rdfs:label>
 	</crm:E55_Type>
 	<crm:E55_Type rdf:about="http://vocab.getty.edu/aat/300075467">
 		<rdfs:label>thumbnail</rdfs:label>

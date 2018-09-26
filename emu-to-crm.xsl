@@ -809,27 +809,30 @@
 			</crm:P104_is_subject_to>
 		</ore:Aggregation>
 	</xsl:template>
-
-	<!-- TODO: add detailed exhibition location ancestor structure -->
-
+	
 	<!-- exhibition location -->
 	<!-- https://linked.art/model/exhibition/ -->
-	<!-- NB: externally filtered, so levels 3+ won't make it here for public API -->
 	<xsl:template match="LocCurrentLocationRef">
-		<crm:P7_took_place_at>
-			<crm:E53_Place>
-				<rdfs:label>
-					<!-- NB: filtering out empty locations using [. != ''] -->
-					<xsl:value-of select="string-join( (LocLevel8, LocLevel7, LocLevel6, LocLevel5, LocLevel4, LocLevel3, LocLevel2, LocLevel1)[. != ''], ', ')" />
-				</rdfs:label>
-			</crm:E53_Place>
-		</crm:P7_took_place_at>
+		<xsl:variable name="precise-location" select="string-join( *[normalize-space()], ' – ')"/>
+		<xsl:if test="$precise-location">
+			<crm:P7_took_place_at>
+				<crm:E53_Place>
+					<rdfs:label><xsl:value-of select="$precise-location"/></rdfs:label>
+					<!-- list of objects in this location -->
+					<rdfs:seeAlso rdf:resource="object?location={encode-for-uri(.)}"/>
+				</crm:E53_Place>
+			</crm:P7_took_place_at>
+		</xsl:if>
 	</xsl:template>
 	
 	<xsl:template match="DisplayGallery">
 		<crm:P7_took_place_at>
 			<crm:E53_Place>
 				<rdfs:label><xsl:value-of select="."/></rdfs:label>
+				<!-- aat:300240057 = "galleries (display spaces)" -->
+				<crm:P2_has_type  rdf:resource="{$aat-ns}300240057" />
+				<!-- list of objects in this location -->
+				<rdfs:seeAlso rdf:resource="object?location=%22{encode-for-uri(.)}%22"/>
 			</crm:E53_Place>
 		</crm:P7_took_place_at>
 	</xsl:template>
@@ -840,9 +843,9 @@
 			<!-- item is on display -->
 			<crm:P16i_was_used_for>
 				<crm:E7_Activity rdf:about="{$entity-iri}#exhibition">
-					<xsl:apply-templates select="DisplayGallery | LocCurrentLocationRef"/>
 					<!-- AAT 300054766: exhibitions (events) -->
 					<crm:P2_has_type rdf:resource="{$aat-ns}300054766" />
+					<xsl:apply-templates select="DisplayGallery | LocCurrentLocationRef"/>
 				</crm:E7_Activity>
 			</crm:P16i_was_used_for>
 		</xsl:if>
