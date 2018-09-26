@@ -15,6 +15,6 @@ WHERE {
 		ore:aggregates / crm:P70i_is_documented_in / dcterms:modified | # objects in the narrative
 		ore:aggregates / crm:P138i_has_representation / crm:P70i_is_documented_in / dcterms:modified # depictions of the objects
 			?date
-	FILTER(?resource = <http://nma-dev.conaltuohy.com/narrative/3371#>)
+	#FILTER(?resource = <http://nma-dev.conaltuohy.com/narrative/3371#>)
 } 
 GROUP BY ?resource
