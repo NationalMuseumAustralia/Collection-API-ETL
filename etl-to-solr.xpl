@@ -191,7 +191,7 @@
 				<p:with-option name="dataset" select="$dataset"/>
 			</nma:sparql-query>
 			<!-- make any necessary redactions to the RDF graph -->
-			<p:group name="redaction">
+			<p:group name="redaction" cx:depends-on="store-raw-trix">
 				<p:choose>
 					<p:when test=" $dataset = 'public' ">
 						<p:xslt name="description-with-unlicensed-images-redacted">
@@ -213,6 +213,13 @@
 					<p:with-param name="root-resource" select="$resource-uri"/>
 					<p:with-param name="debug" select=" 'false' "/>
 				</p:xslt>
+				<p:xslt name="description-with-secondary-depictions-redacted">
+					<p:input port="stylesheet">
+						<p:document href="redact-objects-depicted-in-images-which-depict-objects.xsl"/>
+					</p:input>
+					<p:with-param name="root-resource" select="$resource-uri"/>
+					<p:with-param name="debug" select=" 'false' "/>
+				</p:xslt>
 				<p:xslt name="redacted-description">
 					<p:input port="stylesheet">
 						<p:document href="redact-trix-description.xsl"/>
@@ -229,14 +236,12 @@
 				<p:with-option name="source-count" select="$source-count"/>
 			</nma:update-solr>
 			<!-- store raw trix -->
-			<!--
-			<p:store indent="true">
-				<p:with-option name="href" select="concat('/data/public/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
+			<p:store indent="true" name="store-raw-trix">
+				<p:with-option name="href" select="concat('/data/', $dataset, '/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
 				</p:input>
 			</p:store>
-			-->
 			<!-- store redacted trix -->
 			<!--
 			<p:store indent="true">
@@ -295,6 +300,9 @@
 			</p:template>
 			<!-- transform the RDF graph into a Solr index update -->
 			<!-- generate all the search and metadata fields -->
+			<!--
+			<cx:message message="generating solr search fields"/>
+			-->
 			<p:xslt name="trix-description-to-solr-search-fields">
 				<p:input port="source">
 					<p:pipe step="update-solr" port="source"/>
@@ -400,20 +408,23 @@
 	then converts the resulting JSON-XML into JSON,
 	and wraps it in a Solr <field name="xxx"> element with the specified field-name --> 
 	<p:declare-step type="nma:trix-description-to-solr-field" name="trix-description-to-solr-field">
-		<p:input port="source"/>
+		<p:input port="source" primary="true"/>
 		<p:input port="stylesheet"/>
 		<p:output port="result"/>
 		<p:option name="field-name" required="true"/>
 		<p:option name="root-resource" required="true"/>
+		<!--
+		<cx:message>
+			<p:with-option name="message" select="concat('generating solr field ', codepoints-to-string(34), $field-name, codepoints-to-string(34))"/>
+		</cx:message>
+		-->
 		<!-- apply the stylesheet to the trix source to produce JSON XML -->
 		<p:xslt name="convert-trix-to-json-xml">
-			<p:input port="source">
-				<p:pipe step="trix-description-to-solr-field" port="source"/>
-			</p:input>
 			<p:input port="stylesheet">
 				<p:pipe step="trix-description-to-solr-field" port="stylesheet"/>
 			</p:input>
 			<p:with-param name="root-resource" select="$root-resource"/>
+			<p:with-param name="debug" select=" 'false' "/>
 		</p:xslt>
 		<!--
 		<p:store name="debug-save-json-xml">

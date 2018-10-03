@@ -26,6 +26,9 @@
 	"/>
 	
 	<xsl:template match="/">
+		<xsl:if test="$debug='true'">
+			<xsl:message>redacting low quality images...</xsl:message>
+		</xsl:if>
 		<xsl:call-template name="do-redaction" />
 	</xsl:template>
 	

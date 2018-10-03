@@ -3,7 +3,7 @@
 	xmlns:trix="http://www.w3.org/2004/03/trix/trix-1/">
 	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
-	<xsl:param name="debug" select=" 'false' "/><!-- 'true' will log the various of the redacted triples --> 
+	<xsl:param name="debug" select=" 'false' "/><!-- 'true' will log the various redacted triples --> 
 	<xsl:import href="util/trix-traversal-functions.xsl"/>
 	
 	<xsl:variable name="graph" select="/trix:trix/trix:graph" />
@@ -15,10 +15,14 @@
 	<xsl:variable name="rdfs-ns" select=" 'http://www.w3.org/2000/01/rdf-schema#' "/> 
 	<xsl:variable name="crm-ns" select=" 'http://www.cidoc-crm.org/cidoc-crm/' "/>
 	<xsl:variable name="nma-term-ns" select="replace($root-resource, '([^/]+//[^/]+).*', '$1/term/')"/>
+
+	<!-- When an object is depicted by a visual item, and the visual item in turn depicts more objects, the depiction of those
+	secondary objects should be redacted to avoid combinatorial explosion when a set of objects (e.g. chess pieces) and a set
+	of visual items are multiply-linked in a dense cluster -->
 	
 	<xsl:template match="/">
 		<xsl:if test="$debug='true'">
-			<xsl:message>redacting unlicensed images for public consumption</xsl:message>
+			<xsl:message>redacting secondary depictions...</xsl:message>
 		</xsl:if>
 		<xsl:call-template name="do-redaction" />
 	</xsl:template>
@@ -28,38 +32,34 @@
 			<graph>
 				<!-- Find the identifiers of all the physical objects in the graph -->
 				<xsl:variable name="objects" select="path:backward(concat($crm-ns, 'E19_Physical_Object'), 'rdf:type')"/>
-				
-				<!-- ############################################################################## -->
-				<!-- We can't include media unless they are bundled into an aggregation which is subject to a rights statement -->
-
-				<!-- Remove links to those media from within objects -->
-				
-				<!-- identify any objects with media which are not aggregated into a collection which is subject to some legal rights -->
-				<xsl:variable name="objects-with-media-but-no-rights" select="
-					$objects[
-						path:forward(., 'crm:P138i_has_representation')[
-							not( 
-								path:forward(., ('ore:isAggregatedBy', 'crm:P104_is_subject_to'))
-							)
-						]
-					]
-				"/>
-				<!-- identify any media statements which can be discarded -->
-				<xsl:variable name="unlicensed-object-media-statements" select="
-					$graph/
-						trix:triple
-							[*[1]=$objects-with-media-but-no-rights]
-							[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation']
-				"/>
-
-				<!-- ############################################################################## -->
-				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
-				<xsl:variable name="published-triples" select="$graph/trix:triple except $unlicensed-object-media-statements"/>
-
-				<xsl:call-template name="debug-list-redacted-triples">
-					<xsl:with-param name="reason">unlicensed object media statements</xsl:with-param>
-					<xsl:with-param name="redaction" select="$unlicensed-object-media-statements"/>
+				<xsl:call-template name="debug-list-values">
+					<xsl:with-param name="title">physical objects</xsl:with-param>
+					<xsl:with-param name="values" select="$objects"/>
 				</xsl:call-template>
+
+				<!-- Find the identifiers of all the media depicting those objects -->
+				<xsl:variable name="media" select="path:forward($objects, 'crm:P138i_has_representation')"/>
+				<xsl:call-template name="debug-list-values">
+					<xsl:with-param name="title">media depicting physical objects</xsl:with-param>
+					<xsl:with-param name="values" select="$media"/>
+				</xsl:call-template>
+				
+				<!-- Find the triples in which those media themselves depict further objects -->
+				<xsl:variable name="extraneous-depictions" select="
+					$graph/
+						trix:triple[
+							*[1]=$media and
+							*[2]=concat($crm-ns, 'P138_represents')
+						]
+				"/>
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">depictions of secondary objects</xsl:with-param>
+					<xsl:with-param name="redaction" select="$extraneous-depictions"/>
+				</xsl:call-template>
+
+				<!-- ############################################################################## -->
+				<!-- Finally copy the triples of the graph, excluding the triples we've identified as unwanted -->
+				<xsl:variable name="published-triples" select="$graph/trix:triple except $extraneous-depictions"/>
 
 				<!-- sort the triples into a stable order, to facilitate checking for changes later in the pipeline -->
 				<!-- NB trix:id elements (blank nodes) are not used for sorting since their values are not stable -->
@@ -87,5 +87,17 @@
 			</xsl:for-each>
 		</xsl:if>
 	</xsl:template>
+	
+	
+	<xsl:template name="debug-list-values">
+		<xsl:param name="title"/>
+		<xsl:param name="values"/>
+		<xsl:if test="($debug = 'true')">
+			<xsl:message><xsl:value-of select="$title"/> (n=<xsl:value-of select="count($values)"/>)</xsl:message>
+			<xsl:for-each select="$values">
+				<xsl:message><xsl:value-of select="."/></xsl:message>
+			</xsl:for-each>
+		</xsl:if>
+	</xsl:template>	
 	
 </xsl:stylesheet>

@@ -14,6 +14,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 	<xsl:import href="util/compact-json-ld.xsl"/>
 	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
+	<xsl:param name="debug">false</xsl:param>
 	<xsl:variable name="graph" select="/trix:trix/trix:graph"/>
 	
 	<xsl:template match="/">
@@ -32,9 +33,17 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 	
 	<xsl:template name="resource-as-json-ld-xml">
 		<xsl:param name="resource" required="true"/>
+		<xsl:param name="depth" select="0"/>
 		<xsl:param name="already-rendered-resources" select="()"/>
 		<xsl:param name="key" select="()"/>
 		<xsl:param name="context"/><!-- include the specified reference to a JSON-LD context -->
+		<xsl:if test="$depth = 17">
+			<xsl:message terminate="yes">Too many relationships traversed: 
+				<xsl:value-of select="string-join(
+					($already-rendered-resources, $resource), ', '
+				)"/>
+			</xsl:message>
+		</xsl:if>
 		<xsl:choose>
 			<xsl:when test="not($graph/trix:triple/*[1][.=$resource])">
 				<!-- resource has no properties -->
@@ -82,7 +91,9 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 							<xsl:sort select="*[2]"/>
 							<xsl:choose>
 								<xsl:when test="count(current-group()) = 1">
-									<!--<xsl:message><xsl:value-of select="concat('property ', *[2], ' has a single value: ', *[3])"/></xsl:message>-->
+									<xsl:call-template name="debug">
+										<xsl:with-param name="message" select="concat('property ', *[2], ' has a single value: ', *[3])"/>
+									</xsl:call-template>
 									<!--
 									<xsl:comment>only one property with predicate <xsl:value-of select="*[2]"/></xsl:comment>
 									<xsl:comment>property value is <xsl:value-of select="*[3]"/></xsl:comment>
@@ -92,7 +103,9 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 									<xsl:choose>
 										<!-- property value is a resource -->
 										<xsl:when test="*[3]/self::trix:uri | *[3]/self::trix:id"><!-- object identifier is URI or blank node -->
-											<!--<xsl:message><xsl:value-of select="concat('from ', $resource, ' to ', *[3])"/></xsl:message>-->
+											<xsl:call-template name="debug">
+												<xsl:with-param name="message" select="concat('from ', $resource, ' to ', *[3])"/>
+											</xsl:call-template>
 											<xsl:call-template name="resource-as-json-ld-xml">
 												<xsl:with-param name="resource" select="*[3]"/>
 												<xsl:with-param name="already-rendered-resources" select="$already-rendered-resources, $resource"/>
@@ -106,7 +119,9 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 									</xsl:choose>
 								</xsl:when>
 								<xsl:otherwise>
-									<!--<xsl:message><xsl:value-of select="concat('property ', *[2], ' has ', count(current-group()), ' values')"/></xsl:message>-->
+									<xsl:call-template name="debug">
+										<xsl:with-param name="message" select="concat('property ', *[2], ' has ', count(current-group()), ' values')"/>
+									</xsl:call-template>
 									<f:array key="{*[2]}">
 										<xsl:for-each select="current-group()">
 											<xsl:sort select="*[3]"/>
@@ -114,10 +129,13 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 											<xsl:choose>
 												<!-- property value is a resource -->
 												<xsl:when test="*[3]/self::trix:uri | *[3]/self::trix:id"><!-- object identifier is URI or blank node -->
-													<!-- <xsl:message><xsl:value-of select="concat('from ', $resource, ' to ', *[3])"/></xsl:message> -->
+													<xsl:call-template name="debug">
+														<xsl:with-param name="message" select="concat('from ', $resource, ' to ', *[3])"/>
+													</xsl:call-template>
 													<xsl:call-template name="resource-as-json-ld-xml">
 														<xsl:with-param name="resource" select="*[3]"/>
 														<xsl:with-param name="already-rendered-resources" select="$already-rendered-resources, $resource"/>
+														<xsl:with-param name="depth" select="$depth + 1"/>
 													</xsl:call-template>
 												</xsl:when>
 												<!-- property value is a literal; treat all literals as strings for now -->
@@ -136,4 +154,10 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template name="debug">
+		<xsl:param name="message"/>
+		<xsl:if test="$debug = 'true'">
+			<xsl:message><xsl:value-of select="$message"/></xsl:message>
+		</xsl:if>
+	</xsl:template>
 </xsl:stylesheet>

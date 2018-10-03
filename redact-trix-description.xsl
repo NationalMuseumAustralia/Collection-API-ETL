@@ -26,6 +26,9 @@
 	"/>
 	
 	<xsl:template match="/">
+		<xsl:if test="$debug='true'">
+			<xsl:message>redacting excessively detailed graphs...</xsl:message>
+		</xsl:if>
 		<xsl:call-template name="do-redaction" />
 	</xsl:template>
 	
@@ -42,7 +45,8 @@
 				<!-- Related objects -->
 				<xsl:variable name="related-objects" select="path:forward('dc:relation')"/>
 
-				<!-- identify related objects that aren't in the API (don't have a title) -->
+				<!-- Identify related objects that aren't in the API (don't have a title) -->
+				<!-- These are objects which Piction has references to, but which don't exist (i.e. Piction's object IRNs are incorrect -->
 				<xsl:variable name="related-objects-that-are-empty" select="
 					$related-objects
 						[
@@ -57,7 +61,12 @@
 						trix:triple
 							[*[2]='http://purl.org/dc/terms/relation']
 							[*[3]=$related-objects-that-are-empty] 
-				"/>	
+				"/>
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">empty related objects triples</xsl:with-param>
+					<xsl:with-param name="redaction" select="$empty-related-objects-triples"/>
+				</xsl:call-template>
+				
 				<!-- Various properties of the 'related' objects are superfluous, and dc:relation especially
 				should be pruned to avoid combinatorial explosion in JSON-LD rendering, since often a group of
 				objects are related together in a dense cluster -->
@@ -74,6 +83,10 @@
 							[*[1]=$related-objects]
 							[not(*[2]=$desired-related-objects-properties)]
 				"/>	
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">superfluous related objects triples</xsl:with-param>
+					<xsl:with-param name="redaction" select="$superfluous-related-objects-triples"/>
+				</xsl:call-template>
 				
 				<!-- ############################################################################## -->
 				<!-- Slim down the description of any objects which are contained within narratives -->
@@ -119,6 +132,7 @@
 				<xsl:variable name="irrelevant-visual-item-triples" select="$graph/trix:triple[*[3]=$irrelevant-visual-items]"/>
 				<!-- Find all the triples which define properties of those "narrative objects" -->
 				<xsl:variable name="narrative-object-triples" select="$graph/trix:triple[*[1]=$narrative-objects]"/>
+				
 				<!-- 
 				The triples to retain are:
 				• those whose predicates are always desired
@@ -140,6 +154,11 @@
 				"/>
 				<!-- All the OTHER narrative objects' triples must be unwanted -->
 				<xsl:variable name="unwanted-narrative-object-triples" select="$narrative-object-triples except $desired-narrative-object-triples"/>
+				
+				<xsl:call-template name="debug-list-redacted-triples">
+					<xsl:with-param name="reason">unwanted narrative object triples</xsl:with-param>
+					<xsl:with-param name="redaction" select="$unwanted-narrative-object-triples"/>
+				</xsl:call-template>
 
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
@@ -151,23 +170,6 @@
 						$irrelevant-visual-item-triples
 					)
 				"/>
-				
-				<xsl:call-template name="debug-list-redacted-triples">
-					<xsl:with-param name="reason">irrelevant narrative object visual items</xsl:with-param>
-					<xsl:with-param name="redaction" select="$irrelevant-visual-items"/>
-				</xsl:call-template>
-				<xsl:call-template name="debug-list-redacted-triples">
-					<xsl:with-param name="reason">empty related objects triples</xsl:with-param>
-					<xsl:with-param name="redaction" select="$empty-related-objects-triples"/>
-				</xsl:call-template>
-				<xsl:call-template name="debug-list-redacted-triples">
-					<xsl:with-param name="reason">superfluous related objects triples</xsl:with-param>
-					<xsl:with-param name="redaction" select="$superfluous-related-objects-triples"/>
-				</xsl:call-template>
-				<xsl:call-template name="debug-list-redacted-triples">
-					<xsl:with-param name="reason">unwanted narrative object triples</xsl:with-param>
-					<xsl:with-param name="redaction" select="$unwanted-narrative-object-triples"/>
-				</xsl:call-template>
 
 				<!-- sort the triples into a stable order, to facilitate checking for changes later in the pipeline -->
 				<!-- NB trix:id elements (blank nodes) are not used for sorting since their values are not stable -->
