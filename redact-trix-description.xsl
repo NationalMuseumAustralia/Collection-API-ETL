@@ -25,6 +25,18 @@
 		)
 	"/>
 	
+	<xsl:key name="triples-by-object-id"
+		match="/trix:trix/trix:graph/trix:triple[*[3][self::trix:id | self::trix:uri]]"
+		use="*[3]"
+	/>
+	<xsl:key name="triples-by-subject-id"
+		match="/trix:trix/trix:graph/trix:triple"
+		use="*[1]"
+	/>	
+	<xsl:key name="relations-by-related-object-id"
+		match="/trix:trix/trix:graph/trix:triple[*[2]='http://purl.org/dc/terms/relation']"
+		use="*[3]"
+	/>	
 	<xsl:template match="/">
 		<xsl:if test="$debug='true'">
 			<xsl:message>redacting excessively detailed graphs...</xsl:message>
@@ -56,12 +68,7 @@
 						]
 				"/>
 				<!-- Exclude any links to those empty objects -->
-				<xsl:variable name="empty-related-objects-triples" select="
-					$graph/
-						trix:triple
-							[*[2]='http://purl.org/dc/terms/relation']
-							[*[3]=$related-objects-that-are-empty] 
-				"/>
+				<xsl:variable name="empty-related-objects-triples" select="key('relations-by-related-object-id', $related-objects-that-are-empty)"/>
 				<xsl:call-template name="debug-list-redacted-triples">
 					<xsl:with-param name="reason">empty related objects triples</xsl:with-param>
 					<xsl:with-param name="redaction" select="$empty-related-objects-triples"/>
@@ -78,10 +85,8 @@
 					)
 				"/>
 				<xsl:variable name="superfluous-related-objects-triples" select="
-					$graph/
-						trix:triple
-							[*[1]=$related-objects]
-							[not(*[2]=$desired-related-objects-properties)]
+					key('triples-by-subject-id', $related-objects)
+						[not(*[2]=$desired-related-objects-properties)]
 				"/>	
 				<xsl:call-template name="debug-list-redacted-triples">
 					<xsl:with-param name="reason">superfluous related objects triples</xsl:with-param>
@@ -129,9 +134,11 @@
 					<xsl:with-param name="values" select="$irrelevant-visual-items"/>
 				</xsl:call-template>
 				<!-- find the triples which relate those irrelvant visual items to their parent visual item -->
-				<xsl:variable name="irrelevant-visual-item-triples" select="$graph/trix:triple[*[3]=$irrelevant-visual-items]"/>
+				<!--<xsl:variable name="irrelevant-visual-item-triples" select="$graph/trix:triple[*[3]=$irrelevant-visual-items]"/>-->
+				<xsl:variable name="irrelevant-visual-item-triples" select="key('triples-by-object-id', $irrelevant-visual-items)"/>
 				<!-- Find all the triples which define properties of those "narrative objects" -->
-				<xsl:variable name="narrative-object-triples" select="$graph/trix:triple[*[1]=$narrative-objects]"/>
+				<!--<xsl:variable name="narrative-object-triples" select="$graph/trix:triple[*[1]=$narrative-objects]"/>-->
+				<xsl:variable name="narrative-object-triples" select="key('triples-by-subject-id', $narrative-objects)"/>
 				
 				<!-- 
 				The triples to retain are:

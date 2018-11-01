@@ -23,7 +23,12 @@
 			concat($rdfs-ns, 'label'),
 			concat($crm-ns, 'P70i_is_documented_in')						
 		)
-	"/>
+	"/>	
+	
+	<xsl:key name="representations-by-object-id"
+		match="/trix:trix/trix:graph/trix:triple[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation']"
+		use="*[1]"
+	/>	
 	
 	<xsl:template match="/">
 		<xsl:if test="$debug='true'">
@@ -53,14 +58,11 @@
 				"/>
 				<!-- identify any EMu images which can therefore be discarded -->
 				<xsl:variable name="unwanted-emu-images" select="
-					$graph/
-						trix:triple
-							[*[1]=$objects-with-piction-images]
-							[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation']
-							[
-								path:forward(*[3], 'crm:P2_has_type')
-									[contains(., 'emu-image')]
-							]
+					key('representations-by-object-id', $objects-with-piction-images)
+						[
+							path:forward(*[3], 'crm:P2_has_type')
+								[contains(., 'emu-image')]
+						]
 				"/>
 
 				<!-- ############################################################################## -->

@@ -15,7 +15,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 	
 	<xsl:param name="root-resource"/><!-- e.g. "http://nma-dev.conaltuohy.com/xproc-z/narrative/1758#" -->
 	<xsl:param name="debug">false</xsl:param>
-	<xsl:variable name="graph" select="/trix:trix/trix:graph"/>
+	<!--<xsl:variable name="graph" select="/trix:trix/trix:graph"/>-->
 	
 	<xsl:template match="/">
 		<xsl:variable name="json-ld-in-xml">
@@ -31,6 +31,25 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 		<!-- see https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping for definition of the elements used here -->
 	</xsl:template>
 	
+	<xsl:key name="types-by-resource-id" 
+		match="
+			/trix:trix/trix:graph/trix:triple
+				[*[2]='http://www.w3.org/1999/02/22-rdf-syntax-ns#type']
+				/*[3]
+		"
+		use="parent::trix:triple/*[1]"
+	/>
+	
+	<xsl:key name="triples-by-subject-id"
+		match="/trix:trix/trix:graph/trix:triple"
+		use="*[1]"
+	/>
+	
+	<xsl:key name="triples-by-subject-uri"
+		match="/trix:trix/trix:graph/trix:triple[*[1]/self::trix:uri]"
+		use="*[1]"
+	/>
+	
 	<xsl:template name="resource-as-json-ld-xml">
 		<xsl:param name="resource" required="true"/>
 		<xsl:param name="depth" select="0"/>
@@ -45,7 +64,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 			</xsl:message>
 		</xsl:if>
 		<xsl:choose>
-			<xsl:when test="not($graph/trix:triple/*[1][.=$resource])">
+			<xsl:when test="not(key('triples-by-subject-id', $resource))">
 				<!-- resource has no properties -->
 				<f:string>
 					<xsl:if test="$key">
@@ -64,15 +83,11 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 						<f:string key="@context"><xsl:value-of select="$context"/></f:string>
 					</xsl:if>
 					<!-- if the resource identifier appears inside a trix:uri then it is a URI rather than a blank node, and should be displayed -->
-					<xsl:if test="$graph/trix:triple/*[1][self::trix:uri][.=$resource]">
+					<xsl:if test="key('triples-by-subject-uri', $resource)">
 						<f:string key="@id"><xsl:value-of select="$resource"/></f:string>
 					</xsl:if>
 					<xsl:if test="not($resource = $already-rendered-resources)">
-						<xsl:variable name="types" select="
-							$graph/trix:triple
-								[*[1]=$resource]
-								[*[2]='http://www.w3.org/1999/02/22-rdf-syntax-ns#type']
-									/*[3]"/>
+						<xsl:variable name="types" select="key('types-by-resource-id', $resource)"/>
 						<xsl:choose>
 							<xsl:when test="count($types) = 0"/>
 							<xsl:when test="count($types) = 1">
@@ -87,7 +102,7 @@ The JSON-LD is an expanded form, with URIs for identifiers, and will be compacte
 							</xsl:otherwise>
 						</xsl:choose>
 						<!--represent the resource's other properties (apart from rdf:type) as JSON-LD XML -->
-						<xsl:for-each-group select="$graph/trix:triple[*[1]=$resource][not(*[2]='http://www.w3.org/1999/02/22-rdf-syntax-ns#type')]" group-by="string(*[2])">
+						<xsl:for-each-group select="key('triples-by-subject-id', $resource)[not(*[2]='http://www.w3.org/1999/02/22-rdf-syntax-ns#type')]" group-by="string(*[2])">
 							<xsl:sort select="*[2]"/>
 							<xsl:choose>
 								<xsl:when test="count(current-group()) = 1">

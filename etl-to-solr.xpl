@@ -96,13 +96,21 @@
 			<p:with-option name="query-file" select="$describe-query"/>
 		</nma:load-sparql-query>
 		<!-- execute the query to list all the resources to be indexed -->
-		<nma:sparql-query name="resources-to-index" accept="application/sparql-results+xml">
+		<nma:sparql-query accept="application/sparql-results+xml">
 			<p:with-option name="dataset" select="$dataset"/>
 			<p:input port="source">
 				<p:pipe step="resource-list-sparql-query" port="result"/>
 			</p:input>
 		</nma:sparql-query>
-		<cx:message>
+		<p:delete name="resources-to-index" match="
+			/sparql:sparql/sparql:results/sparql:result[
+				contains(
+					sparql:binding[@name='resource']/sparql:uri,
+					'unrecognised'
+				)
+			]
+		"/>
+		<nma:message>
 			<p:with-option name="message" select="
 				concat(
 					'The &quot;', $dataset, '&quot; SPARQL dataset ',
@@ -110,7 +118,7 @@
 					'with type &quot;', $solr-type, '&quot;...'
 				)
 			"/>
-		</cx:message>
+		</nma:message>
 		<p:choose>
 			<p:when test="$mode = 'incremental' ">
 				<!-- query solr for records of this type -->
@@ -125,7 +133,7 @@
 						)
 					"/>
 				</p:load>
-				<cx:message>
+				<nma:message>
 					<p:with-option name="message" select="
 						concat(
 							'The &quot;', $dataset, '&quot; Solr core ',
@@ -133,7 +141,7 @@
 							'with type &quot;', $solr-type, '&quot;.'
 						)
 					"/>
-				</cx:message>
+				</nma:message>
 				<!-- compare "resources-to-index" with "resources-in-solr-index" and remove any which are unchanged -->
 				<p:wrap-sequence name="comparison" wrapper="comparison">
 					<p:input port="source">
@@ -153,9 +161,9 @@
 				<p:identity name="index-all-resources"/>
 			</p:otherwise>
 		</p:choose>
-		<cx:message>
+		<nma:message>
 			<p:with-option name="message" select="concat(count(/sparql:sparql/sparql:results/sparql:result), ' resources need to be indexed.')"/>
-		</cx:message>
+		</nma:message>
 		<!-- iterate through the resources, indexing each one individually -->
 		<p:for-each name="resource">
 			<p:iteration-source select="/results:sparql/results:results/results:result"/>
@@ -163,13 +171,13 @@
 			<p:variable name="resource-uri" select="/results:result/results:binding[@name='resource']/results:uri"/>
 			<p:variable name="datestamp" select="/results:result/results:binding[@name='lastUpdated']/results:literal"/>
 			<p:variable name="source-count" select="/results:result/results:binding[@name='sourceCount']/results:literal"/>
-			<cx:message>
+			<nma:message>
 				<p:with-option name="message" select="concat(current-dateTime(), ' copying ', $resource-uri, ' from ', $dataset, ' dataset ...')"/>
-			</cx:message>
+			</nma:message>
 			<!--
-			<cx:message>
+			<nma:message>
 				<p:with-option name="message" select="concat(current-dateTime(), ' generating SPARQL query ...')"/>
-			</cx:message>
+			</nma:message>
 			-->
 			<!-- substitute the URI of the resource to be indexed into the query template -->
 			<p:xslt name="generate-sparql-query">
@@ -183,15 +191,15 @@
 			</p:xslt>
 			<!-- execute the query to generate a resource description -->
 			<!--
-			<cx:message>
+			<nma:message>
 				<p:with-option name="message" select="concat(current-dateTime(), ' executing SPARQL query ...')"/>
-			</cx:message>
+			</nma:message>
 			-->
 			<nma:sparql-query name="resource-description" accept="application/trix+xml">
 				<p:with-option name="dataset" select="$dataset"/>
 			</nma:sparql-query>
 			<!-- make any necessary redactions to the RDF graph -->
-			<p:group name="redaction" cx:depends-on="store-raw-trix">
+			<p:group name="redaction"><!-- cx:depends-on="store-raw-trix">-->
 				<p:choose>
 					<p:when test=" $dataset = 'public' ">
 						<p:xslt name="description-with-unlicensed-images-redacted">
@@ -236,12 +244,14 @@
 				<p:with-option name="source-count" select="$source-count"/>
 			</nma:update-solr>
 			<!-- store raw trix -->
+			<!--
 			<p:store indent="true" name="store-raw-trix">
 				<p:with-option name="href" select="concat('/data/', $dataset, '/trix/', encode-for-uri(encode-for-uri($resource-uri)), '.xml')"/>
 				<p:input port="source">
 					<p:pipe step="resource-description" port="result"/>
 				</p:input>
 			</p:store>
+			-->
 			<!-- store redacted trix -->
 			<!--
 			<p:store indent="true">
@@ -300,9 +310,7 @@
 			</p:template>
 			<!-- transform the RDF graph into a Solr index update -->
 			<!-- generate all the search and metadata fields -->
-			<!--
-			<cx:message message="generating solr search fields"/>
-			-->
+			<nma:message message="generating solr search fields"/>
 			<p:xslt name="trix-description-to-solr-search-fields">
 				<p:input port="source">
 					<p:pipe step="update-solr" port="source"/>
@@ -367,7 +375,7 @@
 			<!-- store any errors -->
 			<p:for-each name="error-response">
 				<p:iteration-source select="/c:response[number(@status) &gt;= 400]"/>
-				<cx:message>
+				<nma:message>
 					<p:with-option name="message" select="
 						concat(
 							'Error depositing resource &lt;',
@@ -375,7 +383,7 @@
 							'&gt; in Solr'
 						)
 					"/>
-				</cx:message>
+				</nma:message>
 				<p:wrap-sequence wrapper="failed-solr-deposit">
 					<p:input port="source">
 						<p:pipe step="update-solr" port="source"/>
@@ -413,11 +421,9 @@
 		<p:output port="result"/>
 		<p:option name="field-name" required="true"/>
 		<p:option name="root-resource" required="true"/>
-		<!--
-		<cx:message>
+		<nma:message>
 			<p:with-option name="message" select="concat('generating solr field ', codepoints-to-string(34), $field-name, codepoints-to-string(34))"/>
-		</cx:message>
-		-->
+		</nma:message>
 		<!-- apply the stylesheet to the trix source to produce JSON XML -->
 		<p:xslt name="convert-trix-to-json-xml">
 			<p:input port="stylesheet">
@@ -490,4 +496,14 @@
 		</p:template>
 		<p:http-request/>
 	</p:declare-step>	
+	
+	<p:declare-step type="nma:message" name="message">
+		<p:option name="message" required="true"/>
+		<p:input port="source"/>
+		<p:output port="result"/>
+		<cx:message>
+			<p:with-option name="message" select="concat(current-dateTime(), ' ', $message)"/>
+		</cx:message>
+	</p:declare-step>
+	
 </p:declare-step>

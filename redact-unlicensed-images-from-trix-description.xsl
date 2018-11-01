@@ -23,6 +23,11 @@
 		<xsl:call-template name="do-redaction" />
 	</xsl:template>
 	
+	<xsl:key name="representations-by-object-id"
+		match="/trix:trix/trix:graph/trix:triple[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation']"
+		use="*[1]"
+	/>	
+	
 	<xsl:template name="do-redaction">
 		<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 			<graph>
@@ -45,12 +50,7 @@
 					]
 				"/>
 				<!-- identify any media statements which can be discarded -->
-				<xsl:variable name="unlicensed-object-media-statements" select="
-					$graph/
-						trix:triple
-							[*[1]=$objects-with-media-but-no-rights]
-							[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138i_has_representation']
-				"/>
+				<xsl:variable name="unlicensed-object-media-statements" select="key('representations-by-media-id', $objects-with-media-but-no-rights)"/>
 
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->

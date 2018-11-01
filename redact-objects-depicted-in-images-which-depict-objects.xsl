@@ -27,6 +27,11 @@
 		<xsl:call-template name="do-redaction" />
 	</xsl:template>
 	
+	<xsl:key name="depictions-by-media-id"
+		match="/trix:trix/trix:graph/trix:triple[*[2]='http://www.cidoc-crm.org/cidoc-crm/P138_represents']"
+		use="*[1]"
+	/>
+	
 	<xsl:template name="do-redaction">
 		<trix xmlns="http://www.w3.org/2004/03/trix/trix-1/">
 			<graph>
@@ -45,13 +50,8 @@
 				</xsl:call-template>
 				
 				<!-- Find the triples in which those media themselves depict further objects -->
-				<xsl:variable name="extraneous-depictions" select="
-					$graph/
-						trix:triple[
-							*[1]=$media and
-							*[2]=concat($crm-ns, 'P138_represents')
-						]
-				"/>
+				<xsl:variable name="extraneous-depictions" select="key('depictions-by-media-id', $media)"/>
+				
 				<xsl:call-template name="debug-list-redacted-triples">
 					<xsl:with-param name="reason">depictions of secondary objects</xsl:with-param>
 					<xsl:with-param name="redaction" select="$extraneous-depictions"/>
