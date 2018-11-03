@@ -50,7 +50,7 @@
 					]
 				"/>
 				<!-- identify any media statements which can be discarded -->
-				<xsl:variable name="unlicensed-object-media-statements" select="key('representations-by-media-id', $objects-with-media-but-no-rights)"/>
+				<xsl:variable name="unlicensed-object-media-statements" select="key('representations-by-object-id', $objects-with-media-but-no-rights)"/>
 
 				<!-- ############################################################################## -->
 				<!-- Finally copy the triples of the graph, excluding any of the triples we've identified as unwanted -->
