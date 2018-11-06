@@ -310,7 +310,9 @@
 			</p:template>
 			<!-- transform the RDF graph into a Solr index update -->
 			<!-- generate all the search and metadata fields -->
+			<!--
 			<nma:message message="generating solr search fields"/>
+			-->
 			<p:xslt name="trix-description-to-solr-search-fields">
 				<p:input port="source">
 					<p:pipe step="update-solr" port="source"/>
@@ -421,9 +423,11 @@
 		<p:output port="result"/>
 		<p:option name="field-name" required="true"/>
 		<p:option name="root-resource" required="true"/>
+		<!--
 		<nma:message>
 			<p:with-option name="message" select="concat('generating solr field ', codepoints-to-string(34), $field-name, codepoints-to-string(34))"/>
 		</nma:message>
+		-->
 		<!-- apply the stylesheet to the trix source to produce JSON XML -->
 		<p:xslt name="convert-trix-to-json-xml">
 			<p:input port="stylesheet">
