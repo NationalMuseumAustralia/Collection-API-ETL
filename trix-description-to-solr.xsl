@@ -133,7 +133,7 @@
 
 	<!-- collection -->
 	<xsl:template name="collection-solr">
-		<xsl:for-each select="path:forward('crm:P106i_forms_part_of')">
+		<xsl:for-each select="path:forward('crm:P46i_forms_part_of')">
 			<field name="collection_id"><xsl:value-of select="replace(., '(.*/)([^/]*)(#)$', '$2')"/></field>
 			<field name="collection"><xsl:value-of select="path:forward(., 'rdfs:label')"/></field>
 		</xsl:for-each>
@@ -531,7 +531,7 @@
 			path:forward('crm:P16i_was_used_for')[
 				path:forward(., 'crm:P2_has_type') = 'http://vocab.getty.edu/aat/300054766'
 			]
-			/path:forward(., 'rdfs:label')
+			/path:forward(., ('crm:P7_took_place_at', 'rdfs:label'))
 		">
 			<field name="location"><xsl:value-of select="."/></field>
 		</xsl:for-each>
