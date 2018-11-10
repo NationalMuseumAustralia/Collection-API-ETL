@@ -160,6 +160,12 @@
 		"/>
 		<p:documentation>the file containing the current, as yet unprocessed, piction data</p:documentation>
 		<p:load name="new-piction-data" href="/mnt/dams_data/solr_prod1.xml"/>
+		<p:xslt name="new-piction-data-with-preferred-images">
+			<p:input port="parameters"><p:empty/></p:input>
+			<p:input port="stylesheet">
+				<p:document href="add-preferred-tag-to-piction-images.xsl"/>
+			</p:input>
+		</p:xslt>
 		<p:documentation>track the "last-updated" date of the individual records</p:documentation>
 		<p:try name="cached-piction-data">
 			<p:group name="load-cached-piction-data">
@@ -180,7 +186,7 @@
 		<p:documentation>aggregate the new and cached piction, for comparison</p:documentation>
 		<p:wrap-sequence name="new-and-cached-piction-data" wrapper="comparison">
 			<p:input port="source">
-				<p:pipe step="new-piction-data" port="result"/>
+				<p:pipe step="new-piction-data-with-preferred-images" port="result"/>
 				<p:pipe step="cached-piction-data" port="result"/>
 			</p:input>
 		</p:wrap-sequence>
