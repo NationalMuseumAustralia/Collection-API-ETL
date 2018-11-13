@@ -80,16 +80,25 @@ wget http://archive.apache.org/dist/lucene/solr/7.2.1/solr-7.2.1.tgz -O solr-7.2
 tar xzf solr-7.2.1.tgz solr-7.2.1/bin/install_solr_service.sh --strip-components=2
 ./install_solr_service.sh $INSTALL_DIR/solr-7.2.1.tgz
 # create cores, only link config parts (so data files aren't in git)
+
 SOLR_CORE_1_NAME=core_nma_public
-SOLR_CORE_2_NAME=core_nma_internal
 mkdir -p        /var/solr/data/$SOLR_CORE_1_NAME
 chown solr:solr /var/solr/data/$SOLR_CORE_1_NAME
-mkdir -p        /var/solr/data/$SOLR_CORE_2_NAME
-chown solr:solr /var/solr/data/$SOLR_CORE_2_NAME
 ln -s $CONFIG_DIR/solr/$SOLR_CORE_1_NAME/core.properties /var/solr/data/$SOLR_CORE_1_NAME/core.properties
 ln -s $CONFIG_DIR/solr/$SOLR_CORE_1_NAME/conf            /var/solr/data/$SOLR_CORE_1_NAME/conf
+
+SOLR_CORE_2_NAME=core_nma_internal
+mkdir -p        /var/solr/data/$SOLR_CORE_2_NAME
+chown solr:solr /var/solr/data/$SOLR_CORE_2_NAME
 ln -s $CONFIG_DIR/solr/$SOLR_CORE_2_NAME/core.properties /var/solr/data/$SOLR_CORE_2_NAME/core.properties
 ln -s $CONFIG_DIR/solr/$SOLR_CORE_2_NAME/conf            /var/solr/data/$SOLR_CORE_2_NAME/conf
+
+SOLR_CORE_3_NAME=core_nma_log
+mkdir -p        /var/solr/data/$SOLR_CORE_3_NAME
+chown solr:solr /var/solr/data/$SOLR_CORE_3_NAME
+ln -s $CONFIG_DIR/solr/$SOLR_CORE_3_NAME/core.properties /var/solr/data/$SOLR_CORE_3_NAME/core.properties
+ln -s $CONFIG_DIR/solr/$SOLR_CORE_3_NAME/conf            /var/solr/data/$SOLR_CORE_3_NAME/conf
+
 # replace Solr's default "includes" (config) file with a customised version
 rm /etc/default/solr.in.sh
 ln -s $CONFIG_DIR/solr/solr.in.sh /etc/default/solr.in.sh
