@@ -326,14 +326,24 @@
 				<p:with-param name="datestamp" select="$datestamp"/>
 				<p:with-param name="source-count" select="$source-count"/>
 			</p:xslt>
-			<!-- generate the "simple" response payload field -->
-			<nma:trix-description-to-solr-field name="trix-description-to-simple-json"
-				field-name="simple">
+			<!-- generate the "simple_{n}" response payload fields -->
+			<nma:trix-description-to-solr-field name="trix-description-to-simple-v1-json"
+				field-name="simple_1">
 				<p:input port="source">
 					<p:pipe step="update-solr" port="source"/>
 				</p:input>
 				<p:input port="stylesheet">
-					<p:document href="trix-description-to-dc.xsl"/>
+					<p:document href="trix-description-to-dc-v1.xsl"/>
+				</p:input>
+				<p:with-option name="root-resource" select="$resource-uri"/>
+			</nma:trix-description-to-solr-field>
+			<nma:trix-description-to-solr-field name="trix-description-to-simple-v2-json"
+				field-name="simple_2">
+				<p:input port="source">
+					<p:pipe step="update-solr" port="source"/>
+				</p:input>
+				<p:input port="stylesheet">
+					<p:document href="trix-description-to-dc-v2.xsl"/>
 				</p:input>
 				<p:with-option name="root-resource" select="$resource-uri"/>
 			</nma:trix-description-to-solr-field>
