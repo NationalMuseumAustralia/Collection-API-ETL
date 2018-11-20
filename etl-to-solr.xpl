@@ -327,7 +327,7 @@
 				<p:with-param name="source-count" select="$source-count"/>
 			</p:xslt>
 			<!-- generate the "simple_{n}" response payload fields -->
-			<nma:trix-description-to-solr-field name="trix-description-to-simple-v1-json"
+			<nma:trix-description-to-solr-field name="trix-description-to-simple-json-v1"
 				field-name="simple_1">
 				<p:input port="source">
 					<p:pipe step="update-solr" port="source"/>
@@ -337,7 +337,7 @@
 				</p:input>
 				<p:with-option name="root-resource" select="$resource-uri"/>
 			</nma:trix-description-to-solr-field>
-			<nma:trix-description-to-solr-field name="trix-description-to-simple-v2-json"
+			<nma:trix-description-to-solr-field name="trix-description-to-simple-json-v2"
 				field-name="simple_2">
 				<p:input port="source">
 					<p:pipe step="update-solr" port="source"/>
@@ -364,7 +364,8 @@
 				<p:input port="source" select="/doc/field">
 					<p:pipe step="solr-metadata-fields" port="result"/>
 					<p:pipe step="trix-description-to-solr-search-fields" port="result"/>
-					<p:pipe step="trix-description-to-simple-json" port="result"/>
+					<p:pipe step="trix-description-to-simple-json-v1" port="result"/>
+					<p:pipe step="trix-description-to-simple-json-v2" port="result"/>
 					<p:pipe step="trix-description-to-json-ld" port="result"/>
 				</p:input>
 			</p:wrap-sequence>

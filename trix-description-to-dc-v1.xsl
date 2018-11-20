@@ -59,7 +59,9 @@ Spec: https://www.w3.org/TR/xpath-functions-31/#json-to-xml-mapping
 			<!-- TODO: all assoc are 'in presence of' so dates and places are coming thru, need to add AAT or something into CRM -->
 			<xsl:call-template name="acknowledgement-dc" />
 			<xsl:call-template name="inwardloan-dc" />
+			<!--
 			<xsl:call-template name="exhibition-location-dc" />
+			-->
 			<xsl:call-template name="object-parent-dc" />
 			<xsl:call-template name="object-children-dc" />
 			<xsl:call-template name="related-dc" />

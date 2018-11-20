@@ -270,10 +270,10 @@
   <field name="reason" type="text_general" multiValued="false" />
   <field name="status_code" type="text_general" multiValued="false" />
   <!-- BLOBs -->
-  <field name="json-ld" type="text_general" indexed="false"/>
+  <field name="json-ld" type="text_general" indexed="false" multiValued="false"/>
   <!-- two versions of "simple" serialization supported -->
-  <field name="simple_1" type="text_general" indexed="false"/>
-  <field name="simple_2" type="text_general" indexed="false"/>
+  <field name="simple_1" type="text_general" indexed="false" multiValued="false"/>
+  <field name="simple_2" type="text_general" indexed="false" multiValued="false"/>
   <!-- _str for exact token-like matching (e.g. case/punctuation is preserved) -->
   <copyField source="type" dest="type_str" maxChars="256"/>
   <copyField source="additionalType" dest="additionalType_str" maxChars="256"/>
