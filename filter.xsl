@@ -11,13 +11,13 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<!-- redact non-public data -->
-				<xsl:apply-templates/>
+				<xsl:apply-templates mode="public"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
 
 	<!-- identity template copies anything which isn't explicitly excluded by a more specific rule -->
-	<xsl:template match="*">
+	<xsl:template mode="public" match="*">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates/>
@@ -27,7 +27,7 @@
 	<!-- redaction rules -->
 	
 	<!-- exclude object record whose status isn’t either “Public” or “Public Restricted" or "Removed" -->
-	<xsl:template match="
+	<xsl:template mode="public" match="
 		record
 			[TitObjectType]
 			[
@@ -37,7 +37,7 @@
 			]
 	"/>
 	<!-- exclude a narrative's reference to an object, if that object's status isn’t either “Public” or “Public Restricted -->
-	<xsl:template match="
+	<xsl:template mode="public" match="
 		record/ObjObjectsRef_tab/ObjObjectsRef
 			[
 				not(
@@ -47,7 +47,7 @@
 	"/>
 	
 	<!-- exclude original_2 Piction images from Public API  -->
-	<xsl:template match="doc/dataSource[@name='original_2']"/>
+	<xsl:template mode="public" match="doc/dataSource[@name='original_2']"/>
 	
 	<!-- TODO: what about AdmPublishWebNoPassword? -->
 	<!-- 1265 say "Yes", 555 say "No" -->
@@ -61,13 +61,13 @@
 	-->
 	
 	<!-- exclude narrative banner images -->
-	<xsl:template match="record/MulMultiMediaRef_tab"/>
+	<xsl:template mode="public" match="record/MulMultiMediaRef_tab"/>
 	
 	<!-- remove all precise locations from Public API -->
-	<xsl:template match="LocCurrentLocationRef"/>
+	<xsl:template mode="public" match="LocCurrentLocationRef"/>
 	
 	<!-- exclude object inwards loan flag -->
-	<xsl:template match="InwardLoan"/>
+	<xsl:template mode="public" match="InwardLoan"/>
 	
 	<xsl:variable name="open-rights" select="
 		(
@@ -77,13 +77,13 @@
 		)
 	"/>
 	<!-- remove all images if licence is not open -->
-	<xsl:template match="record[not(AcsCCStatus = $open-rights)]/WebMultiMediaRef_tab"/>
+	<xsl:template mode="public" match="record[not(AcsCCStatus = $open-rights)]/WebMultiMediaRef_tab"/>
 	
 	<!-- remove rights data altogether if restricted; this will cause all images (including Piction images) to be redacted -->
-	<xsl:template match="record/AcsCCStatus[not(. = $open-rights)]"/>
+	<xsl:template mode="public" match="record/AcsCCStatus[not(. = $open-rights)]"/>
 	
 	<!-- Exclude any narrative whose intended audience does not include "Collection Explorer publish" -->
-	<xsl:template match="
+	<xsl:template mode="public" match="
 		record[
 			DesIntendedAudience_tab
 		]
