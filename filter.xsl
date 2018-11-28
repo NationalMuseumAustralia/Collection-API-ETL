@@ -6,21 +6,39 @@
 	<xsl:template match="/">
 		<xsl:choose>
 			<xsl:when test="($dataset='internal')">
-				<!-- copy everything -->
-				<xsl:copy-of select="*"/>
+				<!-- redact and normalize internal data -->
+				<xsl:apply-templates mode="internal" select="/"/>
 			</xsl:when>
 			<xsl:otherwise>
 				<!-- redact non-public data -->
-				<xsl:apply-templates mode="public"/>
+				<xsl:apply-templates mode="public" select="/"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
-
+	
+	<!-- identity template copies anything which isn't explicitly excluded by a more specific rule -->
+	<xsl:template mode="internal" match="*">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="internal"/>
+		</xsl:copy>
+	</xsl:template>
+	
+	<!-- for the "internal" dataset, ADD default rights data if missing altogether  -->
+	<xsl:template mode="internal" match="record[not(normalize-space(AcsCCStatus))]">
+		<xsl:copy>
+			<xsl:copy-of select="@*"/>
+			<xsl:apply-templates mode="internal"/>
+			<AcsCCStatus>Status not evaluated</AcsCCStatus>
+			<AcsCCRestrictionReason>Copyright has not yet been determined; please contact the National Museum of Australia to request clearance before re-use.</AcsCCRestrictionReason>
+		</xsl:copy>
+	</xsl:template>
+	
 	<!-- identity template copies anything which isn't explicitly excluded by a more specific rule -->
 	<xsl:template mode="public" match="*">
 		<xsl:copy>
 			<xsl:copy-of select="@*"/>
-			<xsl:apply-templates/>
+			<xsl:apply-templates mode="public"/>
 		</xsl:copy>
 	</xsl:template>
 	

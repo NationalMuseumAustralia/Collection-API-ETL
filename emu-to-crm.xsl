@@ -787,6 +787,16 @@
 									<rdfs:label><xsl:text>CC BY-NC-SA 4.0</xsl:text></rdfs:label>
 								</crm:E30_Right>
 							</xsl:when>
+							<xsl:when test=". = 'Status not evaluated'">
+								<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/CNE/1.0/">
+									<rdfs:label>Copyright not evaluated</rdfs:label>
+								</crm:E30_Right>
+							</xsl:when>
+							<xsl:when test=". = 'Undetermined'">
+								<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/UND/1.0/">
+									<rdfs:label>Copyright undetermined</rdfs:label>
+								</crm:E30_Right>
+							</xsl:when>
 							<!-- fall back to most conservative -->
 							<xsl:otherwise>
 								<crm:E30_Right rdf:about="http://rightsstatements.org/vocab/InC/1.0/">
