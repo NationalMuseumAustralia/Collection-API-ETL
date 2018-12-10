@@ -19,8 +19,10 @@ TOMCAT8_GROUP=tomcat8
 # exactly one CPU chip that contains one or two cores, you should also add
 # the "-XX:+CMSIncrementalMode" option.
 
-# Modified to increase heap allocation from 128M to 2G, for Fuseki performance
-JAVA_OPTS="-Djava.awt.headless=true -Xmx4G -XX:+UseConcMarkSweepGC"
+# Modified to change heap allocation from the default 128M to 2G, for Fuseki performance
+CATALINA_OPTS="-Xmx2G -Xms2G"
+# Use the new "String Deduplication" feature, for more memory-efficient processing of XML (requires G1GC garbage collector)
+JAVA_OPTS="-Djava.awt.headless=true -XX:+UseG1GC -XX:+UseStringDeduplication"
 
 # To enable remote debugging uncomment the following line.
 # You will then be able to use a java debugger on port 8000.

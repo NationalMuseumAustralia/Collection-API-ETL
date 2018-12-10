@@ -16,11 +16,16 @@ find "/data/$DATASET/n-quads/" -name "*.nq" -delete
 
 # execute XML-to-RDF transformations to generate new .nq files in /data/DATASET/n-quads/
 cd /usr/local/NMA-API-ETL
-java -Xmx4G -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+# Ensure that OS does not grant this process memory which it does not actually have available. 
+# With vm.overcommit_memory=0 (the default), the process may start, but when it attempts to actually use the memory it has acquired,
+# the kernel may find there's not enough available, and kill some other random process to free up memory. With vm.overcommit_memory=2,
+# a failure to allocate memory will simply prevent this process from starting.
+sysctl vm.overcommit_memory=2
+java -Xmx2G -Xms2G  -XX:+UseG1GC -XX:+UseStringDeduplication -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # stop fuseki in order to rebuild its tdb2 database
 echo Stopping fuseki... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-sudo java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar manage-tomcat.xpl command="stop?path=/fuseki" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+sudo java -Xmx128M -jar /usr/local/xmlcalabash/xmlcalabash.jar manage-tomcat.xpl command="stop?path=/fuseki" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 sleep 5
 # delete fuseki's lock files which why doesn't fuseki delete it itself?
 rm "/etc/fuseki/databases/$DATASET/tdb.lock"
