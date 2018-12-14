@@ -144,6 +144,9 @@ find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -exec rm -rf '{}' \;
 
 # end of run
 cp $LOGS_DIR/etl-run-cron.log $OUT_DIR/
+mkdir $OUT_DIR/failed-solr-deposits
+mv /data/failed-solr-deposits/* $OUT_DIR/failed-solr-deposits/
 # NB: don't need to copy etl-run-all.log as is already in the output dir
 to_log "END ETL - mode=$MODE, job=$JOB_ID"
+sendemail -f '"NMA ETL" no_reply@data.nma.gov.au' -t conal.tuohy@gmail.com -u 'NMA ETL results' -m "See attached log file." -a $OUT_DIR/etl-run-all.log
 exit 0
