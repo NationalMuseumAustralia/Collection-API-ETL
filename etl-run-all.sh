@@ -149,5 +149,5 @@ mv /data/failed-solr-deposits/* $OUT_DIR/failed-solr-deposits/
 # NB: don't need to copy etl-run-all.log as is already in the output dir
 to_log "END ETL - mode=$MODE, job=$JOB_ID"
 HOSTNAME=`hostname`
-sendemail -f "$HOSTNAME ETL <no_reply@$HOSTNAME>" -t conal.tuohy@gmail.com -u 'NMA ETL results' -m "See attached log file." -a $OUT_DIR/etl-run-all.log
+sendemail -f "$HOSTNAME ETL <no_reply@$HOSTNAME>" -t conal.tuohy@gmail.com api@nma.gov.au -u 'NMA ETL results' -m "See attached log file." -a $OUT_DIR/etl-run-all.log
 exit 0
