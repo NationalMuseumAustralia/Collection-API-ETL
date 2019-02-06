@@ -2,6 +2,9 @@
 # Install the Schema generation (Trang) and visualization (XSDVI) tools
 XSDVI_DIR=/usr/local/xsdvi/
 
+#xmllint
+apt install -y libxml2-utils
+
 # Trang
 apt install -y trang
 
