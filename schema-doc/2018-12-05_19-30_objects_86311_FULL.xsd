@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="totalItems"/>
+        <xs:element maxOccurs="unbounded" ref="record"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="totalItems" type="xs:integer"/>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="irn"/>
+        <xs:element minOccurs="0" ref="TitObjectTitle"/>
+        <xs:element ref="TitObjectType"/>
+        <xs:element minOccurs="0" ref="TitSecondaryObjectType"/>
+        <xs:element ref="TitObjectNumber"/>
+        <xs:element minOccurs="0" ref="TitObjectName"/>
+        <xs:element minOccurs="0" ref="PhyDescription"/>
+        <xs:element minOccurs="0" ref="AccAccessionLotRef"/>
+        <xs:element minOccurs="0" ref="PhyContentDescription"/>
+        <xs:element minOccurs="0" ref="CreProvenance"/>
+        <xs:element minOccurs="0" ref="StaNmaSOSPublic"/>
+        <xs:element minOccurs="0" ref="AssParentObjectRef"/>
+        <xs:element minOccurs="0" ref="WebReleaseDate"/>
+        <xs:element ref="InwardLoan"/>
+        <xs:element minOccurs="0" ref="WebProject_tab"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationLength"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationHeight"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationWidth"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationDepth"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationDiameter"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationUnitLength"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationWeight"/>
+        <xs:element minOccurs="0" ref="PhyRegistrationUnitWeight"/>
+        <xs:element minOccurs="0" ref="PhyMaterials_tab"/>
+        <xs:element minOccurs="0" ref="AcsCCStatus"/>
+        <xs:element minOccurs="0" ref="AcsCCRestrictionReason"/>
+        <xs:element ref="AcsAPI_tab"/>
+        <xs:element minOccurs="0" ref="RigCreditLine2"/>
+        <xs:element minOccurs="0" ref="WebLargeImageReleased"/>
+        <xs:element ref="AdmPubishWebNoPassword"/>
+        <xs:element ref="AdmDateModified"/>
+        <xs:element minOccurs="0" ref="RelRelatedObjects_tab"/>
+        <xs:element minOccurs="0" ref="ProductionParties"/>
+        <xs:element minOccurs="0" ref="AssociatedParties"/>
+        <xs:element minOccurs="0" ref="ProductionPlaces"/>
+        <xs:element minOccurs="0" ref="AssociatedPlaces"/>
+        <xs:element minOccurs="0" ref="ProductionDates"/>
+        <xs:element minOccurs="0" ref="AssociatedDates"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="NotText0"/>
+        <xs:element ref="OnDisplay"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="DisplayGallery"/>
+          <xs:element ref="LocCurrentLocationRef"/>
+        </xs:sequence>
+        <xs:element ref="HasEmuImage"/>
+        <xs:element minOccurs="0" ref="WebMultiMediaRef_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TitObjectTitle" type="xs:string"/>
+  <xs:element name="TitObjectType" type="xs:NCName"/>
+  <xs:element name="TitSecondaryObjectType" type="xs:string"/>
+  <xs:element name="TitObjectNumber" type="xs:string"/>
+  <xs:element name="TitObjectName" type="xs:string"/>
+  <xs:element name="PhyDescription" type="xs:string"/>
+  <xs:element name="AccAccessionLotRef" type="xs:integer"/>
+  <xs:element name="PhyContentDescription" type="xs:string"/>
+  <xs:element name="CreProvenance" type="xs:string"/>
+  <xs:element name="StaNmaSOSPublic" type="xs:string"/>
+  <xs:element name="AssParentObjectRef" type="xs:integer"/>
+  <xs:element name="WebReleaseDate" type="xs:string"/>
+  <xs:element name="InwardLoan" type="xs:NCName"/>
+  <xs:element name="WebProject_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="WebProject"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WebProject" type="xs:string"/>
+  <xs:element name="PhyRegistrationLength" type="xs:decimal"/>
+  <xs:element name="PhyRegistrationHeight" type="xs:decimal"/>
+  <xs:element name="PhyRegistrationWidth" type="xs:decimal"/>
+  <xs:element name="PhyRegistrationDepth" type="xs:decimal"/>
+  <xs:element name="PhyRegistrationDiameter" type="xs:decimal"/>
+  <xs:element name="PhyRegistrationUnitLength" type="xs:NCName"/>
+  <xs:element name="PhyRegistrationWeight" type="xs:decimal"/>
+  <xs:element name="PhyRegistrationUnitWeight" type="xs:NCName"/>
+  <xs:element name="PhyMaterials_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="PhyMaterial"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PhyMaterial" type="xs:string"/>
+  <xs:element name="AcsCCStatus" type="xs:string"/>
+  <xs:element name="AcsCCRestrictionReason" type="xs:string"/>
+  <xs:element name="AcsAPI_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="AcsAPI"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RigCreditLine2" type="xs:string"/>
+  <xs:element name="WebLargeImageReleased" type="xs:string"/>
+  <xs:element name="AdmPubishWebNoPassword" type="xs:NCName"/>
+  <xs:element name="AdmDateModified" type="xs:string"/>
+  <xs:element name="RelRelatedObjects_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="RelatedObject"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RelatedObject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="relirn"/>
+        <xs:element ref="RelPublishedonCE"/>
+        <xs:element minOccurs="0" ref="RelRelationship_tab"/>
+        <xs:element minOccurs="0" ref="RelReference_tab"/>
+        <xs:element minOccurs="0" ref="RelAcsAPI_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="relirn" type="xs:string"/>
+  <xs:element name="RelPublishedonCE" type="xs:string"/>
+  <xs:element name="RelRelationship_tab" type="xs:string"/>
+  <xs:element name="RelReference_tab" type="xs:string"/>
+  <xs:element name="RelAcsAPI_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="AcsAPI"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProductionParties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ProductionParty"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProductionParty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ProPersonRef_tab.irn"/>
+        <xs:element minOccurs="0" ref="ProPersonType_tab"/>
+        <xs:element minOccurs="0" ref="ProPersonNotes_tab"/>
+        <xs:element minOccurs="0" ref="ProPersonKey_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProPersonRef_tab.irn" type="xs:integer"/>
+  <xs:element name="ProPersonType_tab" type="xs:string"/>
+  <xs:element name="ProPersonNotes_tab" type="xs:string"/>
+  <xs:element name="ProPersonKey_tab" type="xs:integer"/>
+  <xs:element name="AssociatedParties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="AssociatedParty"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssociatedParty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="AssPersonRef_tab.irn"/>
+        <xs:element minOccurs="0" ref="AssPersonType_tab"/>
+        <xs:element minOccurs="0" ref="AssPersonNotes_tab"/>
+        <xs:element minOccurs="0" ref="AssPersonKey_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssPersonRef_tab.irn" type="xs:integer"/>
+  <xs:element name="AssPersonType_tab" type="xs:string"/>
+  <xs:element name="AssPersonNotes_tab" type="xs:string"/>
+  <xs:element name="AssPersonKey_tab" type="xs:integer"/>
+  <xs:element name="ProductionPlaces">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ProductionPlace"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProductionPlace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ProPlaceRef_tab.irn"/>
+        <xs:element minOccurs="0" ref="ProPlaceType_tab"/>
+        <xs:element minOccurs="0" ref="ProPlaceNotes_tab"/>
+        <xs:element minOccurs="0" ref="ProPlaceKey_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProPlaceRef_tab.irn" type="xs:integer"/>
+  <xs:element name="ProPlaceType_tab" type="xs:string"/>
+  <xs:element name="ProPlaceNotes_tab" type="xs:string"/>
+  <xs:element name="ProPlaceKey_tab" type="xs:integer"/>
+  <xs:element name="AssociatedPlaces">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="AssociatedPlace"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssociatedPlace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="AssPlaceRef_tab.irn"/>
+        <xs:element minOccurs="0" ref="AssPlaceType_tab"/>
+        <xs:element minOccurs="0" ref="AssPlaceNotes_tab"/>
+        <xs:element minOccurs="0" ref="AssPlaceKey_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssPlaceRef_tab.irn" type="xs:integer"/>
+  <xs:element name="AssPlaceType_tab" type="xs:string"/>
+  <xs:element name="AssPlaceNotes_tab" type="xs:string"/>
+  <xs:element name="AssPlaceKey_tab" type="xs:integer"/>
+  <xs:element name="ProductionDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ProductionDate"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProductionDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ProDate0"/>
+        <xs:element minOccurs="0" ref="ProEarliestDate0"/>
+        <xs:element minOccurs="0" ref="ProLatestDate0"/>
+        <xs:element minOccurs="0" ref="ProDateType_tab"/>
+        <xs:element minOccurs="0" ref="ProDateNotes_tab"/>
+        <xs:element minOccurs="0" ref="ProDateKey_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProDate0" type="xs:string"/>
+  <xs:element name="ProEarliestDate0" type="xs:string"/>
+  <xs:element name="ProLatestDate0" type="xs:string"/>
+  <xs:element name="ProDateType_tab" type="xs:string"/>
+  <xs:element name="ProDateNotes_tab" type="xs:string"/>
+  <xs:element name="ProDateKey_tab" type="xs:integer"/>
+  <xs:element name="NotText0">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="note_type"/>
+        <xs:element ref="note_text"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="note_type" type="xs:string"/>
+  <xs:element name="note_text" type="xs:string"/>
+  <xs:element name="OnDisplay" type="xs:NCName"/>
+  <xs:element name="DisplayGallery" type="xs:string"/>
+  <xs:element name="LocCurrentLocationRef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="LocLevel1"/>
+        <xs:element ref="LocLevel2"/>
+        <xs:element minOccurs="0" ref="LocLevel3"/>
+        <xs:element minOccurs="0" ref="LocLevel4"/>
+        <xs:element minOccurs="0" ref="LocLevel5"/>
+        <xs:element minOccurs="0" ref="LocLevel6"/>
+        <xs:element minOccurs="0" ref="irn"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LocLevel1" type="xs:NCName"/>
+  <xs:element name="LocLevel2" type="xs:string"/>
+  <xs:element name="LocLevel3" type="xs:string"/>
+  <xs:element name="LocLevel4" type="xs:string"/>
+  <xs:element name="LocLevel5" type="xs:string"/>
+  <xs:element name="LocLevel6" type="xs:string"/>
+  <xs:element name="HasEmuImage" type="xs:NCName"/>
+  <xs:element name="WebMultiMediaRef_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="image"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="image">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="media_irn"/>
+        <xs:element ref="media_mimeformat"/>
+        <xs:element ref="media_mimetype"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="res200px"/>
+          <xs:element ref="res640px"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="media_irn" type="xs:integer"/>
+  <xs:element name="media_mimeformat" type="xs:NCName"/>
+  <xs:element name="media_mimetype" type="xs:NCName"/>
+  <xs:element name="res200px">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="image_path"/>
+        <xs:element ref="image_width"/>
+        <xs:element ref="image_height"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="res640px">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="image_path"/>
+        <xs:element ref="image_width"/>
+        <xs:element ref="image_height"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="irn" type="xs:integer"/>
+  <xs:element name="AcsAPI" type="xs:string"/>
+  <xs:element name="AssociatedDates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="AssociatedDates"/>
+        <xs:element minOccurs="0" ref="AssDate0"/>
+        <xs:element minOccurs="0" ref="AssEarliestDate0"/>
+        <xs:element minOccurs="0" ref="AssLatestDate0"/>
+        <xs:element minOccurs="0" ref="AssDateType_tab"/>
+        <xs:element minOccurs="0" ref="AssDateNotes_tab"/>
+        <xs:element minOccurs="0" ref="AssDateKey_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssDate0" type="xs:string"/>
+  <xs:element name="AssEarliestDate0" type="xs:string"/>
+  <xs:element name="AssLatestDate0" type="xs:string"/>
+  <xs:element name="AssDateType_tab" type="xs:string"/>
+  <xs:element name="AssDateNotes_tab" type="xs:string"/>
+  <xs:element name="AssDateKey_tab" type="xs:string"/>
+  <xs:element name="image_path" type="xs:string"/>
+  <xs:element name="image_width" type="xs:integer"/>
+  <xs:element name="image_height" type="xs:integer"/>
+</xs:schema>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="total_items"/>
+        <xs:element maxOccurs="unbounded" ref="record"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="total_items" type="xs:integer"/>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="irn"/>
+        <xs:element ref="AcqNmaCollectionTitle"/>
+        <xs:element ref="AdmDateModified"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="irn" type="xs:integer"/>
+  <xs:element name="AcqNmaCollectionTitle" type="xs:string"/>
+  <xs:element name="AdmDateModified" type="xs:string"/>
+</xs:schema>

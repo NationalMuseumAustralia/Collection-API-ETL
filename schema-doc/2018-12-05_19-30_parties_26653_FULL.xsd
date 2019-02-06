@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="total_items"/>
+        <xs:element maxOccurs="unbounded" ref="record"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="total_items" type="xs:integer"/>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="irn"/>
+        <xs:element minOccurs="0" ref="NamPartyType"/>
+        <xs:element minOccurs="0" ref="NamOrganisation"/>
+        <xs:element minOccurs="0" ref="NamFirst"/>
+        <xs:element minOccurs="0" ref="NamMiddle"/>
+        <xs:element minOccurs="0" ref="NamLast"/>
+        <xs:element minOccurs="0" ref="NamFullName"/>
+        <xs:element minOccurs="0" ref="NamOtherNames_tab"/>
+        <xs:element minOccurs="0" ref="NamSex"/>
+        <xs:element ref="AdmDateModified"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="irn" type="xs:integer"/>
+  <xs:element name="NamPartyType" type="xs:NCName"/>
+  <xs:element name="NamOrganisation" type="xs:string"/>
+  <xs:element name="NamFirst" type="xs:string"/>
+  <xs:element name="NamMiddle" type="xs:string"/>
+  <xs:element name="NamLast" type="xs:string"/>
+  <xs:element name="NamFullName" type="xs:string"/>
+  <xs:element name="NamOtherNames_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="NamOtherName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NamOtherName" type="xs:string"/>
+  <xs:element name="NamSex" type="xs:string"/>
+  <xs:element name="AdmDateModified" type="xs:string"/>
+</xs:schema>

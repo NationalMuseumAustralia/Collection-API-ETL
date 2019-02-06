@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+   <field name="EMu IRN for Media Asset"/>
+   <field name="EMu IRN for Related Objects">21338</field>
+   <field name="Multimedia ID">MA22841170</field>
+   <field name="Other Numbers Kind">Accession Number</field>
+   <field name="Other Numbers Value">1985.0275.0042</field>
+   <field name="Page Number">1</field>
+   <field name="Photographer"/>
+   <field name="Title">Weapon - Spearthrower</field>
+   <dataSource type="URLDataSource"
+               baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivT\PH2604\Collection\Working Masters\nma_22841170.jpg"
+               name="thumbnail"/>
+   <dataSource type="URLDataSource"
+               baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderivW\PH2604\Collection\Working Masters\nma_22841170.jpg"
+               name="web"/>
+   <dataSource type="URLDataSource"
+               baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv2\Working Masters\nma.img-ci20102604-087-wm-vs1_o2.jpg"
+               name="original_2"/>
+   <dataSource type="URLDataSource"
+               baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv3\Working Masters\nma.img-ci20102604-087-wm-vs1_o3.jpg"
+               name="original_3"/>
+   <dataSource type="URLDataSource"
+               baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv4\Working Masters\nma.img-ci20102604-087-wm-vs1_o4.jpg"
+               name="original_4"/>
+   <dataSource type="URLDataSource"
+               baseUrl="\\nma-isilon1\dams_data\Collectionsearch\prodderiv5\Working Masters\nma.img-ci20102604-087-wm-vs1_o5.jpg"
+               name="original_5"/>
+</doc>

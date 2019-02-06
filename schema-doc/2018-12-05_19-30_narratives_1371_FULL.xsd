@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="totalItems"/>
+        <xs:element maxOccurs="unbounded" ref="record"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="totalItems">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="irn"/>
+        <xs:element ref="NarTitle"/>
+        <xs:element minOccurs="0" ref="DesVersionDate"/>
+        <xs:element ref="AdmDateModified"/>
+        <xs:element minOccurs="0" ref="AssMasterNarrativeRef"/>
+        <xs:element minOccurs="0" ref="DesType_tab"/>
+        <xs:element ref="DesIntendedAudience_tab"/>
+        <xs:element minOccurs="0" ref="NarNarrative"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="ObjObjectsRef_tab"/>
+          <xs:element ref="SubNarratives"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="MulMultiMediaRef_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NarTitle" type="xs:string"/>
+  <xs:element name="DesVersionDate" type="xs:string"/>
+  <xs:element name="AdmDateModified" type="xs:string"/>
+  <xs:element name="AssMasterNarrativeRef" type="xs:integer"/>
+  <xs:element name="DesType_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DesType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesType" type="xs:string"/>
+  <xs:element name="DesIntendedAudience_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DesIntendedAudience"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DesIntendedAudience" type="xs:string"/>
+  <xs:element name="NarNarrative" type="xs:string"/>
+  <xs:element name="ObjObjectsRef_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ObjObjectsRef"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObjObjectsRef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="irn"/>
+        <xs:element ref="AdmPublishWebNoPassword"/>
+        <xs:element minOccurs="0" ref="AcsAPI_tab"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdmPublishWebNoPassword" type="xs:string"/>
+  <xs:element name="AcsAPI_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="AcsAPI"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcsAPI" type="xs:string"/>
+  <xs:element name="SubNarratives">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="SubNarrative"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubNarrative">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SubNarrative.irn"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubNarrative.irn" type="xs:integer"/>
+  <xs:element name="MulMultiMediaRef_tab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="image"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="image">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="banner_small"/>
+        <xs:element ref="banner_large"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="banner_small" type="xs:string"/>
+  <xs:element name="banner_large" type="xs:string"/>
+  <xs:element name="irn" type="xs:string"/>
+</xs:schema>

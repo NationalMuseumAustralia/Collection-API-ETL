@@ -1,11 +1,11 @@
 #!/bin/bash
 # Generate a zip file containing documentation of the XML sousrce data; sample records, XML schemas, and interactive SVG diagrams
-SCHEMA_DOC=~/schema-doc
-ZIP=${SCHEMA_DOC}.zip
+SCHEMA_DOC=$(dirname "$0")/schema-doc
+#ZIP=${SCHEMA_DOC}.zip
 echo Generating documentation from Piction and EMu XML data files into $SCHEMA_DOC ...
 mkdir -p $SCHEMA_DOC
 rm -f $SCHEMA_DOC/*
-rm -f $ZIP
+#rm -f $ZIP
 # XSLT is in the same folder as this script
 XSLT=$(dirname "$0")/make-sample.xsl
 
@@ -23,6 +23,6 @@ do
 done
 rm ${SCHEMA_DOC}/xsdvi.log
 
-echo Archiving as $ZIP ...
-zip -r $ZIP $SCHEMA_DOC
+#echo Archiving as $ZIP ...
+#zip -r $ZIP $SCHEMA_DOC
 

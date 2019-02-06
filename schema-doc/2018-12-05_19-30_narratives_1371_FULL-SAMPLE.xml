@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <irn>3311</irn>
+  <NarTitle>Midawarr | Harvest</NarTitle>
+  <DesVersionDate>19/12/2017</DesVersionDate>
+  <AdmDateModified>04/12/2018</AdmDateModified>
+  <DesType_tab>
+      <DesType>Home page</DesType>
+  </DesType_tab>
+  <DesIntendedAudience_tab>
+      <DesIntendedAudience>Collection Explorer publish</DesIntendedAudience>
+  </DesIntendedAudience_tab>
+  <NarNarrative>&lt;p&gt;Midawarr | Harvest features artworks by Yolgnu elder Mulkun Wirrpanda and landscape painter John Wolseley, who documented the plants of north-east Arnhem Land in bark paintings, &lt;em&gt;larrakitj&lt;/em&gt; (decorated memorial poles), prints and a monumental watercolour and mixed media painting. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Midawarr&lt;/em&gt; means 'harvest' in the Yolgnu &lt;em&gt;matha&lt;/em&gt; (language) of north-east Arnhem Land. The Midawarr works were donated to the National Museum of Australia by&lt;br /&gt;Wayne and Vicki McGeoch, through the Australian Government's Cultural Gifts Program. Many of the works were on show in the &lt;a href="http://www.nma.gov.au/exhibitions/midawarr-harvest"&gt;Midawarr | Harvest exhibition&lt;/a&gt; in Canberra from 23 Novemeber 2017 until 18 February 2018. &lt;/p&gt;
+&lt;p&gt;Please note Collection Explorer cannot host diacritics, the special marks that conform to Yolngu pronunciation. We plan to add diacritics to a future upgrade.&lt;/p&gt;</NarNarrative>
+  <SubNarratives>
+      <SubNarrative>
+         <SubNarrative.irn>3314</SubNarrative.irn>
+      </SubNarrative>
+      <SubNarrative>
+         <SubNarrative.irn>3313</SubNarrative.irn>
+      </SubNarrative>
+      <SubNarrative>
+         <SubNarrative.irn>3312</SubNarrative.irn>
+      </SubNarrative>
+  </SubNarratives>
+  <MulMultiMediaRef_tab>
+      <image>
+         <banner_small>177/454/DMSurf-700x300.jpg</banner_small>
+         <banner_large>177/455/DefM0Surf1600x200.jpg</banner_large>
+      </image>
+  </MulMultiMediaRef_tab>
+ </record>

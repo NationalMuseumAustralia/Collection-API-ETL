@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="total_results"/>
+        <xs:element maxOccurs="unbounded" ref="record"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="total_results" type="xs:integer"/>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="irn"/>
+        <xs:element minOccurs="0" ref="LocOcean_tab"/>
+        <xs:element minOccurs="0" ref="LocContinent_tab"/>
+        <xs:element minOccurs="0" ref="LocCountry_tab"/>
+        <xs:element minOccurs="0" ref="LocProvinceStateTerritory_tab"/>
+        <xs:element minOccurs="0" ref="LocDistrictCountyShire_tab"/>
+        <xs:element minOccurs="0" ref="LocTownship_tab"/>
+        <xs:element minOccurs="0" ref="LocNearestNamedPlace_tab"/>
+        <xs:element minOccurs="0" ref="LocSpecialGeographicUnit_tab"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="LatCentroidLatitude0"/>
+          <xs:element ref="LatCentroidLongitude0"/>
+          <xs:element ref="LatCentroidLatitudeDec_tab"/>
+          <xs:element ref="LatCentroidLongitudeDec_tab"/>
+        </xs:sequence>
+        <xs:element ref="AdmDateModified"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="irn" type="xs:integer"/>
+  <xs:element name="LocOcean_tab" type="xs:string"/>
+  <xs:element name="LocContinent_tab" type="xs:string"/>
+  <xs:element name="LocCountry_tab" type="xs:string"/>
+  <xs:element name="LocProvinceStateTerritory_tab" type="xs:string"/>
+  <xs:element name="LocDistrictCountyShire_tab" type="xs:string"/>
+  <xs:element name="LocTownship_tab" type="xs:string"/>
+  <xs:element name="LocNearestNamedPlace_tab" type="xs:string"/>
+  <xs:element name="LocSpecialGeographicUnit_tab" type="xs:string"/>
+  <xs:element name="LatCentroidLatitude0" type="xs:string"/>
+  <xs:element name="LatCentroidLongitude0" type="xs:string"/>
+  <xs:element name="LatCentroidLatitudeDec_tab" type="xs:decimal"/>
+  <xs:element name="LatCentroidLongitudeDec_tab" type="xs:decimal"/>
+  <xs:element name="AdmDateModified" type="xs:string"/>
+</xs:schema>

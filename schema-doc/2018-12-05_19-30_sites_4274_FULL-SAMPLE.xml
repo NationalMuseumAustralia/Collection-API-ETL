@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <irn>4321</irn>
+  <LocContinent_tab>Oceania</LocContinent_tab>
+  <LocCountry_tab>Papua New Guinea</LocCountry_tab>
+  <LocProvinceStateTerritory_tab>Bougainville</LocProvinceStateTerritory_tab>
+  <LocDistrictCountyShire_tab>Bougainville Island</LocDistrictCountyShire_tab>
+  <LocTownship_tab>Kieta</LocTownship_tab>
+  <LocSpecialGeographicUnit_tab>Solomon Islands Archipelago</LocSpecialGeographicUnit_tab>
+  <LatCentroidLatitude0>06 13 14 S</LatCentroidLatitude0>
+  <LatCentroidLongitude0>155 38 15 E</LatCentroidLongitude0>
+  <LatCentroidLatitudeDec_tab>-6.2206</LatCentroidLatitudeDec_tab>
+  <LatCentroidLongitudeDec_tab>155.637</LatCentroidLongitudeDec_tab>
+  <AdmDateModified>12/12/2016</AdmDateModified>
+ </record>

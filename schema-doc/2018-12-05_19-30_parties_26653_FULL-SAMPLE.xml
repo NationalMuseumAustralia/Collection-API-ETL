@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <irn>8343</irn>
+  <NamPartyType>Person</NamPartyType>
+  <NamFirst>Mary</NamFirst>
+  <NamMiddle>Jane</NamMiddle>
+  <NamLast>Cochrane</NamLast>
+  <NamFullName>Mrs Mary J. Cochrane</NamFullName>
+  <NamOtherNames_tab>
+      <NamOtherName>Miss Mary Jane Coughran</NamOtherName>
+  </NamOtherNames_tab>
+  <NamSex>Female</NamSex>
+  <AdmDateModified>13/06/2007</AdmDateModified>
+ </record>
