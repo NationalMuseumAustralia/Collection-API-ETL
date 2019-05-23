@@ -144,11 +144,11 @@
 		</p:xslt>		
 	</p:declare-step>
 	
-	<p:declare-step name="process-piction-data" type="nma:process-piction-data">
-		<p:option name="hostname" required="true"/>
-		<p:option name="dataset" required="true"/>
-		<p:option name="incremental" required="true"/>
-		<!-- current date, used to tag new records and exclude old records, where necessary -->
+	<p:declare-step name="cache-piction-data" type="nma:cache-piction-data">
+		<p:documentation>Rebuild a time-stamped cache of the records from the Piction data file.</p:documentation>
+		<p:documentation>Records in the cache which differ from the current Piction record are replaced with the current record, and have their last-updated attribute set to the current time.</p:documentation>
+		<p:documentation>NB this step has no I/O ports, and only does file I/O. </p:documentation>
+		<p:option name="dataset" required="true"/>		<!-- current date, used to tag new records and exclude old records, where necessary -->
 		<p:variable name="current-date" select="current-date()"/>
 		<!-- the file which contains previously processed version of the piction data -->
 		<p:variable name="piction-cache" select="
@@ -160,6 +160,7 @@
 		"/>
 		<p:documentation>the file containing the current, as yet unprocessed, piction data</p:documentation>
 		<p:load name="new-piction-data" href="/mnt/dams_data/solr_prod1.xml"/>
+		<cx:message message="Marking preferred images"/>
 		<p:xslt name="new-piction-data-with-preferred-images">
 			<p:input port="parameters"><p:empty/></p:input>
 			<p:input port="stylesheet">
@@ -183,51 +184,114 @@
 				</p:add-attribute>
 			</p:catch>
 		</p:try>
-		<p:documentation>aggregate the new and cached piction, for comparison</p:documentation>
-		<p:wrap-sequence name="new-and-cached-piction-data" wrapper="comparison">
-			<p:input port="source">
+		<!-- Go through all the new piction data records ... -->
+		<p:viewport  name="new-piction-records" match="/add/doc">
+			<p:documentation>
+				For each new Piction record, get its id, and then load the cached record with the same id.
+				If the two records are textually identical, then
+					copy the old record (which will have a date stamp already)
+				otherwise
+					copy the new record, date-stamping it with the current date
+			</p:documentation>
+			<p:viewport-source>
 				<p:pipe step="new-piction-data-with-preferred-images" port="result"/>
-				<p:pipe step="cached-piction-data" port="result"/>
-			</p:input>
-		</p:wrap-sequence>
-		<p:documentation>generate a version of the new piction data, with date-modified attribute on each record</p:documentation>
-		<p:xslt name="compute-date-modified">
-			<p:with-param name="current-date" select="$current-date"/>
+			</p:viewport-source>
+			<p:variable name="id" select="/doc/field[@name='Multimedia ID']"/>
+			<p:variable name="new-text" select="string-join(
+				(/doc/field, /doc/dataSource/@baseUrl), ' '
+			)"/>
+			<p:documentation>find the corresponding cached record</p:documentation>
+			<p:filter name="corresponding-cached-record">
+				<p:input port="source">
+					<p:pipe step="cached-piction-data" port="result"/>
+				</p:input>
+				<!-- Find the first doc in the cache whose Multimedia ID field matches $id -->
+				<!-- (should only be one doc with a given Multimedia ID, but in case of bogus data we select the 1st) -->
+				<p:with-option name="select" select=" 
+					concat(
+						'/add/doc[field[@name=&quot;Multimedia ID&quot;]=&quot;',
+						$id,
+						'&quot;][1]'
+					)
+				"/>
+			</p:filter>
+			<p:wrap-sequence name="wrap-new-record-and-previously-cached-record"
+				wrapper="new-record-and-cached-record">
+				<p:input port="source">
+					<p:pipe step="new-piction-records" port="current"/>
+					<p:pipe step="corresponding-cached-record" port="result"/>
+				</p:input>
+			</p:wrap-sequence>
+			<p:group name="create-date-stamped-record">
+				<p:variable name="old-text" select="string-join(
+					(
+						/new-record-and-cached-record/doc[2]/field, 
+						/new-record-and-cached-record/doc[2]/dataSource/@baseUrl
+					), 
+					' '
+				)"/>
+				<p:choose>
+					<p:when test="$new-text = $old-text">
+						<p:documentation>record is unchanged from cached value</p:documentation>
+						<p:identity>
+							<p:input port="source">
+								<p:pipe step="corresponding-cached-record" port="result"/>
+							</p:input>
+						</p:identity>
+						<cx:message>
+							<p:with-option name="message" select="concat('Record ', $id, ' unchanged.')"/>
+						</cx:message>
+					</p:when>
+					<p:otherwise>
+						<p:documentation>record has changed</p:documentation>
+						<p:add-attribute name="stamp-new-record-with-current-date"
+							attribute-name="date-modified" match="/*">
+							<p:input port="source">
+								<p:pipe step="new-piction-records" port="current"/>
+							</p:input>
+							<p:with-option name="attribute-value" select="$current-date"/>
+						</p:add-attribute>
+						<cx:message>
+							<p:with-option name="message" select="concat('Record ', $id, ' updated.')"/>
+						</cx:message>
+					</p:otherwise>
+				</p:choose>
+			</p:group>
+		</p:viewport>
+		<cx:message message="Caching date-stamped Piction data...">
 			<p:input port="source">
-				<p:pipe step="new-and-cached-piction-data" port="result"/>
+				<p:pipe step="new-piction-records" port="result"/>
 			</p:input>
-			<p:input port="stylesheet">
-				<p:document href="compute-piction-date-modified.xsl"/>
-			</p:input>
-		</p:xslt>
-		<p:documentation>for incremental updates, exclude records which have not changed since the previously cached versions</p:documentation>
-		<p:choose name="ingestible-piction-records">
-			<p:when test=" $incremental = 'true' ">
-				<p:output port="result"/>
-				<p:xslt name="exclude-unchanged-records">
-					<p:with-param name="current-date" select="$current-date"/>
-					<p:input port="source">
-						<p:pipe step="new-and-cached-piction-data" port="result"/>
-					</p:input>
-					<p:input port="stylesheet">
-						<p:document href="exclude-unchanged-piction-records.xsl"/>
-					</p:input>		
-				</p:xslt>
-			</p:when>
-			<p:otherwise>
-				<p:output port="result"/>
-				<p:identity name="include-all-piction-records"/>
-			</p:otherwise>
-		</p:choose>
-		<cx:message>
-			<p:with-option name="message" select="
+		</cx:message>
+		<p:store indent="true">
+			<p:with-option name="href" select="$piction-cache"/>
+		</p:store>
+	</p:declare-step>
+	
+	<p:declare-step name="process-piction-data" type="nma:process-piction-data">
+		<p:option name="hostname" required="true"/>
+		<p:option name="dataset" required="true"/>
+		<p:option name="incremental" required="true"/>
+		<nma:cache-piction-data>
+			<p:with-option name="dataset" select="$dataset"/>
+		</nma:cache-piction-data>
+		<p:load>
+			<p:with-option name="href" select="
 				concat(
-					'Processing ',
-					count(/add/doc),
-					' updated Piction records ...'
+					'/data/cache/piction-',
+					$dataset,
+					'.xml'
 				)
 			"/>
-		</cx:message>
+		</p:load>		<cx:message>
+			<p:with-option name="message" select="
+				concat(
+					'Redacting ',
+					count(/add/doc),
+					' Piction records ...'
+				)
+			"/>
+		</cx:message>		
 		<p:documentation>First make any necessary redactions before publishing to the specified dataset.
 		NB 'public' dataset omits certains data, which are present only in the 'internal' dataset</p:documentation>
 		<p:xslt name="redact">
@@ -236,6 +300,15 @@
 				<p:document href="filter.xsl"/>
 			</p:input>
 		</p:xslt>
+		<cx:message>
+			<p:with-option name="message" select="
+				concat(
+					'Converting ',
+					count(/add/doc),
+					' Piction records to RDF ...'
+				)
+			"/>
+		</cx:message>
 		<p:for-each name="record">
 			<p:iteration-source select="/add/doc"/>
 			<nma:ingest-record name="save-the-piction-rdf">
@@ -245,14 +318,6 @@
 				<p:with-option name="incremental" select="$incremental"/>
 			</nma:ingest-record>
 		</p:for-each>
-		<cx:message message="Caching Piction data..." cx:depends-on="record">
-			<p:input port="source">
-				<p:pipe step="ingestible-piction-records" port="result"/>
-			</p:input>
-		</cx:message>
-		<p:store indent="true">
-			<p:with-option name="href" select="$piction-cache"/>
-		</p:store>
 	</p:declare-step>	
 	
 	<p:declare-step name="process-data" type="nma:process-data">
