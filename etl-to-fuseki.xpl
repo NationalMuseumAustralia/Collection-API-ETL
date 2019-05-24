@@ -272,10 +272,10 @@
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
 		<p:option name="incremental" required="true"/>
-		<nma:cache-piction-data>
+		<nma:cache-piction-data name="updated-cache">
 			<p:with-option name="dataset" select="$dataset"/>
 		</nma:cache-piction-data>
-		<p:load>
+		<p:load cx:depends-on="updated-cache">
 			<p:with-option name="href" select="
 				concat(
 					'/data/cache/piction-',
