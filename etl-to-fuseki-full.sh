@@ -21,7 +21,7 @@ cd /usr/local/NMA-API-ETL
 # the kernel may find there's not enough available, and kill some other random process to free up memory. With vm.overcommit_memory=2,
 # a failure to allocate memory will simply prevent this process from starting.
 sysctl vm.overcommit_memory=2
-java -Xmx2G -Xms2G  -XX:+UseG1GC -XX:+UseStringDeduplication -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+java -Xmx5G -Xms5G  -XX:+UseG1GC -XX:+UseStringDeduplication -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # stop fuseki in order to rebuild its tdb2 database
 echo Stopping fuseki... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
