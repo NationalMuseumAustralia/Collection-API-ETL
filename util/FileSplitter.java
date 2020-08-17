@@ -1,0 +1,77 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stax.StAXSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.w3c.dom.Node;
+
+public class FileSplitter {
+
+	public static void main(String[] args) {
+		// read the command line arguments
+		if (args.length < 3)
+			System.exit(-1);
+		String inputFileName = args[0];
+		String outputFolderName = args[1];
+		String fragmentNameXPath = args[2];
+		try {
+			// set up infrastructure
+			// first a transformer
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			// set up XPath
+			XPath xPath = XPathFactory.newInstance().newXPath();
+			// StAX stream reader for the input file
+			XMLStreamReader xmlStreamReader = XMLInputFactory.newInstance()
+					.createXMLStreamReader(new FileReader(inputFileName));
+			// read the next (i.e. first) tag, the root element
+			xmlStreamReader.nextTag();
+			// now read each child element of the root element and all its descendants into
+			// a DOM
+			while (xmlStreamReader.nextTag() == XMLStreamConstants.START_ELEMENT) {
+				// create a DOM result to accept the transformed output
+				DOMResult domResult = new DOMResult();
+				// the StAXSource reads the current node and all its descendants into the DOM
+				// advancing the XMLStreamReader to the next tag if any
+				transformer.transform(new StAXSource(xmlStreamReader), domResult);
+				// get the root node of the fragment DOM from the DOMResult
+				Node fragmentRoot = domResult.getNode();
+				// find the file name
+				Node fragmentNameNode = (Node) xPath.evaluate(fragmentNameXPath, fragmentRoot, XPathConstants.NODE);
+				if (fragmentNameNode == null)
+					continue;
+				String fileName = fragmentNameNode.getTextContent();
+				if (fileName == null)
+					continue;
+				fileName = fileName.trim();
+				if (fileName.isEmpty())
+					continue;
+				// can save to file
+				transformer.transform(new DOMSource(fragmentRoot),
+						new StreamResult(new File(outputFolderName, fileName+ ".xml")));
+			}
+		} catch (FileNotFoundException | XMLStreamException | TransformerException | XPathExpressionException e1) {
+			e1.printStackTrace();
+			System.exit(-1);
+		}
+	}
+
+}
+
