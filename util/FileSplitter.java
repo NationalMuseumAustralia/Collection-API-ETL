@@ -45,27 +45,34 @@ public class FileSplitter {
 			xmlStreamReader.nextTag();
 			// now read each child element of the root element and all its descendants into
 			// a DOM
-			while (xmlStreamReader.nextTag() == XMLStreamConstants.START_ELEMENT) {
-				// create a DOM result to accept the transformed output
-				DOMResult domResult = new DOMResult();
-				// the StAXSource reads the current node and all its descendants into the DOM
-				// advancing the XMLStreamReader to the next tag if any
-				transformer.transform(new StAXSource(xmlStreamReader), domResult);
-				// get the root node of the fragment DOM from the DOMResult
-				Node fragmentRoot = domResult.getNode();
-				// find the file name
-				Node fragmentNameNode = (Node) xPath.evaluate(fragmentNameXPath, fragmentRoot, XPathConstants.NODE);
-				if (fragmentNameNode == null)
-					continue;
-				String fileName = fragmentNameNode.getTextContent();
-				if (fileName == null)
-					continue;
-				fileName = fileName.trim();
-				if (fileName.isEmpty())
-					continue;
-				// can save to file
-				transformer.transform(new DOMSource(fragmentRoot),
-						new StreamResult(new File(outputFolderName, fileName+ ".xml")));
+			int state = xmlStreamReader.nextTag();
+			while (xmlStreamReader.hasNext()) {
+				if (state == XMLStreamConstants.START_ELEMENT) {
+					// create a DOM result to accept the transformed output
+					DOMResult domResult = new DOMResult();
+					// the StAXSource reads the current node and all its descendants into the DOM
+					// advancing the XMLStreamReader to the next tag if any
+					transformer.transform(new StAXSource(xmlStreamReader), domResult);
+					// get the root node of the fragment DOM from the DOMResult
+					Node fragmentRoot = domResult.getNode();
+					// find the file name
+					Node fragmentNameNode = (Node) xPath.evaluate(fragmentNameXPath, fragmentRoot, XPathConstants.NODE);
+					if (fragmentNameNode == null)
+						continue;
+					String fileName = fragmentNameNode.getTextContent();
+					if (fileName == null)
+						continue;
+					fileName = fileName.trim();
+					if (fileName.isEmpty())
+						continue;
+					// can save to file
+					transformer.transform(new DOMSource(fragmentRoot),
+							new StreamResult(new File(outputFolderName, fileName+ ".xml")));
+				}
+				// advance to the next start element only if the state is not already START_ELEMENT
+				if (! xmlStreamReader.isStartElement()) {
+					state = xmlStreamReader.next();
+				}
 			}
 		} catch (FileNotFoundException | XMLStreamException | TransformerException | XPathExpressionException e1) {
 			e1.printStackTrace();
