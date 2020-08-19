@@ -19,6 +19,12 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.Unmarshaller;
+
+
 import org.w3c.dom.Node;
 
 public class FileSplitter {
@@ -41,6 +47,10 @@ public class FileSplitter {
 			// StAX stream reader for the input file
 			XMLStreamReader xmlStreamReader = XMLInputFactory.newInstance()
 					.createXMLStreamReader(new FileReader(inputFileName));
+			// JAXB unmarshaller
+			final JAXBContext jaxbContext = JAXBContext.newInstance();
+			final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
 			// read the next (i.e. first) tag, the root element
 			xmlStreamReader.nextTag();
 			// now read each child element of the root element and all its descendants into
@@ -48,6 +58,9 @@ public class FileSplitter {
 			int state = xmlStreamReader.nextTag();
 			while (xmlStreamReader.hasNext()) {
 				if (state == XMLStreamConstants.START_ELEMENT) {
+					JAXBElement<Object> element = unmarshaller.unmarshal(xmlStreamReader, Object.class);
+					Node fragmentRoot = (Node) element.getValue();
+					/*
 					// create a DOM result to accept the transformed output
 					DOMResult domResult = new DOMResult();
 					// the StAXSource reads the current node and all its descendants into the DOM
@@ -55,6 +68,7 @@ public class FileSplitter {
 					transformer.transform(new StAXSource(xmlStreamReader), domResult);
 					// get the root node of the fragment DOM from the DOMResult
 					Node fragmentRoot = domResult.getNode();
+					*/
 					// find the file name
 					Node fragmentNameNode = (Node) xPath.evaluate(fragmentNameXPath, fragmentRoot, XPathConstants.NODE);
 					if (fragmentNameNode == null)
@@ -74,7 +88,7 @@ public class FileSplitter {
 					state = xmlStreamReader.next();
 				}
 			}
-		} catch (FileNotFoundException | XMLStreamException | TransformerException | XPathExpressionException e1) {
+		} catch (FileNotFoundException | XMLStreamException | TransformerException | XPathExpressionException | JAXBException e1) {
 			e1.printStackTrace();
 			System.exit(-1);
 		}
