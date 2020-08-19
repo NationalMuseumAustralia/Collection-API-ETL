@@ -31,8 +31,17 @@ public class FileSplitter {
 
 	public static void main(String[] args) {
 		// read the command line arguments
-		if (args.length < 3)
+		if (args.length < 3) {
+			System.out.println("Splits an XML file, writing each top-level element into a separate file, named according to an XPath 1.0 expression.");
+			System.out.println();
+			System.out.println("Required parameters:");
+			System.out.println(" • input-file-name");
+			System.out.println(" • output-folder-name");
+			System.out.println(" • fragment-name-xpath");
+			System.out.println();
+			System.out.println("e.g. /mnt/dams_data/solr_prod1.xml /data/cache/piction \"(/doc/field[@name='Multimedia ID'])[1]\"");
 			System.exit(-1);
+		}
 		String inputFileName = args[0];
 		String outputFolderName = args[1];
 		String fragmentNameXPath = args[2];
