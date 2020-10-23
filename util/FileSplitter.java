@@ -60,24 +60,15 @@ public class FileSplitter {
 			final JAXBContext jaxbContext = JAXBContext.newInstance();
 			final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-			// read the next (i.e. first) tag, the root element
+			// read the next (i.e. first) tag, the opening tag of the root element
 			xmlStreamReader.nextTag();
 			// now read each child element of the root element and all its descendants into
 			// a DOM
-			int state = xmlStreamReader.nextTag();
 			while (xmlStreamReader.hasNext()) {
+				int state = xmlStreamReader.next(); // the next parsed token, which may be the opening tag of the child element
 				if (state == XMLStreamConstants.START_ELEMENT) {
 					JAXBElement<Object> element = unmarshaller.unmarshal(xmlStreamReader, Object.class);
 					Node fragmentRoot = (Node) element.getValue();
-					/*
-					// create a DOM result to accept the transformed output
-					DOMResult domResult = new DOMResult();
-					// the StAXSource reads the current node and all its descendants into the DOM
-					// advancing the XMLStreamReader to the next tag if any
-					transformer.transform(new StAXSource(xmlStreamReader), domResult);
-					// get the root node of the fragment DOM from the DOMResult
-					Node fragmentRoot = domResult.getNode();
-					*/
 					// find the file name
 					Node fragmentNameNode = (Node) xPath.evaluate(fragmentNameXPath, fragmentRoot, XPathConstants.NODE);
 					if (fragmentNameNode == null)
@@ -93,7 +84,7 @@ public class FileSplitter {
 							new StreamResult(new File(outputFolderName, fileName+ ".xml")));
 				}
 				// advance to the next start element only if the state is not already START_ELEMENT
-				if (! xmlStreamReader.isStartElement()) {
+				if (! xmlStreamReader.isStartElement() && xmlStreamReader.hasNext()) {
 					state = xmlStreamReader.next();
 				}
 			}
@@ -102,6 +93,5 @@ public class FileSplitter {
 			System.exit(-1);
 		}
 	}
-
 }
 
