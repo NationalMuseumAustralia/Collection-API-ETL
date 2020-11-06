@@ -21,7 +21,27 @@ cd /usr/local/NMA-API-ETL
 # the kernel may find there's not enough available, and kill some other random process to free up memory. With vm.overcommit_memory=2,
 # a failure to allocate memory will simply prevent this process from starting.
 sysctl vm.overcommit_memory=2
-java -Xmx5G -Xms5G  -XX:+UseG1GC -XX:+UseStringDeduplication -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+# Split the Piction data file into fragments, to minimise memory consumption
+echo Splitting Piction data file ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+# split the file into top-level elements, and save all which have a Multimedia ID field using that as the filename
+#java -cp util FileSplitter /mnt/dams_data/solr_prod1.xml /data/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
+# Split the EMu data files into fragments, to minimise memory consumption when processing them
+for TYPE in narratives objects sites parties accessionlots
+do
+	FILES=/mnt/emu_data/full/*$TYPE*.xml
+	if test -f $FILES
+	then
+		mkdir -p /data/split/$TYPE
+		for FILE in $FILES
+		do
+			# split the EMu file into top-level elements, and save all which are <record> elements using their <irn> element as the filename
+			echo Splitting EMu file $FILE ...  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+			java -cp util FileSplitter $FILE /data/split/$TYPE "/record" "/record/irn"
+		done
+	fi
+done
+#java -Xmx4G -Xms4G -XX:+UseG1GC -XX:+UseStringDeduplication -XX:-UseCompressedOops 
+java -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # stop fuseki in order to rebuild its tdb2 database
 echo Stopping fuseki... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
@@ -60,3 +80,7 @@ rm "/data/$DATASET/dataset.nq"
 # restart fuseki server 
 echo Restarting fuseki ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 sudo java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar manage-tomcat.xpl command="start?path=/fuseki" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+
+# Update Fuseki's dataset to create "preferred" image flags
+sleep 5
+java -jar /usr/local/xmlcalabash/xmlcalabash.jar transform-fuseki-dataset.xpl dataset="$DATASET"  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1

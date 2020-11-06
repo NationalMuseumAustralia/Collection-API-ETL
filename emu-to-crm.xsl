@@ -92,6 +92,9 @@
 		</rdf:Description>
 	</xsl:template>
 
+	<!-- an empty <record> element is one which has been entirely redacted, and should generate no RDF description -->
+	<xsl:template match="record[not(*)]"/>
+	
 	<xsl:template match="record">
 		<xsl:variable name="entity-iri" select="concat(lower-case($record-type), '/', irn)" />
 		

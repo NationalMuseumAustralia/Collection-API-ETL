@@ -61,7 +61,7 @@
 			<p:with-option name="incremental" select="$incremental"/>
 			<p:with-option name="hostname" select="$hostname"/>
 		</nma:process-data>
-
+		
 		<nma:process-data name="objects" file-name-component="objects">
 			<p:with-option name="dataset" select="$dataset"/>
 			<p:with-option name="incremental" select="$incremental"/>
@@ -104,62 +104,26 @@
 		</nma:store-graph>
 	</p:declare-step>
 	
-	<p:declare-step type="nma:list-input-data-files" name="list-input-data-files">
-		<p:option name="file-name-component" required="true"/>
-		<p:option name="incremental" required="true"/>
-		<p:output port="result"/>
-		<p:variable name="input-folder" select="if ($incremental = 'true') then '/mnt/emu_data/incremental' else '/mnt/emu_data/full' "/>
-		<!-- search the input folder for files whose names contain the record type -->
-		<p:directory-list>
-			<p:with-option name="path" select="$input-folder"/>
-			<p:with-option name="include-filter" select="
-				concat(
-					'.*',
-					$file-name-component,
-					'.*\.xml'
-				)
-			"/>
-		</p:directory-list>
-		<p:xslt name="sort-input-files-sequentially">
-			<p:input port="parameters"><p:empty/></p:input>
-			<p:input port="stylesheet">
-				<p:inline>
-					<xsl:stylesheet version="2.0"
-						xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-						xmlns:c="http://www.w3.org/ns/xproc-step">
-						<xsl:template match="/c:directory">
-							<xsl:copy>
-								<xsl:copy-of select="@*"/>
-								<xsl:for-each select="c:file">
-									<xsl:sort select="@name" order="ascending"/>
-									<xsl:copy>
-										<xsl:attribute name="name" select="concat(/c:directory/@xml:base, @name)"/>
-									</xsl:copy>
-								</xsl:for-each>
-							</xsl:copy>
-						</xsl:template>
-					</xsl:stylesheet>
-				</p:inline>
-			</p:input>
-		</p:xslt>		
-	</p:declare-step>
-	
 	<p:declare-step name="cache-piction-data" type="nma:cache-piction-data">
 		<p:documentation>Rebuild a time-stamped cache of the records from the Piction data file.</p:documentation>
 		<p:documentation>Records in the cache which differ from the current Piction record are replaced with the current record, and have their last-updated attribute set to the current time.</p:documentation>
 		<p:documentation>NB this step has no I/O ports, and only does file I/O. </p:documentation>
-		<p:option name="dataset" required="true"/>		<!-- current date, used to tag new records and exclude old records, where necessary -->
+		<p:option name="dataset" required="true"/>
+		<!-- current date, used to tag new records and exclude old records, where necessary -->
 		<p:variable name="current-date" select="current-date()"/>
-		<!-- the file which contains previously processed version of the piction data -->
-		<p:variable name="piction-cache" select="
+		
+		<!-- the folder which contains previously processed version of the piction data -->
+		<p:variable name="piction-cache-folder" select="
 			concat(
 				'/data/cache/piction-',
 				$dataset,
-				'.xml'
+				'/'
 			)
 		"/>
-		<p:documentation>the file containing the current, as yet unprocessed, piction data</p:documentation>
-		<p:load name="new-piction-data" href="/mnt/dams_data/solr_prod1.xml"/>
+		<p:documentation>the folder containing the current, as yet unprocessed, piction data</p:documentation>
+		<p:variable name="piction-data-folder" select=" '/data/split/piction/' "/>
+		
+		<!-- TODO migrate this logic to SPARQL update query
 		<cx:message message="Marking preferred images"/>
 		<p:xslt name="new-piction-data-with-preferred-images">
 			<p:input port="parameters"><p:empty/></p:input>
@@ -167,150 +131,150 @@
 				<p:document href="add-preferred-tag-to-piction-images.xsl"/>
 			</p:input>
 		</p:xslt>
+		-->
 		<p:documentation>track the "last-updated" date of the individual records</p:documentation>
-		<p:try name="cached-piction-data">
-			<p:group name="load-cached-piction-data">
-				<p:output port="result"/>
-				<cx:message message="Loading cached Piction data..."/>
-				<p:load>
-					<p:with-option name="href" select="$piction-cache"/>
-				</p:load>
-			</p:group>
-			<p:catch name="no-cached-data">
-				<p:output port="result"/>
-				<cx:message message="No cached Piction data found, using current data..."/>
-				<p:add-attribute match="/add/doc" attribute-name="date-modified">
-					<p:with-option name="attribute-value" select="$current-date"/>
-				</p:add-attribute>
-			</p:catch>
-		</p:try>
-		<!-- Go through all the new piction data records ... -->
-		<p:viewport  name="new-piction-records" match="/add/doc">
-			<p:documentation>
-				For each new Piction record, get its id, and then load the cached record with the same id.
-				If the two records are textually identical, then
-					copy the old record (which will have a date stamp already)
-				otherwise
-					copy the new record, date-stamping it with the current date
-			</p:documentation>
-			<p:viewport-source>
-				<p:pipe step="new-piction-data-with-preferred-images" port="result"/>
-			</p:viewport-source>
-			<p:variable name="id" select="/doc/field[@name='Multimedia ID']"/>
-			<p:variable name="new-text" select="string-join(
-				(/doc/field, /doc/dataSource/@baseUrl), ' '
-			)"/>
-			<p:documentation>find the corresponding cached record</p:documentation>
-			<p:filter name="corresponding-cached-record">
+		<!-- Compare the new and cached piction data records ... -->
+		<pxf:mkdir fail-on-error="false">
+			<p:with-option name="href" select="$piction-cache-folder"/>
+		</pxf:mkdir>
+		<p:directory-list name="new-piction-data-files">
+			<p:with-option name="path" select="$piction-data-folder"/>
+		</p:directory-list>
+		<p:directory-list name="cached-piction-data-files">
+			<p:with-option name="path" select="$piction-cache-folder"/>
+		</p:directory-list>
+		<p:wrap-sequence name="new-and-cached-piction-data-files" wrapper="new-and-cached-piction-data-files">
+			<p:input port="source">
+				<p:pipe step="new-piction-data-files" port="result"/>
+				<p:pipe step="cached-piction-data-files" port="result"/>
+			</p:input>
+		</p:wrap-sequence>
+		<!-- process all the new files which have no corresponding cached files as yet -->
+		<p:for-each name="new-records">
+			<p:iteration-source select="/new-and-cached-piction-data-files/c:directory[1]/c:file[not(@name=/new-and-cached-piction-data-files/c:directory[2]/c:file/@name)]">
+				<p:pipe step="new-and-cached-piction-data-files" port="result"/>
+			</p:iteration-source>
+			<p:variable name="record-filename" select="/c:file/@name"/>
+			<cx:message>
+				<p:with-option name="message" select="concat('Record ', $record-filename, ' is new in the cache.')"/>
+				<p:input port="source"><p:empty/></p:input>
+			</cx:message>
+			<p:load name="new-record">
+				<p:with-option name="href" select="concat($piction-data-folder, $record-filename)"/>
+			</p:load>
+			<p:add-attribute name="stamp-new-record-with-current-date" attribute-name="date-modified" match="/*">
 				<p:input port="source">
-					<p:pipe step="cached-piction-data" port="result"/>
+					<p:pipe step="new-record" port="result"/>
 				</p:input>
-				<!-- Find the first doc in the cache whose Multimedia ID field matches $id -->
-				<!-- (should only be one doc with a given Multimedia ID, but in case of bogus data we select the 1st) -->
-				<p:with-option name="select" select=" 
-					concat(
-						'/add/doc[field[@name=&quot;Multimedia ID&quot;]=&quot;',
-						$id,
-						'&quot;][1]'
-					)
-				"/>
-			</p:filter>
-			<p:wrap-sequence name="wrap-new-record-and-previously-cached-record"
-				wrapper="new-record-and-cached-record">
-				<p:input port="source">
-					<p:pipe step="new-piction-records" port="current"/>
-					<p:pipe step="corresponding-cached-record" port="result"/>
-				</p:input>
-			</p:wrap-sequence>
-			<p:group name="create-date-stamped-record">
-				<p:variable name="old-text" select="string-join(
-					(
-						/new-record-and-cached-record/doc[2]/field, 
-						/new-record-and-cached-record/doc[2]/dataSource/@baseUrl
-					), 
-					' '
-				)"/>
+				<p:with-option name="attribute-value" select="$current-date"/>
+			</p:add-attribute>
+			<p:store indent="true">
+				<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
+			</p:store>
+		</p:for-each>
+		<!-- process all the new files which have corresponding cached files -->
+		<p:for-each name="already-cached-records">
+			<p:iteration-source select="/new-and-cached-piction-data-files/c:directory[1]/c:file[@name=/new-and-cached-piction-data-files/c:directory[2]/c:file/@name]">
+				<p:pipe step="new-and-cached-piction-data-files" port="result"/>
+			</p:iteration-source>
+			<p:variable name="record-filename" select="/c:file/@name"/>
+			<p:load name="new-record">
+				<p:with-option name="href" select="concat($piction-data-folder, $record-filename)"/>
+			</p:load>
+			<p:load name="cached-record">
+				<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
+			</p:load>
+			<p:group>
+				<p:variable name="new-text" select="string-join((/doc/field, /doc/dataSource/@baseUrl), ' ')">
+					<p:pipe step="new-record" port="result"/>
+				</p:variable>
+				<p:variable name="cached-text" select="string-join((/doc/field, /doc/dataSource/@baseUrl), ' ')">
+					<p:pipe step="cached-record" port="result"/>
+				</p:variable>
 				<p:choose>
-					<p:when test="$new-text = $old-text">
-						<p:documentation>record is unchanged from cached value</p:documentation>
-						<p:identity>
-							<p:input port="source">
-								<p:pipe step="corresponding-cached-record" port="result"/>
-							</p:input>
-						</p:identity>
+					<p:when test="$new-text = $cached-text">
 						<cx:message>
-							<p:with-option name="message" select="concat('Record ', $id, ' unchanged.')"/>
+							<p:with-option name="message" select="concat('Record ', $record-filename, ' unchanged.')"/>
+							<p:input port="source"><p:empty/></p:input>
 						</cx:message>
 					</p:when>
 					<p:otherwise>
 						<p:documentation>record has changed</p:documentation>
-						<p:add-attribute name="stamp-new-record-with-current-date"
-							attribute-name="date-modified" match="/*">
+						<p:add-attribute name="stamp-updated-record-with-current-date" attribute-name="date-modified" match="/*">
 							<p:input port="source">
-								<p:pipe step="new-piction-records" port="current"/>
+								<p:pipe step="new-record" port="result"/>
 							</p:input>
 							<p:with-option name="attribute-value" select="$current-date"/>
 						</p:add-attribute>
+						<p:store indent="true">
+							<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
+						</p:store>
 						<cx:message>
-							<p:with-option name="message" select="concat('Record ', $id, ' updated.')"/>
+							<p:with-option name="message" select="concat('Record ', $record-filename, ' updated.')"/>
+							<p:input port="source"><p:empty/></p:input>
 						</cx:message>
 					</p:otherwise>
 				</p:choose>
+				<p:sink/>
 			</p:group>
-		</p:viewport>
-		<cx:message message="Caching date-stamped Piction data...">
-			<p:input port="source">
-				<p:pipe step="new-piction-records" port="result"/>
-			</p:input>
-		</cx:message>
-		<p:store indent="true">
-			<p:with-option name="href" select="$piction-cache"/>
-		</p:store>
+		</p:for-each>
+		<!-- finally, remove any records from the cache which are not present in the input data -->
+		<p:for-each name="orphan-records">
+			<p:iteration-source select="/new-and-cached-piction-data-files/c:directory[2]/c:file[not(@name=/new-and-cached-piction-data-files/c:directory[1]/c:file/@name)]">
+				<p:pipe step="new-and-cached-piction-data-files" port="result"/>
+			</p:iteration-source>
+			<p:variable name="record-filename" select="/c:file/@name"/>
+			<cx:message>
+				<p:with-option name="message" select="concat('Record ', $record-filename, ' is orphaned in the cache.')"/>
+				<p:input port="source"><p:empty/></p:input>
+			</cx:message>		
+			<pxf:delete>
+				<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
+			</pxf:delete>
+		</p:for-each>
 	</p:declare-step>
 	
 	<p:declare-step name="process-piction-data" type="nma:process-piction-data">
 		<p:option name="hostname" required="true"/>
 		<p:option name="dataset" required="true"/>
 		<p:option name="incremental" required="true"/>
+		<p:variable name="piction-cache-folder" select="
+			concat(
+				'/data/cache/piction-',
+				$dataset,
+				'/'
+			)
+		"/>
 		<nma:cache-piction-data name="updated-cache">
 			<p:with-option name="dataset" select="$dataset"/>
 		</nma:cache-piction-data>
-		<p:load cx:depends-on="updated-cache">
-			<p:with-option name="href" select="
-				concat(
-					'/data/cache/piction-',
-					$dataset,
-					'.xml'
-				)
-			"/>
-		</p:load>		<cx:message>
+		<p:directory-list name="cached-piction-data-files">
+			<p:with-option name="path" select="$piction-cache-folder"/>
+		</p:directory-list>	
+		<cx:message>
 			<p:with-option name="message" select="
 				concat(
-					'Redacting ',
-					count(/add/doc),
+					'Redacting and converting ',
+					count(/c:directory/c:file),
 					' Piction records ...'
 				)
 			"/>
 		</cx:message>		
-		<p:documentation>First make any necessary redactions before publishing to the specified dataset.
-		NB 'public' dataset omits certains data, which are present only in the 'internal' dataset</p:documentation>
-		<p:xslt name="redact">
-			<p:with-param name="dataset" select="$dataset"/>
-			<p:input port="stylesheet">
-				<p:document href="filter.xsl"/>
-			</p:input>
-		</p:xslt>
-		<cx:message>
-			<p:with-option name="message" select="
-				concat(
-					'Converting ',
-					count(/add/doc),
-					' Piction records to RDF ...'
-				)
-			"/>
-		</cx:message>
-		<p:for-each name="record">
-			<p:iteration-source select="/add/doc"/>
+		<p:for-each name="cached-piction-record">
+			<p:iteration-source select="/c:directory/c:file"/>
+			<p:variable name="record-filename" select="/c:file/@name"/>
+			<p:load name="cached-record">
+				<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
+			</p:load>
+			
+			<p:documentation>First make any necessary redactions before publishing to the specified dataset.
+			NB 'public' dataset omits certains data, which are present only in the 'internal' dataset</p:documentation>
+			<p:xslt name="redact">
+				<p:with-param name="dataset" select="$dataset"/>
+				<p:input port="stylesheet">
+					<p:document href="filter.xsl"/>
+				</p:input>
+			</p:xslt>
 			<nma:ingest-record name="save-the-piction-rdf">
 				<p:with-option name="file-name-component" select=" 'piction' "/>
 				<p:with-option name="dataset" select="$dataset"/>        
@@ -326,13 +290,12 @@
 		<p:option name="dataset" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<!-- search the input folder 'data' for data files containing records of this type -->
-		<nma:list-input-data-files>
-			<p:with-option name="file-name-component" select="$file-name-component"/>
-			<p:with-option name="incremental" select="$incremental"/>
-		</nma:list-input-data-files>
+		<p:directory-list name="input-files">
+			<p:with-option name="path" select="concat('/data/split/', $file-name-component)"/>
+		</p:directory-list>
 		<p:for-each name="file">
 			<p:iteration-source select="//c:file"/>
-			<p:variable name="filename" select="/c:file/@name"/>
+			<p:variable name="filename" select="concat('/data/split/', $file-name-component, '/', /c:file/@name)"/>
 			<cx:message>
 				<p:with-option name="message" select="
 					concat(
@@ -355,23 +318,20 @@
 					<p:document href="filter.xsl"/>
 				</p:input>
 			</p:xslt>
-			<p:for-each name="record">
-				<p:iteration-source select="/response/record"/>
-				<!-- If AdmDateModified missing, insert an arbitrary date in the past -->
-				<p:insert match="/record[not(AdmDateModified)]" position="last-child">
-					<p:input port="insertion">
-						<p:inline>
-							<AdmDateModified>01/01/2018</AdmDateModified>
-						</p:inline>
-					</p:input>
-				</p:insert>
-				<nma:ingest-record>
-					<p:with-option name="file-name-component" select="$file-name-component"/>
-					<p:with-option name="dataset" select="$dataset"/>        
-					<p:with-option name="hostname" select="$hostname"/>
-					<p:with-option name="incremental" select="$incremental"/>
-				</nma:ingest-record>
-			</p:for-each>
+			<!-- If AdmDateModified missing, insert an arbitrary date in the past -->
+			<p:insert match="/record[not(AdmDateModified)]" position="last-child">
+				<p:input port="insertion">
+					<p:inline>
+						<AdmDateModified>01/01/2018</AdmDateModified>
+					</p:inline>
+				</p:input>
+			</p:insert>
+			<nma:ingest-record>
+				<p:with-option name="file-name-component" select="$file-name-component"/>
+				<p:with-option name="dataset" select="$dataset"/>        
+				<p:with-option name="hostname" select="$hostname"/>
+				<p:with-option name="incremental" select="$incremental"/>
+			</nma:ingest-record>
 		</p:for-each>
 		<p:sink/>
 	</p:declare-step>

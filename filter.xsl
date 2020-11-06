@@ -53,7 +53,9 @@
 					AcsAPI_tab/AcsAPI  = ('Public', 'Public Restricted', 'Removed')
 				)
 			]
-	"/>
+	">
+		<xsl:copy/><!-- copies an empty <record> root element which will then be ignored -->
+	</xsl:template>
 	<!-- exclude a narrative's reference to an object, if that object's status isn’t either “Public” or “Public Restricted -->
 	<xsl:template mode="public" match="
 		record/ObjObjectsRef_tab/ObjObjectsRef
@@ -110,7 +112,9 @@
 				DesIntendedAudience_tab/DesIntendedAudience='Collection Explorer publish'
 			)
 		]
-	"/>
+	">
+		<xsl:copy/><!-- copies an empty <record> root element which will then be ignored -->
+	</xsl:template>
 			
 			
 </xsl:stylesheet>
