@@ -175,6 +175,10 @@
 				<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
 			</p:store>
 		</p:for-each>
+		<cx:message message="Finished adding new Piction image metadata to cache." cx:depends-on="new-records">
+			<p:input port="source"><p:empty/></p:input>
+		</cx:message>
+		<p:sink/>
 		<!-- process all the new files which have corresponding cached files -->
 		<p:for-each name="already-cached-records">
 			<p:iteration-source select="/new-and-cached-piction-data-files/c:directory[1]/c:file[@name=/new-and-cached-piction-data-files/c:directory[2]/c:file/@name]">
@@ -197,12 +201,12 @@
 				<p:choose>
 					<p:when test="$new-text = $cached-text">
 						<cx:message>
-							<p:with-option name="message" select="concat('Record ', $record-filename, ' unchanged.')"/>
+							<p:with-option name="message" select="concat('Piction record ', $record-filename, ' unchanged.')"/>
 							<p:input port="source"><p:empty/></p:input>
 						</cx:message>
 					</p:when>
 					<p:otherwise>
-						<p:documentation>record has changed</p:documentation>
+						<p:documentation>Piction record has changed</p:documentation>
 						<p:add-attribute name="stamp-updated-record-with-current-date" attribute-name="date-modified" match="/*">
 							<p:input port="source">
 								<p:pipe step="new-record" port="result"/>
@@ -213,7 +217,7 @@
 							<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
 						</p:store>
 						<cx:message>
-							<p:with-option name="message" select="concat('Record ', $record-filename, ' updated.')"/>
+							<p:with-option name="message" select="concat('Piction record ', $record-filename, ' updated.')"/>
 							<p:input port="source"><p:empty/></p:input>
 						</cx:message>
 					</p:otherwise>
@@ -221,6 +225,10 @@
 				<p:sink/>
 			</p:group>
 		</p:for-each>
+		<cx:message message="Finished updating existing Piction image metadata in cache." cx:depends-on="already-cached-records">
+			<p:input port="source"><p:empty/></p:input>
+		</cx:message>
+		<p:sink/>
 		<!-- finally, remove any records from the cache which are not present in the input data -->
 		<p:for-each name="orphan-records">
 			<p:iteration-source select="/new-and-cached-piction-data-files/c:directory[2]/c:file[not(@name=/new-and-cached-piction-data-files/c:directory[1]/c:file/@name)]">
@@ -228,16 +236,17 @@
 			</p:iteration-source>
 			<p:variable name="record-filename" select="/c:file/@name"/>
 			<cx:message>
-				<p:with-option name="message" select="concat('Record ', $record-filename, ' is orphaned in the cache.')"/>
+				<p:with-option name="message" select="concat('Piction record ', $record-filename, ' is orphaned in the cache.')"/>
 				<p:input port="source"><p:empty/></p:input>
 			</cx:message>		
 			<pxf:delete>
 				<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
 			</pxf:delete>
 		</p:for-each>
-		<cx:message message="Finished updating cache of Piction image metadata.">
+		<cx:message message="Finished purging cache of stale Piction image metadata." cx:depends-on="orphan-records">
 			<p:input port="source"><p:empty/></p:input>
 		</cx:message>
+		<p:sink/>
 	</p:declare-step>
 	
 	<p:declare-step name="process-piction-data" type="nma:process-piction-data">
@@ -254,13 +263,14 @@
 		<cx:message message="Processing Piction image metadata...">
 			<p:input port="source"><p:empty/></p:input>
 		</cx:message>
+		<p:sink/>
 		<nma:cache-piction-data name="updated-cache">
 			<p:with-option name="dataset" select="$dataset"/>
 		</nma:cache-piction-data>
-		<p:directory-list name="cached-piction-data-files">
+		<p:directory-list name="cached-piction-data-files" cx:depends-on="updated-cache">
 			<p:with-option name="path" select="$piction-cache-folder"/>
 		</p:directory-list>	
-		<cx:message>
+		<cx:message cx:depends-on="cached-piction-data-files">
 			<p:with-option name="message" select="
 				concat(
 					'Redacting and converting ',
@@ -268,7 +278,8 @@
 					' Piction records ...'
 				)
 			"/>
-		</cx:message>		
+		</cx:message>
+		<p:sink/>
 		<p:for-each name="cached-piction-record">
 			<p:iteration-source select="/c:directory/c:file"/>
 			<p:variable name="record-filename" select="/c:file/@name"/>
@@ -291,9 +302,10 @@
 				<p:with-option name="incremental" select="$incremental"/>
 			</nma:ingest-record>
 		</p:for-each>
-		<cx:message message="Finished processing Piction image metadata.">
+		<cx:message message="Finished processing Piction image metadata." cx:depends-on="cached-piction-record">
 			<p:input port="source"><p:empty/></p:input>
 		</cx:message>
+		<p:sink/>
 	</p:declare-step>	
 	
 	<p:declare-step name="process-data" type="nma:process-data">
@@ -345,7 +357,6 @@
 				<p:with-option name="incremental" select="$incremental"/>
 			</nma:ingest-record>
 		</p:for-each>
-		<p:sink/>
 	</p:declare-step>
 	
 	<p:declare-step type="nma:ingest-record" name="ingest-record">
