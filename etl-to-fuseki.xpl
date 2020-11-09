@@ -93,7 +93,7 @@
 		<p:option name="hostname" required="true"/>
 		<p:option name="incremental" required="true"/>
 		<p:load href="vocabulary.rdf" name="raw-vocabulary"/>
-		<cx:message message="Loading local RDF vocabularies into SPARQL store..."/>
+		<cx:message message="Loading local RDF vocabularies..."/>
 		<p:add-attribute attribute-name="xml:base" match="/*" name="localised-vocabulary">
 			<p:with-option name="attribute-value" select="concat('http://', $hostname, '/term/')"/>
 		</p:add-attribute>
@@ -132,6 +132,9 @@
 			</p:input>
 		</p:xslt>
 		-->
+		<cx:message message="Updating cache of Piction image metadata...">
+			<p:input port="source"><p:empty/></p:input>
+		</cx:message>
 		<p:documentation>track the "last-updated" date of the individual records</p:documentation>
 		<!-- Compare the new and cached piction data records ... -->
 		<pxf:mkdir fail-on-error="false">
@@ -232,6 +235,9 @@
 				<p:with-option name="href" select="concat($piction-cache-folder, $record-filename)"/>
 			</pxf:delete>
 		</p:for-each>
+		<cx:message message="Finished updating cache of Piction image metadata.">
+			<p:input port="source"><p:empty/></p:input>
+		</cx:message>
 	</p:declare-step>
 	
 	<p:declare-step name="process-piction-data" type="nma:process-piction-data">
@@ -245,6 +251,9 @@
 				'/'
 			)
 		"/>
+		<cx:message message="Processing Piction image metadata...">
+			<p:input port="source"><p:empty/></p:input>
+		</cx:message>
 		<nma:cache-piction-data name="updated-cache">
 			<p:with-option name="dataset" select="$dataset"/>
 		</nma:cache-piction-data>
@@ -282,6 +291,9 @@
 				<p:with-option name="incremental" select="$incremental"/>
 			</nma:ingest-record>
 		</p:for-each>
+		<cx:message message="Finished processing Piction image metadata.">
+			<p:input port="source"><p:empty/></p:input>
+		</cx:message>
 	</p:declare-step>	
 	
 	<p:declare-step name="process-data" type="nma:process-data">
