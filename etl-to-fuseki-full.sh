@@ -28,17 +28,14 @@ java -cp util FileSplitter /mnt/dams_data/solr_prod1.xml /data/split/piction "/d
 # Split the EMu data files into fragments, to minimise memory consumption when processing them
 for TYPE in narratives objects sites parties accessionlots
 do
+	mkdir -p /data/split/$TYPE
 	FILES=/mnt/emu_data/full/*$TYPE*.xml
-	if test -f $FILES
-	then
-		mkdir -p /data/split/$TYPE
-		for FILE in $FILES
-		do
-			# split the EMu file into top-level elements, and save all which are <record> elements using their <irn> element as the filename
-			echo Splitting EMu file $FILE ...  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-			java -cp util FileSplitter $FILE /data/split/$TYPE "/record" "/record/irn"
-		done
-	fi
+	for FILE in $FILES
+	do
+		# split the EMu file into top-level elements, and save all which are <record> elements using their <irn> element as the filename
+		echo Splitting EMu file $FILE ...  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+		java -cp util FileSplitter $FILE /data/split/$TYPE "/record" "/record/irn"
+	done
 done
 #java -Xmx4G -Xms4G -XX:+UseG1GC -XX:+UseStringDeduplication -XX:-UseCompressedOops 
 java -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
