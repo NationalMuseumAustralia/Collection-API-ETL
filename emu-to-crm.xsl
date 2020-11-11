@@ -13,8 +13,33 @@
 	
 	<xsl:import href="util/date-util-functions.xsl"/>
 
-	<!-- record type of the input file, e.g. "object", "place", "party", or "narrative" -->
+	<!-- 
+		The EMu file names all include a component which identifies the EMu module: 
+			narratives 
+			objects 
+			sites 
+			parties 
+			accessionlots
+		The corresponding components used in the RDF resource URIs are:
+			narrative
+			object
+			place
+			party
+			collection
+	-->
+	<xsl:param name="file-name-component"/>
 	<xsl:variable name="record-type" select="
+		map{
+			'narratives': 'narrative',
+			'objects': 'object',
+			'sites': 'place',
+			'parties': 'party',
+			'accessionlots', 'collection'
+		}($file-name-component)
+	"/>
+
+	<!-- record type of the input file, e.g. "object", "place", "party", "collection", "narrative" -->
+	<!--
 		if (exists(//TitObjectNumber)) then 'object' else
 		if (exists(//NarTitle)) then 'narrative' else
 		if (exists(
@@ -30,7 +55,8 @@
 		)) then 'place' else
 		if (exists(//AcqNmaCollectionTitle)) then 'collection' else
 		'unrecognised'
-	"/>
+	-->
+	
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
 	<xsl:param name="ce-uri-base" select="'http://collectionsearch.nma.gov.au/'" />
 	<xsl:param name="media-uri-base" select="'http://collectionsearch.nma.gov.au/nmacs-image-download/emu/'" />

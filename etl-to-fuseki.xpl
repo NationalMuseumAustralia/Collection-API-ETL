@@ -270,7 +270,7 @@
 		<p:directory-list name="cached-piction-data-files" cx:depends-on="updated-cache">
 			<p:with-option name="path" select="$piction-cache-folder"/>
 		</p:directory-list>	
-		<cx:message cx:depends-on="cached-piction-data-files">
+		<cx:message>
 			<p:with-option name="message" select="
 				concat(
 					'Redacting and converting ',
@@ -279,7 +279,6 @@
 				)
 			"/>
 		</cx:message>
-		<p:sink/>
 		<p:for-each name="cached-piction-record">
 			<p:iteration-source select="/c:directory/c:file"/>
 			<p:variable name="record-filename" select="/c:file/@name"/>
@@ -385,6 +384,7 @@
 				<p:output port="result"/>
 				<p:xslt name="emu-objects-to-rdf">
 					<p:with-param name="base-uri" select="concat('http://', $hostname, '/')"/>
+					<p:with-param name="file-name-component" select="$file-name-component"/>
 					<p:input port="stylesheet">
 						<p:document href="emu-to-crm.xsl"/>
 					</p:input>
