@@ -34,7 +34,7 @@
 			'objects': 'object',
 			'sites': 'place',
 			'parties': 'party',
-			'accessionlots', 'collection'
+			'accessionlots': 'collection'
 		}($file-name-component)
 	"/>
 
