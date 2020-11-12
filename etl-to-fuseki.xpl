@@ -356,6 +356,7 @@
 				<p:with-option name="incremental" select="$incremental"/>
 			</nma:ingest-record>
 		</p:for-each>
+		<p:sink/>
 	</p:declare-step>
 	
 	<p:declare-step type="nma:ingest-record" name="ingest-record">
