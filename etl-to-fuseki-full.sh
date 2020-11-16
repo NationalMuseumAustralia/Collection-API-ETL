@@ -76,8 +76,10 @@ rm "/data/$DATASET/dataset.nq"
 
 # restart fuseki server 
 echo Restarting fuseki ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-sudo java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar manage-tomcat.xpl command="start?path=/fuseki" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar manage-tomcat.xpl command="start?path=/fuseki" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # Update Fuseki's dataset to create "preferred" image flags
 sleep 5
 java -jar /usr/local/xmlcalabash/xmlcalabash.jar transform-fuseki-dataset.xpl dataset="$DATASET"  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+
+
