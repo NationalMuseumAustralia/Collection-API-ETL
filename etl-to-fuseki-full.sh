@@ -16,11 +16,15 @@ find "/data/$DATASET/n-quads/" -name "*.nq" -delete
 
 # execute XML-to-RDF transformations to generate new .nq files in /data/DATASET/n-quads/
 cd /usr/local/NMA-API-ETL
+
 # Ensure that OS does not grant this process memory which it does not actually have available. 
 # With vm.overcommit_memory=0 (the default), the process may start, but when it attempts to actually use the memory it has acquired,
 # the kernel may find there's not enough available, and kill some other random process to free up memory. With vm.overcommit_memory=2,
-# a failure to allocate memory will simply prevent this process from starting.
+# a failure to allocate memory will simply prevent this process from starting, and vm.overcommit_ratio=100 tells the kernel to allow 100% of memory
+# to be allocated. See https://engineering.pivotal.io/post/virtual_memory_settings_in_linux_-_the_problem_with_overcommit/
 /sbin/sysctl vm.overcommit_memory=2
+/sbin/sysctl vm.overcommit_ratio=100
+
 # Split the Piction data file into fragments, to minimise memory consumption
 echo Splitting Piction data file ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 # split the file into top-level elements, and save all which have a Multimedia ID field using that as the filename
