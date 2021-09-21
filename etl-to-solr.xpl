@@ -214,13 +214,6 @@
 						<p:identity name="unlicensed-images-not-redacted-from-internal-api"/>
 					</p:otherwise>
 				</p:choose>
-				<p:xslt name="description-with-emu-images-redacted">
-					<p:input port="stylesheet">
-						<p:document href="redact-low-quality-images-from-trix-description.xsl"/>
-					</p:input>
-					<p:with-param name="root-resource" select="$resource-uri"/>
-					<p:with-param name="debug" select=" 'false' "/>
-				</p:xslt>
 				<p:xslt name="description-with-secondary-depictions-redacted">
 					<p:input port="stylesheet">
 						<p:document href="redact-objects-depicted-in-images-which-depict-objects.xsl"/>
@@ -239,7 +232,7 @@
 			<nma:update-solr>
 				<p:with-option name="resource-uri" select="$resource-uri"/>
 				<p:with-option name="dataset" select="$dataset"/>
-				<p:with-option name="hash" select=" '' "/>
+				<p:with-option name="hash" select=" p:system-property('p:episode') "/>
 				<p:with-option name="datestamp" select="$datestamp"/>
 				<p:with-option name="source-count" select="$source-count"/>
 			</nma:update-solr>
@@ -270,6 +263,32 @@
 			</p:input>
 		</p:store>
 		-->
+		
+		<!-- If doing a full update, we should now purge all the records except those which have been saved in this particular episode of the ETL pipeline -->
+		<p:template name="create-solr-request">
+			<p:with-param name="dataset" select="$dataset"/>
+			<p:with-param name="type" select="$solr-type"/>
+			<p:with-param name="hash" select="p:system-property('p:episode')"/>
+			<p:input port="source">
+				<p:empty/>
+			</p:input>
+			<p:input port="template">
+				<p:inline>
+					<c:request method="post" href="http://localhost:8983/solr/core_nma_{$dataset}/update" detailed="true">
+						<c:body content-type="application/xml">
+							<delete commitWithin="10000"><query>type:"{$type}" NOT hash:"{$hash}"</query></delete>
+						</c:body>
+					</c:request>
+				</p:inline>
+			</p:input>
+		</p:template>
+		<p:for-each>
+			<!-- query needs executing only if $mode='full' -->
+			<p:iteration-source select="/*[$mode='full']"/>
+			<!-- execute the Solr index delete query -->
+			<p:http-request name="solr-deposit"/>
+			<p:sink/>
+		</p:for-each>
 	</p:declare-step>
 	
 	<!-- compute a hash of a document, replacing it with <hash value="xxx"/> -->

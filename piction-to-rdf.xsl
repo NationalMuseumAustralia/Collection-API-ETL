@@ -11,11 +11,8 @@
 	
 	<!-- root element is <doc> containing only <field> and <dataSource> children -->
 	<!-- field elements have @name attributes:
-		"EMu IRN for Media Asset" - ignore?
-		"EMu IRN for Related Objects" - done
+		"EMU IRN" - done
 		"Multimedia ID" - visual item identifier - done
-		"Other Numbers Kind" 
-		"Other Numbers Value" 
 		"Page Number" 
 		"Photographer" - done
 		"Title" - done
@@ -27,7 +24,7 @@
 			select="normalize-space((field[@name='Multimedia ID'])[1])" />
 		<xsl:variable name="visual-item-graph" select="concat('media/', $media-id)" />
 		<xsl:variable name="related-objects"
-			select="field[@name='EMu IRN for Related Objects'][normalize-space()]" />
+			select="field[@name='EMU IRN'][normalize-space()]" />
 		<!-- dataSource elements have attributes @type (="URLDataSource"), @baseUrl (= a UNC path to the image file), and @name:
 			"original_2" - 2000px, internal API only
 			"original_3" - 1600px, public
@@ -38,7 +35,6 @@
 		-->
 		<xsl:variable name="image-data-sources" select="
 			dataSource
-				[contains(@baseUrl, '\Collectionsearch\')]
 				[@name=('original_2', 'original_3', 'thumbnail', 'web')]
 		"/>
 		<rdf:RDF>
@@ -59,7 +55,7 @@
 					<xsl:if test="field[@name='Page Number']='1'">
 						<crm:P2_has_type rdf:resource="{$nma-term-ns}preferred" />	
 					</xsl:if>
-					<xsl:for-each select="field[@name='title']">
+					<xsl:for-each select="field[@name='Title']">
 						<rdfs:label>
 							<xsl:value-of select="." />
 						</rdfs:label>
@@ -71,18 +67,7 @@
 					</xsl:for-each>
 					<xsl:for-each select="$image-data-sources">
 						<crm:P138i_has_representation>
-							<crm:E36_Visual_Item rdf:about="{concat
-							(
-								'http://collectionsearch.nma.gov.au/nmacs-image-download/piction/dams_data/',
-								string-join(
-									for $component in tokenize(
-										substring-after(@baseUrl, '\Collectionsearch\'),
-										'\\'
-									) return encode-for-uri($component),
-									'/'
-								)
-							)
-							}">
+							<crm:E36_Visual_Item rdf:about="{@baseUrl}">
 								<xsl:choose>
 									<xsl:when test="@name = 'thumbnail'">
 										<crm:P2_has_type rdf:resource="{concat($nma-term-ns, 'thumbnail')}" />

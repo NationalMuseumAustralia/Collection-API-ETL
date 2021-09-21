@@ -123,15 +123,6 @@
 		<p:documentation>the folder containing the current, as yet unprocessed, piction data</p:documentation>
 		<p:variable name="piction-data-folder" select=" '/data/split/piction/' "/>
 		
-		<!-- TODO migrate this logic to SPARQL update query
-		<cx:message message="Marking preferred images"/>
-		<p:xslt name="new-piction-data-with-preferred-images">
-			<p:input port="parameters"><p:empty/></p:input>
-			<p:input port="stylesheet">
-				<p:document href="add-preferred-tag-to-piction-images.xsl"/>
-			</p:input>
-		</p:xslt>
-		-->
 		<cx:message message="Updating cache of Piction image metadata...">
 			<p:input port="source"><p:empty/></p:input>
 		</cx:message>
@@ -451,14 +442,14 @@
 			</p:otherwise>
 		</p:choose>
 		<!-- store the RDF/XML as a file -->
-<!--
+		<!--
 		<p:store indent="true">
 			<p:with-option name="href" select="concat('/data/', $dataset, '/rdf-xml/', encode-for-uri(encode-for-uri($graph-uri)), '.rdf')"/>
 			<p:input port="source">
 				<p:pipe step="store-graph" port="source"/>
 			</p:input>
 		</p:store>
--->
+		-->
 	</p:declare-step>
 	
 </p:declare-step>

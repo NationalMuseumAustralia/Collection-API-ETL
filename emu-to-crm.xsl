@@ -58,8 +58,7 @@
 	-->
 	
 	<xsl:param name="base-uri" select="'https://api.nma.gov.au/'" />
-	<xsl:param name="ce-uri-base" select="'http://collectionsearch.nma.gov.au/'" />
-	<xsl:param name="media-uri-base" select="'http://collectionsearch.nma.gov.au/nmacs-image-download/emu/'" />
+	<xsl:param name="ce-uri-base" select="'https://collectionsearch.nma.gov.au/s/hw/EMU.EMUIRN/'" />
 
 	<xsl:variable name="nma-term-ns" select="concat($base-uri, 'term/')" />
 	<xsl:variable name="crm-ns" select="'http://www.cidoc-crm.org/cidoc-crm/'" />
@@ -232,12 +231,6 @@
 			<xsl:apply-templates select="NotText0">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
-			
-			<!-- media -->
-			<xsl:apply-templates select="WebMultiMediaRef_tab/image">
-				<xsl:with-param name="record-type" select="$record-type" />
-				<xsl:with-param name="entity-iri" select="$entity-iri" />
-			</xsl:apply-templates>
 
 			<!-- NARRATIVE FIELDS -->
 
@@ -259,9 +252,6 @@
 			<xsl:apply-templates select="NarNarrative">
 				<xsl:with-param name="entity-iri" select="$entity-iri" />
 			</xsl:apply-templates>
-
-			<!-- Narrative image -->
-			<xsl:apply-templates select="MulMultiMediaRef_tab/image" />
 
 			<!-- Narrative related objects -->
 			<xsl:apply-templates select="ObjObjectsRef_tab/ObjObjectsRef">
@@ -951,92 +941,6 @@
 		</rdfs:seeAlso>
 	</xsl:template>
 
-	<!-- media -->
-	<!-- https://linked.art/model/object/digital/ -->
-	<xsl:template match="image">
-		<xsl:param name="record-type" />
-		<xsl:param name="entity-iri" />
-		<xsl:variable name="media-iri" select="concat('media/', media_irn)" />
-		<crm:P138i_has_representation>
-			<crm:E36_Visual_Item rdf:about="{$media-iri}#">
-				<!-- bundle this media up along with all the other media of this object, into a parallel aggregation which is subject to the re-use rights -->
-				<!-- NB: see AcsCCStatus template -->
-				<ore:isAggregatedBy rdf:resource="{$entity-iri}#media"/>
-				<!-- flag first image as 'preferred' -->
-				<xsl:if test="position()=1">
-					<crm:P2_has_type rdf:resource="{$nma-term-ns}preferred" />
-				</xsl:if>
-				<crm:P2_has_type rdf:resource="{$nma-term-ns}emu-image" />
-				<!-- add reverse link back to parent object entity -->
-				<xsl:if test="$record-type = 'object' and not($entity-iri= '')">
-					<crm:P138_represents rdf:resource="{$entity-iri}#" />
-				</xsl:if>
-
-				<!-- TODO: add identified_by for media IRN -->
-				<!-- TODO: add mime type/format -->
-
-				<!-- preview -->
-				<xsl:for-each select="res640px">
-					<crm:P138i_has_representation>		
-						<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, image_path)}">
-							<crm:P2_has_type rdf:resource="{$nma-term-ns}preview" />
-							<xsl:if test="image_width != ''">
-								<xsl:call-template name="output-dimension">
-									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#previewWidth')" />
-									<!-- AAT 300055647: width -->
-									<xsl:with-param name="aat-type" select="'300055647'" />
-									<xsl:with-param name="value" select="image_width" />
-									<!-- TODO: add AAT 300379612: pixels -->
-									<xsl:with-param name="unit-value" select="'pixels'" />
-								</xsl:call-template>
-							</xsl:if>
-							<xsl:if test="image_height != ''">
-								<xsl:call-template name="output-dimension">
-									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#previewHeight')" />
-									<!-- AAT 300055644: height -->
-									<xsl:with-param name="aat-type" select="'300055644'" />
-									<xsl:with-param name="value" select="image_height" />
-									<!-- TODO: add AAT 300379612: pixels -->
-									<xsl:with-param name="unit-value" select="'pixels'" />
-								</xsl:call-template>
-							</xsl:if>
-						</crm:E36_Visual_Item>
-					</crm:P138i_has_representation>
-				</xsl:for-each>
-
-				<!-- thumbnail -->
-				<xsl:for-each select="res200px">
-					<crm:P138i_has_representation>
-						<crm:E36_Visual_Item rdf:about="{uri:uri-from-filename($media-uri-base, image_path)}">
-							<crm:P2_has_type rdf:resource="{$nma-term-ns}thumbnail" />
-							<xsl:if test="image_width != ''">
-								<xsl:call-template name="output-dimension">
-									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#thumbWidth')" />
-									<!-- AAT 300055647: width -->
-									<xsl:with-param name="aat-type" select="'300055647'" />
-									<xsl:with-param name="value" select="image_width" />
-									<!-- TODO: add AAT 300379612: pixels -->
-									<xsl:with-param name="unit-value" select="'pixels'" />
-								</xsl:call-template>
-							</xsl:if>
-							<xsl:if test="image_height != ''">
-								<xsl:call-template name="output-dimension">
-									<xsl:with-param name="dimension-iri" select="concat($media-iri,'#thumbHeight')" />
-									<!-- AAT 300055644: height -->
-									<xsl:with-param name="aat-type" select="'300055644'" />
-									<xsl:with-param name="value" select="image_height" />
-									<!-- TODO: add AAT 300379612: pixels -->
-									<xsl:with-param name="unit-value" select="'pixels'" />
-								</xsl:call-template>
-							</xsl:if>
-						</crm:E36_Visual_Item>
-					</crm:P138i_has_representation>
-				</xsl:for-each>
-
-			</crm:E36_Visual_Item>
-		</crm:P138i_has_representation>
-	</xsl:template>
-
 	<!-- NARRATIVE FIELDS -->
 
 	<xsl:template match="NarTitle">
@@ -1073,28 +977,6 @@
 				<rdf:value><xsl:value-of select="." /></rdf:value>
 				<dc:format>text/html</dc:format>
 			</crm:E33_Linguistic_Object>
-		</ore:aggregates>
-	</xsl:template>
-
-	<!-- MulMultiMediaRef_tab (optional) - sequence of image banner_small banner_large -->
-	<xsl:template match="MulMultiMediaRef_tab/image">
-		<ore:aggregates>
-			<crm:E36_Visual_Item>
-				<crm:P2_has_type rdf:resource="{$nma-term-ns}emu-image" />
-				<crm:P2_has_type rdf:resource="{$nma-term-ns}banner-image" />
-				<crm:P138i_has_representation>
-					<crm:E36_Visual_Item
-						rdf:about="{uri:uri-from-filename($media-uri-base, banner_small)}">
-						<crm:P2_has_type rdf:resource="{$nma-term-ns}small-banner-image" />
-					</crm:E36_Visual_Item>
-				</crm:P138i_has_representation>
-				<crm:P138i_has_representation>
-					<crm:E36_Visual_Item
-						rdf:about="{uri:uri-from-filename($media-uri-base, banner_large)}">
-						<crm:P2_has_type rdf:resource="{$nma-term-ns}large-banner-image" />
-					</crm:E36_Visual_Item>
-				</crm:P138i_has_representation>
-			</crm:E36_Visual_Item>
 		</ore:aggregates>
 	</xsl:template>
 
@@ -1325,8 +1207,8 @@
 		<xsl:param name="record-type" />
 		<xsl:param name="entity-iri" />
 		<xsl:variable name="id" select="replace($entity-iri, '(.*/)([^/]*)$', '$2')" />
-		<xsl:variable name="href" select="concat($ce-uri-base, $record-type, '/', $id)" />
-		<xsl:if test="$record-type='object' or $record-type='narrative'">
+		<xsl:variable name="href" select="concat($ce-uri-base, $id)" />
+		<xsl:if test="$record-type='object'">
 			<crm:P129i_is_subject_of>
 				<crm:E33_Linguistic_Object rdf:about="{$href}">
 					<rdfs:label><xsl:text>View on Collection Explorer</xsl:text></rdfs:label>

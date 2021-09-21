@@ -25,10 +25,14 @@ cd /usr/local/NMA-API-ETL
 /sbin/sysctl vm.overcommit_memory=2
 /sbin/sysctl vm.overcommit_ratio=100
 
+# download the Piction xml file
+curl --output /mnt/dams_data/solr_prod.xml https://collectionsearch.nma.gov.au/nmacs-image-download/solr_prod.xml
+# remove the individual record files split from previous version of piction xml file
+rm -r -f /data/split/piction
 # Split the Piction data file into fragments, to minimise memory consumption
 echo Splitting Piction data file ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-# split the file into top-level elements, and save all which have a Multimedia ID field using that as the filename
-java -cp util FileSplitter /mnt/dams_data/solr_prod1.xml /data/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
+# split the file into top-level elements, and save all which have a Multimedia ID field using the first occurrence of that field 🤦 as the filename
+java -cp util FileSplitter /mnt/dams_data/solr_prod.xml /data/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
 # Split the EMu data files into fragments, to minimise memory consumption when processing them
 for TYPE in narratives objects sites parties accessionlots
 do
