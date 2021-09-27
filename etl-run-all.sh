@@ -82,12 +82,12 @@ case "$MODE" in
 			echo Parties file missing! ETL aborting.  >> $LOGFILE
 			exit 1
 		fi
-		if compgen -G $PICTION_IN_DIR/solr_prod1.xml > /dev/null ; then
-			echo Piction file exists >> $LOGFILE
-		else
-			echo Piction file missing! ETL aborting.  >> $LOGFILE
-			exit 1
-		fi
+#		if compgen -G $PICTION_IN_DIR/solr_prod1.xml > /dev/null ; then
+#			echo Piction file exists >> $LOGFILE
+#		else
+#			echo Piction file missing! ETL aborting.  >> $LOGFILE
+#			exit 1
+#		fi
 #		;;
 #	incremental)
 		# we only need at least one EMu XML file for incremental
