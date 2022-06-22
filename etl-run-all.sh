@@ -11,8 +11,8 @@
 # Piction file is not to be moved after ingest (so may be stale if export fails)
 
 # we mainly work/archive in the EMu dir (but pull in piction files too)
-DATA_DIR=/mnt/emu_data
-PICTION_DATA_DIR=/mnt/dams_data
+DATA_DIR=/data/source/emu_data
+PICTION_DATA_DIR=/data/source/dams_data
 # where the main steps operations are
 SCRIPT_DIR=/usr/local/NMA-API-ETL
 # where to find ETL logs (to copy/archive after each step)

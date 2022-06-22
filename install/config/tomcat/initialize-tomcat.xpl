@@ -21,5 +21,5 @@
 			</p:inline>
 		</p:input>
 	</p:template>
-	<p:store href="/var/lib/tomcat8/conf/tomcat-users.xml"/>
+	<p:store href="/var/lib/tomcat9/conf/tomcat-users.xml"/>
 </p:declare-step>
