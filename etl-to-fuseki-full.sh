@@ -2,6 +2,10 @@
 # Full ETL script
 # Regenerates the full RDF dataset using the Graph Store's batch loading feature rather than the much slower SPARQL graph store protocol
 
+# define the location of source data files
+DATA_DIR=/data/source/emu_data
+PICTION_DATA_DIR=/data/source/dams_data
+
 # default to public dataset
 DATASET=public
 
@@ -26,18 +30,24 @@ cd /usr/local/NMA-API-ETL
 /sbin/sysctl vm.overcommit_ratio=100
 
 # download the Piction xml file
-curl --output /mnt/dams_data/solr_prod.xml https://collectionsearch.nma.gov.au/nmacs-image-download/solr_prod.xml
+curl --output $PICTION_DATA_DIR/solr_prod.xml https://collectionsearch.nma.gov.au/nmacs-image-download/solr_prod.xml
 # remove the individual record files split from previous version of piction xml file
 rm -r -f /data/split/piction
 # Split the Piction data file into fragments, to minimise memory consumption
 echo Splitting Piction data file ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 # split the file into top-level elements, and save all which have a Multimedia ID field using the first occurrence of that field 🤦 as the filename
-java -cp util FileSplitter /mnt/dams_data/solr_prod.xml /data/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
+java -cp util FileSplitter $PICTION_DATA_DIR/solr_prod.xml /data/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
+
+
+# download and unzip the EMu data files
+curl --output $DATA_DIR/emu.zip http://192.168.1.121/emu.zip
+unzip $DATA_DIR/emu.zip -d $DATA_DIR/
+
 # Split the EMu data files into fragments, to minimise memory consumption when processing them
 for TYPE in narratives objects sites parties accessionlots
 do
 	mkdir -p /data/split/$TYPE
-	FILES=/mnt/emu_data/full/*$TYPE*.xml
+	FILES=$DATA_DIR/*$TYPE*.xml
 	for FILE in $FILES
 	do
 		# split the EMu file into top-level elements, and save all which are <record> elements using their <irn> element as the filename

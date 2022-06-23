@@ -21,7 +21,7 @@ TOMCAT8_GROUP=tomcat8
 
 # Modified to change heap allocation from the default 128M to 2G, for Fuseki performance
 CATALINA_OPTS="-Xmx2G -Xms2G"
-# Use the new "String Deduplication" feature, for more memory-efficient processing of XML (requires G1GC garbage collector)
+# Use the "String Deduplication" feature, for more memory-efficient processing of XML (requires G1GC garbage collector)
 JAVA_OPTS="-Djava.awt.headless=true -XX:+UseG1GC -XX:+UseStringDeduplication"
 
 # Disable log4j format message lookup vulnerability https://nvd.nist.gov/vuln/detail/CVE-2021-44228
@@ -35,19 +35,8 @@ JAVA_OPTS="${JAVA_OPTS} -Dlog4j2.formatMsgNoLookups=true"
 # compilers that are accepted by Ant's build.compiler property.
 #JSP_COMPILER=javac
 
-# Use the Java security manager? (yes/no, default: no)
-#TOMCAT8_SECURITY=no
+# Enable the Java security manager? (true/false, default: false)
+#SECURITY_MANAGER=true
 
-# Number of days to keep logfiles in /var/log/tomcat8. Default is 14 days.
-#LOGFILE_DAYS=14
 # Whether to compress logfiles older than today's
 #LOGFILE_COMPRESS=1
-
-# Location of the JVM temporary directory
-# WARNING: This directory will be destroyed and recreated at every startup !
-#JVM_TMP=/tmp/tomcat8-temp
-
-# If you run Tomcat on port numbers that are all higher than 1023, then you
-# do not need authbind.  It is used for binding Tomcat to lower port numbers.
-# (yes/no, default: no)
-#AUTHBIND=no
