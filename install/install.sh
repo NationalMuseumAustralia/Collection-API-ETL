@@ -82,9 +82,10 @@ ln -s $CONFIG_DIR/tomcat/tomcat9 /etc/default/
 #
 echo =========== Installing Solr
 cd $INSTALL_DIR
-wget https://archive.apache.org/dist/solr/solr/9.0.0/solr-9.0.0.tgz -O solr-7.2.1.tgz
-tar xzf solr-9.0.0.tgz solr-9.0.0/bin/install_solr_service.sh --strip-components=2 
-./install_solr_service.sh $INSTALL_DIR/solr-9.0.0.tgz 
+SOLR_VERSION=9.0.0
+wget https://archive.apache.org/dist/solr/solr/$SOLR_VERSION/solr-$SOLR_VERSION.tgz -O solr-$SOLR_VERSION.tgz
+tar xzf solr-$SOLR_VERSION.tgz solr-$SOLR_VERSION/bin/install_solr_service.sh --strip-components=2 
+./install_solr_service.sh $INSTALL_DIR/solr-$SOLR_VERSION.tgz 
 
 # create cores, only link config parts (so data files aren't in git)
 SOLR_CORE_1_NAME=core_nma_public
@@ -128,9 +129,9 @@ mkdir -p /etc/fuseki/configuration
 ln -s $CONFIG_DIR/fuseki/log4j.properties /etc/fuseki/
 ln -s $CONFIG_DIR/fuseki/public.ttl /etc/fuseki/configuration/
 ln -s $CONFIG_DIR/fuseki/internal.ttl /etc/fuseki/configuration/
-chown -R tomcat8:tomcat8 /etc/fuseki/
+chown -R tomcat:tomcat /etc/fuseki/
 cd $INSTALL_DIR
-wget https://archive.apache.org/dist/jena/binaries/jena-fuseki-war-4.5.0.war -O /var/lib/tomcat8/webapps/fuseki.war
+wget https://archive.apache.org/dist/jena/binaries/jena-fuseki-war-4.5.0.war -O /var/lib/tomcat9/webapps/fuseki.war
 #
 # XML Calabash (XProc processor)
 # - it may be better to just download the zip and unpack it in the appropriate place? (the installer uses /opt/xmlcalabash-blah-blah-version-number)
@@ -168,7 +169,6 @@ mkdir -p /usr/local/NMA/test-results
 #
 echo =========== Installing XProc ETL
 mkdir /var/log/NMA-API-ETL
-mkdir /mnt
 #chown -R ubuntu:ubuntu /mnt
 mkdir -p /data/source
 mkdir -p /data/public/n-quads
