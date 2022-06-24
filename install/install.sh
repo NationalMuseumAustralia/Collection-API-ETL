@@ -15,6 +15,8 @@ date
 echo =========== Installing utility programs
 # used to unzip the emu data files which are downloaded in a zip file
 apt install -y unzip
+# for checking network issues
+apt install net-tools
 
 mkdir $INSTALL_DIR
 chown -R ubuntu:ubuntu /usr/local/NMA-API-ETL
