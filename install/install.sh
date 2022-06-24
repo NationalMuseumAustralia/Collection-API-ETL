@@ -201,13 +201,16 @@ echo "deb [trusted=yes] https://download.konghq.com/gateway-2.x-ubuntu-xenial/ d
 apt-get update
 apt install -y kong=2.8.1
 apt install -y postgresql postgresql-client
+ln -s $CONFIG_DIR/postgresql/nma-custom-settings.conf /etc/postgresql/14/main/conf.d
+systemctl restart postgresql
+
 sudo -u postgres psql --command="CREATE USER kong;"
 sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
 sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
-# TODO Compare Kong's default config
-#ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
-#kong migrations up
-#kong stop
+# Install our custom Kong configuration: a DB password, X-Forwarded-For header, and a trusted IP address list
+ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
+kong migrations up
+kong stop
 #cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
 #systemctl enable kong
 #service kong start
