@@ -202,9 +202,22 @@ cd $INSTALL_DIR
 echo "deb [trusted=yes] https://download.konghq.com/gateway-2.x-ubuntu-xenial/ default all" | sudo tee /etc/apt/sources.list.d/kong.list
 apt-get update
 apt install -y kong=2.8.1
-apt install -y postgresql postgresql-client
-ln -s $CONFIG_DIR/postgresql/nma-custom-settings.conf /etc/postgresql/14/main/conf.d
-systemctl restart postgresql
+#apt install -y postgresql postgresql-client
+# Create the file repository configuration:
+echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+
+# Import the repository signing key:
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+# Update the package lists:
+apt-get update
+
+# Install the latest version of PostgreSQL.
+# If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
+apt-get -y install postgresql-13 postgresql-client-13
+
+#ln -s $CONFIG_DIR/postgresql/nma-custom-settings.conf /etc/postgresql/14/main/conf.d
+#systemctl restart postgresql
 
 sudo -u postgres psql --command="CREATE USER kong;"
 sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
