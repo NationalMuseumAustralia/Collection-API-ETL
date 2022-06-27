@@ -235,9 +235,9 @@ java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initial
 # REFRESH
 #
 echo =========== Restarting services
-service apache2 restart
-service tomcat8 restart
-service solr restart
+systemctl restart apache2 
+systemctl restart tomcat9
+systemctl restart solr
 #
 echo =========== API server install complete
 date
