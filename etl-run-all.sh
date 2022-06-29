@@ -4,15 +4,8 @@
 #
 # Intended to be run periodically via cron as root user
 # But can be run manually: sudo ./etl-run-all.sh [full|incr]
-#
-# EMu exports a new set of files into the full or incr directory daily
-# Emu files should be moved after ingest (as etl loads all *.xml files found)
-# Piction exports a single file that is constantly over-written daily
-# Piction file is not to be moved after ingest (so may be stale if export fails)
-
-# we mainly work/archive in the EMu dir (but pull in piction files too)
-DATA_DIR=/data/source/emu_data
-PICTION_DATA_DIR=/data/source/dams_data
+DATA_DIR=/data
+SOURCE_DIR=$DATA_DIR/source
 # where the main steps operations are
 SCRIPT_DIR=/usr/local/NMA-API-ETL
 # where to find ETL logs (to copy/archive after each step)
@@ -41,71 +34,58 @@ to_log "BEGIN ETL - mode=$MODE, job=$JOB_ID"
 
 # ETL step 1 - load to sparql store
 cd $SCRIPT_DIR
-# Fuseki build is now always "full"
-#IN_DIR="$DATA_DIR/$MODE"
-IN_DIR="$DATA_DIR/full"
-PICTION_IN_DIR="$PICTION_DATA_DIR"
+
+# download the Piction xml file
+curl --output $SOURCE_DIR/solr_prod.xml https://collectionsearch.nma.gov.au/nmacs-image-download/solr_prod.xml
+
+# download and unzip the EMu data files
+echo Downloading package of EMU data files ... >> $LOGFILE
+curl --output $SOURCE_DIR/emu.zip http://192.168.1.121/emu.zip >> $LOGFILE
+echo Unpackaging EMU data files ... >> $LOGFILE
+# unpack the EMU data files, junking any directory structure and over-writing any existing files
+unzip -j -o $SOURCE_DIR/emu.zip -d $SOURCE_DIR/ >> $LOGFILE
 
 # check for existence of data files; if any are missing, abort the ETL
 echo Checking for existence of source data files ... >> $LOGFILE
-# Fuseki build is now always "full"
-case "$MODE" in
-#	full)
-	full|incremental)
-		if compgen -G $IN_DIR/*object*.xml > /dev/null ; then
-			echo Objects file exists >> $LOGFILE
-		else
-			echo Objects file missing! ETL aborting. >> $LOGFILE
-			exit 1
-		fi
-		if compgen -G $IN_DIR/*narratives*.xml > /dev/null ; then
-			echo Narratives file exists >> $LOGFILE
-		else
-			echo Narratives file missing! ETL aborting.  >> $LOGFILE
-			exit 1
-		fi
-		if compgen -G $IN_DIR/*accessionlots*.xml > /dev/null ; then
-			echo Accession lots file exists >> $LOGFILE
-		else
-			echo Accession lots file missing! ETL aborting.  >> $LOGFILE
-			exit 1
-		fi
-		if compgen -G $IN_DIR/*sites*.xml > /dev/null ; then
-			echo Sites file exists >> $LOGFILE
-		else
-			echo Sites file missing! ETL aborting.  >> $LOGFILE
-			exit 1
-		fi
-		if compgen -G $IN_DIR/*parties*.xml > /dev/null ; then
-			echo Parties file exists >> $LOGFILE
-		else
-			echo Parties file missing! ETL aborting.  >> $LOGFILE
-			exit 1
-		fi
-#		if compgen -G $PICTION_IN_DIR/solr_prod1.xml > /dev/null ; then
-#			echo Piction file exists >> $LOGFILE
-#		else
-#			echo Piction file missing! ETL aborting.  >> $LOGFILE
-#			exit 1
-#		fi
-#		;;
-#	incremental)
-		# we only need at least one EMu XML file for incremental
-#		if compgen -G $IN_DIR/*.xml > /dev/null ; then
-#			echo EMu update files exist >> $LOGFILE
-#		else
-#			echo EMu update files missing! ETL aborting. >> $LOGFILE
-#			exit 1
-#		fi
-		;;
-	*)
-		to_log "Unknown mode: $MODE"
-		echo Usage: $0 [full\|incremental]
-		exit 1
-esac
+if compgen -G $SOURCE_DIR/*object*.xml > /dev/null ; then
+	echo Objects file exists >> $LOGFILE
+else
+	echo Objects file missing! ETL aborting. >> $LOGFILE
+	exit 1
+fi
+if compgen -G $SOURCE_DIR/*narratives*.xml > /dev/null ; then
+	echo Narratives file exists >> $LOGFILE
+else
+	echo Narratives file missing! ETL aborting.  >> $LOGFILE
+	exit 1
+fi
+if compgen -G $SOURCE_DIR/*accessionlots*.xml > /dev/null ; then
+	echo Accession lots file exists >> $LOGFILE
+else
+	echo Accession lots file missing! ETL aborting.  >> $LOGFILE
+	exit 1
+fi
+if compgen -G $SOURCE_DIR/*sites*.xml > /dev/null ; then
+	echo Sites file exists >> $LOGFILE
+else
+	echo Sites file missing! ETL aborting.  >> $LOGFILE
+	exit 1
+fi
+if compgen -G $SOURCE_DIR/*parties*.xml > /dev/null ; then
+	echo Parties file exists >> $LOGFILE
+else
+	echo Parties file missing! ETL aborting.  >> $LOGFILE
+	exit 1
+fi
+if compgen -G $SOURCE_DIR/solr_prod.xml > /dev/null ; then
+	echo Piction file exists >> $LOGFILE
+else
+	echo Piction file missing! ETL aborting.  >> $LOGFILE
+	exit 1
+fi
 
 to_log "START ETL STEP 1 - full load to Fuseki SPARQL store"
-to_log "Source files: $(ls $IN_DIR/*.xml 2>/dev/null) $(ls $PICTION_IN_DIR/*.xml 2>/dev/null)"
+to_log "Source files: $(ls $SOURCE_DIR/*.xml 2>/dev/null) $(ls $SOURCE_DIR/*.xml 2>/dev/null)"
 to_log "Loading files to Fuseki public dataset"
 $SCRIPT_DIR/etl-to-fuseki-full.sh public
 to_log "Loading files to Fuseki internal dataset"
@@ -116,8 +96,8 @@ to_log "FINISH ETL STEP 1 - load to Fuseki SPARQL store"
 # move/copy loaded files and log
 # (we're not allowed to move piction files)
 cp $LOGS_DIR/etl-to-fuseki*.log $OUT_DIR/
-mv $IN_DIR/*.xml $OUT_DIR 2>/dev/null
-cp $PICTION_IN_DIR/*.xml $OUT_DIR 2>/dev/null
+mv $SOURCE_DIR/*.xml $OUT_DIR 2>/dev/null
+cp $SOURCE_DIR/*.xml $OUT_DIR 2>/dev/null
 to_log "Moved/copied ingested files to archive: $OUT_DIR"
 
 # ETL step 2 - extract from sparql store and load to solr
@@ -135,12 +115,12 @@ to_log "FINISH ETL STEP 2 - load to Solr"
 
 # delete stale archives
 to_log "Removing old data files (14 days):"
-find $DATA_DIR/etl -name *.xml -mtime +14 -print >> $LOGFILE
-find $DATA_DIR/etl -name *.xml -mtime +14 -exec rm '{}' \;
+find $SOURCE_DIR/etl -name *.xml -mtime +14 -print >> $LOGFILE
+find $SOURCE_DIR/etl -name *.xml -mtime +14 -exec rm '{}' \;
 to_log "Removing old etl job logs (6 months):"
 # NB: using 7 months as may delete the whole 6 month directory 
-find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -print >> $LOGFILE
-find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -exec rm -rf '{}' \;
+find $SOURCE_DIR/etl -mindepth 1 -type d -ctime +214 -print >> $LOGFILE
+find $SOURCE_DIR/etl -mindepth 1 -type d -ctime +214 -exec rm -rf '{}' \;
 
 # end of run
 cp $LOGS_DIR/etl-run-cron.log $OUT_DIR/

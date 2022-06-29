@@ -3,9 +3,8 @@
 # Regenerates the full RDF dataset using the Graph Store's batch loading feature rather than the much slower SPARQL graph store protocol
 
 # define the location of source data files
-DATA_DIR=/data/source/emu_data
-PICTION_DATA_DIR=/data/source/dams_data
-
+DATA_DIR=/data
+SOURCE_DIR=$DATA_DIR/source
 # default to public dataset
 DATASET=public
 
@@ -16,7 +15,7 @@ then
 fi
 
 # first remove any .nq files from previous execution of the pipeline
-find "/data/$DATASET/n-quads/" -name "*.nq" -delete
+find "$DATA_DIR/$DATASET/n-quads/" -name "*.nq" -delete
 
 # execute XML-to-RDF transformations to generate new .nq files in /data/DATASET/n-quads/
 cd /usr/local/NMA-API-ETL
@@ -29,30 +28,23 @@ cd /usr/local/NMA-API-ETL
 /sbin/sysctl vm.overcommit_memory=2
 /sbin/sysctl vm.overcommit_ratio=100
 
-# download the Piction xml file
-curl --output $PICTION_DATA_DIR/solr_prod.xml https://collectionsearch.nma.gov.au/nmacs-image-download/solr_prod.xml
 # remove the individual record files split from previous version of piction xml file
-rm -r -f /data/split/piction
+rm -r -f $DATA_DIR/split/piction
 # Split the Piction data file into fragments, to minimise memory consumption
 echo Splitting Piction data file ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 # split the file into top-level elements, and save all which have a Multimedia ID field using the first occurrence of that field 🤦 as the filename
-java -cp util FileSplitter $PICTION_DATA_DIR/solr_prod.xml /data/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
-
-
-# download and unzip the EMu data files
-curl --output $DATA_DIR/emu.zip http://192.168.1.121/emu.zip
-unzip $DATA_DIR/emu.zip -d $DATA_DIR/
+java -cp util FileSplitter $SOURCE_DIR/solr_prod.xml $DATA_DIR/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
 
 # Split the EMu data files into fragments, to minimise memory consumption when processing them
 for TYPE in narratives objects sites parties accessionlots
 do
-	mkdir -p /data/split/$TYPE
-	FILES=$DATA_DIR/*$TYPE*.xml
+	mkdir -p $DATA_DIR/split/$TYPE
+	FILES=$SOURCE_DIR/*$TYPE*.xml
 	for FILE in $FILES
 	do
 		# split the EMu file into top-level elements, and save all which are <record> elements using their <irn> element as the filename
 		echo Splitting EMu file $FILE ...  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-		java -cp util FileSplitter $FILE /data/split/$TYPE "/record" "/record/irn"
+		java -cp util FileSplitter $FILE $DATA_DIR/split/$TYPE "/record" "/record/irn"
 	done
 done
 #java -Xmx4G -Xms4G -XX:+UseG1GC -XX:+UseStringDeduplication -XX:-UseCompressedOops 
@@ -70,18 +62,18 @@ rm -r -f /etc/fuseki/databases/$DATASET/* >> "/var/log/NMA-API-ETL/etl-to-fuseki
 
 # assemble all the nquads files (which contain single graphs) into a single nquads file containing the entire RDF dataset
 # first delete any old dataset files which may have been left lying around
-rm "/data/$DATASET/dataset.nq"
+rm "$DATA_DIR/$DATASET/dataset.nq"
 
 # concatenate n-quads files into new dataset file
 echo Joining individual graphs into a single dataset file for import... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-find "/data/$DATASET/n-quads/" -name "*.nq" | xargs cat >> "/data/$DATASET/dataset.nq"
+find "$DATA_DIR/$DATASET/n-quads/" -name "*.nq" | xargs cat >> "$DATA_DIR/$DATASET/dataset.nq"
 
 # now remove the individual .nq files 
-find "/data/$DATASET/n-quads/" -name "*.nq" -delete >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+find "$DATA_DIR/$DATASET/n-quads/" -name "*.nq" -delete >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # rebuild the fuseki db from the dataset files
 echo Building Fuseki $DATASET dataset ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-time sudo -u tomcat8 /usr/local/jena/bin/tdbloader --loc "/etc/fuseki/databases/$DATASET" "/data/$DATASET/dataset.nq" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+time sudo -u tomcat8 /usr/local/jena/bin/tdbloader --loc "/etc/fuseki/databases/$DATASET" "$DATA_DIR/$DATASET/dataset.nq" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # generate triple pattern statistics for Fuseki query optimizer
 # TODO switch back to TDB1 statistics generation
@@ -90,7 +82,7 @@ time sudo -u tomcat8 /usr/local/jena/bin/tdbloader --loc "/etc/fuseki/databases/
 #sudo -u tomcat8 cp "/tmp/stats-$DATASET.opt" "/etc/fuseki/databases/$DATASET/"
 
 # delete the dataset nquads files now they've been imported into Fuseki
-rm "/data/$DATASET/dataset.nq"
+rm "$DATA_DIR/$DATASET/dataset.nq"
 
 # restart fuseki server 
 echo Restarting fuseki ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
