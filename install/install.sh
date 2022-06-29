@@ -224,20 +224,20 @@ sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
 sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 # Install our custom Kong configuration: a DB password, X-Forwarded-For header, and a trusted IP address list
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
-kong migrations up
+kong migrations bootstrap
 kong stop
-#cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
-#systemctl enable kong
-#service kong start
+cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
+systemctl enable kong
+systemctl start kong
 # configure Kong
-#java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
+java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
 #
 # REFRESH
 #
 echo =========== Restarting services
-service apache2 restart
-service tomcat8 restart
-service solr restart
+systemctl restart apache2 
+systemctl restart tomcat9
+systemctl restart solr
 #
 echo =========== API server install complete
 date
