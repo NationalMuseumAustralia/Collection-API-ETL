@@ -19,7 +19,7 @@
 # By default the script will use JAVA_HOME to determine which java
 # to use, but you can set a specific path for Solr to use without
 # affecting other Java applications on your server/workstation.
-SOLR_JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+#SOLR_JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # This controls the number of seconds that the solr script will wait for
 # Solr to stop gracefully or Solr to start.  If the graceful stop fails,
