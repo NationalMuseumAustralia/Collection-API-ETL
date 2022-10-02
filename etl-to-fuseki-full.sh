@@ -73,13 +73,13 @@ find "$DATA_DIR/$DATASET/n-quads/" -name "*.nq" -delete >> "/var/log/NMA-API-ETL
 
 # rebuild the fuseki db from the dataset files
 echo Building Fuseki $DATASET dataset ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-time sudo -u tomcat8 /usr/local/jena/bin/tdbloader --loc "/etc/fuseki/databases/$DATASET" "$DATA_DIR/$DATASET/dataset.nq" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+time sudo -u tomcat /usr/local/jena/bin/tdbloader --loc "/etc/fuseki/databases/$DATASET" "$DATA_DIR/$DATASET/dataset.nq" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # generate triple pattern statistics for Fuseki query optimizer
 # TODO switch back to TDB1 statistics generation
 #echo Generating triple pattern statistics for $DATASET dataset ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-#sudo -u tomcat8 /usr/local/jena/bin/tdb2.tdbstats --graph urn:x-arq:UnionGraph --loc "/etc/fuseki/databases/$DATASET" > "/tmp/stats-$DATASET.opt"
-#sudo -u tomcat8 cp "/tmp/stats-$DATASET.opt" "/etc/fuseki/databases/$DATASET/"
+#sudo -u tomcat /usr/local/jena/bin/tdb2.tdbstats --graph urn:x-arq:UnionGraph --loc "/etc/fuseki/databases/$DATASET" > "/tmp/stats-$DATASET.opt"
+#sudo -u tomcat cp "/tmp/stats-$DATASET.opt" "/etc/fuseki/databases/$DATASET/"
 
 # delete the dataset nquads files now they've been imported into Fuseki
 rm "$DATA_DIR/$DATASET/dataset.nq"
