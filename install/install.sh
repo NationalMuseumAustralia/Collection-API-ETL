@@ -79,6 +79,9 @@ echo =========== Installing tomcat
 apt install -y tomcat9 
 mv /etc/default/tomcat9 /etc/default/tomcat9.original 
 ln -s $CONFIG_DIR/tomcat/tomcat9 /etc/default/
+# enable fuseki web app's write access to /etc/fuseki directory
+mkdir -p /etc/systemd/system/tomcat9.service.d
+ls -s $CONFIG_DIR/tomcat/override.conf /etc/systemd/system/tomcat9.service.d/
 #
 # SOLR
 #
