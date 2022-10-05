@@ -229,7 +229,7 @@ sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations bootstrap
 kong stop
-cp $CONFIG_DIR/kong/kong.service /etc/systemd/system/
+ln -s $CONFIG_DIR/kong/kong.service /etc/systemd/system/
 systemctl enable kong
 systemctl start kong
 # configure Kong
