@@ -17,6 +17,9 @@
 	<!-- import calabash extension library to enable use of file steps -->
 	<p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 
+
+        <!-- create folder for logging failed uploads -->
+        <pxf:mkdir fail-on-error="false" href="/data/failed-solr-deposits"/>
 	
 	<!-- update Solr store by querying the SPARQL store -->
 
