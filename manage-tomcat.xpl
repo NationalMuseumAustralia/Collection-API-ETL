@@ -22,7 +22,7 @@
 >
 	<p:output port="result"/>
 	<p:option name="command" required="true"/>
-	<p:load href="/var/lib/tomcat8/conf/tomcat-users.xml"/>
+	<p:load href="/var/lib/tomcat9/conf/tomcat-users.xml"/>
 	<p:template name="tomcat-manager-request">
 		<p:with-param name="command" select="$command"/>
 		<p:input port="template">
