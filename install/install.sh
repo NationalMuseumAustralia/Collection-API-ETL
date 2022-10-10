@@ -17,6 +17,8 @@ echo =========== Installing utility programs
 apt install -y unzip
 # for checking network issues
 apt install net-tools
+# for checking disk usage
+apt install ncdu
 
 mkdir $INSTALL_DIR
 chown -R ubuntu:ubuntu /usr/local/NMA-API-ETL
