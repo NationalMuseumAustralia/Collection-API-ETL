@@ -204,9 +204,10 @@ cp /etc/xproc-z/NMA-API/apiexplorer.html /var/www/html/
 echo =========== Installing Kong
 cd $INSTALL_DIR
 # Add Kong as an APT repository and install Kong Community Edition
-echo "deb [trusted=yes] https://download.konghq.com/gateway-2.x-ubuntu-xenial/ default all" | sudo tee /etc/apt/sources.list.d/kong.list
+echo "deb [trusted=yes] https://download.konghq.com/gateway-3.x-ubuntu-focal/ default all" | sudo tee /etc/apt/sources.list.d/kong.list
 apt-get update
-apt install -y kong=2.8.1
+apt install -y kong-enterprise-edition=3.0.0.0
+
 #apt install -y postgresql postgresql-client
 # Create the file repository configuration:
 echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
@@ -224,9 +225,9 @@ apt-get -y install postgresql-13 postgresql-client-13
 #ln -s $CONFIG_DIR/postgresql/nma-custom-settings.conf /etc/postgresql/14/main/conf.d
 #systemctl restart postgresql
 
-sudo -u postgres psql --command="CREATE USER kong;"
-sudo -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
-sudo -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
+sudo -i -u postgres psql --command="CREATE USER kong;"
+sudo -i -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
+sudo -i -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 # Install our custom Kong configuration: a DB password, X-Forwarded-For header, and a trusted IP address list
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations bootstrap

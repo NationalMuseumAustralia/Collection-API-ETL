@@ -87,7 +87,9 @@ data 'name=key-auth'
 			<p:inline>
 				<map xmlns="http://www.w3.org/2005/xpath-functions">
 					<string key="name">key-auth</string>
-					<string key="service_id">{$api-id}</string>
+					<map key="service">
+						<string key="id">{$api-id}</string>
+					</map>
 					<map key="config">
 						<string key="anonymous">{$anonymous-user-id}</string>
 					</map>
@@ -112,7 +114,7 @@ data 'name=key-auth'
 				<map xmlns="http://www.w3.org/2005/xpath-functions">
 					<string key="name">acl</string>
 					<map key="config">
-						<array key="whitelist">
+						<array key="allow">
 							<string>public</string>
 							<string>internal</string>
 						</array>
@@ -147,7 +149,9 @@ data 'name=key-auth'
 			<p:inline>
 				<map xmlns="http://www.w3.org/2005/xpath-functions">
 					<string key="name">rate-limiting</string>
-					<string key="consumer_id">{/c:response/c:body/fn:map/fn:string[@key='id']/text()}</string>
+					<map key="consumer">
+						<string key="id">{/c:response/c:body/fn:map/fn:string[@key='id']/text()}</string>
+					</map>
 					<map key="config">
 						<number key="second">10</number>
 						<number key="minute">60</number>
