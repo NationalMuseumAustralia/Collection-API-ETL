@@ -36,6 +36,7 @@ to_log "BEGIN ETL - mode=$MODE, job=$JOB_ID"
 cd $SCRIPT_DIR
 
 # download the Piction xml file
+echo Downloading Piction xml file ... >> $LOGFILE
 curl --output $SOURCE_DIR/solr_prod.xml https://collectionsearch.nma.gov.au/nmacs-image-download/solr_prod.xml
 
 # download and unzip the EMu data files

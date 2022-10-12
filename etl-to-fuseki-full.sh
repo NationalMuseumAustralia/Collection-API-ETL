@@ -14,6 +14,8 @@ then
   DATASET="$1"
 fi
 
+echo Beginning ETL from XML data files to Fuseki graph store ... > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+
 # first remove any .nq files from previous execution of the pipeline
 find "$DATA_DIR/$DATASET/n-quads/" -name "*.nq" -delete
 
@@ -33,9 +35,10 @@ rm -r -f $DATA_DIR/split/piction
 # Split the Piction data file into fragments, to minimise memory consumption
 echo Splitting Piction data file ... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 # split the file into top-level elements, and save all which have a Multimedia ID field using the first occurrence of that field 🤦 as the filename
-java -cp util FileSplitter $SOURCE_DIR/solr_prod.xml $DATA_DIR/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]"
+java -cp util FileSplitter $SOURCE_DIR/solr_prod.xml $DATA_DIR/split/piction "/doc/field[@name='Multimedia ID']" "(/doc/field[@name='Multimedia ID'])[1]" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # Split the EMu data files into fragments, to minimise memory consumption when processing them
+echo Splitting EMu files ...  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 for TYPE in narratives objects sites parties accessionlots
 do
 	mkdir -p $DATA_DIR/split/$TYPE
@@ -44,11 +47,13 @@ do
 	do
 		# split the EMu file into top-level elements, and save all which are <record> elements using their <irn> element as the filename
 		echo Splitting EMu file $FILE ...  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
-		java -cp util FileSplitter $FILE $DATA_DIR/split/$TYPE "/record" "/record/irn"
+		java -cp util FileSplitter $FILE $DATA_DIR/split/$TYPE "/record" "/record/irn" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 	done
 done
 #java -Xmx4G -Xms4G -XX:+UseG1GC -XX:+UseStringDeduplication -XX:-UseCompressedOops 
-java -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" > "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+
+echo Transforming input data into RDF ...  >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
+java -jar /usr/local/xmlcalabash/xmlcalabash.jar etl-to-fuseki.xpl incremental="false" dataset="$DATASET" >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
 
 # stop fuseki in order to rebuild its tdb2 database
 echo Stopping fuseki... >> "/var/log/NMA-API-ETL/etl-to-fuseki-$DATASET.log" 2>&1
