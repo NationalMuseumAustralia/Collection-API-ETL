@@ -36,6 +36,7 @@
 			<p:empty/>
 		</p:input>
 	</p:exec>
+	<p:try>
 	<p:group>
 		<!-- capture the hostname so we can make URIs relative to this host -->
 		<p:variable name="hostname" select="normalize-space(/)"/>
@@ -87,6 +88,32 @@
 		</nma:process-data>
 		
 	</p:group>
+		<!-- catch any error and dump it to standard out -->
+		<p:catch name="error">
+			<cx:message>
+				<p:input port="source">
+					<p:pipe step="error" port="error"/>
+				</p:input>
+				<p:with-option name="message" select="
+					string-join(
+						for $error in //c:error return concat(
+							'error ',
+							string-join(
+								for $attribute in $error/@attribute return concat(
+									local-name($attribute),
+									': ',
+									$attribute,
+								),
+								', '
+							)
+						),
+						codepoints-to-string(10)
+					)
+				"/>
+			</cx:message>
+			<p:sink/>
+		</p:catch>
+	</p:try>
 	
 	<p:declare-step name="load-vocabulary" type="nma:load-vocabulary">
 		<p:option name="dataset" required="true"/>
@@ -110,7 +137,8 @@
 		<p:documentation>NB this step has no I/O ports, and only does file I/O. </p:documentation>
 		<p:option name="dataset" required="true"/>
 		<!-- current date, used to tag new records and exclude old records, where necessary -->
-		<p:variable name="current-date" select="current-date()"/>
+		<!-- The date is trimmed to 10 chars to remove the TZ component which is unacceptable to Solr -->
+		<p:variable name="current-date" select="substring(string(current-date()), 1, 10)"/>
 		
 		<!-- the folder which contains previously processed version of the piction data -->
 		<p:variable name="piction-cache-folder" select="
@@ -251,11 +279,11 @@
 				'/'
 			)
 		"/>
-		<cx:message message="Processing Piction image metadata...">
+		<cx:message name="start" message="Processing Piction image metadata...">
 			<p:input port="source"><p:empty/></p:input>
 		</cx:message>
 		<p:sink/>
-		<nma:cache-piction-data name="updated-cache">
+		<nma:cache-piction-data name="updated-cache" cx:depends-on="start">
 			<p:with-option name="dataset" select="$dataset"/>
 		</nma:cache-piction-data>
 		<p:directory-list name="cached-piction-data-files" cx:depends-on="updated-cache">
