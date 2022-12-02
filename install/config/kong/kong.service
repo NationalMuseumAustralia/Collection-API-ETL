@@ -1,7 +1,7 @@
 [Unit]
 Description= kong service
 After=syslog.target network.target postgreqsl.service
- 
+Before=apache2.service 
  
 [Service]
 User=root
