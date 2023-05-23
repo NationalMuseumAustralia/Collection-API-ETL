@@ -204,26 +204,18 @@ cp /etc/xproc-z/NMA-API/apiexplorer.html /var/www/html/
 echo =========== Installing Kong
 cd $INSTALL_DIR
 # Add Kong as an APT repository and install Kong Community Edition
-echo "deb [trusted=yes] https://download.konghq.com/gateway-3.x-ubuntu-focal/ default all" | sudo tee /etc/apt/sources.list.d/kong.list
+# Server OS is Ubuntu 22.04.2 LTS "Jammy Jellyfish"
+echo "deb [trusted=yes] https://download.konghq.com/gateway-3.x-ubuntu-jammy/ default all" | sudo tee /etc/apt/sources.list.d/kong.list
 apt-get update
-apt install -y kong-enterprise-edition=3.0.0.0
-
-#apt install -y postgresql postgresql-client
-# Create the file repository configuration:
-echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-
-# Import the repository signing key:
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-
-# Update the package lists:
-apt-get update
+apt install -y kong-enterprise-edition
 
 # Install the latest version of PostgreSQL.
 # If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
-apt-get -y install postgresql-13 postgresql-client-13
+#apt-get -y install postgresql-13 postgresql-client-13
+apt-get -y install postgresql-15 postgresql-client-15
 
-#ln -s $CONFIG_DIR/postgresql/nma-custom-settings.conf /etc/postgresql/14/main/conf.d
-#systemctl restart postgresql
+ln -s $CONFIG_DIR/postgresql/nma-custom-settings.conf /etc/postgresql/15/main/conf.d
+systemctl restart postgresql
 
 sudo -i -u postgres psql --command="CREATE USER kong;"
 sudo -i -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
