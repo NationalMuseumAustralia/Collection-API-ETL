@@ -4,16 +4,11 @@ Installs and configures software for the NMA API on a bare Ubuntu server.
 
 ### Data directories
 
-The install script creates a stub root directory `/mnt`. This should be attached
-to the appropriate data share (one each for `test` or `production`).
+The install script creates a `data` directory into which it will download XML data 
+from Piction.
 
-The share directory should contain sub-directories:
-* `./emu_data/full`
-* `./emu_data/incremental`
-* `./dams_data`
-
-The install script will create the ETL logging sub-directory:
-* `./emu_data/etl`
+XML data from EMU should be uploaded, in a zip file named `emu.zip`, to the home folder
+of the `emu` user, `/home/emu`
 
 ## Usage
 
