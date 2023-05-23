@@ -41,29 +41,22 @@ exit
 
 ### Set passwords
 
-Key in appropriate passwords when prompted (except: replace password for webmin)
+Key in appropriate passwords when prompted
 
 ```sh
 sudo su -
 touch /etc/apache2/admin-users.htpasswd
 htpasswd /etc/apache2/admin-users.htpasswd admin
-htpasswd /etc/apache2/admin-users.htpasswd nagiosadmin
 htpasswd /etc/apache2/admin-users.htpasswd nmaapi
-/usr/share/webmin/changepass.pl /etc/webmin root 'password'
 exit
 ```
 
 ### Confirm passwords
 
-Login as `nagiosadmin`
+Login as `admin`
 * https://data.nma.gov.au/solr/ 
 
 No login required (same realm as Solr)
 * https://data.nma.gov.au/fuseki/
-* https://data.nma.gov.au/nagios/
 * https://data.nma.gov.au/signup/internal/
 * https://data.nma.gov.au/usage.html
-
-Login as `admin`, then as `root` in the login form
-* https://data.nma.gov.au/webmin/
-
