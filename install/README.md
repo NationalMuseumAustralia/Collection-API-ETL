@@ -27,7 +27,6 @@ apt update
 apt upgrade -y -f
 apt install git -y
 cd /usr/local
-git clone https://github.com/NationalMuseumAustralia/Collection-API-ETL.git NMA-API-ETL
 cd /usr/local/NMA-API-ETL/install
 chmod a+x install.sh
 ./install.sh '<hostname>'
