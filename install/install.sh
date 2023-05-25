@@ -172,7 +172,7 @@ mkdir -p /usr/local/NMA/test-results
 # TODO decide about ownership
 #chown -R ubuntu:ubuntu /usr/local/NMA
 #
-# XPROC-Z (ETL)
+# ETL
 #
 echo =========== Installing XProc ETL
 mkdir /var/log/NMA-API-ETL
@@ -185,14 +185,14 @@ mkdir -p /data/internal/n-quads
 chmod a+x /usr/local/NMA-API-ETL/etl-run-all.sh
 cp $CONFIG_DIR/run-apietl-crontab /etc/cron.d/
 #
-# XPROC-Z (API SHIM)
+# XPROC-Z API SHIM
 #
 echo =========== Installing XProc-Z API shim
 cd $INSTALL_DIR
 mkdir /etc/xproc-z/
 cd /etc/xproc-z/
 chmod a+w .
-wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/1.5.1/xproc-z.war -O xproc-z.war
+wget https://github.com/Conal-Tuohy/XProc-Z/releases/download/1.5.2-8/xproc-z.war -O xproc-z.war
 git clone https://github.com/NationalMuseumAustralia/Collection-API.git NMA-API
 ln -s $CONFIG_DIR/tomcat/xproc-z.xml /var/lib/tomcat9/conf/Catalina/localhost/
 # Install API Explorer front end application
