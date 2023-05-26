@@ -147,6 +147,8 @@ echo =========== Installing XML Calabash
 cd $INSTALL_DIR
 wget https://github.com/ndw/xmlcalabash1/releases/download/1.4.1-100/xmlcalabash-1.4.1-100.zip -O xmlcalabash.zip
 unzip xmlcalabash.zip -d /usr/local
+# install logging implementation
+sudo wget https://repo1.maven.org/maven2/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar -O /usr/local/xmlcalabash/lib/slf4j-simple-1.7.36.jar
 # create version-independent path for xmlcalabash executable: /usr/local/xmlcalabash/xmlcalabash.jar
 ln -s /usr/local/xmlcalabash-1.4.1-100 /usr/local/xmlcalabash
 ln -s /usr/local/xmlcalabash/xmlcalabash-1.4.1-100.jar /usr/local/xmlcalabash/xmlcalabash.jar
@@ -210,25 +212,35 @@ apt-get update
 apt install -y kong-enterprise-edition
 
 # Install the latest version of PostgreSQL.
-# If you want a specific version, use 'postgresql-12' or similar instead of 'postgresql':
-#apt-get -y install postgresql-13 postgresql-client-13
+# We need PostgreSQL > 14 for Kong compability, but 14 is the latest version in Ubuntu Jammy's package repository.
+# Register PostgreSQL's own package repository:
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+# Import the repository signing key:
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+# Update the package lists:
+sudo apt-get update
+# To install a specific version, use 'postgresql-12' or similar instead of 'postgresql':
 apt-get -y install postgresql-15 postgresql-client-15
-
 ln -s $CONFIG_DIR/postgresql/nma-custom-settings.conf /etc/postgresql/15/main/conf.d
+sudo mv /etc/postgresql/15/main/pg_hba.conf /etc/postgresql/15/main/pg_hba.conf.default
+ln -s $CONFIG_DIR/postgresql/pg_hba.conf /etc/postgresql/15/main
 systemctl restart postgresql
-
+# create database for kong
 sudo -i -u postgres psql --command="CREATE USER kong;"
 sudo -i -u postgres psql --command="ALTER USER kong WITH PASSWORD 'kong';"
 sudo -i -u postgres psql --command="CREATE DATABASE kong OWNER kong;"
 # Install our custom Kong configuration: a DB password, X-Forwarded-For header, and a trusted IP address list
+mv /etc/kong/kong.conf /etc/kong/kong.default
 ln -s $CONFIG_DIR/kong/kong.conf /etc/kong/
 kong migrations bootstrap
-kong stop
+#kong stop
 ln -s $CONFIG_DIR/kong/kong.service /etc/systemd/system/
 systemctl enable kong
 systemctl start kong
 # configure Kong
-java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
+#java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
+java -cp /usr/local/xmlcalabash/xmlcalabash.jar:/usr/local/xmlcalabash/lib/slf4j-simple-1.7.36.jar com.xmlcalabash.drivers.Main /usr/local/NMA-API-ETL/install/config/kong/initialize-kong.xpl
+
 #
 # REFRESH
 #
