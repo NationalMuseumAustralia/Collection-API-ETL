@@ -39,12 +39,10 @@ cd $SCRIPT_DIR
 echo Downloading Piction xml file ... >> $LOGFILE
 curl --output $SOURCE_DIR/solr_prod.xml https://collectionsearch.nma.gov.au/nmacs-image-download/solr_prod.xml
 
-# download and unzip the EMu data files
-echo Downloading package of EMU data files ... >> $LOGFILE
-curl --output $SOURCE_DIR/emu.zip http://192.168.1.121/emu.zip >> $LOGFILE
-echo Unpackaging EMU data files ... >> $LOGFILE
 # unpack the EMU data files, junking any directory structure and over-writing any existing files
-unzip -j -o $SOURCE_DIR/emu.zip -d $SOURCE_DIR/ >> $LOGFILE
+# TODO delete existing files so that we can detect if there are XML files missing from source ZIP
+echo Unpackaging EMU data files ... >> $LOGFILE
+unzip -j -o /home/emu/emu.zip -d $SOURCE_DIR/ >> $LOGFILE
 
 # check for existence of data files; if any are missing, abort the ETL
 echo Checking for existence of source data files ... >> $LOGFILE
