@@ -147,6 +147,8 @@ echo =========== Installing XML Calabash
 cd $INSTALL_DIR
 wget https://github.com/ndw/xmlcalabash1/releases/download/1.4.1-100/xmlcalabash-1.4.1-100.zip -O xmlcalabash.zip
 unzip xmlcalabash.zip -d /usr/local
+# install logging implementation
+sudo wget https://repo1.maven.org/maven2/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar -O /usr/local/xmlcalabash/lib/slf4j-simple-1.7.36.jar
 # create version-independent path for xmlcalabash executable: /usr/local/xmlcalabash/xmlcalabash.jar
 ln -s /usr/local/xmlcalabash-1.4.1-100 /usr/local/xmlcalabash
 ln -s /usr/local/xmlcalabash/xmlcalabash-1.4.1-100.jar /usr/local/xmlcalabash/xmlcalabash.jar
@@ -236,7 +238,9 @@ ln -s $CONFIG_DIR/kong/kong.service /etc/systemd/system/
 systemctl enable kong
 systemctl start kong
 # configure Kong
-java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
+#java -Xmx1G -jar /usr/local/xmlcalabash/xmlcalabash.jar $CONFIG_DIR/kong/initialize-kong.xpl
+java -cp /usr/local/xmlcalabash/xmlcalabash.jar:/usr/local/xmlcalabash/lib/slf4j-simple-1.7.36.jar com.xmlcalabash.drivers.Main /usr/local/NMA-API-ETL/install/config/kong/initialize-kong.xpl
+
 #
 # REFRESH
 #
