@@ -7,7 +7,7 @@ Installs and configures software for the NMA API on a bare Ubuntu server.
 The install script creates a `data` directory into which it will download XML data 
 from Piction.
 
-XML data from EMU should be uploaded, in a zip file named `emu.zip`, to the home folder
+XML data from EMU in a zip file named `emu.zip` should be uploaded using SSH into the home folder
 of the `emu` user, `/home/emu`
 
 ## Usage
@@ -26,7 +26,6 @@ export DEBIAN_FRONTEND=noninteractive
 apt update
 apt upgrade -y -f
 apt install git -y
-cd /usr/local
 cd /usr/local/NMA-API-ETL/install
 chmod a+x install.sh
 ./install.sh '<hostname>'
