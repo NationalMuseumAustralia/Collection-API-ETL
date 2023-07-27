@@ -13,7 +13,7 @@ of the `emu` user, `/home/emu`
 ## Usage
 
 Notes
-* Add the appropriate server name before execution, e.g. `./install.sh 'data.nma.gov.au'` 
+* In the commands below, replace `<hostname>` with the appropriate server name, e.g. `./install.sh 'data.nma.gov.au'` 
 * Some install steps may require manual input, e.g. `Do you want to continue? [Y/n]`
 * The main install script takes around 15 minutes to run
 
@@ -26,6 +26,9 @@ export DEBIAN_FRONTEND=noninteractive
 apt update
 apt upgrade -y -f
 apt install git -y
+cd /usr/local
+git clone https://github.com/NationalMuseumAustralia/Collection-API-ETL.git NMA-API-ETL
+git switch 2022-update
 cd /usr/local/NMA-API-ETL/install
 chmod a+x install.sh
 ./install.sh '<hostname>'
