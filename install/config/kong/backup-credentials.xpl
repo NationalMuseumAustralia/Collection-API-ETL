@@ -19,12 +19,12 @@
 
 	<!-- TODO export the data about the members of the internal and public groups -->
 	<kong:read name="get-consumers" uri="http://localhost:8001/consumers/?size=1000"/>
-	<!--<p:wrap wrapper="consumers" match="/*"/>-->
+	<kong:read name="get-acls" uri="http://localhost:8001/acls?size=1000"/>
 	<kong:read name="get-keys" uri="http://localhost:8001/key-auths/?size=1000"/>
-	<!--<p:wrap wrapper="keys" match="/*"/>-->
 	<p:wrap-sequence wrapper="credential-backup">
 		<p:input port="source">
 			<p:pipe step="get-consumers" port="result"/>
+			<p:pipe step="get-acls" port="result"/>
 			<p:pipe step="get-keys" port="result"/>
 		</p:input>
 	</p:wrap-sequence>
