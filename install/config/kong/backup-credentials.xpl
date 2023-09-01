@@ -17,7 +17,7 @@
 	<!-- URI of output file -->
 	<p:option name="output" required="true"/>
 
-	<!-- TODO export the data about the members of the internal and public groups -->
+	<!-- export the data about the members of the internal and public groups -->
 	<kong:read name="get-consumers" uri="http://localhost:8001/consumers/?size=1000"/>
 	<kong:read name="get-acls" uri="http://localhost:8001/acls?size=1000"/>
 	<kong:read name="get-keys" uri="http://localhost:8001/key-auths/?size=1000"/>
