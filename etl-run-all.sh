@@ -114,17 +114,17 @@ to_log "FINISH ETL STEP 2 - load to Solr"
 
 # delete stale archives
 to_log "Removing old data files (14 days):"
-find $SOURCE_DIR/etl -name *.xml -mtime +14 -print >> $LOGFILE
-find $SOURCE_DIR/etl -name *.xml -mtime +14 -exec rm '{}' \;
+find $DATA_DIR/etl -name *.xml -mtime +14 -print >> $LOGFILE
+find $DATA_DIR/etl -name *.xml -mtime +14 -exec rm '{}' \;
 to_log "Removing old etl job logs (6 months):"
 # NB: using 7 months as may delete the whole 6 month directory 
-find $SOURCE_DIR/etl -mindepth 1 -type d -ctime +214 -print >> $LOGFILE
-find $SOURCE_DIR/etl -mindepth 1 -type d -ctime +214 -exec rm -rf '{}' \;
+find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -print >> $LOGFILE
+find $DATA_DIR/etl -mindepth 1 -type d -ctime +214 -exec rm -rf '{}' \;
 
 # end of run
 cp $LOGS_DIR/etl-run-cron.log $OUT_DIR/
 mkdir $OUT_DIR/failed-solr-deposits
-find "/data/failed-solr-deposits/" -exec mv {} $OUT_DIR/failed-solr-deposits/ \;
+find $DATA_DIR/failed-solr-deposits -exec mv {} $OUT_DIR/failed-solr-deposits/ \;
 
 # NB: don't need to copy etl-run-all.log as is already in the output dir
 to_log "END ETL - mode=$MODE, job=$JOB_ID"
