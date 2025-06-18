@@ -9,4 +9,5 @@ ln -s /usr/local/NMA-API-ETL/install/config/exim/update-exim4.conf.conf /etc/exi
 # generate exim4's actual configuration from the source above
 update-exim4.conf
 # send email to test
-sendemail -f '"Installer" installer@data.nma.gov.au' -t conal.tuohy@gmail.com -u 'exim installation' -m "This message sent by exim"
+sendemail -f '"Installer (do not reply)" installer@data.nma.gov.au' -t conal.tuohy@gmail.com -u 'exim installation' -m "This message sent by exim"
+sendemail -f '"Installer (do not reply)" installer@data.nma.gov.au' -t rick.ruthven@nma.gov.au -u 'exim installation' -m "This message sent by exim"
