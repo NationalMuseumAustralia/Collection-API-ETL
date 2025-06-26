@@ -2,3 +2,5 @@
 *.*~
 # ignore performance test logs
 test/performance/logs
+*.log
+
